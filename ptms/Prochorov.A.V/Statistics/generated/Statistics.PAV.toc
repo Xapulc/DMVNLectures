@@ -1,0 +1,98 @@
+\babel@toc {russian}{}
+\contentsline {section}{\numberline {1}Краткий обзор курса}{5}{section.1}
+\contentsline {subsection}{\numberline {1.1}Модель конечного случайного выбора}{5}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Статистическая модель}{6}{subsection.1.2}
+\contentsline {subsection}{\numberline {1.3}Статистические решения}{6}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Типы статистических решений. Статистическая модель схемы Бернулли}{6}{subsection.1.4}
+\contentsline {subsubsection}{\numberline {1.4.1}Точечная оценка}{7}{subsubsection.1.4.1}
+\contentsline {subsubsection}{\numberline {1.4.2}Интервальная оценка}{8}{subsubsection.1.4.2}
+\contentsline {subsubsection}{\numberline {1.4.3}Выбор из двух гипотез}{10}{subsubsection.1.4.3}
+\contentsline {section}{\numberline {2}Эмпирическая функция распределения}{11}{section.2}
+\contentsline {subsection}{\numberline {2.1}Модель повторных испытаний}{11}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Обоснование предельного перехода при стремлении размера выборки к бесконечности}{12}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Определение и свойства эмпирической функции распределения}{12}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Теорема Гливенко - Кантелли}{14}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Свойства эмпирических моментов}{15}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Критерий Колмогорова}{15}{subsection.2.6}
+\contentsline {subsubsection}{\numberline {2.6.1}Статистика Колмогорова}{15}{subsubsection.2.6.1}
+\contentsline {section}{\numberline {3}Точечные оценки}{16}{section.3}
+\contentsline {subsection}{\numberline {3.1}Выборочные характеристики}{16}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Определение и свойства выборочных характеристик}{16}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Распределение порядковых статистик}{17}{subsubsection.3.1.2}
+\contentsline {subsection}{\numberline {3.2}Функция правдоподобия. Регулярные модели}{18}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Условное математическое ожидание}{19}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Свойства УМО}{20}{subsubsection.3.3.1}
+\contentsline {subsection}{\numberline {3.4}Достаточные статистики}{21}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Количество информации Фишера}{22}{subsection.3.5}
+\contentsline {subsubsection}{\numberline {3.5.1}Информация Фишера}{22}{subsubsection.3.5.1}
+\contentsline {subsubsection}{\numberline {3.5.2}О свойствах информации Фишера}{22}{subsubsection.3.5.2}
+\contentsline {subsection}{\numberline {3.6}Эффективные оценки}{23}{subsection.3.6}
+\contentsline {subsubsection}{\numberline {3.6.1}Неравенство Рао - Крамера}{23}{subsubsection.3.6.1}
+\contentsline {subsubsection}{\numberline {3.6.2}Многомерный случай}{24}{subsubsection.3.6.2}
+\contentsline {subsubsection}{\numberline {3.6.3}Теорема Колмогорова - Блекуэлла - Рао}{24}{subsubsection.3.6.3}
+\contentsline {subsubsection}{\numberline {3.6.4}Полная достаточная статистика}{24}{subsubsection.3.6.4}
+\contentsline {subsubsection}{\numberline {3.6.5}Замечания о минимальной достаточной статистике}{25}{subsubsection.3.6.5}
+\contentsline {subsection}{\numberline {3.7}Асимптотические свойства оценок}{25}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Методы получения оценок}{26}{subsection.3.8}
+\contentsline {subsubsection}{\numberline {3.8.1}Метод моментов}{27}{subsubsection.3.8.1}
+\contentsline {subsubsection}{\numberline {3.8.2}Метод максимального (наибольшего) правдоподобия}{27}{subsubsection.3.8.2}
+\contentsline {paragraph}{Принцип МП в простейшем случае}{27}{section*.5}
+\contentsline {paragraph}{Общая ситуация}{27}{section*.6}
+\contentsline {section}{\numberline {4}Байесовские статистические оценки}{29}{section.4}
+\contentsline {subsection}{\numberline {4.1}Байесовские точечные оценки}{29}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Функция риска}{29}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Байесовский подход}{29}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Теорема о байесовской оценке для квадратичной функции риска}{30}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Апостериорный риск}{30}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Свойства байесовских оценок}{32}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Минимаксные оценки}{32}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Байесовские интервальные оценки}{33}{subsection.4.6}
+\contentsline {section}{\numberline {5}Многомерное нормальное распределение}{34}{section.5}
+\contentsline {subsection}{\numberline {5.1}Эквивалентные определения}{34}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Свойства многомерного нормального распределения}{34}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Лемма Фишера}{35}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Связанные с нормальным распределения}{35}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {5.4.1}Хи-квадрат распределение}{35}{subsubsection.5.4.1}
+\contentsline {subsubsection}{\numberline {5.4.2}Распределение Стьюдента}{36}{subsubsection.5.4.2}
+\contentsline {subsubsection}{\numberline {5.4.3}Распределение Фишера}{36}{subsubsection.5.4.3}
+\contentsline {subsection}{\numberline {5.5}Статистики для нормальных выборок}{36}{subsection.5.5}
+\contentsline {subsubsection}{\numberline {5.5.1}Распределение статистик для нормальных выборок}{36}{subsubsection.5.5.1}
+\contentsline {subsubsection}{\numberline {5.5.2}Оценка дисперсии при неизвестном среднем}{37}{subsubsection.5.5.2}
+\contentsline {subsubsection}{\numberline {5.5.3}Оценка среднего при неизвестной дисперсии}{37}{subsubsection.5.5.3}
+\contentsline {section}{\numberline {6}Доверительные интервалы}{37}{section.6}
+\contentsline {subsection}{\numberline {6.1}Общие способы получения доверительных интервалов}{37}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Метод центральной статистики}{37}{subsubsection.6.1.1}
+\contentsline {subsubsection}{\numberline {6.1.2}Метод монотонного преобразования}{38}{subsubsection.6.1.2}
+\contentsline {subsection}{\numberline {6.2}Точный доверительный интервал для параметра биномиального распределения}{38}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Доверительные интервалы для параметров нормального распределения}{38}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Доверительный интервал для среднего при известной дисперсии}{38}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Доверительный интервал для дисперсии при известном среднем}{39}{subsubsection.6.3.2}
+\contentsline {subsection}{\numberline {6.4}Асимптотические доверительные интервалы}{39}{subsection.6.4}
+\contentsline {section}{\numberline {7}Проверка статистических гипотез}{40}{section.7}
+\contentsline {subsection}{\numberline {7.1}Задача различения двух статистических гипотез}{40}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Разделение гипотез}{40}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}Сравнение двух простых гипотез. Теорема Неймана - Пирсона}{41}{subsubsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2}Равномерно наибольших критерий}{42}{subsubsection.7.2.2}
+\contentsline {subsection}{\numberline {7.3}Проверка гипотез о параметрах нормального распределения}{43}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}Проверка гипотез о параметрах нормального распределения с помощью доверительного интервала}{44}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}Проверка гипотезы однородности нормальных выборок}{44}{subsection.7.5}
+\contentsline {subsubsection}{\numberline {7.5.1}Критерий Стьюдента равенства средних значений при условии равенства дисперсий}{44}{subsubsection.7.5.1}
+\contentsline {subsubsection}{\numberline {7.5.2}Критерий Фишера равенства дисперсий}{45}{subsubsection.7.5.2}
+\contentsline {subsection}{\numberline {7.6}Дисперсионный анализ однофакторной модели}{45}{subsection.7.6}
+\contentsline {subsection}{\numberline {7.7}Парные и множественные сравнения}{46}{subsection.7.7}
+\contentsline {subsubsection}{\numberline {7.7.1}Парное сравнение}{46}{subsubsection.7.7.1}
+\contentsline {subsubsection}{\numberline {7.7.2}Множественные сравнения}{47}{subsubsection.7.7.2}
+\contentsline {subsection}{\numberline {7.8}Критерий Пирсона $\chi ^2$}{47}{subsection.7.8}
+\contentsline {subsubsection}{\numberline {7.8.1}Биномиальный критерий}{47}{subsubsection.7.8.1}
+\contentsline {subsubsection}{\numberline {7.8.2}Критерий $\chi ^2$ для схемы Бернулли (предисловие к критерию Пирсона)}{47}{subsubsection.7.8.2}
+\contentsline {subsubsection}{\numberline {7.8.3}Критерий знаков}{48}{subsubsection.7.8.3}
+\contentsline {subsubsection}{\numberline {7.8.4}Полиномиальный критерий}{48}{subsubsection.7.8.4}
+\contentsline {subsubsection}{\numberline {7.8.5}Теорема Пирсона}{48}{subsubsection.7.8.5}
+\contentsline {subsubsection}{\numberline {7.8.6}Критерий $\chi ^2$}{49}{subsubsection.7.8.6}
+\contentsline {subsection}{\numberline {7.9}Критерий Колмогорова}{50}{subsection.7.9}
+\contentsline {section}{\numberline {8}Регрессия}{50}{section.8}
+\contentsline {subsection}{\numberline {8.1}Разложение дисперсии случайной величины по отношению к регрессии.}{50}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Связь регрессии и корреляции}{50}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Регрессия для двумерной нормальной выборки}{51}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.4}Эмпирическая регрессия}{51}{subsection.8.4}
+\contentsline {section}{\numberline {9}Вопросы к экзамену}{52}{section.9}
