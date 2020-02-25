@@ -1,0 +1,60 @@
+\begin{center}
+\Large Проверочная работа от Т.А. (одна задача на 30 минут, здесь оба варианта).
+\end{center}
+\begin{tproblem}
+(Владимиров 19.35) Доказать, что для всех функций $u\in C^1_0(|x|<1)$, $x=(x_1,x_2,x_3)$ имеет место неравенство $$\ints{|x|<1}|\nabla u|^2+u\,dx\geq-\frac{\pi}{45}$$. Имеет ли место равенство для какой-либо из описанных выше функций?
+\end{tproblem}
+\begin{solution}
+Рассмотрим функционал
+$E(u)=\ints{|x|<1}|\nabla u|^2+u\,dx$.\\
+$I(t)=E(u+tg)=\ints{|x|<1}|\nabla u|^2+2t(\nabla u,\nabla g)+t^2|\nabla g|^2+u+tg\,dx$.
+$\left(\frac{d}{dt}I(t)\right)|_{t=0}=\ints{|x|<1}+2(\nabla u,\nabla g)+g\,dx=
+\ints{|x|<1}(-2\Delta u+1)g\,dx$.
+Получаем вариационную задачу:
+$$
+\left\{
+\begin{aligned}
+\Delta u&=\frac{1}{2}\\
+u|_{|x|=1}&=0\\
+\end{aligned}
+\right.
+$$
+Ищем решение как функцию от радиуса: $u=R(r)$. Тогда
+$$
+\left\{
+\begin{aligned}
+\Delta u&=R''(r)+\frac{1}{r}R'(r)=\frac{1}{2}\\
+u|_{|x|=1}&=R(1)=0\\
+\end{aligned}
+\right.
+$$
+Общее решение первого уравнения: $\frac{C}{r}+d+\frac{r^2}{12}$. u - гармоническая в шаре с центром в нуле, откуда $C=0$; $u(1)=0$, откуда $d=-\frac{1}{12}$. Имеем $u=\frac{r^2-1}{12}$, на ней достигается минимум функционала. Теперь проверим неравенство:
+$\ints{|x|<1}|\nabla u|^2+u\,dx=\ints{|x|<1}\frac{r^2}{36}+\frac{r^2-1}{12}\,dx=
+\frac{1}{9}\ints{|x|<1}r^2\,dx-\frac{4\pi}{3*12}=
+\frac{1}{9}\intl{0}{1}4\pi r^4-\frac{5\pi}{45}=
+\frac{4\pi}{45}-\frac{5\pi}{45}=-\frac{\pi}{45}$, откуда неравенство верно, причём равенство достигается на найденной функции $u$.
+\end{solution}
+\begin{tproblem}
+(Владимиров 19.29) Пусть Q - куб $\{0{<}x_1{<}1;0{<}x_2{<}1;0{<}x_3{<}1\}$. Доказать, что для любой функции $f\in H^1_0(Q)$ справедливо неравенство:
+$$\hn{f}^2_{L_2}\leq\frac{1}{3\pi^2}\hn{\nabla f}^2_{L_2}$$
+\end{tproblem}
+\begin{solution}
+Рассмотрим функционал
+$E(f)=\ints{Q}f^2-\frac{1}{3\pi^2}|\nabla f|^2\,dx$.\\
+$I(t)=E(f+tg)=\ints{Q}f^2+2tfg+t^2g^2-\frac{1}{3\pi^2}\left(|\nabla f|^2+2t(\nabla f,\nabla g)+t^2|\nabla g|^2\right)\,dx$.
+$\left(\frac{d}{dt}I(t)\right)|_{t=0}=\ints{Q}2fg-\frac{2}{3\pi^2}(\nabla f,\nabla g)\,dx=\ints{Q}2(f+\frac{1}{3\pi^2}\Delta f)g\,dx$.
+Получаем вариационную задачу:
+$$
+\left\{
+\begin{aligned}
+-\Delta f&=3\pi^2f\\
+f|_{\pd Q}&=0\\
+\end{aligned}
+\right.
+$$
+Ищем решение в виде разложения по собственным функциям: $f=\suml{k,l,m=1}{\infty}A_{ijk}\sin{\pi{k}{x_1}}\sin{\pi{l}{x_2}}\sin{\pi{m}{x_3}}$. Легко видеть, что решением является $f=a\sin{\pi{x_1}}\sin{\pi{x_2}}\sin{\pi{x_3}}$. На таких функция достигается минимум нашего функционала. Проверим выполнение неравенства $\ints{Q}f^2-\frac{1}{3\pi^2}|\nabla f|^2\,dx\leq 0$:\\
+$\ints{Q}f^2\,dx=\intl{0}{1}\intl{0}{1}\intl{0}{1}\hr{\sin{\pi{x_1}}\sin{\pi{x_2}}\sin{\pi{x_3}}}^2\,dx_1\,dx_2\,dx_3=\frac{1}{8}$,\\
+$\ints{Q}\frac{1}{3\pi^2}|\nabla{f}|^2\,dx{=}\intl{0}{1}\intl{0}{1}\intl{0}{1}\pi^2\hr{\cos\pi{x_1}\sin\pi{x_2}\sin\pi{x_3}+\ldots}\,dx_1\,dx_2\,dx_3{=}
+3\pi^2\intl{0}{1}\intl{0}{1}\intl{0}{1}\cos\pi{x_1}\sin\pi{x_2}\sin\pi{x_3}\,dx_1\,dx_2\,dx_3{=}\frac{3\pi^2}{8}$,\\
+$\frac{1}{8}-\frac{1}{3\pi^2}\frac{3\pi^2}{8}=0$, откуда неравенство верно и достигается на функциях вида $a\sin{\pi{x_1}}\sin{\pi{x_2}}\sin{\pi{x_3}}$.
+\end{solution} 

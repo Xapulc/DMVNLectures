@@ -1,0 +1,16 @@
+3,5c3,5
+< \documentclass[a4paper,draft]{article}
+< \usepackage[simple]{dmvn}
+< \usepackage{dmvnphil}
+---
+> %\documentclass[a4paper,draft]{article}
+> %\usepackage[simple]{dmvn}
+> %\usepackage{dmvnphil}
+9,11c9,11
+< %\documentclass[a4paper,11pt]{article}
+< %\usepackage[simple]{dmvn}
+< %\usepackage[pda]{dmvnphil}
+---
+> \documentclass[a4paper,11pt]{article}
+> \usepackage[simple]{dmvn}
+> \usepackage[pda]{dmvnphil}

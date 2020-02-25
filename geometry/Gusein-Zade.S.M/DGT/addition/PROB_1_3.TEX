@@ -1,0 +1,121 @@
+%% Lust updated: February 24, 1999.
+
+\documentstyle[12pt]{article}
+%% \documentstyle{article}
+
+\input amssym.def
+\input amssym.tex
+
+\marginparwidth 40pt
+\textwidth=135mm
+%% \textwidth=140mm
+%% \textheight=200mm
+\textheight=205mm
+
+\def\R{\Bbb R}
+\def\N{\Bbb N}
+\def\Z{\Bbb Z}
+\def\Q{\Bbb Q}
+\def\C{\Bbb C}
+\def\CP{\Bbb C\Bbb P}
+\def\RP{\Bbb R\Bbb P}
+\font\sf=cmss10
+
+% Theorem environments for normal usage
+% arabic numbering:
+\newtheorem{theorem}{Теорема}
+\newtheorem{corollary}{Следствие}
+\newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+
+% Non-italic
+% \theorembodyfont{\rmfamily}
+
+\newenvironment{definition}
+{\smallskip\noindent{\bf Определение\/}:}{\smallskip\par}
+\newenvironment{def-equiv}
+{\smallskip\noindent{\bf Определение'\/}:}{\smallskip\par}
+%% \newenvironment{proposition}
+%% {\smallskip\noindent{\bf Proposition\/}.}{\smallskip\par}
+\newenvironment{example}
+{\smallskip\noindent{\bf Пример\/}.}{\smallskip\par}
+\newenvironment{examples}
+{\smallskip\noindent{\bf Примеры\/}.}{\smallskip\par}
+\newenvironment{remark}
+{\smallskip\noindent{\bf Замечание\/}.}{\smallskip\par}
+\newenvironment{remarks}
+{\smallskip\noindent{\bf Замечания\/}.}{\smallskip\par}
+\newenvironment{proof}
+{\noindent{\bf Доказательство\/}.}{{ $\Box$}\smallskip\par}
+\newenvironment{Proof}
+{\noindent{\bf Доказательство\/}}{{ $\Box$}\smallskip\par}
+\newenvironment{problem}
+{\noindent{\bf Задача\/}.}{\smallskip\par}
+\newenvironment{problem^*}
+{\noindent{\bf Задача${}^*$}.}{\smallskip\par}
+\newenvironment{problem^**}
+{\noindent{\bf Задача${}^{**}$}.}{\smallskip\par}
+\newenvironment{problem_*}
+{\noindent{\bf Задача${}_{*}$}.}{\smallskip\par}
+\newenvironment{problem_**}
+{\noindent{\bf Задача${}_{**}$}.}{\smallskip\par}
+
+\title{Дифференциальная геометрия, III курс,
+осенний семестр 2000--2001 уч.г. Задачи.}
+\author{С.М.Гусейн--Заде}
+\date{}
+% Not to forget to restore the \date command finally.
+\begin{document}
+
+\def\Aut{{\operatorname{Aut}}}
+\def\eps{\varepsilon}
+
+\maketitle
+
+\begin{problem_*}
+Является ли подмногообразием плоскости $\R^2$ интервал $y=0$, $0<x<1$?
+(Осторожно! См. определение.)
+\end{problem_*}
+
+\begin{problem_*}
+Является ли $GL(n, \R)$ подмногообразием в ($n^2$--мерном) векторном
+пространстве матриц размера $n\times n$.
+\end{problem_*}
+
+\begin{problem}
+Доказать, что $SO(3)$ является подмногообразием в ($9$--мерном) векторном
+пространстве матриц размера $3\times 3$.
+\end{problem}
+
+\begin{problem^*}
+Доказать, что $SO(n)$ является подмногообразиями (вещественно $2n^2$--мерного)
+векторного пространства комплексных матриц размера $n\times n$.
+\end{problem^*}
+
+\begin{problem^*}
+Доказать, что $U(n)$ и $SU(n)$ являются подмногообразием в ($n^2$--мерном) векторном
+пространстве матриц размера $n\times n$.
+\end{problem^*}
+
+\begin{problem^*}
+Верно ли, что любое $k$--мерное подмногообразие $M$ про\-ст\-ран\-ст\-ва
+$\R^n$ является множеством решений системы из $(n-k)$ уравнений $f_1(x^1,
+\ldots, x^n)=0$, \dots, $f_{n-k}(x^1, \ldots, x^n)=0$, для которой ранг
+матрицы $\mbox{rk\,}\left({{\partial f_i}\over{\partial x^j}}(a)\right)$
+($i=1, \ldots, n-k$, $j=1, \ldots, n$) равен $n-k$ в любой точке $a\in M$?
+\end{problem^*}
+
+\begin{problem_*}
+Доказать, что $n$-мерное проективное пространство $\RP^n$ является
+гладким многообразием.
+\end{problem_*}
+
+\begin{problem}
+Доказать, что пространство $G(k,n)$ $k$--мерных линейных подпространств
+в $\R^n$ является гладким многообразием ($G(k, n)$ называется Грассмановым
+многообразием).
+\end{problem}
+
+\end{document}
+
+

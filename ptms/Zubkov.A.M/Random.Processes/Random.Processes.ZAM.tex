@@ -1,0 +1,3292 @@
+\documentclass[a4paper,draft]{article}
+\usepackage{dmvn}
+
+\usepackage[cp1251]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[cm]{fullpage}
+\usepackage[normalem]{ulem}
+
+\usepackage{amssymb,amsmath,mathrsfs} 
+%%,amsthm}
+
+\def\RR{\mathbb{R}}
+\def\ZZ{\mathbb{Z}}
+\def\Pf{\mathsf{P}}
+\def\Mf{\mathsf{M}}
+\def\Df{\mathsf{D}}
+\def\Fs{\mathscr{F}}
+\def\Ir{\mathrm{I}}
+\def\Nc{\mathcal{N}}
+\def\nrai{n \rightarrow \infty}
+\def\krai{k \rightarrow \infty}
+\def\trai{t \rightarrow \infty}
+\def\ranrai{\xrightarrow[\nrai]{}}
+\def\iii{\int\limits_{-\infty}^{+\infty}}
+\def\ixi{\int\limits_{x}^{+\infty}}
+\def\izi{\int\limits_{0}^{+\infty}}
+\def\iix{\int\limits_{-\infty}^{x}}
+\def\ep{\varepsilon}
+\def\ph{\varphi}
+
+%%% Temporary until published
+\newcommand{\ourwebsite}{\texttt{http:/\kern-.1em/rain.aliso.ru/mexmat}}
+\newcommand{\ourmail}{\texttt{kalkin@mexmat.net, skuzn@inbox.ru}}
+\newcommand{\ourtrail}{%
+\par{\footnotesize\rightline{Последняя компиляция: \texttt{\сегодня~г}.}%
+\rightline{Обновления документа\т на сайте \ourwebsite,}%
+\rightline{Об опечатках и неточностях пишите на \ourmail.}\par}}
+
+%\theoremstyle{plain}
+%\newtheorem{lemma}{Лемма}
+%\newtheorem{stm}{Утверждение}
+%\newtheorem{theorem}{Теорема}
+%\newtheorem{note}{Замечание}
+%\theoremstyle{definition}
+%\newtheorem{df}{Определение}
+\newtheorem{fct}{Факт}
+
+\def\ч{--}
+
+\def\Norm{\Nc}
+
+\begin{document}
+\dmvntitle{Курс лекций по}{теории случайных процессов}{Лектор \т Андрей Михайлович Зубков}
+{III курс, 6 семестр, поток математиков}{Москва, 2007 г.} \pagebreak
+
+\tableofcontents
+
+\section*{Предисловие от редакции}
+%Это незавершённый курс, который мы набираем по мере прочтения лекций лектором. На данный момент (\сегодня~г.) набраны
+%все прочитанные до сих пор лекции, и так как это уже солидная часть курса, то решено было опубликовать  
+%текущую версию, для того, чтобы уже сейчас с помощью читателей искать возможные неточности и лажу. Пожалуйста,
+%сообщайте о всех замеченных опечатках и ошибках нам по электронной почте или лично. 
+Это полный курс лекций, однако при наборе в текст могли вкрасться опечатки, неточности и ошибки. Пожалуйста, сообщайте о них нам по электронной почте. В текущей версии есть незначительные пробелы, которые хотелось бы заполнить, но на это пока что не хватает времени. Если кто-нибудь вдруг захочет этим заняться, сообщайте, мы вышлем вам исходники. 
+\begin{flushright}
+Александр Харитонов {\tt (kalkin@mexmat.net)},
+Степан Кузнецов {\tt (skuzn@inbox.ru)}.
+\end{flushright}
+
+\medskip\ourtrail
+
+\pagebreak
+
+%%% лекция 1
+
+\section{Немного философии}
+В теории вероятностей рассматривается вероятностное пространство
+$(\Omega, \Fs, \Pf)$ и случайные величины \\$\xi\colon \Omega \to \RR$
+(или в другое множество, вроде $\ZZ$ или $\RR^n$), т.е. функции, измеримые
+относительно $\Fs$ и $\sigma$-алгебры на образе. В теории случайных
+процессов рассматривается отображение $\Omega$ в некоторое пространство
+функций, например $\RR^\infty$ --- множество последовательностей вещественных
+чисел или $\RR^\RR$ --- множество отображений $\RR \to \RR$.
+
+Сравним две теоремы из курса теории вероятностей:
+
+{\bf ЗБЧ.} Пусть $\xi_1, \xi_2, \dots$ --- независимые одинаково распределённые
+случайные величины, $\Mf\xi_1 = a$, $\Df\xi_1 < \infty$, $S_n = \xi_1 + \dots + \xi_n$.
+Тогда для всех $\ep > 0$
+$$
+\Pf \left\{ \left| \frac 1n S_n - a \right| > \ep \right\} \ranrai 0.
+$$
+
+{\bf УЗБЧ.} При тех же условиях имеем
+$$
+\Pf \left\{ \lim_{\nrai} \frac 1n S_n = a \right\} = 1.
+$$
+
+В ЗБЧ речь идёт о распределениях отдельных сумм, а в УЗБЧ --- уже о всей последовательности
+$\{ S_n \}$ --- это уже теорема о случайном процессе (случайной последовательности).
+
+Рассмотрим ещё одну теорему из курса теории вероятностей:
+
+{\bf ЦПТ.} В условиях ЗБЧ имеем:
+$$
+\Pf \left\{ \frac{S_n - na}{\sqrt{n \Df\xi_1}} \leqslant x \right\} \ranrai
+\Phi(x) = \frac 1 {\sqrt{2\pi}} \int\limits_{-\infty}^x e^{-\frac{u^2}{2}} \, du.
+$$
+
+Здесь --- опять свойство распределений отдельных сумм.
+
+\section{Закон повторного логарифма}
+Пусть $\zeta_1, \zeta_2, \dots$ --- произвольная последовательность случайных величин,
+$\psi(n)$ --- детерминированная функция натурального аргумента. Рассмотрим последовательность
+событий $\{ \zeta_n > \psi(n) \}$. Положим
+$\nu(\psi) = \sum\limits_{n=1}^{\infty} \chi\{ \zeta_n > \psi(n) \}$, где $\chi(A)$ ---
+индикатор события $A$.
+
+\begin{df}
+$\psi$ --- верхняя функция максимумов, если $\Pf\{\nu(\psi) < \infty\} = 1$.
+$\psi$ --- нижняя функция максимумов, если $\Pf\{\nu(\psi) = \infty \} = 1$.
+$\psi$ --- правильная функция максимумов, если для любого $\ep > 0$ $(1+\ep)\psi$ ---
+верхняя функция максимумов, а $(1-\ep)\psi$ --- нижняя функция максимумов. Аналогично
+определяются функции минимумов.
+\end{df}
+
+\begin{stm}\label{Stm:ln}
+ Пусть $\{\zeta_n\}$ --- последовательность независимых случайных величин,
+$\zeta_n \sim \Norm(0, 1)$. Тогда 
+$$
+\Pf\left\{ \limsup_{\nrai} \frac{\zeta_n}{\sqrt{2 \ln n}} = 1 \right\} = 1
+\qquad \text{и} \qquad
+\Pf\left\{ \liminf_{\nrai} \frac{\zeta_n}{\sqrt{2 \ln n}} = -1 \right\} = 1.
+$$
+\end{stm}
+
+\begin{lemma}[лемма Бореля\ч Кантелли]
+Пусть на $(\Omega, \Fs, \Pf)$ задана последовательность событий $\{ A_n \}$.
+$A^{*} = \{ \omega\in\Omega \mid \sum\limits_{n=1}^{\infty} \chi(A_n) = \infty \} = 
+\{ \text{\rm выполняется бесконечно много событий из этой последовательности} \}$.
+Тогда
+\begin{enumerate}
+\item если $\sum\limits_{n=1}^{\infty} \Pf(A_n) < \infty$, то $\Pf(A^{*}) = 0$;
+\item если $A_n$ попарно независимы и $\sum\limits_{n=1}^{\infty} \Pf(A_n) = \infty$,
+то $\Pf(A^{*}) = 1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof} Смотри курс теории вероятностей. \end{proof}
+
+\begin{stm}\label{Stm:Norm}
+ $1 - \Phi(x) = \dfrac{1 - \ep_x}{x} \ph(x)$, где $\ep_x \to 0$ при $x \to \infty$,
+$\ep_x > 0$, $\ph(x) = \dfrac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}}$.
+\end{stm}
+
+\begin{proof}
+Совершаем замену $u = x+v$:
+$$
+1 - \Phi(x) = \frac{1}{\sqrt{2\pi}} \ixi e^{-\frac{u^2}{2}} \, du = 
+\frac{1}{\sqrt{2\pi}} \izi e^{-\frac{(x+v)^2}{2}} \, dv =
+\frac{e^{-\frac{x^2}{2}}}{\sqrt{2\pi}} \izi e^{- xv - \frac{v^2}{2}} \, dv
+\stackrel{?}{=} \frac{1 - \ep_x}{x} \ph(x).
+$$
+Чтобы обосновать последний переход (доказать, что $\ep_x$ такое, какое надо),
+оценим интеграл. Совершим замену $xv = z$ ($x\,dv=dz$):
+$$
+\izi e^{-xv-\frac{v^2}{2}} \, dv = \izi e^{-z-\frac{z^2}{2x^2}} \, \frac{dz}{x}.
+$$
+$$
+\izi e^{-z-\frac{z^2}{2x^2}} \, dz < \izi e^{-z} \, dz = 1,
+$$
+откуда $\ep_x > 0$. Оценим с другой стороны:
+$$
+\izi e^{-z-\frac{z^2}{2x^2}} \, dz > \int\limits_{0}^{\sqrt{x}} e^{-z}
+e^{-\frac{z^2}{2x^2}} \, dz > e^{-\frac{1}{2x}} \int\limits_{0}^{\sqrt{x}}
+e^{-z} \, dz > 
+\left(1 - \frac{1}{2x}\right) \left(1 - e^{-\sqrt{x}}\right) \to 1
+\; (x\to\infty),
+$$
+откуда $\ep_x \to 0$ при $x \to \infty$.
+\end{proof}
+
+\begin{proof}[Доказательство утверждения~\ref{Stm:ln}]
+Положим $\psi(n) = \sqrt{2\ln n}$, $A_n(b) = \{ \zeta_n > b\psi(n) \}$,
+$$A^{*}(b) = \left\{ \omega\mid \sum_{n=1}^{\infty} \chi(A_n(b)) = \infty \right\} =
+\left\{ \omega\mid \limsup_{\nrai} \frac{\zeta_n}{\psi(n)} \geqslant b \right\}.
+$$
+
+В силу утверждения~\ref{Stm:Norm}
+$$
+\sum_{n=1}^{\infty} \Pf(A_n(b)) =
+\sum_{n=1}^{\infty} e^{-\frac{(b\psi(n))^2}{2}} \,
+\frac{1 - \ep_n}{b \psi(n) \sqrt{2\pi}} =
+\sum_{n=1}^{\infty} \frac{1}{n^{b^2}}
+\frac{1 - \ep_n}{b \sqrt{2\pi} \sqrt{2\ln n}} \:
+\begin{cases}
+ = \infty & \text{при $b \leqslant 1$},\\
+ < \infty & \text{при $b > 1$}.
+\end{cases}
+$$
+Отсюда в силу леммы Бореля\ч Кантелли для всех $b > 1$
+$$
+\Pf \left\{ \limsup_{\nrai} \frac{\zeta_n}{\psi(n)} \geqslant b \right\} = 0,
+$$
+а поэтому
+$$
+\Pf \left\{ \limsup_{\nrai} \frac{\zeta_n}{\psi(n)} \leqslant 1 \right\} = 1.
+$$
+Кроме того, для всех $b < 1$
+$$
+\Pf \left\{ \limsup_{\nrai} \frac{\zeta_n}{\psi(n)} \geqslant b \right\} = 1,
+$$
+откуда
+$$
+\Pf \left\{ \limsup_{\nrai} \frac{\zeta_n}{\psi(n)} \geqslant 1 \right\} = 1.
+$$
+Окончательно,
+$$
+\Pf \left\{ \limsup_{\nrai} \frac{\zeta_n}{\psi(n)} = 1 \right\} = 1,
+$$
+что и завершает доказательство утверждения.
+\end{proof}
+
+\begin{theorem}[закон повторного логарифма]
+Если $\zeta_1, \zeta_2, \dots$ --- независимые случайные величины, $\zeta_n \sim \Norm(0,1)$,
+$S_n = \zeta_1 + \dots + \zeta_n$, то
+$$
+\Pf \left\{ \limsup_{\nrai} \frac{S_n}{\sqrt{2n \ln\ln n}} = 1 \right\} = 1
+\qquad\text{и}\qquad
+\Pf \left\{ \liminf_{\nrai} \frac{S_n}{\sqrt{2n \ln\ln n}} = -1 \right\} = 1.
+$$
+\end{theorem}
+
+Заметим, что $S_n \sim \Norm(0, n)$, поэтому $\dfrac{S_n}{\sqrt{n}} \sim \Norm(0,1)$.
+Положим $M(t) = \max\limits_{1\leqslant k \leqslant t} S_k$, $h(t) =
+\sqrt{2t \ln\ln t}$ ($t>0$). Сформулируем две вспомогательные леммы.
+
+\begin{lemma}\label{L:lnln1}
+ Для всех $r>1$
+$$
+\sum_{k=1}^{\infty} \Pf \left\{ \frac{M(r^{k+1})}{h(r^k)} > r \right\} < \infty.
+$$
+\end{lemma}
+
+\begin{lemma}\label{L:lnln2}
+Для всех натуральных $v$
+$$
+\sum_{k=1}^{\infty} \Pf \left\{ \frac{S_{v^k} - S_{v^{k-1}}}{h(v^k)} > c(v) \right\} =
+\infty,
+\qquad \text{где } c(v) = \sqrt{1 - \frac 1v}.
+$$
+\end{lemma}
+
+Эти леммы мы докажем потом, а сейчас с их помощью докажем теорему.
+
+\begin{proof}[Доказательство закона повторного логарифма]
+Пусть $r>1$.
+Из леммы~\ref{L:lnln1} и леммы Бореля\ч Кантелли имеем, что
+$$
+\Pf \left\{ \limsup_{\krai} \frac{M(r^{k+1})}{h(r^k)} \leqslant r \right\} = 1.
+$$
+Положим $k(n) = [ \log_r n ]$, т.е. $r^{k(n)} \leqslant n < r^{1+k(n)}$ (квадратные
+скобки обозначают взятие целой части). $k(n) \to \infty$ при $n\to\infty$. Имеем:
+$$
+\frac{S_n}{h(n)} \leqslant \frac{M(r^{k(n)+1})}{h(r^{k(n)})}
+\quad\Rightarrow\quad
+\limsup_{\nrai} \frac{S_n}{h(n)} \leqslant \limsup_{\nrai} \frac{M(r^{n+1})}{h(r^n)}.
+$$
+Отсюда
+$$
+\forall \, r > 1 \quad
+\Pf \left\{ \limsup_{\nrai} \frac{S_n}{h(n)} \leqslant r \right\} = 1
+\qquad\Rightarrow\qquad
+\Pf \left\{ \limsup_{\nrai} \frac{S_n}{h(n)} \leqslant 1 \right\} = 1.
+$$
+
+Пусть $v$ --- целое число, $v > 1$. $S_{v^k} - S_{v^{k-1}} = 
+\sum\limits_{n=v^{k-1}+1}^{v^k} \zeta_n$ --- семейство независимых
+случайных величин. По лемме~\ref{L:lnln2} и лемме Бореля\ч Кантелли
+$$
+\Pf \left\{ \limsup_{\krai} \frac{S_{v^k} - S_{v^{k-1}}}{h(v^k)} > c(v) \right\} = 1.
+$$
+Из соотношения $h(v^k) = \sqrt{2 v^k \ln\ln v^k} = (1 + o(1)) h(v^{k-1}) \sqrt{v}$ (при $k\to\infty$)
+и ранее доказанного получаем:
+$$
+\Pf \left\{ \limsup_{\krai} \frac{S_{v^{k-1}}}{h(v^k)} = \limsup_{\krai}
+\frac{S_{v^{k-1}}}{h(v^{k-1}) \sqrt{v}} \leqslant \frac{1}{\sqrt{v}} \right\} = 1.
+$$
+Так как распределение $\Norm(0,1)$ симметрично относительно нуля, получаем:
+$$
+\Pf \left\{ \liminf_{\krai} \frac{S_{v^{k-1}}}{h(v^k)} \geqslant - \frac{1}{\sqrt{v}} \right\} = 1.
+$$
+Из анализа известно, что если $\limsup\limits_{\krai} a_k > c$ и $\liminf\limits_{\krai} b_k > d$,
+то $\limsup\limits_{\krai} (a_k + b_k) > c+d$. Отсюда
+$$
+\Pf \left\{ \limsup_{\krai} \frac{S_{v^k}}{h(v^k)} > c(v) - \frac{1}{\sqrt{v}} \right\} = 1
+\quad \forall\, v < \infty
+\qquad\Rightarrow\qquad
+\forall\, v < \infty \quad
+\Pf \left\{ \limsup_{\nrai} \frac{S_n}{h(n)} > c(v) - \frac{1}{\sqrt{v}} \right\} = 1.
+$$
+$c(v) = \sqrt{1 - \frac{1}{v}}$, поэтому $c(v) - \frac{1}{\sqrt{v}}$ близко к $1$ при
+достаточно больших $v$, откуда получаем, что
+$$
+\Pf \left\{\limsup_{\nrai} \frac{S_n}{h(n)} \geqslant 1 \right\} = 1.
+$$
+Окончательно,
+$$
+\Pf \left\{ \limsup_{\nrai} \frac{S_n}{h(n)} = 1 \right\} = 1.
+$$
+Второе утверждение следует из первого в силу симметрии стандартного нормального распределения.
+\end{proof}
+
+\begin{lemma}[аналог неравенства Колмогорова]\label{L:lnln3_Kolm}
+Если $\xi_1, \dots, \xi_n$ --- независимые случайные величины, имеющие симметричное распределение
+($\Pf \{ \xi_k \leqslant x \} = \Pf \{ \xi_k \geqslant -x \}$ для всех $x$), то для всех
+$a > 0$ $\Pf\{ \max\limits_{k=1,\dots,n} S_k > a \} \leqslant 2\Pf \{ S_n > a \}$, где
+$S_k = \xi_1 + \dots + \xi_k$.
+\end{lemma}
+
+\begin{proof}
+Пусть $\tau$ --- случайная величина, равная номеру первого члена последовательности
+$\{ S_k \}$, который больше $a$ (или $n+1$, если такого нет):
+$$
+\tau = 
+\begin{cases}
+k, & \text{если $S_1, \dots, S_{k-1} \leqslant a$, $S_k > a$;} \\
+n+1, & \text{если $S_1, \dots, S_n \leqslant a$.}
+\end{cases}
+$$
+Случайные величины $S_k$ и $S_n - S_k$ независимы и имеют симметричное
+распределение. Из симметрии $\Pf \{ S_n - S_k \geqslant 0 \} = 
+\Pf \{ S_n - S_k \leqslant 0 \} \geqslant \frac 12$. Далее,
+$\Pf \{ S_n > a, \tau = k \} \geqslant \Pf \{ S_n \geqslant S_k > a, \tau = k \} =
+\Pf \{ \tau = k, S_n - S_k \geqslant 0 \} = \Pf \{ \tau = k \} \Pf \{ S_n - S_k \geqslant 0 \}
+\geqslant \frac 12 \Pf \{ \tau = k \}$, где предпоследнее равенство имеет место в силу
+независимости события $\{ \tau = k \}$ от $S_n - S_k$. Суммируя по $k$, получаем:
+$$
+\Pf \{ S_n > a \} = \sum_{k=1}^{n} \Pf \{ S_n > a, \tau = k \} \geqslant
+\sum_{k=1}^{n} \frac 12 \Pf \{ \tau = k \} = \frac 12 \Pf \{ \max S_k > a \},
+$$
+что и требовалось.
+\end{proof}
+
+\begin{proof}[Доказательство леммы~\ref{L:lnln1}]
+По утверждению~\ref{Stm:Norm}
+$$
+1 - \Phi(u) \leqslant \frac{1}{u\sqrt{2\pi}}{e^{-\frac{u^2}{2}}} < 
+\frac{1}{2u} e^{-\frac{u^2}{2}}.
+$$
+$S_n/\sqrt{n} \sim \Norm(0,1)$, поэтому в силу леммы~\ref{L:lnln3_Kolm}
+$$
+\Pf \{ M(n) > u\sqrt{n} \} \leqslant 2\Pf \{ S_n > u\sqrt{n} \} =
+2\Pf \left\{ \frac{S_n}{\sqrt{n}} > u \right\} = 2(1 - \Phi(u)) <
+\frac 1u e^{-\frac{u^2}{2}}.
+$$
+Полагая $n = r^{k+1}$ и $u = \sqrt{2r \ln\ln r^k}$, получаем:
+\begin{multline*}
+\Pf \left\{ \frac{M(r^{k+1})}{h(r^k)} > r \right\} =
+\Pf \left\{ M(r^{k+1}) > r h(r^k) \right\} =
+\Pf \left\{ M(r^{k+1}) > \sqrt{r^{k+1}} \sqrt{2r \ln\ln r^k} \right\} <\\<
+\frac{e^{-r \ln\ln r^k}}{\sqrt{2r \ln\ln r^k}} =
+\frac{1}{\sqrt{2r \ln\ln r^k} (k\ln r)^r} = O\left(\frac{1}{k^r}\right),
+\end{multline*}
+а этот ряд сходится при $r>1$.
+\end{proof}
+
+\begin{proof}[Доказательство леммы~\ref{L:lnln2}]
+$S_{v^k} - S_{v^{k-1}} \sim \Norm(0, v^k - v^{k-1})$, $\zeta_1 \sim \Norm(0,1)$,
+$\zeta_1 \sqrt{v^k - v^{k-1}} \sim \Norm(0, v^k - v^{k-1})$.
+Далее (используем совпадение распределений и опять применяем 
+утверждение~\ref{Stm:Norm}),
+\begin{multline*}
+\Pf \left\{ \frac{S_{v^k} - S_{v^{k-1}}}{h(v^k)} > c(v) \right\} =
+\Pf \left\{ \frac{\zeta_1 \sqrt{v^k - v^{k-1}}}{h(v^k)} > c(v) \right\} =
+\Pf \left\{ \zeta_1 > \frac{c(v) h(v^k)}{\sqrt{v^k - v^{k-1}}} \right\} =\\=
+\Pf \left\{ \zeta_1 > \sqrt{2 \ln\ln v^k} \right\} \sim
+\frac{1}{2\sqrt{\pi \ln\ln v^k}} e^{-\ln\ln v^k} =
+\frac{1}{\sqrt{\pi \ln k} \, k\ln v},
+\end{multline*}
+а этот ряд расходится.
+\end{proof}
+
+%%% лекция 2
+
+\section{Цепи Маркова}
+\subsection{Определения}
+
+Пусть $\xi_0,\xi_1,\ldots$ --- последовательность случайных величин, принимающих значения в конечном множестве. Распределение этой последовательности определяется счётным семейством совместных распределений её конечных отрезков, т.е. вероятностями $P(\xi_0 = i_0, \ldots, \xi_n = i_n)$. Эти вероятности можно записать также как
+$$
+\Pf\left\{\xi_0 = i_0, \ldots, \xi_n = i_n\right\} = \Pf\left\{\xi_0 = i_0\right\} \prod\limits_{k=1}^n \Pf\left\{\xi_k = i_k \mid \xi_0 = i_0,\ldots,\xi_{k-1} = i_{k-1}\right\} \eqno (*)
+$$
+Если случайные величины $\xi_i$ независимы в совокупности, то эта формула значительно упрощается и принимает вид
+$$
+\Pf\left\{\xi_0 = i_0, \ldots, \xi_n = i_n\right\} = \prod\limits_{k=0}^n \Pf\left\{\xi_k = i_k\right\}
+$$
+Цепи Маркова --- это случайные последовательности, занимающие промежуточное положение между полностью зависимыми и полностью независимыми.
+\begin{df}
+Цепь Маркова с конечным или счётным множеством состояний $S$ и дискретным временем --- это такая последовательность случайных величин 
+$\xi_0,\xi_1,\ldots$, принимающих значения в S, что 
+$$
+\forall t \geqslant 0\,\forall\,i_0,\ldots,i_{t+1} \in S\quad \Pf\left\{\xi_{t+1} = i_{t+1} \mid \xi_0 = i_0, \ldots, \xi_t = i_t\right\} = 
+\Pf\left\{\xi_{t+1} = i_{t+1} \mid \xi_t = i_t\right\} = p_{i_t i_{t+1}}^{(t)}.
+$$
+$p_{i_t i_{t+1}}^{(t)}$ называются \emph{переходными вероятностями} этой цепи.\\
+Если $p_{i_t i_{t+1}}^{(t)}$ не зависит от $t$, то цепь называется \emph{однородной по времени}.
+\end{df}
+Для цепей Маркова формула $(*)$ упрощается и принимает вид
+$$
+\Pf\left\{\xi_0 = i_0, \ldots, \xi_t = i_t\right\} = \Pf\left\{\xi_0 = i_0\right\} \prod\limits_{k=1}^t p_{i_{k-1} i_k}^{(k)}
+$$
+Для удобства обозначим $p_{i_0}^{(0)} := \Pf\left\{\xi_0 = i_0\right\}$.\\
+Распределение однородной цепи Маркова в случае $S = { 1, \ldots, n }$ задаётся $n + n^2$ параметрами, а именно, начальным вектором 
+$\bar p^{(0)} = (p_1^{(0)}, \ldots, p_n^{(0)})$ и матрицей переходных вероятностей $P = ( p_{ij} )$.
+В случае неоднородности по времени можно задать счётное семейство матриц переходных вероятностей $P^{(t)} = (p_{ij}^{(t)})$.
+\begin{df}
+Квадратная матрица $A = ( a_{ij} )$, такая, что $a_{ij} \geqslant 0$ и $\forall i\, \sum_k a_{ik} = 1$, называется \emph{стохастической}. Если вместо второго условия выполнено только $\forall i \, \sum_k a_{ik} \leqslant 1$, то матрица называется \emph{полустохастической}. Наконец, если как $A$, так и $A^T$ стохастические, то $A$ называется \emph{дважды стохастической}.
+\end{df}
+Очевидно, что матрицы переходных вероятностей цепей Маркова являются стохастическими и наоборот, любая стохастическая матрица задаёт некоторую однородную по времени цепь Маркова.
+
+\begin{note}
+Если $P,Q$ --- стохастические матрицы и определено их произведение $PQ$, то $PQ$ также является стохастической.
+\end{note}
+
+\subsection{Примеры цепей Маркова}
+\begin{enumerate}
+\item Пусть $\xi_t$ --- независимые целочисленнные случайные величины. Тогда $S_t = \xi_1 + \ldots + \xi_t$ образуют цепь Маркова.
+\item $\eta_1,\ldots$ --- независимые одинаково распределённые случайные величины со значениями в $\left\{ \pm 1 \right\}$, 
+$\Pf\left\{\eta_i = 1\right\} = p,\, \Pf\left\{\eta_i = -1\right\} = q$.
+$$
+\xi_t = \max\left\{ \xi_{t-1} + \eta_t, 0 \right\},\quad t \in \mathbb{N}
+$$
+Такой процесс называется \emph{случайным блужданием с отражающим экраном в нуле}.
+Найдём матрицу его переходов:
+\begin{gather*}
+\Pf\left\{\xi_{t+1} = i+1 \mid \xi_t = i\right\} = p,\\
+\Pf\left\{\xi_{t+1} = i-1 \mid \xi_t = i\right\} = 
+\begin{cases}
+q, & i \geqslant 1\\
+0, & i = 0
+\end{cases}\\
+\Pf\left\{\xi_{t+1} = i \mid \xi_t = i\right\} = 
+\begin{cases}
+0, & i > 0\\
+q, & i = 0
+\end{cases}
+\end{gather*}
+Матрица (бесконечная) вероятностей переходов будет иметь вид
+$$
+\begin{pmatrix}
+q& p& 0& 0& \ldots\\
+q& 0& p& 0& \ldots\\
+0& q& 0& p& \ldots\\
+\vdots& \vdots& \vdots& \vdots& \ddots
+\end{pmatrix}
+$$
+\end{enumerate}
+
+\subsubsection{Модель Эренфестов для диффузии}
+
+Рассмотрим следующую модель распространения газа между двумя сосудами, в одном из которых изначально вакуум, а в другом --- $n$ частиц. Каждый момент времени будем брать случайную частицу и перемещать её в другой сосуд. Последовательность $\xi_t = \left\{\text{число частиц в 1 сосуде в момент времени $t$}\right\}$ является цепью Маркова.
+\begin{gather*}
+\Pf\left\{\xi_{t+1} = k+1 \mid \xi_t = k\right\} = \frac{n-k}{n} = 1 - \frac{k}{n}\\
+\Pf\left\{\xi_{t+1} = k-1 \mid \xi_t = k\right\} = \frac{k}{n}
+\end{gather*}
+Матрица вероятностей переходов:
+$$
+\begin{pmatrix}
+0& 1& 0& 0& \ldots& 0\\
+\frac{1}{n}& 0& 1-\frac{1}{n}& 0& \ldots& 0\\
+0& \frac{2}{n}& 0& 1-\frac{2}{n}& \ldots& 0\\
+\vdots& \vdots& \ddots& \ddots& \ddots& \vdots\\
+0& 0& \ldots& 1-\frac{1}{n}& 0& \frac{1}{n}\\
+0& 0&  \ldots& 0& 1& 0
+\end{pmatrix}
+$$
+%\end{enumerate}
+
+\subsection{Свойства матрицы переходных вероятностей}
+Рассмотрим однородную цепь Маркова $\xi_t$ ($S = { 1, \ldots, n}, P = (p_{ij})$) с дискретным временем и зададимся вопросом посчитать вероятности перехода между состояниями за $m$ шагов, т.е. найдём 
+$$
+p_{ij}(m) := \Pf\left\{\xi_{t+m} = j \mid \xi_t = i\right\}
+$$
+Пусть $P(m) = (p_{ij}(m)), p_i(t) = \Pf\left\{\xi_t = i\right\}, \bar p(t) = ( p_i(t), i \in S)$.
+\begin{lemma}
+Для однородной по времени цепи Маркова с матрицей переходных вероятностей $P$ $\forall m \, \geqslant 1$ имеем
+$$
+P(m) = P^m,\quad
+\bar p(t+m) = \bar p(t) P^m.
+$$
+Если цепь не однородна, то имеют место аналогичные равенства:
+$$
+(p_{ij}^{t,m}) = \left( \Pf\left\{\xi_{t+m} = j \mid \xi_t = i) \right\} \right) = P^{(t)} \ldots P^{(t+m-1)},\quad
+\bar p(t+m) = \bar p(t) P^{(t)}\ldots P^{(t+m-1)}.
+$$
+\end{lemma}
+\begin{proof}
+Докажем только первое равенство, остальные доказываются абсолютно аналогично. Рассуждаем по индукции (база, случай $m=1$, очевидна). Имеем
+$$
+p_{ij}(m+1) = \sum_{k \in S} p_{ik}(m) p_{kj} = \left( P^{(m)} P \right)_{ij},
+$$
+что и требовалось.
+\end{proof}
+
+\subsection{Классификация состояний цепей Маркова}
+
+Пусть имеется (однородная) цепь Маркова с дискретным временем, $S$ --- множество её состояний, $p_{ij}(m)$ --- вероятность перехода между состояниями
+$i$ и $j$ за $m$ шагов.
+\begin{df}
+Состояние $j$ \emph{следует} за состоянием $i$ ($i \rightarrow j$), если $\exists m:\, p_{ij}(m) > 0$.\\
+Если $i \rightarrow j, j \rightarrow i$, то состояния $i$ и $j$ называются \emph{сообщающимися} ($i \leftrightarrow j)$).
+Легко видеть, что $\rightarrow$ транзитивно, а $\leftrightarrow$ задаёт на $S$ отношение эквивалентности.\\
+Состояние $i$ называется:
+\begin{itemize}
+\item \emph{поглощающим}, если $p_{ii} = 1$.
+\item \emph{периодическим} с периодом $d > 1$, если $\text{НОД}(m: p_{ii}(m) > 0) = d$.
+\item \emph{непериодическим}, если оно периодическое с периодом $1$.
+\item \emph{несущественным}, если $\exists j \in S:\, i \rightarrow j, j \not\rightarrow i$.
+\item \emph{существенным}, если оно не является несущественным.
+\item \emph{возвратным}, если оно существенно и $\Pf\left\{\exists t:\, \xi_t = i \mid \xi_0 = i\right\} = 1$.
+\item \emph{возвратным нулевым}, если оно возвратно и $p_{ii}(t) \rightarrow 0 (t \rightarrow \infty)$.
+\item \emph{возвратным положительным}, если оно возвратно и $\limsup_{\trai}  p_{ii}(t) \geqslant 0$.
+\end{itemize}
+\end{df}
+
+%%% Нарисуйте картинки, пожалуйста, кто-нибудь. AVK
+
+Рассмотрим теперь множество классов эквивалентности в $S$, задаваемых отношением $\leftrightarrow$.
+На них можно задать структуру ориентированного графа, направив ребро из $K$ в $L$, когда $\exists x \in K, y\in L:\, x \rightarrow y$.
+\begin{df}
+\emph{Финальными} назовём те классы, из которых в этом графе не выходит рёбер.
+\end{df}
+
+\begin{df}
+Цепь Маркова, у которой все состояния образуют один класс, называется \emph{неразложимой}.
+\end{df}
+
+\subsubsection{Примеры}
+\begin{enumerate}
+\item {\bf Периодические цепи}
+
+Рассмотрим цепь Маркова с тремя состояниями и матрицей переходных вероятностей
+$$
+P = \begin{pmatrix}
+0& 0& 1\\
+1& 0& 0\\
+0& 1& 0
+\end{pmatrix}
+.....
+$$
+Очевидно, $P^3 = E$ и $\forall\,a,k:\,P^{a+3k} = P^a$, то есть процесс циклически переходит между 3 состояниями. 
+Этот пример тривиален, однако по его подобию можно построить более сложный циклический процесс, а именно, пусть 
+$P_1$,$P_2$ и $P_3$ --- стохастические матрицы (одинакового размера). Рассмотрим цепь Маркова со следующей блочной матрицей 
+переходов:
+$$
+P^* = \begin{pmatrix}
+0& 0& P_1\\
+P_2& 0& 0\\
+0& P_3& 0
+\end{pmatrix}
+.....
+$$
+Если матрицы $P_i$ задают неразложимые цепи, то в новой цепи граф классов эквивалентности будет иметь такой же вид, 
+что и в предыдущем примере, хотя внутри классов процесс перемещаться будет случайно.
+
+\item {\bf Несущественные состояния}
+
+Рассмотрим для $\alpha,\beta,\gamma > 0$ цепь с матрицей переходов
+$$
+\begin{pmatrix}
+\alpha& \beta& \gamma\\
+0& 1& 0\\
+0& 0& 1
+\end{pmatrix}
+.....
+$$
+Видно, что состояние 1 несущественно, а 2 и 3 --- поглощающие. При этом
+\begin{gather*}
+p_{11}(t) = \alpha^t \to 0\quad(t \to \infty)\\
+p_{12}(t) = (1-\alpha)^t \frac{\beta}{\beta+\gamma} \to \frac{\beta}{\beta+\gamma}\quad (t \to \infty)\\
+p_{13}(t) = (1-\alpha)^t \frac{\gamma}{\beta+\gamma} \to \frac{\gamma}{\beta+\gamma}\quad(t \to \infty)
+\end{gather*}
+На основе этого процесса, взяв стохастические матрицы соотвествующих размеров, можно аналогичным образом получить  более сложный процесс с тем же графом классов
+эквивалентности. Он будет иметь матрицу
+$$
+\begin{pmatrix}
+P_{11}& P_{12}& P_{13}\\
+0& P_{22}& 0\\
+0& 0& P_{33}
+\end{pmatrix}
+$$
+\end{enumerate}
+
+\subsubsection{Критерий возвратности состояния}
+\begin{theorem}[Критерий возвратности состояния]\label{Th:Reentr}
+Состояние $j$ однородной цепи Маркова возвратно тогда и только тогда, когда 
+$$\sum_{m=1}^{\infty} p_{jj}(m) = \infty.$$
+\end{theorem}
+Обозначим $T_0 = 0, T_k = \min \left\{ T \mid T > T_{k-1}, \xi_T = j\right\}$ (считаем $\min\,\varnothing = \infty$).\\
+Для доказательства этой теоремы нам понадобится следующая
+
+\begin{lemma}
+Если цепь Маркова однородна, то при условии $\xi_0 = j$ случайные величины $\Delta_k = T_k - T_{k-1}$ (где $k$ такое, что $T_k < \infty$) 
+независимы и одинаково распределены.
+\end{lemma}
+\begin{proof}
+По определению $T_k$ $T_k = t \Rightarrow \xi_t = j$.
+\begin{multline*}
+\Pf\left\{\xi_{t+v} = i_{t+v}, v = 1,\ldots,m \mid \xi_0 = j, \ldots, \xi_t = j\right\} = \Pf\left\{\xi_{t+v} = i_{t+v}, v = 1,\ldots,m \mid \xi_t = j\right\} =\\=
+\Pf\left\{\xi_v = i_{t+v}, v = 1,\ldots,m \mid \xi_0 = j\right\} \quad \forall m,\,\forall i_1,\ldots,i_{t+m} \in S,
+\end{multline*}
+то есть $\forall t:\,T_k = t$  распределение последовательности $\left\{ \xi_{t+1},\ldots \right\}$ совпадает с распределением последовательности
+$\left\{ \xi_1, \ldots \right\}$, а это означает, что $\Delta_k = T_{k+1} - T_k$ распределена так же, как $T_1 - T_0 = T_1$.
+
+Независимость $\Delta_k$ в совокупности следует из определения цепи Маркова. Докажем, например, независимость $\Delta_1$ и $\Delta_2$:
+\begin{multline*}
+\Pf\left\{\Delta_1 = m, \Delta_2 = n\right\} = \Pf\left\{\xi_0 = j, \xi_1 \neq j, \ldots, \xi_m = j, \xi_{m+1} \neq j, \ldots, \xi_{m+n} = j\right\} =\\= 
+\sum_{x_1,\ldots,x_{m-1} \neq j} \sum_{y_1,\ldots,y_{n-1} \neq j} \Pf\left\{\xi_{m+1} = y_1, \ldots, \xi_{m+n} = j \mid \xi_0 = j, \xi_1 = x_1, \ldots, \xi_m = j\right\}
+\Pf\left\{\xi_0 = j, \ldots, \xi_m = j\right\} =\\= \Pf\left\{\Delta_1 = m\right\} \sum_{y_1,\ldots,y_{n-1} \neq j} \Pf\left\{\xi_{m+1} = y_1, \ldots, \xi_{m+n} = j \mid \xi_m = j\right\} = \Pf\left\{\Delta_1 = m\right\}\Pf\left\{\Delta_2 = n\right\}.
+\end{multline*}
+\end{proof}
+Докажем теперь нашу теорему.
+\begin{proof}[Доказательство теоремы~\ref{Th:Reentr}]
+При условии $\xi_0 = j$ $\left\{ \omega:\, \exists t > 0:\, \xi_t = j\right\} = \left\{ \omega:\, \Delta_1 < \infty \right\}$.\\
+Поэтому $j$ возвратно $\Leftrightarrow$ $\Pf\left\{\Delta_1 < \infty\right\} = 1$.\\
+Положим 
+$$
+I_n(\omega) =\: 
+\begin{cases}
+  1, & \xi_n = j,\\
+  0 & \text{иначе}.
+\end{cases}
+$$
+$\forall\,N\, < \infty$ положим $\nu(N) = \sum_{n=1}^N I_n = \max \left\{ k \mid T_k \leqslant N \right\}$.
+$$
+\Mf\left\{I_n \mid \xi_0 = j\right\} = \Pf\left\{\xi_n = j \mid \xi_0 = j \right\} = p_{jj}(n),\: \Mf\nu(N) = \sum_{n=1}^N p_{jj}(n).
+$$
+Если $\Pf\left\{\Delta_1 < \infty\right\} = 1$, то $\forall\,k < \infty\:\Pf\left\{T_k < \infty\right\} = 1$, следовательно,
+$$
+\forall\,k < \infty \exists\,N(k):\, \Pf\left\{T_k < N(k)\right\} = \Pf\left\{\nu(N(k)) \geqslant k\right\} > \frac12 \Rightarrow M(\nu(N(k))) \geqslant \frac{k}{2}.
+$$
+Так как $N(k) \to \infty\:(k \to \infty)$, то 
+$$
+\sum_{n=1}^N p_{jj}(n) \to \infty\quad(N \to \infty).
+$$
+Если же $p = \Pf\left\{\Delta_1 < \infty\right\} < 1$, то рассмотрим
+\begin{gather*}
+\nu = \lim_{N \to \infty} \nu(N) = \max \left\{ k:\,T_k < \infty \right\}\\
+\Pf\left\{\nu = N\right\} = \Pf\left\{ \min\left\{ k:\,\Delta_k = \infty \right\} = N+1\right\} = p^n(1-p),
+\end{gather*}
+так как $\Delta_i$ независимы. Но тогда
+$$
+\forall\,N\: \sum_{k=1}^N p_{jj}(k) = \Mf\nu(N) \leqslant \Mf\nu = \frac{p}{1-p} < \infty,
+$$
+что завершает доказательство. \end{proof}
+
+%%%
+%%% Lect. 3
+%%%
+
+\begin{ex} 
+{\em Случайное блуждание по целочисленным точкам.} $\xi_1, \xi_2, \dots$ ---
+независимые случайные величины; $\Pf \{ \xi_k = 1 \} = p$,
+$\Pf \{ \xi_k = -1 \} = q = 1-p$. $S_0 = 0$, $S_n = S_{n-1} + \xi_n =
+\xi_1 + \dots + \xi_n$ --- случайное блуждание. Это цепь Маркова с
+множеством состояний $S = \ZZ$. Из симметрии задачи ясно, что
+либо все состояния будут возвратными, либо все не будут возвратными
+одновременно. Применим ранее доказанный критерий для определения
+возвратности состояния 0.
+$$
+p_{00} (n) = \Pf \{ S_n = 0 \} = 
+\begin{cases}
+0, & \text{если $n$ нечётно;}\\
+C_{n}^{\frac n2} p^{\frac n2} q^{\frac n2}, & \text{если $n$ чётно.}
+\end{cases}
+$$
+Нас интересует сходимость ряда $\sum\limits_{n=1}^{\infty} C_{2n}^n
+p^n q^n$. Из анализа известна формула Стирлинга: $k! = (1 + o(1))
+\sqrt{2 \pi k} \left( \frac ke \right)^k$ при $k \to \infty$.
+Отсюда получаем:
+$$
+C_{2n}^n \sim 
+\frac{ \sqrt{2\pi \cdot 2n} \left( \frac{2n}{e} \right)^{2n} }
+{2 \pi n \left( \frac ne \right)^{2n} } =
+\frac{2^{2n}}{\sqrt{\pi n}},
+$$
+откуда $C_{2n}^n p^n q^n \sim \dfrac{(4pq)^n}{\sqrt{\pi n}}$,
+то есть сходимость нашего ряда равносильна сходимости ряда
+$\sum\limits_{n=1}^{\infty} \dfrac{(4pq)^n}{\sqrt{\pi n}}$.
+
+Если $p \ne q$, то $pq = p(1-p) < \frac 14$, следовательно
+$4pq < 1$ и ряд сходится как геометрическая прогрессия.
+Если же $p = q$, то ряд принимает вид $\sum \frac{1}{\sqrt{\pi n}}$
+и расходится. Применяя критерий возвратности, получаем, что
+любое состояние возвратно тогда и только тогда, когда блуждание
+симметрично ($p = q$).
+\end{ex}
+
+\begin{ex}
+{\em Двумерное целочисленное случайное блуждание.}
+$\xi_1, \xi_2, \dots$ независимы; $\Pf \{ \xi_k = 1 \} = p$,
+$\Pf \{ \xi_k = -1 \} = q = 1-p$. $S_0 = (0,0)$,
+$S_n = S_{n-1} + (\xi_{2n-1}, \xi_{2n}) = (\xi_1, \xi_2) +
+(\xi_3, \xi_4) + \dots + (\xi_{2n-1}, \xi_{2n})$. Множество
+состояний $S = \ZZ^2$.
+
+$S_n = (S_n^{(1)}, S_n^{(2)})$, $S_n^{(1)} = \sum\limits_{k=1}^n
+\xi_{2k-1}$, $S_n^{(2)} = \sum\limits_{k=1}^n \xi_{2k}$. $S_n^{(1)}$
+и $S_n^{(2)}$ суть одномерные блуждания из предыдущего примера.
+$p_{(0,0)(0,0)} (2n-1) = 0$.
+В силу независимости
+$p_{(0,0)(0,0)} (2n) = \Pf \{ S_n^{(1)} = 0, S_n^{(2)} = 0 \} =
+p_{00}^2 (n) \sim \dfrac{(4pq)^{2n}}{\pi n}$. Условия сходимости/расходимости
+ряда те же, что и в первом случае.
+
+А вот в трёхмерном случае соответствующая вероятность возврата 
+$\sim \dfrac{(4pq)^{3n}}{(\pi n)^{3/2}}$ --- ряд сходится при всех
+$p$, $q$, то есть трёхмерное блуждание уже всегда будет невозвратным.
+\end{ex}
+
+\subsection{Предельная теорема для конечных цепей Маркова}
+\begin{theorem}\label{T:Markov_lim}
+ Пусть $\{ \xi_k \}$ --- цепь Маркова со множеством
+состояний $S = \{ 1, \dots, n \}$ и матрицей переходных вероятностей
+$P = ( p_{ij} )$. Если существует такое $v < \infty$, что все
+элементы матрицы $P^v$ положительны, то существует предел
+$\lim\limits_{t\rightarrow\infty} p_{ij}(t) = \pi_j > 0$, $j \in S$,
+не зависящий от начального состояния $i$, причём $(\pi_1, \dots,
+\pi_n)$ --- единственное решение системы уравнений:
+$$
+\begin{cases}
+\sum_{k=1}^n x_k p_{kj} = x_j, & j\in S\\
+\sum_{k=1}^n x_k = 1
+\end{cases}
+$$
+\end{theorem}
+\begin{proof}
+$
+p(t) = (p_1(t), \dots, p_n(t)) = p(0) P^t
+$
+для всех натуральных $t$ ($p(0)$ --- произвольное начальное состояние).
+Нужно показать, что $p(0) P^t \to \pi = (\pi_1, \dots, \pi_n)$ при
+всех возможных $p(0)$.
+
+Поделим $t$ на $v$ с остатком: $t = kv + r$, $0 \leqslant r < v$.
+$p P^t = p P^{kv+r} = (p P^r) (P^v)^k$. Если мы докажем, что для
+всех $x$ $x (P^v)^k \to \pi$, то это будет верно и для $pP^t$ 
+(разбиваем $P^t$ на подпоследовательности). Поэтому далее все
+выкладки будут производиться с матрицей $P^v$.
+
+Рассмотрим оператор $A \colon \RR^n \to \RR^n$, действующий так:
+$Ax = x P^v$. $G_n = \{ (x_1, \dots, x_n) \in \RR^n \mid
+x_j \geqslant 0, \sum x_j = 1 \} \subset \RR^n$ --- множество
+вероятностных распределений на $n$-элементном множестве. Покажем,
+что $G_n$ инвариантно относительно $A$.
+
+\begin{stm}
+$A(G_n) \subseteq G_n$.
+\end{stm}
+
+\begin{proof}
+Пусть $x \in G_n$. $y = Ax = xP^v = (y_1, \dots, y_n)$.
+$ y_j = \sum\limits_{k=1}^{n} x_k p_{kj}(v) \geqslant 0$.
+Первое свойство проверено. Далее,
+$$
+\sum_{j=1}^{n} y_j = \sum_{j=1}^{n} \sum_{k=1}^{n} x_k p_{kj}(v) =
+\sum_k x_k \underbrace{\sum_j p_{kj}(v)}_{=1} = \sum_k x_k = 1.
+$$
+Отсюда $y \in G_n$.
+\end{proof}
+
+Введём в $\RR^n$ метрику $\rho(x,y) = \sum\limits_{k=1}^n |x_k - y_k|$.
+
+\begin{stm}
+В метрике $\rho$ отображение $A$ c матрицей $P^v$ является сжимающим с
+коэффициентом сжатия $\leqslant 1-\ep$, где $\ep = \min\limits_{i,j}
+p_{ij}(v) > 0$.
+\end{stm}
+
+\begin{proof}
+Вычислим $\rho(xP^v, yP^v)$:
+$$
+\rho(xP^v, yP^v) = \sum_{k=1}^n \left| \sum_{i=1}^n x_i p_{ik}(v) -
+\sum_{i=1}^n y_i p_{ik}(v) \right| =
+\sum_{k=1}^n \left| \sum_{i=1}^n (x_i - y_i) p_{ik}(v) \right|.
+$$
+Далее, т.к. $x, y \in G_n$, $\sum\limits_{i=1}^n (x_i - y_i) = 1 - 1 = 0$.
+Поэтому суммы положительных и отрицательных разностей в этой сумме
+совпадают:
+$$
+\sum_{i=1}^n \max \{ x_i - y_i, 0 \} = - \sum_{i=1}^n \min \{ x_i - y_i, 0 \} =
+\frac 12 \sum_{i=1}^n | x_i - y_i | = \frac 12 \rho(x,y).
+$$
+Значит, существуют такие индексы $r$ и $s$, что
+$$
+x_r - y_r \geqslant \frac 1{2n} \rho(x,y) > 0 > 
+-\frac 1{2n} \rho(x,y) \geqslant x_s - y_s.
+$$
+
+Для всех $a,b,c,d>0$ верны следующие соотношения:
+$|a-b| = a + b - 2 \min \{a,b\}$, $\min \{ ac, bd \} \geqslant \\ \geqslant
+\min \{a,b\} \min \{c,d\}$. Отсюда
+$
+| (x_r - y_r) p_{rk}(v) + (x_s - y_s) p_{sk}(v) | \leqslant
+(x_r - y_r) p_{rk}(v) + |x_s - y_s| p_{sk}(v) -
+2\min\{|x_r - y_r|, |x_s - y_s|\} \cdot \min\{
+p_{sk}(v), p_{rk}(v) \} \leqslant
+(x_r - y_r) p_{rk}(v) + |x_s - y_s| p_{sk}(v) - \frac 1n
+\rho(x,y) \ep.
+$
+Итак,
+$$
+\left| \sum_{i=1}^n (x_i - y_i) p_{ik}(v) \right| \leqslant
+\sum_{i=1, i \ne r,s}^n | x_i - y_i | p_{ik}(v) +
+|x_r - y_r| p_{rk}(v) + |x_s - y_s| p_{sk}(v) - \frac{\ep}{n}
+\rho(x,y) = \sum_{i=1}^n |x_i - y_i| p_{ik}(v) -
+\frac{\ep}{n} \rho(x,y).
+$$
+Далее,
+$$
+\rho(xP^v, yP^v) \leqslant \sum_{k=1}^n \left( 
+\sum_{i=1}^n |x_i - y_i| p_{ik}(v) - \frac{\ep}{n} \rho(x,y) \right) =
+(1-\ep) \rho(x,y),
+$$
+что и требовалось.
+\end{proof}
+
+Сжимающее отображение имеет единственную неподвижную точку, поэтому
+имеет место предельное соотношение. Осталось разобраться с системой
+уравнений.
+
+$\pi$ --- неподвижная точка отображения $A$. Следовательно, $\pi P^v = \pi$
+и для всех $p$ $pP^t \to \pi$ ($t\to\infty$). В частности,
+$(\pi P)P^{vt} \to \pi$, поэтому $\pi P$ --- неподвижная точка матрицы $P^v$,
+а эта точка единственна, следовательно $\pi P = \pi$, то есть $\pi$ --- неподвижная
+для $P$.
+\end{proof}
+
+\begin{ex}
+\emph{Исправленная модель Эренфестов для диффузии.}
+$\xi_t$ --- число частиц в первом сосуде в момент $t$ (всего $n$ частиц).
+Случайно выбираем частицу и с вероятностью $\frac 12$ перекладываем
+её (с вероятностью $\frac 12$ ничего не делаем). Матрица имеет вид:
+$$
+\begin{pmatrix}
+\strut\frac 12 & \frac 12 & 0 & 0 & \dots & 0 \\
+\strut\frac 1{2n} & \frac 12 & \frac 12 - \frac 1{2n} & 0 & \dots & 0 \\
+\strut 0 & \frac {2}{2n} & \frac 12 & \frac 12 - \frac 2{2n} & \dots & 0 \\
+\strut \dots & \dots & \dots & \dots & \dots & \dots 
+\end{pmatrix}.
+$$
+(Мы исправили модель, чтобы появилась диагональ и выполнялись условия
+теоремы.) Вычислим предельные распределения $\pi = (\pi_1, \dots, \pi_n)$
+из системы уравнений
+$$
+\begin{cases}
+\pi_1 = \frac 12 \pi_0 + \frac 12 \pi_1 + \frac 2{2n} \pi_2\\
+\dots \\
+\pi_k = \frac{n-k+1}{2n} \pi_{k-1} + \frac 12 \pi_k + \frac{k+1}{2n}
+ \pi_{k+1} & (1\leqslant k \leqslant n-1) \\
+\dots \\
+\pi_n = \frac{1}{2n} \pi_{n-1} + \frac 12 \pi_n\\
+\sum \pi_k = 1
+\end{cases}
+$$
+Преобразуем:
+$$
+\begin{cases}
+\pi_0 = \frac 1n \pi_1 \\
+\pi_1 = \pi_0 + \frac 2n \pi_2 \\
+\dots \\
+\pi_k = \frac{n-k+1}{n} \pi_{k-1} + \frac{k+1}{n} \pi_{k+1} \\
+\dots \\
+\pi_n = \frac 1n \pi_{n-1}
+\end{cases}
+$$
+Индукцией показываем, что $\pi_k = C_n^k \pi_0$:
+$$
+\pi_{k+1} = \frac{n}{k+1} \left( C_n^k -
+\frac{n-k+1}{n} C_n^{k-1} \right) \pi_0 =
+\frac{n}{k+1} C_{n-1}^{k-1} \left( \frac nk - 1 \right) \pi_0 = 
+C_{n}^{k+1} \pi_0.
+$$
+Из соотношения $\sum \pi_k = 1$ получаем: $1 = \sum C_n^k \pi_0 = 
+2^n \pi_0$, откуда $\pi_0 = \frac 1{2^n}$, $\pi_k = C_n^k \frac 1 {2^n}$,
+т.е предельное распределение цепи биномиально.
+
+При больших значениях $n$ (числа частиц) вероятность того, что
+все молекулы соберутся в одном сосуде, (равная $\pi_0 = \frac 1 {2^n}$)
+исчезающе мала.
+\end{ex}
+
+\section{Ветвящиеся процессы}
+Имеются частицы, которые делятся на поколения. В каждом поколении каждая
+частица порождает некоторое (случайное) количество потомков, а сама
+погибает.
+
+Обозначим через $\mu(t)$  число частиц в $t$-м поколении, $\gamma$
+--- случайное число потомков у одной частицы ($\gamma$ --- неотрицательная
+целочисленная случайная величина). $k$-я частица в $t$-м поколении
+порождает $\gamma_{tk}$ частиц; все величины $\gamma_{tk}$ независимы
+и распределены так же, как $\gamma$. В начальный момент имеется
+$\mu(0)$ частиц (обычно $\mu(0) = 1$). Каждая частица независимо
+порождает потомков:
+$$
+\mu(t+1) = 
+\begin{cases}
+0, & \text{если $\mu(t) = 0$,}\\
+\gamma_{t1} + \dots + \gamma_{tk}, & \text{если $\mu(t) = k$.}
+\end{cases}
+$$
+
+Возникают следующие вопросы:
+\begin{nums}{-2}
+\item Когда процесс вырождается?
+\item Насколько быстро растёт $\mu(t)$?
+\end{nums}
+
+\subsection{Производящие функции}
+Пусть $\xi$ --- целочисленная неотрицательная случайная величина.
+Положим
+$$
+f_\xi(s) = \sum_{k=0}^{\infty} s^k \Pf\{\xi = k\} = \Mf s^\xi.
+$$
+Функция $f_\xi$ называется \emph{производящей функцией} случайной
+величины $\xi$.
+
+Свойства производящей функции:
+\begin{nums}{-2}
+\item $f_\xi(0) = \Pf \{ \xi = 0 \}$, $f_\xi(1) = 1$;
+\item $\frac{d}{ds} f_\xi(s) = \sum k s^{k-1} \Pf\{\xi = k\}$,
+$\frac d{ds} f_\xi(1) = \Mf\xi$;
+\item $\frac {d^2}{ds^2} f_\xi(1) = \Mf \xi(\xi-1)$ --- второй
+факториальный момент;
+\item если $\xi_1, \dots, \xi_n$ независимы, то 
+$f_{\xi_1 + \dots + \xi_n} (s) = 
+\Mf s^{\xi_1 + \dots + \xi_n} = 
+\Mf s^{\xi_1} \dots \Mf s^{\xi_n} =
+\prod\limits_{k=1}^{n} f_{\xi_k} (s)
+$.
+\end{nums}
+
+\begin{lemma} Пусть $\nu, \gamma_1, \gamma_2, \dots$ --- независимые
+целочисленные неотрицательные случайные величины; \linebreak
+$\gamma_1, \gamma_2,
+\dots$ одинаково распределены; $f(s) = \Mf s^\nu$, $g(s) = 
+\Mf s^{\gamma_1}$. Тогда если
+$\mu = \begin{cases}
+0, & \nu = 0,\\
+\gamma_1 + \dots + \gamma_k, & \nu=k.
+\end{cases}$,
+то $\Mf s^\mu = f(g(s))$.
+\end{lemma}
+
+\begin{proof}
+Применяя формулу полной вероятности и пользуясь независимостью,
+получаем:
+$$
+\Mf s^\mu = \sum_{k=0}^{\infty} \Pf \{ \nu = k \} 
+\Mf s^{\gamma_1 + \dots + \gamma_k} = 
+\sum_{k=0}^{\infty} \Pf \{ \nu = k \} \left( 
+\Mf s^{\gamma_1} \right)^k = f(g(s)).
+$$
+\end{proof}
+
+%%%
+%%% лекция 4
+%%%
+Если ветвящийся процесс начинается с одной частицы, то $\mu(1) = \gamma$,
+ $f(s) = \Mf\left( s^{\mu(1)} \mid \mu(0) = 1 \right)$. Положим $\varphi(t,s) = \Mf s^{\mu(t)}$.
+
+\begin{theorem}
+Последовательность $\left\{ \varphi(t,s)\right\}_{t=0}^{\infty}$ удовлетворяет рекуррентному соотношению
+$$
+\varphi(0,s) = \Mf s^{\mu(0)},\quad \varphi(t+1,s) = \varphi(t,f(s)), t > 0
+$$
+Если при этом $\Pf\left\lbrace \mu(0) = 1 \right\rbrace = 1$, то
+$$
+\varphi(0,s) = s,\quad \varphi(t+1,s) = f(\varphi(t,s)), t > 0
+$$
+\end{theorem}
+\begin{proof}
+ \begin{enumerate}
+ \item $\varphi(t+1,s) = \Mf s^{\gamma_{t_1} + \ldots + \gamma_{t_{\mu(t)}}} = \varphi(t,f(s))$ в силу предыдущей леммы.
+ \item Каждый из непосредственных потомков 1-й частицы порождает свой ветвящийся процесс с теми же
+ свойствами, поэтому $\mu(t+1)$ распределена, как сумма $\mu(1)$ независимых экземпляров $\mu(t)$:
+$$
+\varphi(t+1,s) = \Mf s^{\mu_1(t) + \ldots + \mu_{\mu(1)}(t)} = f(\varphi(t,s)),
+$$
+т.к. $\gamma = \mu(1)$.
+\end{enumerate}
+\end{proof}
+\begin{imp}
+ Если $\mu(0) = 1$, то 
+$\varphi(t,s) = f_t(s) = f(f(\ldots f(s)\ldots)$ ($t$ раз)
+\end{imp}
+
+Обозначим $\Mf \gamma = A = f'(1)$. $\Mf \mu(t) = \frac{d}{ds} \Mf s^{\mu(t)} \evn{s = 1}$. 
+Из рекуррентного соотношения имеем 
+\begin{gather*}
+ \Mf \mu(t+1) = \varphi'_s(t+1,s)\evn{s=1} = \frac{d}{ds} \varphi(t,f(s))\evn{s=1} = 
+\left[ \varphi'_u(t,u) \evn{u = f(s)} f'(s)\right] \evn{s=1} = \Mf\mu(t)\cdot A,
+\end{gather*}
+
+\begin{df}
+\begin{itemize}
+ \item Если $A < 1$, то процесс называется \emph{докритическим}. В этом случае $\Mf\mu(t) \to 0, 
+\Pf\left\{ \mu(t) > 0 \right\} \to 0\quad (t \to \infty)$.
+ \item В случае $A = 1$ процесс называется \emph{критическим}. %В этом случае $\Mf\mu(t) = \Mf\mu(0)$, и
+$\Pf\left\{ \mu(t) > 0 \right\} \to 0$, если $\Pf\left\{ \gamma = 1 \right\} \neq 1$ (это мы докажем потом).
+ \item Если, наконец, $A > 1$, то $\Mf\mu(t) \to \infty\quad(t \to \infty)$ с экспоненциальной скоростью. Такие процессы называются \emph{надкритическими}.
+\end{itemize}
+\end{df}
+
+\subsection{Вероятность вырождения ветвящегося процесса}
+Положим $q = \lim\limits_{t\to\infty}\Pf\left\{ \mu(t) = 0 \mid \mu(0) = 1 \right\}$
+\begin{theorem}
+ $q$ является наименьшим неотрицательным корнем уравнения $f(s) = s$.
+\end{theorem}
+\begin{proof}
+ $\Pf\left\{ \mu(t) = 0 \mid \mu(0) = 1 \right\} = \sum_{k=0}^{\infty} \Pf\left\{ \mu(t) = k \right\} s^k \evn{s=0} = \varphi(t,0) = f_t(0)$.
+\begin{lemma}
+ Если $f(s) = \sum\limits_{k=0}^{\infty} p_k s^k$ --- производящая функция распределения $\{ p_k \}$, 
+$f(s) \not \equiv s$, то
+\begin{enumerate}
+ \item $A = f'(1) \leqslant 1 \Rightarrow \forall s \in [0,1)\,f(s) > s.$
+ \item $A = f'(1) > 1 \Rightarrow \exists s_0 \in [0,1)\, f(s_0) = s_0, f(s) > s$ при $ s < s_0$, 
+$f(s) < s$ при $s_0 < s < 1$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Заметим, что $f'(s) = \sum k p_k s^{k-1} \geqslant 0, f''(s) = \sum k(k-1) p_k s^{k-2} > 0$, поэтому
+$f$ выпукла вниз и не убывает. Отсюда, так как $f(1) = 1$, видно, что в случае $A \leqslant 1$ график $f(s)$ 
+лежит выше диагонали на $[0,1)$, а в случае $A > 1$ обязательно на $[0,1)$ её пересекает. (Если кто-нибудь 
+нарисует картинку, будет очень хорошо)
+\end{proof}
+
+Докажем по индукции, что $0 \leqslant f_t(0) \leqslant s_0$. При $t=0$ это очевидно. Из леммы имеем
+$$
+0 \leqslant f_t(0) \leqslant f(f_t(0)) = f_{t+1}(0) \leqslant f(s_0) = s_0,
+$$
+т.е. $f_{t+1}(0) \geqslant f_t(0)\quad \forall t$, следовательно, существует 
+$\lim_{t\to\infty} f_t(0) = q \leqslant s_0$.
+$$
+q = \lim_{t\to\infty} f_t(0) = \lim_{t\to\infty} f(f_t(0)) = f(\lim_{t\to\infty} f_t(0)) = f(q),
+$$
+т.к. $f$ непрерывна. Следовательно, $q = s_0$.
+\end{proof}
+\begin{imp}\label{Cor:extinction} Вероятность вырождения $q < 1 \Leftrightarrow A = f'(1) > 1$ (кроме вырожденного случая 
+ $\Pf\left\{ \gamma = 1 \right\} = 1$).
+\end{imp}
+
+\begin{ex}
+ $\Pf\left\{ \text{ребёнок --- девочка} \right\} = 0.486$, $\Pf\left\{\text{девочка доживёт до 18 лет}\right\} = 0.97$, $A$ --- среднее число детей.
+Если $A\cdot 0.486 \cdot 0.97 > 1$, то есть до 18 лет доживает в среднем хотя бы одна девочка, то 
+$A \geqslant 2.124$. Из демографии известно, что $A$ примерно равно $2.14$.
+\end{ex}
+
+\begin{theorem}
+ Все положительные состояния ветвящегося процесса с $f(s) \not\equiv s$ несущественны:
+$$
+\forall k > 0\quad \lim_{t\to\infty} \Pf\left\{ \mu(t) = k \right\} = 0.
+$$
+\end{theorem}
+\begin{proof}
+ От противного, пусть $\exists k_0 > 0\, \limsup_{t\to\infty} \Pf\left\{ \mu(t) = k_0 \right\} = v_{k_0} > 0$.
+\begin{enumerate}
+ \item Пусть $\Pf\left\{ \gamma = 0 \right\} = p > 0$. Тогда вероятность вырождения за один шаг
+$$
+\Pf\left\{ \mu(t+1) = 0 \mid \mu(t) = k \right\} = p^k > 0.
+$$
+$$
+\forall t\,\Pf\left\{ \mu(t+1) = 0 \right\} \geqslant \Pf\left\{\mu(t) = 0\right\} + \Pf\left\{\mu(t) = k_0\right\}p^{k_0}\,\text{(оцениваем сумму снизу двумя слагаемыми)}
+$$
+Таким же образом оценивая снизу $\Pf\left\{ \mu(t) = 0 \right\}$ и т.д., получаем
+$$
+\Pf\left\{ \mu(t+1) = 0 \right\} \geqslant p^{k_0} \sum_{r=0}^t \Pf\left\{ \mu(r) = k_0\right\} \to \infty\quad(t\to\infty),
+$$ 
+так как $\limsup_{t\to\infty} \Pf\left\{ \mu(t) = k_0 \right\} > 0$. Противоречие.
+\item Если $\Pf\left\{ \gamma = 0 \right\} = 0$, то $\Pf\left\{ \gamma \geqslant 1 \right\} = 1,
+\Pf\left\{ \gamma = 1 \right\} < 1$, т.к. $f(s) \not\equiv s$.
+$$
+\Pf\left\{ \mu(t+1) = \gamma_{t_1} + \ldots + \gamma_{t_\mu(t)} \geqslant \mu(t) \right\} = 1,
+$$
+$$
+\Pf\left\{ \mu(t+1) \geqslant k+1 \mid \mu(t) = k \right\} \geqslant 1 - \left(\Pf\left\{\gamma=1\right\}\right)^k \geqslant 1 - \Pf\left\{\gamma = 1\right\} = r > 0,
+$$
+\begin{gather*}
+\Pf\left\{\mu(t+1) \geqslant k_0 + 1\right\} \geqslant \Pf\left\{ \mu(t) \geqslant k_0 + 1 \right\} + 
+\Pf\left\{ \mu(t) = k_0, \mu(t+1) > k_0 \right\} \geqslant \Pf\left\{ \mu(t) \geqslant k_0 +1 \right\} + 
+r \Pf\left\{ \mu(t) = k_0 \right\}\quad \forall t
+\end{gather*}
+Аналогично пункту 1 получаем
+$$
+\Pf\left\{\mu(t+1) \geqslant k_0 + 1\right\} \geqslant r \sum_{v=0}^t \Pf\left\{\mu(t) = k_0\right\} \to \infty\quad(t \to \infty),
+$$
+что опять приводит к противоречию.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}[предельная теорема для надкритических ветвящихся процессов]
+ Если $A = \Mf \gamma > 1$ и $0 < \sigma^2 = \Df\gamma < \infty$, то существует случайная величина
+ $X\colon \Pf\left\{X > 0\right\} > 0$ и $\Pf\left\{\frac{\mu(t)}{A^t} \to X,\,t\to\infty\right\} = 1$. 
+При этом $\Mf X = 1$ и характеристическая функция $\psi(u) = \Mf e^{iuX}$ удовлетворяет уравнению 
+$\psi(Au) = f(\psi(u))$.
+\end{theorem}
+\begin{note}
+ На самом деле эта теорема справедлива при гораздо более слабых условиях. Необходимым и достаточным условием существования такой величины $X$ является $\Mf\left(\gamma \ln(1+\gamma)\right) < \infty$.
+\end{note}
+\begin{proof}
+Определим последовательность дискретных случайных величин $X(t) = \frac{\mu(t)}{A^t}$. Покажем, что $\left\{ X(t) \right\}$ фундаментальна в $L_2(\Omega)$, то есть
+$$ 
+\forall \varepsilon > 0 \,\exists s_0:\, \Mf\left(X(s) - X(t)\right)^2 < \varepsilon\quad \forall s,t > s_0.
+$$
+$\Mf\left( \mu(t+k) \mid \mu(t) = m \right) = A^k m$, следовательно, $\Mf\left( X(t+k) \mid X(t) = x\right) = \Mf\left( \frac{\mu(t+k)}{A^{t+k}} \mid \mu(t) = xA^t \right) = \frac{x A^t A^k}{A^{k+t}} = x$, а, значит, $\Mf\left( X(s) - X(t) \mid X(k) \right) = 0\quad \forall s,t \geqslant k$. 
+
+Имеем\footnote{Предпоследнее равенство в следующей цепочке верно в силу того, что $\mu(t)$, а вместе с ними и $X(t)$, образуют цепи Маркова, поэтому условные распределения относительно $X(t),X(t-1)$ и просто $X(t)$ совпадают. --- {\sl примеч. А.Х.}}
+\begin{gather*}
+\Mf\left((X(t) - X(t-1))(X(s)-X(s-1))\right) = \Mf \left(\left(X(t) - X(t-1)\right) \Mf\left(X(s)-X(s-1)\mid X(t),X(t-1)\right)\right) = \\ = \Mf\left(X(t)-X(t-1)\right)\Mf\left(X(s)-X(s-1)\mid X(t)\right) = 0.
+\end{gather*}
+\begin{gather*}
+\Mf\left(X(t) - X(t-1)\right)^2 = \Mf\left(\frac{\mu(t)}{A^t} -\frac{\mu(t-1)}{A^{t-1}}\right)^2 = 
+\frac{1}{A^{2t}} \Mf\Mf\left\{\left( (\gamma_{t-1,1} - A) + \ldots + (\gamma_{t-1,\mu(t-1)} - A)\right)^2 \mid \mu(t-1) \right\} = \\ =
+\frac{1}{A^{2t}} \Mf\left(\sigma^2 \mu(t-1)\right) = \sigma^2 \frac{A^{t-1}}{A^{2t}} = \frac{\sigma^2}{A^{t+1}}.
+\end{gather*}
+Тогда при  $t < s$ справедливо
+\begin{gather*}
+ \Mf\left(X(s) - X(t)\right)^2 = \Mf\left(\sum_{v=t+1}^s (X(v) - X(v-1))\right)^2 = 
+\sum_{v=t+1}^s \Mf\left(X(v) - X(v-1)\right)^2 = \sum_{v=t+1}^s \frac{\sigma^2}{A^{v+1}} \leqslant \\ \leqslant
+\sigma^2 \frac{1}{A^{t+2}(1 - \frac{1}{A})} \to 0\quad (t \to \infty).
+\end{gather*}
+Фундаментальность доказана, стало быть, $X(t)$ сходится к $X$ в $L_2(\Omega)$. Вообще говоря, это не означает
+сходимости почти наверное, но покажем, что в нашем случае она всё же имеет место. Если мы найдём
+ такую функцию $f(t) \to 0,\,t \to \infty$, что $\sum_{t=1}^{\infty} \Pf\left\{ | X(t) - X | > f(t) \right\}
+ < \infty$, то по лемме Бореля--Кантелли с вероятностью $1$ будет выполняться бесконечно много событий вида 
+$| X(t) - X | \leqslant f(t),t > t_0$, т.е. $X(t) \convas X$. В качестве такой $f(t)$ можно взять, например,
+$\frac{1}{A^{t/3}}$:
+$$
+\Pf\left\{ |X(t) - X| > \frac{1}{A^{t/3}} \right\} \leqslant \frac{c}{A^t f^2(t)} = \frac{c}{A^{t/3}}
+$$
+для некоторой константы $c$ в силу неравенства Чебышёва для случайной величины $X(t) - X$, а оценку для её второго момента можно получить предельным переходом из выражения для $\Mf\left(X(s) - X(t)\right)^2$.
+
+Докажем теперь свойство характеристической функции $X$. Пусть $\psi_t(u) = \Mf e^{iuX(t)}$. 
+$X(t) \convas X \Rightarrow \psi_t(u) \to \psi(u)\, \forall u \in \RR$.
+\begin{gather*}
+ \psi_{t+1}(u) = \Mf e^{iuX(t+1)} = \Mf \exp\left\{iu \frac{\mu(t+1)}{A^{t+1}}\right\} =
+\varphi\left(t+1, \exp\left\{iu\frac{1}{A^{t+1}}\right\}\right) =
+ f\bbbr{\varphi\bbr{t,\exp\left(i\frac{u}{A^{t+1}}\right)}} = \\ = f\bbbr{\Mf \exp\bbr{iu\frac{\mu(t)}{A^{t+1}}}} = f\bbbr{\Mf e^{iuX(t) / A}} = f\bbbr{\psi_t\bbr{\frac{u}{A}}}.
+\end{gather*}
+Осталось заметить, что левая часть этого равенства сходится к $\psi(u)$, а правая --- к $f\left(\psi(\frac{u}{A})\right)$.
+\end{proof}
+
+%
+% лекция 5. 13.03.2007
+%
+\section{Конечномерные распределения случайных процессов}
+\begin{df}
+Пусть дано вероятностное пространство $(\Omega, \Bs, \Pf)$ и случайный
+процесс $\xi\colon \Omega \to G$ ($G$ --- некоторое функциональное
+пространство), т.е. совокупность случайных величин $\xi(t)$, и конечный
+набор точек $t_1, \dots, t_k$. Распределение вектора $(\xi(t_1),
+\dots, \xi(t_k))$ называется \emph{конечномерным распределением}
+процесса $\xi$.
+\end{df}
+
+\subsection{Семейства согласованных распределений}
+\begin{ex} Заметим, что случайный процесс с заданными конечномерными
+распределениями может и не существовать. Положим, например,
+$\Pf\{ \xi(1) = m, \xi(2) = n \} = \frac 14$ ($n,m = 0,1$) и
+$\Pf\{ \xi(2) \leqslant x, \xi(3) \leqslant y \} = 
+\Phi(x)\Phi(y)$, где $\Phi$ --- функция стандартного нормального
+распределения.
+\end{ex}
+
+Чтобы такого не было, вводится требование \emph{согласованности}.
+Интуитивно это означает, что результат вычисления вероятности любого
+события не зависит от способа его вычисления по конечномерным
+распределениям. Для формального определения ограничимся случаем
+действительнозначного случайного процесса.
+
+\begin{df}
+Семейство распределений (вероятностных мер)
+$\Ps = \{ \Pf_{t_1, \dots, t_k}, t_1 < \dots < t_k, k = 1, 2, \dots \}$
+($\Pf_{t_1, \dots, t_k}$ --- вероятностная мера на $\RR^k$) называется
+\emph{согласованным}, если для любых упорядоченных наборов 
+$t_1 < \dots < t_n$, $s_1 < \dots < s_m$, $v_1 < \dots < v_k$,
+для которых $\{ v_1, \dots, v_k \} = \{ t_1, \dots, t_n \} \cap
+\{ s_1, \dots, s_m \}$ и для любых борелевских множеств
+$C_1, \dots, C_k \subseteq \RR$ имеем
+$$
+\Pf_{v_1, \dots, v_k} (C_1 \times \dots \times C_k) =
+\Pf_{t_1, \dots, t_n} (A_1 \times \dots \times A_n) =
+\Pf_{s_1, \dots, s_m} (B_1 \times \dots \times B_m),
+$$
+где
+$$
+A_j =
+\begin{cases}
+C_i, & t_j = v_i, \\
+\RR & \text{в ином случае}
+\end{cases}
+\qquad\text{и}\qquad
+B_j = 
+\begin{cases}
+C_i, & s_j = v_i, \\
+\RR & \text{в ином случае.}
+\end{cases}
+$$
+\end{df}
+
+Доказательство следующей теоремы можно прочитать в книжке Боровкова.
+В нашем курсе его не будет.
+\begin{theorem}[теорема Колмогорова о согласованных распределениях]
+Если на $\RR^\RR$ задано семейство согласованных распределений
+$\Ps$, то на пространстве $(\RR^\RR, \Fs)$ (здесь $\Fs$ --- борелевская
+$\sigma$-алгебра на $\RR^\RR$, т.е. $\sigma$-алгебра, порождённая
+цилиндрическими борелевскими множествами) существует единственная
+мера $\mathbf{P}$ такая, что для любого конечного множества
+$\{ t_1, \dots, t_n \} = T \subset \RR$ проекция $\mathbf{P}$
+на $\RR^T$ совпадает с $\Pf_{t_1, \dots, t_k}$.
+\end{theorem}
+
+\section{Процессы с независимыми приращениями. Пуассоновский процесс}
+\subsection{Определения}
+\begin{df} \emph{Процесс с независимыми приращениями} --- это такой
+случайный процесс $\xi(t)$, что для любого упорядоченного набора
+$t_1 < \dots < t_k$ вектор приращений $(\xi(t_2) - \xi(t_1), 
+\xi(t_3) - \xi(t_2), \dots, \xi(t_n) - \xi(t_{n-1}))$ имеет
+независимые координаты.
+\end{df}
+
+В частности, любой процесс с независимыми приращениями является
+марковским. Чтобы задать такой процесс, достаточно сопоставить
+каждой паре $s<t$ распределение случайной величины $\xi(t) -
+\xi(s)$. \emph{Условия согласованности} в данном случае имеют вид: для
+любых $t_1 < \dots < t_n$ распределение $\xi(t_n) - \xi(t_1)$
+совпадает с распределением суммы $\delta_{t_1 t_2} +
+\delta_{t_2 t_3} + \dots + \delta_{t_{n-1} t_n}$, где
+$\delta_{t_k t_{k+1}}$ --- независимые в совокупности случайные
+величины, распределённые так же, как и $\xi(t_{k+1}) - \xi(t_k)$.
+
+\begin{df}
+$\nu(t)$ --- \emph{однородный пуассоновский процесс} с
+интенсивностью $\lambda$, если $\nu$ --- процесс с независимыми
+приращениями и для всех $t>s$
+$$
+\Pf \{ \nu(t) - \nu(s) = k \} = \frac{(\lambda(t-s))^k}{k!}
+e^{-\lambda(t-s)}.
+$$
+\par
+Процесс с независимыми приращениями
+$\nu(t)$ --- \emph{пуассоновский процесс} с \emph{ведущей функцией}
+$\Lambda$ ($\Lambda$ --- монотонно неубывающая функция), если
+$$
+\Pf \{ \nu(t) - \nu(s) = k \} =
+\frac{(\Lambda(t) - \Lambda(s))^k}{k!} e^{-(\Lambda(s) - \Lambda(t))}.
+$$
+\end{df}
+
+Однородный пуассоновский процесс является частным случаем
+пуассоновского процесса вообще: положим $\Lambda(t) = \lambda t$.
+Обратно, если $\nu(t)$ --- однородный пуассоновский процесс
+с интенсивностью $\lambda = 1$, то процесс $\nu_\Lambda(t) =
+\nu(\Lambda(t))$ --- пуассоновский процесс с ведущей функцией
+$\Lambda$, т.е. произвольный пуассоновский процесс отличается
+от однородного заменой времени.
+
+\subsection{Свойства пуассоновского процесса}
+\begin{stm}
+Если $\nu(t)$ --- однородный пуассоновский процесс с интенсивностью
+$\lambda$, то при $h \to 0+$ имеем:
+$$
+\Pf \{ \nu(t+h) - \nu(t) = 0 \} = 1 - \lambda h + o(h),
+$$$$
+\Pf \{ \nu(t+h) - \nu(t) = 1 \} = \lambda h + o(h),
+$$$$
+\Pf \{ \nu(t+h) - \nu(t) > 1 \} = o(h).
+$$
+Обратно, если целочисленный однородный по времени случайный процесс с независимыми приращениями
+$\nu(t)$ удовлетворяет этим соотношениями, то $\nu(t)$ --- пуассоновский
+с интенсивностью $\lambda$.
+\end{stm}
+
+\begin{proof}
+В прямую сторону утверждение почти очевидно. Действительно, по 
+определению $\Pf\{ \nu(t+h) - \nu(t) = k \} =
+\dfrac{(\lambda h)^k}{k!} e^{-\lambda h}$. При $k=0$
+это превращается в $e^{-\lambda h} = 1 - \lambda h + o(h)$
+по формуле Тейлора. По той же формуле при $k=1$ получаем:
+$\lambda h e^{-\lambda h} = \lambda h + o(h)$. А для $k>1$
+остаётся $1 - (1 - \lambda h + o(h)) - (\lambda h + o(h)) = o(h)$.
+
+Докажем обратное. Пусть $[t, t+h)$ --- произвольный интервал. Разобьём
+его на $n$ кусочков $[t + k \frac hn, t + (k+1) \frac hn)$.
+$$
+\nu(t+h) - \nu(t) = \sum_{k=0}^{n-1} \nu\left(t + (k+1) \frac hn\right) -
+\nu\left(t + k \frac hn\right).
+$$
+В этой сумме все слагаемые независимы. Рассмотрим производящую функцию
+отдельного слагаемого (при $0<s<1$ геометрическая прогрессия
+сходится, и все члены, начиная с $s^2$, уходят в $o\left(\frac hn\right)$:
+$$
+\Mf s^{\nu\left( t + (k+1) \frac hn \right) - \nu\left(t + k \frac hn \right)} =
+1 - \lambda \frac hn + o\left(\frac hn\right) +
+s\left( \lambda\frac hn + o\left(\frac hn\right)\right) + 
+o\left(\frac hn \right) =
+e^{-\lambda \frac hn (1 - s) + o\left(\frac hn \right)}.
+$$
+(Для последнего перехода нужна равномерность о-маленьких по $k$,
+которая достигается однородностью процесса по времени.) В силу
+независимости слагаемых
+$$
+\Mf s^{\nu(t+h) - \nu(t)} = \prod_{k=0}^{n-1} 
+e^{-\lambda\frac hn (1-s) + o\left( \frac hn \right)} =
+e^{-\lambda h (1-s) + o(1)} \ranrai e^{-\lambda h (1-s)},
+$$
+а это производящая функция распределения Пуассона с параметром $\lambda h$.
+\end{proof}
+
+Траектория процесса Пуассона монотонно неубывает и локально постоянна
+(имеет скачки на дискретном множестве). Далее мы покажем, что она
+скачет не больше, чем на 1. 
+\begin{df}
+ Последовательность точек скачков пуассоновского процесса называется \emph{пуассоновским потоком}.
+\end{df}
+
+\begin{stm}\label{S:Pois_hops}
+С вероятностью 1 все скачки пуассоновского процесса с интенсивностью
+$\lambda < \infty$ равны 1.
+\end{stm}
+\begin{proof}
+ Для пуассоновского процесса $\nu(t)$ с интенсивностью $\lambda$ положим $\nu_2(t,h) \rightleftharpoons$ количество 
+скачков $\nu(t)$ величины больше 1 на $[t,t+h)$.
+$$
+\sigma_n(t,h) \rightleftharpoons \sum_{k=1}^n I_{\left\{ \nu(t+ \frac{kh}{n}) - \nu(t + (k-1)\frac{h}{n}) > 1\right\}}
+$$
+Как видно, $\forall n \geqslant 1\: \left\{\nu_2(t,h) \geqslant 1 \right\} \subseteq \left\{\sigma_n(t,h) \geqslant 1\right\}$.
+$$
+\Mf \sigma_n(t,h) = \sum_{k=1}^n \Pf\left\{ \nu(t+ \frac{kh}{n}) - \nu(t + (k-1)\frac{h}{n}) > 1 \right\} = 
+\sum_{k=1}^n \Pf\left\{ \Delta_k > 1 \right\},
+$$
+где $\left\{\Delta_k\right\}$ --- независимые в совокупности пуассоновские случайные величины с параметром $\lambda\frac{h}{n}$.
+$$
+\Pf\left\{\Delta_k >1 \right\} = 1 - e^{-\lambda\frac{h}{n}} - \lambda\frac{h}{n} e^{-\lambda\frac{h}{n}} =
+\lambda \frac{h}{n} + O\left(\frac{1}{n^2}\right) - \lambda\frac{h}{n} e^{-\lambda\frac{h}{n}} = O\left(\frac{1}{n^2}\right) + 
+\lambda\frac{h}{n}\left( 1 - e^{-\lambda\frac{h}{n}} \right) = O\left(\frac{1}{n^2}\right).
+$$
+Поэтому 
+$$
+\Mf \sigma_n(t,h) = O\left(\frac{1}{n}\right) \to 0,\quad(n \to \infty).
+$$
+$$
+\Pf\left\{\nu_2(t,h) \geqslant 1\right\} \leqslant \lim_{n\to\infty} \Pf\left\{\sigma_n(t,h) > 1\right\} \leqslant
+\lim_{n\to\infty} \Mf\sigma_n(t,h) = 0.
+$$
+\end{proof}
+
+Пуассоновский поток можно получить как предельное распределение количества успехов в некоторой схеме Бернулли.
+Например, пусть $\tau_1(N),\ldots,\tau_N(N)$ --- независимые случайные величины, $\lambda < N$ и $\Pf\left\{\tau_k(N) < x\right\} = \frac{\lambda x}{N},\:0<x<1$, то есть условное распределение $\tau_k(N)$ на $[0,1]$ равномерно. Обозначим 
+$\eta_N \rightleftharpoons \sum_1^N I_{\tau_i(N) \leqslant 1}$.
+\begin{theorem}[Пуассон]
+ $\eta_N \convd Poiss(\lambda)$, то есть количество точек $\tau_i(N)$, попавших в $[0,1]$, стремится при увеличении $N$ к количеству на этом отрезке точек пуассоновского потока интенсивности $\lambda$.
+\end{theorem}
+\begin{proof}
+ $\eta_N$ --- это количество успехов в схеме Бернулли с $N$ испытаниями и вероятностью успеха $\frac{\lambda}{N}$.
+\begin{gather*}
+\Pf\left\{ \eta_N = k\right\} = C^k_N \left(\frac{\lambda}{N}\right)^k\left(1 - \frac{\lambda}{N}\right)^{N-k} = 
+ C^k_N \frac{\lambda^k}{(N - \lambda)^k}\left(1 - \frac{\lambda}{N}\right)^N = \\ = \frac{N(N-1)\ldots(N-k+1)}{(N-\lambda)^k} \frac{\lambda^k}{k!} \left(1 - \frac{\lambda}{N}\right)^N \to
+ \frac{\lambda^k}{k!} e^{-\lambda},\quad N\to\infty.
+\end{gather*}
+\end{proof}
+
+
+Пусть $\nu(t)$ --- пуассоновский процесс с интенсивностью $\lambda$.
+Положим $\tau_+(t) = \inf \{ u>0 \mid \nu(t+u) > \nu(t) \}$ ---
+расстояние от $t$ до следующего скачка и $\tau_-(t) = \inf \{ u>0 \mid
+\nu(t-u) < \nu(t) \}$ --- до предыдущего.
+
+\begin{stm}
+Для любого $t \in \RR$ $\tau_+(t)$ не зависит от $\{\nu(x)\}_{x\leqslant t})$,
+$\tau_-(t)$ не зависит от $\{\nu(x)\}_{x\geqslant t}$, и
+$\Pf\{\tau_+(t) > u\} = \Pf\{\tau_-(t) > u\} = e^{-\lambda u}$
+при $u>0$ (т.е. имеют показательное распределение с параметром $\lambda$).
+\end{stm}
+
+\begin{proof}
+$\Pf\{\tau_+(t) > u\} = \Pf\{ \nu(t+u) = \nu(t) \} = 
+\Pf \{ \nu(t+u) - \nu(t) = 0 \} = e^{-\lambda u}$, т.к. наш процесс
+пуассоновский. Для $\tau_-$ аналогично.
+
+Независимость следует из независимости приращений.
+\end{proof}
+
+При условии наличия скачка в малой окрестности: 
+$\Pf \{ \tau_+(t) > u \mid \nu(t - \ep) < \nu(t) \} = e^{-\lambda u}$
+для всех $\ep>0$. Отсюда $\Pf\{\zeta_{k+1} - \zeta_k > u \} = e^{-\lambda u}$
+($\zeta_k$ --- точки скачков). $\tau = \zeta_{k+1} - \zeta_k$ независимы и
+имеют показательное распределение%
+\footnote{Заметим, что отсюда очевидно следует 
+утверждение~\ref{S:Pois_hops}: если считать скачок длины 2 за
+два единичных, получим $\tau = 0$, что выполняется (в силу
+вышесказанного) с вероятностью 0. --- {\sl примеч. С.К.}
+\par Пуассоновский поток можно, таким образом, задать ещё и как последовательность случайных точек, приращения которой независимы и распределены экспоненциально. --- {\sl примеч. А.Х.}} с параметром $\lambda$.
+
+
+%%%
+%%% лекция 6
+%%%
+\begin{imp}[<<Парадокс времени ожидания>>]
+ Если $\nu(t)$ --- однородный пуассоновский процесс с интенсивностью $\lambda$ и $\left\{ \zeta_k \right\}$ --- моменты его скачков, то $\Mf\left\{ \zeta_{k+1} - \zeta_k \right\} = \Mf \tau_+(t) = \Mf \tau_-(t) = \frac{1}{\lambda}$, но \\ $\Mf \left\{ \zeta_{k+1} - \zeta_k \mid \zeta_k \leqslant t < \zeta_{k+1} \right\} = \frac{2}{\lambda}$.
+\end{imp}
+\begin{proof}
+Первое равенство верно в силу определения $\tau_\pm(t)$ и $\zeta_i$. При условии $\zeta_k \leqslant t < \zeta_{k+1}$
+имеем $\zeta_{k+1} - \zeta_k = \tau_+(t) + \tau_-(t)$, откуда получаем  второе равенство.
+\end{proof}
+% Ремарка про автобусы, пожалуй, идёт в Р'льехъ. avk
+\begin{ex}
+{\em Системы массового обслуживания.} Обозначим через $M\mid G\mid 1$ следующую систему. На входе системы имеется пуассоновский поток <<заявок>> интенсивности $\lambda$, который обрабатывается последовательно (т.е. в один поток; отсюда $1$ в $M\mid G\mid 1$), причём длительности рассмотрения заявок независимы и одинаково распределены с функцией распределения $G$. При обработке заявки все заявки, поступившие после неё, становятся в очередь. {\em Периодом занятости} системы массового обслуживания назовём случайную величину, равную времени от поступления первой заявки до первого опустошения очереди, {\em периодом простоя} --- время от первого опустошения очереди до прибытия новой заявки. (Докажите, кстати, что это действительно случайные величины).
+\end{ex}
+\begin{theorem}
+Период занятости в системе $M \mid G \mid 1$ конечен с вероятностью $1$ $\Leftrightarrow$ $\lambda \Mf\gamma \leqslant 1\quad(\gamma \sim G).$
+\end{theorem}
+\begin{proof}
+ С обслуживанием пуассоновского потока заявок можно ассоциировать ветвящийся процесс $\mu$ следующим образом: 
+\begin{itemize}
+ \item $\mu(0) \rightleftharpoons 1$.
+ \item Считаем потомками точки поколения $k$ те заявки, которые пришли за время её обработки. Таким образом $\mu(1) = |\left\{ \text{заявки, пришедшие за время обработки первой заявки} \right\}| = |M(1)|$,
+ $\mu(2) = \\ = |\left\{ \text{заявки, пришедшие  за время обработки\,} M(1)\right\}|$, и так далее. Количества потомков у разных точек независимы (это свойство пуассоновского потока).
+\end{itemize}
+Конечность периода занятости равносильна тому, что процесс $\mu$ выродится. 
+\begin{gather*}
+ \Pf\left\{ \text{за время обслуживания заявки придёт k новых} \right\} = \int\limits_0^{\infty} \frac{(\lambda x)^k}{k!} e^{-\lambda x} dG(x) \leftrightharpoons r_k
+\\
+\sum_{k=1}^{\infty} k r_k = \sum_{k=1}^{\infty} k \int\limits_0^{\infty} \frac{(\lambda x)^k}{k!} e^{-\lambda x} dG(x) =
+\int\limits_0^{\infty} \sum_{k=1}^{\infty} k \frac{(\lambda x)^k}{k!} e^{-\lambda x} dG(x) = \int\limits_0^{\infty} 
+\lambda x \sum_{k=1}^{\infty} \frac{(\lambda x)^{k-1}}{(k-1)!} e^{-\lambda x} dG(x) = \int\limits_0^{\infty} \lambda x dG(x) = \lambda \Mf\gamma.
+\end{gather*}
+Здесь мы воспользовались тем, что условное распределение числа точек пуассоновского потока в случайном интервале независимой с точками потока длины $\gamma$ является пуассоновским с параметром $\lambda \gamma$ (докажите это!).
+По следствию \ref{Cor:extinction} это означает, что $\mu$ вырождается почти наверное тогда и только тогда, когда $\lambda \Mf \gamma \leqslant 1$.
+\end{proof}
+
+\begin{theorem} 
+ Для системы $M \mid G \mid 1$ математическое ожидание числа заявок, обслуженных за период занятости, равно 
+$\frac{1}{1 - \lambda\Mf\gamma}$, если $\lambda\Mf\gamma < 1$
+\end{theorem}
+\begin{proof}
+ $\mu(0) = 1, \mu(t)$ --- число точек $t$-го поколения. Общее число обслуженных заявок равно $\sum_0^{\infty} \mu(t)$.
+\begin{gather*}
+\Mf\left\{ \mu(t) \mid \mu(0) = 1\right\} = A^t, \text{где\,} A = \Mf\left\{ \mu(1) \mid \mu(0) = 1 \right\} = \lambda \Mf \gamma, \\
+\Mf\sum_0^{\infty} \mu(t) = \sum_0^{\infty} A^t = \frac{1}{1-A}.
+\end{gather*}
+\end{proof}
+
+\begin{ex} 
+{\em Пуассоновское случайное поле в $\RR^d$ (интенсивности $\lambda$)} --- это случайная совокупность точек, удовлетворяющая следующим условиям:
+\begin{enumerate}
+ \item Число точек в открытом множестве $A$ имеет распределение Пуассона с параметром $\lambda \mes A$.
+ \item Числа точек в непересекающихся множествах независимы.
+\end{enumerate}
+\end{ex}
+\begin{ex}
+ Зададимся вопросом оценить $\lambda$, равное количеству микробов на литр воды. Пусть имеется $N$ пробирок объёма
+ $z$. Допустим, что число микробов в пробирке имеет распределение Пуассона с параметром $\lambda z$.
+$$
+\Pf\left\{\text{в пробирке нет микробов}\right\} = e^{-\lambda z} = p.\quad\text{(этот факт можно проверить)}
+$$
+Пусть $\nu$ --- число пробирок без микробов. Найдём $\widehat \lambda$ --- оценку максимального правдоподобия для $\lambda$.
+\begin{gather*}
+\Pf\left\{ \nu = k \right\} = C^k_N p^k (1-p)^{N-k}. \\
+k(\widehat\lambda) \rightleftharpoons \frac{\partial}{\partial \widehat\lambda} \left( e^{-\widehat\lambda z k} (1 - e^{-\widehat\lambda z})^{N-k}\right) =  e^{-\widehat\lambda k z}(1 - e^{-\widehat\lambda z})^{N-k-1}\left(-kz(1-e^{-\widehat\lambda z}) + (N-k)z e^{-\widehat\lambda z}\right) = 0 \Leftrightarrow \\
+\Leftrightarrow -kz + Nze^{-\widehat\lambda z} = 0  \Leftrightarrow \widehat \lambda = \frac 1z \ln \frac N\nu.
+\end{gather*}
+\end{ex}
+% TODO может, эту часть слить с основными цепями Маркова?
+\section{Цепи Маркова с непрерывным временем}
+\begin{df} 
+ $\left\{ \xi(t) \right\}_{t \geqslant 0}$ называется (однородной по времени) цепью Маркова с непрерывным временем и не более чем счётным множеством состояний $S$, если 
+$$
+\forall n \geqslant 1\:\forall 0 \leqslant t_0 < \ldots < t_n\:\forall i_0,\ldots,i_n \in S\: 
+\Pf\left\{ \xi(t_n) = i_n \mid \xi(t_{n-1}) = i_{n-1}, \ldots, \xi(t_0) = i_0 \right\} = 
+\Pf\left\{ \xi(t_n) = i_n \mid \xi(t_{n-1}) \right\}.
+$$
+\end{df}
+
+\begin{ex}
+ \begin{enumerate}
+ \item Пуассоновский процесс (да и любой процесс с независимыми приращениями, на самом деле).
+ \item $\eta(t) = \nu(t) \mod 2$, где $\nu(t)$ --- пуассоновский.
+ \item $\left\{ \zeta(t) \right\}_{t \in \RR}$ --- независимые одинаково распределённые случайные величины,
+$\Pf\left\{ \zeta(t) = 1\right\} = p,\,\Pf\left\{\zeta(t)=0\right\} = q = 1-p$. 
+\end{enumerate}
+\end{ex}
+
+\begin{df} 
+ Случайный процесс $\xi(t)$ стохастически непрерывен в точке $t_0$, если $\xi(t_0+s) \convp \xi(t_0), s \to 0$.
+\end{df}
+
+Сопоставим каждому $i \in S\quad \lambda_i \in (0,\infty)$. Покажем, что цепь Маркова с дискретным временем можно рассматривать как цепь с непрерывным временем, которая "<сидит"> в состоянии $i$ случайное время, распределённое показательно с параметром $\lambda_i$.
+\begin{note}[О свойствах показательного распределения]
+ \begin{enumerate}
+  \item $\tau \sim \exp(1) \Rightarrow \frac{\tau}{\lambda} \sim \exp(\lambda)$.
+  \item $\tau \sim \exp(\lambda) \Rightarrow \Pf\left\{ \tau > x + y \mid \tau > x \right\} = e^{-\lambda y},\, y \geqslant 0$ (свойство отсутствия
+памяти у показательного распределения).
+ \end{enumerate}
+\end{note}
+
+Итак, пусть $\left\{ \xi(n) \right\}_{n \in \N}$ --- цепь Маркова с дискретным временем, множеством состояний $S$, матрицей переходных вероятностей $P$ и $\Lambda = \left\{ \lambda_i \right\}_{i \in S}$ --- множество {\em интенсивностей выходов}.
+
+\subsection{Вложенная цепь Маркова}
+Пусть $\tau_0,\tau_1,\ldots$ --- независимые случайные величины, распределённые показательно с параметром 1. Тогда при {\em фиксированных} $\left\{ \xi_k \right\}$ $\frac{\tau_0}{\lambda_{\xi_0}},\frac{\tau_1}{\lambda_{\xi_1}},\ldots$ --- последовательность независимых случайных величин, распределённых показательно с параметрами $\lambda_{\xi_k}$. Положим 
+$$
+T_0 = 0,\quad T_n = \sum_{k=0}^{n-1} \frac{\tau_k}{\lambda_{\xi_k}}, \quad n \in \N \setminus \{ 0 \}
+$$
+Тогда $\xi(t) \rightleftharpoons \xi_n, T_n \leqslant t < T_{n+1}$, будет цепью Маркова с непрерывным временем (проверьте это).
+%
+% лекция 7 27.03.2007
+%
+Дискретная цепь Маркова $\xi_i$ называется \emph{вложенной цепью Маркова}.
+
+Марковость получившегося процесса с непрерывным временем не очевидна.
+Докажем это:
+
+\begin{stm}
+Если $\lambda^* = \sup\limits_{i \in S} \lambda_i < \infty$, то формула
+$\xi(t) = \xi_n$ при $T_n \leqslant t < T_{n+1}$ определяет случайный
+процесс на $[0, +\infty)$, который является цепью Маркова с непрерывным
+временем.
+\end{stm}
+
+\begin{proof}
+Докажем сначала, что процесс определён при всех $t \geqslant 0$ (т.е.
+что $T_n \to \infty$ ($n \to \infty$) почти наверное). Имеем:
+$$
+T_n = \sum_{k=0}^{n-1} \frac{\tau_k}{\lambda_{\xi_k}} \geqslant
+\sum_{k=0}^{n-1} \frac{\tau_k}{\lambda^*} = \frac{1}{\lambda^*}
+\sum_{k=0}^{n-1} \tau_k.
+$$
+$\tau_k$ --- последовательность независимых одинаково распределённых 
+случайных величин, $\Mf\tau_k = 1$. В силу УЗБЧ $\Pf\{\frac 1n
+\sum\limits_{k=0}^{n-1} \tau_k \to \Mf\tau_1\} = 1$, откуда
+почти наверное $\sum\limits_{k=0}^{n-1} \tau_k \to \infty$.
+
+Теперь проверим марковость.
+
+\begin{lemma}
+Если события $B_1, B_2, \dots$ попарно не пересекаются, и $A$ --- такое
+событие, что $\Pf(A \mid B_k) = p$ 
+(не зависит от $k$), то $\Pf(A \mid \bigcup B_k) = p$.
+\end{lemma}
+\begin{proof}
+По определению условной вероятности $\Pf(A \cap B_k) = p\cdot \Pf(B_k)$. 
+Применяем формулу Байеса и вспоминая, что $B_k$ (а значит, и $A \cap B_k$)
+попарно не пересекаются, получаем:
+$$
+\Pf(A \mid \bigcup B_k) = \frac{\Pf(A \cap (\bigcup B_k))}{\Pf(\bigcup B_k)} =
+\frac{\sum \Pf(A \cap B_k)}{\sum \Pf(B_k)} = 
+\frac{\sum p\cdot \Pf(B_k)}{\sum \Pf(B_k)} = p,
+$$
+что и требовалось.
+\end{proof}
+\begin{ex} Покажем, что если $B_k$ в условии леммы пересекаются, то
+условная вероятность может отклоняться в обе стороны.
+Пусть $B_1$ и $B_2$ пересекаются и $\Pf(B_1) = \Pf(B_2)$.
+\begin{nums}{-2}
+\item $A = B_1 \cap B_2$, $\Pf(A) > 0$. $\Pf(A \mid B_1) = 
+\Pf(A \mid B_2) = p$, но
+$$
+\Pf (A \mid B_1 \cup B_2) = \frac{\Pf(A)}{\Pf(B_1\cup B_2)} = 
+\frac{\Pf(A)}{\Pf(B_1) + \underbrace{\Pf(B_2) - \Pf(A)}_{>0}} >
+\frac{\Pf(A)}{\Pf(B_1)} = \Pf(A \mid B_1) = p.
+$$
+\item С другой стороны, если взять $A' = B_1 \bigtriangleup B_2$ 
+(симметрическая разность), получим:
+$\Pf(A' \mid B_1 \cup B_2) = \Pf(B_1 \bigtriangleup B_2 \mid
+B_1 \cup B_2) = 1 - \Pf(B_1 \cup B_2 \mid B_1 \cup B_2) =
+1 - \Pf(A \mid B_1 \cup B_2) < 1 - \Pf(A \mid B_1) =
+\Pf(A' \mid B_1)$.
+\end{nums}
+\end{ex}
+
+Для доказательства марковости $\xi(t)$ нужно показать, что для любого набора
+$t_0 < t_1 < \dots < t_n$ имеем $\Pf(\xi(t_n) = i_n \mid \xi(t_{n-1}) =
+i_{n-1}, \dots, \xi(t_0) = i_0) = 
+\Pf(\xi(t_n) = i_n \mid \xi(t_{n-1} = i_{n-1})$.
+Введём вспомогательные события 
+$A = \{ \xi(t_n) = i_n \}$,
+$B_k = \{ \xi(t_j) = i_j, j = 0, \dots, n-1;
+T_k \leqslant t_{n-1} < T_{k+1} \}$ (из второго условия следует, что
+$i_{n-1} = \xi_k$), $B_k' = \{ \xi(t_{n-1} = i_{n-1}; T_k \leqslant
+t_{n-1} < T_{k+1} \}$,
+ События $A$ и $B_k$, а также $A$, $B_k'$ удовлетворяют условиям леммы,
+поэтому достаточно показать, что $\Pf(A \mid B_k) = \Pf(A \mid B_k')$ и что $\Pf(A \mid B_k') = \Pf(A\mid B_l')\quad \forall k,l$.
+
+Заметим, что для любого $D_k\colon D_k \supset B_k,B_k'$ верно $\Pf(A \mid B_k) = \Pf(AD_k\min B_k), \Pf(A \mid B_k') = \Pf(AD_k \mid B_k')$. Возьмём таким $D_k$ $\left\{ T_k \leqslant t_{n-1} < T_{k+1}\right\}$. $AD_k = \sqcup_{l \geqslant k}  AD_k \cap \{T_l \leqslant t_n < t_{l+1}\} = \sqcup_{l \geqslant k} A_{k,l}$. Достаточно показать, что $\forall l \geqslant k \Pf(A_{k,l}\mid B_k) = \Pf(A_{k,l}\mid B_k')$. К сожалению, даже такого дробления событий нам не хватит, поэтому рассмотрим семейства событий
+\begin{gather*}
+B_k = \sqcup_{\alpha \in I} B_\alpha = \\ = \sqcup_{\alpha \in I} \{\xi(t_j) = i_j, 0 \leqslant j \leqslant n-1; \xi_k = i_{n-1}, T_k \leqslant t_{n-1} < T_{k+1}; \xi_m = \alpha_m, 0 \leqslant m \leqslant k-1, T_{\alpha^(j)} \leqslant t_j < T_{\alpha^(j+1)}, 0 \leqslant j \leqslant n-2\}, \\
+B_k' = \sqcup_{\alpha \in I'} B'_\alpha = \\ 
+= \sqcup_{\alpha \in I'} \{\xi(t_{n-1}) = i_{n-1}, T_k \leqslant t_{n-1} < T_{k+1}, \xi_k = i_{n-1}; \xi_m = \alpha_m, 0 \leqslant m \leqslant k-1\},
+\end{gather*}
+где индексами $\alpha$ пробегаются все возможные сочетания значений вложенной цепи и варианты попадания $t_j$ в интервалы между $T_i$. Заметим, что если вероятность $B_\alpha$ равна нулю, но условную вероятность $P(A_{k,l}\mid B_\alpha)$ можно положить равной чему угодно, в частности, тому, что нам нужно (это не влияет на условную вероятность по условию $\sqcup_\alpha B_\alpha$). Если же вероятность $B_\alpha$ не равна нулю, то из $B_\alpha$ можно выкинуть все ограничения типа $\xi(t_k) = i_k$, так как все $\xi(t_k)$ определены тем, в какой интервал $[T_j,T_{j+1})$ попадает $t_k$ и чему равно $\xi_j$. Таким образом, без ограничения общности можно считать, что $\{\xi(t_j) = i_j, 0 \leqslant j \leqslant n-1; \xi_k = i_{n-1}, T_k \leqslant t_{n-1} < T_{k+1}; \xi_m = \alpha_m, 0 \leqslant m \leqslant k-1, T_{\alpha^(j)} \leqslant t_j < T_{\alpha^(j+1)}, 0 \leqslant j \leqslant n-2\}$ = $\{\xi_k = i_{n-1}, \xi_m = \alpha_m, 0 \leqslant m \leqslant k-1, T_k \leqslant t_{n-1} < T_{k+1}, T_{\alpha^(j)} \leqslant t_j < T_{\alpha^(j+1)}, 0 \leqslant j \leqslant n-2\}$. Заметим также, что на каждом из событий $B_\alpha$ вектор $T = (T_1,\ldots,T_k)$ не зависит от $(\xi_1,\ldots,\xi_k)$, т.к. на $B_\alpha$ $T_i = \sum_0^{i-1} \tau_j/\alpha_j$, а величины $\{\tau_i\} и \{\xi_i\}$ независимы в совокупности. То же относится и к $B'_\alpha$.
+
+Теперь попытаемся посчитать $\Pf(A_{k,l} \mid B_\alpha)$. Для этого возьмём наше многострадальное событие $A_{k,l}$ и разобьём его ещё мельче.
+$$
+A_{k,l} = \cup_{(b_{k+1},\ldots,b_{l}) \in S^n} A_{k,l} \cap \{\xi_{k+1} = b_{k+1},\ldots,\xi_l = b_l\} = \cup_\beta A_{k,l,\beta}.
+$$
+Учитывая сказанное выше о независимости $\xi$ и $\tau$, $\Pf(A_{k,l,\beta})$ распадётся в произведение $\Pf(\xi_l = i_n, \ldots \xi_{k+1} = b_{k+1} \mid \xi_{k} = i_{n-1}, \ldots, \xi_0 = \alpha_0) \times \Pf(T_l \leqslant t_n < T_{l+1} \mid T \in V_\alpha)$, где $V_\alpha$ --- некоторое борелевское множество, соответствующее тому, что все компоненты T попадут куда надо ($T_k \leqslant t_{n-1} < T_{k+1}, T_{\alpha^(j)} \leqslant t_j < T_{\alpha^(j+1)}, 0 \leqslant j \leqslant n-2)$. По марковскому свойству эта вероятность равна $\Pf(\xi_l = i_n, \ldots, \xi_{k+1} = b_{k+1} \mid \xi_{k} = i_{n-1}) \times \Pf(T_l \leqslant t_n < T_{l+1} \mid T \in V_\alpha)$. Чтобы увидеть, что $\Pf(A_{k,l,\beta} \mid B_\alpha) = \Pf(A_{k,l,\beta}\mid B'_\alpha) = P_\xi \times P_T$, применим нашу лемму, разбив $B'_\alpha$ в объединение событий, проиндексированных всевозможными вариантами попадания точек $t_0,\ldots,t_{n-2}$ в интервалы $[T_j,T_j+1)$ и значениями элементов $\xi_0,\ldots,\xi_{k-1}$ вложенной цепи.
+
+Докажем, наконец, что $\Pf(A\mid B'_k) = \Pf(A \mid B'_l)$.
+\begin{lemma}
+ Пусть $A$, $e_1,\ldots$ -- независимые неотрицательные случайные величины, причём $e_i$ распределены элкспоненциально (с параметрами $\lambda_i$).
+Тогда при условии $A \leqslant t < A + e_1$ случайные величины $E_1 = A + e_1 - t, e_2, \ldots$ тоже независимы и распределены экспоненциально с теми же параметрами ($A+e_1-t$ --- с параметром $\lambda_1$).
+Это небольшое обобщение свойства отсутствия памяти у экспоненциального распределения.
+\end{lemma}
+\begin{proof}
+$\Pf(E_1 \geqslant t_1, \ldots, e_n \geqslant t_n \mid A \leqslant t < A + e_1) = \frac{\Pf(E_1 \geqslant t_1, A \leqslant t < A + e_1)}{\Pf(A \leqslant t < A + e_1}\Pf(e_2 \geqslant t_2)\ldots\Pf(e_n \geqslant t_n)$, в силу независимости $(A,e_1)$ и $(e_2,\ldots,e_n)$. Вычислим оставшуюся условную вероятность.
+$$
+\Pf(A + e_1 - t \geqslant t_1, A \leqslant t < A+e_1) = \int_0^t dP_A(x) \int_{t_1+t-x}^\infty \lambda_1 e^{-\lambda_1 y} dy = e^{-\lambda_1(t_1+t)} \int_0^t e^x dP_A(x),
+$$
+$$
+\Pf(A \geqslant t < A + e_1) = \int_0^t dP_A(x) \int_{t-x}^\infty \lambda_1 e^{-\lambda_1 y} dy = e^{-\lambda_1 t} \int_0^t e^x dP_A(x).
+$$
+Следовательно, искомая вероятность равна $e^{-\lambda_1 t_1}$, что и требовалось доказать.
+\end{proof}
+
+Для того, чтобы доказать, что $\Pf(A \mid B'_k) = \Pf(A\mid B'_l)$, покажем, что эти вероятности можно собрать из 
+одинаковых слагаемых. А именно, $\Pf(A \mid B'_k) = \sum_{l \geqslant k} \Pf(A, T_l \leqslant t_n < T_{l+1} \mid B'_k)$. Зафиксируем $l$ и разобьём $\Pi_{l-k} = A \cap \{T_l \leqslant t_n < T_{l+1}\} \cap B'_k$ по всем возможным значениям промежуточных элементов цепи $Ъ = (\xi_{k+1},\ldots,\xi_{l})$, а условие --- по значениям $Ё = (\xi_0,\ldots, \xi_{k-1})$, а далее, конечно же, докажем, что условная вероятность любого из $\Pi_{l-k}(Ъ)$ при условии $B'_k(Ё)$ не зависит от $Ё$.
+Действительно, зафиксировав $Ъ$ и $Ё$, получаем, что наша условная вероятность распадается в произведение марковской переходной вероятности (по $Ё$) и условной вероятности попадания вектора $(T_k,\ldots,T_l) = T(\tau_k,\ldots,\tau_l;i_{n-1},Ъ) = T(\tau_k + T_k - t_{n-1},\ldots,\tau_i;i_{n-1};Ъ)$ в некоторое множество при условии $T_k \leqslant t_{n-1} < T_k + \tau_k$. $T_k$ есть функция от $(\tau_1,\ldots,\tau_{k-1};Ё)$ и поэтому независим с $\tau_k,\ldots$. Применяем лемму, которая говорит, что эта вероятность не зависит от распределения $T_k$, а, следовательно, и от $k$. 
+%$T_{k+1} - T_k = \frac{\tau_k}{\lambda_{\xi_k}}$ имеет показательное
+%распределение с параметром $\lambda_{\xi_k}$. В силу свойства отсутствия
+%памяти у показательного распределения для всех $y$ получаем:
+%$\Pf(T_{k+1} - t_{n-1} > x \mid B_k) = \Pf(T_{k+1} - t_{n-1} > x \mid
+%T_k = t_{n-1} - y, B_k) = e^{-\lambda_{\xi_k} x}$.
+%Поведение траектории $\xi(t)$ при $t > t_{n-1}$ и $B_k$ определяется
+%значениями $\xi_{k+1}, \xi_{k+2}, \dots$ (хвостом траектории вложенной цепи
+%Маркова), а эта последовательность зависит только от $\xi_k$ (а не от
+%$\xi_0, \dots, x_{k-1}$ в силу марковости вложенной цепи. ....... %FIXME
+\end{proof}
+
+\begin{ex} \emph{Нерегулярная цепь Маркова}: $\lambda_k$ не ограничены.
+$S = \mathbb{N}$, вложенная цепь Маркова имеет вид $\xi_k = k$
+(детерминированный процесс), $\lambda_k = (k+1)^2$, $k \geqslant 0$.
+Матрица вероятностей переходов:
+$$
+P =
+\begin{pmatrix}
+0 & 1 & 0 & 0 & \ldots \\
+0 & 0 & 1 & 0 & \ldots \\
+0 & 0 & 0 & 1 & \ldots \\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{pmatrix}
+$$
+$\Pf\left(\dfrac{\tau_k}{\lambda_k} > x\right) =
+e^{-(k+1)^2 x}$, $\Mf \dfrac{\tau_k}{\lambda_k} = 
+\dfrac{1}{(k+1)^2}$ для всех $k \geqslant 0$. Отсюда
+$$
+\Mf T_n = \sum_{k=0}^{n-1} \Mf \frac{\tau_k}{\lambda_{\xi_k}} = 
+\sum_{k=0}^{n-1} \frac{1}{(k+1)^2} < 3
+$$
+для всех $n$ (ряд сходится). Последовательность $\{T_n\}$
+ограничена и монотонно возрастает $\Rightarrow$ существует
+предел $T = \lim\limits_{\nrai} T_n$, $\Mf T < 3 < \infty$.
+К моменту $T$ цепь совершит бесконечное число скачков и уйдёт
+в бесконечность. Траектория строится только на $[0; T)$.
+\end{ex}
+
+Пусть $\xi(t)$ --- однородная цепь Маркова с непрерывным временем.
+Величина $p_{ij}(t) = \Pf(\xi(s+t) = j \mid \xi(s) = i)$ называется
+вероятностью перехода из состояния $i$ в состояние $j$ за время $t$
+(в силу однородности она не зависит от $s$. 
+$P(t) = (p_{ij}(t))_{i,j\in S}$ --- матрица переходных вероятностей
+за время $t$.
+
+\begin{lemma}\label{L:Markov_semigroup}
+Если $\xi(t)$ --- однородная цепь Маркова с непрерывным временем, то
+для любых $t,s \geqslant 0$ $P(t+s) = P(t)P(s)$.
+\end{lemma}
+\begin{proof}
+Как и в дискретном случае, воспользуемся формулой полной вероятности,
+марковским свойством и однородностью:
+\begin{multline*}
+p_{ij}(t+s) = \Pf (\xi(s+t) = j \mid \xi(0) = i) =\\= 
+\sum_{k\in S} \Pf(\xi(t) = k \mid \xi(0) = i)
+\cdot \Pf (\xi(t+s) = j \mid \xi(t) = k, \xi(0) = i) =
+\sum_{k\in S} \Pf(\xi(t) = k \mid \xi(0) = i)
+\cdot\Pf (\xi(t+s) = j \mid \xi(t) = k) =\\=
+\sum_{k\in S} \Pf(\xi(t) = k \mid \xi(0) = i)
+\cdot\Pf (\xi(s) = j \mid \xi(0) = k) =
+\sum_{k\in S} p_{ik}(t) p_{kj}(s),
+\end{multline*}
+что и требовалось.
+\end{proof}
+Для однородных цепей Маркова множество $\{ P(s) \mid s \geqslant 0 \}$
+с операцией умножения матриц образует коммутативную полугруппу.
+В неоднородном случае матрица переходных вероятностей зависит ещё и от
+$s$, и формула приобретает вид $P(s, s+t+u) = P(s, s+t) \cdot P(s+t,
+s+t+u)$.
+
+В силу предыдущей леммы для однородной цепи Маркова $P(k) = (P(1))^k$,
+$P(1) = (P(\frac 1n))^n$.
+
+ 
+Рассмотрим последовательность состояний $\xi(t)$ в целые моменты
+времени: $\xi(0), \xi(1), \xi(2), \dots$. Это будет цепью Маркова с
+дискретным временем. Она называется \emph{вложенной по-другому}
+цепью Маркова. Таким образом, имеются два различных понятия вложения
+дискретной цепи Маркова в непрерывную.
+
+\begin{lemma}\label{L:positive}
+Если $\xi(t)$ --- однородная цепь Маркова с непрерывным
+временем и конечным или счётным множеством состояний $S$ с вложенной
+(в первом смысле) цепью Маркова $\xi_n$ и матрицей вероятностей переходов
+в моменты скачков $P = (p_{ij})$, $\lambda_i < \infty$, и если состояние
+$j$ вложенной цепи следует за состоянием $i$, то для любого $t>0$
+$p_{ij}(t) > 0$.
+\end{lemma}
+\begin{proof}
+Если $i \to j$, то существует $k < \infty$ и существуют $i_1, \dots,
+i_k \in S$ такие, что $p_{ii_1} p_{i_1i_2} \dots p_{i_{k-1}i_k}
+p_{i_kj} > 0$ (из $i$ можно перейти в $j$ с ненулевой вероятностью
+за конечное число шагов). Запишем время перехода из $i$ в $j$:
+$$
+\sigma = \frac{\tau_0}{\lambda_i} + \frac{\tau_1}{\lambda_{i_1}} +
+\dots + \frac{\tau_k}{\lambda_{i_k}}.
+$$
+$p_{ij}(t) = \Pf (\xi(t) = j \mid \xi(0) = i ) = 
+p_{ii_1} \dots p_{i_k j} \cdot \Pf(\sigma < t < \sigma + \frac
+{\tau_{k+1}}{\lambda_j})$ (нужно, чтобы мы за время $t$ попали в 
+состояние $j$ и не успели из него выйти). Мы хотим показать, что
+$\Pf(\sigma < t < \sigma + \frac{\tau_{k+1}}{\lambda_j}) > 0$.
+
+$\sigma$ есть сумма независимых показательно распределённых случайных
+величин $\Rightarrow$ распределение $\sigma$ есть свёртка распределений
+этих величин $\Rightarrow$ плотность $f_\sigma$ распределения $\sigma$
+положительна на всём луче $[0, +\infty)$: $f_\sigma(x) > 0$ при
+$x \geqslant 0$. Отсюда
+$$
+\Pf\left(\sigma < t < \sigma + \frac{\tau_{k+1}}{\lambda_j}\right) =
+\int\limits_0^t \underbrace{f_\sigma(x)}_{>0} \cdot 
+\underbrace{\Pf\left( \frac{\tau_{k+1}}{\lambda_j} > t - x \right)}_
+{= e^{-(t-x)\lambda_j} > 0} \, dx > 0,
+$$
+что и требовалось.
+\end{proof}
+
+\subsection{Предельная теорема}
+\begin{theorem}
+Если $\xi(t)$ --- однородная цепь Маркова с непрерывным временем и конечным
+множеством состояний $S$ с интенсивностями выходов $\lambda_i < \infty$ и
+если все её состояния сообщаются, то для любых $i, j \in S$ существует
+предел $\lim\limits_{t\rightarrow\infty} p_{ij}(t) = p_j > 0$, не
+зависящий от $i$.
+\end{theorem}
+\begin{proof}
+Рассмотрим вложенную по-другому цепь Маркова с дискретным временем:
+$\xi_n = \xi(n)$. Все элементы матрицы вероятностей переходов ($P(1)$)
+положительны (по лемме~\ref{L:positive}), поэтому применима предельная
+теорема для цепей Маркова с дискретным временем 
+(теорема~\ref{T:Markov_lim}): существует предел
+$\lim\limits_{\nrai} \Pf (\xi(n) = j \mid \xi(0) = i) = p_j$, не
+зависящий от $i$ ($j = 1, \dots, N$). Получили сходимость по 
+подпоследовательности: $\forall\, x \geqslant 0$
+$\lim\limits_{\nrai} \Pf (\xi(n+x) = j \mid \xi(x) = i) = p_j$
+($\{ \xi(n+x) \}$ --- тоже цепь Маркова с дискретным временем с
+матрицей $P(1)$). 
+Докажем, что для любой последовательности $t_k \to \infty$ $\lim_{k\to\infty} \Pf(\xi(t_k) = j \mid \xi(0) = i) = p_j$.
+Очевидно, имеет место представление $t_k = n_k - d_k$, где $n_k \in \N, n_k \to \infty, d_k \in (0,1)$. 
+$\Pf(\xi(n_k - d_k) = j \mid \xi(0) = i) = \Pf(\xi(n_k) = j \mid \xi(d_k) = i) = \sum_l p_{lj}(n_k-1)p_{il}(1-d_k)$.
+Так как для всех $l$ $p_{lj}(n_k-1) \to p_j\quad(k\to\infty)$ и $\sum_l p_{il}(1-d_k) \equiv 1$ (и $p_{il}(1-d_k) \geqslant 0$!), то и вся сумма сходится к $p_j$.
+%Сходимость равномерная по $x$ (скорость сходимости
+%одна и та же), вероятностные векторы образуют компакт $\Rightarrow$
+%$\lim\limits_{t\rightarrow\infty} \Pf (\xi(t) = j \mid \xi(0) = i) = p_j$.
+\end{proof}
+
+\begin{theorem}\label{T:Markov_cont_lim}
+Пусть $\xi(t)$ --- однородная цепь Маркова с конечным или счётным
+множеством состояний $S$, $P = (p_{ij})$ --- матрица вероятностей
+переходов в моменты скачков, $p_{ii} = 0$ для всех $i$,
+$\lambda^* = \sup\limits_{i\in S} \lambda_i < \infty$. Тогда
+существуют пределы
+$$
+q_i = \lim_{t\rightarrow 0+} \frac{1 - p_{ii}(t)}{t} = \lambda_i 
+\qquad\text{и}\qquad
+q_{ij} = \lim_{t\rightarrow 0+} \frac{p_{ij}(t)}{t} = \lambda_i p_{ij}.
+$$
+\end{theorem}
+\begin{proof}
+Пусть $\xi(0) = i$, $\tau_i = \inf \{ t > 0 : \xi(t) \ne i \}$ --- момент
+первого выхода из $i$. $\Pf\{\tau_i > x\} = e^{-\lambda_i x}$ при 
+$x \geqslant 0$. По формуле полной вероятности:
+$$
+\Pf \{\tau_i > t\} \leqslant p_{ii}(t) = \Pf (\tau_i > t) + 
+\int\limits_{0}^{t} \sum_{j \in S \setminus \{i\}} p_{ij}
+p_{ji}(t-u) \, d\Pf \{\tau_i \leqslant u\}.
+$$
+Далее, $p_{ji}(t-u) \leqslant \Pf \{\tau_j \leqslant t-u\} =
+1 - e^{-\lambda_j(t-u)}$, $d\Pf\{ \tau_i \leqslant u\} = 
+\lambda_i e^{-\lambda_i u} \, du$, откуда
+\begin{multline*}
+\int\limits_{0}^{t} \sum_{j \in S \setminus \{i\}} p_{ij} p_{ji}(t-u)
+\, d\Pf \{ \tau_i \leqslant u \} \leqslant
+\int\limits_{0}^{t} \sum_{j \in S \setminus \{i\}} p_{ij}
+\underbrace{\left( 1 - e^{-\lambda_j(t-u)} \right)}_{\leqslant
+\lambda_j (t-u) \leqslant \lambda^* (t-u)} \lambda_i 
+\underbrace{e^{-\lambda_i u}}_{\leqslant 1} \, du \leqslant\\\leqslant
+\int\limits_{0}^{t} \sum_{j \in S \setminus \{i\}} p_{ij}
+\lambda^* (t-u) \lambda_i \, du \leqslant
+\lambda^* \lambda_i \frac{t^2}{2} = O(t^2) \quad (t \to 0+),
+\end{multline*}
+где предпоследний переход верен в силу того, что $\sum\limits_j p_{ij} 
+\leqslant 1$,
+$\int\limits_0^t (t-u) \, du = t^2/2$.
+
+Итак, $e^{-\lambda_i t} = \Pf\{ \tau_i > t \} \leqslant p_{ii}(t) \leqslant
+e^{-\lambda_i t} + O(t^2)$ $\Rightarrow$ $1 - e^{-\lambda_i t} \leqslant
+1 - p_{ii}(t) \leqslant 1 - e^{-\lambda_i t} + O(t^2)$, откуда
+(т.к. $1 - e^{-\lambda_i t} = \lambda_i t + O(t^2)$) получаем,
+что $1 - p_{ii}(t) = \lambda_i t + O(t^2)$, что и доказывает первое
+предельное соотношение.
+
+%Второе предельное соотношение будет доказано на следующей лекции...
+
+% 03.04.2007
+% лекция 8
+
+Пусть теперь $i\ne j$. Оценим $p_{ij}(t)$ снизу по формуле полной
+вероятности вероятностью того, что переход из $i$ в $j$ произошёл
+сразу (без промежуточных состояний) и оценим получившийся интеграл:
+$$
+p_{ij}(t) \geqslant
+\int\limits_0^t p_{ij} \Pf\{ \tau_j > t-u \} \, d\Pf\{\tau_i \leqslant u\} =
+p_{ij} \int\limits_t^0 e^{-\lambda_j (t-u)} \lambda_i e^{-\lambda_i u} \, du =
+p_{ij} \lambda_i t + o(t) \quad (t \to 0+)
+$$
+(экспоненты равномерно стремятся к 1 при $t \to 0+$).
+Отсюда получаем, что
+$$
+\limsup_{t \ra 0+} \frac{p_{ij}(t)}{t} \geqslant
+\liminf_{t \ra 0+} \frac{p_{ij}(t)}{t} \geqslant
+\lambda_i p_{ij}
+$$
+
+Суммируем по $j$:
+$$
+\sum_{j \ne i} \liminf_{t \ra 0+} \frac{p_{ij}(t)}{t} \geqslant
+\sum_{j \ne i} \lambda_i p_{ij} = \lambda_i,
+$$
+т.к. $\sum\limits_{j \ne i} p_{ij} = 1$ ($p_{ii} = 0$ по условию).
+
+$\lambda^* = \sup \lambda_i < \infty$, следовательно цепь Маркова почти
+наверное не уходит в бесконечность. Поэтому $\sum\limits_{j \in S}
+p_{ij}(t) = 1$, откуда $\sum\limits_{j \ne i} p_{ij}(t) = 1 - p_{ii}(t)$.
+Отсюда, применяя первое (уже доказанное) соотношение, получаем:
+$$
+\limsup_{t \ra 0+} \sum_{j \ne i} \frac{p_{ij}(t)}{t} = 
+\limsup_{t \ra 0+} \frac{1 - p_{ii}(t)}{t} = \lambda_i.
+$$
+Далее,
+$$
+\lambda_i = \sum_{j \ne i} \lambda_i p_{ij} \leqslant
+\sum_{j \ne i} \liminf_{t \ra 0+} \frac{p_{ij}(t)}{t}  \leqslant
+\limsup_{t \ra 0+} \sum_{j \ne i} \frac{p_{ij}(t)}{t} = \lambda_i.
+$$
+Но начало и конец цепочки совпадают, значит все неравенства обращаются
+в равенства. Отсюда для любого $j$ верхний и нижний пределы 
+$p_{ij}(t) / t$ совпадают и равны $\lambda_i p_{ij}$, откуда получается
+второе соотношение.
+\end{proof}
+
+Числами $q_i$ и $q_{ij}$ можно задавать цепь Маркова. Они образуют 
+\emph{матрицу интенсивностей переходов} $Q = (q_{ij})_{i,j\in S}$
+($q_{ii}$ считается равным $-q_i$). Сумма элементов в каждой строке
+этой матрицы равна нулю.
+
+Утверждение теоремы~\ref{T:Markov_cont_lim} можно переписать в
+матричной форме: 
+$$
+\lim_{t \ra 0+} \frac{P(t) - P(0)}{t} = Q
+$$
+(считается, что $P(0)$ есть единичная матрица).
+
+\begin{theorem}[уравнения Колмогорова]\label{T:Kolm_diffur}
+В условиях предыдущей теоремы справедливы следующие равенства:
+\begin{nums}{-2}
+\item $P'(t) = P(t) Q$ (обратное уравнение Колмогорова);
+\item $P'(t) = Q P(t)$ (прямое уравнение Колмогорова).
+\end{nums}
+Эта система о.д.у. имеет решение, записываемое в виде
+$P(t) = e^{tQ}$, где $e^A = E + \sum\limits_{k=1}^{\infty}
+\frac{1}{k!} A^k$ --- экспонента матрицы $A$.
+\end{theorem}
+
+\begin{proof}
+По лемме~\ref{L:Markov_semigroup} $P(t+s) = P(t)P(s)$. Отсюда 
+($P(0) = E$): $P(s+t) - P(t) = P(t) (P(s) - P(0)) = (P(s) - P(0)) P(t)$.
+По теореме~\ref{T:Markov_cont_lim} получаем\footnote{На самом деле
+это всего лишь правая производная (так что в формулировке есть лукавство).
+\sout{Но для разложения Тейлора этого хватит.} Ага, щ-щас. Этого для разложения Тейлора, конечно, не хватит,
+но если вспомнить, что $P(s-t)P(t) = P(s)$ и устремить $t\to 0+$, получим, что $P(t)$ непрерывна слева. Дифференцируемость слева тогда доказывается элементарно заменой $t$ на $-t$.}:
+$$
+P'(t) = \lim_{s \ra 0+} \frac{P(t+s) - P(t)}{s} =
+\lim_{s \ra 0+} \frac{P(t) (P(s) - P(0))}{s} = 
+P(t) \lim_{s \ra 0+} \frac{P(s) - P(0)}{s} = P(t)Q.
+$$
+Аналогично получаем, что $P'(t) = QP(t)$.
+Далее, $P''(t) = (P'(t))' = P'(t) Q = P(t) Q^2$, $\dots$,
+$P^{(k)}(t) = P(t) Q^k$. Разлагаем $P(t)$ в ряд Тейлора в нуле:
+$$
+P(t) = P(0) + \sum_{k=1}^{\infty} \frac{t^k}{k!} P^{(k)}(0) =
+E + \sum_{k=1}^{\infty} \frac{(tQ)^k}{k!} = e^{tQ},
+$$
+что и требовалось.
+\end{proof}
+
+\section{Мартингалы}
+\subsection{Напоминание про условные математические ожидания (в дискретном
+случае)}
+
+Из курса теории вероятностей мы знаем про условную вероятность. Пусть
+есть вероятностное пространство $(\Omega, \Fs, \Pf)$, $B, C \in \Fs$.
+\emph{Условная вероятность} события $C$ при условии события $B$:
+$$
+\Pf(C \mid B) := \frac{\Pf(CB)}{\Pf(B)}.
+$$
+Будем теперь изменять событие $C$ при фиксированном $B$. Получим функцию
+на $\Fs$ --- новую (условную) вероятностную меру на $(\Omega, \Fs)$,
+сосредоточенную на множестве $B$. По этой новой мере можно брать
+математическое ожидание --- \emph{условное математическое ожидание при
+условии события $B$}.
+
+Теперь будем менять событие $B$. Пусть дано разбиение $\Omega = 
+\bigsqcup\limits_{k \geqslant 1} B_k$. С этим распределением
+связана $\sigma$-алгебра $\Bs = \sigma \{ B_k \}$, состоящая из
+всевозможных объединений событий $B_k$. Для фиксированного
+события $C$ получаем набор чисел (условных вероятностей), заиндексированный
+индексом $k$.
+
+\emph{Условная вероятность относительно $\Bs$} --- ступенчатая функция
+на $\Omega$ (это случайная величина), которая на каждом $B_k$ 
+равна $\Pf(C \mid B_k)$ (заметим,
+что эта функция $\Bs$-измерима).
+
+Пусть теперь дана дискретная случайная величина $\xi$ ($\{ \omega :
+\xi = x_k \} = A_k$). \emph{Условное математическое ожидание}
+$\xi$ относительно $\Bs$ есть $\Mf(\xi \mid \Bs) (\omega) = 
+\sum x_k \Pf(A \mid \Bs)(\omega)$ (это --- тоже случайная величина,
+измеримая относительно $\Bs$, т.е. ступенчатая функция).
+
+Дискретная случайная величина $\xi$ порождает разбиение 
+$\Omega = \bigsqcup\limits_{k} A_k$. Соответствующая $\sigma$-алгебра
+называется $\sigma(\xi)$. Пишем $\Mf(\eta \mid \xi) := \Mf(\eta \mid
+\sigma(\xi))$.
+
+Разумеется, всю эту теорию можно развивать для произвольных $\sigma$-алгебр.
+Такие вещи обычно рассказывают в курсе математической статистики. Здесь
+мы просто напоминаем про у.м.о. в простейшем случае...
+
+{\bf Свойства у.м.о.:}
+\begin{nums}{-2}
+\item Если $C \in \Bs$, то $\Mf \chi_C \xi = \Mf (\chi_C \Mf(\xi \mid \Bs))$
+($\chi_C$ --- индикатор $C$).
+В частности (если $C = \Omega$): $\Mf\xi = \Mf \Mf(\xi \mid \Bs)$.
+\item Линейность: $\Mf(a\xi + b\eta \mid \Bs) = a \Mf(\xi \mid \Bs) +
+b \Mf(\eta \mid \Bs)$.
+\item $\Mf(\chi_A \mid \Bs) = \Pf(A \mid \Bs)$.
+\item Если $\Bs = \sigma(\xi)$, то $\Mf(\xi \mid \Bs) = \xi$.
+\item Если $\Bs_1 \subseteq \Bs_2$ ($\Bs_2$ соответствует подразбиению
+$\Bs_1$ --- более грубой $\sigma$-алгебры), то
+$\Mf(\Mf(\xi \mid \Bs_2) \mid \Bs_1) = \Mf(\xi \mid \Bs_1)$.
+\item Если $\Bs = \sigma(\eta)$, то $\Mf(\xi\eta \mid \Bs) = 
+\eta\Mf(\xi \mid \Bs)$ (множитель, измеримый относительно условия, можно
+выносить из-под знака у.м.о.).
+\end{nums}
+
+\subsection{Мартингалы с дискретным временем: определение и простые свойства}
+В нашем курсе других мартингалов и не будет...
+
+\begin{df}
+Пусть $(\Omega, \Fs, \Pf)$ --- вероятностное пространство, на котором
+заданы последовательность случайных величин $X_0, X_1, X_2, \dots$ и
+расширяющаяся последовательность (\emph{поток}) $\sigma$-алгебр
+$\Fs_0 \subseteq \Fs_1 \subseteq \Fs_2 \subseteq \dots \subseteq \Fs$.
+Последовательность пар $\{ (X_n, \Fs_n) \}_{n \in \N}$ называется
+\emph{мартингалом} (говорят также, что $\{ X_n \}$ ---
+мартингал относительно $\{ \Fs_n \}$), если:
+\begin{nums}{-2}
+\item $\Mf|X_n| < \infty$ для всех $n$;
+\item $X_n$ измерима относительно $\Fs_n$ для всех $n$;
+\item $\Mf(X_m \mid \Fs_n) = X_n$ почти наверное, если $m > n$ 
+(характеристическое свойство мартингала).\label{mart_char}
+\end{nums}
+Если вместо свойства~\ref{mart_char} написать $\Mf(X_m \mid \Fs_n) \geqslant
+X_n$, получится \emph{субмартингал}, а если $\Mf(X_m \mid \Fs_n) \leqslant
+X_n$ --- \emph{супермартингал}.
+\end{df}
+Изменение знака переводит субмартингал в супермартингал (и наоборот). Поэтому
+иногда эти два понятия объединяют и говорят о \emph{семи-, или полумартингалах}.
+
+\begin{stm}
+Для дискретного времени характеристическое свойство мартингала эквивалентно
+своему частному случаю: для любого $n$ $\Mf(X_{n+1} \mid \Fs_n) = X_n$.
+\end{stm}
+\begin{proof}
+$\Mf(X_m \mid \Fs_n) = \Mf(\Mf(X_m \mid \Fs_{m-1}) \mid \Fs_m) =
+\Mf(X_{m-1} \mid \Fs_n)$. Далее по индукции.
+\end{proof}
+
+\begin{stm}
+Для мартингала $\Mf(X_{n+1} \mid X_n) = X_n$.
+\end{stm}
+\begin{proof}
+$\Mf(X_{n+1} \mid X_n) = \Mf(\Mf(X_{n+1} \mid \Fs_n) \mid \sigma(X_n)) = 
+\Mf(X_n \mid \sigma(X_n)) = X_n$.
+\end{proof}
+
+\subsection{Примеры мартингалов}
+\begin{enumerate}
+\item Пусть $\xi_1, \xi_2, \dots$ --- независимые случайные величины.
+$X_n = \xi_1 + \dots + \xi_n$, $X_0 = 0$ --- случайное блуждание.
+$\Fs_n = \sigma(\xi_1, \dots, \xi_n)$. Если $\Mf \xi_n = 0$ для
+всех $n$, то $\{ (X_n, \Fs_n) \}$ --- мартингал, если $\leqslant 0$ ---
+субмартингал, если $\geqslant 0$ --- супермартингал.
+
+\item $\xi_1, \xi_2, \dots$ --- независимые случайные величины,
+$\Fs_n = \sigma(\xi_1, \dots, \xi_n)$, $X_0 = 1$, $X_n = 
+\prod\limits_{i=1}^n \xi_i$. Если для всех $n$ $\Mf\xi_n = 1$, то
+$\{ (X_n, \Fs_n) \}$ --- мартингал. Если же $\Mf \xi_n >= 1$, то субмартингалом такая последовательность, вообще 
+говоря, не будет. Однако если потребовать, например, $\xi_i \geqslant 0$ п.н., то $X_i$ всё же будут образовывать
+супермартингал.
+
+\item $\xi_1,\xi_2,\ldots$ --- независимые случайные величины, $\Fs_n = \sigma(\xi_1,\ldots,\xi_n)$, 
+$X_1 = X_2 = 0$, $X_n = \xi_1\xi_2 + \xi_2\xi_3 + \ldots + \xi_{n-1}\xi_n$. Если $\forall n\: \Mf\xi_n = 0$, то
+$\left( X_n, \Fs_n \right)$ --- мартингал.
+Если $\forall n\: \Mf\xi_{2n} = 0$, то $\forall i\: \Mf \xi_i\xi_{i+1} = 0$, но $\left\{X_n,\Fs_n\right\}$ могут и не 
+образовывать мартингал. Рассмотрим, например, $\Pf\left\{ \xi_{2k} = -1 \right\} = \Pf\left\{ \xi_{2k} = 1 \right\} =
+\frac{1}{2}, \Mf\xi_{2k} = 0,$ и $\Pf\left\{ \xi_{2k-1} = 1 \right\} = \Pf\left\{ \xi_{2k-1} = 3\right\} = 
+\frac{1}{2}, \Mf\xi_{2k-1} = 2 \neq 0$. Тогда 
+$$
+\Mf\left( X_3 \mid X_2 = 3\right) = \Mf\left(\xi_1\xi_2 + \xi_2\xi_3 \mid \xi_1 = 3, \xi_2 = 1\right) = 
+3 + \Mf\left(\xi_3\right) = 5 \neq 3.
+$$
+Таким образом, нарастающая сумма случайных величин с нулевыми математическими ожиданиями не всегда образует мартингал.
+
+\item Пусть $\left( \Omega, \Fs, \Pf \right)$ --- вероятностное пространство, $\Fs_1 \subseteq \Fs_2 \subseteq 
+\ldots \subseteq \Fs$ --- поток $\sigma$-алгебр, $\xi$ --- фиксированная случайная величина с $\Mf\xi < \infty$.
+Тогда $X_n \rightleftharpoons \Mf\left(\xi \mid \Fs_n\right)$ --- мартингал относительно $\left\{\Fs_n\right\}$.
+\begin{proof}
+ Измеримость $X_n$ относительно $\Fs_n$ очевидна, так как $X_n$ --- это у.м.о. относительно $\Fs_n$. Для любых
+$m > n$ имеем
+$$
+\Mf\left( X_m \mid \Fs_n\right) = \Mf\left( \Mf\left(\xi \mid \Fs_m\right) \mid \Fs_n \right) = 
+\Mf\left( \xi \mid \Fs_n \right) = X_n, \text{ т.к. $\Fs_n \subseteq \Fs_m$.}
+$$
+\end{proof}
+В качестве примера такого мартингала рассмотрим $\Omega = [0,1)$ с линейной мерой Лебега, $\xi(\omega) \equiv \omega$,
+а последовательность $\Fs_n$ --- последовательные дробления $[0,1]$ на $2^k$ частей, т.е. $\Fs_n = 
+\left\{ [\frac{k}{2^n}, \frac{k+1}{2^n}) \mid 0 \leqslant k \leqslant 2^n - 1 \right\}$. Тогда $X_n(\omega) = 
+\frac{2k+1}{2^{2n+1}}$ при $\frac{k}{2^n} \leqslant \omega < \frac{k+1}{2^n}$.
+
+\item Пусть $X_1,X_2,\ldots$ --- случайные величины со значениями в конечном множестве $\left\{1,\ldots,N\right\}$.\\
+Если $\left(X_n,\sigma(X_1,\ldots,X_n)\right)$ --- мартингал, то состояния $0$ и $N$ --- поглощающие, т.е. 
+$\Pf\left\{X_{m+1} = 0 \mid X_m = 0\right\} = 1 = \Pf\left\{X_{m+1} = N \mid X_m = N\right\}$.
+\begin{proof}
+ От противного, если $\Pf\left\{X_{m+1} > 0 \mid X_m = 0\right\} > 0$, то 
+$$
+0 = X_m = \Mf\left(X_{m+1} \mid X_m = 0\right) = \sum_k k \Pf\left\{ X_{m+1} = k \mid X_m = 0\right\} > 0
+$$. Случай $X_m = N$ аналогичен.
+\end{proof}
+
+\item Пусть $\xi_t, t \in \ZZ$ --- независимые случайные величины, $\Pf\left\{\xi_t = 1\right\} = p, 
+\Pf\left\{\xi_t = 0\right\} = 1 - p$,
+$$
+Y_n \rightleftharpoons \min\left\{ k > 0 \mid \xi_{n-k} + \xi_{n+k} > 0\right\}.
+$$
+$Y_n$ не образуют мартингала относительно $\left\{\sigma(\xi_t, t \leqslant n)\right\}$ в силу неизмеримости $Y_n$ 
+относительно "<будущего">: $Y_n$ не обязательно постоянна на атомах $\sigma$-алгебры $\sigma(\xi_{n-1},\ldots)$, т.к. зависит ещё и от $\xi_{n+1},\ldots$.
+\end{enumerate}
+
+%
+% 10.04.2007
+% лекция 9
+%
+\subsection{Предсказуемые последовательности случайных величин. Разложение Дуба}
+\begin{df} Последовательность $\{ \xi_n \}$ называется \emph{предсказуемой}
+относительно потока $\sigma$-алгебр $\Fs_0 \subseteq \Fs_1 \subseteq \dots
+\subseteq \Fs$, если $\xi_n$ измерима относительно $\Fs_{n-1}$.
+\end{df}
+Неформально говоря, $\sigma$-алгебра $\Fs_n$ описывает всё, что было до момента
+$n$.
+
+\begin{ex}
+$\zeta_1, \zeta_2, \dots$ --- последовательность случайных величин.
+$\Fs_n = \sigma(\zeta_1, \dots, \zeta_n)$, $n \geqslant 1$.
+$f_n : \RR^n \to \RR$. $\xi_n = f_{n-1}(\zeta_1, \dots, \zeta_{n-1})$ ---
+предсказуема относительно $\{\Fs_n\}$.
+\end{ex}
+
+\begin{theorem}[разложение Дуба\footnote{Это не дерево, а американский
+математик по фамилии Doob.}]
+Пусть $\{(X_n, \Fs_n)\}$ --- субмартингал. Тогда существуют такие мартингал
+$\{(Z_n, \Fs_n)\}$ и последовательность случайных величин $\{A_n\}$ такие,
+что: $A_0 = 0$, $\{A_n\}$ предсказуема относительно $\{\Fs_n\}$, $A_n$
+неубывает с вероятностью 1; $X_n = Z_n + A_n$ почти наверное для всех $n$.
+С точностью до множества меры нуль последовательности $\{A_n\}$ и
+$\{Z_n\}$ определяются однозначно.
+\end{theorem}
+
+Последовательность $\{A_n\}$ называется \emph{компенсатором}.
+
+\begin{proof}
+$A_n = 0$ $\Rightarrow$ $Z_0 = X_0$ --- определяется однозначно.
+Далее применяем несколько тривиальных тождеств:
+$$
+X_n = X_0 + \sum_{j=0}^{n-1} (X_{j+1} - X_j) = X_0 + \sum_{j=0}^{n-1}
+((X_{j+1} - \Mf(X_{j+1} \mid \Fs_j)) + (\Mf(X_{j+1} \mid \Fs_j) - X_j)).
+$$
+Положим ($Z_0 = X_0$)
+$$
+Z_n := Z_0 + \sum_{j=0}^{n-1} (X_{j+1} - \Mf(X_{j+1} \mid \Fs_j)) = 
+Z_{n-1} + (X_n - \Mf(X_n \mid \Fs_{n-1})
+\qquad\text{и}\qquad
+A_n = \sum_{j=0}^{n-1} (\Mf(X_{j+1} \mid \Fs_j) - X_j).
+$$
+$\{X_n\}$ --- субмартингал, поэтому все слагаемые в $A_n$ почти наверное
+неотрицательны $\Rightarrow$ $A_n$ почти наверное неубывает (как нарастающая
+сумма неотрицательных случайных величин). Каждая скобка в $A_n$ измерима
+относительно $\Fs_j$ $\Rightarrow$ $\{A_n\}$ предсказуема относительно
+$\{\Fs_n\}$ ($A_n$ $\Fs_{n-1}$-измерима).
+
+Проверим, что $Z_n$ --- мартингал:
+\begin{multline*}
+\Mf(Z_n \mid \Fs_{n-1}) = \Mf(Z_{n-1} + (X_n - \Mf(X_n \mid \Fs_{n-1})) \mid
+\Fs_{n-1}) = \Mf(Z_{n-1} \mid \Fs_{n-1}) + \Mf(X_n \mid \Fs_{n-1}) -
+\Mf(X_n \mid \Fs_{n-1}) = \\ = Z_{n-1}.
+\end{multline*}
+
+\emph{Единственность.} От противного. Пусть $X_n = Z_n^* + A_n^*$ почти
+наверное, $Z_n^*$ --- мартингал, $A_n^*$ --- неубывающая предсказуемая
+последовательность, $A_0^* = 0$. Рассмотрим разность $X_{n+1} - X_n$:
+$$
+X_{n+1} - X_n = (Z_{n+1} - Z_n) + (A_{n+1} - A_n) =
+(Z_{n+1}^* - Z_n^*) + (A_{n+1}^* - A_n^*) \quad \text{п.н.}
+$$
+Вычислим у.м.о. относительно $\Fs_n$:
+$$
+\Mf((Z_{n+1} - Z_n) + (A_{n+1} - A_n) \mid \Fs_n) =
+\Mf((Z_{n+1}^* - Z_n^*) + (A_{n+1}^* - A_n^*) \mid \Fs_n).
+$$
+Далее, $\{Z_n\}$ и $\{Z_n^*\}$ --- мартингалы, поэтому $\Mf(Z_{n+1} -
+Z_n \mid \Fs_n) = 0 = \Mf(Z_{n+1}^* - Z_n^* \mid \Fs_n)$.
+$\{A_n\}$ и $\{A_n^*\}$ предсказуемы, откуда $\Mf(A_{n+1} - A_n \mid \Fs_n) =
+A_{n+1} - A_n$, $\Mf(A_{n+1}^* - A_n^* \mid \Fs_n) = A_{n+1}^* - A_n^*$.
+Итак, $A_{n+1} - A_n = A_{n+1}^* - A_n^*$, $A_0 = 0 = A_0^*$. Отсюда
+по индукции получаем $A_n^* = A_n$.
+\end{proof}
+
+\begin{lemma}
+Если $\{(X_n, \Fs_n)\}$ --- мартингал, $g(x)$ --- выпуклая функция и
+для всех $n$ $M|g(X_n)| < \infty$, то последовательность 
+$\{(g(X_n), \Fs_n)\}$ --- субмартингал.
+
+Если $\{(X_n, \Fs_n)\}$ --- субмартингал, $g(x)$ выпукла и неубывает,
+$\Mf|g(X_n)| < \infty$ для всех $n$, то $\{(g(X_n), \Fs_n)\}$ ---
+субмартингал.
+\end{lemma}
+
+\begin{proof}
+Нужно доказать\footnote{На самом деле всё это делается в одно
+касание применением неравенства Йенсена. Здесь оно по сути ещё
+раз доказано --- примеч. С.К.}%
+, что $\Mf(g(X_{n+1}) \mid \Fs_n) \geqslant g(X_n)$.
+
+$g$ выпукла $\Rightarrow$ существует неубывающая функция $g^*$:
+для всех $x$, $y$ имеем $g(y) \geqslant g(x) + g^*(x) (y - x)$.
+(Чтобы доказать это, рассматриваем в данной любую опорную прямую,
+т.е. такую прямую, что график $g$ лежит целиком выше её. В случае
+дифференцируемой $g$ всё вообще очевидно.)
+
+Далее,
+$$
+\Mf(g(X_{n+1}) \mid \Fs_n) \geqslant \Mf(g(X_n) + g^*(X_n)(X_{n+1} -
+X_n) \mid \Fs_n) = g(X_n) + g^*(X_n) \Mf(X_{n+1} - X_n \mid \Fs_n).
+$$
+
+В первом случае ($\{X_n\}$ --- мартингал) второе слагаемое равно нулю,
+и мы сразу получаем требуемое.
+
+Во втором случае $\Mf(X_{n+1} - X_n \mid \Fs_n) \geqslant 0$, $g^*(X_n)
+\geqslant 0$ (т.к. $g$ неубывает), откуда второе слагаемое неотрицательно,
+что и даёт субмартингальное свойство.
+\end{proof}
+
+%%% stitched part from diskette, should check it out
+\subsection{Моменты остановки}
+
+
+\begin{df}
+Пусть $(\Omega, \Fs, \Pf)$ --- вероятностное пространство,
+$\Fs_0 \subseteq \Fs_1 \subseteq \dots \subseteq \Fs$ ---
+поток $\sigma$-алгебр, $\nu$ --- целочисленная случайная
+величина. $\nu$ --- \emph{момент остановки} относительно $\{\Fs_n\}$,
+если для любого $n$ $\{ \omega : \nu(\omega) \leqslant n \} \in \Fs_n$.
+Говорят также: $\nu$ --- \emph{марковский момент}, $\nu$ --- 
+случайная величина, \emph{не зависящая от будущего}.
+\end{df}
+
+\begin{ex}
+Пусть $\{X_n\}$ --- последовательность случайных величин, $X_n$ измерима
+относительно $\Fs_n$ для любого $n$, $B_n \in \Fs_n$ --- последовательность
+множеств. $\nu = \min \{ n : X_n \in B_n \}$ --- момент остановки.
+
+Частный случай: $\nu = \min \{ n : X_n > f(n) \}$ --- первый момент, когда
+$X_n$ превосходит $f(n)$.
+\end{ex}
+
+\noindent {\bf Свойства моментов остановки:}
+\begin{enumerate}
+\item Если $\nu$ --- момент остановки, $m$ --- фиксированное натуральное
+число, то $\nu^* = \min \{ m, \nu \}$ --- тоже момент остановки.
+\begin{proof}
+$m \geqslant n$ $\Rightarrow$ $\{ \nu^* \leqslant n \} = \Omega \in \Fs_n$.
+$m < n$ $\Rightarrow$ $\{ \nu^* \leqslant n \} = \{ \nu \leqslant n \}
+\in \Fs_n$.
+\end{proof}
+
+\item Пусть $\nu$ --- момент остановки. Тогда $\{ \nu = n \} =
+\{ \nu \leqslant n \} \setminus \{ \nu \leqslant n-1 \} \in \Fs_n$;
+$\{ \nu \geqslant n \} = \Omega \setminus \{ \nu \leqslant n-1 \} \in
+\Fs_{n-1}$.
+\end{enumerate}
+
+Пусть $\nu$ --- момент остановки относительно $\{ \Fs_n \}$, 
+$\{(X_n, \Fs_n)\}$ --- (полу)мартингал. Определим значение
+$X_n$ в случайный момент времени:
+$
+X_\nu = \sum\limits_{n \geqslant 0} X_n \Ir_{\{\nu = n\}}.
+$
+
+\begin{lemma}
+Если $\{(X_n, \Fs_n)\}$ --- (полу)мартингал и $\nu$ --- момент остановки
+относительно $\{\Fs_n\}$, то остановленная последовательность 
+$\{ X_{\min\{\nu,n\}} \}$ --- (полу)мартингал относительно $\{\Fs_n\}$.
+\end{lemma}
+
+\begin{proof}
+$
+X_{\min \{ \nu, n \}} = \sum\limits_{m=0}^n X_m \Ir_{\{\nu = m\}} +
+X_n \Ir_{\{\nu > n\}},
+$
+откуда $X_{\min \{ \nu, n \}}$ измерима относительно $\Fs_n$.
+Далее, 
+$
+X_{\min \{ \nu, n+1 \}} = \sum\limits_{m=0}^{n+1} X_m \Ir_{\{\nu = m\}} +
+X_{n+1} \Ir_{\nu > n+1} = \sum\limits_{m=0}^n X_m \Ir_{\{\nu = m\}} +
+X_{n+1} \Ir_{\nu > n}
+$.
+Отсюда
+$X_{\min \{ \nu, n+1 \}} - X_{\min \{ \nu, n \}} = \Ir_{\{\nu > n\}}
+(X_{n+1} - X_n)$.
+Поэтому
+$\Mf(X_{\min\{ \nu, n+1 \}} - X_{\min \{ \nu, n \}} \mid \Fs_n) =
+\Mf(\Ir_{\{\nu > n\}} (X_{n+1} - X_n) \mid \Fs_n) =
+\Ir_{\{\nu > n\}} \Mf(X_{n+1} - X_n \mid \Fs_n)$ --- знак
+совпадает со знаком $\Mf(X_{n+1} - X_n \mid \Fs_n)$ (0 для мартингала,
+,,$+$'' для субмартингала, ,,$-$'' для супермартингала), что и требовалось.
+\end{proof}
+
+Пусть $\{ X_n \}$ --- мартингал. Тогда (из мартингального свойства)
+$\Mf X_n = \Mf X_0$. Верно ли это для $X_\nu$? Казалось бы,
+так как $\min \{ n, \nu \} \to \nu$ ($n \to \infty$), получаем
+$\Mf X_0 = \Mf X_{\min \{ n, \nu \}} \to \Mf X_\nu$. Но последний предельный
+переход (по сути, переход к пределу под знаком интеграла) не всегда законен.
+
+\begin{ex}
+$\xi_n \sim \Norm(0,1)$ --- независимые; $X_0 = 0$, $X_n = \xi_1 + \dots +
+\xi_n$ --- случайное блуждание ($\{X_n\}$ --- мартингал относительно
+$\{ \sigma(X_1, \dots, X_n) \}$); $\nu = \min \{ n : X_n < 0 \}$ --- момент
+остановки.
+
+По закону повторного логарифма:
+$$
+\limsup_{n \rightarrow \infty}
+\frac{X_n}{\sqrt{2n \ln\ln n}} = +1
+\qquad\text{и}\qquad
+\liminf_{n \rightarrow \infty}
+\frac{X_n}{\sqrt{2n \ln\ln n}} = -1,
+$$
+поэтому почти наверное $X_n$ меняет знак бесконечное число раз
+$\Rightarrow$ $\Pf\{ \nu < \infty \} = 1$ $\Rightarrow$
+$\Mf X_\nu < 0 = \Mf X_0$.
+\end{ex}
+
+Пусть $\{ \Fs_n \}$ --- поток $\sigma$-алгебр, $\nu$ --- момент остановки.
+Определим $\sigma$-алгебру $\Fs_\nu$ следующими эквивалентными способами:
+\begin{multline*}
+\Fs_\nu = \left\{ A \in \Fs : A = \bigcup_{m=0}^\infty (\{ \nu = m \}
+\cap B_m), B_m \in \Fs_m \: \forall m \right\} =
+\left\{ A \in \Fs : A \cap \{ \nu = m \} \in \Fs_m \: \forall m \right\} = \\ =
+\sigma \left\{ \{ \nu \leqslant n \} \cap B_n, B_n \in \Fs_n \right\}
+\end{multline*}
+
+$\sigma$-алгебра $\Fs_\nu$, таким образом, порождается совокупностью событий вида $\{ \nu \leqslant n \} \cap B_n, 
+B_n \in \Fs_n$. $\nu$ измерима относительно $\Fs_\nu$ (достаточно взять $B_n = \Omega\: \forall n$). Если $\{ X_n, 
+\Fs_n \}$ --- мартингал, то $X_\nu$ измерима относительно $\Fs_\nu$:
+$$
+\left\{X_\nu \in B\right\} = \cup_{n=0}^\infty \left\{ \nu = n, X_n \in B \right\} \in \Fs_\nu, 
+\text{т.к. $X_n$ $\Fs_n$-измерима.}
+$$
+Вообще говоря, $\Fs_\nu \neq \Fs_n \forall n$.
+\begin{stm} 
+ Пусть $\nu_1, \nu_2$ -- два момента остановки относительно $\left\{\Fs_n\right\}$. Тогда 
+$\left\{ \nu_2 \geqslant \nu_1 \right\} \in \Fs_{\nu_1} \cap \Fs_{\nu_2}$.
+\end{stm}
+\begin{proof}
+\begin{gather*}
+ \left\{ \nu_2 \geqslant \nu_1 \right\} = 
+\begin{cases}
+ \cup_{n=0}^\infty \left( \{ \nu_1 = n \} \cap \{ \nu_2 \geqslant n \} \right) \in \Fs_{\nu_1}, & \text{т.к. $\{ \nu_2 \geqslant n \} \in \Fs_n$,} \\
+ \cup_{n=0}^\infty \left( \{ \nu_2 = n \} \cap \{ \nu_1 \leqslant n \} \right) \in \Fs_{\nu_2}, & \text{т.к. $\{ \nu_1 \leqslant n \} \in \Fs_n$.}
+\end{cases}
+\end{gather*}
+\end{proof}
+
+\begin{theorem}[Сохранение мартингальности для одного момента остановки]\label{Th:marthalt}
+ Пусть $\left\{ (X_n,\Fs_n) \right\}$ --- мартингал, $\nu$ --- момент остановки относительно $\{ \Fs_n \}$, 
+$\Mf | X_\nu | < \infty, \liminf_{n \to \infty} \Mf\left( | X_n | \Ir\{\nu > n\}\right) = 0$. Тогда с вероятностью $1$
+$$
+\Mf\left(X_\nu \mid \Fs_0 \right) = X_0.
+$$
+Аналогичное свойство выполняется для полумартингалов (с заменой равенства на соответствующее неравенство).
+\end{theorem}
+Перед тем, как доказать эту теорему, сделаем замечание общего характера. 
+\begin{note}
+Пусть $f,g$ --- измеримые функции
+на $(\Omega,\Fs), \Pf\left\{ f \neq g \right\} > 0$. Тогда $\Pf\left\{ f > g \right\} > 0$ или $\Pf\left\{f < g\right\} > 0$. Пусть $\Pf\left\{ f > g \right\} > 0$. В этом случае
+$$
+\int_{\left\{\omega\colon f > g\right\}} f \Pf(d\omega) > \int_{\left\{\omega\colon f > g\right\}} g \Pf(d\omega).
+$$
+Следовательно, если $\forall A \in \Fs\colon \int_A f \Pf(d\omega) = \int_A g \Pf(d\omega)$, то $f = g$ п.н.
+В нашем случае достаточно будет рассматривать $A \in \Fs_0$, т.е. доказать, что $X_0$ является вариантом 
+$\Mf(X_\nu \mid \Fs_0)$; по свойству у.м.о. все его варианты совпадают почти наверное.
+\end{note}
+\begin{proof}[Доказательство теоремы \ref{Th:marthalt}]
+ Рассмотрим $f(\omega) = \Mf\left( X_\nu \mid \Fs_0 \right), g(\omega) = X_0$. Согласно замечанию, 
+достаточно установить, т.к. $f,g$ --- $\Fs_0$-измеримые функции, что $\forall A \in \Fs_0$
+$$
+\Mf\left(X_\nu\Ir_A\right) = \Mf\Mf\left(\Ir_A X_\nu \mid \Fs_0 \right) = 
+\Mf\left(\Mf(X_\nu \mid \Fs_0) \Ir_A\right) = \Mf\left(X_0 \Ir_A\right),
+$$
+то есть доказать, что $\Mf\left(X_\nu\Ir_A\right) = \Mf\left(X_0\Ir_A\right)$.
+\begin{lemma}
+ Если $\left\{(X_n,\Fs_n)\right\}$ --- мартингал, $A \in \Fs_0$, $\nu$ --- момент остановки относительно $\{\Fs_n\}$
+и выполнены условия теоремы \ref{Th:marthalt}, то 
+$$
+\forall n \geqslant 0\colon \Mf\left( X_0\Ir_A\right) = \Mf\left(X_{\min\left\{ n,\nu\right\}}\Ir_A\right) = 
+\Mf X_\nu \Ir_{A \cap \left\{\nu \leqslant n\right\}} + \Mf X_n \Ir_{A \cap \left\{ \nu > n \right\}}.
+$$
+\end{lemma}
+\begin{proof}
+Первое равенство выполнено в силу того, что $X_{\min\left\{n,\nu\right\}}$ --- мартингал, второе получается
+ разложением $\Ir_A$.
+\end{proof}
+По условию $\liminf_{n\to\infty} \Mf X_n \Ir_{A \cap \left\{\nu > n\right\}} = 0$ существует последовательность 
+$\{n_k\}\colon \Mf X_{n_k} \Ir_{A \cap \left\{\nu > n_k\right\}} \to 0,\: (k~\to \infty)$.
+$X_\nu \Ir_{A \cap \{ \nu \leqslant n \}} \uparrow X_\nu \Ir_A$ как функции на $\Omega$,
+ $|X_\nu \Ir_{A \cap \{ \nu \leqslant n\}}| \leqslant |X_\nu \Ir_A|$, $\Mf|X_\nu \Ir_A | \leqslant \Mf |X_\nu | 
+< \infty$. Поэтому по теореме Лебега о мажорированной сходимости 
+$$
+\Mf X_\nu \Ir_{A \cap \{ \nu \leqslant n \}} \to \Mf X_\nu I_A,
+$$
+откуда немедленно получаем $\Mf X_0 \Ir_A = \Mf X_\nu \Ir_A$.
+\end{proof}
+
+% 
+% 2007.04.17
+% лекция 10
+%
+
+\begin{theorem}[Сохранение мартингальности для двух моментов остановки]\label{Th:twomoments}
+ Пусть $\left\{(X_n,\Fs_n)\right\}$ --- мартингал, $\nu_1,\nu_2$ --- моменты остановки относительно 
+$\left\{ \Fs_n \right\}$, $\Mf |X_{\nu_1}| < \infty, \Mf |X_{\nu_2}| < \infty$,\\ $\liminf_{n\to\infty} \Mf |X_n|\Ir\left\{\nu_2 > n\right\} = 0$.
+Тогда $\Mf\left(X_{\nu_2} \mid \Fs_{\nu_1}\right)(\omega) = X_{\nu_1}(\omega)$ для п.в. $\omega$, таких что 
+$\nu_2(\omega) \geqslant \nu_1(\omega)$.
+Аналогичное утверждение верно для семимартингалов с заменой равенства на неравенство соответствующего знака.
+\end{theorem}
+\begin{proof}
+ $\left\{(X_n,\Fs_n)\right\}$ --- мартингал на $(\Omega,\Fs,\Pf)$. Так как время дискретно, то 
+$\nu_1 \in \N \cup \{ 0 \}$.
+По свойству моментов остановки
+$$
+\left\{ \nu_2 \geqslant \nu_1 \right\} = \bigcup_{m=0}^{\infty} N_m,\quad N_m = \left\{ \nu_1 = m, \nu_2 \geqslant m \right\} \in \Fs_m.
+$$
+При $m_1 \neq m_2\:$ $N_{m_1} \cap N_{m_2} = \varnothing$. Зафиксируем $m$. Нам достаточно показать, что для данного 
+$m$ для почти всех $\omega \in N_m$ выполняется
+$$
+\Mf\left(X_{\nu_2} \mid \Fs_{\nu_1}\right)(\omega) = X_{\nu_1}(\omega).
+$$
+Рассмотрим ограничение вероятностного пространства на множество $N_m$ с условной вероятностной мерой (в случае $\Pf(N_m) > 0$; остальные $N_m$ отбрасываем) и 
+применим теорему~\ref{Th:marthalt}. Новое вероятностное пространство --- $(N_m,\Fs^{(m)},\Pf^{(m)})$, где
+$\Fs^{(m)} = \left\{ A \cap N_m \mid A \in \Fs \right\}$, $\Pf^{(m)}\left\{B\right\} = \Pf\left\{ B \mid N_m \right\}$. Через $\Mf^{(m)}$ обозначим мат. ожидание по мере $\Pf^{(m)}$. Новым потоком $\sigma$-алгебр объявим
+$\Fs_n^{(m)} = \left\{A \in \Fs_n\colon A \subset N_m\right\},n \geqslant m$. Очевидно, 
+$\Fs_m^{(m)} \subseteq \Fs_{m+1}^{(m)} \subseteq \ldots \subseteq \Fs^{(m)}.$
+
+Теперь проверим, что $\left\{ (X_n\evn{N_m}, \Fs_n^{(m)})\right\}$ --- мартингал на новом вероятностном пространстве.
+$$
+\Mf^{(m)}\left( X_{n+1}\evn{N_m} \mid \Fs_n^{(m)}\right)(\omega) = \Mf\left( X_{n+1} \mid \Fs_n \right)(\omega) = X_n(\omega) = X_n\evn{N_m},\:\text{т.к. $\omega \in N_m$ и $\{(X_n,\Fs_n)\}$ --- мартингал.}
+$$
+На $N_m$ $\nu_1 = \const$, а $\nu_2$ --- момент остановки относительно нового потока $\sigma$-алгебр:
+$$
+\Xi_n = \left\{ \nu_2 \leqslant n, \nu_1 = m \right\} \in \Fs_n,\: \Xi_n \subseteq N_m \Rightarrow \Xi_n \in \Fs_n^{(m)}.
+$$
+Так как мы доказываем свойство, выполняющееся почти наверное, то имеет смысл рассматривать только $N_m$ с 
+$\Pf\left\{N_m\right\} > 0$. Отметим, что так как момент остановки может принимать и бесконечное значение, то,
+вообще говоря, $\cup_m N_m \neq \Omega$. Именно поэтому в следующей строчке мы имеем не равенство, а оценку снизу.
+\begin{gather*}
+ \Mf|X_n|\Ir\left\{\nu_2 > n\right\} \geqslant \sum_{m=0}^{\infty} \Mf|X_n|\Ir\left\{\nu_2 > n\right\}\Ir\left\{N_m\right\} = \sum_{m=0}^{\infty}\Mf\left(|X_n|\Ir\left\{\nu_2 > n\right\} \mid N_m\right)\Pf\left\{N_m\right\} = \\ =  \sum_{m=0}^{\infty}\Mf\left(|X_n|\evn{N_m} \Ir\left\{\nu_2 > n\right\} \mid N_m\right)\Pf\left\{N_m\right\}.
+\end{gather*}
+
+Покажем теперь, что для каждого $m$ $\liminf_{n\to\infty} \Mf\left(|X_n|\evn{N_m}\Ir\left\{\nu_2>n\right\} \mid N_m 
+\right)$ = 0. Действительно, в противном случае, так как все слагаемые в сумме выше (мы не учитываем те $m$, для которых $\Pf\left\{N_m\right\} = 0$) неотрицательны, мы бы имели
+$\liminf_{n\to\infty}  \Mf|X_n|\Ir\left\{\nu_2 > n\right\} > 0$, что противоречит условию.
+
+Таким образом, для мартингала и момента остановки на новом вероятностном пространстве выполнены условия теоремы
+ \ref{Th:marthalt} и тем самым нужное равенство выполняется на каждом из $N_m$ почти наверное.
+\end{proof}
+Это рассуждение весьма мудро. Приведём более простое доказательство, которое к тому же не требует теоремы для одного момента остановки.
+\begin{proof}
+ Нам нужно доказать, что для любого $A \in \Fs_{\nu_1} \cap \{\nu_2 \geqslant \nu_1\}$ $\Mf X_{\nu_2} \Ir_A = \Mf X_{\nu_1}\Ir_A$. Заметим, что если мы это докажем для событий $A_n \in \Fs_{\nu_1} \cap \{\nu_2 \geqslant \nu_1\} \cap \{\nu_1 = n\}$, то по теореме Лебега получим требуемое и для $A$ ($|X_{\nu_i}\Ir_{\cup_1^N A_n}| \leqslant |X_{\nu_i} \Ir_A| \leqslant |X_{\nu_i}| \in L_1(\Omega)$). 
+По определению $\sigma$-алгебры $\Fs_{\nu_1}$, учитывая, что $\{\nu_2 \geqslant \nu_1\}$ ей принадлежит, имеем, что $A_n \in \Fs_n$. 
+Тогда
+$$
+\Mf X_{\nu_1} \Ir_{A_n} = \Mf X_n \Ir_{A_n} = \Mf X_{\nu_2} \Ir_{A_n \cap \{\nu_2 = n\}} + \Mf X_n \Ir_{A_n\cap\{\nu_2 > n\}}.
+$$
+Заметим, что $A_n \cap \{\nu_2 > n\} \in \Fs_n$, поэтому $\Mf X_n \Ir_{A_n\cap\{\nu_2 > n\}} = \Mf X_{n+1} \Ir_{A_n\cap\{\nu_2 \geqslant n+1\}}$. Продолжая эту процедуру по индукции, получим, что 
+$$
+\Mf X_n \Ir_{A_n} = \Mf X_{\nu_2} \Ir_{A_n \cap \{n \leqslant \nu_2 \leqslant m\}} + \Mf X_{m} \Ir_{A_n \cap \{\nu_2 > m\}}.
+$$ 
+Вот и всё: по теореме Лебега первое слагаемое сходится к $\Mf X_{\nu_2} \Ir_{A_n}$ ($A_n \subset \{\nu_2 \geqslant n\})$ и существует подпоследовательность $m_k$, по которой второе слагаемое стремится к нулю. Следовательно, 
+$\Mf X_n \Ir_{A_n} = \Mf X_{\nu_2} \Ir_{A_n}$.
+\end{proof}
+
+
+\begin{ex}(<<Петербургская игра>>)
+ Пусть $\xi_1,\xi_2,\ldots$ --- независимые равновероятные испытания Бернулли, $\Pf\left\{\xi_i = \pm 1\right\} = 1/2$. Положим
+\begin{gather*}
+ X_0 = 0, X_1 = \xi_1, \ldots, X_n = \xi_1 + \sum_{k=2}^n \xi_k 2^{k-1} \Ir\left\{\xi_1 = \ldots = \xi_{k-1} = -1\right\}.
+\end{gather*}
+Проверим, что $\left\{(X_n,\sigma(\xi_1,\ldots,\xi_n))\right\}$ --- мартингал.
+\begin{multline*}
+ \Mf\left(X_{n+1} \mid \sigma(\xi_1,\ldots,\xi_n)\right) = \\ = \xi_1 + \sum_{k=2}^n 2^{k-1}\xi_k \Ir\left\{\xi_1 = \ldots = \xi_{k-1} = -1\right\} + 2^n \Mf\left(\xi_{n+1}\Ir\left\{\xi_1 = \ldots = \xi_{n} = -1\right\}\mid \sigma(\xi_1,\ldots,\xi_n)\right) =\\= X_n + 2^n \Ir\left\{\xi_1 = \ldots = \xi_n = -1\right\}\Mf\xi_{n+1} = X_n.
+\end{multline*}
+Здесь мы пользовались тем, что $X_n$ и $\Ir\left\{\xi_1 = \ldots = \xi_n = -1\right\}$ измеримы относительно 
+$\sigma(\xi_1,\ldots,\xi_n)$, а $X_{n+1}$ от неё не зависит.
+Проверим выполнение условия теоремы.
+$$
+\left\{\nu > n\right\} = \left\{\xi_1 = \ldots = \xi_n = -1\right\}.
+$$
+На $\left\{\nu > n\right\} X_n = -1 -2 -4 - \ldots - 2^{n-1} < 0$.
+$$
+X_\nu = -1 - 2 - \ldots - 2^{\nu - 2} + 2^{\nu - 1} = 1 \Rightarrow \Mf|X_\nu| < \infty.
+$$
+$$
+\Mf|X_n|\Ir\left\{\nu > n\right\} = (1 + 2 + \ldots + 2^{n-1})\Pf\left\{\nu > n\right\} = \frac{2^n - 1}{2^n} \to 1 \neq 0.
+$$
+Условие теоремы, таким образом, не выполнено, равно как и заключение: $\Mf X_\nu = 1 \neq 0 = \Mf X_0$.
+Теперь определим собственно игру. Она будет проводиться по турам, каждый тур состоит из этапов, на которых подбрасывается монетка. Ставка начинается с одного рубля и от тура к туру каждый раз увеличивается в два раза.
+При выпадении решки текущую ставку выплачивает второй игрок, при выпадении орла ставку выплачивает первый игрок и тур заканчивается. Казалось бы, всё честно, но к моменту остановки (выпадению орла) первый игрок теряет в среднем, как мы показали, один рубль.
+
+Модифицируем игру, сделав ставки во всех раундах, начиная с $1001$-го, нулевыми. Тогда условия теоремы будут выполнены и $\Mf X_\nu = 0$, то есть игра вроде бы справедлива. Но от исходной игры она отличается только в случае выпадения решётки 1000 раз подряд, что имеет вероятность $1/2^{1000}$. Справедливости, как видим, придётся ждать долго...
+\end{ex}
+
+Считаем $X_{-1} = 0, \Delta X_n \rightleftharpoons X_n - X_{n-1},(n \leqslant 0)$.
+
+\begin{lemma}
+ Пусть $\{X_n\}$ измеримы относительно $\{\Fs_n\}$, $\nu$ --- момент остановки относительно потока $\{\Fs_n\}$,
+$\Pf\left\{\nu<\infty\right\} = 1, \Mf\sum_{k=0}^\nu |\Delta X_k| < \infty$. Тогда $\Mf|X_\nu| < \infty$ и 
+$M|X_n|\Ir\{\nu > n\} \to 0\quad(n\to\infty)$ (то есть, на самом деле, ещё и выполнены условия теоремы \ref{Th:marthalt}).
+\end{lemma}
+\begin{proof}
+$$
+Y_\nu \rightleftharpoons \sum_{k=0}^\nu |\Delta X_k| \geqslant | \sum_{k=0}^\nu (X_k - X_{k-1})| = |X_\nu|.
+$$
+$\Mf|X_\nu| \leqslant \Mf Y_\nu < \infty$, поэтому
+$$
+\Mf|X_n|\Ir\left\{\nu > n\right\} \leqslant \Mf\sum_{k=0}^n|\Delta X_k|\Ir\left\{\nu > n\right\} \leqslant
+\Mf Y_\nu \Ir\left\{\nu > n\right\}.
+$$
+Так как $Y_\nu \geqslant 0$ и $Y_\nu \in L_1(\Omega)$ , а также $\nu < \infty$ п.н. 
+$\Rightarrow \Pf\left\{\nu > n\right\} \to 0\:(n\to\infty)$, то $\Mf Y_\nu \Ir\left\{\nu > n \right\} \to 0,
+\:(n\to\infty)$.
+\end{proof}
+
+\begin{theorem}[достаточные условия сохранения мартингальности]\label{Th:martdeltahalt}
+ Пусть $\left\{(X_n,\Fs_n)\right\}$ --- мартингал, $\nu$ --- момент остановки относительно $\{\Fs_n\}$, $\Mf\nu < \infty$ и 
+$$\exists\, C < \infty\; \forall n \geqslant 0\; \left\{ \omega\colon \nu \geqslant n\right\} \subseteq \left\{ \omega\colon \Mf\left(|\Delta X_n|\mid\Fs_{n-1}\right) \leqslant C\right\}.$$ Тогда $\Mf |X_\nu| < \infty$ 
+и $\Mf X_\nu = \Mf X_0$.
+\end{theorem}
+\begin{proof}
+ Нужно проверить условие предыдущей леммы, т.е. доказать, что $\Mf \sum_{k=0}^\nu |\Delta X_k | < \infty$.
+\begin{multline*}
+ \Mf\sum_{k=0}^\nu |\Delta X_k| = \Mf \sum_{n \geqslant 0} \Ir\left\{\nu = n\right\} \sum_{k=0}^n |\Delta X_k|
+= \sum_{n \geqslant 0}\sum_{k=0}^n \Mf|\Delta X_k|\Ir\left\{\nu = n\right\} = \sum_{k=0}^\infty\sum_{n=k}^\infty 
+\Mf|\Delta X_k|\Ir\left\{\nu = n\right\} = \\ = \sum_{k=0}^\infty \Mf|\Delta X_k|\Ir\left\{\nu \geqslant k\right\}.
+\end{multline*}
+Заметим, что $\left\{\nu \geqslant k\right\} = \Omega \setminus \left\{\nu < k\right\} \in \Fs_{k-1}$.
+\begin{gather*}
+ \Mf|\Delta X_k|\Ir\left\{\nu \geqslant k\right\} = \Mf \Mf\left(|\Delta X_k| \Ir\left\{\nu \geqslant k\right\} \mid 
+\Fs_{k-1}\right) = \Mf\Ir\left\{\nu \geqslant k\right\}\Mf\left(|\Delta X_k| \mid \Fs_{k-1}\right)  \leqslant 
+C \Pf\left\{\nu \geqslant k\right\},
+\end{gather*}
+\begin{multline*}
+ \Mf\sum_{k=0}^\nu |\Delta X_k| \leqslant \sum_{k=0}^infty C \Pf\left\{\nu \geqslant k\right\} = 
+C \sum_{k=0}^\infty\sum_{n=k}^\infty \Pf\left\{\nu = n\right\} = C \sum_{n=0}^\infty \sum_{k=0}^n \Pf\left\{\nu = n\right\} = C \sum_{n=0}^\infty (1+n) \Pf\left\{\nu = n\right\} =\\= C (\Mf\nu + 1) < \infty.
+\end{multline*}
+\end{proof}
+
+\subsection{Тождество Вальда}
+\begin{theorem}[Тождество Вальда]
+ Пусть $\xi_1,\ldots,\xi_n$ --- независимые случайные величины и $\forall k\quad \Mf\xi_k = a$, $\Mf|\xi_k| \leqslant C < \infty$. Положим $S_0 = 0$, $S_n = \xi_1 + \ldots + \xi_n, n \in \N$. Пусть $\nu \geqslant 1$ --- момент остановки относительно потока $\sigma$-алгебр $\left\{\sigma(\xi_1,\ldots,\xi_n)\right\}$ и $\Mf\nu < \infty$.
+Тогда
+$$
+\Mf S_\nu = a\Mf\nu.
+$$
+\end{theorem}
+\begin{proof}
+ Положим $X_n \rightleftharpoons S_n - na = (\xi_1 - a) + \ldots + (\xi_n - a), \Fs_n \rightleftharpoons \sigma(\xi_1,\ldots,\xi_n)$. Тогда $\left\{(X_n,\Fs_n)\right\}$ --- мартингал. 
+\begin{multline*}
+\Mf\left(|X_n - X_{n-1}|\mid\Fs_{n-1}\right) = \Mf\left(|S_n - na - (S_{n-1} - (n-1)a)|\mid \Fs_{n-1}\right)
+ = \Mf\left(|\xi_n - a| \mid \Fs_{n-1}\right) =\\= \Mf|\xi_n-a| \leqslant |a| + \Mf|\xi_n| \leqslant C+a < \infty.
+\end{multline*}
+Тем самым условия предыдущей теоремы выполнены и $\Mf X_\nu = 0 \Leftrightarrow \Mf\left(S_\nu - \nu a\right) = 0 \Leftrightarrow \Mf S_\nu = a\Mf\nu$.
+\end{proof}
+Приведём ещё одно доказательство тождества Вальда, следуя Колмогорову и Прохорову.
+\begin{proof}
+ Положим $\chi_i \rightleftharpoons \Ir\left\{\nu \geqslant i\right\}$, $\left\{\nu \geqslant i\right\} \in \Fs_{i-1} \Rightarrow$ $\xi_i$ и $\chi_i$ независимы $\forall i$. Покажем, что ряд 
+$$
+S_\nu = \sum_{i=1}^\nu \xi_i = \sum_{i=1}^\infty \xi_i \chi_i
+$$
+сходится абсолютно.
+\begin{gather*}
+\Mf|\chi_i \xi_i| = \Mf\chi_i \Mf|\xi_i| \leqslant C\Pf\left\{\nu \geqslant i\right\},\\
+\sum_{i=1}^\infty\Mf|\chi_i \xi_i| \leqslant C \sum_{i=1}^\infty \Pf\left\{nu \geqslant i \right\} < \infty,
+\end{gather*}
+т.к. сумму последнего ряда мы уже считали. 
+Вследствие абсолютной сходимости ряд можно почленно проинтегрировать, получив
+$$
+\Mf S\nu = \sum_{i=1}^\infty \Mf\xi_i \chi_i = \sum_{i=1}^\infty \Mf\xi_i \Mf\chi_i = a \sum_{i=1}^\infty \Pf\left\{\nu \geqslant i\right\} = a \Mf\nu.
+$$
+\end{proof}
+Без абсолютной сходимости, вообще говоря, при почленном интегрировании может получиться бред.
+\begin{ex}
+ $\xi_1,\xi_2,\ldots \sim \Nc(0,1), S_n \rightleftharpoons \xi_1 + \ldots + \xi_n, \nu = \min\left\{n\mid S_n < 0\right\}, S_\nu = \sum_{i=1}^\infty \xi_i \chi_i$. $\Pf\left\{S_\nu < 0\right\} = 1 \Rightarrow \Mf S_\nu < 0$, но
+$\Mf\xi_i \chi_i = \Mf\xi_i \Mf\chi_i = 0$, поэтому при формальном интегрировании получили бы $\Mf S_\nu = 0$.
+$$
+0 > \Mf S_\nu \neq \sum_{i=1}^\infty \Mf \xi_i \chi_i, \Mf S_\nu = \Mf \sum_{i=1}^\infty \xi_i \chi_i.
+$$
+Это показывает, что математическое ожидание не всегда $\sigma$-аддитивно.
+\end{ex}
+
+\subsubsection{Преобразование Лапласа. Фундаментальное тождество Вальда}
+\begin{df}
+ Пусть $X$ --- неотрицательная случайная величина. Преобразованием Лапласа от $X$ называется функция $\psi_X(\lambda)$, определённая для $\lambda \in \left\{z \mid Re z > 0\right\}$ следующим образом:
+\begin{gather*}
+ \psi_X{\lambda} \rightleftharpoons \Mf e^{-\lambda X}.
+\end{gather*}
+\end{df}
+Перечислим некоторые его свойства.
+\begin{enumerate}
+ \item Если $X_1,\ldots,X_n$ независимы, то $\psi_{X_1 + \ldots + X_n}(\lambda) = \prod_{i=1}^n \psi_{X_i}(\lambda)$.
+ \item $\psi_X(0) = 1$.
+ \item $|\psi_X(\lambda)| \leqslant \psi_X(0) = 1$ в правой полуплоскости.
+ \item $\psi_X^{(n)}(0) = (-1)^n \Mf X^n$, если $\Mf|X^n| < \infty$.
+ \item Для случайного блуждания ($S_n = \xi_1 + \ldots + \xi_n, \xi_j$ независимы и одинаково распределены) 
+$\psi_{S_n}(\lambda) = \left(\psi_{\xi_1}(\lambda)\right)^n$.
+ \item $\psi''_\xi(z) = \Mf\xi^2 e^{-z \xi} \geqslant 0$ при $z \in \RR$, т.е. преобразование Лапласа выпукло вниз.
+\end{enumerate}
+\begin{theorem}[Фундаментальное тождество Вальда]
+ Пусть $\xi,\xi_1,\ldots$ --- независимые одинаково распределённые случайные величины, $S_0 = 0$, $S_n = \xi_1 + \ldots + \xi_n, n \geqslant 1$, $\psi(\lambda) = \Mf e^{-\lambda \xi} < \infty$, $\nu$ --- момент остановки относительно 
+$\Fs_n \rightleftharpoons \left\{\sigma(\xi_1,\ldots,\xi_n)\right\}$, $\Mf\nu < \infty$ и $\exists C < \infty\:\forall n \geqslant 0\:
+\left\{\nu \geqslant n\right\} \subseteq \left\{|S_n| \leqslant C\right\}$, то есть момент остановки не наступает, пока случайное блуждание $S_n$ не выйдет из полосы $\{ |x| \leqslant C \}$.
+Тогда
+$$
+\forall \lambda\colon \psi(\lambda) \geqslant 1 \Rightarrow \Mf\left(\frac{e^{-\lambda S_\nu}}{\psi^\nu(\lambda)}\right) = 1.
+$$
+\end{theorem}
+\begin{proof}
+ Введём вспомогательный мартингал $X_n$: положим $X_0 \rightleftharpoons 1$, $X_n \rightleftharpoons 
+\dfrac{e^{-z S_n}}{\psi^n(z)}, n \geqslant 1$. Очевидно, что $X_n$ измеримо относительно $\Fs_n$, и что 
+$\Pf\left\{X_n \geqslant 0\right\} = 1$\footnote{Мы здесь таки считаем $z$ и $\xi_i$ действительными, а z ещё и неотрицательным}.
+$$
+\Mf X_n = \frac{\Mf e^{-z S_n}}{\psi^n(z)} = \frac{\psi^n(z)}{\psi^n(z)} = 1,
+$$
+$$ 
+X_{n+1} = \frac{e^{- z S_{n+1}}}{\psi^{n+1}(z)} = X_n \frac{e^{-z \xi_{n+1}}}{\psi(z)},
+$$
+$$
+\Mf\left(X_{n+1} \mid \Fs_n\right) = \Mf \left( X_n \frac{e^{-z \xi_{n+1}}}{\psi(z)} \mid \Fs_n \right),
+$$
+что в силу того, что $X_n$ является $\Fs_n$-измеримой, равно
+$$
+X_n \frac{\Mf e^{-z \xi_{n+1}}}{\psi(z)} = X_n,
+$$
+то есть $\{(X_n,\Fs_n)\}$ --- действительно мартингал.
+
+Покажем, что существует $C'\colon \Mf\left(| X_n - X_{n-1} | \mid \Fs_{n-1}\right) \leqslant C'$ на $\left\{ \nu 
+\geqslant n \right\}$ для всех $n$ (тогда можно будет применить теорему \ref{Th:martdeltahalt} о сохранении мартингального свойства).
+\begin{multline*}
+ \Mf\left( | X_n - X_{n-1} | \mid \Fs_{n-1} \right) = \Mf\left(X_{n-1}|\frac{e^{-z\xi_n}}{\psi(z)} - 1|\mid \Fs_{n-1}\right) = X_{n-1}\Mf|\frac{e^{-z\xi_n}}{\psi(z)} - 1| \leqslant X_{n-1}\Mf\left(1 + \frac{e^{-z\xi_n}}{\psi(z)}\right) \leqslant \\ \leqslant 2 X_{n-1},
+\end{multline*}
+т.к. по условию $\psi(z) \leqslant 1$, а $X_{n-1} \geqslant 0$.
+На множестве $\{\omega\colon \nu \geqslant n\} \in \Fs_{n-1}$ имеем по условию нашей теоремы
+$$
+\Mf\left(|X_n - X_{n-1}|\mid \Fs_{n-1}\right) \leqslant 2 X_{n-1} \leqslant 2 \frac{e^{zC}}{\psi^{n-1}(z)} \leqslant 
+2 e^{zC} \leftrightharpoons C' < \infty.
+$$
+Применяя к мартингалу $X_n$ теорему \ref{Th:martdeltahalt}, получаем $\Mf X_\nu = \Mf X_0 = 1$, что и требовалось.
+\end{proof}
+
+%
+%  2007.04.24
+%  лекция 11
+%
+
+\subsection{Применения тождества Вальда}
+\subsubsection{Теорема восстановления}
+Пусть $\xi_1,\xi_2,\ldots$ --- независимые одинаково распределённые неотрицательные случайные величины, $\Mf\xi_1 = a < \infty$. 
+Определим по ним случайное блуждание $S_n$, положив $S_0 = 0$, $S_n = \xi_1 + \ldots + \xi_n$.
+$\nu(t) = \min\left\{n\colon S_n > t\right\} = \sum_{k=0}^\infty \Ir\left\{S_k \leqslant t\right\}$ --- момент остановки (относительно $\{\sigma(\xi_1,\ldots,\xi_n)\}$).
+\begin{df}
+ \emph{Процессом восстановления} называется процесс $\left\{\nu(t)\right\}_t$.
+ \emph{Функцией восстановления} называется функция $U(t) = \Mf \nu(t)$.
+\end{df}
+$U(t)$ не убывает, следовательно, можно считать, что она задаёт меру на $[0,+\infty)$: $U([a,b]) \rightleftharpoons 
+U(b) - U(a)$ (доопределим в точках разрыва U до непрерывной слева, так всегда можно сделать).
+\begin{theorem}
+ Если $U(t)$ --- функция восстановления, построенная по неотрицательным независимым одинаково распределённым случайным величинам $\xi_1,\xi_2,\ldots$, $\psi_{\xi_1}(z) = \psi(z) = \Mf e^{-z\xi_1} = \int_{\RR} e^{-zx} dF(x)$, где $F$ --- функция распределения $\xi_1$, то преобразование Лапласа меры $U$, равное по определению $\int\limits_0^\infty e^{-zt}dU(t)$, равно $\frac{1}{1 - \psi(z)}$ в тех точках, где оно определено. Если при этом 
+$\xi_1,\ldots$ --- целочисленные с производящей функцией $f(s) = \Mf s^{\xi_1}$, $u_n = U(n) - U(n-1)$, то производящая функция последовательности $u_n$ $\sum_{n=0}^\infty s^n u_n = \frac{1}{1 - f(s)}$.
+\end{theorem}
+\begin{proof}
+ $\nu(t) = \sum_{n=0}^\infty\Ir\left\{S_n \leqslant t\right\} \Rightarrow U(t) = \sum_{n=0}^\infty \Pf\left\{S_n \leqslant t\right\}.$ Перейдём к преобразованию Лапласа:
+$$
+\int_0^\infty e^{-zt} dU(t) = \sum_{n=0}^\infty \int_0^\infty e^{-zt} dP\left\{S_n \leqslant t\right\} = 
+\sum_{n=0}^\infty \Mf e^{-z S_n} = \sum_{n=0}^\infty \psi^n(z) = \frac{1}{1 - \psi(z)}.
+$$
+Второе утверждение доказывается аналогично. %(получается из первого при $s = e^{-z}$) -- wtf?
+\end{proof}
+\begin{theorem}
+ При тех же условиях, $\Mf\xi_1 = a > 0, a < \infty$, существует
+$$
+\lim_{t\to\infty} \frac{U(t)}{t} = \frac{1}{a}.
+$$
+\end{theorem}
+\begin{proof}
+ $\nu(t)$ --- момент остановки, $\Mf\left(|S_n - S_{n-1}| \mid \Fs_{n-1}\right) = \Mf|\xi_n| = \Mf\xi_n = a < \infty$.
+$\psi(z) \rightleftharpoons \Mf e^{-z\xi_1}$. Покажем, что $\Mf\nu(t) < \infty$: для каждого $t$ $\Ir\left\{x \leqslant t\right\} \leqslant e^{-z(x-t)}, z \geqslant 0$.
+$$
+\Pf\left\{ \nu(t) > k\right\} = \Pf\left\{S_k \leqslant t\right\} = \Mf\Ir\left\{S_k \leqslant t\right\} \leqslant 
+\Mf e^{-z(S_k - t)} = \psi^k(z)e^{zt},
+$$
+следовательно,
+$$
+\Mf \nu(t) = \sum_{k=0}^\infty \Pf\left\{\nu(t) > k\right\} \leqslant \sum_{k=0}^\infty e^{zt}\psi^k(z) = 
+\frac{e^{zt}}{1 - \psi(z)} < \infty,\quad\text{т.к. при $z > 0\:|\psi(z)| < 1$.}
+$$
+Поэтому применимо тождество Вальда, из которого получаем
+$$
+\Mf S_{\nu(t)} = a\Mf \nu(t) = a U(t).
+$$
+По определению $S_{\nu(t)} > t$, следовательно, $aU(t) > t$, откуда
+$$
+\liminf_{t\to\infty} \frac{U(t)}{t} \geqslant \frac{1}{a}.
+$$
+$S_{\nu(t)-1} \leqslant t$, но $\nu(t) - 1$, вообще говоря, не является моментом остановки относительно $\{\sigma(\xi_1,\ldots,\xi_n)\}$. Если бы наши случайные величины $\xi_i$ были бы ограничены, т.е. существовало бы
+$w\colon \Pf\left\{\xi_1 \leqslant w\right\} = 1$, то было бы верно $\Pf\left\{S_{\nu(t)} = S_{\nu(t)-1} + \xi_{\nu(t)} \leqslant t + w\right\} = 1$. Почему бы так, собственно, и не сделать?
+
+Введём $\forall w$ случайную величину $\xi_k(w) \rightleftharpoons \min\left\{\xi_k,w\right\}$\footnote{$w$ называется \emph{уровнем усечения}.}, разумеется, $\xi_k(w) \leqslant w$ п.н., $S_n(w) \rightleftharpoons
+\xi_1(w) + \ldots + \xi_k(w) \leqslant S_n, \nu(t,w) \rightleftharpoons \min\left\{n\colon S_n(w) > t\right\} \geqslant \nu(t), U(t,w) \rightleftharpoons \Mf\nu(t,w) \geqslant U(t).$
+
+Применим к $S_n(w)$ и $\nu(t,w)$ тождество Вальда\footnote{Контрольный вопрос: а почему это $\Mf\nu(t,w) < \infty$? А вдруг равно?}:
+$$
+\Mf S_{\nu(t,w)}(w) = \Mf \xi_1(w) U(t,w),
+$$
+$S_{\nu(t,w)}(w) = S_{\nu(t,w)-1}(w) + \xi_{\nu(t,w)}(w) \leqslant t+w$ п.н., следовательно, $U(t) \leqslant U(t,w) = \Mf \left(\frac{S_{\nu(t,w)}(w)}{\Mf\xi_1(w)}\right) \leqslant \frac{t+w}{\Mf\xi_1(w)}\quad \forall t,w$.
+Поэтому
+$$
+\limsup_{t\to\infty} \frac{U(t)}{t} \leqslant \frac{1}{\Mf\xi_1(w)}\lim_{t\to\infty}\frac{t+w}{t} = \frac{1}{\Mf\min\left\{\xi_1,w\right\}}\quad \forall w.
+$$
+Но так как $\Mf\min\left\{\xi_1,w\right\} \to \Mf\xi_1 = a > 0\quad(w\to\infty)$, то $\frac{1}{\Mf \xi_1(w)} \to \frac{1}{\Mf\xi_1} = \frac{1}{a}$, следовательно, $\lim_{t\to\infty} \frac{U(t)}{t} = \frac{1}{a}.$
+\end{proof}
+
+%\subsubsection{Теорема о сходимости полумартингалов}
+\subsubsection{Неравенства Дуба и Колмогорова}
+Пусть $\{X_n,\Fs_n\}$ --- субмартингал, т.е. $X_n$ измерима относительно $\Fs_n$, $\Mf|X_n| < \infty$, $\Mf\left(X_{n+1}\mid \Fs_n\right) \geqslant X_n\forall n$.
+\begin{lemma}[Неравенство Маркова]
+ Пусть $\xi \geqslant 0, \Mf\xi < \infty$. Тогда $\forall x > 0\: \Pf\left\{\xi \geqslant x\right\} \leqslant \frac{\Mf\xi}{x}$.
+\end{lemma}
+\begin{proof}
+ $\Pf\left\{\xi \geqslant x\right\} = \Mf\Ir\left\{\xi \geqslant x\right\} \leqslant \Mf\Ir\left\{\xi \geqslant x\right\}\frac{\xi}{x} = \frac{1}{x} \Mf\xi\Ir\left\{\xi \geqslant x\right\} \leqslant \frac{\Mf\xi}{x}$.
+\end{proof}
+\begin{theorem}[Doob]
+ Пусть $\{X_n,\Fs_n\}$ --- неотрицательный субмартингал. Тогда \footnote{Это называется неравенством Дуба.}
+$$\forall x > 0, n > 0\: \Pf\left\{ \max_{1 \leqslant k \leqslant n} X_k \geqslant x\right\} \leqslant \frac{1}{x} \Mf X_n.
+$$
+\end{theorem}
+\begin{proof}
+ Введём моменты остановки
+$$
+\nu \rightleftharpoons \min\left\{ k \geqslant 0\colon X_k \geqslant x\right\}, \nu(n) \rightleftharpoons 
+\min\left\{\nu,n\right\} \leqslant n \Rightarrow \liminf_{m\to\infty} \Mf|X_m|\Ir\left\{\nu(n) \geqslant m\right\} = 0.
+$$
+Положим $\nu_1 = \nu(n), \nu_2 \equiv n$. По теореме \ref{Th:twomoments} имеем
+$$
+\Mf X_{\nu_2} = \Mf X_n \geqslant \Mf X_{\nu_1} = \Mf X_{\nu(n)}.
+$$
+Заметим, что 
+$$
+\left\{\max_{1 \leqslant k \leqslant n} X_k \geqslant x \right\} = \left\{X_{\nu(n)} \geqslant x\right\},
+$$
+следовательно,
+$$
+\Pf\left\{\max_{1 \leqslant k \leqslant n} X_k \geqslant x \right\} = \Pf\left\{X_{\nu(n)} \geqslant x\right\}
+\leqslant \frac{\Mf X_{\nu(n)}}{x} \leqslant \frac{\Mf X_n}{x},
+$$ 
+где предпоследнее неравенство выполнено в силу неравенства Маркова.
+\end{proof}
+\begin{imp}[Неравенство Колмогорова]
+ Пусть $\{X_n,\Fs_n\}$ --- мартингал, $\Mf X^2_n < \infty$. Тогда $\{X^2_n,\Fs_n\}$ --- субмартингал и 
+$$
+\Pf\left\{\max_{1\leqslant k \leqslant n} |X_k| \geqslant x\right\} \leqslant \frac{\Mf X^2_n}{x^2}.
+$$
+\end{imp}
+\begin{proof}
+ Выпуклая вниз измеримая функция от мартингала есть субмартингал.
+\end{proof}
+
+%\subsubsection{Неравенство Дуба}
+\subsubsection{Теорема Дуба о среднем числе пересечений полосы мартингалом}
+Пусть есть случайный процесс $X_t$ и два уровня $-\infty < a < b < +\infty$, и процесс, для простоты, стартует "<между"> ними, т.е. $X_0 \in (a,b)$. Положим $\nu_0 \rightleftharpoons 0$, $\nu_{2k-1} \rightleftharpoons \min\left\{t > \nu_{2k-2}\colon X_t \leqslant a\right\}$, $\nu_{2k} \rightleftharpoons \min\left\{t > \nu_{2k-1}\colon
+X_t \geqslant b\right\}$. Определим
+$$
+\beta_n(a,b) \rightleftharpoons 
+\begin{cases}
+ 0, & \nu_2 > n,\\
+ \max\left\{k \colon \nu_{2k} \leqslant n\right\}, & \nu_2 \leqslant n.
+\end{cases}
+$$
+Говоря неформально, $\beta_n(a,b)$ --- это количество полных пересечений процессом $X_t$ полосы $(a,b)$ "<снизу вверх"> на промежутке $(0,n)$. 
+
+Обозначим через $x_+$ $\max\left\{0,x\right\}$.
+\begin{theorem}[Неравенство Дуба]
+ Если $(X_n,\Fs_n)$ --- субмартингал, то 
+$$
+\forall n, \forall {-\infty} < a < b < +\infty\colon \Mf\beta_n(a,b) \leqslant \frac{\Mf(X_n - a)_+}{b-a}.
+$$
+\end{theorem}
+\begin{proof}
+ $f(x) = (x-a)_+$ --- выпуклая вниз неубывающая функция, следовательно, $((X_n - a)_+,\Fs_n)$ --- субмартингал.
+
+Далее считаем $X_n \geqslant 0$ (заменяем $(X_n - a)_+$ на $X_n$, вместо $[a,b]$ берём $[0,b-a] = [0,c]$). 
+Нужно доказать, что $\Mf\beta_n(0,c) \leqslant \frac{\Mf X_n}{c}$. Введём случайные величины $\eta_t$ следующим образом:
+$$
+\eta_t = 
+\begin{cases}
+ 1, & t \in \bigcup_{k \geqslant 1} (\nu_{2k-1},\nu_{2k}] \\
+ 0, & t \in \bigcup_{k \geqslant 0} (\nu_{2k}, \nu_{2k+1}],
+\end{cases}
+$$
+т.е. $\eta_t = 1$ тогда и только тогда, когда мы идём от нечётного $\nu$ к чётному (включая чётный конец интервала). 
+$\eta_t$ определяется чётностью $\max\left\{k\colon \nu_k < t\right\}$, следовательно, выражается через $X_1,\ldots,X_{t-1}$, а поэтому измерима относительно $\Fs_{t-1}$.
+$$
+\eta_t - \eta_{t+1} \neq  0 \Leftrightarrow t \in \left\{\nu_1,\nu_2,\ldots\right\},
+$$
+$$
+\eta_t - \eta_{t+1} = 
+\begin{cases}
+ -1, & t \in \left\{\nu_{2k-1}\colon k > 0\right\} = \left\{X_t = 0\right\}\\
+  1, & t \in \left\{\nu_{2k}\colon k \geqslant 1\right\} = \left\{X_t \geqslant c\right\}.
+\end{cases}
+$$
+$$
+c\Ir\left\{\exists k\colon t = \nu_{2k}\right\} \leqslant (\eta_t - \eta_{t+1}) X_t,
+$$
+т.к. на тех $\omega$, где индикатор слева равен $1$, $\eta_t - \eta_{t+1} = 1$, а $X_t \geqslant c$. Поэтому
+$$
+c\beta_n(0,c) = c\max\left\{k\colon \nu_{2k} \leqslant n\right\} = \sum_{t=0}^n c\Ir\left\{\exists k\colon t = \nu_{2k}\right\} \leqslant \sum_{n=0}^n(\eta_t - \eta_{t+1})X_t = \sum_{t=1}^n \eta_t(X_t - X_{t-1}) - \eta_{n+1}X_n.
+$$
+Учитывая, что $\eta_{n+1}, X_n \geqslant 0$, получаем 
+\begin{multline*}
+ c\Mf\beta_n(0,c) \leqslant \Mf\sum_{t=1}^n\eta_t(X_t - X_{t-1}) = \sum_{t=1}^n\Mf\left(\eta_t\Mf\left(X_t - X_{t-1} \mid \Fs_{t-1}\right)\right) = \sum_{t=1}^n \Mf\left(\eta_t\Mf\left( X_t \mid \Fs_{t-1}\right) - X_{t-1}\right),
+\end{multline*}
+что в силу того, что $\eta_t \in \left\{0,1\right\}$ и $\Mf(X_t\mid\Fs_{t-1}) - X_{t-1} \geqslant 0$ даёт
+$$
+c\Mf\beta_n(0,c) \leqslant \sum_{t=1}^n\Mf\left(\Mf(X_t\mid\Fs_{t-1}) - X_{t-1}\right) = \sum_{t=1}^n \left(
+\Mf X_t - \Mf X_{t-1}\right) = \Mf X_n - \Mf X_0 \leqslant \Mf X_n.
+$$
+\end{proof}
+
+
+%
+% 2007.05.08
+% лекция 12
+%
+\subsubsection{Теорема Дуба о сходимости субмартингалов}
+%Пусть $(X_n,\Fs_n)$ --- семимартингал. Положим $\beta_n(a,b)$ равным числу пересечений полосы $(a,b)$ последовательностью $X_1,\ldots,X_n$.
+\begin{theorem}[Дуба о сходимости субмартингалов]
+ Пусть $(X_n,\Fs_n)$ --- субмартингал, $\sup_n \Mf|X_n| < \infty$. Тогда существует такая случайная величина $X$,
+что $\Pf\left\{ \lim_{n\to\infty} X_n = X \right\} = 1, \Mf|X| < \infty$.
+\end{theorem}
+\begin{proof}
+ Рассуждаем от противного. Пусть с положительной вероятностью предела не существует, т.е. для случайных величин 
+$\xi_* \rightleftharpoons \liminf_{n\to\infty} X_n$, $\xi^* \rightleftharpoons \limsup_{n\to\infty} X_n$ выполнено 
+$$
+\Pf\left\{ \xi^* > \xi_* \right\} > 0.
+$$
+Заметим, что $\left\{ \omega\colon \xi^* > \xi_* \right\} = \cup_{a,b \in \Q} \left\{ \omega\colon \xi_* < a < b < \xi^*\right\}$, а посему в силу $\sigma$-аддитивности вероятностной меры
+$$
+0 < \Pf\left\{\xi^* > \xi_*\right\} \leqslant \sum_{a,b \in \Q} \Pf\left\{\xi_* < a < b < \xi^* \right\},
+$$
+следовательно, $\exists a,b \in \Q\colon \Pf\left\{ \xi_* < a < b < \xi^*\right\} > 0$, то есть $X_n$ с положительной вероятностью 
+бесконечное число раз пересекает полосу $(a,b)$. Обозначим $\beta^*(a,b) \rightleftharpoons \sup_n \beta_n(a,b)$. Ясно, что 
+$\beta_n(a,b) \up \beta^*(a,b),n\to\infty$. Имеем
+$$
+\forall k < \infty\colon\: \Pf\left\{\beta_n(a,b) \geqslant k \mid \xi^* > b > a > \xi_* \right\} \to 1\quad(n\to\infty).
+$$
+Поэтому $\Pf\left\{\beta^*(a,b) = \infty\right\} = \Pf\left\{\xi^* > b > a > \xi_*\right\} > 0$, значит, 
+$\Mf\beta^*(a,b) = +\infty$.
+
+С другой стороны, по неравенству Дуба
+$$
+\Mf\beta_n(a,b) \leqslant \frac{\Mf\left(X_n - a\right)_+}{b-a} = \frac{\Mf\left(X_n\right) + |a|}{b-a} \leqslant
+\frac{\sup_n \Mf|X_n| + |a|}{b-a} = c < \infty,
+$$
+откуда по теореме Б.\,Леви $\Mf\beta^*(a,b) \leqslant c < \infty$, что противоречит полученному выше. Таким образом,
+$\xi^* \eqas \xi_*$. Осталось заметить, что $\Mf|X| < \infty$ по теореме Фату.
+\end{proof}
+\begin{imp}
+ Если $X_n \leqslant 0$ --- субмартингал, то $\Pf\left\{\exists \lim_{n\to\infty} X_n = X\right\} = 1$
+\end{imp}
+\begin{proof}
+ $\Mf|X_n| \downarrow, n \to \infty \Rightarrow \sup_n \Mf|X_n| < \infty$.
+\end{proof}
+\begin{imp}
+ Если $(X_n,\Fs_n)$ --- неотрицательный мартингал, то $\Pf\left\{\exists \lim_{n\to\infty} X_n = X\right\} = 1$.
+\end{imp}
+\begin{proof}
+ $\Mf|X_n| = \Mf X_n = \Mf X_0 < \infty$.
+\end{proof}
+\begin{ex}
+ Пусть $\mu(t)$ --- ветвящийся процесс, $A$ --- мат.~ожидание числа потомков, тогда $X_n = \frac{\mu(n)}{A^n}$ образуют мартингал, $X_n \geqslant 0$, причём сходимость есть даже при $A < 1$!
+\end{ex}
+\begin{imp}[Теорема Колмогорова о сходимости рядов]
+ Пусть $\xi_1,\ldots$ --- независимые случайные величины, $\Mf\xi_k = 0$, $\Df\xi_k = \sigma^2_k < \infty$, 
+$\sum_{k=1}^\infty \sigma^2_k = \sigma^2 < \infty$. Тогда сушествует случайная величина S, к которой частичные суммы
+$S_n = \xi_1 + \ldots + \xi_n$ сходятся почти наверное.
+\end{imp}
+\begin{proof}
+ $S_n$ --- мартингал. По неравенству Йенсена $\Mf|S_n| \leqslant \sqrt{\Mf S^2_n} = \sqrt{\Df S_n} = \sqrt{\sum_1^n \sigma^2_i} \leqslant \sigma < \infty$. Применяем теорему Дуба.
+\end{proof}
+
+\section{Процесс броуновского движения}
+\begin{df}
+ Процессом броуновского движения (стандартным винеровским процессом) называется случайный процесс $W(t), t \geqslant 0$, 
+обладающий следующими свойствами:
+\begin{enumerate}
+ \item $\Pf\left\{W(0) = 0\right\} = 1$.
+ \item $W(t)$ --- процесс с независимыми приращениями.
+ \item $\forall 0 \leqslant s \leqslant t\colon\: W(t) - W(s) \sim \Nc(0,t-s)$.
+\end{enumerate}
+\end{df}
+\begin{lemma} Совместное распределение значений $\left(W(t_1),\ldots,W(t_n)\right), 0 = t_0 < \ldots < t_n$ является многомерным нормальным 
+ с ковариационной матрицей $\Sigma = \left( \min(t_i,t_j) \right)$.
+\end{lemma}
+\begin{proof}
+ По определению процесса $W(t)$ плотность распределения вектора $\left(W(t_1) - W(t_0),\ldots,W(t_n) - W(t_{n-1})\right)$ равна
+$$
+p_{t_1,\ldots,t_n}(y_1,\ldots,y_n) = \frac{1}{\prod_{k=1}^n \sqrt{2\pi (t_k-t_{k-1})}} \prod_{k=1}^n e^{-\frac{y^2_k}{2(t_k-t_{k-1})}}.
+$$
+Из теории меры и интеграла хорошо известен следующий 
+\begin{fct}
+ Если вектор $\xi = (\xi_1,\ldots,\xi_n)$ имеет плотность распределения $\rho(x)$, а $H\colon \R^n \to \R^n$ --- невырожденный в каждой точке диффеоморфизм, то вектор $\zeta = H(\xi)$ имеет плотность распределения
+$q(x) = \frac{\rho(H^{-1}(x))}{|J_H(H^{-1}(x))|}$.
+\end{fct}
+Рассмотрим линейное преобразование $\R^n$, переводящее $(y_1,\ldots,y_n)$ в $(y_1,y_1+y_2,\ldots,y_1+\ldots+y_n)$. 
+Как видно, его якобиан равен 1, и поэтому, применяя наш факт, получаем то, что нужно (проведите выкладку с подстановкой $H^{-1}$ самостоятельно).
+
+Пусть $s < t$. Найдём $\cov(W(s),W(t)) = \cov(W(s),W(s)+W(t)-W(s)) = \cov(W(s),W(s)) + \cov(W(s),W(t)-W(s)) = \Df W(s) = s = \min(s,t)$.
+\end{proof}
+\subsection{Теорема Колмогорова о непрерывной модификации}
+\begin{df}
+Случайные процессы $\xi(t)$ и $\eta(t)$ называются \emph{стохастически эквивалентными}, если 
+$$\forall t\colon 
+\Pf\left\{\xi(t) = \eta(t)\right\} = 1.
+$$ $\xi(t)$ называется модификацией $\eta(t)$ (и наоборот).
+\end{df}
+Из определения видно, что если $\xi(t)$ и $\eta(t)$ стохастически эквивалентны, то $\Pf\left\{\xi(t_k) = \eta(t_k), k = 1,\ldots,n\right\} = 1$.
+\begin{ex}
+ Пусть $\xi(t) \equiv 0, t \in [0,1]$, $r(t) = \Ir_\Q(t)$, $\gamma \sim \mathcal{R}[0,1]$.
+Положим $\eta(t) = r(t+\gamma)$. Тогда $\Pf\left\{\xi(t) \neq \eta(t)\right\} = \Pf\left\{\gamma + t \in Q\right\} = 0$. Таким образом, $\xi(t)$ и $\eta(t)$ стохастически эквивалентны, но при этом $\Pf\left\{\sup_{[0,1]} \xi(t) = 0\right\} = 1, \Pf\left\{\sup_{[0,1]} \eta(t) = 1\right\} = 1$.
+\end{ex}
+\begin{stm}
+ Пусть $\xi(t)$, $\eta(t), t \in [0,1]$ --- два случайных процесса на $(\Omega,\Fs,\Pf)$. Если существует счетное
+ детерминированное $A \subset [0,1]$ и функционал $F\colon \R^A \to \R^{[0,1]}$, такой, что $\Pf\left\{ \xi(t) = \eta(t) \right\} = 1\quad \forall t \in A$ и $\Pf\left\{\xi(t) = F(\xi(x), x\in A)(t)\:\forall x \in [0,1]\right\} = 
+\Pf\left\{\eta(t) = F(\eta(x),x \in A)(t)\:\forall x \in [0,1]\right\} = 1$, то $\Pf\left\{\xi(t) = \eta(t)\:\forall t \in [0,1]\right\} = 1$.
+\end{stm}
+\begin{proof}
+ Очевидно.
+\end{proof}
+\begin{theorem}[Колмогоров]
+ Пусть $\xi(t)$ --- случайный процесс, $t \in [0,1]$. Если существуют такие $b > a > 0, c < \infty$, что
+$$
+\forall t,t+h \in [0,1]\quad \Mf|\xi(t+h)-\xi(t)|^a < \frac{c|h|}{|\log|h||^{1+b}},
+$$
+то $\xi(t)$ имеет на $[0,1]$ непрерывную модификацию.
+\end{theorem}
+\begin{proof}
+ Обозначим $\Delta_h \xi(t) \rightleftharpoons \xi(t+h) - \xi(t), \ep(h) \rightleftharpoons \frac{1}{|\log|h||^\beta}, 1 < \beta < \frac{b}{a}$.
+Имеем по неравенству Маркова
+$$
+\Pf\left\{|\Delta_h \xi(t)| > \ep(h)\right\} \leqslant \frac{\Mf|\Delta_h \xi(t)|^a}{\ep^a(h)} \leqslant
+ \frac{c|h|}{|\log|h||^{1+b-a\beta}} = \frac{c|h|}{|\log|h||^{1+\delta}} \leftrightharpoons q(h),
+$$
+где $\delta = b - a\beta > 0$. Как видно, $\ep(h) \downarrow 0, q(h) \downarrow 0, (h\to 0)$.
+$$
+\sum_{n=1}^\infty \ep(2^{-n}) = \sum_{n=1}^\infty \frac{c^*}{n^\beta} < \infty, \sum_{n=1}^\infty 2^n q(2^{-n}) = \sum_{n=1}^\infty \frac{c^{**}}{n^{1+\delta}} < \infty.
+$$
+Положим $\xi_n(t) = \xi\left(\frac{r}{2^n}\right) +  2^n \left(t - \frac{r}{2^n}\right)\Delta_{\frac{1}{2^n}} \xi\left(\frac{r}{2^n}\right)$ для $\frac{r}{2^n} \leqslant t \leqslant \frac{r+1}{2^n}$.
+Докажем несколько вспомогательных лемм.
+\begin{lemma}\label{Lm:ContConv}
+ Последовательность $\xi_n(t)$ при $n\to\infty$ почти наверное сходится к случайному процессу $\eta(t)$, траектории которого непрерывны почти наверное.
+\end{lemma}
+\begin{proof}
+\begin{multline*}
+\bbm{\xi_{n+1}(t) - \xi_n(t)} \leqslant \bbm{\xi\left(\frac{2r+1}{2^{n+1}}\right) - \frac{1}{2}\left(\xi(\left(\frac{r}{2^n}\right)) + \xi\left(\frac{r+1}{2^n}\right)\right)} = \\ =
+\frac{1}{2}\bbm{ \left( \xi\left(\frac{2r+1}{2^{n+1}}\right) - \xi\left(\frac{r}{2^n}\right)\right) + \left( \xi\left(\frac{2r+1}{2^{n+1}}\right) - \xi\left(\frac{r+1}{2^n}\right)\right) } \leqslant \frac{1}{2}\left( 
+\bbm{\Delta_{\frac{1}{2^{n+1}}}\xi\left(\frac{r}{2^n}\right)} + \bbm{\Delta_{\frac{1}{2^{n+1}}}\xi\left(\frac{2r+1}{2^{n+1}}\right)} \right).
+\end{multline*}
+$\Pf_{n,r} \rightleftharpoons \Pf\left\{ \sup_{\frac{r}{2^n} \leqslant t \leqslant \frac{2r+1}{2^{n+1}}} |\xi_{n+1}(t) - \xi_n(t)| > \ep\left(\frac{1}{2^{n+1}}\right)\right\} \leqslant  \Pf\left\{ \frac{1}{2}\left(\bbm{\Delta_{\frac{1}{2^{n+1}}}\xi\left(\frac{r}{2^n}\right)} + \bbm{\Delta_{\frac{1}{2^{n+1}}}\xi\left(\frac{2r+1}{2^{n+1}}\right)}\right) > \ep\left(\frac{1}{2^{n+1}}\right)\right\} \leqslant 2q\left(\frac{1}{2^{n+1}}\right)$. Поэтому 
+$$
+\Pf\left\{\sup_{[0,1]} |\xi_{n+1}(t) - \xi_n(t)| > \ep\left(\frac{1}{2^{n+1}}\right)\right\} \leqslant \sum_{r=0}^{2^n-1} \Pf_{n,r} \leqslant 2^{n+1}q\left(\frac{1}{2^{n+1}}\right).
+$$
+Т.к. $\sum_n 2^{n+1} q\left(\frac{1}{2^{n+1}}\right) < \infty$, то по лемме Бореля--Кантелли для почти всех $\omega \in \Omega$ найдётся 
+$$n(\omega)\colon \forall n > n(\omega) \sup_{[0,1]} |\xi_{n+1}(t) - \xi_n(t)| \leqslant \ep\left(\frac{1}{2^{n+1}}\right).
+$$
+ С другой стороны, т.к. $\sum_n \ep\left(\frac{1}{2^{n+1}}\right) < \infty$, то
+для $m > n$ $\sup_{[0,1]} |\xi_n(t) - \xi_m(t)| \leqslant \ep_n = \sum_n^\infty \ep(2^{-k}) \to 0\quad(n \to \infty)$. Поэтому $\{\xi_n(t)\}$ почти наверное фундаментальна, стало быть, почти наверное $\exists \lim_{n\to\infty} \xi_n(t) = \eta(t)$, причём эта сходимость почти наверное равномерная ($\sup_{[0,1]}|\xi_n(t) - \eta(t)| \leqslant \ep_n \forall n > n(\omega)$), поэтому траектории $\eta(t)$ почти наверное непрерывны, как равномерные пределы непрерывных (на самом деле кусочно-линейных) траекторий $\xi_n(t)$.
+\end{proof}
+\begin{lemma}\label{Lm:ConvEq}
+Процессы $\eta(t)$ и $\xi(t)$ стохастически эквивалентны.
+\end{lemma}
+
+%%% последняя лекция (13)
+%%% 2007.05.15
+\begin{proof}
+Если $t$ --- двоично-рациональная точка, то при достаточно больших
+$m$ $\eta(t) = \xi_m(t) = \xi(t)$ (по построению).
+
+В противном случае положим $r_n = [t 2^n]$ --- номер интервала
+$n$-го разбиения, в который попала точка $t$. Очевидно, что
+$0 < t - \dfrac{r_n}{2^n} < \dfrac{1}{2^n}$, откуда
+$\dfrac{r_n}{2^n} \to t$ ($n \to \infty$).
+Далее (используя монотонность $\ep$ и $q$),
+$$
+\Pf \left\{ \left| \xi\left( \frac{r_n}{2^n} \right) - \xi(t) \right|
+> \ep \left( \frac{1}{2^n} \right) \right\} \leqslant
+\Pf \left\{ \left| \xi\left( \frac{r_n}{2^n} \right) - \xi(t) \right|
+> \ep \left( t - \frac{r_n}{2^n} \right) \right\} \leqslant
+q\left(t - \frac{r_n}{2^n} \right) \leqslant
+q\left(\frac{1}{2^n}\right).
+$$
+Ряд $\sum q \left( \frac{1}{2^n} \right)$ сходится. Применяем лемму
+Бореля\ч Кантелли: выполняется лишь конечное число из этих
+событий, поэтому
+$$
+\Pf\left\{ \xi\left( \frac{r_n}{2^n} \right) \ranrai \xi(t) \right\} = 1.
+$$
+Но для $\eta$ аналогичное соотношение выполняется в силу
+непрерывности $\eta$ п.н.; в двоично-рациональных точках $\xi$
+и $\eta$ совпадают. Отсюда $\xi(t) = \eta(t)$ почти наверное.
+\end{proof}
+\end{proof}
+
+\begin{ex}
+Пуассоновский процесс с интенсивностью $\lambda \in (0; \infty)$.
+Траектории  разрывны. 
+$$
+\Mf \left| \xi(t+h) - \xi(t) \right|^a \geqslant
+\Pf \left\{ \xi(t+h) > \xi(t) \right\} =
+1 - e^{-\lambda h} = \lambda h (1 + o(h)) \quad \text{при $h\to 0$.}
+$$
+Нет логарифмического множителя. Теорема Колмогорова
+неприменима.
+\end{ex}
+
+\subsection{Свойства винеровского процесса}
+
+\begin{lemma}
+Стандартный винеровский процесс имеет модификацию с п.н. непрерывными
+траекториями.
+\end{lemma}
+
+\begin{proof}
+Проверим условия теоремы Колмогорова.
+Положим $a = 4$. $w(t+h) - w(t) \sim \Norm(0, h)$ ($h > 0$).
+$\Mf(w(t+h) - w(t))^4 = 3h^2$ (интеграл берётся по частям),
+а $3h^2 = o\left(\frac{|h|}{\ln^6 |h|}\right)$ (например) ---
+теорема Колмогорова работает.
+\end{proof}
+
+\begin{lemma}
+Если $w(t)$ --- стандартный винеровский процесс, то процессы
+$w_a(t) = \dfrac{1}{\sqrt a} w(ta)$ (для любого $a > 0$) и
+$w^*(t) = tw\!\left(\dfrac{1}{t}\right), w^*(0) = 0$ имеют такие же распределения,
+как и $w(t)$.
+\end{lemma}
+
+\begin{proof}
+Независимость приращений очевидна (в силу монотонности преобразований).
+Очевидно, что $w_a(0) = 0$.
+
+Распределение приращений:
+\begin{gather*}
+w_a(t) - w_a(s) = \frac{w(at) - w(as)}{\sqrt a} \sim
+\frac{\Norm(0, a(t-s))}{\sqrt a} = \Norm(0, t-s); \\
+w^*(t) - w^*(s) = t w \left(\frac 1t\right) - s w \left(\frac 1t\right) =
+(t-s) w\left( \frac 1t \right) -
+s \left( w \left( \frac 1s \right) - w \left( \frac 1t \right) \right)
+\end{gather*}
+Уменьшаемое и вычитаемое суть приращения на непересекающихся отрезках
+и потому независимы. 
+
+$(t-s) w(1/t) \sim \Norm(0, (t-s)^2 / t)$,
+$s(w(1/s) - w(1/t)) \sim \Norm(0, s^2(1/s - 1/t)$,
+откуда
+$$
+w^*(t) - w^*(s) \sim \Norm \left( 0,
+\frac{(t-s)^2}{t} + s^2 \left( \frac 1s - \frac 1t \right) \right) =
+\Norm(0, t-s).
+$$
+В частности, $\Mf(w^*(0))^2 = 0$, то есть $w^*(0) = 0$ п.н.
+\end{proof}
+
+\begin{lemma}
+$$
+\Pf \left\{ \sup_{0 \leqslant u \leqslant t} w(u) \geqslant x \right\}
+= 2 \Pf \{ w(t) \geqslant x \} =
+\frac{2}{\sqrt{2\pi t}} \ixi e^{-\frac{v^2}{2t}} \, dv
+$$
+\end{lemma}
+
+\begin{proof}
+Положим $\tau_x = \inf \{ u : w(u) \geqslant x \}$ --- первое пересечение
+уровня $x$. $w(\tau_x) = x$. Имеем:
+\begin{gather*}
+\{ \tau_x > v \} = \left\{ \sup_{0 \leqslant u \leqslant v} 
+w(u) < x \right\} \in \Fs_v := \sigma(w(u), u \leqslant v); \\
+\{ \tau_x = v \} = \bigcap_{n=1}^{\infty} 
+\left\{ \sup_{0 \leqslant u \leqslant v - \frac{1}{n}} w(u) < x,
+\sup_{0 \leqslant u \leqslant v} w(u) = x \right\} \in \Fs_v,
+\end{gather*}
+поэтому $\tau_x$ --- момент остановки относительно $\{\Fs_v\}$.
+Если $\tau_x = v$, то $w(t) - w(v) = w(t) - w(\tau_x)$ --- не 
+зависит от $\{w(y), y \leqslant v\}$ и имеет распределение
+$\Norm(0, t-v)$. Отсюда (при $v < t$)
+$\Pf(w(t) \geqslant x \mid \tau_x = v) =
+\Pf(w(t) \leqslant x \mid \tau_x = v) = \frac 12$ (симметричность
+нормального распределения). Далее, $\Pf(w(t) \geqslant x \mid \tau_x) =
+\frac 12$ на $\{\tau_x < t\}$. Поэтому
+$\Pf\{ w(t) \geqslant x \} = \Mf\Pf(w(t) \geqslant x \mid \tau_x)
+\Ir_{\{\tau_x < t\}} = \frac 12 \Pf\{ \tau_x < t\} = 
+\frac 12 \Pf \left\{ \sup_{0 \leqslant u \leqslant t} w(u) \geqslant x
+\right\}$.
+\end{proof}
+Приведённое выше доказательство не является вполне строгим, поскольку мы на самом деле не обосновали
+то, что $\Pf(w(t) - w(v) \mid \tau_x)(\omega\in\{\tau_x = v\}) = \Pf(w(t) - w(\tau_x(\omega)) \mid \tau_x)(\omega)$ хотя бы почти всюду.
+На множествах $\{\tau_x = v\}$ это действительно так, но их несчётное число, поэтому про поведение этой 
+условной вероятности на их объединении ничего сказать нельзя.
+Для того, чтобы найти распределение $\sup_{[0,t]} w(u)$, нам потребуется несколько лемм.
+\begin{lemma}[Марковское свойство винеровского процесса]
+ Для любого $a \geqslant 0$ процесс $Y(t,\omega) = W(t+a,\omega) - W(a,\omega)$ является стандартным винеровским и 
+не зависит от $\sigma$-алгебры $\Fs_a = \sigma\{X(t), t \leqslant a\}$.
+\end{lemma}
+\begin{proof}
+ То, что $Y(0) = 0$ и что конечномерные распределения $\{Y(t)\}$ совпадают с нужными, очевидно. Для того, чтобы доказать независимость $\sigma$-алгебр $\sigma\{Y(t)\}$ и $\Fs_a$, достаточно для любых конечных наборов 
+$0 \leqslant t_1 < \ldots < t_n \leqslant a$, $0 \leqslant s_1 < \ldots < s_m$ доказать независимость событий $\left\{\omega\colon X(t_1) \in B_1, \ldots, X(t_n) \in B_n\right\}$ и $\left\{\omega\colon Y(s_1) \in C_1, \ldots, Y(s_m) \in C_m\right\} = \left\{\omega\colon X(s_1+a) - X(a) \in C_1, \ldots, X(s_m+a) - X(a) \in C_m\right\}$, что очевидно, так как эти события выражаются через независимые группы приращений процесса $X$, а именно,\\ $\left(X(t_1),\ldots,X(t_n)-X(t_{n-1})\right)$ и $\left(X(s_1+a)-X(a),\ldots,X(s_m+a)-X(s_{m-1}+a)\right)$.
+\end{proof}
+На самом деле верно ещё более сильное утверждение.
+\begin{lemma}[Строго марковское свойство винеровского процесса]
+ Пусть $\{W(t),t\geqslant 0\}$ --- винеровский процесс, $\Fs_t = \sigma\{X(s),s\leqslant t\}$ --- его естественная фильтрация и $\tau$ --- момент остановки относительно потока $\Fs_t$. Тогда процесс $\{Y(t,\omega) = X(t+\tau(\omega)) - X(\tau(\omega)), t \geqslant 0\}$ также является винеровским, причём не зависящим от $\sigma$-алгебры $\Fs_\tau$.
+\end{lemma}
+\begin{proof}
+ Доопределим на множестве $\{\tau = \infty\}$ (оно имеет меру ноль, так как $\tau$ -- момент остановки) процесс $Y$ тождественно нулевыми траекториями. Покажем, что мы получили действительно случайный процесс, т.е., что $Y(t)$ есть случайная величина для любого $t$. Определим последовательность дискретных марковских моментов $\tau_n$, сходящуюся к $\tau$, следующим образом:
+$$
+\tau_n(\omega) = \sum_{k=1}^\infty k 2^{-n} \Ir_{(k-1) 2^{-n} < \tau(\omega) \leqslant k 2^{-n}}
+$$
+Очевидно, что $\tau_n \convas \tau$ и что это марковские моменты относительно $\Fs_n$, т.к. $\{\tau_n \leqslant t\}
+= \{\tau \leqslant k 2^{-n}\} \in \Fs_{k 2^{-n}} \subset \Fs_t$, где $k = \max \{ l\colon l 2^{-n} \leqslant t\}$. Так как траектории $W(t)$ непрерывны п.н., то $W(t + \tau_n) \convas W(t + \tau), n \to\infty$. Для любых $n\in\N,z\in\R,t \geqslant 0$ имеем
+$$
+\left\{\omega\colon W(t+\tau_n(\omega),\omega) \leqslant z\right\} = \cup_{k=1}^\infty \left\{\omega\colon
+W(t+k 2^{-n},\omega), \tau_n(\omega) = k 2^{-n}\right\} \in \Fs.
+$$
+Следовательно,  $W(t+\tau)$, а заодно и $Y(t)$ являются случайными величинами как пределы сходящихся почти наверное случайных величин. Докажем, что $Y(t)$ не зависит от $\Fs_\tau$ и заодно проверим, что это винеровский процесс. Для этого, как и в предыдущей лемме, достаточно проверить, что для любого $A \in \Fs_\tau$, любых точек $0 \leqslant t_1 < \ldots < t_m$ и любого $B \in \mathcal{B}(\R^m)$ $\Pf\left\{A \cap \{\xi \in B\}\right\} = \Pf\left\{A\right\}\Pf\left\{\xi\in B\right\}$, где $\xi = \left(Y(t_1),\ldots,Y(t_m)\right) \in \R^m$. Достаточно показать это для замкнутого $B$, поскольку для любой меры $\Pf$ в $R^m$ и для любого борелевского $B$ найдётся такое замкнутое подмножество $F_\ep \subset B$, что $\Pf(B\setminus F_\ep) < \ep$. Итак, нам нужно показать, что $\Mf \Ir_A\Ir_{\xi\in B} = \Mf\Ir_A \Mf\Ir_{\xi\in B}$. Мы это докажем, если покажем, что для любой непрерывной и ограниченной функции выполнено $\Mf\Ir_A f(\xi) = \Mf\Ir_A\Mf f(\xi)$. Действительно, тогда, взяв $f_k(x) = \max(0,1 - k \rho(x,B))$, получим требуемое из теоремы Лебега ($f_k(x) \to \Ir_B(x), k \to\infty$).
+Опять же по теореме Лебега имеем
+$$
+\Mf\Ir_A f(\xi) = \lim_n \Mf\Ir_a f(\xi_n),
+$$
+где $\xi_n = \left(W(t_1 + \tau_n) - W(\tau_n),\ldots,W(t_m+\tau_n) - W(\tau_n)\right) \convas \xi, n \to\infty$.
+Воспользовавшись счётной аддитивностью интеграла Лебега, получаем
+$$
+\Mf\Ir_A f(\xi_n) = \sum_{k=1}^\infty \Mf \Ir_A f(\xi_n) \Ir_{\tau_n = k 2^{-n}} = \sum_{k=1}^\infty \Mf\Ir_{A\cap\{\tau_n = k 2^{-n}\}} f(\xi_{n,k}),
+$$
+где $\xi_{n,k} = \left(W(t_1 + k2^{-n}) - W(k2^{-n}),\ldots,W(t_m + k2^{-n}) - W(k2^{-n})\right)$. Т.к. $A \in \Fs_\tau$, то $A \cap \{\tau_n = k 2^{-n}\} = A \cap \{(k-1)2^{-n} < \tau \leqslant k2^{-n}\} \in \Fs_{k2^{-n}}$. По предыдущей лемме $\xi_{n,k}$ не зависит от $\Fs_{k2^{-n}}$. При этом распределение $\xi_{n,k}$ совпадает с распределением $\left(W(t_1),\ldots,W(t_m)\right)$. Поэтому
+$$
+\Mf\Ir_A f(\xi_n) = \Mf f(W(t_1),\ldots,W(t_m)) \sum_{k=1}^\infty \Mf\Ir_{A \cap \{\tau_n = k 2^{-n}\}} = \Mf f(W(t_1),\ldots,W(t_m))\Mf \Ir_A.
+$$
+Осталось показать, что $\Mf f(Y(t_1),\ldots,Y(t_m)) = \Mf f(W(t_1),\ldots,W(t_m))$, что немедленно следует из доказанного при $A = \Omega$. Взяв ограниченные непрерывные $f_k$, сходящиеся к индикаторным функциям, по теореме Лебега получим, что конечномерные распределения $W$ и $Y$ совпадают, следовательно, $Y$ --- винеровский процесс.
+\end{proof} 
+Ключевым инструментом для нахождения распределения $\sup W(t)$ на отрезках (и много чего другого, на самом деле) является следующая
+\begin{theorem}[Принцип отражения]
+ Пусть $\{W(t),t\geqslant 0\}$ --- винеровский процесс, $\tau$ --- момент остановки относительно $\Fs_t = \sigma\{X(s),s\leqslant t\}$ Положим
+$$
+Z(t,\omega) = 
+\begin{cases}
+  W(t,\omega), & 0 \leqslant t \leqslant \tau(\omega),\\
+  2W(\tau(\omega),\omega) - W(t,\omega), & t > \tau(\omega),\\
+  W(t,\omega), & \tau(\omega) = \infty.
+\end{cases}
+$$
+Каждая траектория $Z$ получается отражением траектории $X$ относительно линии уровня $X(\tau)$ при $x > \tau$. 
+Оказывается, $Z(t,\omega)$ -- тоже винеровский процесс.
+\end{theorem}
+\begin{proof}
+ По определению $Z(t,\omega) = W(t,\omega)\Ir_{\{\tau \geqslant t\}} + (2W(\tau(\omega),\omega) - W(t,\omega))\Ir_{\{\tau < t\}}$, следовательно, это случайная величина при каждом $t \geqslant 0$. Траектории $Z$ 
+непрерывны п.н., поэтому нетрудно показать, что $Z(\cdot,\omega)$ есть случайный элемент со значениями в метрическом пространстве $C_0[0,\infty) = \left\{f \in C[0,\infty), f(0) = 0\right\}$, метрика на котором задаётся равномерной сходимостью на компактах, т.е. 
+$$
+\rho(f,g) = \sum_{n=1}^\infty 2^{-n} \frac{\sup_{[0,n]} |f(t) - g(t)|}{1 + \sup_{[0,n]} |f(t) - g(t)|}.
+$$
+Это доказывается так: во-первых, $C[0,\infty)$ сепарабельно (на любом компакте функция равномерно непрерывна и к ней сходится последовательность линейных функций с изломами в рациональных точках и рациональными значениями в точках излома, а потом берём диагональную последовательность таких функций), следовательно, его борелевская $\sigma$-алгебра порождается всеми открытыми шарами, а прообраз каждого такого шара, как нетрудно показать, измерим. А именно, $B_r(x) = \cap_N \left\{y\colon \sum_{k=1}^N 2^{-k}\frac{\sup_{\Q \cap [0,k]} |x(t) - y(t)|}{1+\sup_{\Q\cap[0,k]}} \leqslant r\right\}$. Это пересечение замкнутых множеств в $\R^N$ (вектора в $\R^N$ соответствуют наборам из $\sup_{\Q\cap[0,k]} |x(t) - y(t)|$), оно замкнуто, следовательно, его дополнение открыто и представляется в виде счётного объединения кубов, а прообразы кубов измеримы.
+
+Положим $Y(t,\omega) = W(t+\tau(\omega),\omega) - W(\tau(\omega),\omega)$. Как мы знаем, это винеровский процесс. Положим $X(t,\omega) = W(\min(t,\omega),\omega)$ --- это процесс, <<остановленный>> в точке $\tau$. Аналогично доказанному получаем, что $X,Y$ --- случайные элементы со значениями в $C_0[0,\infty)$. Рассмотрим метрическое пространство $V = [0,\infty) \times C_0[0,\infty) \times C_0[0,\infty)$ с метрикой, равной максимуму из покоординатных расстояний и рассмотрим отображение $h: V \to C_0[0,\infty)$, задаваемое следующим образом:
+$$
+h(b,f,g)(t) = f(t) \Ir_{[0,b]}(t) + (f(b) + g(t - b))\Ir_{(b,\infty)}(t).
+$$
+Как легко видеть, оно непрерывно и для почти всех $\omega$ (кроме тех, для которых $\tau$ бесконечен или траектория одного из процессов разрывна)
+$$
+h(\tau(\omega),X(\cdot,\omega),Y(\cdot,\omega)) = W(\cdot,\omega), h(\tau(\omega),X(\cdot,\omega),-Y(\cdot,\omega)) = Z(\cdot,\omega).
+$$
+Если мы докажем, что на $(V,\mathcal{B}(V))$ случайные вектора $(\tau,X,Y)$ и $(\tau,X,-Y)$ имеют одинаковое распределение, то в силу измеримости $h$ получим утверждение теоремы. Докажем, что $(\tau,X)$ измерим относительно $\Fs_\tau$, тогда в силу независимости $Y$ от $\Fs_\tau$ распределение распадётся в произведение распределений $(\tau,X)\otimes (\pm Y)$, распределения же $Y$ и $-Y$ совпадают в силу симметричности винеровского процесса. Для измеримости вектора относительно $\Fs_\tau$ необходима и достаточна измеримость каждой его компоненты. $\Fs_\tau$-измеримость $\tau$ следует из определения $\Fs_\tau$ (проверьте), для того, чтобы доказать $\Fs_\tau$-измеримость $X$, введём  $\Fs_\tau$-измеримую последовательность $X_n$, сходящуюся к $X$ п.н.
+ Положим
+$$
+\alpha_n(\omega) = \sum_{k=0}^\infty k 2^{-n} \Ir_{k 2^{-n} \leqslant \tau(\omega) < (k+1)2^{-n}} \uparrow \tau(\omega), n \to \infty,
+$$
+и определим $X_n(t,\omega) = W(\min(t,\alpha_n(\omega)),\omega)$. Проверка $\Fs_\tau$-измеримости $X_n$ тривиальна:
+$$
+\left\{\omega\colon X_n(t,\omega) \leqslant x, \tau \leqslant s\right\} = \cup_k \left\{ X(\min(t,k 2^{-n})) \leqslant x, \tau \leqslant s, \tau \in  [k 2^{-n}, (k+1)2^{-n})\right\} \in \Fs_{s}.
+$$
+\end{proof}
+Докажем, наконец, то, ради чего мы это всё вводили.
+\begin{theorem}
+ Пусть $M(t) = \sup_{[0,t]} W(s)$ (это случайная величина, т.к. $f \mapsto sup_{[0,t]} f$ есть непрерывное отображение $C_0[0,\infty) \to \R$). Тогда $\forall x,y,t \geqslant 0$
+$$
+\Pf(W(t) < y - x, M(t) \geqslant y) = P(W(t) > y + x).
+$$
+\end{theorem}
+\begin{proof}
+ Если $y = 0$, то утверждение теоремы тривиально. Пусть $y > 0$. Тогда $\tau_y = \inf\{s \in [0,\infty)\colon W(s) \geqslant y\}$ есть момент остановки относительно $\{\Fs_t = \sigma\{W(t)\}\}$. Он конечен п.н. в силу закона повторного логарифма для случайного блуждания $W(n)$ (почти наверное существует целая точка, в которой $W(n)$ сколь угодно велико). Рассмотрим <<отражённый>> относительно $\tau_y$ процесс $Z$. Тогда $\sigma_y = \inf\{s \geqslant 0\colon Z(s) = y\}$ --- тоже момент остановки относительно $\{\sigma\{Z(t)\}\}$, причём при всех $y \geqslant 0$, $\omega \in \{ \tau_y < \infty \}$ имеем $\sigma_y(\omega) = \tau_y(\omega)$, потому что до момента $\tau_y(\omega)$ траектории $X$ и $Z$ совпадают. Заметим, что $\{\tau_y \leqslant t\} = \{M(t) \geqslant y\}$ Поэтому для любого $B \in \mathcal{B}(C_0[0,\infty))$, $t \geqslant 0$ имеем
+$$
+\Pf(\tau_y \leqslant t, W \in B) = P(W \in \hat B \cap B),
+$$
+где $\hat B = \{ f\colon \sup_{[0,t]} \geqslant t \} \in \mathcal{B}(C_0[0,\infty))$ в силу непрерывности взятия $\sup$.
+Одновременно и 
+$$
+\Pf(\sigma_y \leqslant t, Z \in B) = \Pf(Z \in \hat B \cap B) = \Pf(W \in \hat B \cap B),
+$$
+так как $Z$ --- тоже винеровский процесс. Получили, что $(\tau_y,W)$ и $(\sigma_y,Z)$ распределены одинаково.
+В силу непрерывности траекторий $W$ имеем $W(\tau_y(\omega),\omega) = y$ п.н., поэтому при $t \geqslant \sigma_y(\omega)$ получаем $Z(t,\omega) = 2W(\tau_y(\omega),\omega) - W(t,\omega) = 2y - W(t,\omega)$. Следовательно,
+\begin{gather*}
+\Pf(M(t) \geqslant y, W(t) < y - x) = \Pf(\sigma_y \leqslant t, Z(t) < y - x) = \\ \Pf(\sigma_y \leqslant t, W(t) > y + x) = \Pf(\tau_y \leqslant t, W(t) > y+x) = \Pf(M(t) \geqslant y, W(t) > y + x) = \Pf(W(t) > y+x), x \geqslant 0.
+\end{gather*}
+\end{proof}
+\begin{imp}
+ $$
+\Pf(M(t) \geqslant y) = 2\Pf(W(t) \geqslant y).
+$$
+\end{imp}
+\begin{proof}
+ Возьмём в предыдущей теореме $x = 0$. Получим
+$$
+\Pf(W(t) < y, M(t) \geqslant y) = \Pf(W(t) > y).
+$$
+Имеем $\Pf(M(t) \geqslant y) = \Pf(M(t) \geqslant y, W(t) < y) + \Pf(M(t) \geqslant y, W(t) \geqslant y) = \Pf(W(t) > y) + \Pf(W(t) \geqslant y) = 2 \Pf(W(t) \geqslant y)$ (в силу непрерывности нормального распределения $\Pf(W(t) = y) = 0$.
+\end{proof}
+
+\subsection{Закон повторного логарифма для винеровского процесса}
+
+\begin{theorem}[закон повторного логарифма для винеровского
+процесса]
+\begin{gather*}
+\Pf\left\{ \limsup_{t\to\infty} \frac{w(t)}{\sqrt{2t\ln\ln t}} = 1 \right\} =
+\Pf\left\{ \liminf_{t\to\infty} \frac{w(t)}{\sqrt{2t\ln\ln t}} = -1 \right\} =
+1;\\
+\Pf\left\{ \limsup_{t\to 0+} \frac{w(t)}{\sqrt{2t\ln\ln \frac 1t}} = 1 \right\}
+= 
+\Pf\left\{ \liminf_{t\to 0+} \frac{w(t)}{\sqrt{2t\ln\ln \frac 1t}} = -1
+\right\} = 1.
+\end{gather*}
+\end{theorem}
+
+\begin{proof}
+Вторая строчка следует из первой (рассмотрим $w^*$). 
+Значения винеровского процесса в целых точках $\{w(n)\}$ образуют
+случайное блуждание с распределением $\Norm(0,1)$ --- применяем 
+закон повторного логарифма для случайного блуждания и следующую
+лемму:
+
+\begin{lemma}
+$$
+\Pf \left\{ \lim_{t\rightarrow\infty} \left|
+\frac{w(t)}{\sqrt{2t \ln\ln t}} - \frac{w([t])}{\sqrt{2t \ln\ln t}}
+\right| = 0 \right\} = 1.
+$$
+\end{lemma}
+
+\begin{proof}
+Из однородности винеровского процесса по времени и симметричности
+нормального распределения получаем:
+\begin{multline*}
+\Pf \left\{ \sup_{n \leqslant t \leqslant n+1}
+|w(t) - w(n)| > x \right\} \leqslant 
+\Pf \left\{ \sup_{0 \leqslant t \leqslant 1} w(t) > x \right\} +
+\Pf \left\{ \inf_{0 \leqslant t \leqslant 1} w(t) < -x \right\} =\\=
+2\Pf \left\{ \sup_{0 \leqslant t \leqslant 1} w(t) > x \right\} =
+\frac{4}{\sqrt{2\pi}} \ixi e^{-\frac{v^2}{2}} \, dv =
+O\left( e^{-\frac{x^2}{2}}\right).
+\end{multline*}
+
+Положим $A_n = \left\{ \sup_{n \leqslant t \leqslant n+1}
+|w(t) - w(n)| > \sqrt{2n} \right\}$.
+$\Pf(A_n) = O(e^{-n})$ --- ряд по $n$ сходится.
+$$
+\Pf \left\{ \sup_{t \geqslant N} \frac{|w(t) - w([t])|}{\sqrt{2t}} > 1
+\right\} = \Pf \left( \bigcup_{n=N}^{\infty} A_n \right) \leqslant
+\sum_{n=N}^{\infty} \Pf(A_n) \to 0 \quad (N \to \infty).
+$$
+\end{proof}
+\end{proof}
+
+\subsection{Неограниченность вариации траекторий винеровского процесса}
+Из закона повторного логарифма следует, что траектории винеровского процесса $w(t)$ при $t\to 0$ осциллируют между 
+кривыми $w = \sqrt{2t \ln\ln\frac{1}{t}}$ и $w = -\sqrt{2t\ln\ln\frac{1}{t}}$.
+
+Напомним некоторые факты из действительного анализа. \emph{Вариацией} $f$ на отрезке $[a,b]$ называется 
+$\Var_{[a,b]} f = \sup_T \sum_{j=1}^N |f(t_j) - f(t_{j-1}|$, где $T$ пробегает разбиения $a = t_0 < \ldots < t_N = b$.
+Если $f$ дифференцируема, то $\Var_{[a,b]} f = \int\limits_a^b |f'(t)|dt$.
+
+\begin{lemma}
+Обозначим $\Delta t_j \rightleftharpoons t_j - t_{j-1}$.
+ Если $w(t)$ --- процесс броуновского движения, то 
+$$\Pf\left\{\Var_{[0,1]} w = \infty \right\} = 1$$ и 
+для любых $t > 0, \ep > 0$ и для любой последовательности $0 = t_0 < t_1 < \ldots$ имеем 
+$$
+\lim_{\max \Delta t_j \to 0} \Pf\left\{|\sum_{j\colon t_j \leqslant t} (w(t_j) - w(t_{j-1}))^2 - t| > \ep\right\} = 0.
+$$
+\end{lemma}
+\begin{proof}
+$\Mf|w(t_j) - w(t_{j-1})| = \Mf|w(\Delta t_j)|$. Так как $w(\Delta t_j) \sim \Norm(0,\Delta t_j)$, то 
+$$
+\Mf|w(\Delta t_j)| = \frac{1}{\sqrt{2\pi\Delta t_j}} \iii |x| e^{-\frac{x^2}{2\Delta t_j}} dx = 
+\frac{2}{\sqrt{2\pi\Delta t_j}} \int\limits_0^\infty x e^{-\frac{x^2}{2\Delta t_j}} dx = \sqrt{\frac{2\Delta t_j}{\pi}} > \Delta t_j \sqrt{\frac{2}{\pi \max \Delta t_j}}.
+$$
+$$
+\Df|w(\Delta t_j)| = \Mf w^2(\Delta t_j) - \Mf^2|w(\Delta t_j)| = \Delta t_j - \frac{2 \Delta t_j}{\pi} = \Delta t_j \left(1 - \frac{2}{\pi}\right).
+$$
+$$
+m(\{t_j\}) \rightleftharpoons \Mf \sum_{j\colon t_j \leqslant 1} |w(t_j) - w(t_{j-1})| \leqslant \sqrt{\frac{2}{\pi \max \Delta t_j}}\sum_{j\colon t_j \leqslant 1} \Delta t_j.
+$$
+$$
+d(\{t_j\}) \rightleftharpoons \Df\sum_{j\colon t_j \leqslant 1} |w(t_j) - w(t_{j-1})| = \left(1 - \frac{2}{\pi}\right)\sum_{j\colon t_j \leqslant 1} \Delta t_j = 1 - \frac{2}{\pi} + O(1).
+$$
+\begin{multline*}
+\Pf\left\{\sum_{j\colon t_j \leqslant 1} |w(t_j) - w(t_{j-1})| < x\right\} \leqslant 
+\Pf\left\{ \bbm{\sum_{j\colon t_j \leqslant 1} |w(t_j) - w(t_{j-1})| - m(\{t_j\})} \geqslant m(\{t_j\}) - x\right\} \leqslant \\ \leqslant \frac{d(\{t_j\})}{m(\{t_j\})-x)^2} \to 0\quad (\max \Delta t_j \to 0).
+\end{multline*}
+Вторая часть утверждения доказывается аналогично:
+\begin{multline*}
+\Mf\left(w(t_j) - w(t_{j-1})\right)^2 = \Mf w^2(\Delta t_j) = \Delta t_j, \Mf\left(w(t_j) - w(t_{j-1})\right)^4 = \Mf w^4(\Delta t_j) = 3 (\Delta t_j)^2, \\ \Df\left(w(t_j) - w(t_{j-1})\right)^2 = \Mf w^4(\Delta t_j) - (\Mf w^2(\Delta t_j))^2 = 2 (\Delta t_j)^2.
+\end{multline*}
+$$
+\Mf \sum_{j\colon t_j \leqslant t} \left(w(t_j) - w(t_{j-1})\right)^2 = \sum_{j\colon t_j \leqslant t} \Delta t_j \to t\quad (\max \Delta t_j \to 0).
+$$
+$$
+\Df \sum_{j\colon t_j \leqslant t} \left(w(t_j) - w(t_{j-1})\right)^2 = 2 \sum_{j\colon t_j \leqslant t} (\Delta t_j)^2 \to 0\quad (\max \Delta t_j \to 0).
+$$
+\end{proof}
+\end{document}

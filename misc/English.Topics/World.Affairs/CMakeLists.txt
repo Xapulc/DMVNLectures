@@ -1,0 +1,9 @@
+mm_pack(
+    INCLUDE
+        Eng.Pressure.Mounts.in.Baghdad.Crisis.doc
+        Eng.The.Accidental.President.doc
+        Eng.We.the.People.doc
+        Eng.World.affairs.doc
+    ARCHIVE
+        eng-world.affairs
+)

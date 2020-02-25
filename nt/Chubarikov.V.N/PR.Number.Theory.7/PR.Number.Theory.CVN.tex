@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage[simple,utf]{dmvn}
+
+\begin{document}
+
+\begin{problem}
+Решить уравнение
+$$\hs{\log_2[x]} = \hs{\log_2 x}.$$
+\end{problem}
+
+\begin{problem}
+
+\begin{petit}
+Очень странная задача, возможно формулировка неточна
+\end{petit}
+
+Доказать, что если $n = \sums{k} \ep_k p^k$ в $p$-ричной системе,
+где $0 \le \ep_k p - 1$,
+$$
+    p^{\nu_p(n!)} || n!,
+$$
+и
+$$
+    S_n = \sums{k} \ep_k,
+$$
+тогда
+$$
+    \nu_p(n!) = \frac{n - S_n}{p - 1}.
+$$
+\end{problem}
+
+\begin{problem}
+Доказать, что
+$$
+    \sums{n \le x} \frac1{\ph(n)} = O\br{\ln(x)},
+$$
+где $\ph(x)$~--- функция Эйлера.
+\end{problem}
+
+\begin{solution}
+Оцениваем сумму $\sums{n\le x}\frac1{\ph(n)}$. Везде $n,m\in\N, x\in\R, x\ge2, p$ простое.
+$$
+\ph(n)=n\prod_{p|n}\left(1-\frac1p\right)
+$$
+$$
+\frac1{\ph(n)}=\frac1n\prod_{p|n}\left(1-\frac1p\right)^{-1}=\frac1n\prod_{p|n}
+\left(1+\frac1p+\frac1{p^2}+\dots\right)=\frac1n\sum_m\frac1m,
+$$
+где сумма берётся по всем $m$, у которых в разложении на простые встречаются только
+сомножители из разложения $n$. Теперь навешиваем сумму по $n\le x$ и переставляем суммирование
+по $n$ и по $m$ (сумма конечного числа абсолютно сходящихся рядов):
+\begin{equation}
+\sums{n\le x}\frac1{\ph(n)}=\sum_
+{m=p_1^{\alpha_1}\dots p_s^{\alpha_s}}\frac1m\sum_
+{\substack{n\le x\\p_1\dots p_s|n}}\frac1n
+\end{equation}
+$$
+\sum_{\substack{n\le x\\k|n}}\frac1n=\sum_{n\le x/k}\frac1{kn}
+$$
+Поскольку $\sums{n\le x}\frac1n<\ln x+\ga+\frac1{2x}<\ln x+1$, то
+$$
+\sum_{\substack{n\le x\\k|n}}\frac1n<\frac1k\left(\ln\frac xk+1\right)\le
+\frac{\ln x+1}k
+$$
+При фиксированном наборе $\{p_1,\dots,p_s\}$ можно посчитать сумму по $\alpha_i$ (от 1 до
+$\infty$) от $\frac1m=p_1^{-\alpha_1}\dots p_s^{-\alpha_s}$, получится
+$$
+\frac1{(p_1-1)\dots(p_s-1)}
+$$
+Следовательно,
+$$
+\sums{n\le x}\frac1{\ph(n)}<\sum_{p_1\dots p_s\le x}\frac1{(p_1-1)\dots(p_s-1)}
+\frac{\ln x+1}{p_1\dots p_s}
+$$
+Для $p\ge3$ выполнено неравенство $p-1>\sqrt{p}$. Для $p=2$ выполнено
+неравенство $p-1>\sqrt{p}/2$.
+$$
+\sums{n\le x}\frac1{\ph(n)}<\sum_{p_1\dots p_s\le x}\frac2{\sqrt{p_1}\dots\sqrt{p_s}}
+\frac{\ln x+1}{p_1\dots p_s}<
+(\ln x+1)\sum_{k=1}^\infty \frac2{k^{3/2}}=O(\ln x).
+$$
+Утверждение доказано.
+\end{solution}
+
+\begin{note} Если использовать равенство $\sums{n\le x}\frac1n=\ln x+\ga+O(\frac1x)$ и
+аккуратно всё расписать, то с использованием тех же идей нетрудно получить асимптотическую
+формулу
+$$
+\sums{n\le x}\frac1{\ph(n)} = C_1\ln x+C_2+O\left(\frac1{x^{1-\varepsilon}}\right),
+$$
+где $C_1$ и $C_2$~--- абсолютные постоянные, а $\ep>0$ сколь угодно мало.
+$$
+C_1=\sum_{\substack{s\ge0\\p_1<\dots<p_s}}\frac1{p_1\dots p_s(p_1-1)\dots(p_s-1)}=
+\prod_p\left(1+\frac1{p(p-1)}\right)=1.943596\dots
+$$
+$$
+C_2=C_1\ga-\sum_{\substack{s\ge0\\p_1<\dots<p_s}}\frac{\ln(p_1\dots p_s)}{p_1\dots p_s
+(p_1-1)\dots(p_s-1)}=-0.060574\dots
+$$
+\end{note}
+\end{document}

@@ -1,0 +1,433 @@
+\chapter*{Лекция 14}
+
+\subparagraph{1. Экстремаль управляемой системы.} Рассмотрим
+управляе\-мую систему
+\setcounter{equation}{0}
+\begin{equation}\label{14m1}
+\dot x=f(t,x,u),\quad u\in U,
+\end{equation}
+где $x\in \mathbb{R}^n, \: u\in \mathbb{R}^m, \: U\subset
+\mathbb{R}^m$ ~--- произвольное множество, $f$ и $f_x$
+непрерыв\-ны по всем переменным. Введем для нее \emph{функцию
+Понтрягина}
+$$
+H=H(t,x,u,\psi_x)=\psi_xf(t,x,u).
+$$
+(Ранее мы пользовались несколько иным определением функции
+Понтря\-гина, полагая $H=\psi_xf+\psi_t$. Так ее определили
+Дубовицкий и Милютин. Мы видели, что эта функция возникает
+естественно в том процессе дока\-зательства принципа максимума,
+которому мы следовали. Однако подоб\-ное определение функции $H$
+не стало общепринятым. Позднее сам А.А. Милютин вернулся к
+первоначальному определению $H$ в виде $\ \psi_xf$, данному Л.С.
+Понтрягиным).
+
+\begin{defin}
+Четверку функций $(x(t),u(t),\psi_t(t),\psi_x(t)\ |\
+t\in[t_0,t_1])$, оп\-ре\-де\-лен\-ных на произвольном отрезке
+$\Delta=[t_0,t_1]$, будем называть
+\emph{экст\-ремалью} управляемой системы (\ref{14m1}), если\\
+
+(a) $(x(t),u(t)\,|\,t\in[t_0,t_1])$ траектория управляемой
+системы (\ref{14m1}) т.е. $x(t)$~--- абсолютно непрерывна на
+$\Delta$, $u(t)$ - ограничена и измерима на $\Delta$ и
+\begin{equation}\label{14m2}
+\dot x=f(t,x(t),u(t)),\quad u(t)\in U\quad\mbox{п.в.
+на}\quad\Delta
+\end{equation}
+
+(b) функции $\psi_t(t)$ и $\psi_x(t)$ абсолютно непрерывны на
+$\Delta$ и выполнены условия
+\begin{eqnarray}
+\label{14m3}
+-\dot\psi_t(t)=H_t(t,x(t),u(t),\psi_x(t))\quad\mbox{п.в. на}\quad\Delta\\
+\label{14m4}
+-\dot\psi_x(t)=H_x(t,x(t),u(t),\psi_x(t))\quad\mbox{п.в. на}\quad\Delta\\
+\label{14m5}
+\qquad H(t,x(t),u(t),\psi_x(t))+\psi_t(t)\leqslant 0,\ \;
+\forall u\in U,\;\forall t\in\Delta\\
+\label{14m6} H(t,x(t),u(t),\psi_x(t))+\psi_t(t)=0\quad\mbox{п.в.
+на}\quad\Delta.
+\end{eqnarray}
+\end{defin}
+Итак, экстремаль определяется условиями (\ref{14m2})-(\ref{14m6}).
+Нетрудно видеть, что (\ref{14m3})-(\ref{14m6}) это условия
+принципа максимума (за исключением условий неотрицательности,
+нетривиальности, дополняющей неж\-есткости и транс\-версальности).
+
+Экстремали, определеные условиями (\ref{14m2})-(\ref{14m6}),
+называют также \emph{понтря\-гинскими экстремалями}, но мы будем
+говорить просто - экстремаль.
+
+Наша цель будет состоять в том, чтобы показать, что условия
+экстре\-мальности можно переписать эквивалентным образом так, что
+перемен\-ная $\psi_t$ в новых условиях участвовать не будет, т.е.
+$\psi_t$ можно из условий экстремальности исключить вместе с
+сопряженным уравнением (\ref{14m3}). Мы сделаем это, предположив,
+что множество $U$ \emph{замкнуто}. Ниже это пред\-по\-ложение
+считаем выполненным.
+
+\subparagraph{2. Гамильтониан.} Рассмотрим функцию
+\begin{equation}\label{14m7}
+{\cal H}(t,x,\psi_x)=\max\limits_{u\in U} H(t,x,u,\psi_x)
+\end{equation}
+Обозначим через $\text{dom}\,{\cal H}$ множество троек
+$(t,x,\psi_x)$ таких, что максимум по $u\in U$ в правой части
+равенства (\ref{14m7}) достигается. Мы покажем, что для экстремали
+выполнены условия
+\begin{eqnarray}\label{14m8}
+(t,x(t),\psi_x(t))\in \text{dom} \ {\cal H},\quad \forall t\in\Delta,\\
+\label{14m9} {\cal H}(t,x(t),\psi_x(t))+\psi_t(t)=0,\quad\forall
+t\in\Delta.
+\end{eqnarray}
+Другими словами,
+\begin{equation}
+\label{14m10} \max\limits_{u\in U}
+H(t,x(t),u,\psi_x)+\psi_t(t)=0,\quad\forall t\in\Delta
+\end{equation}
+причем, для каждого $t\in\Delta$ максимум в левой части формулы
+(\ref{14m10}) достигается. С этой целью мы докажем две леммы.
+
+\setcounter{lemma1}{0}
+\begin{lemma1}\label{14L1}
+Пусть $h(t,u)$ непрерывна по $t,u$ , где $t\in\Delta, \;u\in U$.
+Пусть существует множество ${\cal{E}}\subset\Delta$ и компакт $K\subset
+U $ такие, что замыкание ${\cal{E}}$ совпадает с
+$\Delta,\;\bar{\cal{E}}=\Delta$, и
+\begin{equation}\label{14m11}
+\sup\limits_{u\in U} h(t,u)=\max\limits_{u\in
+K}h(t,u)\quad\forall t\in{\cal{E}}.
+\end{equation}
+Тогда
+\begin{equation}\label{14m12}
+\sup\limits_{u\in U} h(t,u)=\max\limits_{u\in
+K}h(t,u)\quad\forall t\in\Delta.
+\end{equation}
+\end{lemma1}
+\begin{proof}
+Пусть $\tilde t\in\Delta,\;u\in U$. Поскольку $\bar{\cal{E}}=\Delta$, то
+найдется последовательность $t_n\in{\cal{E}}$ такая, что
+$t_n\to\tilde{t}.$ Для последовательности $t_n$ укажем
+последовательность $u_n\in K$ точек максимума функции
+$h(t_n,\cdot)$ по компакту $K$. Тогда в силу (\ref{14m11})
+\begin{equation}
+\label{14m13} h(t_n,u)\leqslant h(t_n,u_n)
+\end{equation}
+Не ограничивая общности, считаем, что $u_n\to\tilde u\in K$
+(иначе перейдем к подпоследовательности). Переходя в
+(\ref{14m13}) к пределу по $n$, получаем:
+\begin{equation}\label{14m14}
+h(\tilde t,u)\leqslant h(\tilde t,\tilde u)
+\end{equation}
+Итак, для любого $u\in U$ найдется $\tilde u\in K$ такой, что
+выполнено (\ref{14m14}) (при этом $\tilde t\in\Delta$
+-произвольно). Пусть последовательность $u_n\in U$ такова, что
+\begin{equation}\label{14m15}
+h(\tilde t,u_n)\to \sup\limits_{u\in U}h(\tilde
+t,u).
+\end{equation}
+Тогда в силу (\ref{14m14}) найдется последовательность $\tilde
+u_n\in K$ такая, что
+\begin{equation}\label{14m16}
+h(\tilde t,u_n)\leqslant h(\tilde t,\tilde u_n)
+\end{equation}
+Не ограничивая общности, считаем, что $\tilde u_n\to\tilde u\in
+K$ (иначе перейдем к подпоследовательности). Переходя к пределу в
+(\ref{14m16}) и учитывая (\ref{14m15}) получаем:
+$$
+\sup\limits_{u\in U}h(\tilde t,u)\leqslant h(\tilde t,\tilde
+u)\leqslant\max\limits_{u\in K}h(t,u)
+$$
+Неравенство
+$$
+\sup\limits_{u\in U}h(\tilde t,u)\geqslant\max\limits_{u\in
+K}h(\tilde t,u)
+$$
+вытекает из условия $K\subset U$. Значит
+$$
+\sup\limits_{u\in U}h(\tilde t,u)=\max\limits_{u\in K}h(\tilde
+t,u).
+$$
+Равенство имеет место для любого $\tilde t\in\Delta.$
+\end{proof}
+\begin{lemma1} \label{14L2}
+Пусть $K\subset \mathbb{R}^m$~--- компакт, $\Delta$~--- отрезок, и
+пусть $h(t,u)$ непрерыв\-на на $\Delta\times K$. Тогда функция
+$$
+\varphi(t)=\max\limits_{u\in K}h(t,u)
+$$
+непрерывна на $\Delta$.
+\end{lemma1}
+\begin{proof}
+Пусть $\tilde t\in\Delta$ и пусть $t_n\in\Delta$ - произвольная
+последова\-тельность такая, что $t_n\to\tilde t$. Покажем, что
+найдется подпоследователь\-ность $t_{n_k}$такая, что
+$\varphi(t_{n_k})\to\varphi(\tilde t)$. (Отсюда последует
+непрерывность $\varphi$ в точке $\tilde t$.)
+
+Действительно, для последовательности $t_n$ найдется
+последователь\-ность $u_n\in K$ такая, что
+$$
+\varphi(t_n)=h(t_n,u_n).
+$$
+Из последоваиельности $u_n$ извлечем сходящуюся
+подпоследовательность. Пусть это - сама $u_n$. Тогда $u_n\to\tilde
+u\in K$. Пусть $u\in K$~--- произвольный элемент. Тогда
+$$
+h(t_n,u)\leqslant h(t_n,u_n).
+$$
+Переходя в этом неравенстве к пределу  по $n$, получаем
+$$
+h(\tilde t,u)\leqslant h(\tilde t,\tilde u).
+$$
+Поскольку это верно для любого $u\in K$, то
+$$
+h(\tilde t,\tilde u)=\max\limits_{u\in K}h(\tilde
+t,u)=\varphi(\tilde t).
+$$
+Итак,
+$$
+\varphi(\tilde t)=h(\tilde t,\tilde
+u)=\lim\limits_nh(t_n,u_n)=\lim\limits_n\varphi(t_n).
+$$
+
+Мы показали, что $\varphi(t_n)\to\varphi(\tilde t)$. (В
+действительности это имеет место для подпоследовательности).
+Непрерывность $\varphi$ в произвольной точке $\tilde t\in\Delta$
+доказана.
+\end{proof}
+
+Обратимся теперь к условиям (\ref{14m2})-(\ref{14m6}),
+определяющим экстремаль. По\-скольку $u(t)$ существенно
+ограничена, то найдется замкнутый шар $B\subset \mathbb{R}^m$
+такой, что $u(t)\in B$ п.в. на $\Delta$. Положим $K=U\cap B$.
+Тогда $K$~--- компакт, $K\subset U$ и $u(t)\in K$ п.в. на
+$\Delta$. Пусть ${\cal{E}}$ множество полной меры в $\Delta$ такое, что
+$u(t)\in K$ на ${\cal{E}}$ и всюду на ${\cal{E}}$ выполнено условие
+(\ref{14m6}) в определении экстремали. Отметим, что
+$\bar{\cal{E}}=\Delta$. Положим
+\begin{equation}\label{14m17}
+h(t,u)=H(t,x(t),u,\psi_x(t))
+\end{equation}
+Тогда в силу (\ref{14m5}) и (\ref{14m6}) имеем
+\begin{eqnarray}\label{14m18}
+h(t,u)+\psi_t(t)\leqslant 0\quad \forall t\in \Delta\quad \forall u\in U\\
+\label{14m19} h(t,u(t))+\psi_t(t)=0\quad \forall t\in {\cal{E}}.
+\end{eqnarray}
+Кроме того
+\begin{equation}\label{14m20}
+u(t)\in K,\quad\forall t\in {\cal{E}}.
+\end{equation}
+Из (\ref{14m18})-(\ref{14m20}) получаем:
+\begin{equation}\label{14m21}
+\sup \limits_{u\in U} h(t,u)=\max\limits_{u\in
+K}h(t,u)=-\psi_t(t),\quad\forall t\in{\cal{E}}
+\end{equation}
+Отсюда в силу леммы \ref{14L1} вытекает, что
+\begin{equation}\label{14m22}
+\sup\limits_{u\in U}h(t,u)=\max\limits_{u\in
+K}h(t,u),\quad\forall t\in\Delta
+\end{equation}
+Поскольку $K\subset U$, то из (\ref{14m22}) получаем:
+\begin{equation}\label{14m23}
+\sup\limits_{u\in U}h(t,u)=\max\limits_{u\in
+U}h(t,u),\quad\forall t\in\Delta
+\end{equation}
+т.е. максимум реализуется на всех отрезках $\Delta$. Из
+(\ref{14m21}) и (\ref{14m22}) вытекает, что
+\begin{equation}\label{14m24}
+\max\limits_{u\in K}h(t,u)=-\psi_t(t),\quad\forall
+t\in{\cal{E}}
+\end{equation}
+Функция $\psi_t$ липшицева, а функция в левой части равенства
+(\ref{14m24}) непре\-рывна - в силу леммы 2. Поскольку
+$\bar{\cal{E}}=\Delta$, то из (\ref{14m24}) следует, что
+\begin{equation}\label{14m25}
+\max\limits_{u\in K}h(t,u)=-\psi_t(t),\quad\forall
+t\in\Delta.
+\end{equation}
+Из (\ref{14m22}), (\ref{14m23}) и (\ref{14m25}) вытекает, что
+\begin{equation}\label{14m26}
+\max\limits_{u\in U}h(t,u)=-\psi_t(t),\quad\forall
+t\in\Delta,
+\end{equation}
+причем, максимум в левой части равенства реализуется $\forall
+t\in \Delta$. Вспо\-ми\-ная определение (\ref{14m17}) функции
+$h(t,u)$, получаем отсюда
+\begin{equation}\label{14m27}
+\max\limits_{u\in U}
+H(t,x(t),u,\psi_x(t))+\psi_t(t)=0,\quad\forall t\in\Delta
+\end{equation}
+т.е. имеет место (\ref{14m9}):
+$$
+{\cal H}(t,x(t),u,\psi_x(t))+\psi_t(t)=0,\quad\forall t\in\Delta
+$$
+Тем самым доказано и условие (\ref{14m8}):
+$$
+(t,x(t),\psi_x(t))\in \text{dom} {\cal H},\quad\forall t\in\Delta
+$$
+Из (\ref{14m6}) и (\ref{14m9}) получаем:
+\begin{equation}\label{14m28}
+H(t,x(t),u(t),\psi_x(t))={\cal H}(t,x(t),\psi_x(t))\;\mbox{п.в.
+на}\;\Delta.
+\end{equation}
+Последнее условие можно представить в виде:
+\begin{equation}\label{14m29}
+u(t)\in \text{arg}\max\limits_{u\in U}H(t,x(t),u(t),\psi_x(t))
+\;\mbox{п.в. на}\;\Delta
+\end{equation}
+где в правой части (\ref{14m29}) стоит множество тех $u\in U$, на
+которых реали\-зуется максимум функции $H(t,x(t),u(t),\psi_x(t))$
+по $u\in U$.
+
+
+Итак, доказана
+\setcounter{theorema}{0}
+\begin{theorema}\label{14t1}
+Пусть множество $U$ замкнуто. Тогда для всякой экст\-ре\-мали
+$$
+\Big(x(t),u(t),\psi_x(t),\psi_t(t)\ |\ t\in \Delta\Big)
+$$
+системы (\ref{14m1}) выполнены условия:\\
+\begin{enumerate}
+\item[(a)]$(t,x(t),\psi_x(t))\in \text{dom}\ {\cal H},\quad \forall t\in\Delta$\\
+\item[(b)]$H(t,x(t),u(t),\psi_x(t))={\cal H}(t,x(t),\psi_x(t)) \;\mbox{п.в. на}\;\Delta$\\
+\item[(c)]${\cal H}(t,x(t),\psi_x(t))+\psi_t(t)=0,\quad \forall t\in \Delta$\\
+\item[(d)]Существует компакт $K\subset U$ такой,
+что \\
+$\max\limits_{u\in K}H(t,x(t),u,\psi_x(t))= {\cal
+H}(t,x(t),\psi_x(t)),\quad \forall t\in \Delta.$
+
+\end{enumerate}
+\end{theorema}
+
+Итак согласно теореме \ref{14t1} и определению экстремали, для
+всякой экс\-тре\-мали
+выполнены условия:\\
+\begin{enumerate}
+\item[(I)]$\quad\dot x(t)=f(t,x(t),u(t))\quad\mbox{п.в. на}\;\Delta$\\
+\item[(II)]$\quad u(t)\in U\quad\mbox{п.в. на}\;\Delta$\\
+\item[(III)]$\quad-\dot \psi_x(t)=H_x(t,x(t),u(t),\psi_x(t))\quad\mbox{п.в. на}\;\Delta$\\
+\item[(IV)]$\quad(t,x(t),\psi_x(t))\in\text{dom} {\cal H}, \quad\forall t\in\Delta$\\
+\item[(V)]$\quad H(t,x(t),u(t),\psi_x(t))={\cal H}(t,x(t),\psi_x(t))\quad\mbox{п.в. на}\;\Delta$\\
+\end{enumerate}
+Последнее условие, как уже отмечалось эквивалентно условию
+(\ref{14m29}).
+
+В условиях (\textrm{I})-(\textrm{V}) компонента $\psi_t$
+отсутствует. Покажем, что эти условия эквивалентным образом
+определяют экстремаль. Точнее дока\-жем следующую теорему.
+\begin{theorema}\label{14t2}
+Пусть тройка
+\begin{equation}\label{14m30}
+(x(t),u(t),\psi_x(t)|t\in \Delta)
+\end{equation}
+такова, что $x(t), \psi_x(t)$ абсолютно непрерывны на $\Delta$,
+$u(t)$~--- ограничена и измерима на $\Delta$ и выполнены условия
+(\textrm{I})-(\textrm{V}) ($\Delta=[t_0,t_1]$). Пусть $U$
+замкнуто. Тогда функция
+$$
+\psi_t(t)\overset{def}{=}-{\cal H}(t,x(t),\psi_x(t)),\quad t\in
+\Delta
+$$
+удовлетворяет условию Липшица и уравнению
+$$
+-\dot\psi_t(t)=H_t(t,x(t),u(t),\psi_x(t))\;\mbox{п.в. на}\;\Delta,
+$$
+а четверка
+$$
+\Big(x(t),u(t),\psi_x(t),\psi_t(t)\ | \ t\in \Delta\Big)
+$$
+является экстремалью системы (\ref{14m1}).
+\end{theorema}
+
+Итак, под экстремалью системы (\ref{14m1}) можно понимать тройку
+(\ref{14m30}) удовлетворяющую условиям (\textrm{I})-(\textrm{V}).
+При этом выполнено равенство
+\begin{equation}\label{14m31}
+\frac{d}{dt}{\cal
+H}(t,x(t),\psi_x(t))=H_t(t,x(t),u(t),\psi_x(t))\;\mbox{п.в.
+на}\;\Delta,
+\end{equation}
+вытекающее из условий (\textrm{I})-(\textrm{V}). Это утверждает
+теорема \ref{14t2}.
+
+Для доказательства теоремы \ref{14t2} понадобятся две леммы.
+
+
+\begin{lemma1}\label{14L3}
+Пусть $K\subset \mathbb{R}^m$~--- компакт, $\Delta$~--- отрезок,
+$h(t,u):\Delta\times K\mapsto \mathbb{R}$ непрерывна на
+$\Delta\times K$. Пусть существует константа $L>0$ такая, что
+$|h(\tau_2,u)-h(\tau_1,u)|\leqslant L|\tau_2-\tau_1|$ для любых
+$\tau_1,\tau_2\in\Delta,\ u\in U$. Тогда функция
+$$
+\varphi(t)=\max\limits_{u\in K}h(t,u)
+$$
+удовлетворяет на $\Delta$  условию Липшица с константой $L$.
+\end{lemma1}
+\begin{proof}
+Пусть $\tau_1,\tau_2\in\Delta$. Выберем $u_1\in K$ и $u_2\in K$
+так, что
+$$
+\varphi(\tau_k)=h(\tau_k,u_k),\quad k=1,2.
+$$
+Тогда
+$$
+\varphi(\tau_2)-\varphi(\tau_1)=h(\tau_2,u_2)-h(\tau_1,u_1).
+$$
+Поскольку $u_1$~--- точка максимума $h(\tau_1,u)$ по $K$, то
+$$
+h(\tau_1,u_1)\geqslant h(\tau_1,u_2).
+$$
+Следовательно,
+$$
+\varphi(\tau_2)-\varphi(\tau_1)\leqslant
+h(\tau_2,u_2)-h(\tau_1,u_2)\leqslant L|\tau_2-\tau_1|.
+$$
+Аналогично,
+$$
+\varphi(\tau_1)-\varphi(\tau_2)\leqslant L|\tau_1-\tau_2|.
+$$
+Следовательно,
+$$
+|\varphi(\tau_2)-\varphi(\tau_1)|\leqslant L|\tau_2-\tau_1|.
+$$
+Лемма доказана.
+\end{proof}
+\begin{lemma1}\label{14L4}
+Пусть $K\subset \mathbb{R}^m$~--- компакт, $\Delta$~--- отрезок,
+$h(t,u):\Delta\times K\mapsto \mathbb{R}$ непрерывная функция.
+Положим
+$$
+\varphi(t)=\max\limits_{u\in K}h(t,u).
+$$
+Пусть $\tilde t\in \text{int}\Delta,\,\tilde u\in K$~--- точка
+максимума функции $h(\tilde t,u)$ по $u\in K$, т.е.
+$$
+\varphi(\tilde t)=h(\tilde t,\tilde u).
+$$
+Пусть существуют производные $\varphi'(\tilde t)$ и
+${h'}_t(\tilde t,\tilde u)$. Тогда $\varphi'(\tilde
+t)={h'}_t(\tilde t,\tilde u)$.
+\end{lemma1}
+\begin{proof}
+Положим
+$$
+\psi(t)=h(t,\tilde u).
+$$
+Тогда функции $\psi(t)$ и $\varphi(t)$ удовлетворяют условиям:
+\begin{enumerate}
+\item[(a)]$\varphi(\tilde t)=\psi(\tilde t)\;\mbox{т.к.}\;\psi(\tilde t)=h(\tilde t,\tilde u)=\varphi(\tilde t);$\\
+\item[(b)]$\varphi(t)\geqslant\psi(t)\;\mbox{т.к.}\;\varphi(t)=\max\limits_{u\in K}h(t,u)\geqslant h(t,\tilde u)=\psi(t).$\\
+\end{enumerate}
+Из (a) и (b) с очевидностью следует, что
+$$
+\varphi'(\tilde t)=\psi'(\tilde t).
+$$
+Но $\psi'(t)= {h'}_t(t,\tilde u)$. Следовательно,
+$\varphi'(\tilde t)={h'}_t(\tilde t,\tilde u).$
+
+Лемма доказана.
+\end{proof}
+\endinput

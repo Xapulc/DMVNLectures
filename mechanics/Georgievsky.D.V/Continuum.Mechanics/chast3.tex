@@ -1,0 +1,144 @@
+\part*{РАСПРЕДЕЛЕНИЕ МАСС И СИЛ В СПЛОШНОЙ СРЕДЕ}
+\begin{question}
+Плотность. Закон сохранения массы (интегральная формулировка).
+Производная по времени от интеграла по движущемуся "жидкому"\ объему.
+\end{question}
+Плотностью в точке будем называть следующую величину:
+$$\lim\limits_{\triangle V\to 0}\frac{\triangle m}{\triangle
+V}=\rho(\vec x,t).
+$$
+Будем рассматривать только те случаи, когда предел существует.
+Массой называется интеграл плотности: $$\int_V\rho(\vec x,t)dV=M
+$$
+
+"Жидким объемом"\ будем называть объем, который состоит из одних и
+тех же точек среды. Для "жидкого объема"\ постулируем закон
+сохранения массы: $$\frac{d}{dt}\int_V\rho(\vec x,t)dV=0 $$
+
+\begin{question}
+Уравнение неразрывности в эйлеровых и лагранжевых координатах.
+Условие несжимаемости. Несжимаемые среды. Лемма "об игнорировании
+плотности".
+\end{question}
+Распишем интегральную форму закона сохранения массы:
+$$0=\frac{d}{dt}\int_{V}\rho(x,t)dV=\int_V\frac{d}{dt}(\rho dV)=\int_V\frac{d\rho}{dt}dV+\int_V\rho\frac{d(dV)}{dt}$$
+$$dV=dx_1dx_2dx_3$$
+$$\frac{d(dx_{\alpha})}{dt}=v_{\alpha\alpha}dx_\alpha$$ $$\frac{d(dV)}{dt}=tr(\underItilde{v})dV=\divergent{\vec v}dV $$
+$$0=\int_V\left(\frac{d\rho}{dt}+\rho\divergent{\vec v}\right)dV$$
+Отсюда получаем дифференциальную форму закона сохранения масс~---
+уравнение неразрывности в эйлеровых координатах:
+$$
+\frac{d\rho}{dt}+\rho\divergent{\vec v}=0.
+$$
+
+Запишем равенство: $\rho dV=\rho_0dV_0$. Заметим, что
+$\frac{dV-dV_0}{dV_0}=tr\underItilde{\varepsilon}=\theta$~---
+дилатация. Получим закон сохранения массы в лагранжевых
+координатах $\rho(1+\theta)=\rho_0$
+
+Несжимаемой называется среда, для которой $\frac{d\rho}{dt}=0$.
+Из уравнения неразрывности следует условие несжимаемости:
+$\divergent\vec v\hm=0$
+
+\underline{Лемма об игнорировании плотности}
+$$\frac{d}{dt}\int_V(\rho a)(x,t)dV=\int_V\rho\frac{da}{dt}dV$$
+Доказательство:
+$$\frac{d}{dt}\int_V(\rho
+a)(x,t)dV=\int_V\left(\rho\frac{da}{dt}+\frac{d\rho}{dt}a\right)dV+\int_Va\rho\frac{d(dV)}{dt}=
+\int_Va\left(\frac{d\rho}{dt}+
+\rho\divergent{\vec
+v}\right)+\int_V\rho\frac{da}{dt}dV=\int_V\rho\frac{da}{dt}dV$$
+\begin{question}
+Количество движения (импульс), момент количества движения (момент
+импульса) и кинетическая энергия в сплошной среде.
+\end{question}
+
+Импульс: $\Sigma_{\gamma}\triangle m_{\nu}\vec
+v(x_{\nu})\to\int_{V}(\rho\vec v)(\vec x,t)dV$.
+
+Момент импульса: $\int_{V}\vec x\times(\rho\vec v)dV$.
+
+Кинетическая энергия: $K\hm=\frac{1}{2}\int_V\rho|\vec v|^2dV$.
+
+\begin{question}
+Объемные и массовые силы. Поверхностные силы. Вектор напряжения в
+точке на площадке.
+\end{question}
+
+К массовым силам относятся силы гравитации и инерции. Они
+приложены в центре масс. Сила обозначается $[R]=MLT^{-2}$.
+
+\underline{Объемная сила} $\vec X(\vec x,t)\hm=lim_{\triangle V\to
+0 }\frac{\triangle R}{\triangle V};$ $[X]\hm=ML^{-2}T^{-2}$.
+
+\underline{Массовая сила} $\vec F(\vec x,t)\hm=lim_{\triangle V\to
+0 }\frac{\triangle R}{\triangle m}\hm=\frac{1}{\rho}\vec X;$
+$[F]\hm=LT^{-2}$
+
+Все прочие силы относятся к поверхностным. Они вычисляются на
+единице площади: $\vec P\hm=lim_{\triangle \Sigma\to 0}\frac{\Delta
+\vec R}{\Delta\Sigma}$; $[P]=ML^{-1}T^{-2}$~--- вектор напряжения
+в момент $t$ в точке $\vec x$ на площадке с нормалью $\vec n$.
+
+\begin{question}
+Выражение вектора напряжения на наклонной площадке через векторы
+напряжений на координатных площадках. Тензор напряжения Коши.
+\end{question}
+
+%Здесь уж без картинки не обойтись, хоть Костя и рисует их очень
+%долго.
+
+\begin{wrapfigure}[19]{o}{140pt}
+\hbox to 140pt{\hss\begin{picture}(0,0)
+\put(35,65){$\vec P^{(1)}$}
+\put(105,77){$\vec P^{(2)}$}
+\put(75,30){$\vec P^{(3)}$}
+\put(90,100){$\vec P^{(n)}$}
+\end{picture}
+\includegraphics[scale=1.]{napryajeniya.eps}\hss}
+\end{wrapfigure}
+
+На осях $Ox_1$, $Ox_2$, $Ox_3$ соответственно лежат точки $B_1$
+$B_2$ $B_3$. Получился тетраэдр $0B_1B_2B_3$. Введем обозначения для
+его граней: $$B_1OB_2=\Delta\Sigma^{(3)}$$
+$$B_2OB_3=\Delta\Sigma^{(1)}$$
+$$B_1OB_3=\Delta\Sigma^{(2)}$$
+$$B_1B_2B_3=\Delta\Sigma$$
+
+Им соответствуют напряжения $\vec P^{(1)},$ $\vec P^{(2)},$ $\vec
+P^{(3)}$ и $\vec P^{(n)}$ ($\vec n$~--- нормаль к площадке
+$\Delta\Sigma$ ).
+
+Напишем второй закон Ньютона: $\vec w_l\Delta m\hm=\vec F\Delta
+m\hm+\vec P^{(1)}\Delta\Sigma^{(1)}\hm+\vec
+P^{(2)}\Delta\Sigma^{(2)}\hm+\vec P^{(3)}\Delta\Sigma^{(3)}\hm
++\vec P^{(n)}\Delta\Sigma. $ Разделим обе части равенства на
+$\Delta\Sigma$. Получится $(\vec w_l\hm-\vec
+F)\frac{1}{3}\rho\Delta h\hm=\Sigma\vec
+P^{(k)}\frac{\Delta\Sigma^{(k)}}{\Delta\Sigma}\hm+\vec P^{(n)}. $
+
+Устремим $\Delta h$ к нулю, не меняя нормали к площадке. Левая часть
+обратится в ноль. Заметим, что
+$\frac{\Delta\Sigma^{(k)}}{\Delta\Sigma}=n_k$. Получим: $$\vec
+P^{(n)}+\Sigma\vec P^{(k)}n_k=0.$$
+
+Введем тензор напряжений Коши $\underItilde{\sigma}:$
+$\sigma_{ij}=-P_i^{(j)}$. Получим выражения для напряжения:
+$$P_i^{(n)}=\sigma_{ij}n_j
+$$
+\begin{question}
+Нормальное и касательное напряжение в точке на площадке.
+\end{question}
+
+Напряжение в точке на площадке можно разложить на нормальную и
+касательную составляющую. Нормальная составляющая (нормальное
+напряжение) пишется так: $N^{(n)}\hm=\vec P^{(n)}\vec
+n\hm=\sigma_{ij}n_in_j$.
+
+Касательное напряжение можно найти по теореме Пифагора, зная общее и
+нормальное напряжение:
+\begin{gather*}
+\tau^{(n)}=\sqrt{|\vec
+P^{(n)}|^2-(N^{(n)})^2}\hm=\sqrt{P^{(n)}_iP^{(n)}_i-(P^{(n)}_in_i)^2},\\
+(\tau{(n)})^2=\sigma_{ik}n_k\sigma_{il}n_l-(\sigma_{jk}n_jn_k)^2.
+\end{gather*}

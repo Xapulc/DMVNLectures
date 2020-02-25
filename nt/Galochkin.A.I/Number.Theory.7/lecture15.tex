@@ -1,0 +1,141 @@
+\begin{theorem}[Гельфонда-Шнейдера, решение седьмой проблемы Гильберта]
+  Пусть $a, \beta \in \A$, $a \ne 0, a \ne 1$, $\beta \not \in \Q$. Тогда $a^{\beta}$ трансцендентно.
+\end{theorem}
+\begin{proof}
+  В процессе доказательства нам понадобятся два утверждения.
+  \begin{stm}
+    Пусть $\beta \in \Z_A$. Рассмотрим соотношение
+    $$
+      \beta^m = b_{m-1} \beta^{m-1} + \ldots + b_0,
+    $$
+    где $b_i \in \Z, |b_i| \leqslant B$. Тогда при любом натуральном $t$ верно такое равенство:
+    $$
+      \beta^t = b_{t,m-1} \beta^{m-1} + \ldots + b_{t,0},
+    $$
+    причем $b_{t,j} \in \Z, |b_{t,j}| \leqslant (B + 1)^t$.
+  \end{stm}
+  \begin{proof}
+    Индукция по $t$. При $t \leqslant m$ утверждение очевидно.
+    
+    Переход.
+    $$
+      \beta^{t+1} = \beta \beta^t = \beta (b_{t,m-1} \beta^{m-1} + \ldots + b_{t,0}).
+    $$
+    Дальше расписываем $\beta^m$ по условию, и оценка становится очевидной.
+  \end{proof}
+  
+  \begin{stm}
+    Пусть $\beta \in \Z_A$, $0 \leqslant k \leqslant n$, $0 \leqslant l \leqslant n$. Утверждается, что
+    $$
+      (k + l \beta)^t = b_{t,k,l,m-1} \beta^{m-1} + \ldots + b_{t,k,l,0},
+    $$
+    где $b_{t,k,l,j} \in \Z, |b_{t,k,l,j}| \leqslant n^t (B + 2)^t$ ($B$~--- обозначение из предыдущей леммы).
+  \end{stm}
+  \begin{proof}
+    $$
+      (k+l\beta)^t = \sum_{s=0}^t C_t^s k^{t-s} l^s \beta^s = \sum_{s=0}^t C_t^s k^{t-s} l^s \sum_{j=0}^{m-1} b_{s,j} \beta^j
+    $$
+    Существование представления имеет место. Осталось доказать оценки на коэффициенты.
+    $$
+      |B_{t,k,l,j}| \leqslant \sum_{s=0}^t C_t^s k^{t-s} l^s (B+1)^s = (k + l(B + 1))^t \leqslant n^t (B+2)^t
+    $$
+  \end{proof}
+  
+  Теперь докажем некоторые важные леммы.
+  
+  \begin{lemma}
+    Пусть $n$~--- натуральное, $\beta \in \Z_A$, $\deg \beta = m > 1$.
+    Тогда cуществуют целые $a_{k,l}$ такие, что
+    $$
+      f(z) = \sum_{k,l=0}^{n-1} a_{k,l} e^{(k+l \beta)z}
+    $$
+    обладает следующими свойствами:
+    \begin{enumerate}
+      \item $0 < |a_{k,l}| < n^{\gamma_1 n}$ ($\gamma_1$ не зависит от $n$),
+      \item $\ord_{z=0} f \geqslant \left[n^{3/2}\right]$.
+    \end{enumerate}
+  \end{lemma}
+  \begin{proof}
+    $$
+      f^{(t)}(z) = \sum_{k,l=0}^{n-1} a_{k,l} (k + l \beta)^t e^{(k+l \beta)z}
+    $$
+    $$
+      f^{(t)}(0) = \sum_{k,l=0}^{n-1} a_{k,l} (k + l \beta)^t = \sum_{k,l=0}^{n-1} a_{k,l} \sum_{j=0}^{m-1} B_{t,k,l,j} \beta^j =
+      \sum_{j=0}^{m-1} \left( \sum_{k,l=0}^{n-1} B_{t,k,l,j} a_{k,l} \right) \beta^j
+    $$
+    Рассмотрим систему уравнений:
+    $$
+      \sum_{k,l=0}^{n-1} B_{t,k,l,j} a_{k,l} = 0,
+    $$
+    где $0 \leqslant t < \left[ n^{3/2} \right]$, $0 \leqslant j < m$. Пользуясь леммой Зигеля, получаем требуемое.
+  \end{proof}
+  
+  \begin{lemma}
+    В условиях предыдущей леммы $\left[ n^{3/2} \right] \leqslant \ord_{z=0} f \leqslant n^2$.
+  \end{lemma}
+  \begin{proof}
+    Левая часть следует из предыдущей леммы.
+    Если предположить, что $f^{(t)}(0) = 0$ при $t = 0, \ldots, n^2 - 1$, то определитель системы должен равняться нулю. Но это определитель Вандермонда, который не ноль, так как $\beta \not \in \Q$.
+  \end{proof}
+  
+  Фиксируем $X \in \N$, которое мы выберем потом и которое не будет зависеть от $n$. $T := \min_{z = x \ln a, 0 \leqslant x \leqslant X} \ord_z f$, $r := X |\ln a| + 1$.
+  Во-первых, $T \leqslant n^2$, во-вторых, существует $x_0$ такое, что $0 \leqslant x_0 \leqslant X$, и $f^{(T)} (x_0 \ln a) \ne 0$.
+  
+  \begin{lemma}
+    При $|z| \leqslant r$ и при достаточно большом $n$
+    $$
+      |f(z)| \leqslant n^{-1/3 n^{3/2} - XT / 3}.
+    $$
+  \end{lemma}
+  \begin{proof}
+    Рассмотрим
+    $$
+      g(z) = \frac{f(z)}{z^{\left[ n^{3/2} \right]} \prod_{x=1}^X (z- x \ln a)^T}.
+    $$
+    Из определений видно, что $g$ является целой. Значит, для нее выполняется принцип максимума.
+    Выберем $n > r^2$. Тогда
+    $$
+      |g(z)| \leqslant \max_{|u| = \sqrt{n}} |g(u)|,
+    $$
+    $$
+      |f(z)| \leqslant \max_{|u| = \sqrt{n}} |f(u)| \left| \frac{z}{u} \right|^{\left[ n^{3/2} \right]} \prod_{x=1}^X \left| \frac{z - x \ln a}{u - x \ln a} \right|^T
+    $$
+    
+    $|f(u)|$ оцениваем по определению:
+    $$
+      |f(u)| \leqslant n^2 n^{\gamma_1 n} e^{n(1+|\beta|)\sqrt{n}} \leqslant e^{\gamma_2 n^{3/2}}.
+    $$
+    
+    $$
+      \frac{z - x \ln a}{u - x \ln a} < n^{-0.4},
+    $$
+    так как все, кроме $u$, фиксировано.
+    
+    Итак,
+    $$
+      |f(z)| \leqslant e^{\gamma_2 n^{3/2}} n^{-0.4\left[n^{3/2}\right] - 0.4 XT}
+    $$
+  \end{proof}
+  
+  \begin{lemma}
+    При $0 \leqslant x \leqslant X$
+    $$
+      |f^{(T)}(x \ln a)| \leqslant n^{-1/3 n^{3/2} - 1/3 (X - 6) T}.
+    $$
+  \end{lemma}
+  \begin{proof}
+    Доказательство дословно повторяет доказательство четвертой леммы в теореме Линдемана.
+  \end{proof}
+  
+  Теперь докажем саму теорему.
+  $$
+    0 < |f^{(T)}(x_0 \ln a)| = \sum_{k,l=0}^{n-1} a_{k,l} (k + l\beta)^t a^{k \cdot x_0} \left(a^{\beta}\right)^{l x_0}.
+  $$
+  Рассмотрим это выражение как многочлен от $\beta$, $a$, $a^{\beta}$.
+  
+  Допустим противное. Пусть $a$, $\beta$, $a^{\beta}$~--- алгебраические. $\deg \beta = m$, $\deg a = m_1$, $\deg a^{\beta} = m_2$. По обобщенной теореме Лиувилля. Степень многочлена не превосходит $T + 2nX$, длина многочлена не превосходит $n^2 n^{\gamma_1 n} (2n)^T$. Итак, получаем, что
+  $$
+    |f^{(T)} (x_0 \ln a)| \geqslant C^{-T - 2nX} (n^2 n^{\gamma_1 n} (2n)^T)^{1 - m m_1 m_2} \geqslant n^{-\gamma_3 n - 2 m m_1 m_2 T}.
+  $$
+  Но в силу последней леммы имеет место верхняя оценка, которая убывает гораздо быстрее, чем нижняя, если взять, к примеру, $X = 6 m m_1 m_2 + 6$.
+\end{proof}

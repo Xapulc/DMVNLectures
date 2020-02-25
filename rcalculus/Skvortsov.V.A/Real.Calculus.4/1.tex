@@ -1,0 +1,202 @@
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%                стр. 1         %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\textbf{Лекция 1.}
+\end{center}
+
+
+
+\textbf{Определение.}\quad $S$ --- полукольцо множеств, если:
+
+$\o \in S$; $S$ замкнуто относительно операции $\bigcap\:;$ и если
+$A_1 \in A$, и $A_1, A \in S$, то $A = \bigcup_{i=1}^n{A_i}$,
+$A_i\in S.$
+
+\textbf{Определение.}\quad Кольцо --- непустое семейство множеств,
+замкнутое относительно~$\bigcap\:.$ Обозначается $R,\:\Delta,\:
+\bigcap\:.$
+
+\textbf{Задача 1.}\quad Замкнутость относительно $\backslash\:,$
+$\bigcap.$
+
+\textbf{Задача 2.}\quad Кольцо является полукольцом.
+
+\textbf{Задача 3.}\quad Какие пары операций на множествах дают
+определения, эквивалентные кольцу.
+
+Все множества семейства --- подмножества множества Х.
+
+Если Х входит в класс, назовем его единицей.
+
+\textbf{Определение.}\quad Кольцо с единицей --- алгебра множеств.
+
+
+\textbf{Определение.}\quad Если кольцо замкнуто относительно
+счётных объединений, назовем его $\delta$ - кольцом. $\delta$ -
+кольцо с единицей --- $\delta$ - алгебра.
+
+\textbf{Определение.}\quad Кольцо, порожденное данным семейством
+--- минимальное кольцо, содержащее данное семейство.
+
+$R(S)$ --- минимальное кольцо, порожденное $S$.
+
+\textbf{Теорема.}\quad $\forall A \in R(S) $
+
+$$ A = \bigcup_{j=1}^n B_j$$
+$\triangle$
+
+$B = \bigcup_{i=1}^k C_i, \; C_i \in S.$
+
+$A\bigcap B = \bigcup_{i,j}\;(B_j\bigcap C_i)$
+
+$A\setminus B = \bigcup _j \;(B_j \setminus B)$ $= \bigcup\_j
+\bigcap_i\; (B_j \setminus C_i),\; B_j \setminus C_i$ принадлежит
+рассматриваемому семейству.
+
+$A\Delta B = (A\setminus B) \bigcup\: (B\setminus A) \Rightarrow$
+семейство замкнуто относительно $\Delta.$
+
+
+
+\begin{center}
+\textbf{Мера}
+\end{center}
+
+
+$m: \EuScript{A} \rightarrow [\,0;+\infty);\; \EuScript{A}$ ---
+семейство множеств,
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% стр 2. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+
+$m (A \bigcup B) = m(A) + m(B)$
+
+$m(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty m(A_i)$
+($\delta$-аддитивность)
+
+$m: S \rightarrow [\,0;+\infty), \; S $ --- полукольцо
+
+\textbf{Теорема.}\quad Существует единственное продолжение меры
+$m: S \rightarrow [\,0;+\infty)$~на~$R(S)\; m'$, причем если $m$
+$\delta$-аддитивна, то $m' - \delta$-аддитивна на кольце.
+
+
+$A \in R(S), \; A = \bigcup_{j=1}^n B_j, \; B_j \in S$
+
+$m'(A) \doteq \sum_{j=1}^n m\:B_j$
+
+Проверим, что $m'$ не зависит от представления.
+
+$A = \bigcup_{i=1}^k C_i$ --- другое представление.
+
+$A = \bigcup_{j,i}\: (B_j \bigcap\: C_i),\; B_j \bigcap C_i \in S$
+
+$m'(A) = \sum_{j=1}^n m(B_j) = \sum_{j=1}^n \sum_{i=1}^k m(B_j
+\bigcap C_i) = \sum_{i=1}^k m(C_i) \; \Rightarrow \sum_{i=1}^k
+m(C_i)~=~m'(A)$
+
+Пусть есть второе продолжение $m''$
+
+$m''(A) = \sum_{j=1}^n m''(B_j) = \sum_{j=1}^n m(B_j) = m'(A)
+\Rightarrow m''$ совпадает с $m'.$
+
+Проверка аддитивности:
+
+$A = \bigcup_{j=1}^n A_j$
+
+$A = \bigcup_{i=1}^m B_i,\; Bi \in S$
+
+$A_j = \bigcup_{k=1}^{k_j} B_{j,k}$
+
+$m'(A) = \sum_i \sum_{j,k} m(B_{j,k} \bigcap\: B_i) = \sum_j
+\sum_{k,i} m(B_{j,k}\bigcap\: B_i) = \sum m'(A_j) \;\;\; (*)$
+
+Проверим $\delta$-аддитивность.
+
+$A = \bigcup_{j=1}^{\infty} A_j, \; A_j = \bigcup_{k=1}^{k_j}
+B_{j,k}$
+
+
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%  стр 2.1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Далее пишем (*), только там пользуемся $\delta$-аддитивностью $m$.
+
+\textbf{Задача 4.}\quad На полукольце прямоугольников площадь ---~
+$\delta$-аддитивная~мера.
+
+\textbf{Теорема (полуаддитивность меры).}
+
+$A \subset \bigcup_{i=1}^{\infty} A_i,$ тогда $m(A) \leqslant \sum
+_{i=1}^{\infty} m(A_i)$
+
+$(m$ --- $\delta$-аддитивна)
+
+
+$\triangle$
+
+$B_1 = A \bigcap\: A_1, \; B_2 = (A \bigcap A_2)\setminus B_1$
+
+$B_i = (A \bigcap\: A_i)\backslash \bigcup_{k=1}^{i-1} B_k$
+
+$A = \bigcup_{i=1}^{\infty}$
+
+$ mA = \sum_{i=1}^m\,B_i \leqslant mA_i$ ($B_i \subset A_i$ в силу
+монотонности меры)
+
+\begin{center}
+\textbf{Внешняя мера}
+\end{center}
+
+Х - основное множество, $S$ - полукольцо.
+
+$E \subset \bigcup_i P_i, \; P_i \in S$
+
+Тогда $\mu ^* (E) = \inf\limits_{\bigcup\limits_i P_i \supset E}
+\sum_{j=1}^{\infty}mP_i$
+
+Свойства внешней меры:
+
+1) полуаддитивность
+
+$E \subseteq \bigcup_{j=1}^{\infty} E_j \Rightarrow \mu ^* (E)
+\leqslant \sum_{j=1}^{\infty} \mu ^* (E_j)$
+
+Доказательство: приближенно с точностью $\varepsilon / 2^j \;
+\forall\; E_j$
+
+$\mu ^* (E_j) + \varepsilon / 2^i > \sum_{i=1}^{\infty}mP_{j,i}\;;
+ \; \bigcup_{j,i} P{j,i}$ --- покрытие $Е$.
+
+$\mu ^* (E_j) \leqslant \sum_{i,j}mP_{j,i} \leqslant \sum_j \mu ^*
+(E_j) + \varepsilon$
+
+Так как это верно $\forall\,\varepsilon$, то $\mu ^* (E_j)
+\leqslant \sum_j \mu ^* (E_j)$
+
+\textbf{Определение.}\quad \textbf{Внутренняя мера} \quad $\mu _*
+(E) = mX - \mu ^* (X \setminus E)$
+
+\textbf{Определение.}\quad \textbf{Измеримое множество}
+
+(1) $\mu _* (E) = \mu ^* (E)$
+
+(2) $\mu ^* (A) = \mu ^* (A \bigcap E) + \mu ^* (A \setminus E) \;
+\forall \; A$

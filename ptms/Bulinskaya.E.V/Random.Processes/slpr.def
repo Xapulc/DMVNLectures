@@ -1,0 +1,48 @@
+%--------------Греческие буквы-----------------------------------------------
+\def\ga{\alpha}         \def\gl{\lambda}        \def\gx{\xi}
+\def\gs{\sigma}         \def\go{\omega}		\def\gd{\delta}
+\def\gg{\gamma}		\def\gn{\eta}		\def\gp{\pi}
+\def\gt{\tau}		\def\gv{\nu}		\def\gr{\rho}
+\def\ep{\varepsilon}    \def\gf{\varphi}
+\def\gO{\Omega}         \def\gP{\Pi}            \def\gD{\Delta}
+\def\gL{\Lambda}
+\def\ind{\chi}		\def\pd{\partial}
+%-------------Ажурные буквы--------------------------------------------------
+\def\RR{\mathbb{R}} \def\CC{\mathbb{C}} \def\ZZ{\mathbb{Z}}
+\def\VV{\mathbb{V}} \def\BB{\mathbb{B}}
+%-------------Фигурные буквы-------------------------------------------------
+\def\vJ{\mathfrak{B}}	\def\vD{\mathscr{D}}	\def\vN{\mathcal{N}}
+\def\gX{\mathfrak{X}}
+\def\vF{\mathscr{F}}
+\def\vB{\mathscr{B}}	\def\vA{\mathfrak{A}}	\def\gA{\mathscr{A}}
+%-------------Прямым шрифтом-------------------------------------------------
+%\DeclareMathOperator{\arctg}{arctg}
+%-------------Теоремы--------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem*{Lemma}{\underline{Лемма}}
+\newtheorem*{Theorem}{\underline{Теорема}}
+\newtheorem*{Impl}{\underline{Следствие}}
+\newtheorem*{Conf}{\underline{Следствие}}
+\theoremstyle{definition}
+\newtheorem*{problem}{\underline{Задача}}
+\newtheorem*{Def}{\underline{Определение}}
+\theoremstyle{remark}
+\newtheorem*{remark}{\underline{Замечание}}
+\renewcommand{\proofname}{Док-во}
+
+\makeatletter
+%-------------Колонтитулы----------------------------------------------------
+\renewcommand{\@evenhead}{\raisebox{0pt}[\headheight][0pt]{\underline{\makebox[\textwidth][l]{\thepage\hfill\slshape\leftmark}}}}%
+\renewcommand{\@oddhead}{\raisebox{0pt}[\headheight][0pt]{\underline{\makebox[\textwidth][l]{{\slshape\rightmark}\hfill\thepage}}}}%
+\markboth{Введение в случайные процессы}{\sectionmark}
+
+%-------------Заголовок------------------------------------------------------
+\newcommand\lection{\@startsection{section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\centering\normalfont\Large\bfseries}}
+\renewcommand{\sectionname}{Лекция}
+\makeatother
+
+\setlength{\unitlength}{1mm}
+\newcommand{\lra}{\longrightarrow}

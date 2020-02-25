@@ -1,0 +1,1907 @@
+\documentclass[unicode,10pt]{article}
+\usepackage{dmvn}
+\usepackage{polyglossia}
+\usepackage{unicode-math}
+\usepackage{fontspec}
+\usepackage{makeidx}
+\defaultfontfeatures{Scale=MatchLowercase, Mapping=tex-text}
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+\setmathfont{xits-math.otf}
+\usepackage[all]{xy}
+\usepackage{textcomp}
+\usepackage{geometry}
+\clubpenalty=10000
+\widowpenalty=10000
+\input{defs.tex}
+%\setcounter{tocdepth}{5}
+
+\begin{document}
+%\wierd
+\dmvntitle{Курс лекций по}
+          {дискретной математике}
+          {Лектор — Угольников Александ Борисович}
+          {IV курс, 7-й семестр, поток математиков}
+          { Москва, 2011г}
+\tableofcontents
+\part{Классы Поста.}
+%Задача данного раздела --- доказать
+% Всякий замкнутый класс булевых функций является конечно-порожденным.
+\section{Повторение теории булевых функций.}
+\subsection{Основные определения.}
+\begin{denote}
+  \begin{math}
+    \Ef = \hc{0,1}
+  \end{math}
+\end{denote}
+\begin{denote}
+  \begin{math}
+    \Ef^n = \hc{\set, \al_i\in \Ef}
+  \end{math}
+\end{denote}
+\begin{df}
+  n-местная булева функция:
+  \begin{displaymath}
+    f^{(n)} (\set[x]{n}): \Ef^n \to \Ef
+  \end{displaymath}
+\end{df}
+\begin{denote}
+  $\PD$-множество всех булевых функций.
+\end{denote}
+\begin{df}
+  $f(\set[x]{n})=g(\set[x]{n})$, если
+  \begin{displaymath}
+    \allset[x]{n} \quad f(\xt)=g(\xt)
+  \end{displaymath}
+\end{df}
+\begin{df}
+  $x_1$ --- существенная переменная для $f^{(n)}(\set{n})$,   если существует
+  \begin{displaymath}
+    \uset{n}{\Ef},\text{что выполнено}
+  \end{displaymath}
+  \begin{displaymath}
+    f(0,\setf{n})\neq f(1,\setf{n})
+  \end{displaymath}
+  В противном случае $x_1$ несущественная.
+\end{df}
+\subsection{Способы задания булевых функций}
+\begin{itemize}
+ \item Таблица
+ \item Формула над $\ag\subseq\PD$
+\end{itemize}
+\subsection{Операции над булевскими функциями}
+\begin{enumerate}
+  \item Суперпозиция. Частные случаи:
+    \begin{itemize}
+      \item Перестановка переменных
+      \item Отождествление переменных
+      \item Переименование переменных без отождествления
+      \item Композиция (подстановка функции вместо переменных)
+    \end{itemize}
+  \item Введение фиктивной переменной ($\nab$)
+    \begin{df}
+      Пусть есть функция $f^{(n)}(\set{n})$. Оператор $\nab$ определяется соотношением
+      \begin{displaymath}
+        (\nab f)(\set{n}\al_{n+1})=f(\set{n})  \quad \forall (\set) \in \Ef^n
+      \end{displaymath}
+    \end{df}
+\end{enumerate}
+\subsection{Замкнутые классы}
+\begin{df}
+  Замыканием множества $\ag\subseq\PD$ называется множество булевых функций,
+  которые можно получить из множества функций $\ag$ с помощью операций
+  суперпозиции и введения фиктивной переменной.
+\end{df}
+\begin{denote}
+  Замыкание множества $\ag\subseq\PD$ обозначим $[\ag]$.
+\end{denote}
+\begin{df}
+  $\ag$ --- замкнутое множество (замкнутый класс), если $\ag = [\ag]$
+\end{df}
+\begin{df}
+  Пусть $[F]=F$ и [$\ag$]=F. Тогда будем говорить, что $\ag$ порождает F.
+\end{df}
+\begin{df}
+    Замкнутый класс F называется конечнопорожденным, если найдется конечная система
+    $\ag\subseq\PD$, что $\ag$ порождает F.
+\end{df}
+\begin{prop}
+  В дальнейшем будем рассматривать равенство функций с точностью до несущественных переменных.
+  \begin{ex}
+    \begin{displaymath}
+      f(x,y)\queq g(x,z) \Lra (\nab f)(x,y,z) \queq (\nab g)(x,y,z)
+    \end{displaymath}
+  \end{ex}
+\end{prop}
+\begin{denote}
+  Пусть F-замкнутый класс. Будем обозначать $f_F$ функцию не принадлежащую F.
+\end{denote}
+Рассмотрим некотые замкнутые классы.
+\subsubsection{Линейные функции.}
+  \begin{df}
+    Линейные функции -- функции вида
+    \begin{displaymath}
+      f(\set[x]{n}) = a_0+a_1x_1+\cdots+a_nx_n, \quad \pcoef
+    \end{displaymath}
+  \end{df}
+  \property
+  \begin{enumerate}
+    \item $0, 1, x+y\in\Lb$
+    \item $xy\notin\Lb$
+    \item $[\Lb] = \Lb$
+    \item $\Lb = \cls{0,1,x+y}$
+    \item
+      \begin{stm}
+	Из нелиненйной функции подстановкой 0,x,y можно получить
+        нелинейную функцию двух переменных.
+      \end{stm}
+  \end{enumerate}
+\subsubsection{Коньюнкции.}
+  \begin{df}
+    Коньюнкции -- функции вида
+    \begin{displaymath}
+      f(\set[x]{n}) = a_0\&(a_1\vee x_1)\&\dots\&(a_n\vee x_n) \quad \pcoef
+    \end{displaymath}
+  \end{df}
+  \property
+  \begin{enumerate}
+    \item $0, 1, x, xy \in \Kb$
+    \item $x\vee y\notin \Kb$
+    \item $[\Kb] = \Kb $
+    \item $\Kb = [\{0,1,xy\}]$
+  \end{enumerate}
+\subsubsection{Дизьюнкции.}
+  \begin{df}
+    Дизьюнкции -- функции вида
+    \begin{displaymath}
+      f(\set[x]{n}) = a_0\vee(a_1x_1)\vee\dots\vee a_nx_n \quad \pcoef
+    \end{displaymath}
+  \end{df}
+  \property
+  \begin{enumerate}
+    \item $0, 1, x, x\vee y \in \Db$
+    \item $xy \notin \Db$
+    \item $[\Db] = \Db $
+    \item $\Db = [\{0, 1, x\vee y\}]$
+  \end{enumerate}
+\subsubsection{Монотонные функции.}
+  \begin{df}
+     Пусть $\gset{n}$ и $\gset[\beta]{n}$. Тогда по определению полагаем
+     \begin{displaymath}
+       \tilde\alpha \le \tilde\beta \Lra\forall i \; \alpha_i \le \beta_i
+     \end{displaymath}
+     Считаем,что $0<1$.
+  \end{df}
+  \begin{df}
+    Монотонные функции - функции $f(\set[x]{n})$, для который верно утверждение
+    \begin{displaymath}
+      f(\alt)\le f(\tilde\beta)\quad\forall \alt,\tilde\beta \in \Ef^n
+    \end{displaymath}
+  \end{df}
+  \property
+    \begin{enumerate}
+      \item $0, 1, xy, x+y \in \Mb$
+      \item $ [\Mb] = \Mb $
+      \item
+          \begin{stm}
+            Пусть $f(\set[x]{n}) \in \Mb$. Тогда верно соотношение
+            \begin{displaymath}
+              f(\set[x]{n}) = x_1f(1, \setf[x]{n})\vee f(0, \setf[x]{n})
+            \end{displaymath}
+          \end{stm}
+          \begin{imp}
+            \begin{math}
+              \Mb =\cls{0, 1, xy, x\vee y}
+            \end{math}
+          \end{imp}
+        \item
+          \begin{stm}
+            Пусть $f \neq 0$,$f \neq 1$, $f \in \Mb$. Тогда
+            \begin{displaymath}
+              f \in \cls{\dn, xy}
+            \end{displaymath}
+          \end{stm}
+        \item
+          \begin{stm}
+            Пусть $f_K, f_D \in \Mb$. Тогда
+            \begin{displaymath}
+              x\vee y \in [\{1, f_K\}]
+            \end{displaymath}
+            \begin{displaymath}
+              xy \in [\{0, f_D\}]
+            \end{displaymath}
+          \end{stm}
+          \begin{proof}
+            Докажем один случай. Второй аналогичен.
+            \begin{displaymath}
+              f_{\Db}(\set[x]{n}) \notin \Db, f_{\Db} \in \Mb, n \ge 2
+            \end{displaymath}
+            Пусть все $\set[x]{n}$ существенны. Существует $\tilde \al= (\set{n})$
+            с ровно одной единицей, что  $f_{\Db}(\tilde \al) = 0$. \WHY
+            Без ограничения общности можно считать, что
+            \begin{math}
+              \alt = (1, 0 \etc, 0)
+            \end{math}
+            \begin{displaymath}
+              f_{\Db}(1, 0 \etc, 0) = 0
+            \end{displaymath}
+            Так как  переменная $x_1$ --- существенная, то существует $\setf[\beta]{n}$, что
+            \begin{displaymath}
+              f_{\Db}(0, \setf[\beta]{n}) \neq f_{\Db}(1, \setf[\beta]{n})
+            \end{displaymath}
+            На самом деле, из монотонности следует, что
+            \begin{displaymath}
+              \fD(0, \setf[\beta]{n})  = 0;\; \fD(1, \setf[\beta]{n})
+            \end{displaymath}
+            Не все $\beta_j$ -- нули, \WHY поэтому существует k,
+            что, не ограничивая общности можно считать, что
+            \begin{displaymath}
+              \beta_2 = \ldots =\beta_k = 1
+            \end{displaymath}
+            \begin{displaymath}
+                \beta_{k+1}= \ldots = \beta_n = 0
+            \end{displaymath}
+            Рассмотрим функцию
+            \begin{displaymath}
+              g(x,y)=\fD(x, \ub{y\etc, y}_{k-1}, 0\etc, 0)
+            \end{displaymath}
+            Из предыдущий выклдок следует, что $g(1,0) = 0, g(0,1) = 0, g(1,1)=1$.
+            По монотонности, $g(0,0) =0$.
+            Отсюда,
+            \begin{displaymath}
+              g(x,y)=xy
+            \end{displaymath}
+          \end{proof}
+        \item
+           \begin{stm}
+             \begin{math}
+               \fK,\fD \in \Mb \Ra \Mb=\cls{0, 1, \fK,\fD}
+             \end{math}
+           \end{stm}
+         \item
+           \begin{stm}
+             Из немонотонной функции подстановкой 0, 1, x можно получить $\ol x$
+           \end{stm}
+      \end{enumerate}%Конец свойств монотонных
+
+
+
+
+
+
+\section{Частный случай теоремы Поста. Часть 1}
+\begin{theorem}
+   Пусть
+   \begin{displaymath}
+     \ag \subseq \PD, F = [\ag], 0,1 \in F
+   \end{displaymath}
+   \center{Тогда F -- конечнопорожден.}
+\end{theorem}
+\proof{
+Рассмотрим несколько вариантов
+\begin{enumerate}
+ \item $\ag \nsubseteq \Mb$ $\Ra$ $f_\Mb \in \ag$ $\Ra$ $\ol x \in F$
+  \begin{enumerate}
+   \item $\ag \nsubseteq \Lb$ $\Ra$ $f_\Lb \in F$ \THEN
+  \item $\ag \subseq \Lb$
+  \begin{itemize}
+   \item В $\ag$ найдется функция $g$, имеющая по крайней мере две существенные
+    переменные $\Ra$ \WHY $[\ag] = \cls{0, 1, g} = \cls{0, 1, x+y} $
+  \item Каждая функция из $\ag$ имеет не более одной существенной переменной. Значит,
+  $[\ag] = \cls{0, 1, \ol x} = \Ub$
+  \end{itemize}
+  \end{enumerate}
+\item $\ag \subseq \Mb$\WHY
+\begin{enumerate}
+ \item $\ag \nsubseteq \Kb$, $\ag \nsubseteq \Db$ $\Ra$ $[\ag] = \Mb =\cls{0, 1, f_\Kb, f_\Db}$
+  \item $\ag \nsubseteq \Kb$, $\ag \subseq \Db$ $\Ra$ $[\ag] = \Db = \cls{0, 1, f_\Kb}$
+  \item $\ag \subseq \Kb$, $\ag \nsubseteq \Db$ $\Ra$ $[\ag] = \Kb = \cls{0, 1, f_\Db}$
+  \item $\ag \subseq \Kb$, $\ag \subseq \Db$
+  \begin{itemize}
+   \item Каждая функция из $\ag$ не имеет существенных переменных.
+      Тогда $[\ag] = \cls{0, 1} =\Cb$
+    \item В $\ag$ есть функция, имеющая по крайней мере одну существенную переменную.
+    Тогда  $[\ag] = \cls{0, 1, x} = \Mb\Ub$
+\end{itemize}
+\end{enumerate}
+\end{enumerate}
+}
+Отношения рассмотреных классов представляет следующая диаграмма:
+\begin{displaymath}
+  \xymatrix{
+    &&\ar[ld] \PD \ar[rd]&\\
+    &\ar[ld]\Mb\ar[rd]&&\Lb\ar[d]\\
+    \Kb\ar[ddr]&&\Db\ar[ddl]&\Ub\ar[lldd]\\
+    &&&\\
+    &\Mb\Ub\ar[d]&&\\
+    &\Cb&&\\
+  }
+\end{displaymath}
+\begin{df}
+  Если F, G -- замкнутые классы и $G \subseq F, G \neq F$, тогда G - предполный в F, если
+  \begin{displaymath}
+    \forall f \in F\wo G \Ra [G\cup\hc{f}] = F
+  \end{displaymath}
+\end{df}
+\begin{df}
+  \begin{displaymath}
+    g(\set[x]{n}) \le f(\set[x]{n}) \Leftrightarrow \allset{n} g(\alt) \le f(\alt)
+  \end{displaymath}
+\end{df}
+\begin{lemma}
+  Пусть $\ag \subseq \PD, F = [\ag]$. И пусть выполнены следующие условия:
+  \label{ast}
+  \begin{equation*}
+      \dn \in [\ag]
+  \end{equation*}
+  \begin{equation*}
+      f \in [{0} \cup \ag]
+  \end{equation*}
+  \begin{equation*}
+    \exists\, g \in \ag, g \le f
+  \end{equation*}
+  Тогда
+  \begin{displaymath}
+    f \in [\ag]
+  \end{displaymath}
+\end{lemma}
+\begin{proof}
+  Существует $\varPhi$ над $\ag \cup \hc{0}$, реализующая $f(\set[x])$.
+  Заменим все вхождения $0\in\PD$ в формуле $\varPhi$ на переменную $y \notin \hc{\set[x]{n}}$.
+  Получим формулу $\varPsi(y,\set[x])$, реализующую функцию $h(y,\set[x]{n}) \in [\ag]$.
+  Заметим, что $h(0,\set[x]{n}) = f(\set[x]{n})$.
+  Далее, рассмотрим функцию
+  \begin{displaymath}
+    \tilde f = g(\set[x]{n}) \vee h(g(\set[x]{n}), \set[x]{n})
+  \end{displaymath}
+  Очевидно, что $\tf \in [\ag]$. Убедимся, что $f = \tf$.\\
+  Действительно, рассмотрим произвольный набор $\alt =(\set{n})$.
+  \par Если $g(\alt) = 1$, то $f(\alt) = 1$ по условию $g \le f$, а $\tilde f(\tilde \al) = 1 \vee g(1,\set{n}) =1$.
+  \par Если $g(\alt) = 0$, то $\tf(\alt) =0 \vee h(0,\set{n}) =f(\set{n})$.\\
+  Получаем, что $ f = \tf \in [\ag]$
+\end{proof}
+\section{Частный случай теоремы Поста. Часть 2}
+\begin{df}
+  $f(\set[x]) \subseq \PD$ удовлетворяет условию $<0^\bes>$, если
+  найдется $i : f \ge x_i$
+\end{df}
+\begin{df}
+  \begin{math}
+    \Oib =\setof{f}{ f \text{ удовлетворяет условию} <0^\bes>}
+  \end{math}
+\end{df}
+\begin{df}
+  \begin{math}
+    \om(x,y,z) = x\vee yz
+  \end{math}
+\end{df}
+\begin{df}
+  \begin{math}
+    d_p(x_1,x_2\etc,x_p) = {\huge \vee}_{1\le i<j\le p}x_ix_j
+  \end{math}
+\end{df}
+\begin{df}
+  Пусть $f(\set[x]{n}) \in \Mb$, $i,j=1,2,\ldots n; i\ne j$. Определим
+  \begin{displaymath}
+    \fij(x_1,\ldots,x_{j-1},x_{j+1},\ldots,x_n) = f(x_1, x_2,\ldots, x_{j-1}, x_i, x_{j+1},\ldots, x_n)
+  \end{displaymath}
+\end{df}
+\subsection{Свойства класса $\Oib$.}
+\begin{enumerate}
+  \item $1, e(x), x\to y, \dn, \om\in \Oib$
+  \item $0, xy \notin \Oib$
+  \item $[\Oib] = \Oib$ \WHY
+  \item
+    \begin{lemma}
+      \begin{math}
+        \Oib = \cls{x\to y}
+      \end{math}
+    \end{lemma}
+    \begin{proof}
+      Рассмотрим произвольную $f \in \Oib$.
+      Заметим, что выполнены условия леммы (*):
+      \begin{equation*}
+        \dn = (x\to y) \to y
+      \end{equation*}
+      \begin{equation*}
+        f \in \cls{0,x\to y} = \PD
+      \end{equation*}
+      \begin{equation*}
+        f \ge e(x_i) \in \cls{x\to y}
+      \end{equation*}
+      Отсюда,
+      \begin{displaymath}
+        f \in\cls{x\to y}
+      \end{displaymath}
+      \BACK
+    \end{proof}
+\end{enumerate}
+\subsection{Свойства функции $\om=x\vee yz$.}
+\begin{enumerate}
+ \item
+   \begin{math}
+     \om \in \Oib\cap\Mb \eqdef \Mb\Oib
+   \end{math}
+ \item
+   \begin{lemma}
+     \begin{math}
+       f \in \Mb\Oib, f \ne 1 \Ra f \in \cls{0,\om}
+     \end{math}
+   \end{lemma}
+   \begin{proof}
+     Применим лемму \ref{ast}. \THEN
+   \end{proof}
+ \item
+   \begin{lemma}
+     \begin{math}
+       \fK,\fD \in \Mb \Ra \om \in \cls{1, \fD, \fK}
+     \end{math}
+   \end{lemma}
+   \begin{proof}
+     Применим лемму \ref{ast}. \THEN
+   \end{proof}
+\end{enumerate}
+\subsection{Свойства функции $d_p$.}
+\begin{enumerate}
+  \item
+    \begin{math}
+      d_p \in \Mb\Oib
+    \end{math}
+  \item
+    \begin{math}
+      d_{p+1}(\seti[x]{1}{p+1}) =x_{p+1}(\svee[x]{1}{p})\vee d_p(\set[x]{n})
+    \end{math}
+  \item
+    \begin{math}
+      d_{p+1}(\set[x]{p},1) = \svee[x]{1}{p}
+    \end{math}
+  \item
+    \begin{math}
+      d_{p+1}(x_1, x_2,\etc, x_p, x_{p+1}) > d_p(x_1, x_2\etc, x_p)
+    \end{math}
+  \item
+    \begin{lemma}
+      При $p \ge 3$ $\om \in \cls{1, d_p}$
+    \end{lemma}
+  \item
+    \begin{lemma}
+      При $p>3$ $d_p(y,z,x\etc, x) = \om$ \WHY
+    \end{lemma}
+  \item
+    \begin{lemma}
+      $d_{p+1}\in \cls{\om, d_p}$
+    \end{lemma}
+    \begin{proof}
+        Применим лемму \ref{ast}, взяв $g=d_p$. \THEN
+    \end{proof}
+  \item
+    \begin{stm}
+      \begin{math}
+        d_p \notin \cls{\om, d_{p+1}}
+      \end{math}
+      \WHY
+    \end{stm}
+ \item
+   \begin{math}
+     \om \subseq \cls{\om,d_{p+1}} \subseq \cls{\om,d_p} \subseq\ldots\subseq\cls{\om,d_2}
+   \end{math}
+\end{enumerate}
+\subsection{Свойства отождествления переменных.}
+\begin{enumerate}
+  \item $\fij \in \cls{f}$
+  \item
+    \begin{lemma}
+      $\fij \le x_i\vee f$
+    \end{lemma}
+    \begin{proof}
+      Пусть $\alt=(\set{n}) \in \Ef^n$. Рассмотрим случаи:
+      \begin{itemize}
+        \item $\al_i=1$. Соотношение выполнено.
+        \item $\al_i=0$. Тогда \CHECK
+          \begin{displaymath}
+            f(\seti{1}{j-1},0,\seti{j+1}{n}) \le f(\seti{1}{j-1},\al_j,\seti{j+1}{n})
+          \end{displaymath}
+          в силу монотонности $f$.
+      \end{itemize}
+    \end{proof}
+      \item
+        \begin{lemma}
+          \begin{math}
+            x_j\fij \le f
+          \end{math}
+        \end{lemma}
+\end{enumerate}
+\begin{df}
+  \begin{math}
+    A_{n-1}(f) = \setof{\fij}{i,j=1,2\etc,n \quad i\ne j}
+  \end{math}
+\end{df}
+\begin{df}
+  \begin{math}
+    A_{n-2}(f) = \cup_{g \in A_{n-1}(f)}A_{n-2}(g)
+  \end{math}
+\end{df}
+\begin{df}
+  Далее по индукции определим $A_k(f)$ для $1\le k\le n-1$.
+  \begin{displaymath}
+    A_k(f)=\hc{g | g(x_{i_1},\ldots,x_{i_k}), i_1,\ldots,i_k\in \{1,2,\ldots n\}, i_l\ne i_r, l\ne r }
+  \end{displaymath}
+где $g$ получена из $f$ отождествлением переменных.\\
+\end{df}
+\begin{stm}
+  \begin{math}
+    A_1(f) \subseq [A_2(f)] \subseq\ldots\subseq [A_{n-1}(f)]\subseq\cls{f}
+  \end{math}
+\end{stm}
+\subsection{Лемма о порождении монотонной функции.}
+\begin{lemma}
+  Пусть $f(\set[x]{n}) \in \Mb, n \ge 2$ и $\ag_f=\hc{\om,d_h}\cup A_{n-1}(f)$.
+  Тогда $f \in [\ag_f]$.
+\end{lemma}
+\begin{proof}
+  Рассмотрим следующие случаи:
+  \begin{itemize}
+    \item
+      Если $f=0$ или $f=1$, утверждение леммы очевидно
+    \item
+      Если $f \in \Oib$, то утверждение леммы следует из того, что
+      \begin{math}
+        \Oib=\cls{\om}
+      \end{math}
+    \item
+      Пусть $f \notin \Oib$, $f\ne 0,1$. Будем доказывать по индукции.
+      \begin{itemize}
+        \item{База индукции $n=2$.}
+          $d_2 = x_1x_2$ База индукции доказана.
+        \item{Индукционный переход. $n>2$}
+          \begin{displaymath}
+            f(\set[x]) = x_nf(\set[x]{n-1},1)\vee f(\set[x]{n-1},0)
+          \end{displaymath}
+          \begin{displaymath}
+            g(x_1,x_2\etc,x_{n-1}) = f(x_1,x_2\etc,x_{n-1},0)
+          \end{displaymath}
+          Рассмотрим случаи:\\
+          \begin{itemize}
+            \item
+              \begin{math}
+                g \in \Oib \Ra f \in \Oib
+              \end{math}
+              Противоречие. Отсюда, \WHY $g \ne 1$.
+            \item {$g = 0$} Тогда
+              \begin{math}
+                f(\set[x]{n})=x_nf(\seti[x]{1}{n-1},1)
+              \end{math}
+              \begin{denote}
+                \begin{math}
+                  r(x)=f(x,x\etc,x,1) \in \Mb
+                \end{math}
+              \end{denote}
+              Понятно, что $r(x) \in \hc{0, 1, x}$.\\
+              Рассмотрим варианты:
+              \begin{itemize}
+                \item
+                  \begin{math}
+                    r(x) = 0 \Ra f(1,1,\ldots,1) = 0 \Ra f=0
+                  \end{math}
+                  Противоречие.
+                \item
+                  \begin{math}
+                    r(x) = 1 \Ra f(0,0,\ldots,1) = 1 \Ra f\ge x_n
+                  \end{math}
+                  По определению, $f \in \Oib$. Противоречие.
+                \item $r(x) = x$ $\Ra$  $ f(\set[x]{n},y) = xy \in [\ag_f]$
+              \end{itemize}
+            \item Пусть $g \ne 0$. \WHY
+              \begin{displaymath}
+                g \in [\ag_g], \ag_g=\hc{\om, d_{n-1}}\cup A_{n-2}(g)
+              \end{displaymath}
+              \begin{displaymath}
+                A_{n-2}(g) = \hc{ g_i^j |i,j=1,2,\ldots,n-1; i\ne j }
+              \end{displaymath}
+              Тогда функция $g(\set[y]{n})$ реализуется некоторой формулой  $\Phi(\set[y]{n})$ над $\ag_g$
+              Преобразуем эту формулу следующим образом, где $B_j$ это некоторые подформулы.
+              \begin{itemize}
+                \item Все вхождения вида $\om(B_1,B_2,B_3)$ оставим как есть.
+                \item Заменим все вхождения $d_{n-1}(\set[B]{n-1})$ на $d_n(\set[B]{n-1},y_n)$
+                \item Заменим все вхождения $g^i_j(\set[B]{n-1})$ на \CHECK $f^j_i(\set[B]{n-1},y_n)$
+              \end{itemize}
+              Получим формулу $\Psi$ над $\ag_f$, реализующую некоторую функцию $h(\set[y]{n}) \in [\ag_f]$.
+              \paragraph {Свойства функции $h(\set[y]{n})$.}
+              \begin{enumerate}
+                \item
+                  \begin{math}
+                    h(\set[y]{n-1},0)=g(\set[y]{n-1}) = f(\set[y]{n-1},0)
+                  \end{math}
+                \item \ACC
+                  \begin{math}
+                    0 = h(0,\etc,0,1) = g(0,\etc,0) = f(0,\etc,0,1)
+                  \end{math}
+                  Доказывается индукцией по глубине формулы. \PROOF
+                \item
+                  \begin{denote}
+                    \begin{displaymath}
+                      \lambda(\set[y]{n})\eqdef \om(h(\set[y]{n}),y_{n},\svee[y]{1}{n}) =y_n(\svee[y]{1}{n})\vee h(\set[y]{n})
+                    \end{displaymath}
+                  \end{denote}
+              \end{enumerate}
+              По определению, $\lambda(\set[y]{n}) \in [\ag_f]$. Из свойств (2) и (3)
+              \begin{displaymath}
+                \lambda(\set[y])=y_n(\dsn[y])\vee g(y_1,y_2\etc,y_{n-1})
+              \end{displaymath}
+              \begin{denote}
+                \begin{displaymath}
+                  \theta(\set[x]{n})=\lambda(f^1_n,f^2_n\etc,f^{n-1}_n,x_n)
+                \end{displaymath}
+              \end{denote}
+              Выполним преобразования:\\
+              \begin{displaymath}
+              \theta(\set[x]{n})=x_n(f^1_n\vee f^2_n\vee\ldots\vee f^{n-1}_n)\vee g(f^1_n,f^2_n\etc f^{n-1}_n)
+              \le f\vee g(x_1\vee f,x_2\vee f\etc,x_{n-1}\vee f) \le f
+              \end{displaymath}
+              В силу леммы \ref{ast} $f\in[\ag_f]$, что и требовалось доказать.
+          \end{itemize}
+      \end{itemize}
+  \end{itemize}
+\end{proof}
+\subsection{Подсекция непонятного назначения}
+\begin{note}
+  Пусть в дальнейших рассмотрениях
+  \begin{math}
+    f(\set[x]{n}) \in \Mb, f \notin \Oib, f \neq 0,1.
+  \end{math}
+\end{note}
+\begin{stm}
+  \begin{math}
+    f (x,x,\etc,x) =x
+  \end{math}
+\end{stm}
+\begin{df}
+  $\Ff = \hc{g}$, где g удовлетворяет следующим требованиям
+    \begin{itemize}
+      \item $g$ получается из $f$ отождествлением переменных (быть может пустым)
+      \item $ g \notin \Oib$
+      \item $g^i_j \in \Oib$, где $i\ne j$, $x_i,x_j$ -- существенные переменные.
+    \end{itemize}
+\end{df}
+\subsubsection{Свойства множества $\Ff$.}
+\begin{itemize}
+  \item $\Ff\ne\varnothing$, т.к $f(x,x\etc,x) = x$ \THEN
+  \item
+    \begin{lemma}
+      Пусть $g(x_1,x_2\etc,x_p) \in \Ff$ и все переменные существенные.
+      Тогда
+      \begin{displaymath}
+        g(\set[x]{p}) = d_p(\set[x]{p})
+      \end{displaymath}
+    \end{lemma}
+    \begin{proof}
+      $g \notin \Oib$ $\Ra$ $g(1,0\etc,0)= \ldots =g(0,0\etc,0,1)=0$
+      \WHY
+      \par  Положим $\tilde \al = (0,\ldots,\underbrace{1}_i,\ldots\underbrace{1}_j,\ldots0)$
+      \begin{stm}
+        По определению, $\Oib$ $g^i_j\ge x_k$ для некоторого k. Покажем, что   $k=i$.
+      \end{stm}
+      \begin{proof}
+        Действительно, если $k\neq i$, то $g(0,0\etc,\underbrace{1}_k\etc0) = 1$, а значит $g\in\Oib$. Противоречие.
+      \end{proof}
+      \THEN
+    \end{proof}
+    \begin{imp}
+      Получаем, что $k=i$, и следовательно \WHY $g(\tilde \al)=1$.
+    \end{imp}
+    \begin{df}
+      $P(f)$ - минимальное число существенных переменных у функций из $\Ff$.($2\le p(f)\le n$)
+    \end{df}
+  \item $d_{p(f)}\subseq\cls{f}$
+  \item $A_{p(f)-1}(f)\subseq\Oib$
+\end{itemize}
+\subsubsection{Ещё одна подсекция непонятного назначения.}
+\begin{theorem}
+  \label{thm}
+  Пусть $\ag\in\Mb$,$F=[\ag]$,$1\in F$,$0\notin F$. Тогда существует $\Bg\subseq\ag$, что
+  $|\Bg|<\bes$ и $[\Bg\cup\{1\}]=F$.
+\end{theorem}
+\begin{proof}
+Рассмотрим варианты.
+\begin{enumerate}
+  \item
+    \begin{math}
+      \ag\subseq\Cb \Ra F=\cls{1}=\Cb_1
+    \end{math}
+  \item
+    \begin{math}
+      \ag\nsubseq\Cb,\ag\subseq\Ub \Ra F=\cls{1,x}=\Ub_1
+    \end{math}
+  \item $\ag\nsubseq\Ub$. Тогда возможны следующие подслучаи:
+    \begin{itemize}
+      \item  $\ag\subseq\Kb \Ra $ \WHY $\ag\nsubseq\Db\Ra F=\cls{1,xy}$
+      \item $\ag\nsubseq\Kb$,$\ag\subseq\Db$ $\Ra$ $\fK\in\ag$ $\Ra$ $F=\cls{1,\dn}$
+    \end{itemize}
+  \item Если $\ag\nsubseq\Kb,\Db$, тогда \WHY
+    \begin{displaymath}
+      \fK,\fD\in\ag \Ra \om\in\cls{1,\fK,\fD}\subseq[\ag]
+    \end{displaymath}
+   Возможны следующие подслучаи:
+   \begin{itemize}
+        \item $\ag\subseq\Oib$ $\Ra$ $F=\cls{1,\om}=\cls{1,\fK,\fD}$
+        \item $\ag\nsubseq\Oib$ Тогда для каждой функции $f\in\ag$:
+        \begin{itemize}
+          \item $f\in\Oib$ $\Ra$ $f\in\cls{1,\om}$
+          \item $f\notin\Oib$ $\Ra$ $f\in\cls{\om,d_{P(f)}}$
+        \end{itemize}
+        Получаем, что $\ag\subseq[\{1,\om\}\cup\cup_{f\in\ag,f\notin\Oib}\{d_{P(f)}\}]$
+   \end{itemize}
+   \begin{df}
+     \begin{math}
+       p(\ag)=\min\limits_{f\in\ag,f\notin\Oib}P(f)
+     \end{math}
+   \end{df}
+   \begin{denote}
+     \begin{math}
+       \hat{f}\in\ag|P(\hat{f})=P(\ag)
+     \end{math}
+   \end{denote}
+\end{enumerate}
+Из рассмотрения случаев получаем, что
+\begin{displaymath}
+\ag\subseq\cls{1,\om,d_{P(\ag)}}\subseq\cls{1,\om.\hat{f}}\subseq[\ag]
+\end{displaymath}
+\begin{displaymath}
+        F=\cls{1,\fK,\fD,\hat{f}}=\cls{1,\om, d_{P(\ag)}}
+\end{displaymath}
+\end{proof}
+\begin{imp}
+  Множество замкнутых классов монотонных функций, содержащих 1 и не содержащих
+  0, исчерпывается следующим списком:
+  \begin{displaymath}
+    \Cb_1,\Ub_1,\Kb_1=\cls{1,xy},\Db_1=\cls{1,\dn}, \Mb\Oib=\cls{1,\om},\cls{1m\om, d_p}
+  \end{displaymath}
+\end{imp}
+\begin{lemma}
+  Пусть $f\in\Mb$, $f\notin\Oib$, $f\neq 1$. Тогда $f\in\cls{\om,d_{P(f)}}$.
+\end{lemma}
+\begin{proof}
+    По основной лемме, $f\in[\{\om,d_n\}\cup A_{n-1}]$.
+    Рассмотрим следующие случаи:
+    \begin{itemize}
+        \item
+          \begin{math}
+            A_{n-1}(f)\subseq\Oib \Ra F_f=\hc{f}, P(f)=n
+          \end{math}
+          \WHY
+          \begin{math}
+            f\in\cls{\om,d_{P(f)}}
+          \end{math}
+        \item
+          \begin{math}
+            A_{n-1}(f) \nsubseq\Oib.
+          \end{math}
+          Тогда по основной лемме верна цепочка включений
+          \begin{displaymath}
+            f\in[\hc{\om,d_n}\cup A_{n-1}(f)]\subseq[\hc{\om,d_n,d_{n-1}}\cup A_{n-2}(f)]\subseq\ldots
+            \subseq[\hc{\om,f_n,f_{n-1},\ldots,d_{P(f)}}\cup A_{P(f)-1}]\subseq\cls{\om,d_{P(f)}}
+          \end{displaymath}
+    \end{itemize}
+\end{proof}
+\begin{imp}
+  Если $P(f)>3$, то $[f] = \cls{d_{P(f)}}$.
+\end{imp}
+% -*- LaTeX -*-
+\subsubsection{Функции, сохраняющие 1.}
+\begin{df}
+  Функция $f(\set[x]{n})$ называется сохраняющей 1, если $f(1,1\etc,1)=1$.
+\end{df}
+\begin{denote}
+  Множество функций, сохраняющих 1 обозначается $\Tb_1$.
+\end{denote}
+\paragraph{Cвойства:}
+\begin{itemize}
+  \item $1, x,\dn,xy,x\to y,x+y+1 \in\Tb_1$
+  \item $0,\ol x \notin\Tb_1$
+  \item $[\Tb_1]=\Tb_1$
+  \item $\Tb_1=\cls{x\to y, xy}$
+\end{itemize}
+\paragraph{Лемма о порождении импликации.\\}
+\begin{lemma}
+  Пусть функции $\fM,\fL \in \Tb_1$. Тогда
+  \begin{displaymath}
+    x\to y \in \cls{1,\fM,\fL}
+  \end{displaymath}
+\end{lemma}
+\begin{proof}
+  По лемме о немонотонной функции имеем, что \WHY
+  \begin{displaymath}
+    \fM(\underbrace{0,\ldots,0}_{\ge 1(\Tb_1)},1,\ldots,1,x\etc,x)=\ol x
+  \end{displaymath}
+  Рассмотрим функцию $g(x,y)=\fM(y\etc,y,1\etc,1,x\etc,x)$. По построению $g(x,0)=\ol x$.
+  Возможны два подслучая
+  \begin{itemize}
+    \item
+      \begin{math}
+        g(0,1)=1 \Ra g=x\to y
+      \end{math}
+      что и требовалось доказать
+    \item
+      \begin{math}
+        g(0,1) = 0 \Ra g= x+y+1
+      \end{math}
+      В таком случае воспользуемся леммой о нелинейной функции.
+      Из нелинейной функции $f(\set[x]{n})$ получим нелинейную функцию $h(x,y)\notin\Lb$
+      подстановкой $1,x,y$.
+      Функция $h(x,y)$ имеет вид
+      \begin{displaymath}
+        h(x,y) = xy+ax+by+c
+      \end{displaymath}
+      Рассмотрим возможные значения коэффицентов.
+      \begin{enumerate}
+        \item  $c=1$
+          \begin{enumerate}
+            \item $a=1,b=0$. Тогда $h=xy+x+1=x\to y$.
+            \item $a=0,b=1$. Тогда $h=xy+y+1=x\to y$.
+          \end{enumerate}
+        \item $c=0$
+          \begin{enumerate}
+            \item $a=b=0$. Тогда $h=xy$.
+            \item $a=b=1$. Тогда $h=xy+x+y=x\vee y$.
+          \end{enumerate}
+      \end{enumerate}
+  \end{itemize}
+\end{proof}
+\subsubsection{Лемма о мажорирующей монотонной функции.}
+\begin{lemma}
+  Для любой $f\in\PD$ существует монотонная $g_f\in\Mb$,$g_f\le f$, причем
+  \begin{displaymath}
+    g\in\cls{1,\dn,f}
+  \end{displaymath}
+\end{lemma}
+\begin{proof}
+  \begin{denote}
+    Для всякой функции $f(\set[x]{n})\in\PD$ определим величину
+    \begin{displaymath}
+      \Ng_f=\#\!\hc{\alt=(\set{n})\in\Ef^n|f(\alt)=1}
+    \end{displaymath}
+    \begin{center}
+      Очевидно, что $0\le\Ng_f\le2^n$.
+    \end{center}
+  \end{denote}
+  Будем доказывать индукцией по $\Ng_f$ при фиксированном $n$.
+  \begin{itemize}
+    \item База индукции. Если $\Ng_f=0$, то $f=0$. Утверждение леммы выполнено.
+    \item Шаг индукции. Предположим, что лемма доказана для всех функций $f'$, что $\Ng_{f'}<N$.
+      Рассмотрим функцию $f(\set[x]{n}$, такую, что $\Ng_f=N$. Возможны случаи:
+      \begin{itemize}
+        \item $f\in\Mb$. Тогда положим $g=f$. Утверждение леммы верно.
+        \item $f\notin\Mb$. Не ограничивая общности, можем считать, что $f$ немонотонна по $x_1$.
+          \begin{denote}
+            \begin{math}
+              R = \setof{\tilde\beta=(\setf[\beta]{n}\in\Ef^{n-1})}{f(x,\tilde\beta)=\ol x)}\neq\varnothing
+            \end{math}
+          \end{denote}
+          \begin{itemize}
+            \item Пусть n=1. Тогда $f(x)=\ol x$. Тогда $g=0\in\cls{1,\ol x,\dn}$.
+            \item Пусть $n\ge2$.
+              \begin{denote}
+                Введем характристическую функцию $\chi_R(\setf[x]{n})$ множества R.
+                \begin{displaymath}
+                  \chi_R(\tilde\beta)=1 \Lra \tilde\beta\in R
+                \end{displaymath}
+              \end{denote}
+              \begin{denote}
+                \begin{math}
+                  h(\set[x]{n})=f(\set[x]{n})\vee\chi_R(\setf[x]{n})
+                \end{math}
+              \end{denote}
+              \begin{denote}
+                \begin{math}
+                  f_1(\set[x]{n})=f(h(\set[x]{n}),\setf[x]{n})
+                \end{math}
+              \end{denote}
+              \paragraph{Свойства функции $f_1$.}
+              \begin{itemize}
+                \item По лемме \ref{ast} \CHECK  $h\in\cls{1,\dn,f}$.\PROOF
+                \item $f_1\in\cls{1,\dn,f}$
+                \item
+                  \begin{stm}
+                    \begin{math}
+                      f_1\le f
+                    \end{math}
+                  \end{stm}
+                  \begin{proof}
+                    Рассмотрим произвольное $\alt=(\al_1,\tilde\beta), где \tilde\beta=(\setf[\beta]{n})$.
+                    \begin{enumerate}
+                      \item $\tilde\beta\in R$. Тогда \WHY
+                        \begin{displaymath}
+                          h(0,\tlb)=h(1,\tlb)=1
+                        \end{displaymath}
+                        \begin{displaymath}
+                          f_1(0,\tlb)=f_1(1,\tlb)=f(1,\tlb)=0
+                        \end{displaymath}
+                      \item $\tlb\notin R$. Тогда $h(\al_1,\tlb)=f(\al_1,\tlb)$. Остюда, \WHY
+                        \begin{displaymath}
+                          f(x,\tlb)\in\hc{0,1,x} \Ra f_1(x,\tlb)=f(h(x,\tlb),\tlb)=f(x,\tlb)
+                        \end{displaymath}
+                    \end{enumerate}
+                  \end{proof}
+                \item
+                  \WHY
+                  \begin{math}
+                    f_1<f \;(R\neq\varnothing) \Ra \Ng_{f_1}<N
+                  \end{math}
+                  По предположению индукции $\exists\; g_1\in\Mb, g_1\le f_1, g_1\in\cls{1,\dn,f_1}$.
+                  Т.к верно соотношение $g_1\le f_1\le f$, то лемма доказана.
+              \end{itemize}
+          \end{itemize}
+      \end{itemize}
+  \end{itemize}
+\end{proof}
+\begin{problem}
+  Усилить лемму( $g\in\cls{\dn,f}$ ).
+\end{problem}
+\subsubsection{Важная теорема.}
+\begin{theorem}
+  Пусть $\ag\subseq\PD$-некоторое множество булевых функций. $F=[\ag]$,$1\in F$,$0\notin F$.
+  Тогда существует $\Bg\subseq\ag$, что $|\Bg|<\bes$ и $F=[\Bg\cup\hc{1}]$.
+\end{theorem}
+\begin{proof}
+  Если $\ag\subseq\Mb$, то теорема верна по доказанной теореме \ref{thm}.\REF. Далее рассматриваем,
+  что $\ag\nsubseq\Mb$.
+  \begin{itemize}
+    \item Пусть $\ag\in\Lb$.
+      \begin{stm}
+        \begin{math}
+          \ag\in\Tb_1
+        \end{math}
+      \end{stm}
+      \begin{proof}
+        Пусть есть $f(\set[x]{n})\notin\Tb_1$. Тогда $f(x\etc,x)\in\hc{0,\ol x}$.
+        В обоих случаях имеем противоречие с условием $1\in F,\;0\notin F$.
+      \end{proof}
+      Тогда по лемме \REF $x+y+1\in\cls{1,\fM}$. Имеет место соотношение \WHY
+      \begin{displaymath}
+        F=\cls{1,\fM}=\cls{x+y+1}=\Lb\cap\Tb_1=\Lb_1
+      \end{displaymath}
+    \item Теперь пусть $\ag\nsubseq\Lb$. Тогда $\fM,\fL\in\ag$. Откуда-то следует \WHY
+      \begin{displaymath}
+        x\to y\in\cls{1,\fM,\fL}
+      \end{displaymath}
+      \begin{enumerate}
+        \item $\ag\in\Oib=\cls{x\to y}$. Тогда
+          \begin{displaymath}
+            F=\Oib=\cls{x\to y}=\cls{1,\fM,\fL}
+          \end{displaymath}
+        \item $\ag\notin\Oib$. Тогда для произвольной фунции из F возможны два случая:
+          \begin{itemize}
+            \item
+              \begin{math}
+                f\in\Oib \Ra f\in\cls{x\to y}
+              \end{math}
+            \item
+              \begin{math}
+                f\notin\Oib
+              \end{math}
+              \begin{denote}
+                Введем следующие обозначения:
+                \begin{math}
+                  B=\cup_{f\in\ag,f\neq 0}{g_f}\subseq\Mb
+                \end{math}. Функция $\hg$ --- это функция из B, что P($\hg$)=P(B).
+              \end{denote}
+              По теореме 2 \REF
+              \begin{math}
+                B\subseq\cls{1,\om,d_{P(B)}}\subseq\cls{1,\om,\hg}
+              \end{math}
+              \begin{denote}
+                $\hhf$ -- это функция из $\ag$, что $\hg\in\cls{1,\dn,\hhf} $.
+              \end{denote}
+              Поэтому \WHY $B\subseq\cls{1,\om,\hhf}$.
+              По лемме \ref(ast) выполняется
+              \begin{displaymath}
+                \ag\subseq[\hc{x\to y}\cup B]\subseq\cls{1,\om,x\to y,\hhf}\subseq[\ag]
+              \end{displaymath}
+              Отсюда \WHY
+              \begin{math}
+                F=\cls{x\to y,d_{P(B)}}=\cls{1,\fM,\fL,\hhf}
+              \end{math}
+          \end{itemize}
+      \end{enumerate}
+  \end{itemize}
+\end{proof}
+\begin{imp}
+  \CHECK
+  Множество замкнутых классов в $\PD$, содержащих 1 и не содержащих 0 и немонотонные функции,
+  исчерпывается
+  \begin{displaymath}
+    \Lb_1,\Oib,\cls{x\to y, d_p}\; p=2,3...
+  \end{displaymath}
+  Заметим, что случай p=2 есть $\cls{\impl,xy} = \Tb_1$.
+\end{imp}
+\section{Частный случай теоремы Поста. Часть 3}
+\subsection{Двойственные и самодвойственные функции}
+\begin{df}
+  Функция, двойственная к f($\set[x]{n}$) обозначается $f^*$, и, по определению,
+  \begin{displaymath}
+    f^*(\set[x]{n}) = \bar f(\set[\bar x]{n})
+  \end{displaymath}
+\end{df}
+\begin{ex}
+  \begin{displaymath}
+    (x\vee y)^*=xy;\;\; x^*=x;\;\; (f^*)^*=f;
+  \end{displaymath}
+\end{ex}
+\begin{df}
+  S=$\setof{f\in\PD}{f^*=f}$ - класс самодвойственных функций.
+\end{df}
+\paragraph{Свойства самодвойственных функций}
+\begin{enumerate}
+  \item $x,\bar x, x+y+z,d_3 \in S$
+  \item $0,1,xy,x\vee y \notin S$
+  \item $f^*(0,\setf[x]{n})\eqdef (f(0,\setf[x]{n}))^*=f(1,\setf[x]{n}) $
+  \item Принцип двоственности \\
+    Пусть $f(\set[x]{n}) = f_0(f_1(\set[x]{n})\etc,f_m(\set[x]{m}))$.\\
+    Тогда  $f^*(\set[x]{n}) = f_0^*(f_1^*(\set[x]{n})\etc,f_m^*(\set[x]{m}))$
+   \item S - замкнутый класс.
+     \begin{df}
+       Пусть $F\subseq\PD$. По определению, $F^* = \bigcup\limits_{f\in F}{f^*}$.
+     \end{df}
+   \item Если $[F] = F= [\ag]$, то $[\ag^*]= F^*$
+     \begin{ex}
+       \begin{df}
+         $\Tb_0=\setof{f\in\PD}{f(0,0,\etc,0)} = 0$
+       \end{df}
+       $\Tb_0= \Tb_1^*$, $\Tb_1=\cls{\impl,xy}$. Тогда по принципу двойственности,
+       $\Tb_0=\cls{x\vee y, \bar xy}$%I know, what I do
+     \end{ex}
+     \item
+       \begin{lemma}{Лемма о нелинейной функции.}
+       Из нелинейной функции f(\set[x]{n}) подстановкой 1, x, y можно
+       получить $g(x,y) \notin\Lb$.
+       \end{lemma}
+       \begin{lemma}{Лемма о нелинейной функции.}
+         Из нелинейной фунеции f(\set[x]{n}) подстановкой 0, x, y можно
+         получить $g(x,y) \notin\Lb$.
+       \end{lemma}
+       \begin{proof}
+         $$ \fL\notin\Lb \Ra \widehat f = (\fL)^*\notin \Lb$$
+         $$ g(x,y) = \widehat f(0\etc,x\etc,y\etc)$$
+         Тогда $\displaystyle g^*(x,y) = \fL(1,\etc,x,\etc,y\etc)$.
+       \end{proof}
+\end{enumerate}
+\subsection{Лемма о несамодвойственной функции.\\}
+\begin{lemma}
+ \label{22}
+  Пусть $\fS \notin S$. Тогда $0,1 \in \cls{\fS,\bar x}$.
+\end{lemma}
+Пусть $\ag\subseq\PD, F=[\ag]$.
+Мы уже доказали теорему Поста в следующих случаях: \REF
+\begin{enumerate}
+  \item $0,1\in [\ag]$ (~\ref{?})
+  \item $1\in [\ag], 0\notin [\ag]$ (~\ref{?})
+  \item $0\in [\ag], 1 \notin [\ag]$ Следует из второго пункта по принципу двойственности.
+\end{enumerate}
+Докажем четвертый случай.
+\begin{theorem}
+Пусть $\ag\subseq\PD,F=[\ag], 0,1\notin[\ag]$. Тогда F конечнопорожден.
+\end{theorem}
+\begin{itemize}
+\item Пусть $\ag\subseq\Sb$.
+  Тогда $[\ag\cup\hc{1}] = F_1$. По доказанным теоремам (~\ref{?})
+  существует $B\subseq\ag, \hm{B}<\bes$ и $\hs{B\cup\hc{1}} = [\ag\cup\hc{1}]=F_1$.
+  Докажем, что $\hs{B}=\hs{\ag}$.\par
+  Возьмем $f(\set[x]{n})\in\hs{\ag\cup\hc{1}}\cap\Sb$.
+  Cуществует формула $\Phi$ над $B\cup\hc{1}$, реализующая $f(\set[x]{n})$.
+  Заменим все вхождения $1$ в $\Phi$ на новую переменную $y$.
+  Получим новую формулу $\Phi'$, реализующую функцию $h(y,\set[x]{n})$.
+  \par Свойства функции $h$.
+  \begin{itemize}
+    \item $\displaystyle h\in \hs{B} \subseq \Sb$
+    \item $\displaystyle h(1,\set[x]{n}) = f(\set[x]{n})$
+    \item $\displaystyle h(0,\set[x]{n}) = (h(1,\set[x]{n}))^* = [f(\set[x]{n})]^*=f(\set[x]{n})$
+  \end{itemize}
+  Поэтому $y$ несущественная переменная.
+  \begin{problem}
+    Найти все классы $F\subseq\Sb,[F]=F$.
+  \end{problem}
+  \item Пусть теперь $\ag\not\subseq\Sb$.
+    Следовательно, существует $\fS\in\ag,\fS\not\in\Sb$.
+    \begin{lemma}
+      $\displaystyle \ag\subseq\Tb_1\cap\Tb_0$
+    \end{lemma}
+    \begin{proof}
+      Пусть нет. Тогда существует $g(\set[x]{n})\notin\Tb_1\cup\Tb_0$.
+      Имеем, $g(x,\etc,x) = \hc{ 0, 1, \bar x}$. Т.к $0,1\notin\ag$ $g(x,\etc,x)=\bar x$.
+      По лемме (~\ref{22})  $0,1 \in \cls{\fS,\bar x}$. Противоречиe.
+    \end{proof}
+    Т.к $\fS\notin\Sb$, то найдется $\alt = (\set{n})\in E^n$, что
+    \begin{displaymath}
+      \fS(\set{n}) = \fS(\set[\bar \alpha]{n})
+    \end{displaymath}
+      Без ограничения общности,
+      \begin{displaymath}
+        \fS(0,\etc,0,1,\etc,1) = \fS(1,\etc,1,0,\etc, 0)
+      \end{displaymath}
+      Введем функцию  $ g(x,y)=f(x,\etc,x,y\etc,y) \in\Tb_0\cup\Tb_1$.
+      Возможны два случая:\par
+      \begin{enumerate}
+        \item $g(x,y)=x\vee y \in \cls{\fS}\subseq [\ag]$\par
+          Тогда, аналогично первому пункту, $[\ag\cup\hc{1}] = F_1$ и по доказанным
+          теоремам, существует $B\subseq\ag, \hm{B}<\infty$ и
+          \begin{displaymath}
+            [B\cup\hc{1}]=[\ag\cup\hc{1}]=F_1
+          \end{displaymath}
+          Докажем, что $\displaystyle [B\cup\hc{\dn}] = \hs{\ag} = F =\hs{\ag\cup\hc{1}}\cap \Tb_0$ \WHY
+          Возьмем $f(\set[x]{n}) \in \hs{\ag\cup\hc{1}}\cap\Tb_0$. Существует формула $\Phi$ над $B\cup\hc{1}$,
+          реализующая $\displaystyle f$. Заменим в формуле $\Phi$ все вхождения $1$ на новую переменную $y$.
+          Получим формулу $\Phi'$, реализующую функцию $h(y,\set[x]{n})$.\par
+          Свойства функции $h(y,\set[x]{n})$:
+          \begin{itemize}
+            \item $\displaystyle h \in B$
+            \item $\displaystyle h(1,\set[x]{n}) = f(\set[x]{n}) $
+          \end{itemize}
+          Рассмотрим функцию $g(\set[x]{n})=h(x_1\vee\ldots\vee x_n,\set[x]{n})$.
+          Для произвольного набора $\alt=(\set{n})$ возможны два случая:\par
+          \begin{authornote}
+            А в математических текстах понятие перегрузки используется? А то как-то нехорошо получается,
+            что функция $g$ означает две разные вещи. Но так было у первоисточника. diff are welcome.
+            Ну и почему он не сдвигает комментарий вправо?
+          \end{authornote}
+          \begin{itemize}
+              \item $\displaystyle \alt \neq \tilde 0 \Ra g(\alt)  = f(\alt) $
+              \item $\displaystyle \alt = \tilde 0 \Ra g(0\etc,0) = f(0\etc,0) = 0, \text{т.к } \ag\subseq\Tb_0$
+          \end{itemize}
+          \item Второй случай аналогично.
+      \end{enumerate}
+      Таким образом, получаем, что во всех случаях $[\ag]$ конечнопорожден. Теорема доказана.
+\end{itemize}
+\part{Комбинаторика}
+\begin{authornote}
+  Структуризация из рук вон плохая, ибо повествование было в стиле "Ну а ещё, как вы знаете, есть такая
+  штука". Много кириллических букв добавлено от меня, что бы поддержать некую логическую связность.
+\end{authornote}
+\section{Выборки}
+Пусть есть $\set[x]{n}$ - различные элементы, из которых выбирается $k$ штук.
+Выборки могут рассматриваться\par
+\begin{enumerate}
+  \item Упорядоченные
+  \item Неупорядоченные
+\end{enumerate}
+\begin{itemize}
+  \item С повторениями
+  \item Без повторений
+\end{itemize}
+Для всех вариантов постановки задачи рассмотрим количество различных выборок и
+введем необходимые понятия.
+\subsection{Упорядоченные с повторенями}
+Их количество, очевидно, $n^k$.
+\subsection{Упорядоченные без повторений}
+\begin{df}
+  $\displaystyle (n)_k=n(n-1)\ldots(n-k+1) \text{убывающий факториал по n длины k.}$
+\end{df}
+\begin{note}
+  $\displaystyle (n)_n=n!$
+\end{note}
+Количество таких выборок равно $(n)_k$.
+\subsection{Неупорядоченные без повторений}
+\begin{note}
+  Неупорядоченные выборки также называются сочетаниями.
+\end{note}
+\begin{df}
+  Число количество неупорядоченных выборок без повторений называется числом сочетаний
+  и обозначается $C_n^k$ или $\rbmat{n\\k\\}$
+\end{df}
+\paragraph{Свойства числа сочетаний}
+\begin{enumerate}
+  \item $C_n^k\in\Z$
+  \item $C_n^0 = 1, n\ge 0$
+  \item $C_n^k =0, n < k$
+  \item $C_n^0+C_N^1+\ldots+C_n^n = 2^n$
+  \item $C_n^k = C_{n-1}^k+C_{n-1}^{k-1}\ n,k\ge 1$
+  \item  Биномиальная теорема \par
+    \begin{math}
+      \displaystyle
+      (1+x)^n=\sumkzn C_n^kx^k
+    \end{math}
+  \item $\displaystyle C_n^k = \frac{n!}{k!(n-k)!}$
+\end{enumerate}
+\subsection{Неупорядоченные с повторениями}
+Каждая такая выборка задается числом раз, которое был выбран конкретный элемент.
+Итак, пусть элемент $x_j$ был выбран $\al_j\ge 0$ раз($1\le j\le n$).
+По условию задачи $\displaystyle \sumiun\al_i = k$. Каждому такому разбиению числа $k$ поставим
+в соответствие набор из нулей и единиц длины $n+k-1$ следующего вида:\par
+$\displaystyle (\underbrace{0\dots0}_{\al_1} 1 \underbrace{0\dots 0}_{\al_2} 1 \dots \dots 1 \underbrace{0\dots 0}_{\al_n})$
+Таких последовательностей, в сответствии с предыдущим случаем, $C_{n+k-1}^k$.
+\begin{denote}
+  $\displaystyle (n)^k=n(n+1)\dots(n+k-1)  \text{ возрастающий факториал по \ensuremath{n} длины $k$. }$
+\end{denote}
+\begin{denote}
+  $\displaystyle \rbmat{\!\!\!\rbmat{n\\k}\!\!\!} = C_{n+k-1}^k=\frac{(n)^k}{k!}$
+\end{denote}
+\subsection{Полиномиальный коэффицент}
+Пусть есть различные $x_1\dots x_m$ элементы, из которых выбирается
+упорядоченная последовательность длины $n$, что элемент $x_j$ встречается
+в последовательности $r_j$ раз.
+\begin{denote}
+Тогда искомое число последовательностей называется полиномиальным
+коэффицентом и обозначается $\rbmat{n\\r_1 r_2 \dots r_n\\}$.
+\end{denote}
+\paragraph{Свойства полиномиального коэффицента}
+\begin{enumerate}
+  \item $\displaystyle \sum\limits_{\tiny \mat{r_1\spl r_m = n\\r_j\ge 0}} \rbmat{n\\r_1r_2\dots r_m} = m^n$
+  \item Полиномиальная теорема
+    \begin{displaymath}
+      (x_1\spl x_m)^n = \sum \rbmat{n\\r_1r_2\dots r_m}x_1^{r_1}\dots x_m^{r_m}
+    \end{displaymath}
+    \item $\displaystyle \mcr = C_n^{r_1}C_{n-r_1}^{r_2}\dots C_{n-r_1-\dots - r_m}^{r_m} = \frac{n!}{r_1!r_2!\dots r_m!} $
+\end{enumerate}
+\section{Разбиения}
+\subsection{Разбиение на подмножества}
+Пусть $X=\hc{\set[x]{n}}$,$\hm{X}=n$. Разбиением на $k\ge 0$ называется
+набор подмножеств $\displaystyle \set[B]{k}\subseq X,\  \bigcup\limits_i B_i = X$, причем
+$B_i\neq\varnothing, B_i\cap B_j=\varnothing, i\neq j$.
+\begin{denote}
+  Число таких разбиений называется числом Стирлинга II рода, и обозначается $S(n,k)$.
+\end{denote}
+\paragraph{Свойства числа Стирлинга II рода}
+\begin{enumerate}
+  \item $\displaystyle S(n,n) = S(n, 1) =1$
+  \item $\displaystyle S(n, n-1) = C_n^2$
+  \item $S(n,2) = \frac{1}{2}(2^n-2)$
+    \begin{proof}
+      Пусть $B_1, B_2$ - разбиение. Тогда рассмотрим последовательности нулей и единиц\par
+      $\displaystyle \alt=(\set{n}) \text{ и } \tilde\beta=(\set[\beta]{n})$, построенные следующим образом:
+      $\al_i = 1 \Lra x_i\in B_1$\\
+      $\ \beta_i=1 \Lra x_i\in B_2$.
+      Очевидно, что $\alt = \bar{\tilde\beta}$ и $\alt \neq \tilde 0,\tilde 1$.
+      Поэтому, искомое число Стирлинга равно $\frac{1}{2}(2^n-2)$.(Вычли два набора и разделили на
+      количество перестановок двух последовательностей.)
+    \end{proof}
+    \item $\displaystyle S(n,k)=\inv{k!}\sum\limits_{\tiny \mat{r_1\sco r_k >0\\ r_1\spl r_k =n}}\mcr$
+      \begin{authornote}
+        Доказательство аналогично предыдущему пункту, однако как внятно сформулировать, я не знаю.
+        Тяжело доказывать очевидные утверждения. Опять не сдвгает вправо. diff welcome.
+      \end{authornote}
+      \item $\displaystyle S(n,k) = S(n-1, k-1) + kS(n-1,k)$
+        \begin{proof}
+          \begin{authornote}
+            Опять-таки, лингвистическая аккуратность не на высоте.
+          \end{authornote}
+          Каждое из слагаемых в правой части соответствует одному из двух случаев:
+          \begin{itemize}
+            \item $x_1$ - отдельный блок. Тогда остается $S(n-1, k-1)$ вариантов.
+            \item $x_1$ - входит в какой-либо блок. Тогда разобьем $X\wo\hc{x_1}$ на $k$ блоков,
+              и к любому из них мы можем присоединить $x_1$.
+          \end{itemize}
+        \end{proof}
+\end{enumerate}
+\begin{denotes}
+  $\displaystyle (x)_n\eqdef x(x-1)\dots(x-n+1)$\par
+  $\displaystyle (x)^n\eqdef x(x+1)\dots(x+n-1)$ \par
+  $\displaystyle (x)^0=(x)_0=1$
+\end{denotes}
+\begin{lemma}
+$\displaystyle x^n = \sumkzn S(n,k) (x)_k$
+\end{lemma}
+\begin{proof}
+  Т.к выражение справа и слева знака равенства являются многочленами по переменной $x$,
+  то доказав равенство для $x=m\in\N$, получим и для $x\in\R$.\par
+  $m^n$- число $m$-чных наборов длины $n$. Пусть $\alt=(\set{n})$ - такой набор.
+  В нем $k$ различных разрядов, $1\le k\le m'=min(m,n)$.
+  Сколько способов выбрать "начинку'': $S(n,k)\cdot k!\cdot C_m^k  = S(n,k)\cdot (m)_k$.
+  Лемма доказана.
+\end{proof}
+\subsection{Разбиения перестановок на циклы}
+\begin{authornote}
+  Здесь должен быть обзорный экскурс, что такое перестановка, подстановка, разложение на независимые
+  циклы и другие элементарные понятия алгебры минуты так на четыре.
+\end{authornote}
+\begin{denote}
+  Число перестановок $n$ элементного множества, разлагающихся на $k$ циклов, называется
+  числом Стирлинга первого рода без знака и обозначается $C(n,k)$.
+\end{denote}
+\begin{denote}
+  Число Стирлинга первого рода со знаком: $\displaystyle s(n,k) = (-1)^{n-k}C(n,k)$.
+\end{denote}
+\begin{denote}
+  $\displaystyle C(0,0) =1$, $C(n,0) =0$, $C(n,k) = 0|n<k$
+\end{denote}
+\paragraph{Свойства числа Стирлинга I рода}
+\begin{enumerate}
+  \item $\displaystyle \sumkzn C(n,k) = n!$
+  \item $C(n,n) =1$
+  \item $ C(n,1) = (n-1)!$ \WHY
+  \item $C(n,k) = C(n-1, k-1) + (n-1)C(n-1,k)$
+    \begin{proof}
+      Возьмем элемент $\hc{n}$. Возможны два случая
+      \begin{itemize}
+        \item $\hc{n}$ - отдельный цикл. Тогда оставшиеся $n-1$ элементов должны
+          разлагатся в $k-1$ цикл, что возможно $C(n-1,k-1)$ способами.
+        \item Иначе, пусть $\hc{1\dots n-1}$ разбито на циклы $C(n-1,k)$ способами:\par
+          $(i_1\dots i_k)\dots(i_m\dots i_{n-1})$
+          Элемент $\hc{n}$ можно вставить в любую из $n-1$ позиций, присоединяя к циклу слева.
+      \end{itemize}
+    \end{proof}
+    \begin{imp}
+      $\displaystyle s(n,k) = s(n-1,k-1) - (n-1)s(n-1,k)$
+    \end{imp}
+\end{enumerate}
+\begin{lemma}
+  $\displaystyle (x)_n =\sumkzn s(n,k)x^k$
+\end{lemma}
+\begin{proof}
+  Заметим, что верно $\displaystyle (x)_n = \sumkzn a(n,k)\cdot x^k $ по определению убывающего
+  факториала. Можно доопределить $a(0,0) =1,\ a(n,0)=0, a(n,k)=0 \text{ при } n<k $.
+  Покажем, что $a(n,k)$ удовлетворяет тому же реккурентному соотношеню, что и $s(n,k)$.
+  \begin{displaymath}
+    (x)_n = (x-n+1)(x)_{n-1} = (x-n+1)\sum_{k=0}^{n-1}a(n-1,k) x^k =
+  \end{displaymath}
+  \begin{displaymath}
+    =\sum_{k=0}^{n-1}a(n-1,k) x^{k+1} - (n-1)\sum_{k=0}^{n-1}a(n-1,k)x^k=\sumkun a(n-1,k-1)x^k
+    -(n-1)\sumkzn a(n-1,k) x^n
+  \end{displaymath}
+  Получаем нужное реккурентное соотношение
+  \begin{displaymath}
+    a(n,k) = a(n-1, k-1) - (n-1)a(n-1,k)
+  \end{displaymath}
+\end{proof}
+\begin{denote}
+  $\displaystyle \Sc_{n+1}=\hs{S(i,j)}_{0\le i,j \le n}$\par
+  $\mathfrak{s}_{n+1} = \hs{s(i,j)}_{0\le i,j \le n}$
+\end{denote}
+Рассмотрим два базиса в линейном пространстве многочленов степени не выше $n$:
+I: $\displaystyle x^0=1, x^1, x^2, \dots, x^n$ \par
+II: $\displaystyle (x)_0=1, (x)_1,\dots, (x)_n$ \par
+По доказанным теоремам имеют место следующие формулы:
+\begin{displaymath}
+  \rbmat{x^0\\x^1\\\vdots\\x^n} = \Sc_{n+1}\rbmat{(x)_0\\(x)_1\\\vdots\\(x)_n}\qquad
+  \rbmat{(x)_0\\(x)_1\\\vdots\\(x)_n} = \mathfrak{s}_{n+1}\rbmat{x^0\\x^1\\\vdots\\x^n}
+\end{displaymath}
+Иными словами, $\displaystyle \Sc_{n+1}s_{n+1} = \Ic_{n+1} = s_{n+1}\Sc_{n+1}$, или\
+$\displaystyle \sumkzn S(i,k)\cdot s(k,j) = \delta_{ij}$
+\begin{lemma}{Обращение Стирлинга}
+  Пусть $\hc{a}_{j=0}^n$, $\hc{b}_{j=0}^n \in \Cbb$. Тогда для \linebreak $m=0\dots n$ верно
+  \begin{displaymath}
+    a_m=\sumkzm S(n,k)b_k \Lra b_m=\sumkzm s(n,k)a_k
+  \end{displaymath}
+\end{lemma}
+\begin{denote}
+  Для $x\in\R$ и $k\in\N$ определим следующие величины:\par
+  $\displaystyle \rbmat{x\\k} = \frac{(x)_k}{k!}\qquad \cnka{x}{k}=\frac{(x)^k}{k!}$
+\end{denote}
+Заметим, что верны следующие равенства:\par
+$\displaystyle (-x)_n=(-x)(-x-1)\dots (-x-n+1) = (-1)^n(x)^n$\par
+$\rbmat{-n\\k} = \frac{(-n)_k}{k!}=(-1)^k\frac{(n)^k}{k!}=(-1)^k\cnka{n}{k}$
+\begin{authornote}
+  К чему были эти манипуляции с отрицательнымим аргументами - тайна есть великая.
+\end{authornote}
+\begin{problem}
+  Пусть $\hc{a}_{j=0}^n$, $\hc{b}_{j=0}^n \in \Cbb$. Тогда для $m=0\dots n$ верно
+  \begin{displaymath}
+    a_m=\sumkzm C_m^kb_k \Lra b_m=\sumkzm (-1)^{m-k}C_m^ka_k
+  \end{displaymath}
+\end{problem}
+\section{Частично упорядоченные множества}
+\subsection{Задача об ожерельях}
+Также, задача о перечислении $r$-ичных циклических последовательностей длины $n$.
+Пусть $d$ -минимальный период последовательности. Очевидно, $d|n$.
+\begin{denote}
+  Обозначим $M_n^r(d)$ - число $r$-ичных циклических последовательностей длины $n$ и минимального
+  периода $d$.
+\end{denote}
+Заметим, что последовательность
+с минимальным периодом $d$ имеет вид
+\begin{displaymath}
+  \overbrace{\underbrace{a_1\dots a_d}_{d}\underbrace{a_1\dots a_d}_{d}\dots\dots \underbrace{a_1\dots a_d}_{d}}^n
+\end{displaymath}
+Поэтому $M_n^r(d) = M_d^r(d)$. Cуммируя по всем возможным $d$ получаем
+$$r^n=\sum\limits_{d|n}dM_d^r(d)$$
+\begin{authornote}
+  Величина слева - это число всех последовательностей, линейных. Именно поэтому в сумме мы домножаем на $d$.
+\end{authornote}
+\begin{displaymath}
+  T(n) = \sum\limits_{d|n}M_d^r(d)
+\end{displaymath}
+\begin{authornote}
+А что такое $T(n)$?
+\end{authornote}
+\subsection{Частично упорядоченное множество}
+\begin{df}
+  Множество $P=(P,\le)$ с заданным на нем бинарном отношении "$\le$" называется частично
+  упорядоченным множеством, если выполнено для всеx $x$ и $y$:
+  \begin{enumerate}
+    \item $\displaystyle x\le x$
+    \item $x\le y, y\le z \Ra x\le z$
+    \item $x\le y, y\le x \Ra y=x$
+  \end{enumerate}
+\end{df}
+\begin{df}
+  Если $x\le y$ или $y\le x$, то $x$,$y$ называются сравнимыми.
+\end{df}
+\begin{df}
+  Частично упорядоченное множество, в котором любые два элемента сравнимы, называется цепью.
+  Для цепи определим отношение "<": $x<y \Lra x\le y$, $x\neq y$.
+  Последовательность $\displaystyle x_0 < x_1 < x_2 < \dots <x_k$ называется цепью длины $k$.
+\end{df}
+\begin{df}
+  Если сущестует $x$, что $\forall y\in P$ $x\le y$, то $x$ называется нулем.
+\end{df}
+\begin{df}
+  Интервал: $[x,y] = \hc{z\in P | x\le z\le y}$
+\end{df}
+\begin{df}
+  Множество называется локально конечным,\linebreak  если $\forall x,y\in P$ верно $\hm{\hs{x,y}}<\infty$
+\end{df}
+\begin{note}
+Если не сказано иного, в дальнейших рассмотрениях будем предпологать,
+что частично упорядоченное множество содержит ноль и локально конечно.
+\end{note}
+\subsection{Алгебра инциндентности}
+\subsubsection{Определения}
+Рассмотрим  множество $\displaystyle A_\R(P)=\hc{f(x,y) : P\times P\to \R, f(x,y) =0, \text{если } x\not\le y}$
+и определим следующие операции:$\displaystyle \forall f,g\in A_\R(P)$, $c\in\R$
+\begin{enumerate}
+  \item $\displaystyle (f+g)(x,y) = f(x,y) + g(x,y)$
+  \item $\displaystyle (cf)(x,y) =  cf(x,y)$
+  \item Свертка: $(f\ast g)(x,y) = \sum\limits_{x\le z\le y} f(x,z)g(z,y)$. Если $x\not\le y$, то полагаем $(f\ast g)(x,y) =0$
+\end{enumerate}
+Если $f,g\in A_\R(P)$, то $f+g, cf, f\ast g \in A_\R(P)$
+\begin{denote}
+  $\arp$ называется алгеброй инциндентности множества P, $f\in\arp$ - функциями инциндентности.
+\end{denote}
+Определим специальные функции:
+\begin{displaymath}
+  \delta(x,y) = \case{1, x = y\\ 0, x\neq y}\quad
+  \zeta(x,y) = \case{1, x\le y\\ 0, otherwise\\} \quad
+  \eta(x,y) = \case{1, x < y\\ 0, otherwise\\}
+\end{displaymath}
+Очевидно, $\eta =\zeta - \delta$.
+\subsubsection{Свойства свертки.}
+\begin{enumerate}
+  \item Ассоциативность \WHY
+  \item Дистрибутивность относительно сложения
+  \item $f\ast\delta = \delta\ast f = f$
+\end{enumerate}
+\subsection{Формулы обращения}
+\begin{df}
+  Функция $g\in\arp$ называется правым обратным для $f\in\arp$, если $f\ast g=\delta$,
+  и левым обратным, если $g\ast f=\delta$.
+\end{df}
+\begin{lemma}
+  Для функции $f(x,y)\in\arp$ существует правая обратная тогда и только тогда, когда $f(x,x) \neq 0$ для всех $x\in P$.
+\end{lemma}
+\begin{proof}
+  {\bf Необходимость:\par}
+  Пусть $g\in\arp$ - правый обратный. Тогда $(f\ast g)(x,y) = \delta(x,y)$. Подставив $x=y$ получим $\displaystyle f(x,x)\cdot g(x,x) = 1$.
+  Отсюда $f(x,x)\neq 0$.\par
+  {\bf Достаточность:\par}
+  Пуcть $\forall x$ $ f(x,x)\neq 0$. Будем строить функцию  $g$ реккурентно.
+  Для  $x=y$ определим $g(x,x)=\inv{f(x,x)}$.
+  Предположим, что мы определили $g(x,y)$ для тех $x,y$, для которых $\hm{\hs{x,y}}<k$.
+  Определим для тех $x,y$, для которых $\hm{\hc{x,y}}=k$. По определению,
+  $\displaystyle 0 = (f\ast g)(x,y) = f(x,x)g(x,y)+\sum\limits_{x<z\le y} f(x,z)g(z,y)$.
+  Отсюда получаем $g(x,y) = -\inv{f(x,x)}\sum\limits_{x<z\le y}f(x,z)g(z,y)$.
+\end{proof}
+\begin{lemma}
+  \underline{Левая} обратная к функции $f\in\arp$ существует тогда и только тогда, когда
+  $\forall x\in P$ $f(x,x)\neq 0$.
+\end{lemma}
+\begin{proof}
+  {Аналогично предыдущей лемме}
+\end{proof}
+\begin{imp}
+  Если $\forall x\in P$ $f(x,x)\neq 0$, то существует $\displaystyle g=f^{-1}: f\ast g=g\ast f=\delta$.
+\end{imp}
+\begin{df}
+  Функция $\mu(x,y)=\zeta^{-1}(x,y)$ называется функцией Мёбиуса.
+\end{df}
+\begin{theorem}(Формула обращения Мебиуса для частично упорядоченного множества)
+  Пусть $P$-локально ограниченное частично упорядоченное множество. Тогда
+  для любых $f,g: P\to\R$ верно
+  \begin{displaymath}
+    g(x)=\sum_{y\le x}f(y) \Lra f(x) = \sum_{y\le x}g(y)\mu(y,x)
+  \end{displaymath}
+\end{theorem}
+\begin{proof}
+  {\bf Необходимость:\par}
+  Пусть $\displaystyle g(y)=\sum_{z\le y}f(z)$. Тогда (воспользовавшись определением $\zeta$)
+  \begin{displaymath}
+    \sum_{y\le x}\sum_{z\le y}\mu(y,x) = \sum_{z\le x}f(z)\sum_{z\le y\le x}\zeta(z,y)\mu(y,x) =
+    \sum_{z\le x}f(z)\delta(z,x) = f(x)
+  \end{displaymath}
+\end{proof}
+\subsection{Вычисление функции Мебиуса}
+\subsubsection{Используя формулу обращения}
+По формуле обращения $\mu(x,x) =1$, $\displaystyle \mu(x,y) = -\sum_{x<z\le y}\mu(z,y) =-\sum_{x\le z<y}\mu(x,z)$
+\begin{ex}
+  Возьмем $P=\Z_+$ со стандтным отношением "$\le$". Имеем,
+  $\mu(x,x) =1$, $\mu(x,x+1)=-1$, $\mu(x,x+2) = -(\mu(x+1,x+2) + \mu(x+2,x+2)) = 0$,
+  $\mu(x,x+k) = 0, when\  k\ge 2$\WHY
+  Таким образом,
+  \begin{displaymath}
+    \mu(x,y) = \case{\ 1,\  x =y\\ -1, y=x+1\\\ 0, otherwise}
+  \end{displaymath}
+  Формула обращения имеет вид
+  $g(x) = \sum_{y\le x}f(y) \Lra f(x)=g(x) - g(x-1)$
+\end{ex}
+\subsubsection{Теорема о произведении}
+Пусть $P_1,P_2$ - частично упорядоченные множества. Рассмотрим $P=P_1\times P_2$.
+Пусть $x=(x_1,x_2), y=(y_1,y_2)\in P$. Определим $\displaystyle x\le y \Lra x_1\le y_1, x_2\le y_2$.
+Заметим, что если $P_1,P_2$ локально конечны с нулями $0_1$ и $0_2$ соответсвенно, то
+$P$ - локально конечно с нулем $(0_1,0_2)$.
+\begin{theorem}
+  Пусть $P_1,P_2$- локально упорядоченные множества с нулями, $P=P_1\times P_2$.
+  Тогда $\displaystyle \mu_P((x_1,x_2),(y_1,y_2)) = \mu_{\tiny P_1}(x_1,x_2)\mu_{\tiny P_2}(x_2,y_2)$
+\end{theorem}
+\begin{proof}
+Пусть $x\not\le y$. Тогда либо $x_1\not\le y_1$, либо $x_2\not\le y_2$. В таком случае доказываемое
+равенство выполнено.\par
+Пусть теперь $x\le y$. Если $x = y$, то $x_1=y_1$, $x_2=y_2$, и доказываемое равенство выглядит как
+\begin{displaymath}
+  1=\mu_P(x,x)=\mu_{P_1}(x_1,x_1)\mu_{P_2}(x_2,x_2) = 1
+\end{displaymath}
+\begin{authornote}
+  Далее идет что-то, опасное для сознания. Приятного чтения. Надеюсь я нигде
+  не перепутал немеренное количество индексов.
+\end{authornote}
+Доказываем индукцией по $r=\hm{\hs{x,y}}$.
+Случай $r = 1$, т.е $x=y$ уже разобран. Пусть утверждение верно для $\hm{\hc{x,y}}<r$.
+Для $x,y$, что $\hm{\hc{x,y}}=r$ выполняется
+\begin{displaymath}
+  \mu_P(x,y) = -\sum_{x\le z<y}\mu_P(x,z) = \hc{\text{предположение индукции}} = -\sum_{x\le z<y}\mu_{P_1}(x_1,z_1)\mu_{P_2}(x_2,z_2)
+\end{displaymath}
+Полученная сумма разбивается на три подсуммы
+\begin{enumerate}
+  \item $\Sigma_1: z_1<y_1$, $z_2<y_2$.
+  \item $\Sigma_2: z_1=y_1,z_2<y_2$.
+  \item $\Sigma_3: z_1<y_1,z_2=y_2$.
+\end{enumerate}
+\begin{displaymath}
+  \Sigma_1=-\sum_{x_1\le z_1<y_1}\sum_{x_2\le z_2<y_2}\mu_{P_1}(x_1,z_1)\mu_{P_2}(x_2,x_2) = -\mu_{P_1}(x_1,y_1)\mu_{P_2}(x_2,y_2)
+\end{displaymath}
+\begin{displaymath}
+  \Sigma_2=-\sum_{x_2\le z_2<y_2}\mu_{P_1}(x_1,y_1)\mu_{P_2}(x_2,z_2) = \mu_{P_1}(x_1,y_1)\mu_{P_2}(x_2,y_2) = \Sigma_3
+\end{displaymath}
+Суммируя, получаем требуемое утверждение. Теорема доказана.
+\end{proof}
+\begin{imp}
+  Пусть $P_1\sco P_n$ - локально конечные конечно упорядочнные
+  множества с нулями, $P=P_1\times\dots P_n$. Тогда $\displaystyle \mu_P(x,y) = \prod_{i=1}^n\mu_{P_i}(x,y)$
+\end{imp}
+\begin{ex}
+  Рассмотрим $E=\hc{0, 1}$. По доказанной теореме,
+  \begin{displaymath}
+    \mu_{E^n}=\bcase
+       {1, x=y\\
+         (-1)^l, \text{если \ensuremath{x<y} и ровно в \ensuremath{l} разрядах \ensuremath{x_i<y_i} }\\
+         0, otherwise}
+  \end{displaymath}
+\end{ex}
+\begin{authornote}
+  Верстка последнего примера ужасна, поправьте.
+\end{authornote}
+\subsubsection{Простые наблюдения}
+\paragraph{Изоморфизм}
+Пусть $P\cong P'$, т.е $P\corr{\phi}P'$, $\phi$-биекция, причем $x\le y \Lra \phi(x)\le\phi(y)$.
+Тогда $\mu_P(x,y)=\mu_{P'}(\phi(x),\phi(y))$.
+\begin{ex}
+  Рассмотрим множество $T=\hc{\set[t]{n}}$ и множество его подмножеств $\wh P^n = 2^T$, на котором
+  определим частичный порядок: $\forall x,y\in\wh P^n$ $x\le y \Lra x\subseq y$, $\varnothing = 0$.
+  Заметим, что $\wh P^n \cong E^n$, поэтому
+  \begin{displaymath}
+    \mu_{\wh P^n}=\bcase{(-1)^{\hm{y}-\hm{x}},x\subseq y\\ 0, otherwise}
+  \end{displaymath}
+\end{ex}
+\begin{imp}
+  Основаная формула включения-выключения. Пусть $f,g:\wh P^n\to\R$. Тогда по общей формуле обращения
+  получаем
+  \begin{displaymath}
+    g(x) = \sum_{y\le x}f(y) \Lra f(x)=\sum_{y\le x}(-1)^{\hm{x}-\hm{y}}g(y)=\sum_{k=0}^{\hm{x}}(-1)^k\sum_{ \tiny\mat{\hm{x}-\hm{y}=k\\y\le x\\}}g(y)
+  \end{displaymath}
+\end{imp}
+\paragraph{Некое утверждение}
+Пусть $P=(P,\le)$, $P'=(P',\le)$ и $P\subseq P'$. Тогда для всех $x,y\in P'$, $x\le y$, $\hs{x,y}\subseq P$ выполнено
+$\displaystyle \mu_{P'}(x,y)=\mu_{P}(x,y)$.
+\begin{ex}
+  Рассмотрим $N=\hc{\set{N}}$ - множество объектов и $T=\hc{\set[t]{n}}$.
+  \begin{denote}
+    $\displaystyle f_=(x)$ - число объектов, обладающихв точности свойствами $T\wo x$. В частности, $f_=(T)$ - число объектов,
+    не обладающих ни одним свойством.
+  \end{denote}
+  \begin{denote}
+    $\displaystyle g_\ge(x) = \sum_{y\le x}f_=(y)$ - число объектов, обладающих по крайней мере свойствами из $T\wo x$.
+    В частности, $g_\ge(T)=N$.
+  \end{denote}
+  \begin{denotes}
+    $E(k) = \sum_{\hm{x}=n-k}f_=(x)$, $W(k)=\sum_{\hm{y}=n-k}g_\ge(y)$
+  \end{denotes}
+  Верно следующее:
+  \begin{displaymath}
+    E(0)=f_=(T)=\sumkzn (-1)^k\sum_{\hm{y}=n-k}g_\ge(y)=\sumkzn(-1)^kW(k)
+  \end{displaymath}
+  \begin{authornote}
+    Ну да, верно, а к чему все это вообще?
+  \end{authornote}
+  \begin{problem}
+    Найти $E(k)$.
+  \end{problem}
+\end{ex}
+\begin{ex}
+  \begin{df}
+    Функция Эйлера $\ph(k) =\#\hc{q|1\le q\le k,\ (q,k) = 1}$.
+  \end{df}
+  Пусть $k=t_1^{l_1}\dots t_n^{l_n}$, $l_j\ge 1$. Положим, что $q$ обладает свойством $t_i$, если $t_i|q$.
+  Применяем теорию и обозначения предыдущего примера. $\ph(k)=E(0)$. В данной задаче имеем
+  \begin{displaymath}
+    W(1) = \frac{k}{t_1}+\frac{k}{t_2}\dots +\frac{k}{t_n}
+  \end{displaymath}
+  \begin{displaymath}
+    W(m)=\sum_{1\le i_i<\dots <i_m\le k}\frac{k}{t_{i_1}\dots t_{i_m}}
+  \end{displaymath}
+  \begin{authornote}
+    Вновь, а к чему здесь все это?
+  \end{authornote}
+  \begin{df}
+    Арфифметическая функция Мебиуса
+    \begin{displaymath}
+      \wh \mu(d)=\bcase{1, d=1\\ (-1)^l, d=t_{i_1}\dots t_{i_l}\\ 0, otherwise}
+    \end{displaymath}
+    \begin{authornote}
+      По логике вещей, если речь идет о делимости, то $t_j$ должно быть простые. С другой стороны,
+      а почему не $p_j$?
+    \end{authornote}
+  \end{df}
+  Верна следующая формула\WHY:
+  \begin{displaymath}
+    \displaystyle \ph(k)=\sum_{d|k}\frac{k}{d}\wh\mu(d)=\sum_{d'|k}d'\wh\mu(\frac{k}{d'})
+    %-- Так он клан ветра или воды? --Ветра.Но он раньше был кланом воды.
+    % Простите за non-ASCII комментарии.
+  \end{displaymath}
+
+  \begin{lemma}
+    Рассмотрим частично упорядоченное множество $P=(N,\le)$. Определим для $x,y\in P$ сравнение: $x\le y\Lra x|y$.
+    Тогда для $x\le y$, $\mu_P(x,y) = \wh\mu(y/x)$.
+  \end{lemma}
+  \begin{proof}
+    Пусть $t_1\sco t_n$ - перыве $n$ простых чисел.
+    \begin{denote}
+      $\displaystyle D_n=\hc{m|m=t_1^{l_1}\dots t_n^{l_n},\ l_1\dots l_n\ge 0}\cong (l_1\sco l_n)\in\Z_+^n$
+    \end{denote}
+    Заметим, что $D_n\cong(\Z_+)^n$. Функция Мебиуса для этого множества выглядит(по теореме умножения)
+    \begin{displaymath}
+      \mu_{D_n}(x,y) = \mu_{Z_+^n}(\wh x, \wh y) =
+      \bcase{1, \wh x=\wh y\\ (-1)^l,\ \wh x\le\wh y,\ \wh y_i=\wh x_i+1 \text{ в ровно $l$ разрядах}\\ 0, otherwise\\}=\wh\mu(y/x)
+    \end{displaymath}
+    \begin{authornote}
+      Поправьте верстку, пожалуйта.
+    \end{authornote}
+    Таким образом, утверждение леммы доказано для $x,y\in D_n$. Теперь, для произвольных
+    $x,y\in P$, $x\le y$ найдется $n$, что $y\in D_n$. Т.к в таком случае $\hs{x,y}\in D_n$, то
+    $\mu_P(x,y) = \mu_{D_n}(x,y)=\wh\mu(y/x)$.
+  \end{proof}
+  \begin{imp}
+    Формула обращения Мебиуса.\par
+    Пусть $f,g: \N\to\R$. Тогда верно
+    \begin{displaymath}
+      \displaystyle g(x) = \sum_{d|x}f(d) \Lra f(x) = \sum_{d|x}g(d)\wh\mu(\frac{x}{d})
+    \end{displaymath}
+  \end{imp}
+  \begin{imp}
+    Формула Гаусса: \WHY
+    \begin{displaymath}
+      \sum_{d|k}\ph(d) = k
+    \end{displaymath}
+  \end{imp}
+\end{ex}
+\subsection{Ещё какой-то способ вычисления функции Мебиуса}
+\begin{df}
+  Пусть $g\in A_\R(P)$,$k\in\N$. Тогда определим $g^k=g^{k-1}\ast g$, $g^0=\delta$.
+\end{df}
+\begin{theorem}
+  Пусть $P$ - локально конечное частично упорядоченное множество с нулем.
+  $g\in\A_\R(P)$, причем $g(x,x) =0 $ для всех $x\in P$. Также, пусть $k\in\N$ таково,
+  что $\hm{\hs{x,y}}<k$. Тогда имеет место формула
+  \begin{displaymath}
+    (\delta+g)^{-1}(x,y) = \sum_{i=0}^k(-1)^ig^i(x,y)
+  \end{displaymath}
+\end{theorem}
+\begin{proof}
+  Докажем индукцией по $k$.
+  Если $k=1$, то $x=y$ и $(\delta+g)(x,x) = \delta(x,x) =1$.
+  Поэтому $(\delta+g)^{-1}(x,x) = 1$. База индукции доказана.
+
+
+  Пусть теперь теорема доказана для всех $x,y\in P$, что $\hm{\hc{x,y}}<k$. Возьмем
+  $\hm{\hc{x,y}}=k$.
+  \begin{displaymath}
+    (\delta+g)^{-1}(x,y) = -\sum_{x\le z<y}(\delta+g)^{-1}(x,z)(\delta+g)(z,y) =
+    -\sum_{x\le z<y}(\delta-g+g^2-\dots+(-1)^kg^k)(x,z)g(z,y) =
+  \end{displaymath}
+  \begin{displaymath}
+    = -(g-g^2+\dots+(-1)^kg^k)(x,y)=\sum_{i=1}^k (-1)^kg^k(x,y)=\sum_{i=0}^k (-1)^kg^k(x,y)
+  \end{displaymath}
+  Теорема доказана.
+\end{proof}
+\begin{imp}
+  \begin{displaymath}
+    \mu(x,y)=\ze^{-1}(x,y)=\sum^k_{i=0}(-1)^k\eta^k
+  \end{displaymath}
+\end{imp}
+\begin{imp}
+  \begin{displaymath}
+    \mu(x,y) = \sum^k_{i=0}(-1)^iC_i
+  \end{displaymath}
+  где $C_i$ - число цепей от $x$ до $y$ длины $i$.\WHY
+\end{imp}
+\section{Формальные ряды и производящие функции}
+\subsection{Основные определения}
+Пусть $\Ks=(\Kc,+,\cdot)$ - кольцо.
+Напомним некоторые базовые понятия алгебры.
+\begin{itemize}
+  \item $\Ks$ - абелева группа по сложению с единицей, обозначаемой $0$.
+  \item Выполнены левая и правая дистрибутивность по сложения.
+  \item Если есть единица в группе по умножению, то кольцо называется с единицей.
+  \item  Ненулевые элементы $a,b\in\Kc$ называются делителями нуля, если $ab=0$.
+  \item
+    \begin{df}
+      Характеристикой кольца называется минимальное число $n$, что $\forall a\in\Kc$
+      $na=0$, или $0$, есть такого числа не существует.
+    \end{df}
+    \item Поле - коммутативное кольцо и ассоциативное кольцо с единицей
+      без делителей нуля, в котором каждый ненулевой элемент обратим.
+\end{itemize}
+
+\begin{df}
+  Пусть $x$ - формальная переменная, $\hc{a}_{j=0}^\infty\in\Kc$.
+  Выражение вида $\displaystyle A(x)=\sum_{n\ge 0}a_nx^n$ называется формальным рядом.
+\end{df}
+\begin{denote}
+  Множество формальных рядов обозначается $\Ks\hc{\hc{x}}$.
+\end{denote}
+Определим операции над формальными рядами $\displaystyle A(x)=\sum_{n\ge 0}a_nx^n$,
+$\displaystyle B(x)=\sum_{n\ge 0}b_nx^n$:
+\begin{enumerate}
+  \item $A(x)=B(x)$ $\Lra$ $\forall i$ $a_i=b_i$.
+  \item $\displaystyle A(x)+B(x) = \sum_{n\ge 0}(a_n+b_n)x^n$
+  \item $C(x)=A(x)B(x)=\sum_{n\ge 0}c_nx^n$, где $c_n=a_0b_n+a_1b_{n-1}+\dots+a_nb_0$.
+\end{enumerate}
+\begin{denote}
+  $A(x)$ называется производящей функцией для  последовательности  $\hc{a_j}_{j=0}^\infty$.
+\end{denote}
+{\bf Свойства $\Ksr$\par}
+\begin{enumerate}
+  \item $\Ksr$ -кольцо.
+    \begin{itemize}
+      \item Если $\Ks$ -кольцо с единицей, то и $\Ksr$- с единицей.
+      \item Если $\Ks$ -коммутативно, то и $\Ksr$ коммутативно.
+      \item Если $\Ks$ - ассоциативно, то и $\Ksr$ ассоциативно.
+      \item Если $\Ks$ - без делителей нуля, то и в $\Ksr$ нет делителей нуля.
+        \begin{proof}
+          Пусть существуют $A(x),B(x)$, не равные нулю, что $A(x)B(x)=0$. Положим,
+          $i,j$ -минимальные индексы, что $a_i,b_j\neq 0$. Тогда для $C(x)=A(x)B(x)$ коэффцент
+          $c_{i+j}\neq 0$.
+        \end{proof}
+    \end{itemize}
+    \item      $\displaystyle \Ks\subs\Ksm\subs\Ksr$
+      \begin{df}
+        $\Ksm$- множество многочленов, т.е рядов, имеющих конечное количество ненулевых
+        коэффицентов.
+      \end{df}
+      \item Если $A(x)B(x)=1$, то $B(x)=A^{-1}(x)$ называется обратным к $A(x)$.
+\end{enumerate}
+\begin{lemma}
+  Пусть $A(x)\in\Ksr$. Тогда $A^{-1}(x)$ существует тогда и только тогда, когда сущестует
+  $(A(0))^{-1}$.
+\end{lemma}
+\begin{proof}
+  По определению произведения рядов, выполнено
+  \begin{displaymath}
+    \mat{a_0b_0=1\\a_0b_1+a_1b+0=0\\\vdots\\a_0b_k+\dots+a_kb_0=0} \Ra
+    \mat{b_0=\inv{a_0}\\b_1=-\inv{a_0}a_1b_0\\\vdots\\b_k=-\inv{a_0}(a_1b_{k-1}+\dots+a_kb_o)}
+  \end{displaymath}
+\end{proof}
+\begin{ex}
+  \label{ex:invert}
+  Пусть $A(x)=\sum_{n\ge0}x^n$. Тогда $A^{-1}(x)=1-x$.
+\end{ex}
+\subsection{Применение теории производящих функций}
+\subsubsection{Сочетания с повторениями}
+Из комбинаторных соображений понятно, что
+\begin{displaymath}
+  \sum_{k\ge0}\cnka{n}{n}x^k=(1+x+x^2+\dots)^n
+\end{displaymath}
+Иначе, используя формулы для $\cnka{n}{k}$ и (~\ref{ex:invert})
+\begin{displaymath}
+  (1-x)^{-n}=\sum_{k\ge0}\rbmat{n+k-1\\k}x^k
+\end{displaymath}
+\begin{authornote}
+  И вновь философский вопрос - зачем все это?
+\end{authornote}
+\subsubsection{Задача о двоичных последовательностях}
+Найдем количество двоичных последовательностей длины $n$,
+начинающихся с $1$ и не содержащих двух нулей подряд.
+Обозначим искомое количество $u_n$. Очевидно $u_1=1$,$u_2=2$. Для удобства Обозначим
+$u_0=1$. Заметим, что $u_n=u_{n-1}+u_{n-2}$. Такая последовательность называется числам Фибоначчи.
+\begin{authornote}
+  Здесь весьма уместна была бы иллюстрация.
+\end{authornote}
+\subsubsection{Линейные реккурентные соотношения с постоянными коэффицентами}
+Предположим, необходимо найти последовательность, удовлетворяющую соотношению
+$u_{u+r}=a_1u_{n+r-1}+a_2u_{n+r-2}+\dots+a_ru_n$, где $n\ge 0$, $a_1\sco a_r\in\Cbb$,$a_r\neq 0$
+и заданы начальные значения $u_0\sco u_{r-1}$.
+
+Определим ряды $\displaystyle U(x)=\sum_{n\ge0}u_nx^n$, $B(x)=1-a_1x-a_2x^2-\dots-a_rx^r$ и ряд
+\begin{displaymath}
+  \displaystyle C(x)=U(x)B(x)=\sum_{n\ge0}c_nx^n
+\end{displaymath}
+Заметим, что $c_{n+r}=u_{n+r}-a_1u_{n+r-1}-\dots-a_nu_n=0$ для всех $n\ge0$. Т.е $C(x)\in\Ksm$, причем
+$\deg C(x)\le r-1$. Т.к существует $B^{-1}(x)$, то $U(x)=\frac{C(x)}{B(x)}$.
+
+Теперь рассмотрим многочлен $G(x)=x^r-a_1x^{r-1}-\dots-a_r\neq0$ и пусть
+$\set{s}$ - его корни, кратностей $\set[l]{s}$ соответственно. По основной теореме алгебры, $l_1\spl l_s=r$. Если
+$\al$  - корень $G(x)$, то $\inv{\al}$- корень $B(x)$. Поэтому верно представление
+\begin{displaymath}
+  B(x)=(1-\al_1x)^{l_1}(1-\al_2x)^{l_2}\dots(1-\al_sx)^{l_s}
+\end{displaymath}
+Отсюда получаем выражение для $U(x)$:
+\begin{displaymath}
+  U(x)=\frac{C(x)}{(1-\al_1x)^{l_1}(1-\al_2x)^{l_2}\dots(1-\al_sx)^{l_s}}=\sum_{i=1}^s\sum_{k=0}^{l_i}\frac{B_{ik}}{(1-\al_ix)^k}=\sumind{i}{1}{s}\sumind{k}{0}{l_i}\sum_{n\ge0}B_{ik}\cnka{k}{n}\al_i^nx^n=
+\end{displaymath}
+\begin{displaymath}
+  =\sum{n\ge0}\sumind{i}{1}{s}\al_i^n\sumind{k}{0}{l_i}B_{ik}\cnka{k}{n}x^n
+\end{displaymath}
+Обозначив $\displaystyle P_i(n)=\sumind{k}{0}{l_i}B_{ik}\cnka{k}{n}$, $\deg P_i(n)\le l_i-1$ получаем решение
+задачи
+\begin{displaymath}
+  \displaystyle u_n=\sumind{i}{1}{s}\al_i^nP_i(n)
+\end{displaymath}
+\subsubsection{Задача о расстановке скобок}
+Пусть есть некоммутативное произведение $x_1x_2\dots X_n$. Посчитаем количество различных возможных
+способов расставить скобки, которое называется числами Каталана и обозначается $c_n$. Очевидно,
+$c_0=0$,$c_1=c_2=1$. Так же, можно заметить, что $c_n=c_1c_{n-1}+c_2c_{n-2}+\dots+c_{n-1}c_1$ для всех
+$n\ge2$.
+Рассмотрим производящую функцию $\displaystyle C(x)=\sum_{n\ge0}c_nx^n$ и ряд
+$\displaystyle D(x)=\sum_{n\ge0}d_nx^n=C(x)\cdot C(x)$.
+Так же имеет место следующие соотношения: $d_0=d_1=0$,$\forall n\ge2$ $d_n=c_n$. Иными словами,
+в терминах производящих функций, $C^2(x)-C(x)+x=0$.
+\begin{authornote}
+  To be continued...?
+\end{authornote}
+\subsection{Сходимость формальных рядов}
+\begin{df}
+  Пусть $\hc{A^i(x)}_{i=1}^\infty,A(x)\in\Csr$. Говорим, что $\hc{A^i(x)}_{i=1}$ сходится к $A(x)$
+  (обозначается $A^i(x)\to A(x)$), если для любого $n$ существует $\delta(n)$, что $\forall i>\delta(n)$
+  $a_n^i=a_n$.
+\end{df}
+\begin{denote}
+  Пусть $B^i(x)=\sumind{j}{1}{i}A^j(x)$. Если $B^i(x)\to B(x)$, то
+  говорим, что $\displaystyle\sum_{i\ge1}A^i(x)=B(x)$.
+\end{denote}
+\begin{denote}
+  $\deg^*A(x)$ - наименьшее $i$,  что $a_i\neq 0$. По определению, полагаем $\dega0=\infty$.
+\end{denote}
+\begin{lemma}
+  Пусть $\seq{A^j(x)}{1}\in\Csr$. Тогда верна следующая эквивалентность
+  \begin{displaymath}
+    \exists\ \sum_{j\ge0}A^j\Lra \dega A^j\map{j\to\infty}\infty
+  \end{displaymath}
+\end{lemma}
+\begin{authornote}
+Как-то некрасиво получилось. Надо бы верстку поправить. В этом и прелесть. Каждый пользователь
+vim/Emacs знает едва ли больше 20\% о своем редакторе, но каждый- свои 20\%.
+\end{authornote}
+%Отсюда - ещё 30 блочных листов. Да пребудет сила.
+\begin{proof}
+  {\bf Необходимость.}
+  Будем обозначать $\displaystyle B^i(x)=\sum_{i\ge0}$
+
+\end{proof}
+\end{document}
+
+
+
+
+
+
+
+
+%% Local Variables:
+%% eval: (setq compile-command (concat "xelatex  -halt-on-error -file-line-error " (buffer-name)))
+%% End:

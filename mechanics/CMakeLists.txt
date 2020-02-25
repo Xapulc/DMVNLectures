@@ -1,0 +1,7 @@
+add_subdirectory(Arafaylov.S.I)
+add_subdirectory(Eglit.M.E)
+add_subdirectory(Galin.G.Ya)
+add_subdirectory(Georgievsky.D.V)
+add_subdirectory(Karapetyan.A.V)
+add_subdirectory(Kovalev.V.L)
+add_subdirectory(Kugushev.E.I)

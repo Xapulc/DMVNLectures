@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage[russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{dmvn}
+\begin{document}
+
+\equ{\int a^x \,dx=\frac{a^x}{\ln a}, \quad \int\frac{dx}{\sqrt{a^2-x^2}}=\arcsin\frac{x}{a}, \quad
+\int \tg x \,dx= -\ln\hm{\cos x}, \quad \int \ctg x \,dx= \ln\hm{\sin x}}
+
+\equ{\int \frac{dx}{\sin x} = \ln \hm{\tg \frac{x}{2}}, \quad
+\int \frac{dx}{\cos x} = \ln\hm{\tg\hr{\frac{\pi}{4}+\frac{x}{2}}}, \quad
+\int \frac{dx}{x^2+a^2} = \frac{1}{a}\arctg\frac{x}{a}, \quad
+\int\frac{dx}{x^2-a^2} = \frac{1}{2a}\ln\hm{\frac{x-a}{x+a}}}
+
+\equ{\int \frac{dx}{\sqrt{x^2+q}}=\ln\hm{x+\sqrt{x^2+q}}, \quad
+\int \frac{dx}{\sh^2 x} = -\cth x, \quad \int \frac{dx}{\ch^2 x} = \tanh x}
+
+\equ{\int \frac{dx}{\sh x} = \ln \hm{\tanh\frac{x}{2}}, \quad \int \frac{dx}{\ch x} = 2\arctg e^x}
+
+\equ{y=\sqrt{ax^2+bx+c}: \quad
+\int \frac{P_n(x)\,dx}{y}=Q_{n-1}(x)y+ \lambda \int \frac{dx}{y}}
+\equ{y=\pm\sqrt{a}x+z, \quad y=xz\pm\sqrt{c}, \quad \sqrt{a(x-x_1)(x-x_2)}=z(x-x_1)}
+
+\equ{\int \sqrt{a^2-x^2}\,dx=\frac{x}{2}\sqrt{a^2-x^2}+\frac{a^2}{2}\arcsin\frac{x}{a}, \quad
+\int \sqrt{x^2+q}\,dx=\frac{x}{2}\sqrt{x^2+q}+2q\ln\hm{x+\sqrt{x^2+q}}}
+
+Дифференциальный бином: $\int x^m(a+bx^n)^pdx$.
+\begin{petit}
+  Осторожно, возможны глюки конвертации. Перепроверьте и уберите
+  заметку.
+\end{petit}
+\pt{1} $p \in \Z \Ra x=t^N, \; N=$ -- общий знаменатель $m$ и $n$.
+
+\pt{2} $\frac{m+1}{n} \in \Z \; \Ra \; a+bx^n=t^N, \;N=$~знаменатель $p$.
+
+\pt{3} $\frac{m+1}{n}+p \in \Z \ ;\Ra \; ax^{-n}+b=t^N, \; N=$~знаменатель $p$.
+
+Понижение: $\int\frac{dx}{(1+x^2)^n}=\frac{2n-3}{2n-2}\cdot\int\frac{dx}{(1+x^2)^{n-1}}+\frac{x}{(2n-2)(1+x^2)^{n-1}}$.
+
+\end{document}

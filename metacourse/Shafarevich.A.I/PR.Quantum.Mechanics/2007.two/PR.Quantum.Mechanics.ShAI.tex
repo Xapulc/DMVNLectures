@@ -1,0 +1,34 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[simple]{dmvn}
+
+\title{Задачи к экзамену по квантовой механике}
+\author{Лектор\т А.\,И.\,Шафаревич}
+\date{VII семестр. 2005 г.}
+
+\begin{document}
+
+\begin{problem}
+Найти  оператор Виттена на двумерной сфере в $\R^3$.
+\end{problem}
+\begin{solution}
+Метрика сферы\т $ds^2 = d\ta^2 + \cos^2d\ph^2$.
+$$D_h = h^2D + (df,df)+hR.$$
+
+Напомним, что $k_\ta (\cdot) = (d\ta \wg \cdot)$ и $k_\ph (\cdot) = (d\ph \wg \cdot)$.
+Имеем $R = dk^*_f + d^* k_f + k_fd^* + k^*_fd$,
+где, по определению,
+\eqn{k_f = \pf{f}{\ta}k_\ta + \pf{f}{\ph}k_\ph, \quad k^*_f = \pf{f}{\ta}k^*_\ta + \pf{f}{\ph}k^*_\ph.}
+Имеет место формула
+\eqn{k^*_j(dx^{i_1}\sw dx^{i_k}) = \suml{s=1}{k} = (-1)^{s+1} g^{ji_s}\cdot dx^{i_1}\sw\wh{dx^{i_s}}\sw dx^{i_k}.}
+Обратная матрица метрического тензора: $\rbmat{1 & 0\\0 & \frac{1}{\cos^2\ta}}$.
+По формуле
+\eqn{\begin{aligned}
+k^*_\ta d\ta &= (-1)^{1+1} \cdot 1 = 1, & \quad k^*_\ph d\ta &= 0.\\
+k^*_\ta d\ph &= 0, & \quad k^*_\ph d\ph &= (-1)^{2+1} \cdot 1 = -1.\\
+\end{aligned}}
+
+\end{solution}
+\medskip
+\dmvntrail
+
+\end{document}

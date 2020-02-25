@@ -1,0 +1,323 @@
+\subsection{Мультипликативные функции и формула обращения}
+\subsubsection{Основные определения}
+
+\begin{df}
+Функция $f$ называется \notion{арифметической}, если она действует из $\N$ в
+$\Cbb$, и $f \not \equiv 0$. 
+\end{df}
+
+\begin{note}
+Иногда арифметической называют $f\colon\Z\to\Cbb$.
+\end{note}
+
+\begin{df}
+Арифметическая $f$ называется \notion{мультипликативной}, если $f(nm) = f(n)f(m)$ для 
+всех взаимно простых $n$ и $m$, и \notion{вполне мультипликативной}, если 
+$f(nm) = f(n)f(m)$ для всех $n$ и $m$.
+\end{df}
+
+По мультипликативной функции $f$ построим другую функцию $F$:
+$$
+  F(n) = \sum_{d \divs n} f(d).
+$$
+
+Очевидно, что, если $n = {p_1}^{k_1} \ldots {p_s}^{k_s}$,
+\begin{equation}
+	\label{decomposition for multiplicative functions}
+  F(n) \eqvl{$I$}{20} \prod_{j=1}^{s} (1 + f(p_j) \spl f({p_j}^{k_j}))
+	\eqvl{$II$}{20} \prod_{j=1}^{s} (1 + f(p_j) \spl f({p_j})^{k_j}),
+\end{equation}
+равенство $I$ верно здесь в случае мультипликативности $f$, равенство $II$~—
+в случае вполне мультипликативности.
+
+\begin{df}
+\notion{Функцией Мебиуса} называют
+$$
+\mu(n) = \begin{cases}
+    0,& \mbox{если $p^2 \divs n$},\\
+    (-1)^k,& \mbox{если $n = p_1 p_2 \ldots p_k$.}
+\end{cases}
+$$
+\end{df}
+
+Она, очевидно, мультипликативна, но не вполне мультипликативна: 
+$0=\mu(4)\neq\mu^2(2)=1$.
+
+В силу $(\ref{decomposition for multiplicative functions})$
+$$
+  \sum_{d \divs n} \mu(d) = 
+	\begin{cases}
+    1,& \mbox{если $n = 1$,}\\
+    0,& \mbox{иначе.}
+  \end{cases}
+$$
+
+Аналогично считается
+$$
+  \sum_{d \divs n} \frac{\mu(d)}d = 
+	\begin{cases}
+		1,& \mbox{если $n = 1$,}\\
+		\prodlim_{p \divs n} (1 - \frac1p),& n>1.
+	\end{cases}
+$$
+
+\subsubsection{Формула обращения Мебиуса}
+
+\begin{theorem}[Формула обращения Мебиуса]
+Функция $f$ выражается через $F$ следующим образом
+$$
+  f(n) = \sum_{d \divs n} \mu(d) \cdot F(n / d).
+$$
+\end{theorem}
+\begin{proof}
+	Действительно,
+  $$
+  \begin{gathered}
+  \sum_{d \divs n} \mu(d) \cdot F(n / d) = \sum_{d \divs n} \mu(d) \sum_{d_1 \divs n/d} f(d_1) = \sum_{dd_1 \divs n} \mu(d) \cdot f(d_1)
+  = \sum_{d_1 \divs n} f(d_1) \sum_{d \divs n/d_1} \mu(d) = f(n).
+  \end{gathered}
+  $$
+\end{proof}
+
+\subsubsection{Явная формула для функции Эйлера}
+
+Напомним, функцией Эйлера называется $\ph(n)=\Card\{k\mid k\leqslant n,\,(k,n)=1\}$. 
+Например, $\ph(p) = p - 1$, $\ph(8) = 4$.
+
+Хотим получить явную формулу для $\ph(n)$, зная разложение $n$ на простые.
+
+Рассмотрим $$A_d:=\{k \mid k \leqslant n, (k, n) = d\} = 
+\{k \mid k \leqslant n,\,\left(\frac{k}{d}, \frac{n}{d}\right) = 1\}$$
+%center{ $\hm{A_d} = \ph\left(\frac{n}{d}\right)$.}
+
+Ясно, что $ \{1,\dots,n\}=\bigcup_{d\divs n} A_d$, и $\hm{A_d}=\ph(\frac{n}{d})$ поэтому
+$$\sum_{d \divs n} \ph(d) = \sum_{d \divs n} \ph(n / d) = \sum_{d \divs n} |A_d| = n.$$
+
+Отсюда уже легко следует
+
+\begin{theorem}
+	Для $\ph(n)$ справедливо равенство
+  $$
+    \ph(n) = n \prod_{p \divs n} \left(1 - \frac1p\right).
+  $$
+\end{theorem}
+\begin{proof}
+  Пользуемся формулой обращения Мебиуса:
+  $$
+    \ph(n) = \sum_{d \divs n} \mu(d) \frac{n}d = 
+		n \prod_{p \divs n} \left(1 - \frac1p\right).
+  $$
+\end{proof}
+
+Заметим, что $\ph$ мультипликативная, но не вполне мультипликативная: 
+	$\ph(4) \neq \ph^2(2)$.
+
+Из других свойств $\ph(n)$ можно отметить, например, что 
+$$\frac{\ph(1) \spl \ph(n)}n \sim \frac{3}{\pi^2}n.$$
+
+\subsection{Групповые характеры}
+
+\subsubsection{Определение и основные свойства}
+
+Пусть $G$~— конечная абелева группа (операцию будем обозначать умножением), 
+$|G| = h$.
+
+\begin{df}
+  Характер $\chi$~— это не тождественно нулевой гомоморфизм из $G$ в 
+	$(\Cbb, \cdot)$, то есть такой $\chi\colon G\to\Cbb$:
+\begin{points}{0}
+	\item $\chi(g)\not\eq0$,
+	\item $\fa g_1,g_2$ $\chi(g_1g_2)=\chi(g_1)\chi(g_2)$.
+\end{points}
+\end{df}
+
+Пример: $\chi \equiv 1$~— главный характер.
+
+Свойства характеров:
+
+\pt{1} $\chi(e) = 1$,
+
+	\begin{proof}
+		Действительно, найдется $\chi(g)\not\eq0$, тогда $\chi(g)=\chi(ge)=
+		\chi(g)\chi(e)$, остается лишь сократить на $\chi(g)$.
+	\end{proof}
+
+\pt{2} $\chi(g)^{\ord{g}} = 1$
+
+	\begin{proof}
+		Очевидно: $\chi(g)^{\ord g}=\chi(g^{\ord g})=\chi(e)=1$.
+	\end{proof}     
+
+	\begin{imp}
+	Для любого элемента $g$ из $G$ $\chi(g)^h=1$.
+	\end{imp}
+
+	\begin{proof}
+	Очевидно в силу того, что для любого элемента группы $\ord g\divs h$.
+	\end{proof}
+
+	\begin{imp}
+	Все характеры~— комплексные корни из $1$.
+	\end{imp}
+
+\pt{3} $\chi(g^{-1}) = 1 / \chi(g)$.
+
+	\begin{proof}
+	$\chi(g^{-1})\chi(g)=\chi(g^{-1}g)=\chi(e)=1$.
+	\end{proof}
+
+Далее нам понадобится теорема из алгебры:
+
+\begin{theorem}
+Любая конечная абелева группа может быть разложена в прямую сумму
+\footnote{В нашем случае~— в прямое произведение} своих циклических подгрупп, 
+порядки которых являются степенями простых чисел.
+\end{theorem}
+
+Таким образом, $$G = G_1 \otimes G_2 \sot G_n,$$
+где $G_i=\langle g_i\rangle$~— циклические подгруппы. 
+Считаем $g_i$ порядка $h_i$ порождающим элементом $G_i$. Следовательно, каждый 
+элемент $g$ представляется в виде $g = {g_1}^{r_1} \sd {g_n}^{r_n}$, 
+где $0 \le r_i < h_i$.
+
+Пусть $\zeta_1 \sco \zeta_n$~— корни из единицы степеней $h_1 \sco h_n$. 
+Рассмотрим функции вида $$\chi(g) = {\ze_1}^{r_1} \sd {\ze_n}^{r_n}.$$
+
+\pt{4}
+  Функции такого вида являются характерами, других характеров нет. Более того, 
+	различные $\ze$ дают разные характеры.
+
+\begin{proof}
+
+  \begin{stm}
+    Если $g = {g_1}^{k_1} \sd {g_n}^{k_n}$, где $k_i \in \Z$, 
+		то $\chi(g) = {\ze_1}^{k_1} \sd {\ze_n}^{k_n}$.
+  \end{stm}
+
+  \begin{proof}
+	Справедливо $k_j=q_jh_j+r_j,\,0\le r_j < h_j$, и 
+	${g_1}^{k_1}\sd{g_n}^{k_n}={g_1}^{r_1}\sd{g_n}^{r_n}$. Тогда $\chi(g)=
+	\chi({g_1}^{k_1}\sd{g_n}^{k_n})=\chi({g_1}^{r_1}\sd{g_n}^{r_n})=
+	{\ze_1}^{r_1}\sd{\ze_n}^{r_n}={\ze_1}^{k_1}\sd{\ze_n}^{k_n}$.
+%    Очевидно, так как $g_i^{h_i} = e$, а $\zeta_i^{h_i} = 1$.
+  \end{proof}
+
+	\begin{imp}
+  Все $\chi$ такого вида являются характерами.
+	\end{imp}
+
+	\begin{proof}
+	Пусть $a={g_1}^{k_1}\sd{g_n}^{k_n}$, $b={g_1}^{l_1}\sd{g_n}^{l_n}$.
+	Тогда $\chi(ab)={\ze_1}^{k_1+l_1}\sd{\ze_n}^{k_n+l_n}=\chi(a)\chi(b)$.
+	\end{proof}
+	
+	\begin{stm}
+	Любой характер имеет такой вид.
+	\end{stm}
+
+	\begin{proof}
+	Заметим, что $1=\chi(e)=\chi({g_j}^{h_j})=\chi(g_j)^{h_j}$, откуда 
+	$\chi(g_j)=\ze_j\colon{\ze_j}^{h_j}=1$.
+	\end{proof}
+
+	\begin{stm}
+	Разные наборы корней дают разные характеры.
+	\end{stm}
+
+	\begin{proof}
+	Пусть есть два набора корней из единицы $\ze_1\sco\ze_n$ и 
+	$\eta_1\sco\eta_n$, задающие характеры $\chi$ и $\widetilde{\chi}$.
+	Без ограничения общности $\ze_1\not=\eta_1$. Тогда $\chi(g_1)=\ze_1\not=
+	\eta_1=\widetilde\chi(g_1)$.
+	\end{proof}
+ 	
+	Эти утверждения, очевидно, доказывают \pt{4}.
+\end{proof}
+
+\begin{imp}
+Всего характеров $h_1\sd h_n=h$.
+\end{imp}
+
+\begin{imp}
+  $G$ изоморфна группе своих характеров.
+	\label{G sim character group}
+\end{imp}
+
+\begin{problem}
+Доказать следствие $\ref{G sim character group}$.
+\end{problem}
+
+\begin{stm}
+  Пусть $G \ni g \ne e$. Тогда существует характер $\chi$ такой, что 
+	$\chi(g) \ne 1$.
+\end{stm}
+
+\begin{note}
+Грубо говоря, характеров достаточно много, чтобы различать все элементы.
+\end{note}
+
+\begin{proof}
+  Разложим $g$ по степеням порождающих: $$g = {g_1}^{r_1} \sd {g_n}^{r_n}.$$
+
+  Найдется $r_j\ne0$, поэтому, не умаляя общности, считаем, что $0 < r_1 < h_1$. 
+	Возьмем $\zeta_1 = e^{2\pi i / h_1}$, $\zeta_j = 1$ при $j > 1$. Тогда 
+	$\chi(g) = e^{2\pi i \cdot r_1 / h_1} \ne 1$.
+\end{proof}
+
+%Так как характеры не равны нулю, то легко видеть, что поточечное умножение задает групповую структуру на характерах. Роль единицы играет главный характер.
+Определим операцию умножения на характерах естественным образом:
+$$\chi_1\chi_2(g)=\chi_1(g)\chi_2(g).$$
+
+\pt{6} Характеры с такой операцией образуют абелеву группу.
+\begin{proof}
+Сначала проверим, что произведение характеров будет характером. Имеем
+$\chi_1 \chi_2 (g_1 g_2) =\linebreak= \chi_1 (g_1 g_2) \chi_2 (g_1 g_2) = 
+\chi_1 (g_1) \chi_1 (g_2) \chi_2 (g_1) \chi_2 (g_2) = \chi_1 \chi_2 (g_1) 
+\chi_1 \chi_2 (g_2)$.
+
+Главный характер $\chi_0$ будет единицей группы: $\chi\chi_0(g)
+=\chi(g)\chi_0(g)=\chi(g)$.
+
+Определим обратный элемент $\chi^{-1}(g):=1/\chi(g)$. Это характер, потому как
+$\chi^{-1}(ab)=1/\chi(ab)\bw=1/\chi(a)\cdot1/\chi(b)=\chi^{-1}(a)\chi^{-1}(b).$
+
+Коммутативность и ассоциативность группы следуют из коммутативности и 
+ассоциативности $\Cbb$.
+\end{proof}
+
+\subsubsection{Два полезных утверждения}
+
+Теперь докажем два полезных равенства.
+
+\begin{stm}
+  $$
+    S := \sum_{g \in G} \chi(g) = \begin{cases}
+      |G|,& \mbox{если $\chi$ главный,}\\
+      0,& \mbox{иначе.}
+    \end{cases}
+  $$
+\end{stm}
+
+\begin{stm}
+  $$
+    \sigma := \sum_{\chi} \chi(g) = \begin{cases}
+      |G|,& \mbox{если $g = e$,}\\
+      0,& \mbox{иначе.}
+    \end{cases}
+  $$
+\end{stm}
+
+\begin{proof}
+  Первые строчки в обоих утверждениях очевидны.
+
+  Докажем вторую строчку первого утверждения. 
+	Так как $\chi$ неглавный, то найдется $g_1$ такой, что $\chi(g_1) \ne 1$. 
+	$S\cdot\chi(g_1)= \sumlim_{g \in G} \chi(g g_1) 
+	= \sumlim_{g \in G} \chi(g) = S$, откуда $S = 0$.
+
+  Докажем вторую строчку второго утверждения. 
+	Так как $g \ne e$, то существует $\chi_1$ такой, что $\chi_1(g) \bw\ne 1$. 
+	Тогда $\si\cdot\chi_1(g)=\sumlim_\chi\chi\chi_1(g)=\sumlim_\chi\chi(g)=\si$,
+	из чего заключаем, что $\sigma = 0$.
+\end{proof}
+

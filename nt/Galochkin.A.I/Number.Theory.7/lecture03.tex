@@ -1,0 +1,276 @@
+\subsection{$\ze$--\,функция Римана}
+\subsubsection{Определение и простейшие свойства}
+
+\begin{df}
+  \notion{$\ze$--\,функцией Римана} называется функция
+  \begin{gather}
+    \label{zeta function series}
+    \ze(s)=\sum_{n=1}^{\infty}\dfrac1{n^s},\quad s\in\Cbb.
+  \end{gather}
+\end{df}
+
+В дальнейшем будем считать, что $s=\si+it$, $\si=\Re s$, $t=\Im s$.
+
+\textbf{Некоторые свойства:}
+\begin{points}{0}
+  \item Ряд (\ref{zeta function series}) сходится абсолютно при $\si>1$.
+  \item Ряд (\ref{zeta function series}) сходится равномерно в области $\{\si>1+\de\},\,\de>0$.\par
+  \textbf{Контрольный вопрос.} Что такое равномерная сходимость?
+  \item В области $\{\si>1\}\;\,\ze(s)$~— аналитическая функция.
+  \item Ряд (\ref{zeta function series}) можно почленно дифференцировать в области $\{\si>1\}$.
+\end{points}
+\begin{proof}Имеет место
+  $$
+    \bbm{\frac1{n^s}}=\frac1{n^\si}
+  $$
+
+  Из этого соотношения следует \pt{1}, по признаку Вейерштрасса получаем \pt{2}, 
+	а равномерно сходящийся ряд аналитических функций (очевидно, $\tfrac1{n^s}$ 
+	аналитичны в $\{\si>1\}$ для произвольного $n\in\N$) является, причем в силу 
+	произвольности $\de$ и в области $\{\si>1\}$, аналитической функцией (\pt{3}), 
+	которая бесконечно дифференцируема (\pt{4}).
+\end{proof}
+
+Напомним, что признак Вейерштрасса равномерной сходимости функционального ряда звучит так:
+\begin{theorem}
+	Если существует такой сходящийся числовой ряд $\sumlim_{k=1}^\infty a_k$, что 
+	для каждого $k$ выполнено $|u_k(x)|<a_k$, то функциональный ряд 
+	$\sumlim_{k=1}^\infty u_k(x)$ сходится абсолютно и равномерно.
+\end{theorem}
+
+\begin{problem}
+  Во всех точках прямой $\si=1$ ряд (\ref{zeta function series}) функции $\ze(s)$ расходится.
+\end{problem}
+
+Нашей целью в ближайшее время будет получение асимптотических оценок $\ze$--\,функции, 
+ее логарифмической и обычной производных ~— при их помощи мы затем докажем асимптотический закон.
+
+Сначала представим логарифмическую производную в виде ряда Дирихле.
+
+\subsubsection{Ряды Дирихле и вполне мультипликативные функции}
+
+\begin{df}
+  \notion{Рядом Дирихле} называется ряд вида
+  \begin{math}
+    \sum\limits_{n=1}^{\infty} \frac{a_n}{n^s}
+  \end{math}
+\end{df}
+
+\begin{df}
+  Функция $f\colon\N\rightarrow\R\,(\Cbb),\,f\not\equiv0$ называется \notion{вполне мультипликативной}, если
+  $$
+    f(m\cdot n)=f(m)\cdot f(n).
+  $$
+\end{df}
+
+\begin{lemma}
+  Пусть есть вполне мультипликативная функция $f(n)$, $\bm{f(n)}\le1$. Определим
+  \begin{gather}
+    \label{32}
+    F(s):=\sum_{n=1}^\infty \frac{f(n)}{n^s}.
+  \end{gather}
+
+  Тогда в области $\{\si>1\}$
+
+  \begin{points}{0}
+    \item Ряд $(\ref{32})$ можно почленно дифференцировать.
+
+    \item $\displaystyle F'(s) = -F(s)\sum_{n=1}^\infty\frac{f(n)\La(n)}{n^s}$.
+
+    \item $F(s)$ не обращается в 0.
+  \end{points}
+\end{lemma}
+\begin{proof}
+\pt{1} доказывается аналогично только что доказанным свойствам $\ze$--\,функции из соотношения
+$$
+  \bbm{\frac{f(n)}{n^s}}\le\frac1{n^\si}
+$$
+
+Разберемся с \pt{2}. Для $F'(s)$ имеем, дифференцируя почленно,
+$$
+  F'(s)=-\sum_{n=1}^\infty\frac{f(n)\cdot\ln{n}}{n^s}.
+$$
+
+Для второй части предполагаемого равенства
+\begin{mlc}
+  \label{33}
+  F(s)\sum_{n=1}^\infty\frac{f(n)\La(n)}{n^s} = \sum_{n=1}^\infty\frac{f(n)}{n^s}\sum_{d=1}^\infty\frac{f(d)\La(d)}{d^s} = \\
+  = \sum_{n=1}^\infty\sum_{d=1}^\infty\frac{f(nd)}{(nd)^s}\La(d) = \sum_{m=1}^\infty\frac{f(m)}{m^s}\sum_{d\mid m}\La(d),\,\text{где }m=nd.
+\end{mlc}\par
+Заметим, что, считая $m={p_1}^{\al_1}\sd {p_k}^{\al_k}$ и $d={p_1}^{\be_1}\sd {p_k}^{\be_k}$,
+$$
+  \sum_{d\mid m}\La(d)=\sum_{j=1}^k\sum_{\be_j=1}^{\al_j}\ln{p_j}=\sum_{j=1}^k\al_j\ln{p_j}=\ln{m},
+$$
+откуда
+$$
+  (\ref{33})=\sum_{m=1}^\infty\frac{f(m)}{m^s}\ln{m}=-F'(s).
+$$
+
+Для \pt{3} предположим обратное: существует $\displaystyle s_0\colon F(s_0)=0,\,\Re s_0>1;\,1\le\ord\limits_{s_0}F(s)=r<\infty.$
+
+Тогда
+$\displaystyle   \ord_{s_0}F'(s)=r-1$,но
+$$
+  \ord_{s_0}F(s)\cdot\sum_{n=1}^\infty\frac{f(n)\La(n)}{n^s}=
+  \ord_{s_0}F(s)+\ord_{s_0}\underbrace{\sum_{n=1}^\infty\frac{f(n)\La(n)}{n^s}}_{\substack{\text{аналитическая}\\ \text{функция}}}\ge r.
+$$
+
+Аналитичность ряда следует из оценки для общего члена: $$\bbm{\frac{f(n)\La(n)}{n^s}}<\frac{\ln{n}}{n^\si},$$
+и далее все как в \pt{1}.
+\end{proof}
+
+\subsubsection{Разложение логарифмической производной в ряд Дирихле}
+
+Считая $f\equiv1$ в условиях леммы, получаем требуемое.
+\begin{stm}
+  При $\si>1$ разложение логарифмической производной $\ze(s)$ в ряд Дирихле выглядит следующим образом:
+  $$
+    -\frac{\ze'(s)}{\ze(s)}=\sum_{n=1}^\infty \frac{\La(n)}{n^s}
+  $$
+\end{stm}
+
+\begin{imp}
+  $\ze$ -- \,функция не обращается в~$0$ в области $\{\si>1\}.$
+\end{imp}\par
+
+А сейчас получим тождество, устанавливающее связь $\ze$--\,функции с простыми числами.
+
+\subsubsection{Связь вполне мультипликативных функций с простыми числами}
+
+\begin{lemma}
+  Пусть $f(n)$~—такая вполне мультипликативная функция, что ряд $S=\sum\limits_{n=1}^\infty f(n)$ абсолютно сходится. Тогда
+  $$
+    S=\sum_{n=1}^\infty f(n)=\prod_p(1-f(p))^{-1}.
+  $$
+  (речь, понятное дело, идет о произведении по всем простым числам)
+\end{lemma}
+
+% \begin{note}
+%   Речь, понятное дело, идет о произведении по всем простым числам.
+% \end{note}
+\begin{proof}
+  Заметим, что $\bm{f(n)}\le1$. Действительно, предположим противное: для некоторого $n>1$ имеем $\bm{f(n)}>1$. Тогда и
+  $\bm{f(n^k)}=\bm{f(n)}^k>1$, значит, общий член ряда не стремится к~0, что противоречит его сходимости.
+
+  В силу этого можем считать $(1-f(p))^{-1}$ суммой бесконечно убывающей геометрической прогрессии и, используя это, получаем
+  $$
+    S_N:=\prod_{p\le N}(1-f(p))^{-1}=\prod_{p\le N}\sum_{k=0}^\infty f(p^k)
+    =\sum_{\substack{p_j\le N,\\k_i\ge\,0}}f({p_1}^{k_1}\sd{p_n}^{k_n})=\sum_{\substack{n\colon\forall p\\p\mid n\rightarrow p\le N}}f(n).
+  $$
+
+  Тогда
+  $$
+    \bm{S-S_N}=\bbm{\sum_{\substack{n\colon\exists p\\p\mid n \& p>N}}f(n)}\le\sum_{n=N+1}^\infty\bm{f(n)}\xrightarrow{N\rightarrow\infty}0
+  $$
+  в силу абсолютной сходимости.
+\end{proof}
+
+\subsubsection{Тождество Эйлера}
+
+\begin{imp}[Тождество Эйлера]
+При $\si>1$
+$$
+  \ze(s)=\prod_p\left(1-\frac1{p^{\,s}}\right)^{-1}
+$$
+\end{imp}
+\begin{proof}
+  Просто выберем $f(n)=\dfrac1{n^s}$.
+\end{proof}
+
+Важную роль в дальнейшем будут играть некоторые свойства $\ze$--\,функции вблизи прямой $\si=1$. Займемся ими, а именно~— построим аналитическое продолжением $\ze(s)$ с $\{\si>1\}$ в $\{\si>0,\,s\neq1\}$.
+
+\subsubsection{Преобразование Абеля}
+
+\begin{lemma}[Преобразование Абеля]
+  \label{abel}
+  Пусть задана функция $g\colon\R\rightarrow\Cbb$, $g(x)\in C^1[1;\,+\infty)$ и последовательность $\{a_n\}_{n\in\N},\,a_n\in\Cbb$. Тогда справедливо следующее равенство:
+  \begin{equation}
+    \sum_{ n\le\,x,n\in\N}a_n g(n)=A(x)g(x)-\int\limits_1^xA(t)g'(t)\,dt, \quad \text{где} \quad A(x)=\sum_{n\le\,x}a_n.
+    \label{34}
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  Будем считать $A(0)=0$.
+
+  \begin{mlc}
+    \label{35}
+    \sum_{n=1}^Na_ng(n)=\sum_{n=1}^N(A(n)-A(n-1))g(n)=\sum_{n=1}^NA(n)g(n)-\sum_{m=1}^{N-1}A(m)g(m+1)=\\
+    =-\sum_{n=1}^{N-1}A(n)(g(n+1)-g(n))+A(N)g(N)=A(N)g(N)-\sum_{n=1}^{N-1}A(n)\int\limits_n^{n+1}g'(t)\,dt=\\
+    =A(N)g(N)-\sum_{n=1}^{N-1}\int\limits_n^{n+1}A(t)g'(t)\,dt=A(N)g(N)-\int\limits_1^NA(t)g'(t)\,dt.
+  \end{mlc}
+
+  Тогда, выбирая $N\in\N\colon N\le x<N+1$ и рассматривая $(\ref{34})-(\ref{35})$, получаем
+  \begin{mlc*}
+    \sum_{N<n\le x}a_ng(n)=A(x)g(x)-A(N)g(N)-\int\limits_N^xA(t)g'(t)\,dt\Longleftrightarrow\\
+    \Longleftrightarrow0=A(N)(g(x)-g(N))-A(N)\int\limits_N^xg'(t)\,dt\Longleftrightarrow\\
+    \Longleftrightarrow0=A(N)(g(x)-g(N))-A(N)(g(x)-g(N))=0.
+  \end{mlc*}
+
+  (\ref{35})~— верное равенство, значит, верно и (\ref{34}).
+\end{proof}
+
+\begin{note}
+  Если сходится ряд $\sum\limits_{n=1}^\infty a_ng(n)$ или $\int\limits_1^\infty A(t)g'(t)\,dt$ и $\lim\limits_{x\ra+\infty}A(x)g(x)=0$, то
+  $$
+    \sum_{n=1}^\infty a_ng(n)=-\int\limits_1^\infty A(t)g'(t)\,dt.
+  $$
+\end{note}
+
+\subsubsection{Аналитическое продолжение $\ze(s)$ в $\{\si>0\}$}
+
+Воспользуемся теперь этой леммой. Применим преобразование Абеля к $\ze(s)$, считая $a_n\equiv1,\,g(x)\bw=x^{-s}.$
+Тогда $g'(x)=-sx^{-s-1},\,A(x)=\left[x\right]$. При $\{\si>1\}$ $A(x)g(x)=\hs{x}{x^{-s}}\le{x^{1-\si}}\xrightarrow{x\ra\infty}0$.
+
+Имеем
+\begin{equation}
+  \ze(s)=s\intlim_1^\infty\hs{t}t^{-s-1}\,dt=s\intlim_1^\infty t^{-s}\,dt-s\intlim_1^\infty\hc{t}t^{-s-1}\,dt=
+  1+\frac1{s-1}-s\intlim_1^\infty\frac{\hc{t}}{t^{s+1}}\,dt.
+  \label{36}
+\end{equation}
+
+Интеграл $\intlim_1^\infty\dfrac{\hc{t}}{t^{s+1}}\,dt$ сходится при $\si>0$ в силу $\bbm{\dfrac{\hc{t}}{t^{s+1}}}\le\dfrac1{t^{\si+1}}.$
+Значит, остается проверить, что этот интеграл при $\{\si>0\}$ задает аналитическую функцию.
+\begin{equation}
+  \intlim_1^\infty\frac{\{t\}}{t^{s+1}}\,dt=\sum_{n=1}^\infty\intlim_n^{n+1}\frac{t-n}{t^{s+1}}\,dt
+  \label{37}
+\end{equation}
+— ряд сходится равномерно при $\si\ge\de>0$ по признаку Вейерштрасса благодаря оценке
+$$
+  I_n(s):=\intlim_n^{n+1}\frac{t-n}{t^{s+1}}\,dt\le\frac1{n^{s+1}}.
+$$
+
+Значит, достаточно аналитичности $I_n(s).$
+$$
+  I_n(s)=\left.\frac{t^{1-s}}{1-s}\right|_n^{n+1}-n\left.\frac{t^{-s}}{-s}\right|_n^{n+1}.
+$$
+
+Очевидно, второе слагаемое не имеет особых точек при $\si>0$. Покажем, что первое тоже:
+$$
+  \left.\frac{t^{1-s}}{1-s}\right|_n^{n+1}=\frac{(n+1)^{1-s}-n^{1-s}}{1-s}.
+$$
+
+Посмотрим, к чему это стремится при $s\to1$:
+$$
+  \lim_{s\to1}\frac{(n+1)^{1-s} - n^{1-s}}{1-s} = \lim_{t\to0}\frac{(n+1)^t - n^t}t \eqvl{пр. Лопиталя}{45}
+  \lim_{t\to0}\frac{(n+1)^t\ln(n+1) - n^t\ln{n}}1 = \ln\left(\frac{n+1}n\right).
+$$
+Получаем, что $s=1$~— устранимая особая точка функций, устраняя ее, обнаруживаем аналитичность $I_n(s)$ в области $\{\si>0\}$, откуда следует аналитичность $(\ref{37})$~— не только в $\{\si\ge\de>0\}$, но и, в силу произвольности $\de$, в $\{\si>0\}$, из чего вытекает, что формула $(\ref{36})$ задает аналитическое продолжение $\ze(s)$ в $\{\si>0\}$ с единственной особой точкой $s=1$, которая является, как очевидно из все того же $(\ref{36})$, полюсом первого порядка с вычетом в ней, равным~1.
+
+Теперь обобщим полученную формулу аналитического продолжения. Выберем $a_n\equiv1,\,g(x)=(x\bw+N)^{-s}$, где $N$~— некоторое натуральное число. Тогда $g'(x)=-s(x+N)^{-s-1},\,A(x)=\hs{x}$. Имеем
+\begin{mlc*}
+  R_N(s):=\sum_{n=N+1}^\infty\frac1{n^s}=\sum_{k=1}^\infty\frac1{(N+k)^s}=s\intlim_1^\infty\hs{t}(t+N)^{-s-1}\,dt+
+  \underbrace{s\intlim_0^1\hs{t}(t+N)^{-s-1}\,dt}_{\substack{0,\\\text{т.к. }\hs{t}=0\text{ на }[0;\,1]}}=\\
+  =s\intlim_0^\infty\hs{t}(t+N)^{-s-1}\,dt\eqvl{$t+N=x$}{35}s\intlim_N^\infty\hs{x-N}x^{-s-1}\,dx=s\intlim_N^\infty(x-N-\hc{x})x^{-s-1}\,dx=\\
+  =s\intlim_N^\infty x^{-s}\,dx-sN\intlim_N^\infty x^{-s-1}\,dx-s\intlim_N^\infty\hc{x}x^{-s-1}\,dx=
+  s\left.\frac{x^{1-s}}{1-s}\right|_N^\infty-sN\left.\frac{x^{-s}}{-s}\right|_N^\infty-s\intlim_N^\infty\hc{x}x^{-s-1}\,dx=\\
+  =-sN^{1-s}\frac1{1-s}+sN^{1-s}\frac1{-s}-s\intlim_N^\infty\hc{x}x^{-s-1}\,dx=N^{1-s}s\left(\frac1{s-1}+\frac1{-s}\right)-
+  s\intlim_N^\infty\hc{x}x^{-s-1}\,dx=\\
+  =N^{1-s}s\left(\frac{1}{s(s-1)}\right)-s\intlim_N^\infty\hc{x}x^{-s-1}\,dx=\frac{N^{1-s}}{s-1}-s\intlim_N^\infty\hc{x}x^{-s-1}\,dx.
+\end{mlc*}
+
+Таким образом,
+\begin{equation}
+  \label{zeta_abel_transform}
+  \ze(s)=\sum_{n=1}^N\frac1{n^s}+\frac{N^{1-s}}{s-1}-s\intlim_N^\infty\hc{x}x^{-s-1}\,dx,
+\end{equation}
+при $N=1$ мы получаем предыдущую формулу.

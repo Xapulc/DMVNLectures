@@ -1,0 +1,8 @@
+add_subdirectory(EP.Physics.8.9)
+add_subdirectory(Math.Additions.to.Quantum.Mechanics)
+add_subdirectory(Math.Additions.to.Quantum.Mechanics.Old)
+add_subdirectory(Physics.8)
+add_subdirectory(Physics.9)
+add_subdirectory(Physics.9.Book.Draft)
+add_subdirectory(PR.Physics.8)
+add_subdirectory(PR.Physics.9)

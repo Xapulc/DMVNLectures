@@ -1,0 +1,215 @@
+%% Lust updated: February 24, 1999.
+
+\documentstyle[12pt]{article}
+%% \documentstyle{article}
+
+\input amssym.def
+\input amssym.tex
+
+\marginparwidth 40pt
+\textwidth=148mm
+%% \textwidth=140mm
+%% \textheight=200mm
+\textheight=220mm
+
+\def\R{\Bbb R}
+\def\N{\Bbb N}
+\def\Z{\Bbb Z}
+\def\Q{\Bbb Q}
+\def\C{\Bbb C}
+\def\CP{\Bbb C\Bbb P}
+\def\RP{\Bbb R\Bbb P}
+\font\sf=cmss10
+
+% Theorem environments for normal usage
+% arabic numbering:
+\newtheorem{theorem}{Теорема}
+\newtheorem{corollary}{Следствие}
+\newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+
+% Non-italic
+% \theorembodyfont{\rmfamily}
+
+\newenvironment{definition}
+{\smallskip\noindent{\bf Определение\/}:}{\smallskip\par}
+\newenvironment{def-equiv}
+{\smallskip\noindent{\bf Определение'\/}:}{\smallskip\par}
+%% \newenvironment{proposition}
+%% {\smallskip\noindent{\bf Proposition\/}.}{\smallskip\par}
+\newenvironment{example}
+{\smallskip\noindent{\bf Пример\/}.}{\smallskip\par}
+\newenvironment{examples}
+{\smallskip\noindent{\bf Примеры\/}.}{\smallskip\par}
+\newenvironment{remark}
+{\smallskip\noindent{\bf Замечание\/}.}{\smallskip\par}
+\newenvironment{remarks}
+{\smallskip\noindent{\bf Замечания\/}.}{\smallskip\par}
+\newenvironment{proof}
+{\noindent{\bf Доказательство\/}.}{{ $\Box$}\smallskip\par}
+\newenvironment{Proof}
+{\noindent{\bf Доказательство\/}}{{ $\Box$}\smallskip\par}
+\newenvironment{problem}
+{\noindent{\bf Задача\/}.}{\smallskip\par}
+\newenvironment{problem^*}
+{\noindent{\bf Задача${}^*$}.}{\smallskip\par}
+\newenvironment{problem^**}
+{\noindent{\bf Задача${}^{**}$}.}{\smallskip\par}
+\newenvironment{problem_*}
+{\noindent{\bf Задача${}_{*}$}.}{\smallskip\par}
+\newenvironment{problem_**}
+{\noindent{\bf Задача${}_{**}$}.}{\smallskip\par}
+
+\begin{document}
+
+\def\Aut{{\operatorname{Aut}}}
+\def\eps{\varepsilon}
+
+\begin{problem}
+Доказать, что дифференциальная 2--форма $x\cdot dy\wedge dz+
+y\cdot dz\wedge dx+z\cdot dx\wedge dy$ на $\R^3$ инвариантна
+относительно всех ортогональных замен координат. Выяснить, как
+она ведет себя при гомотетиях пространства $\R^3$.
+\end{problem}
+
+Рассмотрим следующие две (линейные) операции над тензорами в $n$--мерном
+евклидовом пространстве $\R^n$ (со стандартным скалярным произведением).
+Первая~--- отображение (в действительности~--- изоморфизм) $L$ пространства
+векторов в пространство ковекторов, ставящее в соответствие вектору $X$
+линейную функцию $(X, \bullet)$ (нетрудно видеть, что это~--- ни что иное,
+как операция опускания индекса). Вторая операция $*$ полилинейной
+кососимметрической форме порядка $k$ ставит в соответствие полилинейную
+кососимметрическую форму порядка $n-k$ следующим образом. Если
+$w^1$, \dots, $w^n$~--- положительно ориентированный ортонормированный
+базис в $(\R^n)^*$, $\alpha=w^{i_1}\wedge\ldots\wedge w^{i_k}$,
+$j_1$, \dots, $j_{n-k}$~--- произвольная перестановка элементов (номеров
+переменных) из множества $\{1, \ldots, n\}\setminus\{i_1, \ldots, i_k\}$,
+то $*\alpha=\mbox{sign\,}\sigma\cdot w^{j_1}\wedge\ldots\wedge w^{j_{n-k}}$,
+где $\sigma$~--- перестановка $i_1$, \dots, $i_k$, $j_1$, \dots, $j_{n-k}$.
+
+\begin{remark}
+Описанные операции по своей природе являются не дифференциально
+геометрическими, а операциями линейной алгебры. Они могут быть
+определены на любом ориентированном римановом многообразии.
+\end{remark}
+
+\begin{problem_*}
+Описать операции $L$ и $*$ в стандартных декартовых координатах в
+пространстве $\R^3$.
+\end{problem_*}
+
+\begin{problem_*}
+Описать операции $L$ и $*$ в полярных координатах на плоскости $\R^2$,
+в сферических и в цилиндрических координатах в пространстве $\R^3$.
+\end{problem_*}
+
+\begin{problem}
+Пусть $X$~--- векторное поле на области в пространстве $\R^3$,
+$F$~--- функция на такой области. Доказать, что \newline
+$L^{-1}dF=\mbox{grad\,}F$; \newline
+$*d*LX=\mbox{div\,}X$; \newline
+$L^{-1}*dLX=-\mbox{rot\,}X$.
+\end{problem}
+
+\begin{problem}
+Пользуясь двумя предыдущими задачами, вывести формулы для
+$\mbox{grad\,}F$, $\mbox{div\,}X$ и $\mbox{rot\,}X$ в сферических
+и в цилиндрических координатах.
+\end{problem}
+
+\begin{problem^*}
+Сделать то же самое в "почти цилиндрических" координатах $r$, $\varphi$, $z$
+на пространстве $\R^3$, где координаты $\varphi$ и $z$~--- те же, что и
+одноименные цилиндрические координаты (т.е. "долгота" и проекция на
+вертикальную ось), а $r$~--- та же, что и одноименная сферическая координата
+(длина радиус--вектора точки).
+\end{problem^*}
+
+\begin{problem}
+Доказать, что на комплексно аналитическом многообразии любая
+комплекснозначная дифференциальная $k$--форма записывается в виде
+$$
+\sum\omega_{II^\prime}dz^I\wedge d\bar{z}^{I^\prime},
+$$
+где $\#I+\#I^\prime=k$.
+\end{problem}
+
+\begin{problem}
+Проверить (или, правильнее, проинтерпретировать), что формулы Грина,
+Стокса и Гаусса--Остроградского являются частными случаями (общей)
+теоремы Стокса.
+\end{problem}
+
+\begin{problem}
+Доказать, что для функций $\varphi$ и $\psi$ на пространстве $\R^3$
+и для ограниченной области $V\subset\R^3$ имеет место равенство
+$$
+\int\int\int_V(\varphi\Delta\psi+(grad\,\varphi,\,grad\,psi))dV=
+\int\int_{\partial V}\varphi{{\partial\psi}\over{\partial n}}d\sigma.
+$$
+\end{problem}
+
+\begin{problem}
+Пусть $M^n$~--- ориентированное риманово многообразие. Доказать, что
+$\sqrt{\det(g_{ij}(x))}dx^1\wedge\ldots\wedge dx^n$ ($x^1$, \dots, $x^n$~---
+положительно ориентированная локальная система координат на $M^n$)
+является (корректно определенной) $n$--формой на $M^n$.
+\end{problem}
+
+\begin{problem}
+Назовем $n$--форму $\omega$ на $n$--мерном многообразии $M^n$ невырожденной,
+если в любой локальной системе координат $x^1$, \dots, $x^n$ форма $\omega$
+равна $f\cdot dx^1\wedge\ldots\wedge dx^n$, где функция $f$ в ноль не
+обращается. Доказать, что на неориентируемом многообразии не существует
+невырожденной $n$--формы.
+\end{problem}
+
+\begin{problem}
+Верно ли, что на любом многообразии $M^n$ существует дифференциальная
+$1$--форма, ограничение которой на касательное пространство $T_xM^n$ в
+любой точке $x\in M^n$ не равно нулю?
+\end{problem}
+
+\begin{problem}
+Верно ли, что на любом многообразии $M^n$ существует дифференциальная
+$n$--форма, ограничение которой на касательное пространство $T_xM^n$ в
+любой точке $x\in M^n$ не равно нулю?
+\end{problem}
+
+\begin{problem}
+Доказать, что на многообразии $M^n$ существует дифференциальная
+$n$--форма, ограничение которой на касательное пространство $T_xM^n$ в
+любой точке $x\in M^n$ не равно нулю, тогда и только тогда, когда
+многообразие $M^n$ ориентируемо.
+\end{problem}
+
+\begin{problem^*}
+Верно ли, что на любом многообразии $M^n$ размерности $n>3$ существует
+дифференциальная $(n-1)$--форма, ограничение которой на касательное
+пространство $T_xM^n$ в любой точке $x\in M^n$ не равно нулю?
+\end{problem^*}
+
+\begin{problem_*}
+Пусть $U$~--- открытая область в многообразии $M^n$, $\omega$~---
+дифференциальная $k$--форма на $U$. Доказать, что для любого замкнутого
+множества $V\subset U$ существует $k$--форма $\widetilde\omega$ на
+многообразии $M^n$, совпадающая с формой $\omega$ в некоторой окрестности
+множества $V$.
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $U$~--- открытая область в многообразии $M^n$, $\omega$~--- замкнутая
+(соответственно~--- точная) $k$--форма на $U$. Верно ли, что для любого
+замкнутого множества $V\subset U$ существует замкнутая (соответственно~---
+точная) $k$--форма $\widetilde\omega$ на многообразии $M^n$, совпадающая
+с формой $\omega$ в некоторой окрестности множества $V$?
+\end{problem_*}
+
+\begin{problem}
+Доказать, что для 1-формы $\omega$ на многообразии $M^n$ и для любых
+векторных полей $X$ и $Y$ на $M^n$ имеет место равенство $d\omega(X,Y)=
+X(\omega(Y))-Y(\omega(X))-\omega([X, Y])$, где $[X, Y]$~--- коммутатор
+векторных полей $X$ и $Y$.
+\end{problem}
+
+\end{document}

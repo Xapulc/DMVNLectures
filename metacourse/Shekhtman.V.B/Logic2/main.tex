@@ -1,0 +1,1078 @@
+\documentclass[unicode,10pt]{article}
+\usepackage{dmvn}
+\usepackage{polyglossia}
+\usepackage{unicode-math}
+\usepackage{fontspec}
+\usepackage{makeidx}
+\defaultfontfeatures{Scale=MatchLowercase, Mapping=tex-text}
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+\setmathfont{xits-math.otf}
+\DeclareMathOperator{\EF}{EF}
+\DeclareMathOperator{\Cnst}{Cnst}
+\DeclareMathOperator{\Fn}{Fn}
+\DeclareMathOperator{\Tm}{Tm_Ω}
+\DeclareMathOperator{\CTm}{CTm_Ω}
+\DeclareMathOperator{\CTmu}{CTm_{Ω∪M}}
+\DeclareMathOperator{\CFmu}{CFm_{Ω∪M}}
+\DeclareMathOperator{\CFm}{CFm_Ω}
+\DeclareMathOperator{\Fm}{Fm_Ω}
+\DeclareMathOperator{\FV}{FV}
+\DeclareMathOperator{\Th}{Th}
+\DeclareMathOperator{\PC}{PC_Ω}
+\DeclareMathOperator{\PCe}{PC^=_Ω}
+
+\newcommand{\baggr}[1]{\left\[\begin{aligned}#1\end{aligned}\right.}
+\newcommand{\Ml}{\ul{M}}
+\newcommand{\sst}[2]{\hs{ #1\,/\,#2}\!}
+\newcommand{\need}{{\bf Необходимость({\ensuremath{⇐}}).}\par}
+\newcommand{\suff}{{\bf Достаточность(\ensuremath{⇒}).}\par}
+\newcommand{\Ko}{\mathrel{{\rotatebox[origin=c]{-180}{\ensuremath{\text{\texttt{K}}}}}}}
+\newcommand{\enumtitle}[1]{\par\noindent\underline{\bfseries{#1}}\par}
+\newcommand{\contrib}[1]{%
+  {
+  \setmainfont{URW Chancery L}
+  \underline{#1}
+  }}
+\makeindex
+\newcommand{\setif}[2]{\hc{#1\,|\,#2}}
+\begin{document}
+\dmvntitle{Математическая логика}
+{ и теория алгоритмов}
+{Лектор -- Валентин Борисович Шехтман}
+{IV курс, 8 семестр, поток математиков, ЕНС}
+{Москва, 2012г}
+\tableofcontents
+\newpage
+\section*{Contributors}
+\contrib{Петр Житников} -- фотографированные лекции 2012 года.
+
+\contrib{Anonymus} -- уважаемые авторы \LaTeX{} лекций 2006 года.
+
+\contrib{Богатов Дмитрий <illusion.of.life92@gmail.com>} -- слияние
+источников и верстка.  Будьте крайне осторожны, ибо верстальщик крайне
+смутно представляет, о чем идет речь.
+
+\section{The beginning}
+\begin{df}
+  Рассмотрим тройку множеств $Ω=(\Cnst,\Fn,\Pr)$, где $\Cnst$ --
+  константы, $\Fn$ -- функциональные символы и $\Pr$ -- предикатные
+  символовы. Будем полагать, что $\Pr ≠ ∅$. Также пусть определена
+  функция валентности \mbox{$γ\colon \Fn ∪\Pr → ℵ₀$} и множество переменных
+  $\Var = \hc{v_1,v_2\etc}$.  $Ω$ называется сигнатурой.
+  \begin{denote}
+    Пусть $f∈\Fn$ и $γ(f) = k$, тогда будем дополнительно указывать
+    валентность индексом сверху: $f^k$.
+  \end{denote}
+\end{df}
+
+\begin{df}
+  Реккурентно определим множество термов $\Tm$:
+  \begin{enumerate}
+  \item $ c∈\Cnst ⇒ c∈\Tm$
+  \item $ x∈\Var ⇒ x∈ \Tm$
+  \item $ f^k∈\Fn,\; t_1,t_2,…,t_k∈\Tm ⇒f^k(t_1,t_2,…,t_k) ∈ \Tm$
+  \end{enumerate}
+\end{df}
+
+\begin{petit}
+Вот здесь происходит что-то странное. Во-первых, атомарная формула
+определеяется через понятие формулы, а формула через атормарную
+формулу. Нестрого, но все довольно прозрачно. А во-вторых от общей
+формулировки мы переходим к конкретном алфавиту и в его терминах
+определяем понятие формулы. Ну, лектору виднее.
+\end{petit}
+
+\begin{df}
+  Формулы вида $p^k(t_1,t_2,…,t_k)$, где $p^k∈\Pr$, $t_1,…,t_k ∈\Tm$
+  называются атомарными.
+\end{df}
+
+\begin{note}
+  Далее будем рассматривать следующий алфавит: $\hc{¬,∧,∨,→,(,),∀,∃}$.
+\end{note}
+
+\begin{petit}
+  Квантеры, похоже, есть предикатные символы, хотя не совсем понятно,
+  как их загнать в общее определение.
+\end{petit}
+
+\begin{df}
+  Вхождение переменной $x$ в слово $α$:
+  $(x,α,n)$ -- вхождение, если $α_n = x$.
+\end{df}
+\begin{note}
+  Здесь формула рассматривается как строка, а не как дерево.
+\end{note}
+
+\begin{df}
+  Реккурентно определим множество формул $\Fm$:
+  \begin{enumerate}
+  \item $φ$ -- атормарная формула $⇒$ $φ ∈ \Fm$
+  \item $φ,ψ ∈\Fm$ $⇒$ $(φ∧ψ), (φ∨ψ), (φ→ψ) ∈\Fm$
+  \item $ φ∈ \Fm $ $⇒$ $¬φ ∈ \Fm$
+  \item $φ ∈\Fm$, $x ∈\Var$ $ ⇒$ $(∀x φ), (∃x φ) ∈\Fm$
+  \end{enumerate}
+\end{df}
+
+\begin{df}
+  Определим свободные и связанные вхождения переменных в формулы:
+  \begin{enumerate}
+  \item $φ$ -- атомарная $ ⇒$ все вхождения свободные.
+  \item $φ = φ_1★φ_2$, $★ ∈\hc{∨,∧,→}$ $⇒$
+    $\bcase{
+      (x,φ,k+1)  \text{ -- свободно, если свободно } (x,φ_1, k) \\
+      (x,φ, n+k+2) \text{ -- свободно, если свободно } (x,φ_2,k)
+    }$
+  \item $φ = ¬ψ$
+  \item $φ = Δyψ$, $Δ∈\hc{∀,∃}$ $⇒$ $(x,ψ,k)$ -- свободное и $x ≠ y$ → $(x,φ,k+2)$ -- свободно
+  \end{enumerate}
+  Все остальные вхождения называются связанными.
+\end{df}
+
+\begin{df}
+  Множество переменных со свободными вхождениями в формулу называется
+  параметрами формулы. Обозначение: $\FV(φ)$.
+\end{df}
+
+\begin{df}
+  Формула $φ$ называется замкнутой, если $\FV(φ) = ∅$.
+\end{df}
+\begin{denotes}
+  Множество замкнутых термов обозначается $\CTm$, множество замкнутых формул --- $\CFm$.
+\end{denotes}
+
+\section{Интерпретации}
+\begin{df}
+  Интерпретацией для $Ω$ называется пара $M=(\Ml, \Jc)$, где $\Ml ≠ ∅$ -- носитель интерпретации $M$,
+  а $\Jc$ -- интерпретирующая функция, $\Dom(\Jc) = \Cnst ∪\Pr∪\Fn$, действующая следующим образом:
+  %% Функции высшего порядка. Да я любить логику должен…
+  \begin{itemize}
+  \item $ c ∈ \Cnst$  $⇒$ $\Jc(c) ∈\Ml$
+  \item $ f^k ∈\Fn$ $⇒$ $\Jc(f^k)\colon \Ml^k → \Ml$
+  \item $ p^k ∈ \Pr$$ ⇒$ $ \Jc(p^k)\colon \Ml^k → \hc{0,1}$
+  \end{itemize}
+\end{df}
+
+\begin{denotes}
+  $c^M ≝ \Jc(c)$, $f^M ≝ \Jc(f)$, $p^M ≝ \Jc(p)$.
+\end{denotes}
+
+\begin{denote}
+  \begin{displaymath}
+    Ω∪M ≝ (\Cnst∪\Ml, \Pr, \Fn, γ)
+  \end{displaymath}
+\end{denote}
+
+\begin{df}
+  $\CFmu$ -- множество оцененных формул, $\CTmu$ --- множество
+  оцененных термов.
+\end{df}
+
+\begin{df}
+  Подробно распишем операцию оценики:
+  \begin{enumerate}
+  \item $c ∈\Cnst$ $⇒$ $ c^M≝ \Jc(c) $
+  \item $ c∈ \Ml$ $⇒$ $ c^M ≝ c $
+  \item $ (f(t_1,t_2,…,t_k))^M ≝ f^M(t_1^M,t_2^M,…,t_k^M)$
+  \item $ (p(t_1,t_2,…,t_k))^M ≝ p^M(t_1^M,t_2^M,…,t_k^M)$
+  \item $ (¬φ)^M ≝ 1 - φ^M $
+  \item $ (∀x φ)^M = 1 ≝ \hr{\sst{x}aφ}^M\!= 1\; ∀ a∈\Ml $
+  \item $ (∃x φ)^M = 1 ≝  ∃\; a∈ \Ml\;\; \hr{\sst{x}aφ}^M\!= 1 $
+  \end{enumerate}
+\end{df}
+\begin{denote}
+  \begin{displaymath}
+    M ⊧φ ≝ φ^M = 1
+  \end{displaymath}
+\end{denote}
+
+\begin{df}
+  $φ$ --- выполнима, если $∃ M$ $M⊧φ$.
+\end{df}
+\begin{df}
+  $φ$ --- общезначима, если $∀M$ $M⊧φ$.
+\end{df}
+\begin{df}
+  Пусть $φ∈\CFm$. Говорим, что $M$ -- модель $φ$, если $M⊧φ$.
+\end{df}
+\begin{df}
+  Теорией первого порядка называется произвольное $T⊂\CFm$
+\end{df}
+\begin{df}
+  $M$ -- модель теории, если $M⊧T$.
+\end{df}
+\subsection{Примеры теорий}
+\subsubsection{Теория графов}
+$\Pr=\hc{P^2,=^2}$
+\begin{enumerate}
+\item $∀x¬Px$
+\item $∀x∀y(P(x,y) →P(y,x))$
+\end{enumerate}
+\begin{df}
+  Модель называется нормальной, если
+  \begin{displaymath}
+    =^M(a,b)=\bcase{1,\quad &a≡b\\ 0,\quad &otherwise}
+  \end{displaymath}
+\end{df}
+\subsubsection{Теория групп}
+$\Pr=\hc{=^2},\quad\Fn=\hc{⋅^2}$
+\begin{enumerate}
+\item $∀x∀y∀z((x⋅y)⋅z = x⋅(y⋅z))$ --- ассоциативность
+\item $∃x∀y(x⋅y=y⋅x∧y⋅x=y)$ --- существование единицы
+\item $∀x∃y∀e(e\text{ -- единица} →(x⋅y = e\; \&\; y⋅x =e))$ --- существование обратного элемента.
+\end{enumerate}
+\subsubsection{Теория натуральных чисел}
+$Pr=\hc{=^2,P^2}$
+\begin{enumerate}
+\item[$φ_1$:] $∀x¬Px$
+\item[$φ_2$:] $∀x∀y∀z\;\hr{P(x,y)\,\&\,P(y,z) →P(x,z)}$
+\item[$φ_3$:] $∀x∃y P(x,y)$
+\end{enumerate}
+У этой теории есть бесконечная модель $(ℵ, <)$. Конечных моделей нет.
+\begin{note}
+Заметим, что для $φ=¬(φ_1∧φ_2∧φ_3)$ верно интересное свойство --- она
+выводима в любой конечной модели, но не общезначима.
+\end{note}
+\section{Гомоморфизмы}
+Пусть $M$, $M'$ --- интерпретации одной сигнатуры. Рассмотрим отображение $π\colon
+M→M'$. Оно называется гомоморфизмом, если
+\begin{enumerate}
+\item $π\colon \Ml→\Ml'$
+\item $π(c^M) = c^{M'}$
+\item $π(f^M(a_1,…,a_k)) = f^{M'}(π(a_1),…,π(a_k))$
+\item $π(p^M(a_1,…,a_k)) = p^{M'}(π(a_1),…,π(a_k))$
+\end{enumerate}
+
+\begin{df}
+  Биективный гомоморфизм называется изоморфизмом.
+\end{df}
+
+\begin{lemma}
+  Пусть $π\colon M→M'$ --- гомоморфизм, $t(x_1,…,x_n) ∈\Tm$,
+  $\FV(t(x_1,…,x_n))⊆\hc{x_1,…,x_n}$.  Тогда
+  \begin{displaymath}
+    π(t(a_1,…,a_m)^M) = t\hr{π(a_1),…,π(a_m)}^{M'}
+  \end{displaymath}
+\end{lemma}
+\begin{proof}
+Индукция по построению функции.
+\end{proof}
+\begin{petit}
+  Почему так, непонятно. Но, видимо, очевидно.
+\end{petit}
+\begin{imp}
+  \begin{displaymath}
+    M ⊧ a=b ⇔ M' ⊧ π(a) = π(b)
+  \end{displaymath}
+\end{imp}
+\begin{petit}
+  Исходники в этом месте были не очень понятны, так что, возможно,
+  лемма и неверна. По крайней мере, я её не понимаю. Похоже, все
+  модели подразумеваются нормальными.
+\end{petit}
+\begin{lemma}
+  \index{unknown}
+  Пусть $π\colon M→M'$ --- сюрьективно, $φ(x_1,…,x_n)∈\Fm$, $FV(φ)⊆\hc{x_1,…,x_n}$. Тогда для
+  любых $a_1,…,a_n∈M$ выполнено
+  \begin{displaymath}
+    \hm{φ(a_1,…,a_n)}_M = \hm{φ(π(a_1),…,π(a_n))}_{M'}
+  \end{displaymath}
+\end{lemma}
+\begin{proof}
+  Проведем доказательство по потроению формулы.
+  \begin{itemize}
+  \item Пусть $φ$ --- атомарная формула. Тогда она имеет вид $φ(\bar
+    a) = P^k(a_{i_1},…,a_{i_k})$. По определению
+    \begin{displaymath}
+      \hm{P^k(a_{i_1},…,a_{i_k})}_M =\hm{P^k(π(a_{i_1}),…,π(a_{i_k}))}_{M'}
+    \end{displaymath}
+  \item
+    $M\;⊧ a_{i_1}=a_{i_2}$ $⇔$ $a_{i_1}$ равно $a_{i_2}$. \par
+    $M'⊧ π(a_{i_1})=π(a_{i_2})$ $⇔$ $π(a_{i_1})$ равно $π(a_{i_2})$.
+  \item Пусть $φ=∃yψ(y,x_1,…,x_n)$. Из сюрьективности,
+    $∀c∈M'\;∃b∈M\colon π(b)=c$.
+    \par $M⊧φ(\bar a)$ $⇔$ $∃b∈M\colon M⊧ψ(b,\bar a)$
+    \par $M'⊧φ(π(\bar a))$ $⇔$ $∃c∈M'\colon M'⊧ψ(c,π(\bar a))$
+  \end{itemize}
+\end{proof}
+
+\begin{lemma}
+  \begin{enumerate}
+  \item Композиция гомоморфизмов --- гомоморфизм.
+  \item Композиция изоморфизмов --- изоморфизм.
+  \item Обратный к изоморфизму --- изоморфизм.
+  \end{enumerate}
+\end{lemma}
+\begin{denote}
+  \begin{math}
+    M ≅ M' ≝ \;∃ π\colon M→M', π \text{ --- изоморфизм}
+  \end{math}
+\end{denote}
+\begin{lemma}
+  $≅$ -- отношение эквивалентности.
+\end{lemma}
+\begin{df}
+  Пусть $M$ --- модель сигнатуры $Ω$, $Φ\colon \Ml^n→\hc{0,1}$ ---
+  предикат. $Φ$ выражается (определяется) формулой $φ(x_1,x_2,…,x_n)$,
+  если для всех $a_1,a_2,…,a_n∈M$
+  \begin{displaymath}
+    Φ(a_1,a_2,…,a_n)=\hm{φ(a_1,a_2,…,a_n)}_M
+  \end{displaymath}
+\end{df}
+\begin{petit}
+  На самом деле, пример не очень аккуратен -- мы смешиваем в кучу
+  сигнатуру, теорию и модель. Впрочем, все довольно естественно.
+\end{petit}
+\begin{ex}
+  Выразим предикат «x -- простое число» в $(ℵ, 1, ⋅ , =)$:
+  \begin{displaymath}
+    ∀a∀b(x=a⋅b →a=1∨b=1) ∧x≠1
+  \end{displaymath}
+\end{ex}
+
+\begin{lemma}
+  Пусть $Φ(x_1,…,x_n)$ выразима в $M$. Тогда $∀a_1,…,a_n$ и
+  $∀π\colon M≅M$ выполнено
+\begin{displaymath}
+  Φ(a_1,…,a_n) = Φ(π(a_1),…,π(a_n))
+\end{displaymath}
+Такое свойство называется инвариантностью относительно автоморфизмов.
+\end{lemma}
+\begin{proof}
+  Очевидно из предыдущих лемм.
+\end{proof}
+\begin{ex}
+  Предикат $(y=x^2)$ невыразим в $(ℝ,<,+,=)$.
+\end{ex}
+\begin{proof}
+  Рассмотрим $π: x→2x$. В предположении, что предикат можно выразить,
+  по свойству инвариантности относительно автоморфизмов получаем, что
+  $ Φ(a,b) =Φ(2a,2b) $. Т.е
+  \begin{displaymath}
+    a=b^2 ⇔ 2a = (2b)^2
+  \end{displaymath}
+  Противоречие.
+\end{proof}
+\section{Теории}
+\newcommand{\pargs}[2]{\enumsub{#1}i1{#2}}
+\begin{df}
+  Пусть $M$ -- интерпретация сигнатуры $Ω$. Элементарной теорией
+  называется
+  \begin{displaymath}
+    \Th(M) = \hc{φ∈\CFm \,|\; M⊧φ}
+  \end{displaymath}
+\end{df}
+\begin{df}
+  Модели $M$, $M'$  элементарно эквивалентны, если
+  $\Th(M) = \Th(M')$.
+  \begin{displaymath}
+    M≡M'\,≝\, \Th(M) = \Th(M')
+  \end{displaymath}
+\end{df}
+\begin{df}
+  Теория $T$ называется сильно категоричной, если все её модели с
+  равенством изоморфны.
+\end{df}
+
+\begin{theorem}
+  Пусть $M$ --- конечная интерпретация конечной сигнатуры с
+  равенством. Тогда $\Th(M)$ --- сильно категорична.
+\end{theorem}
+\begin{petit}
+  Здесь должно быть {\it адекватное} доказательство.
+\end{petit}
+\begin{proof}
+  Т.к $M$ --- конечна, то $\Ml = \hc{a_1,…,a_n}$. Рассмотрим формулу
+  \begin{displaymath}
+    φ = ∃v_1…∃v_nψ_M
+  \end{displaymath}
+  где $ψ_M$ рассказывает все о $M$.
+  %% Вот тут код непортабелен. Ибо уж слишком сильно от шрифта зависит.
+  %% Уверен, что пробелы можно расставлять грамотней. diff -U4 господа.
+  \begin{displaymath}
+    \begin{gathered}
+      ψ_M≝\bigwedge_{i≠j}v_i≠v_j ∧ ∀y\bigvee_i( y=v_i) ∧ \bigwedge\hc{c=v_i\,|\, c∈\Cnst,\, M⊧c=a_i} ∧\\
+      ∧\bigwedge\hc{P^k(\pargs vk)\,|\,P^k∈\Pr,\, M⊧P^k(\pargs ak)}
+      ∧\bigwedge\hc{¬P^k(\pargs vk)\,|\,P^k∈\Pr,\, M⊧¬P^k(\pargs ak)}∧\\
+      ∧\bigwedge\hc{f^k(\pargs vk) = v_j\,|\,f^k ∈\Fn,\, M⊧f^k(\pargs ak) = a_j}
+    \end{gathered}
+  \end{displaymath}
+ Формула инвариантна относительно автоморфизмов, поэтому
+  сохраняется  множесто выводимых формул.
+\end{proof}
+
+\begin{lemma}
+  $ N ⊧φ_M ⇔ N≅M$
+\end{lemma}
+\begin{proof}
+  \need
+  \begin{petit}
+    Из этого все должно следовать, но мне это непонятно.
+  \end{petit}
+  $$M⊧ψ_M(\enumun a)$$
+  \suff
+  \begin{displaymath}
+    N⊧φ_M ⇒N⊧ψ_M(\enumun b)
+  \end{displaymath}
+  Покажем, что $π\colon a_i→b_i$ --- изоморфизм.
+  \begin{enumerate}
+  \item $π$  -- инективен
+  \item $π$  -- сюрьективен
+  \item $M⊧ c = a_j ⇒ N⊧ c = b_j$
+    \begin{petit}
+      Далее в исходниках каша, поэтому то, что дальше -- не более, чем
+      приблизительное графическое равенство.
+    \end{petit}
+    Получаем, что $π(c^M) = c^N$, т.к $c^M$ равно $a$ и $c^N$ равно
+    $b$.
+    \begin{displaymath}
+      \begin{array}{c}
+        M⊧P^k(\pargs ak) ⇔ N⊧P^k(\pargs bk) \\
+        M ⊧f^k(\pargs ak) = a_j ⇔ N⊧f^k(\pargs bk) = b_j\\
+        f^M(\pargs ak) \text{ равно } a_j ⇔ f^N(\pargs bk) \text{ равно } b_j
+      \end{array}
+    \end{displaymath}
+    \begin{displaymath}
+      N⊧\Th(M),\, φ_M\in\Th(M) ⇒N⊧φ_M ⇒N≅M.
+    \end{displaymath}
+  \end{enumerate}
+\end{proof}
+
+\begin{df}
+  $ T_M ≝ \hc{φ_{M,Ω'} \,|\, Ω' \text{ -- конечна, } Ω' ⊆ Ω }$
+\end{df}
+
+\begin{lemma}
+  $N ⊧T_M ⇔ N≅M$
+\end{lemma}
+\begin{note}
+  Заметим, что это есть обобщение предыдущей леммы, однако мы не
+  требуем конечности модели или сигнатуры.
+\end{note}
+\begin{proof}
+  \need Заметим, что $M⊧T_M$ $⇔$ $∀ Ω'⊆Ω\;M⊧φ_{M,Ω'}$. Применяем
+  доказанную лемму для конечного случая и это наблюдение, получаем
+  \begin{displaymath}
+    N≅M ⇒N⊧φ_{M,Ω'} ⇒N⊧T_M
+  \end{displaymath}
+  \begin{petit}
+    И вновь, нижеследующее доказательство -- не более, чем графическое равенство.
+  \end{petit}
+  \suff
+  $N⊧T_M$, тогда $N$ --- конечна, т.к $\hm{N} = \hm{N}$. Тогда положим, что
+  $M=\hc{a_1,…,a_n}$, $N=\hc{b_1,…,b_n}$. Доказывая от противного, получаем, что
+  для любой биекции $π\colon M →N$ найдется либо $c∈\Cnst$, либо $f∈\Fn$ либо $p\in\Pr$,
+  для которых нарушается условие изоморфизма, что означает что-либо из следующего:
+  \begin{itemize}
+  \item $π(c^M) ≠c^N$
+  \item $π(f^M(\pargs ak)) ≠ f^N(\pargs bk)$
+  \item $π(P^M(\pargs ak)) ≠ P^N(\pargs bk)$
+  \end{itemize}
+Всего биекций из $M$ в $N$ конечное число. Пусть $Ω'$ содержит все
+«плохие» символы из $Ω$. Но $N⊧φ_{M,Ω'}$.
+Поэтому $N\evn{Ω'} = M\evn{Ω'}$.
+\end{proof}
+
+\begin{df}
+  $t∈\Tm$ свободен для $x∈\Var$ в $φ∈\Fm$ означает, что свободное
+  вхождение $x$ не находится в области действия квантеров по переменным из $t$.
+\end{df}
+\begin{df}
+  Определим $\sst{t}{x}r$, $r∈\Tm$.
+  \begin{petit}
+    Вроде уже определяли. Nevermind…
+  \end{petit}
+  \begin{enumerate}
+  \item $\sst xtc = c$
+  \item $\sst xtx = t$
+  \item $\sst xty = y$
+  \item $\sst xt f(\enumum r) = f(\enumum{\sst xt r})$
+  \end{enumerate}
+\end{df}
+
+\begin{df}
+  Определим $\sst xtφ$, $φ∈\Fm$.
+  \begin{enumerate}
+  \item $\sst xtP(\enumum r) ≝ P(\enumum{\sst xtr})$
+  \item $★∈\hc{∧,∨,¬,→}:\quad \sst xt(φ_1★φ_2) ≝ (\sst xtφ_1 ★ \sst xtφ_2)$
+  \item $\Ko∈\hc{∀,∃}:$
+    \begin{itemize}
+    \item $\sst xt \Ko ψ≝ \Ko\sst xt ψ ( y ≠ x)$
+    \item $\sst xt \Ko ψ≝ \Ko x ψ$
+    \end{itemize}
+  \end{enumerate}
+\end{df}
+
+\begin{denote}
+$r(t) ≝ \sst xtr(x)$
+\end{denote}
+
+\begin{petit}
+  В исходниках указано, что здесь пропущена половина лекции. Мне кажется, больше.
+\end{petit}
+
+
+\begin{theorem}
+  Пусть $Γ$ -- конечное множество формул.  Тогда
+  \begin{displaymath}
+    Γ⊦φ ⇔⊦∨ Γ→φ
+  \end{displaymath}
+\end{theorem}
+\begin{petit}
+   Вытащено из лекций 2006 года.
+\end{petit}
+%% Feel the diffrence
+\enumtitle{Список аксиом:}
+\begin{nums}{-2}
+  \newcommand{\fora}[1]{\fa #1\,}
+  \newcommand{\exis}[1]{\exi #1\,}
+  \item $A \ra (B \ra A)$.
+  \item $\br{A \ra (B \ra C)}\ra\br{(A\ra B) \ra (A \ra C)}$.
+  \item $A \& B \ra A$.
+  \item $A \& B \ra B$.
+  \item $A \ra (B\ra A\&B)$.
+  \item $A \ra (A \vee B)$.
+  \item $B \ra (A \vee B)$.
+  \item $(A \ra C) \ra \br{(B \ra C) \ra (A \vee B \ra C)}$.
+  \item $\neg A \ra (A \ra B)$.
+  \item $(A \ra B) \ra \br{(A \ra \neg B) \ra \neg A}$.
+  \item $A\vee \neg A$.
+  \item $\fora{x}\ph(x) \ra \ph(t)$.
+  \item $\ph(t) \ra \exis{x}\ph(x)$.
+  \item $\fora{x}\br{\ph(x) \ra \psi} \ra\br{\exis{x} \ph(x) \ra \psi}$.
+  \item $\fora{x}\br{\psi \ra \ph(x)} \ra \br{\psi \ra \fora{x}\ph(x)}$.
+\end{nums}
+\enumtitle{Правило вывода}
+
+  Правило вывода (modus ponens, MP для краткости) это правило $\frac{A,\; A \ra B}{B}$, которое говорит,
+  что если истинны формулы $A$ и $A \ra B$, то $B$ тоже истинна.
+
+\enumtitle{Примеры дополнительных правил}
+
+\begin{enumerate}
+\item $φ_1∧…∧φ_n ⊦ φ_i$
+\item $φ_1,…,φ_n⊦ φ_1∧…∧φ_n$
+\item Правила Бернайса ($x∉\FV$)
+  \begin{displaymath}
+    \begin{array}{lr}
+      \displaystyle\frac{φ(x)→ψ}{∃φ(x)→ψ} &
+      \displaystyle\frac{ψ→φ(x)}{ψ→∀φ(x)}
+    \end{array}
+  \end{displaymath}
+\item $φ→ψ ⊦¬ψ→¬φ$
+\item $Γ,φ⊦ψ,¬ψ$ $⇒$ $Γ⊦¬φ$
+\item $Γ,φ⊦α$,$Γ,ψ⊦α$ $⇒$ $Γ,ψ∨φ⊦α$
+\item $¬∃xφ⊦∀x¬φ$
+\item $∀x¬φ⊦¬∃xφ$
+\item $¬∀xφ⊦∃x¬φ$
+\end{enumerate}
+\begin{petit}
+  Что вообще это было?
+\end{petit}
+\begin{df}
+  Введем обозначение для множественной подстановки.
+
+Пусть $\enumun a  ∈M$, а $\enumun x∈\Var$ -- различные переменные. Тогда будем использовать обозначение
+  \begin{displaymath}
+    \sst{\enumun x}{\enumun a}φ
+  \end{displaymath}
+\end{df}
+
+\begin{lemma}
+  $M⊧\enumun {∀x}$ $⇔$ $∀\enumun a ∈ M ⊧ \sst{\enumun x}{\enumun a}φ$
+\end{lemma}
+
+\begin{df}
+  Пусть $φ,ψ$ -- замкнутые формулы. $φ\sim ψ ⇔\;⊧φ↔ψ$
+\end{df}
+\newcommand{\forl}[2]{∀#1_{1}…∀#1_{#2}}
+\begin{lemma}
+  Пусть $\forl xnφ$ -- замкнутая формула и $\hc{\enumun y} =
+  \hc{\enumun x}$ -- равенство множеств.  Тогда
+
+\begin{displaymath}
+  \forl xnφ \sim \forl ynφ
+\end{displaymath}
+\end{lemma}
+\begin{proof}
+  \begin{petit}
+    Нужно бы больше подробностей, но я с трудом понимаю, что здесь
+    происходит.
+  \end{petit}
+  По условию $y_i = x_{k_i}$. Тогда
+  \begin{displaymath}
+    \sst{\enumun b}{\enumun y}φ=\sst{b_{k_1},…,b_{k_n}}{\enumun x}φ
+  \end{displaymath}
+\end{proof}
+
+\begin{df}
+  Пусть $\FV(φ) = \hc{\enumun x}$.
+
+  Определим формулу $\bar ∀φ ≝ \forl xnφ$, называемую универсальным
+  замыканием $φ$.
+\end{df}
+
+\begin{df}
+$  ⊧φ ≝ \;⊧\bar ∀φ$
+\end{df}
+
+\begin{lemma}
+  Пусть $\FV(φ) ⊆ \hc{\enumun x}$. Тогда
+  \begin{displaymath}
+    \bar ∀φ \sim \forl xnφ
+  \end{displaymath}
+\end{lemma}
+\begin{petit}
+  Доказательство быть должно здесь.
+\end{petit}
+\newcommand{\PCi}{⊦_{\!\PC}}
+\begin{theorem}
+  $\PCi φ \, ⇒\;⊧φ$
+\end{theorem}
+\begin{petit}
+  Что такое $\PC$?! А что такое пропозициональная аксиома?
+\end{petit}
+\begin{lemma}
+  Пусть $φ$ -- пропозициональная асиома. Тогда $⊧φ$.
+\end{lemma}
+\begin{proof}
+  Пусть $x⊇\FV(φ)$, $φ=φ(\bar x)$.
+  Далее, пусть $φ(\bar x) = α(\bar x)→(β(\bar x)→α(\bar x))$
+  По доказанной лемме,
+  \begin{displaymath}
+    M⊧φ(\bar x) ⇔ ∀ \bar a∈\Ml^n\; M⊧α(\bar a) →(β(\bar a) → α(\bar a))
+  \end{displaymath}
+  $\hm{φ(\bar a)}_M = \hm{p→(q→p)}_Θ$, где $Θ(p) = \hm{α(\bar a)}_M$,
+    $Θ(q)=\hm{β(\bar a)}_M$. Отсюда $\hm{φ(\bar a)}_M = 1$.
+\end{proof}
+
+
+\begin{petit}
+  Откуда эта нумерация взялась?
+\end{petit}
+
+\begin{lemma}
+  Пусть $φ$ -- вида A14. Тогда $⊧φ$.
+\end{lemma}
+\begin{proof}
+  По условию, $φ=∀x(α(x,\bar y)→β(\bar y))→(∃xα(x,\bar y)→β(\bar y))$, полагая
+  $ \hc{x,\bar y} =\FV(α)∪\FV(β)$, $x∉\FV(β)$.
+  \begin{petit}
+    Дальше что-то совсем непонятное. Надо бы найти где-нибудь ещё.
+  \end{petit}
+\end{proof}
+\begin{lemma}
+  Пусть $φ$ -- вида A15. Тогда $⊧φ$.
+\end{lemma}
+
+\begin{lemma}
+  Верны следующие импликации
+  \begin{enumerate}
+  \item $⊧φ,φ→ψ$ $⇒$ $⊧ψ$
+  \item $⊧φ ⇒ ⊧∀xφ$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  \begin{enumerate}
+  \item $M⊧ ∀\bar xφ$, $M⊧∀\bar xφ→ψ$ $⇒$ $M⊧∀\bar xψ$
+  \end{enumerate}
+\end{proof}
+
+\begin{petit}
+  {\large\bf \#!} Здесь пропущено какое-то количество материала, и
+  далее идет выжимка только из формулировок всех теорем. Сомнительная
+  польза, но пока нет возможности все это добро доказать.
+\end{petit}
+
+\begin{df}
+  $ \PCe$ -- исчисление предикатов с равенством.  Для отношения
+  равенства вводятся дополнительные аксиомы:
+  \begin{enumerate}
+  \item[A16] $ ∀x\, x=x$
+  \item[A17] $ ∀x∀y (x=y →y=x)$
+  \item[A18] $ ∀x∀y∀z (x = y ∧ y = z →x =z)$
+  \item[A19] $ ∀\bar x∀\bar y (\bar x = \bar y →f^n(\bar x) = f^n(\bar
+    y))$, где $\bar x ∩ \bar y = ∅$, $\hm{\bar x}=\hm{\bar y} = n$.
+  \item[A20] $∀\bar x∀\bar y (\bar x = \bar y → (P^n(\bar x) = P^n(\bar y))$
+  \end{enumerate}
+  где $ \bar x = \bar y ⇔ \veeiun(x_i = y_i)$
+\end{df}
+\begin{lemma}
+Пусть $φ$ - без квантеров, $\enumun x$ -- различные переменные,
+$\hc{\enumun x}⊆\FV(φ)$.  Тогда
+\begin{equation*}
+  ⊦_{\PC}  ∀x_1…∀x_n φ(\enumun x) →φ(\enumun t)
+\end{equation*}
+\end{lemma}
+\begin{lemma}
+  Пусть $\bar t, \bar r$ -- списки термов длины $n$. Тогда
+  \begin{equation*}
+    \begin{array}{c}
+      \bar t = \bar r ⇒ f^n(\bar t) = f^n(\bar r)\\
+      \bar t = \bar r ⇒ P^n(\bar t) = P^n(\bar r)
+    \end{array}
+  \end{equation*}
+\end{lemma}
+\begin{df}
+  $φ$ называется нормально общезначима, если $M⊧φ$ для любой нормальной интерпретации $M$.
+\end{df}
+\begin{df}
+  $φ$ -- нормально выполнима, если существует нормальная интерпретация $M$, что $M⊧φ$.
+\end{df}
+\begin{theorem}
+  \begin{math}
+    \displaystyle
+    ⊦_{\PC}φ ⇒⊧_{\text{нормально}}φ
+  \end{math}
+\end{theorem}
+\begin{theorem}
+  \begin{math}
+    T⊦_{\PC}φ ⇒T⊧_{\text{нормально}}φ
+  \end{math}
+\end{theorem}
+\begin{df}
+  Теория $T$ полна, если $∀φ∈\CFm$ либо $T⊦φ$, либо $T⊦¬φ$.
+\end{df}
+\begin{lemma}
+  Свойства непротиворечивых полных теорий
+  \begin{enumerate}
+  \item $T⊦¬φ ⇔ T\not⊦φ$
+  \item $T⊦φ∧ψ ⇔ T⊦φ \text{ и } T⊦ψ$
+  \item $T⊦φ∨ψ ⇔ T⊦φ \text{ или } T⊦ ψ$
+  \item $T⊦φ→ψ ⇔ T\not⊦φ \text{ или } T⊦ψ$
+  \end{enumerate}
+\end{lemma}
+\begin{lemma}[Лемма Линденбаума]
+Пусть $T_0$ -- непротиворечивая теория в счетной сигнатуре. Тогда
+список всех формул счетен и существует полная и непротиворечивая теория в той же сигнатуре: $T_0⊆T$.
+\end{lemma}
+\begin{df}
+  Теория $T$ -- $∃$-полна, если
+  \begin{equation*}
+    T⊦∃xφ(x) ⇒ ∃t∈\CFm\cln T⊦φ(t)
+  \end{equation*}
+\end{df}
+\begin{ex}
+  Рассмотрим $\Th(N)$ в сигнатуре $\hc{+,·,0,1,=}$. Теория будет
+  $∃$-полна, т.к
+  \begin{equation*}
+    N⊧∃xφ(x) ⇒ N⊧φ(n)
+  \end{equation*}
+  где $n = \underbrace{1+1+\ldots+1}_{\text{n times}}$ -- искомый
+  терм. Заметим, что если из сигнатуры убрать $\hc{1}$, то $∃$-полноты не будет.
+\end{ex}
+\begin{df}
+  Теория обладает свойством Хенкена(Henkin), если для любой замкнутой
+  формулы вида $∃xφ(x)$, $T⊦∃xφ(x)$, то найдется $c∈\Cnst$, что
+  $T⊦∃xφ(x)→φ(c)$.
+\end{df}
+\begin{lemma}
+  Из свойства Хенкина следует $∃$-полнота.
+\end{lemma}
+\begin{lemma}
+Пусть $φ(x)∈\Fm$, $\FV(φ)=\hc x$, $T$ -- теория, $c∈\Cnst$ и не входит
+в $T$ и $φ$. Тогда $T⊦_{\PC}φ(c)$.
+\end{lemma}
+\begin{df}
+  Теория называется теорией Хенкина, если она обладает свойством
+  Хенкина.
+\end{df}
+\begin{lemma}
+  Пусть $T_0$ -- непротиворечивая теория в счетной сигнатуре $Ω_0$.
+  Тогда существует $T⊇T_0$ -- теория Хенкина в сигнатуре $Ω=Ω_0∪\setif{c_n}{n∈ℕ}$
+\end{lemma}
+\begin{lemma}
+  Пусть $T_0$ -- непротиворечивая теория в $Ω_0$, не обязательно счетной.
+  Тогда существует  полная и $∃$-полная теория $T⊆T_0$ в сигнатуре $Ω=Ω∪\setif{c_n}{n∈ℕ}$.
+\end{lemma}
+
+\begin{lemma}
+  Пусть $S$ -- непротиворечивая, полная, $∃$-полная теория в счетной
+  сигнатуре без равенства.  Тогда $S$ имеет счетную модель.
+\end{lemma}
+
+\begin{theorem}
+  Пусть $T$ -- непротиворечивая теория без равенства в счетной
+  сигнатуре. Тогда $T$ -- счетно выполнима.
+\end{theorem}
+
+\begin{theorem}
+  Пусть $T$ -- теория без равенства в счетной сигнатуре. Тогда
+  \begin{equation*}
+    T⊧φ ⇒T⊦φ
+  \end{equation*}
+\end{theorem}
+
+\begin{theorem}[Геделя о полноте]
+  \begin{math}
+    \displaystyle
+    ⊧φ ⇒ ⊦_{\PC}φ
+  \end{math}
+\end{theorem}
+
+\begin{lemma}[Левингейма-Сколема]
+  Пусть $T$ -- теория безз равенства в счетной сигнатуре. Тогда если
+  $T$ выполнима, то $T$ имеет счетную модель.
+\end{lemma}
+
+\begin{lemma}
+  Пусть $T$ -- непротиворечивая  теория с равенством в $\PCe$. Тогда $T$ имеет не более чем счетную модель.
+\end{lemma}
+\begin{theorem}
+  \begin{math}
+    T⊧_{\text{норм}}φ ⇒ T⊦_{\PCe}φ
+  \end{math}
+\end{theorem}
+
+\begin{theorem}[Геделя о полноте с равенством]
+  \begin{math}
+    \displaystyle
+    ⊧_{\text{норм}}φ ⇒ ⊦_{\PCe}φ
+  \end{math}
+\end{theorem}
+
+\begin{theorem}
+  Пусть $T$ -- нормально выполнимая теория. Тогда $T$ имеет не более, чем счетную модель.
+\end{theorem}
+
+\begin{theorem}
+  Пусть $Ω$ -- счетная сигнатура и пусть $T$ -- теория с
+  равенством. Тогда если всякая конечная $T'⊆T$ выполнима, то и $T$
+  выполнима.
+\end{theorem}
+
+\begin{df}
+  Если $Ω$ -- бесконечна, то $\hm Ω≝\hm{\Fm}$
+\end{df}
+
+\begin{theorem}
+  Пусть $T$ -- непротиворечивая теория в сигнатуре $Ω$. Тогда $T$
+  имеет модель мощности не больше, чем $\hm Ω$.
+\end{theorem}
+
+\begin{theorem}
+  Если всякая конечнная $T'⊆T$ в необязательно конечной сигнатуре $Ω$
+  выполнима, то и $T$ выполнима.
+\end{theorem}
+
+\begin{theorem}
+  \begin{enumerate}
+  \item Всякое векторное пространство имеет бази
+  \item Все базисы равномощны.
+  \end{enumerate}
+\end{theorem}
+
+\begin{df}
+  \begin{math}
+    \Dc(M)≔\setif φ{M⊧φ,\, φ\text{ или } ¬φ \text{ -- атомарны в $Ω∪M$}}
+  \end{math}
+\end{df}
+\newcommand{\fish}{>\!\!-\!\!>}
+\newcommand{\bfish}{<\!\!-\!\!<}
+\begin{df}
+  Пусть $M$,$N$  -- модели в $Ω$.
+  \begin{itemize}
+  \item $f\cln M\fish N$ -- вложение $M$ в $N$, если $f$ -- гомоморфизм с равенством($f$ -- инъекция).
+  \item $f\cln M\bfish N$ -- элемент вложения, если $∀φ(\enumun x)∈\Fm$
+    \begin{equation*}
+      M⊧φ(\enumun a) ⇔ N⊧φ(f(a_1)\sco f(a_n))
+    \end{equation*}
+  \end{itemize}
+\end{df}
+
+
+\begin{theorem}
+  \begin{itemize}
+  \item $M\fish N ⇔ N⊧\Dc(M)$
+  \item $M\bfish N ⇔ N⊧E(M)$
+  \end{itemize}
+\end{theorem}
+\begin{petit}
+  Что такое $E(M)$ я не знаю.
+\end{petit}
+
+\begin{theorem}
+  Пусть $T$ -- теория в сигнатуре $Ω$, $M⊧T$, $k≥\hm Ω$, $k≥\hm
+  M$. Тогда $M$ -- элементарно вложено в модели $T$ мощности $k$.
+\end{theorem}
+
+\begin{df}
+  Универсальная формула -- формула вида $∀x_1…∀x_n φ$, где $φ$ -- без квантеров.
+\end{df}
+
+\begin{df}
+  Формула $φ$ называется устойчивой отностительно
+  подмоделей(замкнутой), если $M⊧φ \& N⊆M ⇒N⊧φ$ для всех $M$,$N$.
+\end{df}
+
+\begin{lemma}
+  Если $φ$ -- универсальна, то она замкнута.
+\end{lemma}
+
+\begin{df}
+  Универсальным фрагментом теории $T$ называется множество
+  \begin{equation*}
+    T_∀ ≝ \setif{φ∈\CFm}{T⊦φ,\,φ\text{ -- универсальная }}
+  \end{equation*}
+\end{df}
+
+\begin{lemma}
+  Если $M⊧T_∀$ тогда и только тогда, когда $M$ вложима в модель $T$.
+\end{lemma}
+
+\begin{df}
+  Теория $T$ называеся универсальбно аксиоматизируемой,е сли
+  существует универсальная теория $T'$ с тем же множеством теорем.
+\end{df}
+
+\begin{df}
+  Теория $T$ -- устойчива относительно подмоделей, если каждая
+  подгруппа является моделью.
+\end{df}
+
+\begin{theorem}[Тарского-Лось]
+  Теория $T$ универсально аксиомаизируема тогда и олько тогда, когда
+  $T$ устойчива относительно подмоделей.
+\end{theorem}
+
+\begin{df}
+  Пусть $Ω$ -- без функциональных символов. Формула вида $P(\enumun
+  x)$, где $x=c$ или $x=y$ называются простыми.
+\end{df}
+
+\begin{df}
+  Кванторный ранг $q$ формулы определяется следующим образом:
+  \begin{enumerate}
+  \item $φ$ -- атормарна, то $q(φ) = 0$.
+  \item $q(φ_1★φ_2) =\max(q(φ_1),q(φ_2))$
+  \item $q(¬φ) = q(φ)$
+  \item $q(\Ko xφ) = q(φ) + 1$
+  \end{enumerate}
+\end{df}
+
+\paragraph{Игра Эренфойхта длины $n$}
+\newcommand{\prettycircle}[1]{\raisebox{.5pt}{\textcircled{\raisebox{-1.1pt} {#1}}}}
+\newcommand{\Pa}{\prettycircle{$∀$}}
+\newcommand{\Pe}{\prettycircle{$∃$}}
+Пусть $A$,$B$ -- модели. Обозначим первого игрока \Pa, второго \Pe.
+Опишем шаг игры:
+\begin{enumerate}
+\item \Pa\  выбирает элемент из $A$ или $B$.
+\item \Pe\  выбирает элеменит из $A$, если \Pa\ выбрал элемент из $B$ и наоборот.
+
+\end{enumerate}
+При этом \Pe\ хочет построить частичнй изоморфизм на выбранных
+элементах, \Pa\ мешает. Выигрышная стратегия строиться за \Pe.
+
+\begin{df}
+  $(A,\bar a) ≈_n (B,\bar b)$, если в $\EF(A,B)$ есть выигрышная стратегия за \Pe.
+\end{df}
+\begin{lemma}
+  $≈_n$ -- отношение эквивалентности.
+\end{lemma}
+\begin{lemma}
+  $(A,\bar a) ≈_{n+1}(B,b)$ тогда и только тогда, когда
+  \begin{equation*}
+    \bcase{
+      ∀α∈A ∃b∈B\cln (A,\bar aα) ≈_n (B,\bar bβ)\\
+      ∀β∈B ∃α∈A\cln (A,\bar aα) ≈_n (B,\bar bβ)
+      }
+  \end{equation*}
+\end{lemma}
+
+\begin{theorem}
+  $(A,\bar a) ≈_n (B,\bar b)$ $⇒$ $(A,\bar a) ≡_n (B,\bar b)$
+\end{theorem}
+
+\begin{lemma}
+  Пусть $Ω=\hc{=²}$. Тогда, если  $\hm{A}≥n$, $\hm{B}≥n$, то $A≡_nB$.
+\end{lemma}
+
+\begin{df}
+  \begin{align}
+    a\!\!↓ = A\vert\hc{x\vert x ≤a}\\
+    b\!\!↑= A\vert\hc{x\vert x≥a}
+  \end{align}
+\end{df}
+\tbk
+
+\section{Арифметика}
+Будем рассматривать сигнатуру $Ω = \hc{+,·,0,'}$.
+
+\begin{df}
+  Аксиоматика Робинсона($Q$):
+  \begin{nums}{-3}
+  \item $x'=y' ⇒ x = y$
+  \item $x'≠0$
+  \item $x≠0 → ∃y(y'=x)$
+  \item $x+0=x$
+  \item $x+y' = (x+y)'$
+  \item $x·0=0$
+  \item $x·y' = x·y+x$
+  \end{nums}
+\end{df}
+\begin{df}
+  Аксиома индукции: $\ol ∀(φ(0)∧∀x(φ(x)→φ(x'))→∀xφ(x))$
+\end{df}
+\begin{df}
+  Аксиоматика Пеано($PA$ -- аксиоматика Робинсона, дополненная аксиомой индуции
+\end{df}
+\begin{stm}
+  Аксиоматики $PA$, $Q$ -- непротиворечивы, т.к имеют стандартную модель $ℵ⊧PA$.
+\end{stm}
+\begin{df}
+  Пусть $T$ -- арифметическая теория. Функция $f\cln ℵ^k→ℵ$
+  называется представимой в $T$, если существует арифметическая
+  формула $φ(\enumun x, y)$, что $∀\enumuk m ∈ℵ$, что
+  \begin{equation*}
+    \begin{aligned}
+      f(\enumuk m) = n & ⇒ T⊦∀y(φ(\enumuk m, y) ↔y = n) \\
+      f(\enumuk m) ≠ n &⇒ T⊦¬φ(\enumuk m, n)
+    \end{aligned}
+  \end{equation*}
+\end{df}
+
+\begin{lemma}
+  $ m≠n ⇒T⊦(m≠n)$
+\end{lemma}
+\newcommand{\prs}{\ensuremath{\ol{\vphantom{e}\smash{⊂}}}}
+\begin{df}
+  $T_1\prs T_2$, если все теоремы $T_1$ доказуемы в $T_2$.
+\end{df}
+
+\begin{theorem}[Геделя]
+  Пусть $f\cln ℵ^k→ℵ$ -- тотальная вычислимая функция. $Q\prs T$, $ℵ⊧T$.
+  Тогда $f$ -- представима в $T$.
+\end{theorem}
+
+\begin{stm}
+Всякое перечислимое множество $S⊆ℵ$ есть множество значений тотальной
+вычислимой функции.
+\end{stm}
+
+\begin{df}
+$S⊆ℵ^k$ -- арифметическое, если $S$ определимо арифметической формулой.
+\end{df}
+
+\begin{theorem}
+  Если $S⊆ℵ$ -- перечислимо, то $S$ -- арифметическое.
+\end{theorem}
+
+\begin{theorem}[Существенная неразрешимость арифметики]
+  Если $Q⊆T⊆TA$, то $T$ -- неразрешима.
+\end{theorem}
+
+\begin{theorem}[Тарского]
+  Пусть $Q⊆T⊆TA$. Тогда
+  \begin{nums}{3}
+  \item $\hc{φ\vert ℵ⊧φ,\,φ∈\CFm}$ -- неарифметическое.
+  \item Не существует арифметичкской формулы $τ(x)$, что
+    $∀φ∈\CFm$ $T⊦(φ↔τ(φ))$
+  \end{nums}
+\end{theorem}
+\end{document}
+%% Local Variables:
+%% compile-command: "xelatex -halt-on-error -file-line-error main.tex"
+%% End:

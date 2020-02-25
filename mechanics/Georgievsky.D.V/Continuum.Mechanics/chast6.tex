@@ -1,0 +1,412 @@
+\part*{ЛИНЕЙНАЯ ТЕОРИЯ УПРУГОСТИ}
+\begin{question}
+Определяющие соотношения в линейной теории упругости. Тензор
+модулей упругости. Тензор термомеханической связанности.
+Теплоемкость при постоянной деформации.
+\end{question}
+
+Тело называется линейно-упругим, если зависимость
+$\underItilde{\sigma}$ от $\underItilde{\varepsilon}$ и $T$ является
+линейной.
+
+Запишем закон Гука для термоупругого тела:
+$$\sigma_{ij}=C_{ijkl}\varepsilon_{kl}-\beta_{ij}(T-T_0).$$
+Обозначим $T\hm-T_0\hm=\vartheta.$
+
+Тензор $\underIdoubletilde{C}\hm=C_{ijkl}\vec e_i\hm\otimes\vec
+e_j\hm\otimes\vec e_k\hm\otimes\vec e_l$ называется тензором
+модулей упругости. Он обладает следующими симметриями:
+$C_{ijkl}=C_{jikl},$ $C_{ijkl}=C_{klij},$ $C_{ijkl}=C_{ijlk}$. В
+связи с этим тензор модулей упругости имеет только $21$ различную
+компоненту.
+
+Тензор $\underItilde{\beta}\hm=\beta_{ij}\vec e_i\hm\otimes\vec e_j$
+называется тензором термомеханической связанности. Он является
+сим\-мет\-рич\-ным.
+
+Зная, что $\sigma_{ij}=\rho\frac{\partial f}{\partial
+\varepsilon_{ij}}$ ($f$~--- удельная свободная энергия Гельмгольца),
+перепишем закон Гука: $\rho f\hm
+=\frac{1}{2}C_{ijkl}\varepsilon_{ij}\varepsilon_{kl}\hm-\beta_{ij}\varepsilon_{ij}(T-T_0)+\eta(T)$.
+
+Воспользуемся равенством: $s=-\frac{\partial f}{\partial T}$ и
+продифференцируем закон Гука по $T$: $\rho
+s\hm=\beta_{ij}\varepsilon_{ij}\hm-\frac{d\eta}{d T}$. Дифференцируя
+равенство, получим $\rho
+ds\hm=\beta_{ij}d\varepsilon_{ij}\hm-\frac{d^2\eta}{d T^2}dT$,
+откуда $\rho \frac{ds}{dT}=-\frac{d^2\eta}{d T^2}$.
+
+Введем обозначение: $\rho
+T(\frac{ds}{dT})_{\varepsilon=const}=C_{\varepsilon}$~---
+теплоемкость при постоянной деформации.
+
+Можно заметить соотношение: $\rho
+\frac{ds}{dt}=\frac{C_{\varepsilon}}{T}=-\frac{d^2\eta}{d T^2}$,
+откуда $-\frac{d\eta}{dT}=C_{\varepsilon}\ln\frac{T}{T_0}$.
+Получим тождество (определяющее соотношение):
+$$
+\rho
+s=\beta_{ij}\varepsilon_{ij}+C_{\varepsilon}\ln\frac{T}{T_0}.
+$$
+
+\begin{question}
+Закон Гука для анизотропного термоупругого тела. Уравнение притока
+тепла. Замк\-ну\-тая система уравнений.
+\end{question}
+
+Запишем уравнение движения в МСС: $\sigma_{ij,j}+\rho
+F_i=\rho\frac{dv_i}{dt} $ и уравнение энтропии: $\rho
+T\frac{ds}{dt}\hm=\rho q-\divergent{\vec q}$. Подставим в них
+определяющие соотношения для $\underItilde{\sigma}$ и $s$. Получатся
+следующие два равенства:
+$$
+(C_{ijkl}\varepsilon_{kl})_{,j}-(\beta_{ij}\vartheta)_{,j}+\rho
+F_i=\rho\frac{d^2u_i}{dt^2},
+$$
+$$
+T\frac{d}{dt}(\beta_{ij}\varepsilon_{ij})+TC_{\varepsilon}
+\frac{d}{dt}\ln\frac{T}{T_0}=\rho q-\divergent{\vec q}.
+$$
+
+Воспользуемся законом Фурье $\vec
+q\hm=-\underItilde{\Lambda}\cdot\grad T$ и следующим равенством:
+$C_{ijkl}\varepsilon_{kl}\hm=C_{ijkl}\frac{1}{2}(u_{k,l}\hm+u_{l,k})\hm=\frac{1}{2}(C_{ijkl}u_{k,l}\hm+C_{ijkl}u_{l,k})\hm=C_{ijkl}u_{k,l}$.
+Получатся следующие уравнения:
+$$
+(C_{ijkl}u_{kl})_{,j}-(\beta_{ij}\vartheta)_{,j}+\rho
+F_i=\rho\frac{d^2u_i}{dt^2}
+$$
+~--- уравнения движения и
+$$
+T\frac{d}{dt}(\beta_{ij}\varepsilon_{ij})+TC_{\varepsilon}\frac{d}{dt}\ln\frac{T}{T_0}
+-\divergent(\underItilde{\Lambda}\cdot\grad T )=\rho q
+$$
+~--- уравнение притока тепла.
+
+Система уравнений называется замкнутой, если число уравнений в ней
+равно числу переменных. В данной системе это так.
+
+\begin{question}
+Виды анизотропии в упругом теле. Ортотропное,
+транс\-вер\-саль\-но--ани\-зо\-троп\-ное и изотропное упругие тела.
+\end{question}
+
+Ортогональные преобразования задаются тензором второго ранга
+$\underItilde{l}$ таким, что $l_{ij}l_{ik}\hm=\delta_{jk}$,
+$l_{ji}l_{ki}\hm=\delta_{jk}$. Векторы при ортогональных
+преобразованиях изменяются так: $\vec e_i\hspace{0pt}'=l_{ik}\vec e_k$,
+$a_i'\hm=l_{im}a_m$. Тензоры изменяются так:
+$\beta_{ij}'\hm=l_{ik}l_{jm}\beta_{km}$,
+$C_{ijkl}\hm=l_{im}l_{jn}l_{kp}l_{lq}C_{mnpq}$.
+
+1) Центральная симметрия $l_{ij}\hm=-\delta_{ij}$. Легко
+проверить, что свойства сохраняются.
+
+2) Ось упругой симметрии порядка $n$~--- это такая ось, при
+повороте вокруг которой на угол $\frac{2\pi}{n}$ свойства
+сохраняются.
+
+Пусть $x_3$~--- ось симметрии второго порядка,
+$$
+l=\left(
+\begin{array}{ccc}
+-1&0&0\\
+0&-1&0\\
+0&0&1
+\end{array}%
+\right).
+$$
+
+$C_{1112}'=C_{1112}$, $C_{1113}'=-C_{1113}$, потому $C_{1113}'=0$,
+$C_{1123}=0$, $C_{2223}=0$, $C_{2213}=0$, $C_{3323}=0$,
+$C_{3331}=0$, $C_{1223}=0$, $C_{1231}=0$ (все, где число троек
+нечетно).
+
+От тензора осталось $13$ констант.
+
+Если осей две, останется девять констант.
+
+Тело называется ортотропным, если у него есть три взаимно
+ортогональные оси упругой симметрии.
+
+3) Ось $x_3$~--- ось симметрии бесконечного порядка~--- свойства
+сохраняются при повороте на любой угол.
+
+Такое тело называется трансверсально-анизотропным. Число независимых
+констант тензора модулей упругости равно пяти.
+
+4) Две оси бесконечного порядка. Упругие свойства сохраняются при
+любых ортогональных преобразованиях. Такое тело называется
+изотропным.
+
+\begin{question}
+Линейная теория упругости изотропного тела. Упругие и термические
+константы упругого тела и их связь. Обратный закон Гука.
+\end{question}
+
+Если тело изотропно, тензор модулей упругости и тензор связанности
+имеют следующий вид: $\beta_{ij}\hm=\gamma\delta_{ij}$,
+$C_{ijkl}\hm=\lambda\delta_{ij}\delta_{kl}\hm+\mu_1\delta_{ik}\delta_{jl}\hm
++\mu_2\delta_{il}\delta_{jk}$. При этом $\mu_1=\mu_2=\mu$, так как
+тензор $c_{ijkl}$ симметричен по парам индексов. Числа $\lambda$ и
+$\mu$ называются постоянными Ламе, $\gamma$~--- коэффициент
+термодинамической связанности.
+
+Запишем закон Гука для изотропного тела
+$\sigma_{ij}\hm=(\lambda\delta_{ij}\delta_{kl}+2\mu\Delta_{ijkl})\varepsilon_{kl}\hm-\gamma\vartheta\delta_{ij}\hm
+=\lambda\theta\delta_{ij}\hm+2\mu\varepsilon_{ij}\hm-\gamma\vartheta\delta_{ij}$.
+
+Лектор обозначает $\varepsilon_{kk}=\theta$, а разницу температур за
+$\vartheta$. Ужас, правда?
+
+Итак, запишем закон Гука иначе:
+$\sigma_{\alpha\alpha}\hm=\lambda\theta\hm+2\mu\varepsilon_{\alpha\alpha}\hm
+-\gamma\vartheta\hm=(\lambda\hm+2\mu)\varepsilon_{\alpha\alpha}\hm
++\lambda(\varepsilon_{\beta\beta}+\varepsilon_{\gamma\gamma})-\gamma\vartheta$;
+$\sigma_{\alpha\beta}\hm=2\mu\varepsilon_{\alpha\beta}$.
+
+Разложим тензоры $\underItilde{\sigma}$ и
+$\underItilde{\varepsilon}$ на девиатор и шаровую часть:
+$\sigma_{ij}=\sigma\delta_{ij}+s_{ij}$,
+$\varepsilon_{ij}=\frac{1}{3}\theta\delta_{ij}+e_{ij}$.
+
+Установим связь между девиаторами и шаровыми частями:
+$$
+3\sigma=(3\lambda+2\mu)\theta-3\gamma\vartheta.
+$$
+
+Обозначим $\lambda+\frac{2}{3}\mu=K$~--- модуль объемного
+растяжения-сжатия. Получилась новая формула:
+$$
+\sigma=K\theta-\gamma\vartheta.
+$$
+
+Девиаторы:
+$s_{ij}\hm=\sigma_{ij}\hm-\sigma\delta_{ij}\hm=\lambda\theta\delta_{ij}\hm
++2\mu\varepsilon_{ij}\hm-\gamma\vartheta\delta_{ij}\hm-(\lambda+\frac{2}{3}\mu)\theta\delta_{ij}\hm
++\gamma\vartheta\delta_{ij}\hm=2\mu\varepsilon_{ij}\hm-\frac{2}{3}\mu\theta\delta_{ij}=2\mu
+e_{ij}$.
+
+Еще одна форма закона Гука:
+
+$$
+\begin{cases}
+\sigma=K\theta-\gamma\vartheta,\\
+\underItilde{s}=2\mu\underItilde{e}.
+\end{cases}
+$$
+
+Из всего этого легко выводится обратный закон Гука (типа для шаровой
+части и девиатора отдельно, потом сольем):
+$$
+\varepsilon_{ij}=\frac{1}{3K}(\sigma+\gamma\vartheta)\delta_{ij}+\frac{s_{ij}}{2\mu}.
+$$
+
+Но это еще не все. Мы введем новые константы:
+$E=\frac{\mu(3\lambda+2\mu)}{\lambda+\mu}$~--- модуль Юнга,
+$\nu=\frac{\lambda}{2(\lambda+\mu)}$~--- коэффициент Пуассона,
+$\alpha=\frac{\gamma}{3K}$~--- коэффициент теплового расширения.
+Обратный закон Гука будет выглядеть так:
+$$
+\varepsilon_{ij}=\frac{1}{E}[-3\nu\sigma\delta_{ij}+(1+\nu)
+\sigma_{ij}]+\alpha\vartheta\delta_{ij}.
+$$
+
+\begin{question}
+Физический смысл упругих констант.
+\end{question}
+
+a) Эксперимент на растяжение-сжатие стержня. Пусть $F$~--- сила,
+$S$~--- площадь поперечного сечения, тогда
+$\sigma_{11}\hm=\frac{|F|}{S}$. Все остальные $\sigma_{ij}\hm=0$. Имеем:
+$\varepsilon_{11}\hm=\frac{1}{E}\sigma_{11}$,
+$\varepsilon_{22}\hm=\varepsilon_{33}\hm=\frac{1}{E}(-\nu\sigma_{11})\hm=-\nu\varepsilon_{11}$.
+Таким образом, $\nu$~--- коэффициент пропорциональности между
+поперечной и продольной деформацией.
+
+б) Эксперимент на сдвиг. В этом случае только $\sigma_{12}$ отлично
+от нуля, получим
+$\varepsilon_{12}\hm=\frac{1+\nu}{E}\sigma_{12}\hm=\frac{\sigma_{12}}{2\mu}$.
+Подставим вместо $\varepsilon_{12}$ его значение. Получится
+$\frac{\partial u}{\partial x_2}\hm=\frac{\sigma_{12}}{\mu}$.
+
+Таким образом, $\mu$~--- коэффициент пропорциональности между
+касательным напряжением и относительным перемещением~--- модуль
+сдвига.
+
+в) Эксперимент на всестороннее сжатие. $\sigma_{\alpha\alpha}\hm=-p_0$.
+Имеем
+$\varepsilon_{11}\hm=\varepsilon_{22}\hm=\varepsilon_{33}\hm=\frac{1}{E}(3\nu
+p_0\hm-(1\hm+\nu)p_0)\hm=-\frac{1-2\nu}{E}p_0\hm=\frac{1-2\nu}{E}\sigma$.
+Преобразуем коэффициент:
+$\frac{1-2\nu}{E}\hm=\frac{1-\frac{\lambda}{\lambda+\mu}}
+{\frac{\mu(3\lambda+2\mu)}{\lambda+\mu}}\hm=\frac{1}{3\lambda+2\mu}\hm=\frac{1}{3K}$.
+
+Получилось $\varepsilon_{\alpha\alpha}=\frac{\sigma}{3K}$.
+
+\emergencystretch=15pt%
+
+\begin{question}
+Постановки начально--краевых задач в теории упругости. Уравнения
+Ламе. Статика, квазистатика и динамика.
+\end{question}
+
+\emergencystretch=5pt%
+
+Пусть имеется некий объем $V$, ограниченный поверхностью
+$\Sigma=\Sigma_u\cup\Sigma_s$. Задана массовая сила $\vec F$,
+действующая на объем. На поверхности $\Sigma_s$ заданы напряжения
+$\vec P_0$, а также $u_i(\vec x,0)$, $\frac{\partial u_i}{\partial
+t}(\vec x,0)$, на $\Sigma_u$ заданы перемещения $u_i(\vec x,t)$.
+Требуется найти $\vec u(\vec x,t)$, $\underItilde{\varepsilon}$ и
+$\underItilde{\sigma}$.
+
+Итак, постановка задачи:
+$$
+\begin{cases}
+\sigma_{ij,j}\hm+\rho F_i\hm=\rho\frac{\partial^2 u_i}{\partial t^2},\\
+\varepsilon_{ij}=\frac{1}{2}(u_{i,j}+u_{j,i}),\\
+\sigma_{ij}=\lambda\theta\delta_{ij}+2\mu\varepsilon_{ij}.
+\end{cases}
+$$
+$15$ уравнений, $15$ неизвестных.
+
+\underline{Уравнения Ламе.} Запишем
+уравнения движения: $\sigma_{ij,j}\hm+\rho
+F_i\hm=\rho\frac{\partial^2 u_i}{\partial t^2}$. Подставим вместо
+$\sigma_{ij}$ его значение из закона Гука. Получится:
+$\lambda\theta_{,j}\delta_{ij}\hm+\mu\varepsilon_{ij,j}\hm+\rho
+F_i\hm=\rho \frac{\partial^2 u_i}{\partial t^2}$.
+
+Воспользуемся равенствами:
+$\varepsilon_{ij}\hm=\frac{1}{2}(u_{i,j}\hm+u_{j,i})$,
+$\theta\hm=u_{i,i}\hm=\divergent \vec u$. Получится: $\lambda
+u_{k,k}\hm+\mu(u_{i,jj}\hm+u_{j,ij})\hm+\rho F_i\hm=\rho \frac{\partial^2
+u_i}{\partial t^2}$. Отсюда получаем уравнения Ламе:
+$$
+(\lambda+\mu)\grad\divergent\vec u+\mu\Delta\vec u+\rho \vec F=\rho \frac{\partial^2
+u_i}{\partial t^2}.
+$$
+
+\underline{Статика.}  Начальных условий нет, $\sigma_{ij,j}+\rho
+F_i=0$.
+
+\underline{Квазистатика.} Всеми динамическими эффектами можно
+пренебречь. Уравнения те же.
+
+\underline{Динамика.} Общий случай, то есть все остальное.
+
+\begin{question}
+Единственность решения квазистатической задачи теории упругости.
+\end{question}
+
+При каких $\lambda$, $\mu$ решение изотропной упругой задачи
+единственно?
+
+Пусть существуют два решения
+$\{u_i^1,\varepsilon_{ij}^1,\sigma_{ij}^1\}$,
+$\{u_i^2,\varepsilon_{ij}^2,\sigma_{ij}^2\}$. Рассмотрим их
+разность: $u_i\hm=u_i^1\hm-u_i^2$,
+$\varepsilon_{ij}\hm=\varepsilon_{ij}^1\hm-\varepsilon_{ij}^2$,
+$\sigma_{ij}\hm=\sigma_{ij}^1\hm-\sigma_{ij}^2$. Разность будет решением
+однородной системы:
+$$
+\begin{cases}
+\sigma_{ij,j}\hm=0; \\
+\varepsilon_{ij}=\frac{1}{2}(u_{i,j}+u_{j,i}),\\
+\sigma_{ij}=K\theta\delta_{ij}+2\mu e_{ij}.
+\end{cases}
+$$
+
+Запишем цепочку равенств:
+\begin{equation*}
+\begin{split}
+0&=\int_V\sigma_{ij,j}u_idV=\int_V(\sigma_{ij}u_i)_{,j}dV-\int_V\sigma_{ij}u_{i,j}dV=\\
+&=\int_{\Sigma_u}\sigma_{ij}u_in_jd\Sigma+\int_{\Sigma_s}\sigma_{ij}u_in_jd\Sigma
+-\int_V\sigma_{ij}\varepsilon_{ij}dV=-\int_V\sigma_{ij}\varepsilon_{ij}dV.
+\end{split}
+\end{equation*}
+
+Распишем выражение под интегралом:
+$$
+\sigma_{ij}\varepsilon_{ij}\hm=(K\theta\delta_{ij}\hm+2\mu e_{ij}
+)(e_{ij}+\frac{1}{3}\theta\delta_{ij})=K\theta^2+2\mu
+e_{ij}e_{ij}.
+$$
+
+Решение единственно, если $K$ и $\mu$ положительны. \sout{Оба
+отрицательны не бывают.} 
+
+\begin{question}
+Задачи теории упругости в перемещениях и напряжениях. Уравнения
+совместности Бельтрами-Мичелла.
+\end{question}
+
+\underline{Постановка в перемещениях.} Следующее равенство вытекает
+из постановки задачи:
+$\lambda\theta_{,j}\hm+2\mu\varepsilon_{ij,j}\hm+\rho F_i\hm=0$. Заметим, что
+$\theta\hm=u_{k,k}$, $\varepsilon_{ij}\hm=\frac{1}{2}(u_{i,j}\hm+u_{j,i})$.
+Перепишем равенство: $\lambda u_{k,ki}\hm+\mu(u_{i,jj}\hm+u_{j,ij})\hm+\rho
+F_i\hm=0$. После приведения подобных получим уравнения Ламе:
+$$
+(\lambda+\mu)u_{j,ji}+\mu u_{i,jj}+\rho F_i=0.
+$$
+
+Векторный вид:
+$$
+(\lambda+\mu)\grad\divergent\vec u+\mu\Delta\vec u+\rho \vec F=0.
+$$
+
+\underline{Постановка в напряжениях.}
+$$
+\sigma_{ij,j}+\rho F_i=0.
+$$
+Распишем все это: $(\lambda\hm+\mu) u_{j,ij}\hm+\mu u_{i,jj}\hm+\rho F_i\hm=0$.
+Продифференцируем по $x_k$: $(\lambda\hm+\mu) u_{j,kij}\hm+\mu
+u_{i,kjj}\hm+\rho F_{i,k}\hm=0$. Теперь поменяем местами $i$ и $k$:
+$(\lambda\hm+\mu) u_{j,ikj}\hm+\mu u_{i,kjj}\hm+\rho F_{k,i}\hm=0$.
+Сложим равенства. Получится вот что:
+$$
+2(\lambda+\mu)\theta_{ik}+2\mu\Delta\varepsilon_{ik}+\rho(F_{i,k}+F_{k,i})=0.
+$$
+
+Теперь применим равенства: $\theta=\frac{\sigma}{\lambda+2/3\mu}$,
+$e_{ij}=\frac{s_{ij}}{2\mu}$. Получится:
+$$
+\frac{2(\lambda+\mu)}{\lambda+2/3\mu}\sigma_{,ik}+\Delta s_{ik}+
+\frac{2\mu}{3\lambda+2\mu}\Delta\sigma\delta_{ik}+\rho(F_{i,k}+F_{k,i})=0.
+$$
+
+Свернем по $i$ и $k$:
+$$
+\frac{6(\lambda+\mu)}{3\lambda+2\mu}\Delta\sigma+
+\frac{6\mu}{3\lambda+2\mu}\Delta\sigma+2\rho\divergent\vec F=0.
+$$
+Отсюда получится постановка в напряжениях:
+$$
+\Delta\sigma=-\frac{3\lambda+2\mu}{3(\lambda+2\mu)}\rho\divergent
+F.
+$$
+
+Возьмем то, что было перед сверткой, перепишем $s_{ik}$ как
+$\sigma_{ik}-\sigma\delta_{ik}$:
+$$
+\frac{2(\lambda+\mu)}{\lambda+2/3\mu}\sigma_{,ik}+\Delta \sigma_{ik}
+-\Delta\sigma\delta_{ik}+\frac{2\mu}{3\lambda+2\mu}\Delta\sigma\delta_{ik}+
+\rho(F_{i,k}+F_{k,i})=0.
+$$
+
+Вместо $\Delta\sigma$ подставим его значение. Получится:
+$$
+\frac{2(\lambda+\mu)}{\lambda+2/3\mu}\sigma_{,ik}+\Delta
+\sigma_{ik}+\frac{3\lambda+2\mu}{3(\lambda+2\mu)}\frac{3\lambda}{3\lambda+2\mu}\Delta\sigma\delta_{ik}+
+\rho(F_{i,k}+F_{k,i})=0.
+$$
+
+Воспользуемся равенством $\nu=\frac{\lambda}{2(\lambda+\mu)}$.
+Получим уравнения совместимости Бельтрами-Мичелла:
+$$
+\Delta\sigma_{ik}+\frac{3}{1+\nu}\sigma_{,ik}+
+\frac{\nu}{1-\nu}\delta_{ik}\rho\divergent\vec
+F+\rho(F_{i,k}+F_{k,i})=0.
+$$

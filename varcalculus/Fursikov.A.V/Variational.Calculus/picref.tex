@@ -1,0 +1,17 @@
+\newread\reffilein
+\newwrite\reffileout
+
+\def\piclabel#1#2{\immediate\write\reffileout{\string\def
+    \string\picref#1\string{#2\string}}}
+
+\def\picref#1{\expandafter\ifx\csname picref#1\endcsname\relax??%
+    \message{Picture label `#1' undefined}\else
+    \csname picref#1\endcsname\fi}
+
+\immediate\openin\reffilein=\jobname.ref
+\ifeof\reffilein\relax\else\input \jobname.ref\fi
+\immediate\closein\reffilein
+
+\immediate\openout\reffileout=\jobname.ref \relax
+
+\endinput

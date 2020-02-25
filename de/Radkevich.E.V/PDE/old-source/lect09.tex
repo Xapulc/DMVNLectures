@@ -1,0 +1,601 @@
+
+\documentclass[10pt]{article}
+\usepackage[russian]{babel}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{graphicx}
+
+
+\sloppy \textwidth18cm \textheight25cm \hoffset-2.5cm \voffset-3cm
+\parindent=0cm
+\parskip=2.5mm
+\unitlength=1cm
+
+
+
+
+\def\R{{\bf R}}
+\def\ve{{\varepsilon}}
+\def\pa{{\partial}}
+\def\{{\protect\lbrace}
+\def\}{\protect\rbrace}
+\let\no\operatorname
+\let\cal\mathcal
+\let\lm\limits
+\let\<\langle
+\let\>\rangle
+\let\ds\displaystyle
+\def\S{$\mathchar"278$}
+
+\def\va{{\varphi}}
+\def\ve{{\varepsilon}}
+\def\pa{{\partial}}
+\def\t{{\tau}}
+
+\def\cK{{\cal K}}
+\def\ot{{\overline{\theta}}}
+\def\oA{{\overline{A}}}
+\def\od{{\stackrel{\rm def} {=} }}
+\def\bS{{\bf S}}
+\def\ch{{\no{ch}}}
+
+\def\Const{{\rm Const}}\def\l{\left}
+\def\r{\right}
+\def\div{{\rm div}}
+\def\eq{{\no{eq}}}
+\def\lin{{\no{lin}}}
+\def\ext{{\no{ext}}}
+\def\var{{\no{var}}}
+
+\def\bG{{\bf G}}
+\def\pa{\partial}
+\def\cO{{\cal O}}
+
+
+
+\newcommand{\dist}{\mathop{\rm dist}\nolimits}
+\newcommand{\const}{\mathop{\rm const}\nolimits}
+\newcommand{\str}{\mathop{\rm str}\nolimits}
+\newcommand{\as}{\mathop{\rm as}\nolimits}
+\newcommand{\an}{\mathop{\rm an}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\renewcommand{\div}{\mathop{\rm div}\nolimits}
+\renewcommand{\Im}{\mathop{\rm Im}\nolimits}
+\renewcommand{\Re}{\mathop{\rm Re}\nolimits}
+\newcommand{\proof}{{\bf Доказательство.\quad}}
+\newtheorem{defi}{Определение}[section]
+\newtheorem{theo}{Теорема}[section]
+\newtheorem{lem}{Лемма}[section]
+\newtheorem{cond}{Условие}[section]
+\newtheorem{app}{Аррендикс}[section]
+\newtheorem{conc}{Заключение}[section]
+\newtheorem{comm}{Комментарий}
+\newtheorem{prop}{Предложение}[section]
+\newtheorem{cor}{Следствие}[section]
+\newtheorem{rem}{Замечание}[section]
+\newtheorem{exm}{Пример}[section]
+\newtheorem{prob}{Задача}[section]
+\newtheorem{design}{Обозначение}[section]
+
+\begin{document}
+
+{\large\bf Лекция 9,~~~I семестр,~~~ лектор профессор Е.В.
+Радкевич }
+
+\bigskip
+{\large\bf Классическое решение задачи Коши для волнового
+уравнения}
+\bigskip
+
+{\bf Плоские, поверхностные и цилиндрические волны}
+
+Плоской волной называется решение уравнения
+\begin{equation}
+\pa_t^2u=a^2\Box~u,~~~~\Box=\sum_{j=1}^n\pa_{x_j}^2,\label{1}
+\end{equation}
+которое при фиксированном $t$ постоянно на каждой плоскости,
+параллельной некоторой заданной плоскости. Поворотом в $x-$
+пространстве легко добиться того, чтобы рассматриваемое семейство
+плоскостей имело вид $x_1=\const$. Тогда плоская волна--это
+решение уравнения (\ref{1}), зависящее лишь от $t$ и $x_1$. Но
+тогда оно является решением одномерного волнового уравнения
+$$
+\pa_t^2u=a^2\pa_x^2u,
+$$
+т.е. имеет вид
+$$
+u(t,x)=f(x_1-at)+g(x_1-at),
+$$
+с любыми произвольными функциями $f,g$. До поворота каждое
+слагаемое имело очевидно вид $f(k\dot\,x-at),~k\in~R,|k|=1.$ Чтобы
+сделать аргумент функции $f$ безразмерной величиной в физике и
+механике используется другой способ записи
+$f(k\dot\,x-\omega\,t)$, где $k$ уже не единичный вектор. Если $t$
+измеряется в секундах, $x$ в метрахб то $\omega$-в $1/\mbox{сек}$,
+а $k$ в $1/\mbox{м}$. Подставляя решение типа плоской волны в
+(\ref{1}) получим дисперсионное уравнение
+$$
+\omega^2-a^2|k|^2=0
+$$
+Ясно, что скорость движения фронта плоской воны
+$f(k\dot\,x-at)$(т.е. плоскости, где $f$ имеет данное значение)
+равна $a=\omega/|k|$. Уравнение такого фронта
+$k\dot\,x-at=\const$. Важный пример плоской волны
+$e^{i(k\dot\,x-at)}$. В этом случае каждая фиксированная точка $x$
+совершает синусоидальные колебания с частотой $\omega$, а при
+фиксированном $t$ волна синусоидально зависит от $k\dot\,x$, так
+что происходит синусоидальное изменение по направлению вектора $k$
+со скоростью $|k|$. Вектор $k$ называют волновым вектором
+
+Далее будем считать, что размерность $n=3$ и изучим сферические
+волны--решения (\ref{1}), зависящие только от $t$ и $r=|x|$, т.е.
+$u=u(t,r)$:
+\begin{equation}
+\frac1{a^2}\pa_t^2u=\pa_r^2u+\frac2r~\pa_ru\label{2}
+\end{equation}
+Если умножить на $r$, получим
+$$
+\frac1{a^2}\pa_t^2(ru)=\pa_r^2(ru),
+$$
+откуда опять получим $ru=f(r-at)+g(r+at)$, т.е.
+$$
+u(t,r)=\frac{f(r-at)}r+\frac{g(r+at)}r.
+$$
+Это общий вид сферической волны. Волна $\frac{f(r-at)}r$
+расходится от точки $0\in\,R^3$, волна же $\frac{g(r-at)}r$
+наоборот, сходится к ней. В электродинамике обычно рассматривают
+вону, расходящуюся от источника. Фронтом расходящейся от источника
+волны естественно считать сферу $r-at=\const$. Скорость
+распространения фронта попрежнему $a$.
+
+Что такое--цилиндрическая волна? Это решения, зависящие от $t$ и
+рассиояния до оси $x_3$, т.е.
+$u=u(t,\varrho),~\varrho=\sqrt{x_1^2+x_2^2}$--решение уравнения
+для $n=2$. Однако его удобно считать решением для $n=3$,
+независящим от $x_3$. Один из способов построения цилиндрической
+волны--взять суперпозицию одинаковых сферических волн,
+расходящихся из всех точек оси $x_3$ (или к ней сходящихся). Пусть
+$e_3$ единичный вектор, направленный по оси $x_3$. Тогда
+цилиндрическая волна
+\begin{equation}
+v(t,x)=\int^{+\infty}_{-\infty}\frac{f(|x-ze_3|-at)}{|x-ze_3|}dz+
+\int^{+\infty}_{-\infty}\frac{g(|x-ze_3|-at)}{|x-ze_3|}dz\label{3}
+\end{equation}
+Положим
+$$
+r=|x-ze_3|=\sqrt{\varrho^2+(x_3-z)^2},~~\varrho=\sqrt{x_1^2+x_2^2}.
+$$
+
+Ясно что $v(x,t)$ не зависит от $x_3$ и зависит лишь от
+$(t,\varrho)$. Можно считать, что $x_3=0$( сдвиг по $z$). Тогда
+под знаком интегралов стоят четные функции от $z$ и интеграл
+достаточно сосчитать от $0$ до $+\infty$. Введем $r$ в качестве
+переменной интегрирования вместо $z$, тогда
+$$
+dr=\frac{z}rdz,~~dz=\frac{r}zdr=\frac{r}{\sqrt{r^2-\varrho^2}}dr
+$$
+$$
+v(t,\varrho)=2\int_0^{\infty}\frac{f(r-at)}{\sqrt{r^2-\varrho^2}}dr+
+2\int_0^{\infty}\frac{g(r+at)}{\sqrt{r^2-\varrho^2}}dr
+$$
+
+или
+$$
+v(t,\varrho)=2\int_{\varrho-at}^{\infty}\frac{f(\xi)}{\sqrt{(\xi+at)^2-\varrho^2}}dr+
+2\int_0^{\infty}\frac{g(\xi)}{\sqrt{(\xi-at)^2-\varrho^2}}dr
+$$
+
+Интегралы сходятся, если
+$$
+\int_M^\infty\frac{|f(\xi)|}{|\xi|}d\xi<\infty,~~\int_M^\infty\frac{|g(\xi)|}{|\xi|}d\xi<\infty,~~M>0.
+$$
+Другой способ получения цилиндрической волны--искать ее в виде
+$v(\varrho,t)=e^{i\omega~t}f(\varrho)$. Тогда $f$- решение
+уравнения
+$$
+f''+\frac1\varrho~f'+k^2f=0,~~~k=\frac\omega{a}.
+$$
+Теперь можно взять суперпозицию таких монохроматических волн,
+интегрируя пл $\omega$.
+\bigskip
+
+{\large\bf Сферические волны от мгновенной вспышки.} Рассмотрим
+обощенную расходящуюся волну
+$$
+\frac{\delta(r-at)}r=\frac{\delta(r-at)}{at},~~~r=|x|,
+$$
+(ее можно считать обобщенной функцией по $x$, зависящей от
+параметра $t$), которую определим как слабый предел
+$$
+\frac{\delta(r-at)}r=\lim_{j\to\infty}\frac{f_j(r-at)}r
+$$
+где $f_j$- $\delta$ образная последовательность ($f_j(s)\in
+C^\infty_0(R^1),f_j\ge=,f_j=0~forall|s|\ge1/k,$ и $\int~f_jds=1$.
+Имеем
+$$
+<f_j(r-at),\varphi>=\int_{R^3}f(|x|-at)\varphi(x)dx=\int_0^\infty~f_j(r-at)\Big(\int_{|x|=r}\varphi(x)dS_r\Big)dr,
+$$
+где $dS_r$ элемент площади поверхности сферы радиуса $r$. Ясно что
+интеграл $\int_{|x|=r}\varphi(x)dS_r$ является $c^\infty$ функцией
+от $r,~r>0.$ Поскольку $\lim_{j\to\infty}f_j(s)=\delta(s)$, то
+$$
+<\delta(r-at),\varphi>=\lim_{j\to\infty}<f_j(r-at)\varphi>=\int_{|x|=r}\varphi(x)dS_r
+=\lim_{j\to\infty}<f_j(r-at)\varphi>=\int_{|x|=r}\varphi(x)dS_{at}
+$$
+Если перейти к интегрированию по единичной сфере, получим
+$$
+<\delta(r-at),\varphi>=a^2t^2~\int_{|xэ|=1}\varphi(at~x')dS_1.
+$$
+Отсюда
+\begin{equation}
+<\frac{\delta(r-at)}r,\varphi>=a~t~\int_{|xэ|=1}\varphi(at~x')dS_1.\label{7}
+\end{equation}
+Полезно изучить зависимость от параметра $t$. Очевидно
+$\frac{\delta(r-at)}r=0,~t<0$ и, по непрерывности (см. (\ref{7}))
+$$
+\frac{\delta(r-at)}r|_{t=0}=0.
+$$
+Наконец из (\ref{7})следует $C^\infty$ этой обобщенной функции по
+$t$:
+$$
+{\frac{d}{dt}\frac{\delta(r-at)}r,\varphi>=\frac{d}{dt}<\frac{\delta(r-at)}r,\varphi>=
+a\int_{|x'|=1}\varphi(atx')dS_1+a^2t\sum_{j=1}^3\int_{|x'|=1}~x_j\pa_{x_j}\varphi*atx'}dS_1.
+$$
+Отсюда следует, что
+$$
+\lin_{t\to+0}\pa_t\Big(\frac{\delta(r-at)}r\Big)=4\pi\,a\delta(x).
+$$
+\bigskip
+
+{\large\bf Формула Кирхгофа}
+
+
+По произвольной функции $g(x)\in C^2(\R^3)$ построим функцию
+$M_g(t,x)$, $t>0$, по следующему правилу:
+\begin{equation}
+M_g(t,x)=\frac 1{4\pi a^2t}\int_{|\xi -x|=at}g(\xi )dS_\xi ,
+\label{Mg}
+\end{equation}
+$dS_\xi $ --- элемент площади на сфере радиуса $at$ (с центром в
+$x$). Или, делая замену переменных в (\ref{Mg}) $\xi =x+at\eta $,
+$dS_\xi=(at)^2dS_\eta $, где $dS_\eta $ --- элемент площади на
+единичной сфере (с центром в $0$), получаем другой вид оператора
+$M_g(t,x)$ :
+\begin{equation}
+M_g(t,x)=\frac t{4\pi }\int_{|\eta |=1}g(x+at\eta )dS_\eta ,
+\label{Mg0}
+\end{equation}
+Из этого представления в частности видно, что гладкость функции
+$M_g(t,x)$ совпадает с гладкостью функции $g(x)$.
+
+\begin{prop}\label{PrMg}
+Для любой функции $g(x)\in C^2(\R^3)$ имеем:
+\begin{eqnarray}
+\frac{\partial ^2}{\partial t^2}M_g(t,x)&=&a^2\Delta M_g(t,x),
+\qquad t>0,\quad x\in \R^3,  \label{Mg1} \\
+M_g(t,x)\Big| _{t=0}&=&0,  \label{Mg2} \\
+\frac{\partial M_g(t,x)}{\partial t}\Big| _{t=0}&=&g(x).
+\label{Mg3}
+\end{eqnarray}
+\end{prop}
+
+\begin{proof}
+Начальное условие (\ref{Mg2}) --- очевидное следствие (\ref{Mg0}).
+
+Из (\ref{Mg0}) также находим:
+\begin{equation}
+\frac \partial {\partial t}M_g(t,x) =\frac 1{4\pi }\int_{|\eta
+|=1}g(x+at\eta)dS_\eta +\frac t{4\pi }\int_{|\eta |=1}\left(
+\nabla g(x+at\eta ),a\eta\right) dS_\eta . \label{q1}
+\end{equation}
+Учитывая то, что $g(x)$ --- гладкая функция, имеем
+$$
+\frac{\partial M_g(t,x)}{\partial t}\Big|_{t=0} =\frac 1{4\pi
+}\int_{|\eta |=1}g(x)dS_\eta =g(x),
+$$
+и начальное условие (\ref{Mg3}) также имеет место.
+
+Для доказательства (\ref{Mg1}) преобразуем равенство (\ref{q1})\ к
+виду:
+\begin{eqnarray}
+\frac \partial {\partial t}M_g(t,x) &=&\frac{M_g}t+\frac{at}{4\pi
+} \int_{|\eta |=1}\left( \nabla g(x+at\eta ),\eta \right) dS_\eta
+\label{q2} \\
+&=&\frac{M_g}t+\frac 1{4\pi at}\int_{|\xi -x|=at} \left( \nabla
+g(\xi ),\eta \right) dS_\xi =\frac{M_g}t+\frac 1{4\pi
+at}\int_{|\xi -x|<at}\Delta g(\xi)d\xi . \nonumber
+\end{eqnarray}
+Здесь мы вновь вернулись к переменным $\xi =x+at\eta $, а затем
+поток векторного поля $\nabla g(\xi )$ через поверхность сферы
+$|\xi -x|=at$ ($\eta $ --- в точности вектор единичной нормали к
+этой сфере) преобразовали,\ в соответствием с формулой
+Гаусса--Остроградского, к интегралу от дивергенции $\mathop{\rm
+div}\left( \nabla g(\xi )\right)=\Delta g(\xi )$ по шару $|\xi
+-x|<at$. Далее, дифференцируя (\ref{q2}) по $t$ еще раз, имеем
+\begin{equation}
+\frac{\partial ^2}{\partial t^2}M_g(t,x)=\frac 1{4\pi at}\frac
+\partial {\partial t}\left( \int_{|\xi -x|<at}\Delta g(\xi )d\xi
+\right) , \label{q3}
+\end{equation}
+так как
+\begin{eqnarray*}
+\frac \partial {\partial t}\left( \frac{M_g}t\right) &=&\frac
+1t\frac\partial {\partial t}M_g-\frac{M_g}{t^2}
+=\frac{M_g}{t^2}+\frac 1{4\pi at^2}\int_{|\xi -x|<at}\Delta g(\xi
+)d\xi
+-\frac{M_g}{t^2} \\
+&=&\frac 1{4\pi at^2}\int_{|\xi -x|<at}\Delta g(\xi )d\xi ; \\
+\frac \partial {\partial t}\left( \frac 1{4\pi at}\int_{|\xi
+-x|<at} \Delta g(\xi )d\xi \right) &=&-\frac 1{4\pi
+at^2}\int_{|\xi -x|<at}\Delta g(\xi)d\xi +\frac 1{4\pi at}\frac
+\partial {\partial t} \left( \int_{|\xi-x|<at}\Delta g(\xi )d\xi
+\right).
+\end{eqnarray*}
+Производная в правой части (\ref{q3}) легко считается, если
+перейти к сферическим координатам:
+\begin{eqnarray*}
+\frac\partial{\partial t}\left(\int_{|\xi-x|<at}\Delta g(\xi
+)d\xi\right) &=&\frac \partial {\partial
+t}\left(\int_0^{at}\int_{|\eta|=1} \Delta g(x+r\eta )r^2dS_\eta
+dr\right)
+=a\int_{|\eta |=1}\Delta g(x+at\eta )(at)^2dS_\eta \\
+&=&a(at)^2\int_{|\eta |=1}\Delta g(x+at\eta )dS_\eta .
+\end{eqnarray*}
+Отсюда
+$$
+\frac{\partial ^2}{\partial t^2}M_g(t,x)=\frac{a^2t}{4\pi }
+\int_{|\eta|=1}\Delta g(x+at\eta )dS_\eta .
+$$
+
+С другой стороны, из (\ref{Mg0}) имеем:
+$$
+\Delta M_g(t,x)=\frac t{4\pi }\int_{|\eta |=1}\Delta g(x+at\eta
+)dS_\eta ,
+$$
+и (\ref{Mg1}) доказано.
+\end{proof}
+
+\begin{theo}
+Пусть $\varphi (x)\in C^3(\R^3)$, $\psi (x)\in C^2(\R^3)$. Тогда
+решение задачи Коши
+\begin{equation}
+\left\{
+\begin{array}{l}
+u_{tt}=a^2\Delta u(t,x),\qquad t>0,\quad x\in \R^3, \\
+u|_{t=0}=\varphi (x),\qquad \left. u_t\right| _{t=0}=\psi (x).
+\end{array}
+\right.   \label{Cauchy1}
+\end{equation}
+задается \emph{формулой Кирхгофа}
+\begin{equation}
+u(t,x)=\frac \partial {\partial t}M_\varphi (t,x)+M_\psi (t,x),
+\label{Kir}
+\end{equation}
+где оператор $M$ определен в {\rm (\ref{Mg})--(\ref{Mg0})}.
+\end{theo}
+
+\begin{proof}
+Действительно, как доказано в Предложении \ref{PrMg}, функция
+$u^{II}(t,x)\equiv M_\psi (t,x)$ является решением задачи Коши
+\begin{equation}
+u_{tt}^{II}=a^2\Delta u^{II}(t,x),\qquad  u^{II}\Big|_{t=0}=0,
+\qquad u_t^{II}\Big| _{t=0}=\psi (x).  \label{Cauchy2}
+\end{equation}
+Покажем, что функция $u^I(t,x)\equiv \partial M_\varphi
+(t,x)/\partial t$ является решением следующей задачи:
+\begin{equation}
+u_{tt}^I=a^2\Delta u^I(t,x),\qquad \left. u^I\right|
+_{t=0}=\varphi (x),\qquad \left. u_t^{II}\right| _{t=0}=0.
+\label{Cauchy3}
+\end{equation}
+
+Действительно, так как $\varphi (x)\in C^3(\R^3)$, то $M_\varphi
+(t,x)\in C^3(R_{+}\times \R^3)$, и поскольку функция $M_\varphi
+(t,x)$ удовлетворяет волновому уравнению, то и $u^I$, как
+производная $M_\varphi (t,x)$, также удовлетворяют этому
+уравнению.  В силу (\ref{Mg3}) получаем
+$$
+u^I\Big| _{t=0}=\frac \partial {\partial
+t}M_\varphi(t,x)\Big|_{t=0} =\varphi (x),
+$$
+а ввиду (\ref{Mg1}) и (\ref{Mg2}) имеем:
+$$
+\frac{\partial u^I}{\partial t}\Big|_{t=0}
+=\frac{\partial^2}{\partial t^2}M_\varphi (t,x)\Big|_{t=0}
+=a^2\Delta M_\varphi (t,x)\Big|_{t=0}=0.
+$$
+
+Из (\ref{Cauchy2}) и (\ref{Cauchy3}) следует, что функция
+$u(t,x)=u^I(t,x)+u^{II}(t,x)$ удовлетворяет~(\ref{Cauchy1}).
+\end{proof}
+
+{\large\bf Метод спуска. Решение задачи Коши в случае $n=2$.
+Формула Пуассона}
+
+Решим теперь задачу Коши в случае двух пространственных
+переменных, то есть $x\in \R^2$. Здравый смысл подсказывает, что,
+уменьшив количество переменных, мы не должны получить более
+сложную задачу. И дело действительно обстоит так. Метод,
+позволяющий свести задачу меньшей размерности к задаче большей
+размерности, называется \emph{метод спуска}. Изложим его.
+
+Пусть $u(t,x)=u(t,x_1,x_2,x_3)$ --- решение трехмерной по
+пространственным переменным задачи Коши (\ref{Cauchy1}) для
+уравнения теплопроводности
+$$
+\frac{\partial ^2u}{\partial t^2}= a^2\left(\frac{\partial
+^2u}{\partial x_1^2} +\frac{\partial ^2u}{\partial x_2^2}
++\frac{\partial ^2u}{\partial x_3^2}\right),
+$$
+и пусть начальные функции $\varphi $ и $\psi $ не зависят от
+третьей пространственной переменной $x_3$, то есть $\varphi
+=\varphi (x_1,x_2)$, $\psi =\psi (x_1,x_2)$. Заметим, что решение
+этой задачи мы знаем, и оно задается формулой Кирхгофа
+(\ref{Kir}), где интегрирование функций $\varphi $ и $\psi $ идет
+по сферам в пространстве $\R^3$.
+
+Сделаем сдвиг по оси $x_3$ на произвольное число $x_3^0\in\R$. С
+одной стороны, функция $u(t,x)$ перейдет в $\tilde
+u(t,x)=u(t,x_1,x_2,x_3+x_3^0)$. С другой стороны, уравнение
+теплопроводности от сдвига по одной из осей не меняется, как и не
+меняются при сдвиге по оси~$x_3$ начальные условия $\varphi $
+и~$\psi $. Это означает, что $\tilde u(t,x)$ является решением той
+же самой задачи Коши~(\ref{Cauchy1}), что и функция $u(t,x)$. В
+силу единственности решения этой задачи, $\tilde u(t,x)\equiv
+u(t,x)$, то есть
+$$
+u(t,x_1,x_2,x_3+x_3^0)=u(t,x_1,x_2,x_3)\qquad \forall x_3^0\in\R.
+$$
+Последнее в точности означает, что функция $u(t,x)$ не зависит от
+$x_3$; $u=u(t,x_1,x_2)$. Значит, $\partial ^2u/\partial x_3^2=0$,
+и функция $u(t,x)$ является решением уравнения
+$$
+\frac{\partial ^2u}{\partial t^2}= a^2\left(\frac{\partial
+^2u}{\partial x_1^2} +\frac{\partial ^2u}{\partial x_2^2}\right).
+$$
+
+Таким образом мы получаем, что функция $u(t,x)$, задаваемая
+формулой Кирхгофа~(\ref{Kir}), является и решением двумерной по
+пространственным переменным задачи Коши~(\ref{Cauchy1}) для
+уравнения теплопроводности, если начальные функции $\varphi
+(x_1,x_2)$ и $\psi (x_1,x_2)$ считать заданными в $\R^3$, но не
+зависящими от $x_3$. Правда, в этом случае интегрирование по сфере
+в $\R^3$, через которое задаются $M_\varphi $ и $M_\psi $
+(см.~(\ref{Mg})), разумно свести к интегрированию по пространству
+$\R^2$. Проделаем это сведение.
+
+Сфера радиуса $R$ с центром в точке $x=(x_1,x_2,x_3)$ проецируется
+в круг того же радиуса с центром в $(x_1,x_2)$. Элемент площади на
+сфере $dS$ и элемент площади на круге $d\xi =d\xi _1d\xi _2$
+связаны соотношением $d\xi =dS\cos \gamma $, где $\gamma $ ---
+угол между плоскостью, касательной к сфере, и плоскостью
+$(x_1,x_2), $ или, что то же самое, угол между нормалью к сфере и
+осью $x_3$ (являющейся нормалью к плоскости $(x_1,x_2)$). Легко
+видеть, что $\sin \gamma $ равен отношению проекции радиуса сферы
+на плоскость $(x_1,x_2)$ к самому радиусу $R$, то есть
+$$
+\sin \gamma =\frac{|\xi -x|}R=\frac{\sqrt{(\xi _1-x_1)^2 +(\xi
+_2-x_2)^2}}R,\qquad \cos \gamma=\frac{\sqrt{R^2-|\xi -x|^2}}R.
+$$
+Еще учтем, что $R=at$, а также то, что в каждую точку круга
+проецируются две точки сферы (с ``верхней'' и ``нижней''
+половинок), и получаем окончательно, что формула~(\ref{Mg})
+переписывается в двумерном случае так:
+$$
+M_g(t,x)=\frac 1{4\pi a^2t}\int_{|\xi -x|\leq at}g(\xi )
+\frac{2d\xi _1d\xi _2}{\cos \gamma } =\frac{2at}{4\pi
+a^2t}\int_{|\xi -x|\leq at} \frac{g(\xi )d\xi_1d\xi
+_2}{\sqrt{(at)^2-|\xi -x|^2}}.
+$$
+Окончательно имеем
+\begin{equation}
+M_g(t,x)=\frac 1{2\pi a}\int_{|\xi -x|\leq at}\frac{g(\xi )d\xi
+_1d\xi _2} {\sqrt{(at)^2-(\xi _1-x_1)^2-(\xi _2-x_2)^2}}.
+\label{Mg22}
+\end{equation}
+
+Итак, нами доказана следующая теорема.
+
+\begin{theo}
+Пусть $\varphi(x)\in C^3(\R^2)$, $\psi(x)\in C^2(\R^2)$. Тогда
+решение задачи Коши
+$$
+\left\{
+\begin{array}{l}
+u_{tt}=a^2\Delta u(t,x),\qquad t>0,\quad x\in \R^2, \\
+u|_{t=0}=\varphi (x),\qquad \left. u_t\right| _{t=0}=\psi (x).
+\end{array}
+\right.
+$$
+задается \emph{формулой Пуассона}
+$$
+u(t,x)=\frac \partial {\partial t}M_\varphi (t,x)+M_\psi (t,x),
+$$
+где оператор $M$ определен в {\rm (\ref{Mg22})}.
+\end{theo}
+
+\subsection{Формула Даламбера для уравнения струны}
+
+Естественно, из трехмерного пространства можно ``спуститься'' не
+только в двумерное, но и в одномерное пространство, получив
+\emph{формулу Даламбера} (см.~(\ref{Dal}) ниже) решения задачи
+Коши для уравнения струны (напомним, что уравнение струны --- это
+есть одномерное по пространственным переменным волновое
+уравнение). Сразу оговоримся, что эту формулу легко получить
+элементарными методами (перейдя к характеристикам и найдя общее
+решение уравнения струны), да и классическое решение задачи Коши
+выражается формулой Даламбера не только для начальных условий
+$\varphi (x)$ и $\psi (x)$ из пространств $C^3(\R)$ и $C^2(\R)$
+соответственно (как в трехмерном и двумерном случаях), а при
+$\varphi \in C^2(\R)$ и $\psi \in C^1(\R)$, что легко проверяется
+непосредственным вычислением. Тем не менее, проделаем вывод
+формулы Даламбера из формулы Кирхгофа все тем же методом спуска.
+
+Итак, как и в предыдущем разделе, мы рассмотрим решение $u(t,x)$
+--- решение задачи Коши для волнового уравнения в случае, когда
+$x\in \R^3$, но начальные функции зависят только от одной
+переменной $x_1$: $\varphi =\varphi (x_1)$, $\psi =\psi (x_1)$.
+Тогда задача не меняется при сдвигах по осям $x_2$ и $x_3$, и в
+силу единственности решения, функция $u(t,x)$ также не меняется
+при этих сдвигах, то есть $u=u(t,x_1)$. Значит, вторые производные
+решения по $x_2$ и $x_3$ равны $0$, и $u(t,x_1)$ является решением
+задачи
+\begin{equation}
+\frac{\partial ^2u}{\partial t^2}=a^2\frac{\partial ^2u}{\partial
+x_1^2}, \qquad u\Big|_{t=0}=\varphi (x_1),\qquad
+u_t\Big|_{t=0}=\psi (x_1). \label{Str}
+\end{equation}
+Остается только свести интегрирование по сфере в формуле
+(\ref{Mg}) к интегрированию по отрезку $[x_1-at,x_1+at]$, который
+является проекцией этой сферы на ось $x_1$.
+
+В элемент длины $d\xi _1$ на этом отрезке проецируется сферический
+слой. Площадь $dS$ этого слоя в $1/\cos\gamma $ раз больше, чем
+$2\pi rd\xi_1$
+--- площадь боковой поверхности цилиндра с той же высотой и радиусом
+основания, где $\gamma $ --- угол между нормалями к слою и
+цилиндру ($\gamma $ --- тот же угол, что и в предыдущем разделе).
+Здесь $r=R\cos \gamma $ --- радиус основания слоя и цилиндра,
+$d\xi_1$ --- их высота, $R=at$ --- радиус сферы. Итак,
+\begin{equation}
+dS=\frac{2\pi rd\xi _1}{\cos \gamma }=2\pi Rd\xi _1=2\pi atd\xi
+_1. \label{dS}
+\end{equation}
+
+\begin{rem}
+Формула площади сферического слоя $S=2\pi Rh$, которая получается
+из~(\ref{dS}) интегрированием по $\xi _1$, есть в любом
+математическом справочнике. Отметим, что эта площадь зависит
+только от радиуса сферы~$R$ и высоты слоя~$h$, и не зависит от
+того, где этот слой находится на сфере
+--- ``посередине'' или ``с краю''. Это означает, что нарезав тонкокожий
+апельсин ``кружочками'' одинаковой толщины, в каждом кусочке
+получаем одинаковое количество кожуры, тогда как мякоти, как мы
+понимаем, больше в средних дольках, нежели чем в крайних.
+
+В частном случае $h=2R$, имеем всем известную формулу площади
+полной поверхности сферы $S=4\pi R^2$.
+\end{rem}
+
+Подставляя (\ref{dS}) в (\ref{Mg}), имеем
+\begin{equation}
+M_g(t,x_1)=\frac 1{4\pi a^2t}\int_{x_1-at}^{x_1+at}g(\xi _1) \cdot
+2\pi atd\xi _1 =\frac 1{2a}\int_{x_1-at}^{x_1+at}g(\xi _1)d\xi _1.
+\label{Mg11}
+\end{equation}
+Заметим, что в рассматриваемом одномерном случае
+$$
+\frac \partial {\partial t}M_g(t,x_1)=\frac 1{2a}
+\left(ag(x_1+at)-(-a)g(x_1-at)\right)
+=\frac{g(x_1-at)+g(x_1+at)}2.
+$$
+Следовательно, решением задачи Коши (\ref{Str}) является следующая
+функция $u(t,x)$ (уже не нужный индекс $_1$ опускаем):
+\begin{equation}
+u(t,x)=\frac \partial {\partial t}M_\varphi (t,x)+M_\psi (t,x)
+=\frac{\varphi (x-at)+\varphi (x+at)}2 +\frac
+1{2a}\int_{x-at}^{x+at}\psi (\xi )d\xi .  \label{Dal}
+\end{equation}
+Это и есть \emph{формула Даламбера}.
+
+
+\end{document}

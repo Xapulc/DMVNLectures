@@ -1,0 +1,80 @@
+\begin{center}
+\Large Контрольная работа №1. Вариант 1.\\
+\end{center}
+\begin{tproblem} Найти решение уравнения $u_{xx}+4u_{xy}-5u_{yy}+u_x-u_y=0,$
+\par удовлетворяющее начальным условиям: 
+$u|_{y=0}=\sin x, \ \ \ u_y|_{y=0}=e^x$.
+\end{tproblem}
+\begin{solution} Уравнение сводится к виду $v_{\alpha\beta}+\frac{1}{6}v_\alpha=0$ заменой:
+$
+\left\{
+\begin{aligned}
+\alpha &=y-5x\\
+\beta &=y+x\\
+\end{aligned}
+\right.
+$
+\par Общее решение: $f(\beta)+g(\alpha)e^{-\frac{\beta}{6}}=f(y+x)+g(y-5x)e^{-\frac{y+x}{6}}$. Используя начальные условия, получаем:
+$$
+\left\{
+\begin{aligned}
+f(x)+g(-5x)e^{-\frac{x}{6}}&=\sin x\\
+-\frac{1}{6}e^{-\frac{x}{6}}g(-5x)+e^{-\frac{x}{6}}g'(-5x)+f'(x)&=e^x\\
+\end{aligned}
+\right.
+~~~~~~~~~ откуда, решая, находим:
+$$
+$$f(x)=-C e^{-x/6}+\frac{5 e^x}{7}-\frac{5\cos x}{37}+\frac{7 \sin x}{37},~~g(x)=C-\frac{5}{7} e^{-7 x/30}+\frac{5}{37} e^{-x/30} \left(\cos\left(\frac{x}{5}\right)-6 \sin\left(\frac{x}{5}\right)\right),$$
+$$v(x,y)=-\frac{5}{7} e^{x-\frac{2 y}{5}}+\frac{5 e^{x+y}}{7}+\frac{5}{37} e^{-y/5} \left(\cos\left(x-\frac{y}{5}\right)+6 \sin\left(x-\frac{y}{5}\right)\right)+\frac{1}{37} (-5 \cos(x+y)+7 \sin(x+y)).$$
+\end{solution}
+\begin{tproblem} Приведите к каноническому виду и определите тип уравнения:
+$$2u_{xx}+5u_{yy}+2u_{zz}-6u_{xy}-4u_{xz}+6u_{yz}-3u+y-2z=0$$.
+\end{tproblem}
+\begin{solution} Приведя форму к каноническому виду, имеем:\\
+$$f(x,y,z)=2 \text{x}^2+5\text{y}^2+2\text{z}^2-6\text{x} \text{y}-4\text{x} \text{z}+6\text{y} \text{z}\text{=}\left(\frac{\text{x}-\text{z}}{\sqrt 5 }\right)^2+\left(\sqrt 5 *\text{y}-\frac{3}{\sqrt 5 }*(\text{x}-\text{z})\right)^2$$
+$$f(x+z,y,z)=2 x^2-6 x y+5 y^2=2 \left(x^2-3 x y+\frac{9}{4} y^2\right)+\frac{y^2}{2}=2\left(x-\frac{3}{2}y\right)^2+\frac{y^2}{2}$$
+Откуда получаем, что замена 
+$
+\left\{
+\begin{aligned}
+\alpha &=x+z\\
+\beta &=2y-3z\\
+\gamma &=z\\
+\end{aligned}
+\right.
+$
+приводит уравнение к каноническому виду. Проводя её, получаем 
+$2 u_{\gamma\gamma}(\alpha ,\beta ,\gamma)+2 u_{\beta\beta}(\alpha ,\beta ,\gamma)=0$. Следовательно, уравнение имеет параболический тип.
+\end{solution}
+\begin{tproblem} Найти все характеристики уравнения при каждом $\alpha\in\mathbb{R}$:
+$u_{xx}+2u_{yy}+2\alpha u_{yz}+\alpha^2u_{zz}+u_z+u=1$.
+\end{tproblem}
+\begin{solution} Запишем уравнение характеристик в общем виде:
+$$\phi _x{}^2+2 \phi _y{}^2+2\alpha  \phi _y\phi _z+\alpha ^2 \phi _z{}^2=\phi _x{}^2+ \phi _y{}^2+\left(\phi _y+\alpha  \phi _z\right){}^2=0$$
+\par При $\alpha=0$ $\phi(x,y,z)=f(z)$, иначе $\phi(x,y,z)=c$. Характеристики в первом случае - плоскости z=с. Во втором отсутствуют.
+\end{solution}
+
+\begin{tproblem} Решите задачу Коши ($x\in\mathbb{R}^3$, $t>0$):
+$
+\left\{
+\begin{aligned}
+u_{tt}&=\Delta u\\
+u|_{t=0}&=x_1+x_2x_3\\
+u_t|_{t=0}&=x_2+x_1x_3\\
+\end{aligned}
+\right.
+$
+\end{tproblem}
+
+\begin{solution} Ищем решения в виде, обнуляющем начальные условия:\\ $u(x_1,x_2,x_3,t) = v(x_1,x_2,x_3,t)+(x_1+x_2x_3)+ t(x_2+x_1x_3)$. Задача Коши для $v$ имеет вид:
+$
+\left\{
+\begin{aligned}
+v_{tt}&=\Delta v\\
+v|_{t=0}&=0\\
+v_t|_{t=0}&=0\\
+\end{aligned}
+\right.
+$
+\par Откуда $v(x_1,x_2,x_3,t)=0$, $u(x_1,x_2,x_3,t) = (x_1+x_2x_3)+ t(x_2+x_1x_3)$. 
+\end{solution}

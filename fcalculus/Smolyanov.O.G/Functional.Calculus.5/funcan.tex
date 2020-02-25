@@ -1,0 +1,94 @@
+\documentclass[12pt,titlepage, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb}
+\begin{document}
+Докажем единственность. Пусть есть два элемента $h_f$ и
+$\bar{h}_f$, удовлетворяющие условию. Тогда $\forall\,x\in H$\
+$(x,h_f)=(x,\bar{h}_f)$. Отсюда $\forall\,x\in H$\
+$(x,h_f-\bar{h}_f)=0$. Подставив $x=h_f-\bar{h}_f$, получим
+$(h_f-\bar{h}_f,h_f-\bar{h}_f)=0\Rightarrow
+h_f-\bar{h}_f=0\Rightarrow \ \Rightarrow h_f=\bar{h}_f.$
+
+\; Теорема. Пусть $G\subset H$ --- замкнутое подпространство
+гильбертова пространства, $h\in H, \exists\ pr_{G}h\in G $ и
+$\exists\ z\in G, (h-z)\bot G$. Тогда $pr_{G}h=z$.\;
+
+Доказательство. $(h-pr_{G}h)\bot G, (h-z)\bot G \Rightarrow
+(h-pr_{G}h)-(h-z)=$$(z--pr_{G}h)\bot G$. Но $(z-pr_{G}h)\in G$.
+Следовательно, $(z-pr_{G}h,z-pr_{G}h)=0\;$$ \Rightarrow
+z-pr_{G}h=0\;$$\Rightarrow z=pr_{G}h$.
+
+Определение. Пусть $E_1$ и $E_2$ - линейные пространства над полем
+$\mathbb{C}$. Отображение $f:E_1\rightarrow E_2$ называется
+полулинейным, если $\forall g_1, g_2\in E_1$ и $\lambda \in
+\mathbb{C}$ выполнено $f(g_1+g_2)=f(g_1)+(g_2)$ и $f(\lambda
+g_1)=\bar{\lambda} f(g_1)$.
+
+Замечание. Пусть $E$ --- гильбертово пространство и $f\in E^*$. По
+теореме Рисса  $\exists!\,h_f\in E:\forall\,x\in
+E$\;\;$f(x)=(x,h_f)$ Тогда отображение $F\colon E^*\rightarrow E$,
+$F(f)=h_f$ полулинейно.
+
+Теорема.  Пусть $E$ --- произвольное линейное пространство, и
+$p\colon E\to\mathbb{R}^+$
+--- такая функция на нем, что выполняются следующие свойства:
+
+1) $p(\alpha x)=|\alpha| p(x)$;
+
+2) $p(x_1+x_2)\leqslant p(x_1)+p(x_2)$.
+
+Пусть также $G\subset E$ --- подпространство и $f\colon
+G\to\mathbb{C}$ --- линейный функционал на нем, причем
+$\forall\,x\in G$\;\;$|f(x)|\leqslant p(x)$. Тогда
+$\exists\,\tilde{f}\colon E\to \mathbb{C}$ --- такое линейное
+отображение, что $\forall\,x\in E$\;\;$|\tilde{f}(x)|\leqslant
+p(x)$ и $\forall\,x\in G$\;\;$\tilde{f}(x)=f(x)$.
+
+Доказательство. Положим $\forall x\in G\ f_1(x)=Re f(x)$. Тогда
+$f_1\colon G_{\mathbb{R}}\rightarrow \mathbb{R}$ линеен и $\forall
+x \in G\;\; f(x)=f_1(x)-if_1(ix)$. По условию $\forall\,x\in
+G$\;\;$|f(x)|\leqslant p(x)$, значит, $\forall\,x\in
+G$\;\;$|f_1(x)|\leqslant p(x)$. По теореме Хана-Банаха найдем
+такой линейный функционал $\tilde{f_1}\colon
+E_{\mathbb{R}}\rightarrow \mathbb{R}$, что $\forall x\in
+E_{\mathbb{R}} \;\;|\tilde{f_1}(x)|\leqslant p(x)$. Положим
+$\forall x \in E\;\;
+\tilde{f}(x)=\tilde{f_1}(x)-i\tilde{f_1}(ix)$. Тогда $\tilde{f}$ и
+будет искомым функционалом. Надо лишь проверить, что
+$\forall\,x\in E$\;\;$|\tilde{f}(x)|\leqslant p(x)$.
+
+Допустим, что это не так, т.е. $\exists x\in E:
+|\tilde{f}(x)|>p(x)$. Пусть $\tilde{f}(x)=\rho e^{i\theta}$. Тогда
+$\tilde{f}(e^{-i\theta}x)=e^{-i\theta}\tilde{f}(x)=e^{-i\theta}\rho
+e^{i\theta}=\rho>0$. Поэтому
+$|\tilde{f}(e^{-i\theta}x)|=\;\;=\tilde{f}(e^{-i\theta}x)=\tilde{f_1}(e^{-i\theta}x)\Rightarrow
+\tilde{f_1}(e^{-i\theta}x)>p(x)=p(e^{-i\theta}x)$. Противоречие.
+
+Определение. Пусть E и G --- банаховы пространства и $A\colon
+E\rightarrow G$ --- линейный оператор. Тогда банахов сопряженный
+оператор $A^*\colon G^*\rightarrow E^*$ определяется следующим
+образом: $\forall g\in G^* \;\;\forall x\in E
+\;\;g(Ax)=(A^*g)(x)$.
+
+Предложение. $A^*$ линеен и непрерывен.
+
+Доказательство. Линейность очевидно вытекает из определения. Для
+проверки непрерывности докажем более сильное утверждение:
+$\|A^*\|=\|A\|$.
+
+$\|A\|=\sup\limits_{\substack{x\in F\\ \|x\|\leqslant
+1}}\|Ax\|=\sup\limits_{\|x\|\leqslant
+1}\sup\limits_{\substack{g\in G^*\\ \|g\|\leqslant
+1}}|g(Ax)|=\sup\limits_{\|g\|\leqslant
+1}\sup\limits_{\|x\|\leqslant
+1}|g(Ax)|=\sup\limits_{\|g\|\leqslant
+1}\sup\limits_{\|x\|\leqslant
+1}|(A^*g)(x)|=\;=\sup\limits_{\|g\|\leqslant 1}\|A^*g\|=\|A^*\|$.
+
+Определение. Пусть H --- гильбертово пространство и $A\colon
+H\rightarrow H$ --- линейный оператор. Тогда гильбертов
+сопряженный оператор $A^*\colon H\rightarrow H$ определяется
+следующим образом: $\forall x\in H \;\;\forall z\in H
+\;\;(A^*x,z)=(x,Az)$.
+\end{document}

@@ -1,0 +1,5216 @@
+\documentclass[unicode,12pt,draft]{article}
+\usepackage[xe]{dmvn}
+\usepackage{dmvnadd}
+
+\tocsubsectionparam{3em}
+
+\begin{document}
+%title
+
+\begin{titlepage}
+\vskip40pt \centerline{\Large МОСКОВСКИЙ ГОСУДАРСТВЕННЫЙ
+УНИВЕРСИТЕТ}
+\medskip
+\centerline{\Large имени М.\,В.\,ЛОМОНОСОВА}
+\medskip
+\centerline{\Large Механико--математический факультет}
+
+\par\vskip40pt
+
+\begin{figure}[htbp]
+    \centering
+    \centerline{\epsfbox{mmlogo.2}}
+    %\caption{Подпись к рисунку}
+\end{figure}
+
+\par\vskip40pt
+
+\centerline{\Huge\textbf{\textsf{Курс лекций по}}}
+\medskip
+
+\centerline{\Huge\textbf{\textsf{уравнениям математической
+физики}}}
+\medskip
+\par\vskip30pt
+
+\centerline{\Large\textbf{\textsf{Лектор --- Андрей Александрович
+Коньков}}}
+\medskip
+
+\par\vskip70pt
+
+\centerline{III курс, 5--6 семестр, поток механиков}
+
+\par\vskip240pt
+
+\centerline{Москва, 2008 г.}
+
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\begin{center}
+\textbf{Предисловие.}\end{center} Этот конспект был набран по
+курсу лекций, прочитанному на потоке механиков в 2007--2008
+учебному году. Главный \TeX ник --- Анастасия Янгирова, студентка
+кафедры Вычислительной механики. Автор конспекта выражает
+благодарность Евгению Кудашеву за исправление опечаток и
+консультацию по различным аспектам издательской системы \LaTeX.
+
+%lect1
+
+\section*{Введение}
+
+Наши лекции будут посвящены уравнениям математической физики или, как их еще называют,
+уравнениям в частных производных.
+Мы познакомимся с классификации уравнений второго порядка,
+данной Иваном Георгиевичем Петровским.
+Далее нам предстоит исследовать задачу Коши для уравнений в частных производных.
+Мы узнаем доказательство теоремы Софьи Ковалевской существования и единственности
+решения этой задачи.
+Для целого ряда уравнений, возникающих в физике и других приложениях,
+будут получены точные формулы решений.
+Все наши рассуждения будут основаны на едином подходе, использующим теорию обобщенных функций.
+
+Во втором семестре мы познакомимся с пространствами С.\,Л.\,Соболева и научимся с их помощью
+решать краевые задачи для эллиптических уравнений.
+
+Мы также подробно остановимся на такой важной области математической физики, как теория гармонических
+функций. Докажем теоремы о среднем, принцип максимума, теоремы Харнака и Лиувилля.
+
+Несколько лекций нашего курса мы посвятим параболическим уравнениям.
+На этих лекциях вы узнаете, что такое собственная (или параболическая) граница
+множества, научитесь доказывать принцип максимума и априорные оценки
+для уравнения теплопроводности.
+
+\newpage
+
+\section{Классификация линейных уравнений второго порядка по И.\,Г.\,Петровскому}
+
+В математической физике традиционно изучаются три основных типа уравнений.
+
+\medskip
+
+1) {\itshape Гиперболический тип}. Уравнения этого типа описывают колебательные процессы.
+Типичный представитель --- волновое уравнение
+$$ \frac{\partial^2 u}{\partial t^2}=k^2 \triangle u+f(x,t), x\in
+\mathbb R^n, t>0, \,\mbox {где } \triangle u=\frac{\partial^2
+u}{\partial x_1^2}+\ldots+\frac{\partial^2 u}{\partial x_n^2}.$$
+
+2) {\itshape Параболический тип}. Уравнения этого типа описывают явления переноса.
+Типичный представитель --- уравнение теплопроводности
+$$ \frac{\partial x}{\partial t}=k^2 \triangle u+f(x,t).$$
+
+3) {\itshape Эллиптический тип}. Уравнения этого типа описывают стационарные процессы.
+Типичный представитель --- уравнение Пуассона
+$$\triangle u=f(x).$$
+
+\medskip
+
+Рассмотрим линейное уравнение второго порядка
+
+$$
+    \sum_{i,j=1}^n
+    a_{ij}(x)
+    \frac{
+        \partial^2 u
+    }{
+        \partial x^i \partial x^j
+    }
+    +
+    \sum_{i=1}^n
+    b_{i}(x)
+    \frac{
+        \partial u
+    }{
+        \partial x^i
+    }
+    +
+    c(x) u
+    =
+    f(x),
+    \quad
+    x = (x^1, \ldots, x^n)
+    \in
+    \Omega
+    \subset
+    \mathbb R^n.
+    \eqno (1)
+$$
+В обозначения, принятых в дифференциальной геометрии, уравнение~(1) можно записать в виде
+$$
+    a^{ij}
+    \frac{
+        \partial^2 u
+    }{
+        \partial x^i \partial x^j
+    }
+    +
+    b^{i}
+    \frac{
+        \partial u
+    }{
+        \partial x^i
+    }
+    +
+    c u
+    =
+    f.
+$$
+При этом мы опускаем знак суммы, подразумевая, что суммирование по одноименным верхним и нижним
+индексам происходит автоматически.
+
+Воспользуемся заменой координат $x'=x'(x)$. Очевидно, получим
+
+$$\frac{\partial u}{\partial x^j}=\frac{\partial x^{i'}}{\partial x^j}\frac{\partial u}{\partial x^{i'}},$$
+
+$$\frac{\partial^2 u}{\partial x^i \partial x^j}
+=\frac{\partial}{\partial x^i} \left(\frac{\partial u}{\partial
+x^j}\right) =\frac{\partial}{\partial x^i}\left(\frac{\partial
+{x^{i}}'}{\partial x^j}\frac{\partial u}{\partial {x^{i}}'}\right)
+=\frac{\partial^2 {x^{i}}'}{\partial x^i \partial
+x^j}\frac{\partial u}{\partial {x^{i}}'}+\frac{\partial
+{x^{i}}'}{\partial x^j}\frac{\partial }{\partial
+x^i}\left(\frac{\partial u}{\partial {x^i}'}\right)=$$
+
+$$=\frac{\partial^2 x^{j'}}{\partial x^i \partial
+x^j}\frac{\partial u}{\partial {x^{j}}'}+\frac{\partial
+{x^{j}}'}{\partial x^j}\frac{\partial {x^{i}}'}{\partial
+x^i}\frac{\partial^2 u}{\partial {x^{i}}' \partial {x^{j}}'}.$$
+Таким образом, уравнение~(1) преобразуется к виду
+$$
+    a^{ij}
+    \frac{
+        \partial {x^{i}}'
+    }{
+        \partial x^i
+    }
+    \frac{
+        \partial {x^{j}}'
+    }{
+        \partial x^j
+    }
+    \frac{
+        \partial^2 u
+    }{
+        \partial {x^{i}}' \partial {x^{j}}'
+    }
+    +
+    a^{ij}
+    \frac{
+        \partial^2 {x^{j}}'
+    }{
+        \partial x^i \partial x^j
+    }
+    \frac{
+        \partial u
+    }{
+        \partial {x^{j}}'
+    }
+    +
+    b^i
+    \frac{
+        \partial {x^{i}}'
+    }{
+        \partial x^i
+    }
+    \frac{
+        \partial u
+    }{
+        \partial {x^{i}}'
+    }
+    +
+    c u
+    =
+    f.
+$$
+Обозначая
+$$
+    a^{i'j'}
+    =
+    a^{ij}
+    \frac{
+        \partial {x^{i}}'
+    }{
+        \partial x^i
+    }
+    \frac{
+        \partial {x^{j}}'
+    }{
+        \partial x^j}
+$$
+и
+$$
+    {b^{i}}'
+    =
+    \frac{
+        \partial {x^{i}}'
+    }{
+        \partial x^i
+    }
+    +
+    a^{ij}
+    \frac{
+        \partial^2 {x^{j}}'
+    }{
+        \partial x^i \partial x^j
+    },
+$$
+запишем это уравнение как
+$$
+    a^{i'j'}
+    \frac{
+        \partial^2 u
+    }{
+        \partial {x^{i}}' \partial {x^{j}}'
+    }
+    +
+    {b^{i}}'
+    \frac{
+        \partial u
+    }{
+        \partial {x^{i}}'
+    }
+    +
+    c(x) u
+    = f(x).
+$$
+
+В случае, когда замена координат $x'=x'(x)$ является линейной, мы будем иметь
+$$
+    {x^{i}}'
+    =
+    \alpha_i^{i'}
+    x^i,
+$$
+где
+$
+    \alpha_i^{i'}
+    \in
+    \mathbb R,
+$
+$
+    \det  \| \alpha_i^{i'} \|
+    \ne
+    0.
+$
+Тем самым,
+$$
+    a^{i'j'}
+    =
+    \alpha_i^{i'}
+    \alpha_j^{j'}
+    a^{ij}
+$$
+и
+$$
+    b^{i'}
+    =
+    \alpha_i^{i'} b^i.
+$$
+Рассмотрим квадратичную форму
+$$
+    Q (\xi) =
+    a^{ij} \xi_i \xi_j,
+$$
+где $\xi=(\xi_1,\ldots,\xi_n)\in {\mathbb R^n}^*$ ---  ковектор.
+Из курса линейной алгебры известно, что вещественные числа
+$\alpha_i^{i'}$ можно подобрать так, что замена координат
+$$\xi_i=\alpha_i^{i'}\xi_{i'},$$
+приводит нашу квадратичную форму к диагональному виду
+$$a^{ij}\xi_i\xi_j=\alpha_i^{i'}\alpha_j^{j'}a^{ij}\xi_{i'}\xi_{j'}=a^{i'j'}\xi_{i'}\xi_{j'}=\sum_{i=1}^m
+\pm (\xi_{i'})^2,$$
+где $m$ --- ранг матрицы квадратичной формы ($m \le n$).
+
+****Рассмотрим $$\sum_{i=1}^m\frac{\partial^2 u}{\partial
+{x^i}^2}+\mbox {младшие члены}=f(x).$$
+
+1) {\itshape эллиптический тип}: все коэффициенты
+$\sum\limits_{i=1}^m\frac{\partial^2 u}{\partial {x^i}^2}$ имеют
+один знак и $m=n$, тогда $\pm \triangle u+\mbox {младшие
+члены}=f(x);$
+
+2) {\itshape гиперболический тип}: все коэффициенты имеют один
+знак, кроме одного, имеющего противоположный:
+$$\frac{\partial^2 u}{\partial {x^n}^2}-\sum_{i=1}^{n-1}\frac{\partial^2 u}{\partial {x^i}^2}+\mbox {младшие
+члены}=f(x);$$
+
+3) {\itshape ультрагиперболический тип}: $m=n$ и при этом более
+одного члена со знаком $+$ и более одного со знаком $-$,
+например:$$\frac{\partial^2 u}{\partial {x^n}^2}+\frac{\partial^2
+u}{\partial {x^{n-1}}^2}-\sum_{i=1}^{n-2}\frac{\partial^2
+u}{\partial {x^i}^2}+\mbox {младшие члены}=f(x);$$
+
+4) {\itshape параболический тип (в широком смысле)}: $m<n$;
+
+5) {\itshape параболический тип (в узком смысле)}: $m=n-1$,  все
+коэффициенты имеют один знак при $i=\overline{1,n-1}$, а при
+производной первого порядка коэффициент не равен
+нулю:$$\pm\sum_{i=1}^{n-1}\frac{\partial^2 u}{\partial
+{x^i}^2}+b^n\frac{\partial u}{\partial
+x^n}+\sum_{i=1}^{n-1}b^i\frac{\partial u}{\partial x^i}+cu=f(x),
+b^n\ne0.$$
+
+\textbf{Пример.} Уравнение теплопроводности:$$\frac{\partial
+u}{\partial t}=\triangle u+f(x,t), \triangle u=\frac{\partial^2
+u}{\partial x_1^2}+\ldots+\frac{\partial^2 u}{\partial x_n^2}.$$
+
+Приведем примеры задач Коши.
+
+\textbf{Пример 1}. Гиперболическое уравнение.
+
+Уравнение колебаний натянутой струны со следующими начальными
+условиями:$$ \frac{\partial^2 u}{\partial t^2}=k^2 \triangle
+u+f(x,t),$$
+
+$$u(x,0)=u_o(x);$$
+
+$$\frac{\partial u}{\partial t}(x,0)=u_1(x).$$
+
+\textbf{Пример 2}. Параболическое уравнение.
+
+Уравнение теплопроводности со следующим начальным условием (задана
+температура в начальный момент): $$ \frac{\partial x}{\partial
+t}=k^2 \triangle u+f(x,t);$$
+$$u(x,0)=u_o(x).$$
+
+%lect2
+
+$$\sum_{i,j=1}^n a_{ij}(x)\frac{\partial^2 u}{\partial x^i \partial x^j}+\sum_{i=1}^n b_{i}(x)\frac{\partial u}{\partial x^i}+c(x)u=f(x), x=(x_1,\ldots,x_n),\eqno (1)$$
+С двумя условиями: $$u|_S=\varphi_o,$$ $$\left.\frac{\partial
+u}{\partial \nu}\right|_S=\varphi_1,$$ где $S$ ---
+гиперповерхность в $\mathbb R^n$, $\nu$ --- нормаль к поверхности.
+
+\textbf{Определение.} Поверхность $S$ называется
+\textbf{характеристической} по отношению к уравнению~$(1)$ в точке
+$x_0\in S$, если $\sum a_{ij}(x_0)\nu_i\nu_j=0,$ где
+$\overline{\nu}=(\nu_1,\ldots\,\nu_n)$ --- вектор нормали к $S$ в
+точке $x_0$. Поверхность $S$ называется \textbf{характеристической}
+для уравнения~(1), или характеристикой, если она является
+характеристической по отношению к уравнению (1) в каждой своей
+точке.
+
+\textbf{Пример.} $u_{tt}=u_{xx}.$ Будет ли поверхность $t=0$
+характеристикой?
+
+$u_{tt}-u_{xx}=0.$
+
+Должно быть $\sum a_{ij}(x_0)\nu_i\nu_j=0$. Проверим: $\nu_1=0,
+\nu_2=1$, тогда $-\nu_1^2+\nu_2^2=1\ne0,$ значит $t=0$
+--- свободная поверхность (не~ характеристика). Найдем
+характеристики: для вектора
+$\overline{\nu}=(-\frac{\sqrt2}2,\frac{\sqrt2}2)$ получим
+$-\nu_1^2+\nu_2^2=-\frac12+\frac12=0 \Rightarrow t=x+C$ являются
+характеристиками. Аналогично для
+$\overline{\nu}=(\frac{\sqrt2}2,-\frac{\sqrt2}2)$ характеристиками
+служат $t=-x+C.$
+
+Сделаем замену координат и докажем, что $a^{n'n'}\ne0.$
+$$\frac{\partial^2 u}{\partial x^i \partial x^j}=\frac{\partial u}{\partial x^i}\left(\frac{\partial
+{x^{j}}'}{\partial x^j}\frac{\partial u}{\partial
+{x^{j}}'}\right)=\frac{\partial^2 x^{j'}}{\partial x^i \partial
+x^j}\frac{\partial u}{\partial {x^{j}}'}+\frac{\partial
+{x^{j}}'}{\partial x^j}\frac{\partial {x^{i}}'}{\partial
+x^i}\frac{\partial^2 u}{\partial {x^{i}}' \partial {x^{j}}'}$$
+$$a^{ij}\frac{\partial^2 u}{\partial x^i \partial x^j}=\underbrace {a^{ij}\frac{\partial {x^{i}}'}{\partial x^i}\frac{\partial {x^{j}}'}{\partial x^j}}_{a^{i'j'}}\frac{\partial^2 u}{\partial {x^i}' \partial {x^j}'}+\mbox {младшие члены}.$$
+
+Докажем, что $a^{n'n'}\ne0.$
+
+$$\overline r=(x^1(x'),\ldots,x^n(x')), \frac{\partial \overline r}{\partial
+{x^n}'}=\left(\frac{\partial x^1}{\partial
+{x^n}'},\ldots,\frac{\partial x^n}{\partial {x^n}'}\right).$$
+
+$$a^{n'n'}=a_{ij}\frac{\partial x{^n}'}{\partial x^i}\frac{\partial x{^n}'}{\partial x^j} \eqno(2)$$
+$$\sum_{i,j=1}^n a_{ij}(x_0)\nu_i\nu_j\ne0,$$ т.е. $$\sum_{i,j=1}^n
+a_{ij}\frac{\partial x^i}{\partial {x^n}'}\frac{\partial
+x^j}{\partial {x^n}'}\ne0.$$ Последнее равенство не равносильно
+(2).
+
+Векторы перпендикулярны, следовательно $g_{ij}=\delta_{ij}$ ---
+метрический тензор.
+
+$$a_{k'p'}=g_{k'i'}g_{p'j'}a^{i'j'},\,\mbox{где } a^{i'j'}=\frac{\partial {x^i}'}{\partial x^i}\frac{\partial {x^j}'}{\partial
+x^j}a^{ij},\, g_{p'j'}=\frac{\partial x^p}{\partial
+{x^p}'}\frac{\partial x^j}{\partial {x^j}'}g_{pj},\,
+g_{k'i'}=\frac{\partial x^k}{\partial {x^k}'}\frac{\partial
+x^i}{\partial {x^i}'}g_{ki}.$$ Тогда получим:
+$$a_{k'p'}=\frac{\partial x^k}{\partial {x^k}'}\underline{\frac{\partial x^i}{\partial {x^i}'}}g_{ki}\frac{\partial x^p}{\partial {x^p}'}\underline{\underline{\frac{\partial x^j}{\partial {x^j}'}}}g_{pj}\underline{\frac{\partial {x^i}'}{\partial x^i}}\underline{\underline{\frac{\partial {x^j}'}{\partial x^j}}}a^{ij}.$$
+$$\mbox{Подчеркнутые множители дают 1, т.к. при фиксированном $i$: } \sum_{i'=1}^n\frac{\partial
+x^i}{\partial {x^i}'}\frac{\partial {x^i}'}{\partial
+x^i}=\frac{\partial x^i}{\partial x^i}=1.$$ $$\mbox{Аналогично,
+если фиксирована $j$}: \sum_{j'=1}^n\frac{\partial x^j}{\partial
+{x^j}'}\frac{\partial {x^j}'}{\partial x^j}=\frac{\partial
+x^j}{\partial x^j}=1.$$
+
+Таким образом, получим
+$$a_{k'p'}=\cfrac{\partial
+x^k}{\partial {x^k}'}g_{ki}\cfrac{\partial x^p}{\partial
+{x^p}'}g_{pj}a^{ij}=\cfrac{\partial x^k}{\partial
+{x^k}'}\cfrac{\partial x^p}{\partial {x^p}'}a_{kp},$$
+где
+$a_{kp}=g_{ki}g_{pj}a^{ij},\,g_{ki}=\delta_{ki},\,a_{kp}=a^{kp}$, $g_{k'i'}=\delta_{k'i'},\,a_{n'n'}=a^{n'n'}
+\Rightarrow a_{n'n'}=\cfrac{\partial x^k}{\partial
+{x^n}'}\cfrac{\partial x^p}{\partial {x^n}'}a_{kp}\ne0$
+$$a^{i'j'}\frac{\partial^2 u}{\partial {x^{i}}' \partial {x^{j}}'}+{b^{i}}'(x)\frac{\partial u}{\partial
+{x^{i}}'}+c(x)u=f(x'),$$
+$$a^{n'n'}\ne0,\,\cfrac{\partial^2 u}{\partial {x^{n'}}^2}=\sum_{i',j'=1}^{n-1} \tilde a_{i'j'}\frac{\partial^2 u}{\partial {x^i}' \partial {x^j}'}+\sum_{i'=1}^{n-1} \tilde a_{n'i'}\frac{\partial^2 u}{\partial {x^n}' \partial {x^i}'}+\sum_{i'=1}^n \tilde{b_i}'\frac{\partial u}{\partial {x^i}'}+cu+f$$
+Поверхность $S$ в координатах $x'$ будет определяться уравнением
+$x^{n'}=0$.
+
+$u({x^1}',\ldots,{x^{(n-1)}}',0)=\varphi_0({x^1}',\ldots,{x^{(n-1)}}'),\,\cfrac{\partial
+u}{\partial
+{x^n}'}({x^1}',\ldots,{x^{(n-1)}}',0)=\varphi_1({x^1}',\ldots,{x^{(n-1)}}').$
+
+Т.о., без ограничения общности, можно считать, что задача Коши
+имеет следующий вид:
+
+$${\begin{aligned}
+\left\{%
+\begin{array}{ll}
+u_{tt}&=\sum\limits_{i,j=1}^n a_{ij}\cfrac{\partial^2 u}{\partial
+x^i
+\partial x^j}+\sum\limits_{i=1}^n a_{0i}\cfrac{\partial^2 u}{\partial t
+\partial x^i}+\sum\limits_{i=1}^n b_i\cfrac{\partial u}{\partial
+x^i}+\sum\limits_{i=1}^n b_0\cfrac{\partial u}{\partial t}+cu+f,  \\
+u(0,x_1,\ldots\,x_n)&=\varphi_0(x_1,\ldots,x_n),  \\
+u_t(0,x_1,\ldots\,x_n)&=\varphi_1(x_1,\ldots,x_n),  \\
+\end{array}%
+\right.\end{aligned}}\eqno(1)
+$$
+
+
+Перейдем к системе первого порядка. Обозначим $u_0=\cfrac{\partial
+u}{\partial t},\,u_i=\cfrac{\partial u}{\partial
+x^i},\,i=\overline{1,m},$ получим:
+
+$${\begin{aligned}
+\left\{%
+\begin{array}{ll}
+\cfrac{\partial u_0}{\partial t}&=\sum\limits_{i,j=1}^n
+a_{ij}\cfrac{\partial^2 u}{\partial x^i
+\partial x^j}+\sum\limits_{i=1}^n a_{0i}\cfrac{\partial^2 u}{\partial t
+\partial x^i}+\sum\limits_{i=1}^n b_i\cfrac{\partial u}{\partial
+x^i}+\sum\limits_{i=1}^n b_0\cfrac{\partial u}{\partial t}+cu+f,  \\
+u(0,x_1,\ldots\,x_m)&=\varphi_0(x_1,\ldots,x_m),\\
+u_0(0,x_1,\ldots\,x_m)&=\varphi_1(x_1,\ldots,x_m),\\
+u_i(0,x_1,\ldots\,x_m)&=\cfrac{\partial
+\varphi_0(x_1,\ldots,x_m)}{\partial x_i}.\\
+\end{array}%
+\right.\end{aligned}}\eqno(2)
+$$
+
+\textbf{Утверждение.} (1) $\Leftrightarrow$ (2).
+
+$\square$
+
+$(\Rightarrow)$ Очевидно.
+
+$(\Leftarrow)$  Пусть $u,u_0,u_1,\ldots,u_m$ --- решение задачи
+(2). Докажем, что $u$ является решением задачи (1). Имеем:
+$\cfrac{\partial u_0}{\partial t}=\cfrac{\partial^2 u}{\partial
+t^2},$ покажем, что $u_i=\cfrac{\partial u}{\partial x_i}.$ При
+$t=0$ это так. При $t>0$: $$\frac{\partial
+u_i(t,x_1,\ldots,x_n)}{\partial t}=\frac{\partial
+u_0(t,x_1,\ldots,x_n)}{\partial x_i}=\frac{\partial}{\partial
+t}\frac{\partial u(t,x_1,\ldots,x_n)}{\partial x_i}.$$ Фиксируем
+$x_1,\ldots,x_n,$ т.е. $u_i(t,x_1,\ldots,x_n)=\cfrac{\partial
+u(t,x_1,\ldots,x_n)}{\partial x_i}.\,\blacksquare$
+
+\section{Аналитические функции}
+
+Пусть $\Omega \subset \mathbb R^n, n\ge1.$
+
+\textbf{Определение.} Пусть $f\colon \Omega \to \mathbb R^n$ ---
+\textbf{вещественно аналитическая функция в точке
+$x^0=(x_1^0,\ldots,x_n^0)$}, если $f$ разлагается в ряд:
+$$f(x_1,\ldots,x_n)=\sum_{k_1,\ldots,k_n}^{\infty}c_{k_1,\ldots,k_n}(x_1-x_1^0)^{k_1}\cdot\ldots\cdot(x_n-x_n^0)^{k_n},$$
+который абсолютно сходится в некоторой окрестности точки $x^0.$
+
+\textbf{Определение.} $f\colon \Omega \to \mathbb R^n$ ---
+\textbf{вещественно аналитическая функция в области $\Omega$},
+если $f$ аналитична в каждой точке области $\Omega$.
+
+$\{(x_1,\ldots,x_n)\colon
+|x_1-x_1^0|<\varepsilon_1,\ldots,|x_n-x_n^0|<\varepsilon_n\}$
+
+\textbf{Свойства аналитических функций:}
+\begin{enumerate}
+    \item $f,g$ --- аналитические в точке $x^0\in\Omega \Rightarrow
+    f+g$ --- аналитична в точке $x^0\in\Omega$ (для доказательства надо сложить два ряда и перегруппировать в нем
+    члены);
+    \item $f,g$ --- аналитические в точке $x^0\in\Omega \Rightarrow
+    f\cdot g$ --- аналитична в точке $x^0\in\Omega$ (для доказательства воспользоваться тем, при умножении сходящегося ряда на число он будет продолжать сходиться, и сумма сходящихся рядов снова дает сходящийся ряд);
+    \item эту функцию можно разложить в ряд в окрестности точки
+    $x^0\in\Omega$;
+    \item $f,g$ --- аналитические в точке $x^0\in\Omega, g\ne0 \Rightarrow
+    \cfrac fg$ --- аналитична в точке $x^0\in\Omega$;
+    \item у каждой аналитической функции существует мажоранта.
+
+
+\textbf{Определение.} Функция $\tilde f$, аналитичная в точке
+$x^0\in\Omega$ называется \textbf{мажорантой функции $f$ в точке
+$x^0\in\Omega$}, если $|f_{k_1\ldots k_n}|\le \tilde f_{k_1\ldots
+k_n}$ для всех $k_1,\ldots,k_n=0,1,2,\ldots$, где
+$$f(x_1,\ldots,x_n)=\sum_{k_1,\ldots,k_n=0}^{\infty}f_{k_1,\ldots,k_n}(x_1-x_1^0)^{k_1}\cdot\ldots\cdot(x_n-x_n^0)^{k_n},$$
+$$\tilde f(x_1,\ldots,x_n)=\sum_{k_1,\ldots,k_n=0}^{\infty}\tilde
+f_{k_1,\ldots,k_n}(x_1-x_1^0)^{k_1}\cdot\ldots\cdot(x_n-x_n^0)^{k_n}.$$
+
+$\square$ (свойство 5)
+
+Пусть степенной ряд для $f$ сходится абсолютно в $x_1,\ldots,x_n$,
+где $|x_i-x_i^0|=a_i>0,\,i=\overline{1,n}.$ Тогда $|f_{k_1\ldots
+k_n}a_1^{k_1}\cdot\ldots\cdot a_n^{k_n}|\le M$ для $\forall
+k_1,\ldots,k_n=0,1,2,\ldots,\,f_{k_1\ldots k_n} \Rightarrow$
+
+$|f_{k_1\ldots k_n}|\le\cfrac M{a_1^{k_1}\cdot\ldots\cdot
+a_n^{k_n}}$ для $\forall k_1,\ldots,k_n=0,1,2,\ldots,$ $\tilde
+f(x_1,\ldots,x_n)=\cfrac M{(1-\frac{x_1}{a_1})\cdot\ldots\cdot
+(1-\frac{x_n}{a_n})},$
+$$\frac1{1-\frac{x_i}{a_i}}=\sum_{k_i=0}^{\infty}\left(\frac{x_i}{a_i}\right)^{k_i}, |x_i-x_i^0|<a_i,$$
+$$\tilde f(x_1,\ldots,x_n)=\sum_{k_1,\ldots,k_n=0}^{\infty}\frac M{a_1^{k_1}\cdot\ldots\cdot
+a_n^{k_n}}(x_1-x_1^0)^{k_1}\cdot\ldots\cdot(x_n-x_n^0)^{k_n}.$$
+
+Другие мажоранты: $U(x)=\cfrac M{1-\cfrac{\tilde x_1+\ldots+\tilde
+x_n}a},$ где
+$a=\min\limits_{x=(x_1,\ldots,x_n)}\{a_1,\ldots,a_n\}.$
+$$U(x)=M\sum_{k_i=0}^{\infty}\left(\cfrac{\tilde x_1+\ldots+\tilde
+x_n}a\right)^k=\sum_{k_i=0}^{\infty}\sum_{k_1+\ldots+k_n=k}\frac
+M{a^k}\frac{k!}{k_1!\cdot\ldots\cdot k_n!}\tilde
+x_1^{k_1}\cdot\ldots\cdot \tilde x_1^{k_1}.$$ Так как
+$\cfrac{k!}{k_1!\cdot\ldots\cdot k_n!}\ge1,$ и $U(x)$ ---
+мажоранта для $\tilde f\ \Rightarrow,$ то она является мажорантой
+и для $f$ тоже. $\blacksquare$
+
+\item $f$ --- аналитична в точке $x^0=(x_1^0,\ldots,x_n^0)$, то $f$ аналитична в некоторой окрестности точки
+$x_0$.
+
+$\square$ Пусть
+$$f(x_1,\ldots,x_n)=\sum_{k_1,\ldots,k_n}^{\infty}f_{k_1\ldots k_n}(x_1-x_1^0)^{k_1}\cdot\ldots\cdot(x_n-x_n^0)^{k_n},\eqno (1)$$
+$$y^0=(y_1^0,\ldots,y_n^0) \Rightarrow (x_i-x_i^0)^{k_i}=(x_i-y_i+y_i^0-x_i^0)^{k_i}=\sum_{k=0}^{k_i}c_k^{k_i}(y_i^0-x_i^0)^{k_i-k}(x_i-y_i^0)^k.\eqno (2)$$
+
+Подставляем $(2)\to(1)$ и собираем подобные члены при
+$(x_1-x_1^0)^{k_1}\cdot\ldots\cdot(x_n-x_n^0)^{k_n}.$
+
+Почему перестановка членов корректна?
+
+Рассмотрим мажоранту $\tilde f$ функции $f$ в точке $x^0$:
+$$\tilde f(x_1,\ldots,x_n)=\sum_{k_1,\ldots,k_n=0}^{\infty}\tilde
+f_{k_1,\ldots,k_n}(x_1-x_1^0)^{k_1}\cdot\ldots\cdot(x_n-x_n^0)^{k_n}.$$
+
+Выберем $\tilde y_i^0, \tilde x_i^0$ такими,чтобы $\tilde y_i^0-
+x_i^0=|y_i^0-x_i^0|,\, \tilde x_i^0-y_i^0\ge|x_i-y_i^0|,\,\tilde
+x_i-x_i^0=|x_i-x_i^0|,$ $\tilde x_i\le\tilde y_i^0\tilde x_i^0.$
+
+Ряд для $\tilde f(\tilde x_1,\ldots,\tilde x_n)$ мажорирует ряд
+для $f(x_1,\ldots,x_n)$ и в нем можно переставить члены, раскрывая
+скобки:
+$$(\tilde x_i-\tilde y_i+\tilde y_i^0-x_i^0)^{k_i}=(\tilde x_i-x_i^0)^{k_i}=\sum_{k=0}^{k_i}c_{k_i}^k(\tilde y_i^0-x_i^0)^{k_i-k}(\tilde x_i-\tilde
+y_i^0)^k. \blacksquare$$
+
+\item $g$ --- аналитична в точке $x^0=(x_1^0,\ldots,x_n^0),$ $f$ --- аналитична в точке
+$g(x^0),$ то $f(g(x))$ аналитична в точке $x^0$.
+
+\textbf{Упражнение.} Доказать свойства 4 и 7.
+
+\item \textbf{Упражнение.}
+$$f(x_1,\ldots,x_n)=\sum_{k_1,\ldots,k_n}^{\infty}c_{k_1\ldots k_n}(x_1-x_1^0)^{k_1}\cdot\ldots\cdot(x_n-x_n^0)^{k_n},$$
+--- аналитична в точке $x^0=(x_1^0,\ldots,x_n^0)$. Тогда $c_{k_1\ldots k_n}=\cfrac1{k_1!\cdot\ldots\cdot k_n!}\cfrac{\partial^{k_1+\ldots+k_n}f(x_1^0,\ldots,x_n^0)}{\partial x_1^{k_1}\ldots\partial
+x_n^{k_n}}$.
+
+\end{enumerate}
+
+\section{Аналитическая поверхность. Задача Коши\\
+для систем первого порядка}
+
+$$\frac{\partial u_i}{\partial t}=\sum_{\substack{k=1,\ldots,m\\j=1,\ldots,N}}a_{ij}^k \frac{\partial u_j}{\partial x_k}+\sum_{j=1}^N b_{ij}(x)u_j+c(x),\,i=\overline{1,N},\eqno (1)$$
+$$u_i(0,x_1,\ldots,x_n)=\varphi_i(x_1,\ldots,x_n),\, i=\overline{1,N}$$
+
+\textbf{Теорема (Коши--Ковалевской).} Пусть
+$a_{ij}^k,b_{ij},c,\varphi_i$ --- аналитические функции в точке
+$0=(\underbrace {0,\ldots,0}_{m+1}).$ Тогда в некоторой
+окрестности $U(0)$ существует единственное аналитическое решение
+задачи (1).
+
+\textbf{Замечание.} Без ограничения общности, можно считать ,что
+$\varphi_i\equiv0,\,i=\overline{1,N}.$ В противном случае сделаем
+замену:
+$v_i(t,x_1,\ldots,x_n)=u_i(t,x_1,\ldots,x_n)-\varphi_i(t,x_1,\ldots,x_n).$
+
+$\square$
+
+(Единственность.) Пусть $u_i$ --- аналитическое решение системы
+(1):
+$$u_i(t,x_1,\ldots,x_n)=\sum_{k_1,\ldots,k_n}^{\infty}c_{k_1\ldots k_n}x_1^{k_1}\cdot\ldots\cdot x_m^{k_m},$$
+Тогда $c_{i0\ldots0}=u_i(0,\ldots,0)=0,$ так как $\varphi_i=0.$
+$$c_{i0k_1\ldots k_m}=\frac1{k_1!\cdot\ldots\cdot k_n!}\left.\frac{\partial u_i(0,x_1,\ldots,x_m)}{\partial x_1^{k_1}\ldots\partial
+x_m^{k_n}}\right|_{x_1=\ldots=x_m=0}\equiv0.$$
+\begin{multline}
+\frac{\partial^{k_1+\ldots+k_n}u}{\partial t \partial x_1^{k_1}\ldots\partial
+x_n^{k_n}}=\sum_{\substack{k=1,\ldots,m\\i=j=1,\ldots,N}}\frac{\partial}{\partial
+x_1^{k_1}\ldots\partial x_n^{k_n}}\left(a_{ij}^k\frac{\partial
+u_j}{\partial
+x_k}\right)+\\+
+\sum_{j=1}^N\frac{\partial^{k_1+\ldots+k_n}
+(b_{ij}u_j)}{\partial x_1^{k_1}\ldots\partial
+x_n^{k_n}}+\left.\frac{\partial^N c}{\partial
+x_1^{k_1}\ldots\partial x_n^{k_n}}\right|_{t=x_1=\ldots=x_m=0}.
+\end{multline}
+Аналогично:
+$$c_{i k_0k_1\ldots
+k_m}=\left.\frac{\partial^{k_0+k_1+\ldots+k_n}u}{\partial t^{k_0}
+\partial x_1^{k_1}\ldots\partial x_n^{k_n}}\right|_{t=x_1=\ldots=x_m=0}.$$
+\begin{multline}
+\sum_{\substack {k=1,\ldots,m\\j=1,\ldots,N}}\frac{\partial^{k_0-1+k_1+\ldots+k_m}}{\partial t^{k_0-1}\partial
+x_1^{k_1}\ldots\partial x_n^{k_n}}\left(a_{ij}^k\frac{\partial
+u_j}{\partial
+x_k}\right)+\\+
+\sum_{j=1}^N\frac{\partial^{k_0-1+k_1+\ldots+k_m}
+(b_{ij}u_j)}{\partial t^{k_0-1}\partial x_1^{k_1}\ldots\partial
+x_n^{k_n}}+\left.\frac{\partial^{k_0-1+k_1+\ldots+k_m} c}{\partial
+t^{k_0-1}\partial x_1^{k_1}\ldots\partial
+x_n^{k_n}}\right|_{t=x_1=\ldots=x_m=0}.
+\end{multline}
+
+(Существование.) Возьмет функцию $W(t,x_1,\ldots,x_m)=\cfrac
+M{1-\cfrac{t+x_1+\ldots+x_m}{a_k}}$. $W$ является мажорантой для
+всех коэффициентов $a_{ij}^k,b_{ij},c.$ Тогда $W(\cfrac
+t2,x_1,\ldots,x_m)$ так же является мажорантой для
+$a_{ij}^k,b_{ij},c$, если $\alpha \in (0,1).$ В самом деле, пусть:
+$$W(t,x_1,\ldots,x_m)=\sum_{k_0,k_1,\ldots,k_m=0}^{\infty}W_{k_0 k_1\ldots k_m}t^{k_0}x^{k_1}\ldots x_m^{k_m}.$$
+Тогда $$W_{\alpha}\Bigl(\cfrac t
+{\alpha},x_1,\ldots,x_m\Bigr)=W\Bigl(\cfrac
+t2,x_1,\ldots,x_m\Bigr)=\sum_{k_0,k_1,\ldots,k_m=0}^{\infty}W_{k_0
+k_1\ldots k_m}\frac {t^{k_0}}{\alpha^{k_0}}x^{k_1}\ldots
+x_m^{k_m}.$$ При этом, очевидно, $\cfrac {W_{k_0 k_1\ldots
+k_m}}{\alpha^{k_0}}\ge W_{k_0 k_1\ldots k_m}.$
+
+Напишем мажорирующую систему:
+$$\frac{\partial u_i}{\partial t}=
+\sum_{\substack{k=\overline {1,m}\\\,j=\overline {1,N}}}W
+\frac{\partial u_j}{\partial x}+\sum_{i=1}^N W u+W.$$
+
+Будем искать $u_i$ в виде:
+$u_1(t,x_1,\ldots,x_m)=\ldots=u_N(t,x_1,\ldots,x_m)=u(\cfrac t
+{\alpha}+x_1+\ldots+x_m)=u(z),$ где $z=(\cfrac t
+{\alpha}+x_1+\ldots+x_m).$
+
+$\cfrac1{\alpha}u'(z)=N m u'(z)\cdot A(z)+N A(z) \cdot u(z)+A(z),
+\, A(z)=\cfrac M{1-\frac za},$
+
+$(\cfrac1{\alpha}-N m A(z))u'(z)=N A(z) u(z)+A(z),$
+
+$W(t,x_1,\ldots,x_m)=\cfrac M{1-\cfrac{t+x_1+\ldots+x_m}a},\,
+W_{\alpha}(t,x_1,\ldots,x_m)=W(\cfrac t {\alpha},x_1,\ldots,x_m).$
+
+$\cfrac {du}{Nu+1}=\cfrac {A(z)dz}{\cfrac1{\alpha}-N m A(z)}.$
+
+Выбирая $\alpha \in (0,1)$ достаточно малым добьемся того, чтобы
+$\cfrac1{\alpha}-N m A(z)\ge0$ в окрестности точки $x=0$. Тогда
+$B(z)=\cfrac {A(z)}{\cfrac1{\alpha}-N m A(z)}$ раскладывается в
+окрестности точки $x=0$ в ряд по степеням $z$ с неотрицательными
+коэффициентами.
+
+$$\frac1N\cdot \ln(Nu+1)=\int_0^zB(\zeta) d\zeta,$$
+
+$$u(z)=\frac{e^{N\int_0^zB(\zeta) d\zeta-1}}N$$ --- имеет в
+разложении по степеням $z$ в окрестности $z=0$ неотрицательные
+коэффициенты, так как $$e^{N\int_0^zB(\zeta)
+d\zeta-1}=1+\sum_{k=1}^{\infty}\frac1{k!}(N\int\limits_0^zB(\zeta)
+d\zeta).$$ Ряд для $u$ мажорирует формальный ряд для решения
+исходной системы и, следовательно, он сходится.$\blacksquare$
+
+
+\section{Обобщенные функции}
+
+\textbf{Пример.}
+
+Рассмотрим поверхность с трением: брусок падает под углом
+$\alpha_n$ и отражается от поверхности. Под каким наибольшим углом
+$\alpha_0$ он отразится?
+
+Скорость $\overline v=(v_x,v_y),$ импульс $\overline p=m\overline
+v=(p_x,p_y)=(mm_x,mm_y),$
+
+ $\tg\alpha_n=\cfrac {v_y}{v_x}=\cfrac
+{p_y(\infty)}{p_x(\infty)},\,\tg\alpha_0=?$
+
+$\cfrac {dS_y}{dt}=F_y \Rightarrow
+p_y(t)=p_y(-\infty)+\int\limits_{-\infty}^t F_dt$ (считаем, что
+при $t=0$ происходит соударение)
+
+$p_y(\infty)=p_y(-\infty)+\int\limits_{-\infty}^{\infty}
+F_dt=-p_y(\infty) \Rightarrow $ $$\int\limits_{-\infty}^{\infty}
+F_dt=-2p_y(-\infty),\eqno (1)$$
+
+$k$ --- коэффициент трения $\Rightarrow
+p_x(t)=p_x(-\infty)-\int\limits_{-\infty}^t k(t)F_y(t)dt,
+\Rightarrow$
+
+$p_x(\infty)=p_x(-\infty)-\int\limits_{-\infty}^{\infty}
+k(t)F_y(t)dt$
+
+$k$ зависит от $t$, но меняется со временем очень медленно, т.е.
+при $t\in(-\varepsilon,\varepsilon)$
+
+$ k(t)=k(0)=\const   \Rightarrow
+p_x(\infty)=p_x(-\infty)-k(0)\int\limits_{-\infty}^{\infty}
+F_y(t)dt=p_x(-\infty)+2k(0)p_y(-\infty) \Rightarrow$
+
+$\tg \alpha_o=\cfrac {p_y(\infty)}{p_x(\infty)}=\cfrac
+{p_y(\infty)}{p_x(-\infty)+2k(0)p_y(-\infty)}=\cfrac {-\cfrac
+{p_y(-\infty)}{p_x(-\infty)}}{1+2k(0)\cfrac
+{p_y(-\infty)}{p_x(-\infty)}}=\cfrac {-\tg \alpha_n}{1+2k(0)\tg
+\alpha_n}.$
+
+Рассмотрим $\delta(t)$ --- \textbf{дельта-функция Дирака}:
+$\delta(0)=\infty, \delta(x)=0, x\ne0,
+\int\limits_{-\infty}^{\infty} \delta(t)dt=1.$
+
+Если $F_y(t)=-2p_y(\infty)\delta(t)$, то получим (1).
+
+\textbf{Определение.} \textbf{Носитель функции $\varphi\in
+{C^\infty}(\mathbb R^n)$} --- замыкание множества
+
+$\{x\in \mathbb R^n\colon\varphi(x)\ne0\}$.
+
+Обозначение: $\supp \varphi.$
+
+\textbf{Определение.} Множество функций $\varphi\in
+{C^\infty}(\Omega)$ таких, что $\supp \varphi$ является компактом
+называется \textbf{множеством (пространством) основных функций
+$D(\Omega)$}, где $(\Omega)$ --- открытое подмножество $\mathbb
+R^n,\,n\ge1.$
+
+\textbf{Определение.} Последовательность функций $\varphi_k\in
+D(\Omega),\,k=1,2,\ldots,$ \textbf{сходится} к функции $\varphi\in
+D(\Omega),$ если:
+
+1) существует компакт $H\subset\Omega\colon \supp \varphi_k\subset
+H,\,k=1,2,\ldots,$
+
+2) $\forall m
+\|\,\varphi_k-\varphi\|_{C^m(\Omega)}\to0,\,k\to{\infty},$ где
+$\|\,\psi\|_{C^m(\Omega)}=\sup\limits_{x\in\Omega}
+\sum\limits_{|\,\alpha|\le m} |\,\partial^2\psi(x)|,$
+$\alpha=(\alpha_1,\ldots,\alpha_n)$ --- мультииндекс,
+$|\,\alpha|=\alpha_1+\ldots+\alpha_n, \,\partial^{\,\alpha}=\cfrac
+{\partial^{\,|\alpha|}}{\partial x_1^{\,\alpha_1}\ldots \partial
+x_1^{\,\alpha_n}}, \alpha_i$ --- целые неотрицательные числа.
+
+\textbf{Определение.} Функционал $f\colon D(\Omega)\to\mathbb C$
+называется \textbf{непрерывным}, если из того, что
+$\varphi_k\to\varphi,\,k\to{\infty}$ в $D(\Omega)$ следует, что
+$f(\varphi_k)\to f(\varphi),\,k\to{\infty}.$
+
+\textbf{Определение.} \textbf{Пространство обобщенных функций} ---
+множество линейных непрерывных функционалов $f\colon
+D(\Omega)\to\mathbb C^n.$
+
+$D(\Omega), D'(\Omega)$ --- линейные пространства над $\mathbb
+C^n$.
+
+$f_1,f_2\in D'(\Omega), \lambda_1,\lambda_2\in \mathbb C^n,
+\varphi\in D(\Omega)\colon\,
+(\lambda_1f_1+\lambda_2f_2)(\varphi)=\lambda_1f_1(\varphi)+\lambda_2f_2(\varphi).$
+
+$\delta(t)$ --- тоже функционал!
+
+\textbf{Определение.} Пусть $f\in D'(\Omega), \varphi\in
+D(\Omega)$, тогда $(f,\varphi)=f(\varphi)$ --- результат действия
+функционала на основную функцию $\varphi$.
+
+$(\delta(x),\varphi(x))=\varphi(0)$ --- определение дельта-функции
+Дирака.
+
+Пусть $L_{1,loc}(\Omega)$ --- множество измеримых функций на
+открытом множестве $\Omega\subset\mathbb R^n$, суммируемых на
+всяком компакте $H\subset\Omega$. Вложим $L_{1,loc}(\Omega)$ в
+$D(\Omega)$ следующим образом: для любого $f\in L_{1,loc}(\Omega)$
+определим функционал $f\colon D(\Omega)\to\mathbb C^n$ формулой:
+$$f\colon\varphi\to\int\limits_{\Omega}f\varphi dx, \, \varphi\in D(\Omega)$$
+
+($f\varphi$ --- тоже измерима и $\,=0$ вне носителя функции
+$\varphi$ (компакт)). На самом деле интеграл берется  не по
+$\Omega$, а по компакту --- носителю $\varphi$.
+
+\textbf{Упражнение*.} Доказать, что если
+$\int\limits_{\Omega}f\varphi dx=0,\,\forall\varphi\in D(\Omega),$
+то $f=0$ почти всюду в $\Omega$.
+
+%lect6
+
+\section{Действия над обобщенными функциями}
+
+Пусть $f,g\in D'(\Omega),\,f,g\colon D(\Omega)\to\mathbb C^n$ ---
+линейные непрерывные функционалы.
+
+\begin{enumerate}
+\item $(f+g)(\varphi)=f(\varphi)+g(\varphi)$ или
+$(f+g,\varphi)=(f,\varphi)+(g,\varphi)$;
+\item $(\lambda f)(\varphi)=\lambda f(\varphi)$ или $(\lambda
+f,\varphi)=\lambda(f,\varphi)$;
+\item $f\in D(\Omega),\,\psi\in C^{\infty}(\Omega) \Rightarrow
+(f\psi,\varphi)=(f,\psi\varphi)$;
+\item В частности, если $f,\psi\in C^{\infty}(\Omega)$, то
+$(f\psi,\varphi)=\int\limits_{\Omega}(f\psi)\varphi\,
+dx=\int\limits_{\Omega}f(\psi\varphi)\,dx=(f,\psi\varphi)$;
+\item Дифференцирование обобщенных функций: если $f\in D'(\Omega),\,f\in C^{\infty}(\Omega),\,\varphi\in
+D(\Omega)$, то
+
+$\Bigl(\cfrac{\partial f}{\partial
+x_i}\,,\varphi\Bigr)=\int\limits_{\Omega}\cfrac {\partial
+f}{\partial x_i}\,\,\varphi\,dx=-\int\limits_{\Omega}f\cfrac
+{\partial \varphi}{\partial x_i}\,dx=-\Bigl(f,\cfrac {\partial
+\varphi}{\partial x_i}\Bigr)$
+
+Считаем это определением: $(f\psi,\varphi)=-(f,\psi\varphi).$
+
+\textbf{Пример.} $$\Theta(x)=\begin{cases} 1, x>0;\\ 0,
+x<0.\end{cases}.$$ Очевидно, что $\Theta\in L_{1,loc}(\mathbb
+R^n)$. Для $\forall \varphi \in D(\mathbb R^n)$, учитывая $\supp
+\varphi\subset(-a,a)$, имеем:
+
+$(\Theta'(x),\varphi(x))=-(\Theta(x),\varphi'(x))=-\int\limits_{-\infty}^{\infty}\Theta(x)\varphi'(x)\,dx=-\int\limits_{-a}^{a}\Theta(x)\varphi'(x)\,dx=$
+
+$=-\int\limits_{-a}^0\underbrace{\Theta(x)}_{\equiv0}\varphi'(x)\,dx-\int\limits_0^a\underbrace{\Theta(x)}_{\equiv1}\varphi'(x)\,dx=-\int\limits_0^a\varphi'(x)\,dx=-\varphi(a)+\varphi(0)=\varphi(0).$
+
+Таким образом, получаем:
+$(\Theta'(x),\varphi(x))=\varphi(0)=(\delta(x),\varphi(x)).$
+\item $f,g\in D'(\Omega) \Rightarrow \cfrac{\partial}{\partial
+x_i}\,(f+g)=\cfrac{\partial f}{\partial x_i}+\cfrac{\partial
+g}{\partial x_i}.$
+
+$\square$
+
+Для $\forall \varphi \in D$ имеем:
+
+$\left(\cfrac{\partial}{\partial
+x_i}\,(f+g),\varphi\right)=\mbox{по свойству
+(5)}=-\left(f+g,\cfrac{\partial\varphi}{\partial
+x_i}\right)=\mbox{по свойству (1)}=$
+
+$=-\left(f,\cfrac{\partial\varphi}{\partial
+x_i}\right)-\left(g,\cfrac{\partial\varphi}{\partial
+x_i}\right)=\mbox{по свойству (5)}=\left(\cfrac{\partial
+f}{\partial x_i}\,,\varphi\right)+\left(\cfrac{\partial
+g}{\partial x_i}\,,\varphi\right)=\mbox{по свойству (1)}=$
+
+$=\left(\cfrac{\partial f}{\partial x_i}+\cfrac{\partial
+g}{\partial x_i}\,,\varphi\right). \blacksquare$
+
+\item $f\in D'(\Omega), \psi\in C^{\infty}(\Omega)\Rightarrow \cfrac{\partial}{\partial
+x_i}\,(f\psi)=\cfrac{\partial f}{\partial
+x_i}\,\psi+f\cfrac{\partial\psi}{\partial x_i}.$
+
+$\square$
+
+Для $\forall \varphi \in D$ имеем:
+
+$(\cfrac{\partial}{\partial x_i}\,(f\psi),\varphi)=\mbox{по
+свойству (5)}=-(f\psi,\cfrac{\partial\varphi}{\partial
+x_i})=\mbox{по свойству
+(4)}=(-f,\psi\cfrac{\partial\varphi}{\partial x_i}).$
+
+C другой стороны, $\left(\cfrac{\partial f}{\partial
+x_i}\,\psi+f\cfrac{\partial\psi}{\partial
+x_i},\varphi\right)=\mbox{по свойству (1)}=\left(\cfrac{\partial
+f}{\partial x_i}\,\psi,\varphi\right)+f\left(\cfrac{\partial
+\psi}{\partial x_i},\varphi\right)=$
+
+$=\mbox{по свойству (4)}=\left(\cfrac{\partial f}{\partial
+x_i}\,\psi,\varphi\right)+\left(f,\cfrac{\partial \psi}{\partial
+x_i}\,\varphi\right)=\mbox{по свойствам (1), (5)}=$
+
+$=-\left(f,-\cfrac{\partial}{\partial
+x_i}\,(\psi\varphi)+\cfrac{\partial\psi}{\partial
+x_i}\,\varphi\right)=\left(f,-\cfrac{\partial\psi}{\partial
+x_i}\,\varphi-\psi\cfrac{\partial\varphi}{\partial
+x_i}+\cfrac{\partial\psi}{\partial
+x_i}\,\varphi\right)=-\left(f,\psi\cfrac{\partial\varphi}{\partial
+x_i}\right).\blacksquare$
+
+\end{enumerate}
+
+\textbf{Упражнение.} Показать ,что при умножении обобщенной
+функции на бесконечно гладкую, получается обобщенная функция, т.е.
+линейный  непрерывный функционал.
+
+\textbf{Упражнение.} Показать ,что при дифференцировании
+обобщенной функции, получается обобщенная функция.
+
+\section{Замена переменной у обобщенной функции}
+
+$f\in C^{\infty}(\Omega),f\in D'(\Omega)$
+
+$x=x(x')\colon \Omega'\to\Omega$ --- диффеоморфизм
+
+$f(x)\colon \varphi(x)\to\int\limits_{\Omega}f(x(x'))\varphi (x)
+dx,\,\varphi(x)\in D(\Omega)$
+
+$$f(x(x'))\colon \psi(x')\to\int\limits_{\Omega'}f(x(x'))\psi (x')
+dx',\eqno(1)$$
+
+$dx'=\Bigl|\det \,\|\cfrac{\partial x'}{\partial x}\|\Bigr|\,dx,\,
+dx'={dx^1}'\ldots{dx^n}',\,dx={dx^1}\ldots{dx^n},$
+
+$$\Bigl\|\cfrac{\partial x'}{\partial x}\Bigr\|=\begin{vmatrix}
+\,\,\,\,\cfrac{\partial {x^1}'}{\partial x^1}&\cdots& \cfrac{\partial {x^1}'}{\partial x^n}&\\
+\,\,\,\,\vdots&\cdots&\vdots&\\
+\,\,\,\,\cfrac{\partial {x^n}'}{\partial x^1}&\cdots&
+\cfrac{\partial {x^n}'}{\partial x^n}&
+\end{vmatrix}$$
+
+$(1)=\int\limits_{\Omega}f(x)\underbrace{\psi (x'(x))\Bigl|\det
+\,\|\cfrac{\partial x'}{\partial
+x}\|\Bigr|}_{=\varphi(x)}\,dx=\left(f(x),\psi(x'(x))\Bigl|\det
+\,\|\cfrac{\partial x'}{\partial x}\|\Bigr|\right).$
+
+\textbf{Определение.}
+$(f(x(x')),\psi(x'))=\left(f(x),\psi(x'(x))\Bigl|\det
+\,\|\cfrac{\partial x'}{\partial
+x}\|\Bigr|\right)=\left(f(x),\cfrac{\psi(x'(x))}{\Bigl|\det
+\,\|\cfrac{\partial x}{\partial x'}\|\Bigr|}\right).$
+
+\textbf{Пример.} $f(x)=\delta(x).$
+
+$x=ax'+b \Rightarrow x'=\cfrac{x-b}a\Rightarrow
+\cfrac{dx'}{dx}=\cfrac1a$ и
+$\Bigl|\cfrac{dx'}{dx}\Bigr|=\cfrac1{|a|} \Rightarrow$
+
+$$(\delta(ax'+b),\psi(x'))=\Bigl(\delta(x),\psi\Bigl(\cfrac{x-b}a\Bigr)\cdot\cfrac1{|a|}\,\Bigr)=\cfrac1{|a|}\,\psi\Bigl(-\cfrac
+ba\Bigr)$$
+
+Пусть $a=1, b=-x_0' \Rightarrow
+(\delta(x'-x_0'),\psi(x'))=\psi(x_0')$
+
+$x'_0=0 \Rightarrow
+\int\limits_{-\infty}^{\infty}\psi(x)\delta(x)dx=\psi(0).$
+
+\textbf{Пример.} $x=Ax'+b,\,x'\in \mathbb R^n, \,b\in\mathbb R^n,
+$ матрица $A\colon \mathbb R^n\to\mathbb R^n, \,f\in D'(\mathbb
+R^n) \Rightarrow $
+$$(f(x(x')),\psi(x')))=(f(Ax'+b),\psi(x'))=\left(f(x),\cfrac{\psi(A^{-1}(x-b))}{|\,\det
+A|}\right).$$
+
+%lect7
+
+Пусть $f\in C(\Omega), \Omega\subset \mathbb R^n, n\ge1, \Omega$
+--- открытое, непустое, $\supp f=\{x\in \Omega\colon f(x)\ne0\}.$
+
+Пусть теперь $f\in D'(\Omega)$, $(f,\varphi)=0$
+$$f\colon \varphi\to\int\limits_{\Omega}f\varphi\,dx, \supp \varphi\subset \omega,\, \omega=\Omega \setminus \supp f$$
+
+\textbf{Определение.} \textbf{Ограничением функции $f\in D'
+(\Omega)$} на произвольном открытом подмножестве
+$\omega\subset\Omega$ называется обобщенная функция
+$f|_{\,\omega}\in D' (\omega)\colon
+(f|_{\,\omega},\varphi)=(f,\varphi), \,\forall \varphi \in D
+(\omega).$
+
+\textbf{Определение.} \textbf{Носитель функции $f\in D' (\Omega)$}
+--- множество $\supp f=\Omega \setminus \omega_{max},$ где
+$\omega_{max}$ --- максимальное открытое подмножество
+$\Omega\colon f|_{\,\omega}=0.$
+
+\textbf{Утверждение 1.} Множество $\omega_{max}$ существует.
+
+\textbf{Утверждение 2.} Пусть $\omega_1, \omega_2\subset
+\Omega\colon f|_{\,\omega_1}=0, f|_{\,\omega_2}=0,$ где $f\in
+D'(\Omega)$ --- некоторая обобщенная функция. Тогда
+$f|_{\,\omega_1\cup\omega_2}=0.$
+
+$\square$
+
+Возьмем $\varphi\in D(\omega_1\cup\omega_2).$ Надо показать, что
+$(f,\varphi)=0.$
+
+$\supp \varphi\Subset \omega_1\cup\omega_2$ --- означает
+одновременно,что $\supp \varphi$ является компактом и он (этот
+компакт) принадлежит $\omega_1\cup\omega_2.$
+
+Имеем: $\supp \varphi \setminus \omega_2 \Subset \omega_1.$ Таким
+образом, существует открытое множество $v_1:$
+
+$\supp \varphi \setminus \omega_2 \subset v_1,$ замыкание
+$\overline {v_1}\Subset \omega_1.$
+
+Очевидно, что $\supp \varphi \subset v_1\cup\omega_2.$ При этом
+$\supp \varphi \setminus v_2\subset v_2.$ Тем самым, имеем $\supp
+\varphi\subset v_1\cup v_2.$
+
+Возьмем неотрицательную функцию $\psi_1\in D(\omega_1)\colon
+\psi_1|_{\,v_1}\equiv1.$ Аналогично, возьмем неотрицательную
+функцию $\psi_2\in D(\omega_2)\colon \psi_2|_{\,v_2}\equiv1.$
+
+Пусть $\varphi_1=\begin{cases} \cfrac{\varphi(x)\psi_1(x)}{\psi_1(x)+\psi_2(x)}, x\in v_1\cup v_2;\\
+0, x\in \mathbb R^n\setminus(v_1\cup v_2),\end{cases} \varphi_2=\begin{cases} \cfrac{\varphi(x)\psi_2(x)}{\psi_1(x)+\psi_2(x)}, x\in v_1\cup v_2;\\
+0, x\in \mathbb R^n\setminus(v_1\cup v_2),\end{cases} \Rightarrow$
+
+$\varphi_1, \varphi_2 \in C^{\infty}(\mathbb R^n)\ \Rightarrow$
+\begin{enumerate}
+\item Если $x\in \supp \,\varphi,$ то существует $U(x)\subset v_1\cup
+v_2;$ если $x\notin \supp \,\varphi,$ то $\varphi(x)=0
+\Rightarrow$
+
+$\varphi_1(x)=\varphi_2(x)\equiv0.$
+\item $\supp \,\varphi_1\Subset \omega_1, \supp \,\varphi_2\Subset
+\omega_2,$ так как $\supp \,\psi_1\Subset \omega_1, \supp
+\,\psi_2\Subset \omega_2.$
+\item $\varphi_1(x)+\varphi_2(x)=\varphi(x),\,\forall x\in \Omega$
+--- очевидно.
+В свою очередь, если $x\notin v_1\cup v_2,$ то
+$\varphi_1(x)=\varphi_2(x)=\varphi(x)\equiv0,$ так как $\supp
+\,\varphi \subset v_1\cup v_2.$ Поэтому опять получим, что
+$\varphi_1(x)+\varphi_2(x)=\varphi(x).$ Таким
+образом,$(f,\varphi)=(f,\varphi_1+\varphi_2)=\underbrace{(f,\varphi_1)}_{=0,\,\mbox{т.к.}
+ f|_{\,\omega_1}=0}+\underbrace{(f,\varphi_2)}_{=0,\,\mbox{т.к.}
+ f|_{\,\omega_2}=0}=0. \,\blacksquare$
+\end{enumerate}
+
+$\square$ (Утверждение 1.)
+
+Пусть $\omega_{max}=\cup%\limits
+_{f|_{\,\omega}=0}\,\omega, \omega$ --- открытое подмножество
+$\Omega.$ Пусть $\varphi\in D(\omega_{max}),$ тогда $\supp
+\varphi$
+--- компакт, принадлежащий $\omega_{max}.$ Из покрытия множества
+$\varphi,$ образованного открытыми подмножествами $\omega \subset
+\Omega\colon f|_{\,\omega}=0$ выделим конечное подпокрытие: $\supp
+\,\varphi=\omega_1\cup\ldots\cup\omega_m,;$
+
+$f|_{\,\omega_1}=0, \ldots, f|_{\,\omega_m}=0.$
+
+По утверждению 2, $f|_{\,\omega_1\cup\omega_2}=0.$ Обозначим
+$(\omega_1\cup\omega_2)\cup\ldots\cup\omega_m={\omega_1}'\cup\ldots\cup\omega_m,\,{\omega_1}'=\omega_1\cup\omega_2.
+$
+
+$f|_{\,{\omega_1}'\cup\omega_3}=0$ и т.д. Последовательно применяя
+утверждение 2, будем в конце иметь
+$$(f,\varphi)=f|_{\,\omega_1\cup\ldots\cup\omega_m}=0.\,\blacksquare$$
+
+
+%lect8
+
+\section{Свойства носителя}
+
+\begin{enumerate}
+\item $f,g\in D' (\Omega) \Rightarrow \supp (f+g)\subset \supp f\cup
+\supp g.$
+
+\textbf{Упражнение.} Доказать строго через определение.
+\item $f\in D' (\Omega), \psi\in C^{\infty}(\Omega) \Rightarrow \supp f\psi\subset \supp f\cap
+\supp \psi.$
+
+\textbf{Упражнение.} Доказать строго через определение.
+\end{enumerate}
+
+\section{Обобщенные функции с компактным носителем}
+
+Пусть $f\in D' (\Omega),\, \supp f\Subset\Omega,\, f\colon
+D(\Omega)\to \mathbb C^n.$
+
+\textbf{Утверждение 1.} $f$ можно продолжить на
+$C^{\infty}(\mathbb R^n).$
+
+$\square$
+
+Пусть $\psi\in C^{\infty}(\mathbb R^n)$ и $(f,\psi)=(f,\eta\psi),$
+где $\eta\in D(\Omega)\colon \eta\equiv1$ в окрестности $\supp f.$
+Покажем, что $(f,\eta\,\psi)$ не зависит от выбора $\eta.$ В самом
+деле, для двух функций $\eta_1,\eta_2\in D(\Omega)\colon
+\eta_1\equiv1$ в окрестности $\supp f,$ $\eta_1,\eta_2\in
+D(\Omega)\colon \eta_2\equiv1$ в окрестности $\supp f,$ получим:
+$(f,\eta_1\psi)-(f,\eta_2\psi)=(f,(\eta_1-\eta_2)\,\psi)=0,$ так
+как $\supp (\eta_1-\eta_2)\psi\Subset\Omega\setminus \supp f.
+\,\blacksquare$
+
+\textbf{Утверждение 2.} Пусть $g\in D' (\Omega), \psi\in
+C^{\infty}(\Omega),$ причем $\psi \equiv1$ в окрестности $\supp
+g.$ Тогда $g=g\psi.$
+
+\textbf{Пример.}
+
+$f(x)=\const  \ne0 \Rightarrow \supp f=\Omega.$
+
+$f(x)\equiv0 \Rightarrow \supp f=\varnothing.$
+
+$\square$
+
+Пусть $\varphi\in D(\Omega),$ тогда
+$(f\psi,\varphi)=(f,\psi\varphi)$ --- по определению умножения
+обобщенной функции на бесконечно гладкую.
+
+$(f\psi,\varphi)-(f,\varphi)=(f,(\psi-1)\varphi)=0,$ так как
+$(\psi-1)\varphi\in D(\Omega\setminus \supp f). \,\blacksquare$
+
+\textbf{Упражнение.} Покажите, что если в предыдущем утверждении
+условие $\psi \equiv1$ в окрестности $\supp g$ заменить на условие
+$\psi \equiv1$ на $\supp g,$ то утверждение НЕ верно.
+
+\textbf{Теорема.} Пусть $f\in D' (\Omega),$ причем $\supp f$ ---
+компакт, тогда существует
+$$m,A\colon \forall \varphi\in D(\Omega)
+\,\, |(f,\varphi)|\le A\|\varphi\|_{C^m(\Omega)},$$
+где $m$\т порядок сингулярности.
+
+$\square$ (от противного)
+
+Т.е. $\forall m\, \forall A\, \exists \varphi\colon |(f,\varphi)|>
+A\|\varphi\|_{C^m(\Omega)}.$
+
+Возьмем $\eta\in D(\Omega),$ получим $$\forall \varphi\in
+D(\Omega)\,\,\|\eta\,\varphi\|_{C^m(\Omega)}\le
+B_m\|\varphi\|_{C^m(\Omega)},\eqno (1)$$ где $B_m=\const  >0,$
+зависящая только от $m,\,\eta.$ В самом деле,
+$$\|\eta\,\varphi\|_{C^m(\Omega)}=\sup_{x\in
+\,\Omega}\,\sum_{|\alpha|\le
+m}|\partial^{\,\alpha}(\eta(x)\,\varphi(x))|,$$ где
+$\alpha=(\alpha_1,\ldots,\alpha_n)$ --- мультииндекс,
+$|\alpha|=\alpha_1+\ldots+\alpha_n, \,\partial^{\,\alpha}=\cfrac
+{\partial^{\,|\alpha|}}{\partial x_1^{\,\alpha_1}\ldots \partial
+x_1^{\,\alpha_n}} \Rightarrow
+\partial^{\,\alpha}(\eta\,\varphi)=\sum\limits_{\alpha'+\alpha''=\alpha}c_{\alpha'\alpha''}\partial^{\,\alpha'}\eta\,\partial^{\,\alpha''}\varphi.$
+
+Например, $$\cfrac{\partial}{\partial
+x_1}(\eta\,\varphi)=\cfrac{\partial \eta}{\partial
+x_1}\,\varphi+\eta\,\cfrac{\partial \varphi}{\partial x_1},$$
+
+$$\|\eta\,\varphi\|_{C^m(\Omega)}\le \tilde
+B_m\|\eta\|_{C^m(\Omega)}\|\varphi\|_{C^m(\Omega)}.$$
+
+Пусть $B_m=\tilde B_m\|\eta\|_{C^m(\Omega)},$ получим (1).
+Согласно предположению, существует последовательность
+$\varphi_m\in D(\Omega),\,m=1,2,\ldots:$
+
+$$|(f,\varphi_m)|>A_m\|\varphi_m\|_{C^m(\Omega)}.\eqno (2)$$
+
+Имеем: $\|\eta\,\varphi_m\|_{C^m(\Omega)}\le B_m
+\|\varphi_m\|_{C^m(\Omega)},$ поэтому (2) влечет за собой
+неравенство
+$|(f,\varphi_m)|>\cfrac{A_m}{B_m}\,\|\eta\,\varphi_m\|_{C^m(\Omega)}.$
+При этом, если $\eta \equiv1$ в окрестности $\supp f,$ то
+$f\,\eta=f.$ Будем с самого начала считать ,что $\eta \equiv1$ в
+окрестности $\supp f.$ Тем самым, получим:
+$(f,\varphi_m)=(\eta\,f,\varphi_m)=(f,\eta\,\varphi_m),$ поэтому
+$$|(f,\eta\,\varphi)|>\cfrac{A_m}{B_m}\,\|\eta\,\varphi_m\|_{C^m(\Omega)}=m \|\eta\,\varphi_m\|_{C^m(\Omega)}.\eqno (3)$$
+
+Пусть
+$\psi_m=\cfrac{\eta(x)\,\varphi_m(x)}{m\,\|\eta\,\varphi_m\|_{C^m(\Omega)}}.$
+Разделив (3) на $m\,\|\eta\,\varphi_m\|_{C^m(\Omega)},$ получим
+$$|(f,\varphi_m)|>1. \eqno(4)$$
+
+Легко заметить,что $\psi_m\to0$ при $m\to \infty$ в пространстве
+$D(\Omega).$ Действительно,
+
+1) $\supp \psi_m\subset\eta\Subset\Omega,\,m=1,2,\ldots;$
+
+2) для любого натурального $k\,\,
+\|\psi_m\|_{C^k(\Omega)}\le\|\psi_m\|_{C^m(\Omega)},$ если $m\ge
+k.$
+
+Таким образом, $\lim\|\psi_m\|_{C^k(\Omega)}\le\lim\limits_{m\to
+\infty}\|\psi_m\|_{C^m(\Omega)}.$
+
+В то же время, $\|\psi_m\|_{C^m(\Omega)}=\cfrac
+{\|\eta\,\varphi_m\|_{C^m(\Omega)}}{m
+\|\eta\,\varphi_m\|_{C^m(\Omega)}}=\cfrac1m.$
+
+Тем самым, $\lim\limits_{m\to \infty}\|\psi_m\|_{C^m(\Omega)}=0.$
+
+Так как $f\colon D(\Omega)\to \mathbb C^n$ --- непрерывный
+линейный функционал, то $\lim\limits_{m\to
+\infty}|(f,\varphi_m)|=0,$ но, с другой стороны, по неравенству
+(4), $\lim\limits_{m\to \infty}|(f,\varphi_m)|\ge1$. Получили
+противоречие. $\,\blacksquare$
+
+\textbf{Упражнение.} Пусть $f(x)=\delta'(x).$ чему будет равно
+$m$?  ($f(x)=\delta(x) \rightarrow m=0$)
+
+%lect9
+
+\textbf{Теорема.} Пусть $f\in D' (\mathbb R^n), f'(x)\equiv0.$
+Тогда $f(x)\equiv \const  .$
+
+$\square$
+
+Возьмем $\varphi \in D(\mathbb R^n).$ Пусть
+$$P(\varphi)(x)=\varphi(x)-
+\eta(x)\int\limits_{-\infty}^{\infty}\varphi(\xi) \,d\xi,$$ где
+$\eta\in D(\mathbb R^n),$ причем
+$\int\limits_{-\infty}^{\infty}\eta(x)\,dx=1.$ Тогда
+$$\int\limits_{-\infty}^{\infty}P(\varphi)(x)\,dx=
+\int\limits_{-\infty}^{\infty}\varphi(x)\,dx-
+\underbrace{\int\limits_{-\infty}^{\infty}\eta(x)\,dx}_{=1}\int\limits_{-\infty}^{\infty}\varphi(x)\,dx=0.$$
+
+Имеем $(f'(x),\underbrace{\int\limits_{-\infty}^x P(\varphi)(\xi)
+\,d\xi}_{\in D(\Omega)})=0$.
+
+Таким образом, $$0=\Bigl(f(x),\cfrac d{dx}\,\int\limits_{-\infty}^x
+P(\varphi)(\xi)\,d\xi\Bigr)
+=\Bigl(f(x),P(\varphi)(x)\Bigr)=\Bigl(f(x),\varphi(x)\Bigr)-\Bigl(f(x),\eta(x)\Bigr)\int\limits_{-\infty}^{\infty}\varphi(\xi)
+\,d\xi,$$
+$(f(x),\varphi(x))=(c,\varphi(x)),$ где $c=(f(x),\eta(x))$ ---
+комплексное число, не зависящее от $\varphi(x).$ Другими словами,
+$f(x)\equiv \const  . \,\blacksquare$
+
+\textbf{Упражнение.}Пусть $\Omega$ --- область в $\mathbb
+R^n,\,n\ge1,\,f\in D'(\Omega),$ причем $\cfrac{\partial
+f}{\partial x_i}=0,\, i=\overline{1,n}.$ Тогда $f(x)\equiv \const
+$ в $\Omega$.
+
+\textbf{Теорема.} Пусть $f\in D'(\mathbb R).$ Тогда существует
+$F\in D'(\mathbb R)\colon F'(x)=f(x).$
+
+$\square\;$
+Возьмем $\varphi(x)\in D(\mathbb R),$ как и в предыдущей теореме и
+пусть
+$$P(\varphi)(x)=\varphi(x)-\eta(x)\int\limits_{-\infty}^{\infty}\varphi(\xi)
+\,d\xi,$$
+где $\eta\in D(\mathbb R),$ причем
+$\int\limits_{-\infty}^{\infty}\eta(x)\,dx=1.$ Тогда
+$\int\limits_{-\infty}^{\infty}P(\varphi)(\xi)\,d\xi \in D(\mathbb
+R).$ Тогда, если существует $F\in D'(\mathbb R)\colon F'(x)=f(x),$
+то получим
+\begin{multline}
+\Bigl(f(x),\int\limits_{-\infty}^x
+P(\varphi)(\xi)\,d\xi\Bigr) =\Bigl(F'(x),\int\limits_{-\infty}^x
+P(\varphi)(\xi)\,d\xi\Bigr) =\\=
+-\Bigl(f(x),\cfrac
+d{dx}\,\int\limits_{-\infty}^x P(\varphi)
+(\xi)\,d\xi\Bigr)=-\Bigl(F(x),P(\varphi)(x)\Bigr)=\\=
+-\Bigl(F(x),\varphi(x)\Bigr)+\Bigl(f(x),\eta(x)\Bigr)\int\limits_{-\infty}^{\infty}\varphi(\xi)\,d\xi.
+\end{multline}
+
+Тем самым,
+$$\Bigl(F(x),\varphi(x)\Bigr)=-\Bigl(f(x),\int\limits_{-\infty}^x
+P(\varphi)(\xi)\,d\xi\Bigr)+\Bigl(c,\varphi(x)\Bigr)$$
+ --- первообразная определена с точностью до константы:
+$c=(f(x),\eta(x))$
+--- комплексное число.
+
+нам надо указать хотя бы одну функцию $F\in D'(\mathbb R)\colon
+F'(x)=f(x).$
+
+Пусть $(F(x),\varphi(x))=-\Bigl(f(x),\int\limits_{-\infty}^x
+P(\varphi)(\xi)\,d\xi\Bigr).$ Проверим, что $F'(x)=f(x).$ В самом
+деле, для любого $\varphi(x)\in D(\mathbb R)$
+$$\Bigl(F'(x),\varphi(x)\Bigr)=-\Bigl(F(x),\varphi'(x)\Bigr)=\Bigl(f(x),\int\limits_{-\infty}^x
+P(\varphi')(\xi)\,d\xi\Bigr).$$
+
+$$P(\varphi')(\xi)=\varphi'(\xi)-\eta(\xi)\underbrace{\int\limits_{-\infty}^{\infty}\varphi'(t)\,dt}_{=0,\mbox{ т.к.} \varphi\in D(\mathbb R)}=\varphi(\xi),$$
+
+$$(F'(x),\varphi(x))=\Bigl(f(x),\int\limits_{-\infty}^x
+\varphi'(\xi)\,d\xi\Bigr)=(f(x),\varphi(x)).\,\blacksquare$$
+
+\section{Прямое произведение обобщенных функций}
+
+Пусть $f_1\colon \Omega_1\to \mathbb C,\,f_2\colon \Omega_2\to
+\mathbb C, f_1\in C^{\infty}(\Omega_1),\,f_2\in
+C^{\infty}(\Omega_2),\,\Omega_1\subset\mathbb
+R^{n_1},\,\Omega_2\subset\mathbb R^{n_2}$ --- открытые
+подмножества, $n_1,n_2\ge1.$
+
+$f_1(x_1)f_2(x_2)\colon \Omega_1\times\Omega_2\to \mathbb C$ ---
+\textbf{прямое произведение}, если
+$x_1=(x_1^1,\ldots,x_1^{n_1})\in\Omega_1,\,x_2=(x_2^1,\ldots,x_2^{n_2})\in\Omega_2,
+(x_1,x_2)\in \Omega_1\times\Omega_2.$
+
+$(x_1,x_2)\mapsto f_1(x_1)f_2(x_2)$ --- функция $n_1+n_2$
+вещественного аргумента.
+
+Обозначения: $f_1(x_1)f_2(x_2),\,f_1(x_1)\cdot
+f_2(x_2),\,f_1\otimes f_2(x_1,x_2).$
+
+Будем понимать бесконечно гладкие функции
+$f_1(x_1),\,f_2(x_2),\,f_1(x_1)f_2(x_2)$ как обобщенные.
+
+\begin{multline}
+f_1(x_1)f_2(x_2)\colon \varphi(x_1,x_2)\mapsto
+\int\limits_{\Omega_1\times\Omega_2}f_1(x_1)f_2(x_2)\varphi(x_1,x_2)\,dx_1\,dx_2=\\=
+\int\limits_{\Omega_1}f_1(x_1)\,dx_1
+\underbrace{\int\limits_{\Omega_2}f_2(x_2)\varphi(x_1,x_2)\,dx_2}_{(f_2(x_2),\varphi(x_1,x_2))}
+\end{multline}
+
+\textbf{Лемма.} Пусть $f_2\in D'(\Omega_2).$ Тогда функция
+$x_1\mapsto (f_2(x_2),\varphi(x_1,x_2))$ принадлежит пространству
+$D(\Omega_1).$ Или $(f_2(x_2),\varphi(\cdot,x_2))\in D(\Omega_1).$
+
+$\square$
+
+Имеем $\varphi(x_1,x_2) \in D(\Omega_1\times\Omega_2),$ т.е.
+$\varphi\in  C^{\infty}(\Omega_1\times\Omega_2),\,
+\Omega_1\subset\mathbb R^{n_1},\,\Omega_2\subset\mathbb
+R^{n_2},\,n_1,n_2\ge1.$
+
+$K=\supp \varphi\Subset\Omega_1\times\Omega_2$ --- компакт. Пусть
+$K_1$ --- проекция $K$ на $\Omega_1$, $K_2$ --- на $\Omega_2$.
+Если $x_1\notin K_1,$ то $\forall
+x_2\in\Omega_2\,\,\varphi(x_1,x_2)=0.$ Т.о.,
+$(f_2(x_2),\varphi(x_1,x_2))=0,$ т.е. $\supp
+(f_2(x_2),\varphi(\cdot,x_2))\Subset K_1.$ Осталось доказать, что
+$(f_2(x_2),\varphi(\cdot,x_2))\in C^{\infty}(\Omega).$
+
+А именно, докажем, что при $h_s\to0,\,s\to\infty$
+$$\lim_{h_s\to0} \left(\frac1{h_s}\Bigl(f_2(x_2),\varphi(x_1^1,\ldots,x_1^i+h_s,\ldots,x_1^n,x_2)\Bigr)-
+\Bigl(f_2(x_2),\varphi(x_1^1,\ldots,x_1^i,\ldots,x_1^n,x_2)\Bigr)\right)=$$
+$$=\lim_{h_s\to0}
+\left(f_2(x_2),\underbrace{\frac{\varphi(x_1^1,\ldots,x_1^i+h_s,\ldots,x_1^n,x_2)-\varphi(x_1^1,\ldots,x_1^i,\ldots,x_1^n,x_2)}{h_s}}_{\varphi_s(x_2)}\right)=$$
+$$=\Bigl(f_2(x_2),\frac{\partial\varphi}{\partial
+x_1}(x_1,x_2)\Bigr).$$
+
+$\varphi_s(x_2)\to \cfrac{\partial \varphi(x_1,x_2)}{\partial
+x_1^i}$ при $h_s\to0$ в пространстве $D(\Omega_2)$ при
+фиксированном $x_1\in\Omega_1.$
+
+Имеем:
+
+1) существует компактное множество $H\Subset\Omega_2\colon
+\varphi_s\subset H$ для всех достаточно больших индексов $s$. А
+именно, в качестве $H$ достаточно взять $K_2$ --- проекцию $\supp
+\varphi$ на $\Omega_2$;
+
+2) $\Bigl\|\varphi_s(x_2)-\cfrac{\partial
+\varphi(x_1,x_2)}{\partial x_1^i}\Bigr\|_{C^m(\Omega)}\to0$ при
+$s\to\infty,\,\forall m.$
+
+В самом деле:
+\begin{multline}
+\partial^{\,\alpha}_{x_2}\varphi(x_1^1,\ldots,x_1^i+h_s,\ldots,x_1^n,x_2)-
+\partial^{\,\alpha}_{x_2}\varphi(x_1^1,\ldots,x_1^i,\ldots,x_1^n,x_2)=\\=
+\int\limits_0^1\frac
+d{dt}\,\underbrace{\partial^{\,\alpha}_{x_2}\varphi(x_1^1,\ldots,x_1^i+t
+h_s,\ldots,x_1^n,x_2)}_{\equiv \psi(t)}\,dt,
+\end{multline}
+где
+$x_2=(x_2^1,\ldots,x_2^{n_2}),\,\alpha=(\alpha_1,\ldots,\alpha_n)$
+--- мультииндекс,
+$$|\alpha|=\alpha_1+\ldots+\alpha_n,
+\,\partial_{x_2}^{\,\alpha}=\cfrac
+{\partial^{\,|\alpha|}}{\partial_{x_2} x_1^{\,\alpha_1}\ldots
+\partial_{x_2} x_1^{\,\alpha_n}}.$$
+
+Тогда $$\int\limits_0^1\frac
+d{dt}\psi(t)\,dt=-\int\limits_0^1(1-t)'\frac
+d{dt}\psi(t)\,dt=-\left.(1-t)\frac d{dt}\psi(t)\,dt\right|_0^1+
+\int\limits_0^1(1-t)\frac {d^2}{dt^2}\psi(t)\,dt=$$
+$$=\left.\frac d{dt}\psi(t)\right|_{t=0}+
+\int\limits_0^1(1-t)\frac {d^2}{dt^2}\psi(t)\,dt,$$
+$$\frac d{dt}\psi(t)=\partial_{x_1^i} \partial_{x_2}^{\,\alpha} \varphi (x_1^1,\ldots,x_1^i+t\,h_s,\ldots,x_1^n,x_2)\,h_s,$$
+$$\frac {d^2}{dt^2}\psi(t)=\partial^2_{x_1^i} \partial_{x_2}^{\,\alpha} \varphi (x_1^1,\ldots,x_1^i+t\,h_s,\ldots,x_1^n,x_2)\,h_s^2,$$
+$$\int\limits_0^1\frac d{dt}\psi(t)\,dt=\partial_{x_1^i} \partial_{x_2}^{\,\alpha} \varphi (x_1,x_2)\,h_s+
+h_s^2\,\int\limits_0^1(1-t)\,\underbrace{\partial_{x_1^i}^2
+\partial_{x_2}^{\,\alpha} \varphi (x_1^1,\ldots,x_1^i+t\,
+h_s,\ldots,x_1^n,x_2)}_{\mbox{имеет компактный носитель}} \,dt,$$
+$$\partial_{x_2}^{\,\alpha}\left(\varphi_s (x_2)-\frac{\partial\varphi(x_1,x_2)}{\partial x_1^i}\right)=
+h_s\int\limits_0^1(1-t)\,\partial_{x_1^i}^2\partial_{x_2}^{\,\alpha}\varphi(x_1^1,\ldots,x_1^i+t\,h_s,\ldots,x_1^n,x_2)\,dt\to0,
+\,s\to\infty$$ Сходимость по $x_2\in\Omega$ равномерная, так как
+интеграл ограничен, a $h_s\to0$ при $s\to\infty.\,\blacksquare$
+
+%lect10
+
+\textbf{Определение.} Пусть $f_1\in D'(\Omega_1),\,f_2\in
+D'(\Omega_2).$ \textbf{Прямым произведением $f_1$ и $f_2$}
+называется функция $f_1(x_1)f_2(x_2)\in
+D'(\Omega_1\times\Omega_2)\colon \forall\varphi \in
+D(\Omega_1\times\Omega_2)$
+$$\Bigl(f_1(x_1)f_2(x_2),\varphi(x_1,x_2)\Bigr)=\Bigl(f_1(x_1),(f_2(x_2),\varphi(x_1,x_2))\Bigr).$$
+
+\textbf{Лемма.} Пусть $f_1\in D'(\Omega_1),\,f_2\in
+D'(\Omega_2),\,\varphi \in D(\Omega_1\times\Omega_2).$ Тогда
+$$\Bigl(f_1(x_1),(f_2(x_2),\varphi(x_1,x_2))\Bigr)=\Bigl(f_2(x_1),(f_1(x_2),\varphi(x_1,x_2))\Bigr).$$
+
+$\square$
+
+1) Если $\varphi(x_1,x_2)=\varphi_1(x_1)\,\varphi_2(x_2),$ где
+$\varphi_1\in D(\Omega_1)\,\varphi_2\in D(\Omega_2),$ то
+$$\Bigl(f_1(x_1),(f_2(x_2),\varphi(x_1,x_2))\Bigr)=
+\Bigl(f_1(x_1),(f_2(x_2),\varphi_1(x_1)\,\varphi_2(x_2))\Bigr)=$$
+$$=\left((f_1(x_1),\varphi_1(x_1)\Bigl(f_2(x_2),\varphi_2(x_2)\Bigr)\right)=
+\Bigl(f_2(x_2),\varphi_2(x_2)\Bigr)\Bigl(f_1(x_1),\varphi_1(x_1)\Bigr).$$
+Аналогично,
+$$\Bigl(f_1(x_1),(f_2(x_2),\varphi(x_1,x_2))\Bigr)=
+\Bigl(f_1(x_1),\varphi_1(x_1)\Bigr)\Bigl(f_2(x_2),\varphi_2(x_2)\Bigr).$$
+
+2) В общем случае представим $\varphi(x_1,x_2)\in
+D(\Omega_1\times\Omega_2)$ в виде ряда, сходящегося в
+$D(\Omega_1\times\Omega_2)$:
+$$\varphi(x_1,x_2)=\sum_{s=1}^{\infty}\varphi_s(x_1)\,\psi_s(x_2),$$
+где $\varphi_s \in D(\Omega_1),\,\psi_s \in D(\Omega_2).$ Тогда
+$$\Bigl(f_1(x_1),(f_2(x_2),\varphi(x_1,x_2))\Bigr)=
+\sum_{s=1}^{\infty}\Bigl(f_1(x_1),(f_2(x_2),\varphi_s(x_1)\,\psi_s(x_2))\Bigr)=$$
+$$=\sum_{s=1}^{\infty}\Bigl(f_1(x_1),\varphi_s(x_1)\Bigr)\Bigl(f_2(x_2),\psi_s(x_2)\Bigr)=
+\Bigl(f_2(x_2),(f_1(x_1),\varphi(x_1,x_2))\Bigr).\,\blacksquare$$
+
+%lect11
+
+\textbf{Теорема.} Пусть $f_1\in D'(\Omega),\,\Omega\subset\mathbb
+R^n$ --- открытое множество, $\supp f\Subset\Omega$ --- компакт.
+Тогда существует $A>0,\,m\in \mathbb N\colon \forall \varphi\in
+D(\Omega)\,\,\,|(f,\varphi)|\le A\|\varphi\|_{C^m(\Omega)}$.
+
+\textbf{Следствие.} Пусть $f_1\in
+D'(\Omega),\,\Omega\subset\mathbb R^n$ --- открытое множество,
+$\supp f\Subset\Omega$ --- компакт. Тогда существует $A>0,\,m\in
+\mathbb Z\colon \forall \varphi\in D(\Omega)\colon \supp
+\varphi\subset K \,\,\,|(f,\varphi)|= A\|\varphi\|_{C^m(\Omega)}$.
+
+$\square$
+
+Возьмем $\eta\in D(\Omega)\colon \eta\equiv1$ в окрестности $K$.
+Тогда $\forall \varphi\in D(\Omega)\colon \supp \varphi\subset K$
+получим
+$(f,\varphi)=(f,\underbrace{\eta\,\varphi}_{\equiv\varphi})=(\eta\,f,\varphi).$
+При этом $\eta\,f$ имеет компактный носитель: $\supp
+\eta\,f\subset \supp \eta\Subset\Omega.$
+
+Т.о.
+$|(f,\varphi)|=|(\eta\,f,\varphi)|=A\|\varphi\|_{C^m(\Omega)}$
+(последнее равенство --- из предыдущей теоремы). $\blacksquare$
+
+\textbf{Лемма.} Пусть $f_1\colon \Omega_1\to \mathbb C,\,f_2\colon
+\Omega_2\to \mathbb C,\,\Omega_1\subset\mathbb
+R^{n_1},\,\Omega_2\subset\mathbb R^{n_2}$ --- открытые
+подмножества, $n_1,n_2\ge1.$ Тогда $\varphi(x_1,x_2)\mapsto
+\Bigl(f_1(x_1),(f_2(x_2),\varphi(x_1,x_2))\Bigr)$ --- непрерывный
+функционал на $D(\Omega_1\times\Omega_2).$
+
+$\square$
+
+Пусть $\varphi_i(x_1,x_2)\in
+D(\Omega_1\times\Omega_2),\,i=1,2,\ldots;\, \varphi_i\to0,
+i\to{\infty}.$ Докажем, что
+$$\Bigl(f_1(x_1),(f_2(x_2),\varphi(x_1,x_2))\Bigr)\to0,\,i\to{\infty}.$$
+
+В самом деле, существует компакт
+$H\Subset\Omega_1\times\Omega_2\colon \supp \varphi_i\subset H.$
+Тогда $\forall _1\in\Omega\,\forall i=1,2,\ldots.$
+
+$\supp \varphi_i(x_1,\cdot)\subset H_2,$ где $H_2$ --- проекция
+$H$ на $\Omega_2.$ Тогда
+$$\forall s\in \mathbb Z\,\,\,\,
+\|(f_2(x_2),\varphi_i(x_1,\cdot))\|_{C^s(\Omega_1)}\to0,\,i\to{\infty}.$$
+Действительно, по следствию, $\exists A>0,\,m\in \mathbb Z\colon
+\forall \alpha=(\alpha_1,\ldots,\alpha_n) \,\,\forall
+x_1\in\Omega_1$
+$$|\,\partial^{\,\alpha}_{x_1}\,(f_2(x_2),\varphi_i(x_1,x_2))|=
+|\,(f_2(x_2),\partial^{\,\alpha}_{x_1}\varphi_i(x_1,x_2))|\le
+A\,\|\partial^{\,\alpha}_{x_1}\varphi_i(x_1,\cdot))\|_{C^m(\Omega_2)}\le$$
+$$A\,\|\varphi_i\|_{C^{m+|\alpha|}(\Omega_1\times\Omega_2)}\to0,\,i\to{\infty}.$$
+
+Другими словами, мы доказали, что $\forall s\in \mathbb Z,\,s>0$
+$$\|(f_2(x_2),\varphi_i(\cdot,x_2))\|_{C^s(\Omega_1)}\to0,\,i\to{\infty}.$$
+
+Очевидно, что $\supp (f_2(x_2),\varphi_i(\cdot,x_2))\subset H_1,$
+где $H_1\Subset\Omega_1$ --- проекция компакта $H$ на $\Omega_1.$
+
+Т.о., $(f_2(x_2),\varphi_i(\cdot,x_2))\to0,\,i\to{\infty}$ в
+пространстве $D(\Omega_1)$, поэтому
+$$\Bigl(f_1(x_1),(f_2(x_2),\varphi_i(x_1,x_2))\Bigr)\to0,\,i\to{\infty}.$$
+
+Аналогично может быть доказано ,что
+$\Bigl(f_2(x_2),(f_1(x_1),\varphi_i(x_1,x_2))\Bigr)$ является
+линейным не\-прерывным функционалом от $\varphi_i(x_1,x_2)\in
+D(\Omega_1\times\Omega_2).\,\blacksquare$
+
+\textbf{Лемма.} Пусть $\varphi_i(x_1,x_2)\in
+D(\Omega_1\times\Omega_2),\,\Omega_1\subset\mathbb
+R^{n_1},\,\Omega_2\subset\mathbb R^{n_2}$ --- открытые множества.
+Тогда существует $\varphi_s\in D(\Omega_1), \psi_s\in
+D(\Omega_2)\colon$
+$$\varphi_i(x_1,x_2)=\sum_{s=1}^{\infty}\varphi_s(x_1)\,\psi_s(x_2),$$
+где ряд сходится в $D(\Omega_1\times\Omega_2).$
+
+$\square$
+
+Без ограничения общности, будем предполагать,что $\Omega_1\in
+\underbrace{(-\pi,\pi)\times\ldots\times(-\pi,\pi)}_{n_1},\,$
+
+$\Omega_2\in\underbrace{(-\pi,\pi)\times\ldots\times(-\pi,\pi)}_{n_2},\,
+\supp \varphi\Subset\Omega_1\times\Omega_2=
+\underbrace{(-\pi,\pi)^{n_1+n_2}\times\ldots\times(-\pi,\pi)^{n_1+n_2}}_{n_1+n_2}.$
+
+$\varphi_i(x_1,x_2)=\sum\limits_k C_k\,e^{ikx}=
+\sum\limits_{k_1,k_2}C_{k_1,k_2}\,e^{ik_1x+ik_2x},\,x=(x_1,x_2),\,k=(k_1,k_2),$
+
+$$c_k=\cfrac1{(2\pi)^{n_1+n_2}}\,\int\limits_{(-\pi,\pi)^{n_1+n_2}}\varphi(x)\,e^{ikx}\,dx,$$
+
+$$\|\varphi\|_{L_2(I_{n_1+n_2})}^2=\sum_k |C_k|^2$$ --- равенство
+Парсеваля, где $I_{n_1+n_2}=(-\pi,\pi)^{n_1+n_2}=
+\underbrace{(-\pi,\pi)^{n_1+n_2}\times\ldots\times(-\pi,\pi)^{n_1+n_2}}_{n_1+n_2}.$
+
+$$\underbrace{\partial^2\varphi(x)}_{\in \,L_2(I_{n_1+n_2})}=
+\sum\limits_k a_k \,e^{ikx},\,
+\|\partial^1\varphi(x)\|_{L_2(I_{n_1+n_2})}=(2\pi)^{n_1+n_2}
+\sum\limits_k |a_k|^2 \,dx<\infty,$$
+
+$$a_k=\frac1{(2\pi)^{n_1+n_2}}\,\int\limits_{I_{n_1+n_2}}\partial^2\varphi(x)\,e^{-ikx}\,dx=
+\frac{(-1)^{|\alpha|}}{(2\pi)^{n_1+n_2}}\int\limits_{I_{n_1+n_2}}\varphi(x)\,\partial^2\,e^{-ikx}\,dx=$$
+$$=\frac{(ik)^{\alpha}}{(2\pi)^{n_1+n_2}}\int\limits_{I_{n_1+n_2}}\varphi(x)\,e^{-ikx}\,dx=
+(ik)^{\alpha}\,C_k,$$ где
+$\alpha=(\alpha^1,\ldots,\alpha^{n_1+n_2}),\,x=(x^1,\ldots,x^{n_1+n_2}),\,k=(k^1,\ldots,k^{n_1+n_2}).$
+
+$(i\,k)^{\alpha}=(i\,k^1)^{\alpha^1}\cdot\ldots\cdot(i\,k^{n_1+n_2})^{\alpha^{n_1+n_2}}
+\Rightarrow |\,a_k|=|\,k^{\alpha}\,C_k|\le \const  ,$ не зависящей
+от $k$, так как $\sum_k |\,a_k|^2<{\infty}.$
+
+$$\varphi(x_1,x_2)=\sum\limits_{k_1,k_2}C_{k_1,k_2}\,e^{ik_1x_1}\,e^{ik_2x_2}.$$
+
+Возьмем $\eta_1\in D(\Omega_1),\,\eta_2\in D(\Omega_2)\colon
+\eta_1\equiv1$ в окрестности проекции $\supp \varphi$ на
+$\Omega_1$; $\eta_2\equiv1$ в окрестности проекции $\supp \varphi$
+на $\Omega_1$.
+
+$$\varphi(x_1,x_2)=\eta_1(x_1)\,\eta_2(x_2)\,\varphi(x_1,x_2)=
+\sum\limits_{k_1,k_2}C_{k_1,k_2}\eta_1(x_1)\,e^{ik_1x_1}\eta_2(x_2)\,e^{ik_2x_2}$$
+ --- сходится абсолютно и равномерно со всеми своими производными в
+$D(\Omega_1\times\Omega_2).\,\blacksquare$
+
+%lect12
+
+\textbf{Определение.} Последовательность обобщенных функций
+$f_k\in D'(\Omega),\,k=1,2,\ldots,\,\Omega\subset\mathbb R^n$ ---
+непустое открытое множество, \textbf{сходится (слабо) к обобщенной
+функции $f\in D'(\Omega)$}, если $\forall\varphi\in D(\Omega)\,\,
+\lim\limits_{k\to\infty}(f_k,\varphi)=(f,\varphi).$
+
+\textbf{Теорема.} (без доказательства, Шилов, <<II спецкурс>>) Пусть
+последовательность обобщенных функций $f_k\in
+D'(\Omega),\,k=1,2,\ldots,$ слабо сходится к некоторому
+функционалу
+$$f\colon D(\Omega)\to\mathbb C^n,$$
+т.е.
+$$\forall\varphi\in D(\Omega)\,\,
+\lim\limits_{k\to\infty}\underbrace{(f_k,\varphi)}_{f_k(\varphi)}=
+\underbrace{(f,\varphi)}_{f(\varphi)}.$$
+Тогда $f$ является
+обобщенной функцией.
+
+\section{Свертка обобщенных функций}
+
+Пусть $f,g\in L_1(\mathbb R^n),\,n\ge1.$
+
+$$f*g=\int\limits_{\mathbb
+R^n}\,f\underbrace{(x-y)}_{\xi}\,g\underbrace{(y)}_{x-\xi}\,dy=
+\int\limits_{\mathbb R^n}\,f(\xi)g(x-\xi)\,d\xi.$$
+
+$f*g\in L_1(\mathbb R^n),$ так как $\int\limits_{\mathbb R^n}
+|f*g(x)|\,dx= \int\limits_{\mathbb R^n}dx\,
+\Bigl|\int\limits_{\mathbb R^n}f(x-y)\,g(y)\,dy\Bigr|\le
+\int\limits_{\mathbb R^n}dx\, \int\limits_{\mathbb
+R^n}\Bigl|f(x-y)\,g(y)\Bigr|\,dy=$
+
+$=\int\limits_{\mathbb
+R^n}dy\,|\,g(y)|\,\underbrace{\int\limits_{\mathbb
+R^n}|\,f(x-y)|\,dx}_{\int\limits_{\mathbb R^n}|f(x)|\,dx}=
+\int\limits_{\mathbb R^n}|\,g(y)|\,dx\int\limits_{\mathbb
+R^n}|\,f(x)|\,dx<\infty.$
+
+Т.о., интеграл сходится по теореме Фубини,
+$$\Rightarrow f*g\in
+L_1(\mathbb R^n),\,\|f*g\|_{L_1(\mathbb R^n)}\le\|f\|_{L_1(\mathbb
+R^n)}\,\|g\|_{L_1(\mathbb R^n)}.$$
+
+Как определить свертку двух обобщенных функций $f,g\in D'(\mathbb
+R^n)$?
+
+Будем понимать функции $f,g\in L_1(\mathbb R^n)$ как обобщенные.
+Тогда $\forall\varphi\in D(\mathbb R^n).$
+
+$(f,\varphi)=\int\limits_{\mathbb R^n}f\,\varphi\,dx,\,
+(g,\varphi)=\int\limits_{\mathbb R^n}g\,\varphi\,dx,$
+
+$$(f*g,\varphi)=\int\limits_{\mathbb R^n}f*g(x)\,\varphi(x)\,dx=
+\int\limits_{\mathbb R^n}dx\,\varphi(x)\, \int\limits_{\mathbb
+R^n}f(x-y)\,g(y)\,dy= \int\limits_{\mathbb
+R^{2n}}\varphi(x)\,f(x-y)\,g(y)\,dx\,dy=$$
+ $$=\int\limits_{\mathbb
+R^{2n}}\varphi(\xi+y)\,f(\xi)\,g(y)\,d\xi\,dy,$$ где $\xi=x-y.$
+Последний интеграл очень напоминает выражение
+$\Bigl(f(\xi)g(y),\varphi(x+y)\Bigr)$ --- прямое произведение. Но
+последнее выражение нельзя корректно определить для произвольных
+$f,g\in D'(\mathbb R^n),$ так как функция $\varphi(x+y)\colon
+\mathbb R^{2n}\to\mathbb C^n$ не имеет компактного носителя. Как
+же быть?
+
+$\supp \varphi\subset[-A,A], \,-A<\underbrace{y+\xi}_{=x}<A,$ то
+есть $\supp \varphi$ в общем случае не является компактом (только
+если $\supp \varphi=\varnothing$).
+
+\textbf{Определение.} Последовательность функций $\eta_k\in
+L_1(\mathbb R^{2n}),\,k=1,2,\ldots$ --- \textbf{исчерпание
+единицы}, если:
+
+1) для любого компакта $H\Subset\mathbb R^{2n}\,\,
+\left.\eta_k\right|_H=1,$ начиная с некоторого $k$;
+
+2) для любого мультииндекса $\alpha=(\alpha_1,\ldots,\alpha_{2n})$
+существует $A_{\alpha}=\const  >0\colon$
+$$\forall z\in\mathbb
+R^{2n}\,\, \forall k=1,2,\ldots\,\,
+|\partial^{\,\alpha}\eta_k(z)|\le A_{\alpha}.$$
+
+Другими словами, $$\forall\, m\in \mathbb Z \,\,\,\exists A\colon
+\forall k=1,2,\ldots\,\,\|\eta_k\|_{C^m(\mathbb R^{2n})}\le A$$
+
+Есть хотя бы одно компактное исчерпание единицы?
+
+\textbf{Пример.} Обозначим $B_r={z\in\mathbb R^{2n}\colon |z|<r}.$
+Возьмем $\eta\in D(B_2)\colon \left.\eta\right|_{B_1}=1.$
+
+Пусть $\eta_k(z)=\eta\Bigl(\,\cfrac zk\,\Bigr),\,k=1,2,\ldots,\,
+\eta_k(z)\in D(B_{2k}),\, \left.\eta_k\right|_{B_k}=1.$
+
+$$|\partial^{\,\alpha}\eta_k(z)|=\Bigl|\partial^{\,\alpha}\eta\Bigl(\,\cfrac
+zk\,\Bigr)\Bigr|\le
+\underbrace{k^{-|\alpha|}}_{\le1}\,\|\eta\|_{C^{\alpha}(B_2)},$$
+где $|\alpha|=\alpha_1+\ldots+\alpha_{2n}$. Т.е. $\eta_k$ ---
+компактное исчерпание единицы.
+
+\textbf{Определение.} Пусть $f,g\in D'(\mathbb R^n).$
+\textbf{Свертка $f*g$}: если для любого компактного исчерпания
+единицы $\eta_k\in D(\mathbb R^{2n},\,k=1,\ldots,n)$ для любого
+$\varphi\in\,D(\mathbb R^n)$ существует предел
+$$\lim (f(x)*g(x),\varphi(x)):=\lim\limits_{k
+\to\infty}(f(x)\,g(y),\eta_k(x,y)\varphi(x+y)).$$
+
+\textbf{Утверждение.} Если для любого компактного исчерпания
+единицы $\eta_k\in D(\mathbb R^{2n}),\,\,\,k=1,2,\ldots,\,$
+указанный выше предел существует, то этот предел не зависит от
+выбора компактного исчерпания.
+
+$\square$
+
+Пусть $\eta_k\in D(\mathbb R^{2n})$ и $\lambda_k\in D(\mathbb
+R^{2n}),\,k=1,2,\ldots,$ --- два компактных исчерпания единицы.
+построим компактное исчерпание единицы $\Theta_k$:
+$$\Theta_{2k-1}=\eta_k,\,\Theta_{2k}=\lambda_k,\,k=1,2,\ldots$$
+Получим последовательность:
+$\eta_1,\,\lambda_1,\,\eta_2,\,\lambda_2,\,\eta_3,\,\lambda_3\ldots.$
+
+Очевидно, что $\Theta_k, k=1,2,\ldots$ --- тоже компактное
+исчерпание единицы. По условию, существует $\lim\limits_{k
+\to\infty}(f(x)\,g(y),\Theta_k(x,y)\varphi(x+y)),\,\varphi\in
+D(\mathbb R^n).$ Тогда для любой последовательности
+$(f(x)\,g(y),\Theta_k(x,y)\varphi(x+y))$ при $k \to\infty$ предел
+тоже существует и совпадает с пределом исходной
+последовательности: $\lim\limits_{k
+\to\infty}(f(x)\,g(y),\eta_k(x,y)\varphi(x+y)).\,\blacksquare$
+
+\textbf{Упражнение.} Пусть $f,g\in L_1(\mathbb R^n).$ Тогда
+свертка $f*g$, определенная в классическом смысле (как интеграл)
+совпадает со сверткой, определенной в обобщенном смысле (как
+свертка функций из $D'(\mathbb R^n)$).
+
+\section{Свойства свертки обобщенных функций}
+
+\begin{enumerate}
+\item Пусть $f_1,f_2,g\in D'(\mathbb R^n)$ и при этом существует
+свертка $f_1*g,\,f_2*g.$ Тогда существует
+$(f_1+f_2)*g=f_1*g+f_2*g.$
+
+$\square$
+
+Пусть $\eta_s\in D(\mathbb R^{2n}),\,s=1,\ldots,n$ --- компактное
+исчерпание единицы.
+
+Для любого $\varphi\in\,D(\mathbb R^n)$
+$$\lim\limits_{s\to\infty}\Bigl((f_1(x)+f_2(x))g(y),\eta_s(x,y)\varphi(x+y)\Bigr)=$$
+$$=\lim\limits_{s\to\infty}\Bigl(f_1(x)g(y),\eta_s(x,y)\varphi(x+y)\Bigr)+
+\lim\limits_{s\to\infty}\Bigl(f_2(x)g(y),\eta_s(x,y)\varphi(x+y)\Bigr).\,\blacksquare$$
+
+\item Пусть $f,g\in D'(\mathbb R^n),\,\lambda\in\mathbb C^n$ и при этом существует
+свертка $f*g.$ Тогда существует
+
+$(\lambda f)*g=\lambda \,(f*g).$
+\item Пусть $f,g\in D'(\mathbb R^n)$ и при этом существует
+свертка $f*g.$ Тогда существует свертка $g*f,$ причем $f*g=g*f.$
+\end{enumerate}
+
+\textbf{Упражнение.} Доказать пункты 2 и 3.
+
+\section{Дифференцирование сверток}
+
+\textbf{Теорема.} Пусть $f,g\in D'(\mathbb R^n)$ и при этом
+существует свертка $f*g.$ Тогда существуют $\cfrac{\partial
+f}{\partial x_i}*g$ и $f*\cfrac{\partial g}{\partial x_i},$ причем
+$\cfrac{\partial}{\partial x_i}\,(f*g)=\cfrac{\partial f}{\partial
+x_i}*g+ f*\cfrac{\partial g}{\partial x_i}.$
+
+$\square$
+
+Пусть $\eta_s\in D(\mathbb R^{2n},\,s=1,\ldots,n)$ --- компактное
+исчерпание единицы.
+
+Для любого $\varphi\in\,D(\mathbb R^n)$
+
+$$\Bigl(\cfrac{\partial}{\partial x_i}\,(f*g),\varphi\Bigr)=
+-\Bigl(f*g,\cfrac{\partial \varphi}{\partial x_i}\Bigr)=
+-\lim\limits_{s\to\infty}\Bigl(f(x)g(y),\eta_s(x,y)\,\cfrac{\partial
+\varphi(x+y)}{\partial x_i} \Bigr),$$
+
+\begin{multline}\Bigl(\cfrac{\partial f}{\partial x_i}\,g,\varphi\Bigr):=
+\lim\limits_{s\to\infty}\Bigl( \cfrac{\partial f}{\partial
+x_i}(x)\,g(y),\eta_s(x,y)\,\varphi(x+y) \Bigr)=\\=
+\lim\limits_{s\to\infty}\Bigl( \cfrac{\partial f}{\partial
+x_i}(x),\Bigl(g(y),\eta_s(x,y)\,\varphi(x+y)\Bigr) \Bigr)=
+-\lim\limits_{s\to\infty}\Bigl(f(x),\Bigl(g(y),\cfrac{\partial}{\partial
+x_i}\,(\eta_s(x,y)\,\varphi(x+y))\Bigr) \Bigr)=\\=
+-\lim\limits_{s\to\infty}\Bigl(f(x)\,g(y),\cfrac{\partial}{\partial
+x_i}\,(\eta_s(x,y)\,\varphi(x+y))\Bigr)=\\=
+-\lim\limits_{s\to\infty}\Bigl(f(x)\,g(y),\eta_s(x,y)\,\cfrac{\partial\varphi}{\partial
+x_i}\,(x+y)+ \cfrac{\partial\eta_s}{\partial
+x_i}\,(x,y)\,\varphi(x+y)\Bigr).
+\end{multline}
+
+Рассмотрим последовательность функций
+$\xi_s(x,y)=\cfrac{\partial\eta_s}{\partial x_i}\,(x,y)+
+\eta_s(x,y),\,s=0,1,\ldots.$ Очевидно, что $\xi_s(x,y)$ образует
+компактное исчерпание единицы. Тогда
+$$\lim\limits_{s\to\infty}\Bigl(f(x)\,g(y),\eta_s(x,y)\,\varphi(x+y)\Bigr)=
+\lim\limits_{s\to\infty}\Bigl(f(x)\,g(y),\xi_s(x,y)\,\varphi(x+y)\Bigr)=
+(f*g,\varphi),$$ так как предел в определении свертки не зависит
+от выбора компактного исчерпания.
+\begin{multline}
+\lim\limits_{s\to\infty}\Bigl(f(x)\,g(y),\eta_s(x,y)\,\varphi(x+y)\Bigr)=
+\lim\limits_{s\to\infty}\Bigl(f(x)\,g(y),\eta_s(x,y)\,\varphi(x+y)\Bigr)+\\+
+\lim\limits_{s\to\infty}\Bigl(f(x)\,g(y),\cfrac{\partial\eta_s(x,y)}{\partial
+x_i}\,\varphi(x+y)\Bigr).\end{multline}
+
+Первый и второй пределы существуют, а значит существует и третий
+предел и, следовательно,
+$\lim\limits_{s\to\infty}\Bigl(f(x)\,g(y),\cfrac{\partial\eta_s(x,y)}{\partial
+x_i}\,\varphi(x+y)\Bigr)=0.$
+
+Т.о., доказано, что свертка $\cfrac{\partial f}{\partial x_i}*g$
+существует, причем $\cfrac{\partial f}{\partial
+x_i}*g=\cfrac{\partial}{\partial x_i}\,(f*g).$
+
+Аналогично доказывается, что существует свертка $f*\cfrac{\partial
+g}{\partial x_i},$ причем $f*\cfrac{\partial g}{\partial
+x_i}=\cfrac{\partial}{\partial x_i}\,(f*g)$ (или его можно
+получить из коммутативности свертки).$\,\blacksquare$
+
+\textbf{Утверждение.} Пусть $f,g\in D'(\mathbb R^n),$ причем
+$\supp g\Subset\mathbb R^n$ --- компакт. Тогда свертка $f*g$
+существует, причем для любого $\varphi\in\,D(\mathbb R^n).$
+
+$\square$
+
+Пусть $\eta_s(x,y)\in D(\mathbb R^{2n}),\,s=1,\ldots,n$ ---
+компактное исчерпание единицы.
+
+Для любого $\varphi\in D(\mathbb R^n)$
+
+$$\lim\limits_{s\to\infty}\Bigl(f(x)\,g(y),\eta_s(x,y)\,\varphi(x+y)\Bigr)=
+\lim\limits_{s\to\infty}\Bigl(f(x),\Bigl(g(y),\eta_s(x,y)\,\varphi(x+y)\Bigr)\Bigr)=$$
+
+$$=\lim\limits_{s\to\infty}\Bigl(f(x),\Bigl(\lambda(y)\,g(y),\eta_s(x,y)\,\varphi(x+y)\Bigr)\Bigr)
+=\lim\limits_{s\to\infty}\Bigl(f(x),\Bigl(g(y),\eta_s(x,y)\,\lambda(y)\,\varphi(x+y)\Bigr)\Bigr),$$
+где $\lambda(y)\in\mathbb R^n,$ --- некоторая функция:
+$\lambda\equiv1$ в окрестности компакта $\supp g$.
+
+Очевидно, что $\lambda(y)\,\varphi(x+y)\in D(\mathbb R^n),$ в
+частности, имеет компактный носитель. Т.о.,
+$$\eta_s(x,y)\,\lambda(y)\,\varphi(x+y)=\lambda(y)\,\varphi(x+y),$$
+начиная с некоторого номера $s$. Поэтому,
+$$\lim\limits_{s\to\infty}\Bigl(f(x)\,g(y),\eta_s(x,y)\,\varphi(x+y)\Bigr)
+=\Bigl(f(x),(g(y),\lambda(y)\,\varphi(x+y))\Bigr)=$$
+
+$$=\Bigl(f(x),(\underbrace{\lambda(y)\,g(y)}_{=g(y)},\varphi(x+y))\Bigr)=
+\Bigl(f(x),(g(y),\varphi(x+y))\Bigr).\,\blacksquare$$
+
+\textbf{Упражнение.} Пусть $f,g\in D'(\mathbb R^n),$ причем $\supp
+g\Subset\mathbb R^n$ --- компакт. Тогда для любого $\varphi\in
+D(\mathbb R^n)\,\, (f*g,\varphi)=(g(y),(f(x),\varphi(x+y))).$
+
+
+\section{Фундаментальное решение оператора $\mathcal
+L=\sum\limits_{|\alpha|\le m}a_{\alpha}{\partial^{\, \alpha}}.$}
+
+Рассмотрим оператор $\mathcal L=\sum\limits_{|\alpha|\le
+m}a_{\alpha}{\partial^{\, \alpha}},\, a_{\alpha}\in \mathbb C,\,
+|\,\alpha|=\alpha_1+\ldots+\alpha_n, \,\partial^{\,\alpha}=\cfrac
+{\partial^{\,|\alpha|}}{\partial x_1^{\,\alpha_1}\ldots
+\partial x_n^{\,\alpha_n}},$
+
+$\mathcal L(f*g)=\mathcal L f*g=f*\mathcal L g.$
+
+\textbf{Определение.} Функция $E(x)\in D'(\mathbb R^n)$
+--- \textbf{фундаментальное решение оператора}
+$\mathcal L=\sum\limits_{|\alpha|\le m}a_{\alpha}{\partial^{\,
+\alpha}},\, a_{\alpha}\in \mathbb C,$ если $\mathcal
+L\,E(x)=\delta(x).$
+
+\textbf{Пример.} $\mathcal L=\cfrac d{dx},\,
+E(x)=\Theta(x)=\begin{cases} 1, i=j;\\ 0, i \ne j.\end{cases}$
+Действительно, $\mathcal L\,E(x)=\Theta'(x)=\delta(x).$
+
+\textbf{Теорема.} (существования) Пусть $f\in D'(\mathbb R^n),\,
+E(x)$ --- фундаментальное решение оператора $\mathcal
+L=\sum\limits_{|\alpha|\le m}a_{\alpha}{\partial^{\, \alpha}},\,
+a_{\alpha}\in \mathbb C,$ причем существует свертка $u=E*f.$ Тогда
+$\mathcal L\,u=f$ и $u$ --- решение.
+
+$\square$
+
+По утверждению 1, $\mathcal L\,u=\mathcal
+L\,E*f=\delta*f=f.\,\blacksquare$
+
+\textbf{Утверждение 1.} Пусть $f\in D'(\mathbb R^n).$ Тогда
+$\delta*f=f.$
+
+$\square$
+
+Свертка $\delta*f$ существует, так как $\supp \delta(x)=\{0\}$ ---
+компактное множество. При этом, для любого $\varphi\in\,D(\mathbb
+R^n)$
+$(f*\delta,\varphi)=(f(x),(\delta(y),\varphi(x+y)))=(f(x),\varphi(x)).\,\blacksquare$
+
+\textbf{Теорема.} (единственности) Пусть $u,f\in D'(\mathbb
+R^n),\, E(x)$ --- фундаментальное решение оператора $\mathcal
+L=\sum\limits_{|\alpha|\le m}a_{\alpha}{\partial^{\, \alpha}},\,
+a_{\alpha}\in \mathbb C,$ причем $\mathcal L\,u=f$ и при этом
+существует свертка $E*f=u.$
+
+$\square$
+
+Имеем $\mathcal L\,(E*u)=\mathcal L\,E*u=\delta*u=u.$ C другой
+стороны, $\mathcal L\,(E*u)=E*\mathcal L\,u=E*f$. Тогда
+$u=E*f.\,\blacksquare$
+
+\section{Фундаментальное решение обыкновенного дифференциального оператора\\
+с постоянными коэффициентами}
+
+$$\mathcal L\,u=u^{(m)}+a_{m-1}u^{(m-1)}+\ldots+a_1u'+a_0u,\mbox{ где
+} a_{m-1},\ldots,a_1,a_0\in \mathbb C.$$
+
+\textbf{Теорема.} Пусть $E(x)=W(x)\,\Theta(x),$ где
+$\Theta(x)=\begin{cases} 1, i=j;\\ 0, i \ne j,\end{cases}$ а
+$W(x)$ --- решение задачи Коши $\mathcal L\,W=0,\,
+W(0)=\ldots=W^{(m-2)}(0)=0,\,W^{(m-1)}(0)=1.$ Тогда $\mathcal
+L\,E(x)=\delta(x).$
+
+$\square$
+
+ Пусть $\varphi\in\,D(\mathbb R).$ Тогда $(\mathcal
+L\,E(x),\varphi(x))=(E(x),\mathcal L^*\,\varphi),$ где $$\mathcal
+L^*\,\varphi=(-1)^m\varphi^{(m)}(x)+(-1)^{m-1}a_{m-1}\varphi^{(m-1)}(x)+\ldots+
+a_1\varphi'(x)+a_0\varphi(x).$$
+
+Имеем:
+$$(E(x),\mathcal L^*\,\varphi)=
+\int\limits_{-\infty}^{\infty}E(x)\,\mathcal L^*\varphi(x)\,dx=
+\int\limits_{-\infty}^{\infty}\Theta(x)\,W(x)\,\mathcal
+L^*\varphi(x)\,dx= \int\limits_0^{\infty}W(x)\,\mathcal
+L^*\varphi(x)\,dx.\eqno (1)$$
+
+$$\int\limits_0^{\infty}(-1)^k\varphi^{(k)}(x)W(x)\,dx=
+\left.(-1)^k\varphi^{(k-1)}(x)W(x)\right|_0^{\infty}+
+\int\limits_0^{\infty}(-1)^{k-1}\varphi^{(k-1)}(x)W'(x)\,dx=$$
+
+$$=(-1)^{k-1}\varphi^{(k-1)}(0)W(0)+
+\left.(-1)^{k-1}\varphi^{(k-2)}(x)W'(x)\right|_0^{\infty}+
+\int\limits_0^{\infty}(-1)^{k-2}\varphi^{(k-2)}(x)W''(x)\,dx=\ldots=$$
+
+$$=(-1)^{k-1}\varphi^{(k-1)}(0)W(0)+(-1)^{k-2}\varphi^{(k-2)}(0)W'(0)+\ldots+\varphi(0)W^{(k-1)}(0)+
+\int\limits_0^{\infty}\varphi(x)W^{(k)}(x)\,dx$$
+
+Продолжим равенство (1):
+
+$$\sum_{k=1}^m \int\limits_0^{\infty}(-1)^k a_k\,\varphi^{(k)}(x)W(x)\,dx=
+\sum_{k=1}^m\sum_{s=o}^{k-1}(-1)^{k-1-s}a_k\,\varphi^{(k-1-s)}(0)\,W^{(s)}s(0)+
+\sum_{k=1}^m \int\limits_0^{\infty} W^{(k)}a_k \varphi(x)\,dx,$$
+
+(при $k=0$ $\mathcal L\varphi(x)=a_0\varphi(x)$).
+
+$$(E,\mathcal L\varphi(x))=\underbrace{
+\sum_{k=1}^m\sum_{s=o}^{k-1}(-1)^{k-1-s}a_k\,\varphi^{(k-1-s)}(0)\,W^{(s)}s(0)}_{=\varphi(0)}+
+\int\limits_0^{\infty}\underbrace{\mathcal L
+W(x)a_k\varphi(x)}_{=0}.$$
+
+Так как $W=0,\, W(0)=\ldots=W^{(m-2)}(0)=0,\,W^{(m-1)}(0)=1,$ то
+$(\mathcal L E,\varphi)=\varphi(0),$ т.е. $\mathcal
+L\,E(x)=\delta(x).\,\blacksquare$
+
+%lect15
+
+\section{Задача Коши для обыкновенных дифференциальных уравнений}
+
+$w^{(m)}+a_{m-1}w^{(m-1)}+\ldots+a_0w=f(x),\,
+w(0)=\ldots=w^{(m-1)}(0)=0,\,a_k\in \mathbb
+C,\,k=\overline{0,m-1},$
+
+$w_k\in\mathbb C,\,f\in C^{\infty}(\mathbb R)$ --- бесконечно
+гладкая функция.
+
+Это и есть задача Коши для обыкновенного дифференциального
+уравнения.
+
+Пусть $\tilde w(x)=\begin{cases} w(x), x\ge0;\\ 0,
+x<0,\end{cases}$ $\tilde f(x)=\begin{cases} f(x), x\ge0;\\ 0,
+x<0.\end{cases}$
+
+$\mathcal L=\Bigl(\cfrac d{dx}\Bigr)^m+a_{m-1}\Bigl(\cfrac
+d{dx}\Bigr)^{(m-1)}+\ldots+a_0\underbrace{\Bigl(\,\,\,\cdot\,\,\,\Bigr)}_{\mbox{сам
+оператор}}$
+
+$\tilde w(x)\in D'(\mathbb R),\,\varphi\in\,D(\mathbb R)\,\,
+(\mathcal L\tilde w(x),\varphi(x))=(\tilde w(x),\mathcal
+L^*\varphi(x)),$ где
+
+$$\mathcal
+L^*=(-1)^m\Bigl(\cfrac
+d{dx}\Bigr)^{(m)}+(-1)^{m-1}a_{m-1}\Bigl(\cfrac
+d{dx}\Bigr)^{(m-1)}+\ldots+a_0.$$
+
+Тогда $$(\tilde w(x),\mathcal L^*\varphi(x))=
+\int\limits_{-\infty}^{\infty}\tilde w(x)\,\mathcal
+L^*\varphi(x)\,dx=\int\limits_0^{\infty} w(x)\,\mathcal
+L^*\varphi(x)\,dx=\int\limits_0^{\infty}
+w(x)\varphi^{\,(k)}(x)\,dx.$$
+
+Обозначим $a_m\equiv1.$ Тогда имеем:
+$$(-1)^k\int\limits_0^{\infty} w(x)\varphi^{\,(k)}(x)\,dx=
+\left.(-1)^k w(x)\varphi^{\,(k-1)}(x)\right|_0^{\infty}+
+(-1)^{k-1}\int\limits_0^{\infty} w'(x)\varphi^{\,(k-1)}(x)\,dx=$$
+
+$$=(-1)^k w(0)\varphi^{\,(k-1)}(0)+\left.(-1)^{k-1} w(x)\varphi^{\,(k-2)}(x)\right|_0^{\infty}+
+(-1)^{k-2}\int\limits_0^{\infty}
+w''(x)\varphi^{\,(k-2)}(x)\,dx=\ldots=$$
+
+$$=(-1)^{k-1}\underbrace{w(0)}_{w_0}\varphi^{\,(k-1)}(0)+(-1)^{k-2} \underbrace{w'(0)}_{w_1}\varphi^{\,(k-2)}(0)+\ldots+
+\underbrace{w^{(k-1)}(0)}_{w_{k-1-s}}\varphi(0)+\int\limits_0^{\infty}
+w^{(k)}(x)\varphi(x)\,dx=$$
+
+$$=\sum_{s=0}^{k-1}(-1)^s w_{k-1-s}\varphi^{\,(k)}(0)+
+\int\limits_0^{\infty} w^{(k)}(x)\varphi(x)\,dx.$$
+
+Тогда
+$$(\mathcal L\tilde w(x),\varphi(x))=
+\sum_{k=1}^m a_k\sum_{s=0}^{k-1}(-1)^s
+w_{k-1-s}\varphi^{\,(k)}(0)+
+\int\limits_0^{\infty}\underbrace{\mathcal L
+w^{(k)}(x)}_{f(x)}\varphi(x)\,dx.$$
+
+Учитывая, что $(\delta(x),\varphi(x))=(-1)^s\varphi^{\,s}(0),$
+получим:
+
+$$\mathcal L\tilde w(x)=\tilde f(x)+\sum_{k=1}^m a_k\sum_{s=0}^{k-1}(-1)^s
+w_{k-1-s}\delta^{(s)}(x).$$
+
+$1\le s+1\le k\le m$ и переставим порядок суммирования:
+
+$$\mathcal L\tilde w(x)=\tilde f+\sum_{s=0}^{m-1}\delta^{(s)}(x) \sum_{k=s+1}^m a_k w_{k-1-s}.\eqno (1)$$
+
+Получилось такое уравнение, которому удовлетворяет функция $\tilde
+w.$
+
+\textbf{Пример.} $$\left\{
+\begin{array}{ll}
+    w''(x)+\omega^2\, w(x)=f(x), \omega=\const  , \\
+    w(0)=w_0, \\
+    w'(0)=w_1.  \\
+\end{array}
+\right.$$
+
+$$\tilde w(x)=\begin{cases} w(x), x\ge0;\\ 0, x<0,\end{cases}
+\tilde f(x)=\begin{cases} f(x), x\ge0;\\ 0, x<0.\end{cases}$$
+
+Тогда $\tilde w''(x)+\omega^2\, \tilde w(x)=\tilde
+f(x)+w_1\delta(x)+w_0\delta'(x)$.
+
+Первая часть уравнения (1) является обобщенной функцией из
+пространства $D'(\mathbb R)$ с носителем, принадлежащем множеству
+$[0,\infty).$ Известно, что у оператора $\mathcal L$ существует
+фундаментальное решение, с носителем, так же принадлежащим
+$[0,\infty).$ возникает вопрос: существует ли свертка? Если да, то
+решение существует и единственно. Обозначим через $A$ множество
+обобщенных функций с носителем, принадлежащем множеству
+$[0,\infty).$
+
+\textbf{Теорема.} $A$ является коммутативной алгеброй над $\mathbb
+C$ с единицей.
+
+$\square$
+
+Пусть $f,g\in A,$ т.е. $f,g\in D'(\mathbb R)$ и при этом $\supp
+f\subset[0,\infty).$ Выберем компактное исчерпание единицы.
+Возьмем $\Theta_{\varepsilon}\in C^{\infty}(\mathbb R)\colon
+\left.\Theta_{\varepsilon}\right|_{[-\frac{\varepsilon}2,\infty)}=1,
+\left.\Theta_{\varepsilon}\right|_{(-\infty,\varepsilon]}\equiv0.$
+Пусть $\eta_k(x,y)$ --- компактное исчерпание единицы в $\mathbb
+R^2,$ и пусть $\varphi\in\,D(\mathbb R).$ Тогда
+$$\Bigl(f(x)\,g(y),\eta_k(x,y)\,\varphi(x+y)\Bigr)=
+\Bigl(\Theta_{\varepsilon}(x)\,f(x)\,\Theta_{\varepsilon}(y)\,g(y),\eta_k(x,y)\,\varphi(x+y)\Bigr)=$$
+$$=\Bigl(f(x)\,g(y),\Theta_{\varepsilon}(x)\,\Theta_{\varepsilon}(y)\,\eta_k(x,y)\,\varphi(x+y)\Bigr)$$
+
+$\supp \varphi\subset[-A,A].$
+
+Т.о., последовательность
+$$\Bigl(f(x)\,g(y),\eta_k(x,y)\,\varphi(x+y)\Bigr)=
+\Bigl(f(x)\,g(y),\Theta_{\varepsilon}(x)\,\Theta_{\varepsilon}(y)\,\eta_k(x,y)\,\varphi(x+y)\Bigr),\,k=1,2,\ldots,$$
+стабилизируется с некоторого достаточно большого $k$.
+
+Другими словами ,существует предел
+$$\Bigl(f*g(x),\varphi(x)\Bigr)
+=\lim\limits_{k\to\infty}\Bigl(f(x)\,g(y),\eta_k(x,y)\,\varphi(x+y)\Bigr)$$
+
+Тем самым доказано существование свертки $f*g.$
+
+Покажем, что $\supp (f*g)\subset[0,\infty).$
+
+Пусть $\varphi \in D(\mathbb R\setminus [0,\infty)),$ причем
+$\supp \varphi\subset[-A,A],\, A>0,\,a>0.$
+
+Возьмем $\varepsilon>0$ таким, чтобы $$\{(x,y)\colon -a\le x+y\le
+a\}\cap\{(x,y)\colon x\ge-\varepsilon,\,
+y\ge-\varepsilon\}=\varnothing.$$ Тогда для любого $k$ будем
+иметь:
+$\Bigl(f(x)\,g(y),\underbrace{\Theta_{\varepsilon}(x)\,\Theta_{\varepsilon}(y)\,\eta_k(x,y)\,\varphi(x+y)}_{=0}\Bigr)=0.$
+Другими словами, $(f*g(x),\varphi(x))=0.\,\blacksquare$
+
+\section{Обобщенная задача Коши для ОДУ с постоянными коэффициентами}
+
+$$\forall \tilde w\in A,\,\forall w_k\in \mathbb
+C,\,k=\overline{0,m-1}.\mbox{ Найти решение }\tilde w\in A \mbox{
+уравнения (1).}$$
+
+\textbf{Теорема.} Обобщенная задача Коши для ОДУ с постоянными
+коэффициентами имеет решение, и оно единственно.
+
+$\square$
+
+У оператора $\mathcal L=\sum\limits_{k=0}^n a_k \Bigl(\cfrac
+d{dx}\Bigr)^k$ существует фундаментальное решение $E(x)\in A$ (по
+теореме из предыдущей лекции). Тогда существует свертка $E(x)$ с
+правой частью уравнения (1), которая будет решением уравнения (1).
+С другой стороны, если $\tilde w\in A$ является решением уравнения
+(1), то $w(x)$ есть свертка правой части (1) с $E(x)$, так как
+существует свертка $w(x)$ с правой частью уравнения (1).
+$\,\blacksquare$
+
+%lect16
+
+\textbf{Утверждение.} Пусть $\Omega\subset\mathbb R^n$ ---
+ограниченная область с кусочно гладкой границей, $f\in
+C^1(\Omega)\cap C(\overline{\Omega}).$ Тогда
+$$\int\limits_{\Omega}\cfrac{\partial f}{\partial
+x_i}\,dx=\int\limits_{\partial\Omega}\,f\,\cos(\overline{\nu},x_i)\,ds,$$
+где $\overline{\nu}$ --- вектор внешней нормали к
+$\partial\Omega,\,dx=dx_1\ldots dx_n$ --- элемент $n-$мерного
+объема, $ds$ --- элемент $(n-1)-$мерного объема поверхности
+$\partial\Omega$.
+
+$\square$
+
+Предположим сначала ,что $\Omega$ --- бесконечно гладкая область.
+По формуле Стокса,
+$$\int\limits_{\Omega}d\omega=\int\limits_{\partial\Omega}\omega$$
+для любой внешней формы $\omega$ размерности $n-1$ на $\Omega$,
+где ориентация такова, что орт $x_1$ непрерывен "во вне области
+$\Omega$". Если нормаль направлена внутрь, то
+$$\int\limits_{\Omega}d\omega=(-1)^{n-1}\int\limits_{\partial\Omega}\omega.$$
+
+Возьмем $\omega=(-1)^{i-1}f\,dx_1\wedge\ldots\wedge dx_{i-1}\wedge
+dx_{i+1}\wedge\ldots\wedge dx_n.\,\blacksquare$
+
+\textbf{Пример.} $\Omega\subset\mathbb R^n$ --- ограниченная
+область.
+$$\int\limits_{\Omega}\cfrac{\partial f}{\partial
+x_1}\,\,dx_1\,dx_2=\int\limits_{\partial\Omega}\,f\,\cos(\overline{\nu},x_1)\,ds,$$
+
+Если $\omega=f\,dx_2,$ то $d\omega=\cfrac{\partial f}{\partial
+x_1}\,\,dx_1\wedge dx_2.$
+
+$$\int\limits_{\partial\Omega}\,f\,dx_2=
+\int\limits_{\partial\Omega}\,f\,\cos(\overline{\nu},x_1)\,ds,$$
+
+$$\int\limits_{\Omega}\cfrac{\partial f}{\partial
+x_2}\,\,dx_1\,dx_2=
+\int\limits_{\partial\Omega}\,f\,\cos(x_2,\overline{\nu})\,ds.$$
+
+
+Если $\omega=f\,dx_1,$ то $d\omega=-\cfrac{\partial f}{\partial
+x_2}\,\,dx_1\wedge dx_2.$
+
+$$-\int\limits_{\Omega}\cfrac{\partial f}{\partial
+x_1}\,\,dx_1\,dx_2= \int\limits_{\partial\Omega}\,f\,dx_1=
+-\int\limits_{\partial\Omega}\,f\,\cos(\overline{\nu},x_2)\,ds.$$
+
+$$-\underbrace{\int\limits_{\partial\Omega}\,f\,\cos(x_2,\overline{\nu})\,ds}_
+{\int\limits_{\Omega}d\omega}=
+-\underbrace{\int\limits_{\partial\Omega}\,f\,\cos(\overline{\nu},x_2)\,ds}_
+{\int\limits_{\partial\Omega}\omega},$$ т.е.
+$$\int\limits_{\Omega}d\omega=\int\limits_{\partial\Omega}\omega.$$
+
+\textbf{Пример.} (Классическая формула Лейбница.)
+
+$\Omega=(a,b),\,\partial\Omega=\{a,b\}.$
+$$\int\limits_a^b\cfrac{\partial f}{\partial
+x_1}\,\,dx=
+\underbrace{f(a)\,\cos(\overline{\nu_a},x)}_{\cos\pi=-1}+
+\underbrace{f(b)\,\cos(\overline{\nu_b},x)}_{\cos
+0=1}=-f(a)+f(b).$$
+
+\textbf{Утверждение.} (Формула интегрирования по частям для случая
+многих вещественных переменных.) (В случае кусочно гладких
+приближаем гладкими.)
+
+Пусть $\Omega\subset\mathbb R^n$ --- ограниченная область с
+кусочно гладкой границей, $g,h\in C^1(\Omega)\cap
+C(\overline{\Omega}).$ Тогда
+$$\int\limits_{\Omega}\cfrac{\partial g}{\partial
+x_i}\,h\,dx=\int\limits_{\partial\Omega}\,g\,h\,\cos(\overline{\nu},x_i)\,ds-
+\int\limits_{\Omega}g\cfrac{\partial h}{\partial x_i}\,dx,$$ где
+$\overline{\nu}$ --- вектор внешней нормали к
+$\partial\Omega,\,dx=dx_1\ldots dx_n$ --- элемент $n-$мерного
+объема, $ds$ --- элемент $(n-1)-$мерного объема поверхности
+$\partial\Omega$.
+
+$\square$
+
+Возьмем $f=g\,h$. По предыдущему утверждению,
+$$\int\limits_{\Omega}\cfrac{\partial f}{\partial
+x_i}\,\,dx=
+\int\limits_{\partial\Omega}\,f\,\cos(\overline{\nu},x_i)\,ds.$$
+
+Т.е.,
+$$\int\limits_{\Omega}\cfrac{\partial g}{\partial
+x_i}\,h\,dx+\int\limits_{\Omega}g\cfrac{\partial h}{\partial
+x_i}\,dx=
+\int\limits_{\partial\Omega}\,g\,h\,\cos(\overline{\nu},x_i)\,ds.\,\blacksquare$$
+
+\section{Фундаментальное решение оператора Лапласа}
+
+\textbf{Теорема.} Пусть $n\ge2$.
+$$E_n(x)=\left\{%
+\begin{array}{ll}
+    \cfrac1{2\pi}\,\ln|\,x|,\,n=2,      \\
+    -\cfrac1{(n-2)|S_1|}\,\cfrac1{|\,x|^{n-2}},\,n\ge3, \\
+\end{array}%
+\right.    $$ где $|S_1|$ --- $(n-1)$--мерный объем единичной
+сферы. Тогда $\triangle E_n(x)=\delta(x).$ Другими словами,
+$E_n(x)$ --- фундаментальное решение оператора Лапласа $\triangle
+=\cfrac{\partial^2 }{\partial x_1^2}+\ldots+\cfrac{\partial^2
+}{\partial x_n^2}.$
+
+$\square$
+
+Имеем: $$\Bigl(\triangle E_n,\varphi(x)\Bigr)=
+\Bigl(E_n,\triangle\varphi(x)\Bigr)= \int\limits_{\mathbb
+R^n}E_n\,\triangle\varphi(x)\,dx,\,\forall \,\varphi \in D(\mathbb
+R^n).$$
+
+Возьмем $R$ настолько большим, чтобы $\supp \varphi\subset B_R$
+--- шар с радиусом $R$ и центром в нуле. Тогда
+$$\int\limits_{\mathbb
+R^n}E_n\,\triangle\varphi(x)\,dx=
+\int\limits_{B_R}E_n\,\triangle\varphi(x)\,dx=
+\lim_{\varepsilon\to+0}\int\limits_{B_R\setminus
+B_{\varepsilon}}E_n\,\triangle\varphi(x)\,dx.$$
+
+$$\int\limits_{B_R\setminus
+B_{\varepsilon}}E_n\,\triangle\varphi(x)\,dx=
+\int\limits_{B_R\setminus
+B_{\varepsilon}}E_n\,\sum_{i=1}^n\cfrac{\partial^2\varphi(x)}{\partial
+x_i^2}\,dx= \int\limits_{\partial (B_R\setminus
+B_{\varepsilon})}E_n\,\underbrace{\sum_{i=1}^n\cfrac{\partial\varphi(x)}{\partial
+x_i}\cos(\overline{\nu},x_i)}_{\overline{\triangledown}
+p\,\overline{\nu}=\cfrac{\partial\varphi(x)}{\partial \nu}}\,ds-$$
+
+$$-\int\limits_{B_R\setminus
+B_{\varepsilon}}\underbrace{\sum_{i=1}^n\cfrac{\partial
+E_n(x)}{\partial x_i}\,\cfrac{\partial\varphi(x)}{\partial
+x_i}}_{=\overline{\triangledown}E_n\,\overline{\triangledown}\varphi}\,dx=
+\int\limits_{\partial (B_R\setminus
+B_{\varepsilon})}E_n\cfrac{\partial\varphi(x)}{\partial
+\overline{\nu}}\,ds- \int\limits_{B_R\setminus
+B_{\varepsilon}}\underbrace{\sum_{i=1}^n\cfrac{\partial
+E_n(x)}{\partial
+x_i}\,\cos(\overline{\nu},x_i)}_{\overline{\triangledown}
+E_n\overline{\nu}=\cfrac{\partial\varphi(x)}{\partial
+\nu}}\varphi(x)\,ds+$$
+
+$$+\int\limits_{B_R\setminus
+B_{\varepsilon}}\underbrace{\sum_{i=1}^n\cfrac{\partial^2
+E_n(x)}{\partial x_n^2}}_{=\triangle E_n(x)}\varphi(x)\,dx=
+\int\limits_{B_R\setminus B_{\varepsilon}}E_n(x)\, \cfrac{\partial
+\varphi}{\partial \nu}\,ds- \int\limits_{B_R\setminus
+B_{\varepsilon}}\cfrac{\partial E_n(x)}{\partial
+\nu}\varphi(x)\,ds+ \int\limits_{B_R\setminus
+B_{\varepsilon}}E_n(x)\,\varphi(x)\,dx.$$
+
+Имеем: $\triangle E_n(x)=0$ для всех $x\in \mathbb
+R^n\setminus\{0\}.$ В самом деле, переходя к полярным координатам,
+получим:
+$$\triangle=\cfrac{\partial^2}{\partial
+r^2}+\cfrac{n-1}r\,\cfrac{\partial}{\partial r}+
+\cfrac1{r^2}\triangle_{S_1},$$ где $\triangle_{S_1}$ --- оператор
+Лапласа--Бельтрами на единичной $(n-1)$--мерной сфере (он содержит
+производные только по угловым координатам, поэтому
+$\triangle_{S_1}E_n\equiv0$).
+\begin{multline}
+\triangle E_n=\cfrac{\partial^2 E_n}{\partial
+r^2}+\cfrac{n-1}r\,\cfrac{\partial E_n}{\partial r}+
+\cfrac1{r^2}\underbrace{\triangle_{S_1}E_n}_{=0}=\\=
+\left\{%
+\begin{array}{ll}
+    \ln(r)+\cfrac1r\,( \ln(r))'=-\cfrac1{r^2}+\cfrac1{r^2}=0,\,n=2, \\
+    -\cfrac1{(n-2)|S_1|}\,\left( \Bigl(\cfrac1{r^{n-2}}\Bigr)''+\cfrac{n-1}r\,\Bigl(\cfrac1{r^{n-2}}\Bigr)'\right)=0, n\ge3.\\
+\end{array}%
+\right.
+\end{multline}
+
+%lect17
+
+\begin{multline}
+\int\limits_{B_R\setminus
+B_{\varepsilon}}E_n(x)\,\triangle \varphi(x)\,dx=\\=
+\int\limits_{B_R\setminus B_{\varepsilon}}E_n(x)\, \cfrac{\partial
+\varphi}{\partial \nu}\,ds- \int\limits_{B_R\setminus
+B_{\varepsilon}}\cfrac{\partial E_n(x)}{\partial
+\nu}\,\varphi(x)\,ds+\int\limits_{B_R\setminus
+B_{\varepsilon}}\underbrace{E_n(x)}_{=0}\,\varphi(x)\,dx=I_1-I_2+I_3.
+\end{multline}
+
+Рассмотрим $$I_1=\int\limits_{B_R\setminus
+B_{\varepsilon}}E_n(x)\, \cfrac{\partial \varphi}{\partial
+\nu}\,ds= \int\limits_{S_\varepsilon}E_n(x)\, \cfrac{\partial
+\varphi}{\partial \nu}\,ds\to0,\,\varepsilon\to+0,$$
+
+$$\Bigl|\int\limits_{S_\varepsilon}E_n(x)\, \cfrac{\partial
+\varphi}{\partial \nu}\,ds\Bigr|\le \|\varphi\|_{c^1(\mathbb
+R^n)}\supp E_n(x)\int\limits_{S_\varepsilon}ds=
+\left\{%
+\begin{array}{ll}
+    \|\varphi\|_{c^1(\mathbb
+R^n)}\varepsilon\,\ln\cfrac12,\,n=2  \\
+    \|\varphi\|_{c^1(\mathbb
+R^n)}\cfrac{\varepsilon^{n-1}}{n-2}, n\ge3. \\
+\end{array}%
+\right.    $$
+
+Рассмотрим $$I_2=\int\limits_{B_R\setminus
+B_{\varepsilon}}\cfrac{\partial E_n(x)}{\partial
+\nu}\,\varphi(x)\,ds.$$
+
+$$\left.\cfrac{\partial E_n(x)}{\partial
+\nu}\,\varphi(x)\right|_{x\in S_{\varepsilon}}=
+\left\{%
+\begin{array}{ll}
+    \left.-\cfrac1{2\pi} \cfrac {\partial}{\partial r}\ln r\right|_{r=\varepsilon},\,n=2  \\
+
+    -\left.\cfrac1{(n-2)|S_1|}\,\cfrac {\partial}{\partial r}\,\cfrac1{r^{n-2}}\right|_{r=\varepsilon},
+     n\ge3. \\
+\end{array}%
+\right.= -\cfrac1{|S_1|}\,\cfrac1{\varepsilon^{n-1}} \Rightarrow$$
+
+$$I_2=\int\limits_{S_\varepsilon}\cfrac{\partial E_n(x)}{\partial
+\nu}\,\varphi(x)\,ds=
+\cfrac1{|S_1|}\varepsilon^{n-1}\int\limits_{S_\varepsilon}\varphi(x)\,ds,$$
+
+$$\cfrac1{|S_1|\,\varepsilon^{n-1}}\int\limits_{S_\varepsilon}\varphi(x)\,ds=
+\cfrac1{|S_1|\,\varepsilon^{n-1}}\int\limits_{S_\varepsilon}(\varphi(x)-\varphi(0))\,ds+
+\cfrac1{|S_1|\,\varepsilon^{n-1}}\int\limits_{S_\varepsilon}\varphi(0)\,ds\to$$
+
+$$\to\cfrac{\varphi(0)}{|S_1|\,\varepsilon^{n-1}}
+\underbrace{\int\limits_{S_\varepsilon}ds}_{|S_1|\,\varepsilon^{n-1}}=\varphi(0),\,\varepsilon\to+0
+$$
+
+В самом деле,
+$$\cfrac1{|S_1|\,\varepsilon^{n-1}}\int\limits_{S_\varepsilon}|\varphi(x)-\varphi(0)|\,ds\le
+\cfrac{\sup\limits_{|x|=\varepsilon}\Bigl|\varphi(x)-\varphi(0)\Bigr|}{|S_1|\,\varepsilon^{n-1}}
+\underbrace{\int\limits_{S_\varepsilon}ds}_{|S_1|\,\varepsilon^{n-1}}=
+\sup\limits_{|x|=\varepsilon}|\varphi(x)-\varphi(0)|\to0,\,\varepsilon\to+0.$$
+
+Т.о., $(\triangle E(x),\varphi(x))=$
+$$=\lim_{\varepsilon\to+0}\int\limits_{B_R\setminus
+B_{\varepsilon}}E_n\,\triangle\varphi(x)\,dx=
+\underbrace{\lim_{\varepsilon\to+0}\int\limits_{\partial(B_R\setminus
+B_{\varepsilon})}E_n(x)\, \cfrac{\partial \varphi}{\partial
+\nu}\,ds}_{=0}-
+\lim_{\varepsilon\to+0}\int\limits_{\partial(B_R\setminus
+B_{\varepsilon})}\cfrac{\partial E_n(x)}{\partial
+\nu}\varphi(x)\,ds=\varphi_{\varepsilon}(0).\,\blacksquare$$
+
+
+\section{Фундаментальное решение одномерного волнового оператора}
+
+\textbf{Теорема.} Пусть $E_1(x,t)=\cfrac1{2a}\,\Theta(a\,t-|x|),$
+тогда $\square_a E_1(x,t)=\delta(x,t)$ в $\mathbb R^2,$ где
+$$\square_a=\cfrac{\partial^2}{\partial
+t^2}-a^2\cfrac{\partial^2}{\partial x^2},\,a=\const  >0.$$
+
+$\square$
+
+$\partial_t^2-a^2\partial_x^2=(\underbrace{\partial_t-a\,\partial_x}_{\partial_{\xi}})
+(\underbrace{\partial_t+a\,\partial_x}_{\partial_{\xi}}),$
+
+$$
+\left\{%
+\begin{array}{ll}
+    \cfrac{\partial u}{\partial\xi}=\cfrac{\partial u}{\partial x}\,\cfrac{\partial x}{\partial\xi}+
+    \cfrac{\partial u}{\partial t}\,\cfrac{\partial t}{\partial\xi},  \\
+    \cfrac{\partial u}{\partial\eta}=\cfrac{\partial u}{\partial x}\,\cfrac{\partial x}{\partial\eta}+
+    \cfrac{\partial u}{\partial t}\,\cfrac{\partial t}{\partial\eta}, \\
+\end{array}%
+\right.   \Rightarrow
+\left\{%
+\begin{array}{ll}
+    \partial_\xi=\overbrace{\cfrac{\partial x}{\partial\xi}}^{=-a}\partial_x+
+    \overbrace{\cfrac{\partial t}{\partial\xi}}^{=1}\partial_t,  \\
+    \partial_\xi=\underbrace{\cfrac{\partial x}{\partial\eta}}_{=a}\partial_x+
+    \underbrace{\cfrac{\partial t}{\partial\eta}}_{=1}\partial_t, \\
+\end{array}%
+\right. \Rightarrow
+\left\{%
+\begin{array}{ll}
+    x=-a\,\xi +a\,\eta,  \\
+    t=\xi + \eta. \\
+\end{array}%
+\right.
+ $$
+
+$(\partial_t-a\,\partial_x)(\partial_t+a\,\partial_x)E_1(x,t)=\delta(x,t).$
+
+Применим формулу для замены переменных у обобщенных функций.
+
+Пусть $f(x)\in C^{\infty}(\Omega),\, x=x(x')\colon
+\Omega'\to\Omega$ --- диффеоморфизм.
+
+$$\Bigl(f(x(x')),\varphi(x')\Bigr)=\int\limits_{\Omega}f(x(x'))\,\varphi(x')\,dx'=$$
+$$=\int\limits_{\Omega}f(x)\,\varphi(x'(x))\,\Bigl|\det\Bigl\|
+\cfrac{\partial x'}{\partial x}\Bigr\|\Bigr|\,dx=
+\Bigl(f(x),\varphi(x'(x))\,\Bigl|\det\Bigl\| \cfrac{\partial
+x'}{\partial x}\Bigr\|\Bigr|\Bigr)$$
+
+$(x,t)$ --- старые координаты (без штриха), $(\xi,\eta)$ --- новые
+координаты (штрихованные).
+
+$$\Bigl(\delta(x(\xi,\eta),t(\xi,\eta)),\varphi(\xi,\eta) \Bigr)=
+\Bigl(\delta(x,t),\varphi(\xi(x,t),\eta(x,t))\, \Bigl|\det\Bigl\|
+\cfrac{\partial (\xi,\eta)}{\partial (x,t)}\Bigr\|\Bigr|\Bigr).$$
+
+Т.к. $\eta=\cfrac{x+at}{2a},\,\xi=\cfrac{-x+at}{2a},$ то
+$$\Bigl\|\cfrac{\partial (\xi,\eta)}{\partial (x,t)}\Bigr\|=
+\begin{Vmatrix}
+  \cfrac{\partial \xi}{\partial x} & \cfrac{\partial \xi}{\partial t} \\
+  \cfrac{\partial \eta}{\partial x} & \cfrac{\partial \eta}{\partial t} \\
+\end{Vmatrix}=
+\begin{Vmatrix}
+  -\cfrac1{2a} & \cfrac12 \\
+   \cfrac1{2a} & \cfrac12  \\
+\end{Vmatrix}=
+-\cfrac1{2a} \Rightarrow
+$$
+
+$$\Bigl(\delta(x(\xi,\eta),t(\xi,\eta)),\varphi(\xi,\eta) \Bigr)=
+\cfrac1{2a}\Bigl(\delta(x,t),\varphi(\xi(x,t),\eta(x,t))\Bigr)=
+\cfrac1{2a}\,\varphi(\underbrace{\xi(0,0)}_{=0},\underbrace{\eta(0,0)}_{=0})=
+\cfrac1{2a}\varphi(0)\Rightarrow$$
+
+$$\delta(x(\xi,\eta),t(\xi,\eta))=\cfrac1{2a}\,\delta(\xi,\eta).$$
+
+Т.о.
+$(\partial_t-a\,\partial_x)(\partial_t+a\,\partial_x)E_1(x,t)=\delta(x,t)\Leftrightarrow$
+$$\partial_{\xi}\,\partial_{\eta}E_1(x(\xi,\eta),t(\xi,\eta))=\cfrac1{2a}\,\delta(\xi,\eta).\eqno
+(1)$$
+
+Имеем:
+$(\partial_t-a\,\partial_x)(\partial_t+a\,\partial_x)\Bigl(\Theta(\xi)\,\Theta(\eta)\Bigr)=
+\Theta'(\xi)\,\Theta'(\eta)=\delta(\xi)\,\delta(\eta).$ Т.о.,
+уравнение (1) выполнено, если
+$E_1\Bigl(x(\xi,\eta),t(\xi,\eta)\Bigr)=\cfrac1{2a}\,\Theta(\xi)\,\Theta(\eta).$
+Сделаем обратную замену переменных в последнем выражении:
+$$E_1(x,t)=\cfrac1{2a}\,\Theta\Bigl(\cfrac{-x+at}{2a}\Bigr)\,\Theta\Bigl(\cfrac{x+at}{2a}\Bigr)=
+\cfrac1{2a}\,\Theta\Bigl(at-|\,x|\Bigr).\,\blacksquare$$
+
+Теперь рассмотрим случай, когда $n=3.$ Останется только $n=2,$ но
+это выводится из случая $n=3.$
+
+%lect19
+
+\section{Фундаментальное решение трехмерного волнового оператора}
+
+$\square_a=\cfrac{\partial^2}{\partial
+t^2}-a^2\cfrac{\partial^2}{\partial x^2},\,a=\const  >0,\,
+\triangle=\cfrac{\partial^2 u}{\partial x_1^2}+\cfrac{\partial^2
+u}{\partial x_2^2}+\cfrac{\partial^2 u}{\partial x_3^2}.$
+
+Определим обобщенную функцию $\delta_{S_r}(x)$ равенством:
+$$(\delta_{S_r}(x),\varphi(x))=\int\varphi(x)\,ds.$$
+
+\textbf{Теорема.} Пусть $E_3(x,t)=\cfrac{\Theta(t)}{4\pi
+a^2t}\,\delta_{S_r}(x),$ тогда $\square_a E_3(x,t)=\delta(x,t)$ в
+$\mathbb R^3.$
+
+$\square$
+
+$x=(x_1,x_2,x_3).$ По определению обобщенных функций, имеем:
+$$\Bigl(\cfrac{\Theta(t)}{4\pi
+a^2t}\,\delta_{S_{at}}(x),\varphi(x,t) \Bigr)= \cfrac1{4\pi
+a^2}\int\limits_0^{\infty}\cfrac
+{dt}t\int\limits_{S_{at}}\varphi(x,t)\,ds_x.$$
+
+$$\Bigl(\square_a E_3(x,t),\varphi(x,t) \Bigr)=\Bigl(E_3(x,t),\square_a\varphi(x,t) \Bigr)=
+\cfrac1{4\pi a^2}\int\limits_0^{\infty}\cfrac
+{dt}t\int\limits_{S_{at}}\Bigl(\varphi_{tt}(x,t)-a^2\triangle\varphi(x,t)\Bigr)\,ds_x=$$
+
+$$=\cfrac1{4\pi a^2}\int\limits_0^{\infty}\cfrac
+{dt}t\int\limits_{S_{at}}\varphi_{tt}(x,t)\,ds-
+\cfrac1{4\pi}\int\limits_0^{\infty}\cfrac
+{dt}t\int\limits_{S_{at}}\triangle\varphi(x,t)\,ds_x.$$
+
+Сделав замену,
+$r=at,\,\varphi_{tt}=a^2\varphi_{rr},\,\cfrac{\partial
+\varphi}{\partial t}=\cfrac{\partial \varphi}{\partial
+r}\,\cfrac{\partial r}{\partial t}=a\,\cfrac{\partial
+\varphi}{\partial
+r},\,\cfrac{dt}t=\cfrac{dr}r,\,\psi(x,r)=\varphi\Bigl(x,\frac
+ra\Bigr),$ продолжим цепочку равенств:
+
+$$=\cfrac1{4\pi}\int\limits_0^{\infty}\cfrac
+{dr}r\int\limits_{S_{r}}\psi_{rr}(x,r)\,ds-
+\cfrac1{4\pi}\int\limits_0^{\infty}\cfrac
+{dr}r\int\limits_{S_{r}}\triangle\psi(x,r)\,ds=$$
+
+$$=\Bigl.\cfrac1{4\pi}\int\limits_{\mathbb R^3}\psi_{rr}(x,r)\Bigr|_{r=|x|}\cfrac{dx}{|\,x|}-
+\Bigl.\cfrac1{4\pi}\int\limits_{\mathbb
+R^3}\triangle_x\psi(x,r)\Bigr|_{r=|x|}\cfrac{dx}{|\,x|}.$$
+
+Выберем $R>0$ таким, чтобы $\psi(0,r)\subset B_r$:
+$$\Bigl.\cfrac1{4\pi}\int\limits_{B_R\setminus
+B_{\varepsilon}}\triangle_x\psi(x,r)\Bigr|_{r=|x|}\cfrac{dx}{|\,x|}=$$
+
+$$=\int\limits_{\partial(B_R\setminus B_{\varepsilon})}
+\left.\cfrac{\partial \psi(x,r)}{\partial
+\nu_x}\,\right|_{r=|x|}\cfrac{ds}{|\,x|}-
+\Bigl.\cfrac1{4\pi}\int\limits_{B_R\setminus
+B_{\varepsilon}}\triangledown_x\psi(x,r)\Bigr|_{r=|x|}
+\triangledown|\,x|\cfrac{dx}{|\,x|}-
+\Bigl.\cfrac1{4\pi}\int\limits_{B_R\setminus
+B_{\varepsilon}}\triangledown_x\psi(x,r)\Bigr|_{r=|x|}
+\triangledown\frac1{|\,x|}.\eqno (1)$$
+
+Поясним:
+
+$$\triangle_x\psi(x,r)\Bigr|_{r=|x|}
+\frac1{|\,x|}=\left.\sum_{i=1}^{3}
+\cfrac{\partial^2\psi(x,r)}{\partial
+x_i^2}\right|_{r=|x|}\frac1{|\,x|}= \sum_{i=1}^{3}
+\cfrac{\partial}{\partial x_i}
+\left(\left.\cfrac{\partial\psi(x,r)}{\partial
+x_i}\,\right|_{r=|x|}\frac1{|\,x|}\right)-$$
+
+$$-\left.\sum_{i=1}^{3}
+\cfrac{\partial^2\psi(x,r)}{\partial r\partial
+x_i}\,\right|_{r=|x|}\cfrac{\partial|\,x|}{\partial
+x_i}\,\,\frac1{|\,x|}- \left.\sum_{i=1}^{3}
+\cfrac{\partial\psi(x,r)}{\partial
+x_i}\,\right|_{r=|x|}\cfrac{\partial}{\partial
+x_i}\,\,\frac1{|\,x|}$$
+
+Теперь распишем второй интеграл из (1):
+
+$$\Bigl.\int\limits_{B_R\setminus
+B_{\varepsilon}}\triangledown_x\psi_r(x,r)\Bigr|_{r=|x|}
+\triangledown|\,x|\cfrac{dx}{|\,x|}=
+\int\limits_{\partial(B_R\setminus B_{\varepsilon})}
+\Bigl.\psi_r(x,r)\Bigr|_{r=|x|}\cfrac{\partial |\,x|}{\partial
+\nu}\,\cfrac1{|\,x|}\,ds-$$
+$$-\Bigl.\int\limits_{B_R\setminus
+B_{\varepsilon}}\psi_r(x,r)\Bigr|_{r=|x|}
+\underbrace{\triangledown |\,x|\,\,\triangledown
+|\,x|}_{=1}\frac{dx}{|\,x|}- \Bigl.\int\limits_{B_R\setminus
+B_{\varepsilon}}\psi_r(x,r)\Bigr|_{r=|x|} \dv \cfrac{\triangledown
+|\,x|}{|\,x|}\,dx,$$
+
+так как $\triangledown |\,x|\,\,\triangledown |\,x|=(\triangledown
+|\,x|)^2=\Bigl|\mbox{замена: }|\,x|=r\Bigr|=(\triangledown
+r)^2=1^2=1.$
+
+Распишем третий интеграл из (1):
+
+$$\Bigl.\cfrac1{4\pi}\int\limits_{B_R\setminus
+B_{\varepsilon}}\triangledown_x\psi(x,r)\Bigr|_{r=|x|}
+\triangledown\frac1{|\,x|}=$$
+$$\int\limits_{\partial(B_R\setminus
+B_{\varepsilon})} \left.\psi(x,r)\right|_{r=|x|}\cfrac{\partial
+}{\partial \nu}\,\cfrac{ds}{|\,x|}\,-
+\Bigl.\int\limits_{B_R\setminus
+B_{\varepsilon}}\psi_r(x,r)\Bigr|_{r=|x|}\triangledown|\,x|\,
+\triangledown\frac1{|\,x|}\,dx- \int\limits_{\partial(B_R\setminus
+B_{\varepsilon})}
+\left.\psi(x,r)\right|_{r=|x|}\underbrace{\triangledown\frac1{|\,x|}}_{=0}\,dx,$$
+
+где $\nu$ --- внешняя нормаль к границе $\partial(B_R\setminus
+B_{\varepsilon}),\,\left.\psi\right|_{S_R}\equiv0.$
+
+Т.о.,
+$$\Bigl.\int\limits_{B_R\setminus
+B_{\varepsilon}}\triangle_x\psi(x,r)\Bigr|_{r=|x|}\cfrac{dx}{|\,x|}=
+\Bigl.\int\limits_{\partial(B_R\setminus B_{\varepsilon})}
+\cfrac{\partial\psi(x,r)}{\partial
+\nu_x}\,\Bigr|_{r=|x|}\,\frac{ds}{|\,x|}-
+\int\limits_{\partial(B_R\setminus B_{\varepsilon})}
+\left.\psi_r(x,r)\right|_{r=|x|}\cfrac{\partial |\,x|}{\partial
+\nu}\,\cfrac{ds}{|\,x|}\,-$$
+$$-\Bigl.\int\limits_{B_R\setminus
+B_{\varepsilon}}\psi_{rr}(x,r)\Bigr|_{r=|x|}\cfrac{dx}{|\,x|}\,-
+\int\limits_{\partial(B_R\setminus B_{\varepsilon})}
+\Bigl.\psi(x,r)\Bigr|_{r=|x|}\cfrac{\partial }{\partial
+\nu}\,\cfrac1{|\,x|}\,ds\,+$$
+$$+\Bigl.\int\limits_{B_R\setminus
+B_{\varepsilon}}\psi_r(x,r)\Bigr|_{r=|x|}\Bigl(\underbrace{\dv
+\cfrac{\triangledown |\,x|}{|\,x|} +\triangledown|\,x|\,
+\triangledown\frac1{|\,x|}}_{=0\mbox{ (доказательство
+ниже)}}\Bigr)\,dx.$$
+
+Рассмотрим каждый интеграл подробнее.
+
+Пятый: так как
+$|\,x|=\Bigl(\sum_{i=1}^3x_i^2\Bigr)^{\frac12},\,\cfrac{\partial|\,x|}{\partial
+x_i}=\cfrac {x_i}{\sum x_i^2}=\cfrac {x_i}{|\,x|},$ то
+
+$$\dv
+\cfrac{\triangledown |\,x|}{|\,x|} +\triangledown|\,x|\,
+\triangledown\frac1{|\,x|}=\sum_{i=1}^3\cfrac{\partial}{\partial
+x_i}\left(\cfrac {x_i}{|\,x|^2}\right)+ \sum_{i=1}^3\cfrac
+{x_i}{|\,x|}\,\cfrac{\partial}{\partial
+x_i}\left(\cfrac1{|\,x|}\right)=$$
+
+$$=\cfrac 3{|\,x|^2}-2\sum_{i=1}^3\cfrac{x_i^2}{|\,x|^4}-\sum_{i=1}^3\cfrac{x_i^2}{|\,x|^4}=
+\cfrac 3{|\,x|^2}-\cfrac 2{|\,x|^2}-\cfrac 1{|\,x|^2}=0.$$
+
+Первый:
+
+$$\left|\,\Bigl.\int\limits_{\partial(B_R\setminus B_{\varepsilon})}
+\cfrac{\partial\psi(x,r)}{\partial
+\nu_x}\,\Bigr|_{r=|x|}\,\frac{ds}{|\,x|}\right|=
+\left|\,\Bigl.\int\limits_{S_{\varepsilon}}
+\cfrac{\partial\psi(x,r)}{\partial
+\nu_x}\,\Bigr|_{r=|x|}\,\frac{ds}{|\,x|}\right|\le
+\int\limits_{S_{\varepsilon}}\left|\cfrac{\partial\psi(x,r)}{\partial
+\nu_x}\right|_{r=m}\,\frac{ds}{|\,x|}\le$$
+
+$$\|\psi\|_{C^1(\mathbb R^4)}\cfrac1{\varepsilon}
+\underbrace{\int\limits_{S_{\varepsilon}}ds}_{=4\pi\varepsilon^2}=
+\|\psi\|_{C^1(\mathbb
+R^4)}\cfrac1{\varepsilon}\cdot4\pi\varepsilon^2\to0,\,\varepsilon\to+0.$$
+
+Второй:
+
+$$\left|\,\int\limits_{\partial(B_R\setminus B_{\varepsilon})}
+\left.\psi_r(x,r)\right|_{r=|x|}\cfrac{\partial |\,x|}{\partial
+\nu}\,\cfrac{ds}{|\,x|}\right|=
+\left|\int\limits_{S_{\varepsilon}}\left.\psi_r(x,r)\right|_{r=|x|}\cfrac{\partial
+|\,x|}{\partial \nu}\,\cfrac{ds}{|\,x|}\right|\le$$
+
+$$\le\int\limits_{S_{\varepsilon}}\Bigl.|\psi_r(x,r)|\Bigr|_{r=|x|}\left|\cfrac{\partial
+|\,x|}{\partial \nu}\right|\,\cfrac{ds}{|\,x|}\le
+\|\psi\|_{C^1(\mathbb R^4)}\cfrac1{\varepsilon}
+\underbrace{\int\limits_{S_{\varepsilon}}ds}_{=4\pi\varepsilon^2}=
+\|\psi\|_{C^1(\mathbb
+R^4)}\cfrac1{\varepsilon}\cdot4\pi\varepsilon^2\to0,\,\varepsilon\to+0.$$
+
+Четвертый:
+
+$$\int\limits_{\partial(B_R\setminus B_{\varepsilon})}
+\Bigl.\psi(x,r)\Bigr|_{r=|x|}\cfrac{\partial }{\partial
+\nu}\,\cfrac1{|\,x|}\,ds=
+\int\limits_{S_{\varepsilon}}\left.\psi(x,r)\right|_{r=|x|}\cfrac{\partial}{\partial
+\nu}\,\cfrac1{|\,x|}\,ds,$$
+
+так как $$\left.\cfrac{\partial}{\partial
+\nu}\,\cfrac1{|\,x|}\right|_{x\in S_{\varepsilon}}=\left.-\cfrac
+d{dr}\,\cfrac
+1{dr}\right|_{r=\varepsilon}=\cfrac1{\varepsilon^2}.$$ Продолжим
+равенства:
+
+$$=\cfrac1{\varepsilon^2}\int\limits_{S_{\varepsilon}}(\psi(x,\varepsilon)-\psi(0))\,ds+
+\cfrac{\psi(0)}{\varepsilon}\underbrace{\int\limits_{S_{\varepsilon}}ds}_{=4\pi\varepsilon^2}\to\psi(0),\,\varepsilon\to+0,$$
+
+так как
+$$\cfrac1{\varepsilon^2}\int\limits_{S_{\varepsilon}}|\psi(x,\varepsilon)-\psi(0)|\,ds\le
+\sup|\psi(x,\varepsilon)-\psi(0)|\cfrac1{\varepsilon^2}\int\limits_{S_{\varepsilon}}ds=
+4\pi \sup_{x\in
+S_{\varepsilon}}|\psi(x,\varepsilon)-\psi(0)|\to0,\,\varepsilon\to+0.$$
+
+Т.о.,
+$$\Bigl.\int\limits_{\mathbb R^3}\triangle_x\psi(x,r)\Bigr|_{r=|x|}\cfrac{dx}{|\,x|}=
+\lim_{\varepsilon\to+0}\Bigl.\int\limits_{B_R\setminus
+B_{\varepsilon}}\triangle_x\psi(x,r)\Bigr|_{r=|x|}\cfrac{dx}{|\,x|}=
+\Bigl.\int\limits_{\mathbb
+R^3}\psi_{rr}(x,r)\Bigr|_{r=|x|}\cfrac{dx}{|\,x|}-4\pi\psi(0)\Rightarrow$$
+
+$$\Bigl(\square_a E_3(x,t),\varphi(x,t) \Bigr)=\Bigl(E_3(x,t),\square_a\varphi(x,t) \Bigr)=
+\cfrac1{4\pi a^2}\int\limits_0^{\infty}\cfrac
+{dt}t\int\limits_{S_{at}}\Bigl(\varphi_{tt}(x,t)-a^2\triangle\varphi(x,t)\Bigr)\,ds_x=$$
+
+$$=\cfrac1{4\pi}\Bigl.\int\limits_{\mathbb
+R^3}\psi_{rr}(x,r)\Bigr|_{r=|x|}\cfrac{dx}{|\,x|}-
+\cfrac1{4\pi}\Bigl.\int\limits_{\mathbb
+R^3}\psi_{rr}(x,r)\Bigr|_{r=|x|}\cfrac{dx}{|\,x|}+
+\cfrac1{4\pi}\cdot4\pi\psi(0)=\psi(0). \,\blacksquare$$
+
+%lect20
+
+\section{Фундаментальное решение двумерного волнового оператора}
+
+$\square_a=\cfrac{\partial^2}{\partial
+t^2}-a^2\cfrac{\partial^2}{\partial x^2},\,a=\const  >0,\,
+\triangle=\cfrac{\partial^2 u}{\partial x_1^2}+\cfrac{\partial^2
+u}{\partial x_2^2}.$
+
+\textbf{Определение.} Обобщенная функция $f\in D'(\mathbb
+R^{n-1})$ \textbf{допускает продолжения на бесконечно гладкие
+функции} вида $\varphi(x)\,1(x_{n+1}),$ где $\varphi(x')\in
+D(\mathbb R^{n}),\,x'=(x_1,\ldots,x_n),$ если для любого
+компактного исчерпания единицы $\eta_k(x_{n+1}),\,k=1,2,\ldots,$ в
+$\mathbb R$ существует
+$$\lim_{h\to0}(f(x),\varphi(x')\eta_k(x_{n+1}))=
+(F(x),\varphi(x')),\eqno (1)$$ где $F(x)$ --- продолжение функции
+$f(x)$.
+
+Напомним, что последовательность функций $\eta_k\in L_1(\mathbb
+R),\,k=1,2,\ldots$ --- \textbf{компактное исчерпание единицы } в
+$\mathbb R,$ если:
+
+1) для любого компакта $H\Subset\mathbb R\,\,
+\left.\eta_k\right|_H=1,$ начиная с некоторого $k_0$;
+
+2) $\exists\,m\,\exists\, A=\const  \colon \forall
+k=1,2,\ldots\,\, \|\eta_k\|_{C^m(\mathbb R)}\le A.$
+
+\textbf{Упражнение.} Доказать, что предел в (1) не зависит от
+выбора компактного исчерпания единицы $\eta_k$.
+
+\textbf{Теорема.} Пусть
+$$\mathcal
+L=\sum\limits_{q=1}^m\Bigl(\cfrac{\partial}{\partial
+x_{n+1}}\Bigr)^q L_q+L_0,$$
+где $$L_q=\sum\limits_{|\alpha|'\le
+m_q}a_{q,\alpha'}{\partial^{\, \alpha'}},\,q=\overline{0,m},\,
+\alpha'=(\alpha'_1,\ldots,\alpha'_n),$$
+$|\,\alpha'|=\alpha'_1+\ldots+\alpha'_n,
+\,\partial^{\,\alpha'}=\cfrac {\partial^{\,|\alpha'|}}{\partial
+x_1^{\,\alpha'_1}\ldots
+\partial x_n^{\,\alpha'_n}}.$ Тогда, если $\mathcal
+L u=f(x')\delta(x_{n+1}),\,f(x')\in D'(\mathbb R^n),$ и при этом
+обобщенная функция $u(x)\in D'(\mathbb R^{n+1})$ допускает
+продолжение на бесконечно гладкие функции вида
+$\varphi(x)\,1(x_{n}),$ где $\varphi(x')\in D(\mathbb
+R^{n}),\,x'=(x_1,\ldots,x_n),$ то продолжение $U(x')$ решения
+$u(x)$ удовлетворяет уравнению $\mathcal L U(x')=f(x').$
+
+$\square$
+
+Пусть $\varphi(x')\in D(\mathbb R^{n+1}),\,\eta_k(x_{n+1})$ ---
+компактное исчерпание единицы в $\mathbb R,$ тогда
+$$\Bigl(\mathcal L
+u(x'),\varphi(x')\eta_k(x_{n+1})\Bigr)=\Bigl(u(x),\mathcal
+L^*(\varphi(x')\eta_k(x_{n+1}))\Bigr),$$ где
+$$\mathcal L^*=\sum\limits_{q=1}^m (-1)^q \Bigl( \cfrac{\partial}{\partial
+x_{n+1}}\Bigr)^q \mathcal L^*_q + \mathcal L^*_0,\,\,\,\mathcal
+L^*_q=\sum\limits_{|\alpha|'\le
+m_q}(-1)^{|\alpha|'}a_{q,\alpha'}{\partial^{\,
+\alpha'}},\,q=\overline{0,m},$$ --- это оператор, формально
+сопряженный к $\mathcal L.$
+
+Т.о., $\Bigl(u(x'),\mathcal L^*(\varphi(x')\eta_k(x_{n+1}))\Bigr)=
+\sum\limits_{q=1}^m (-1)^q \eta_k^{(q)}(x_{n+1})\mathcal L^*_q
+\varphi(x')+\eta_k(x_{n+1})\mathcal L^*_0\varphi(x'),$ при этом
+для $q=\overline{1,m}$ получим
+$\Bigl(U(x),\eta_k^{(q)}(x_{n+1})\mathcal
+L^*_q\varphi(x')\Bigr)\to0,\,k\to{\infty}.$
+
+В самом деле, новое компактное исчерпание будет строиться так:
+$\lambda_k(x_{n+1})=\eta_k(x_{n+1})+\eta_k^{(q)}(x_{n+1}).$
+Поэтому
+$\lim\limits_{k\to\infty}\Bigl(u(x),\lambda_k(x_{n+1})\underbrace{\mathcal
+L^*_q(\varphi(x'))}_{\in D(\mathbb R^n)}\Bigr)=
+\lim\limits_{k\to\infty}\Bigl(u(x),\eta_k(x_{n+1})\mathcal
+L^*_q\varphi(x')\Bigr).$
+
+Другими словами,
+$$\lim_{k\to\infty}\Bigl(u(x),\eta_k(x_{n+1})\mathcal
+L^*_q\varphi(x')\Bigr)+\underbrace{\lim_{k\to\infty}\Bigl(u(x),\eta_k^{(q)}(x_{n+1})\mathcal
+L^*_q\varphi(x')\Bigr)}_{=0}=\lim_{k\to\infty}\Bigl(u(x),\eta_k(x_{n+1})\mathcal
+L^*_q\varphi(x')\Bigr). $$
+
+  Т.о. $$\lim_{k\to\infty}\Bigl(\mathcal
+L u(x),\eta_k(x_{n+1})\varphi(x')\Bigr)=$$
+$$= \sum\limits_{q=1}^m
+(-1)^q (u(x),\eta_k^{(q)}(x_{n+1})\mathcal L^*_q \varphi(x'))+
+(u(x),\eta_k(x_{n+1})\underbrace{\mathcal L^*_0\varphi(x'))}_{\in
+D(\mathbb R^n)}\to (U(x'),\mathcal L^*_0\varphi(x')),$$ где
+$U(x')$ --- продолжение непрерывной обобщенной функции $u(x)\in
+D'(\mathbb R^{n+1})$ на бесконечно гладкие вида
+$\psi(x)\,1(x_{n+1}),$ где $\psi(x')\in D(\mathbb R^{n}).$ При
+этом, очевидно,
+$$\Bigl(\mathcal
+ L u(x),\eta_k(x_{n+1})\varphi(x')\Bigr)=
+\Bigl(f(x')\delta(x_{n+1}),\varphi(x')\eta_k(x_{n+1})\Bigr)=
+\Bigl(f(x'),(\delta(x_{n+1}),\varphi(x')\eta_k(x_{n+1}))\Bigr)=$$
+$$=\Bigl(f(x'),\eta_k(0)\varphi(x'))\Bigr)\to\Bigl(f(x'),\varphi(x')\Bigr),\,
+k\ge k_0\colon \eta_{k_0}(0)=1.$$
+
+Т.о., $\Bigl(\mathcal L
+U(x'),\varphi(x')\Bigr)=\Bigl(f(x'),\varphi(x')\Bigr),$ т.е.
+$\mathcal L U(x')=f(x').\,\blacksquare$
+
+\textbf{Теорема.} Пусть $E_2(x,t)=\cfrac{\Theta(at-|\,x|)}{2\pi
+a\sqrt{a^2t^2-|\,x|^2}},$ где $x=(x_1,x_2)\in \mathbb R^2,$ тогда
+$\square_a E_2(x,t)=\delta(x,t)$ в $\mathbb R^3,$ где
+$\square_a=\cfrac{\partial^2}{\partial
+t^2}-a^2\Bigl(\cfrac{\partial^2 }{\partial
+x_1^2}+\cfrac{\partial^2 }{\partial x_2^2}\Bigr),\,a=\const  >0.$
+
+$\square$
+
+Пусть $E_3(x_1,x_2,x_3,t)=\cfrac{\Theta(t)}{4\pi
+a^2t}\,\delta_{S_r}(x_1,x_2,x_3),$ тогда, по предыдущей лекции,
+$$\left(\cfrac{\partial^2}{\partial t^2}-a^2\Bigl(\cfrac{\partial^2
+}{\partial x_1^2}+\cfrac{\partial^2 }{\partial
+x_2^2}+\cfrac{\partial^2 }{\partial
+x_3^2}\Bigr)\right)E_3(x_1,x_2,x_3,t)=\delta(x_1,x_2,x_3,t)=\delta(x_1,x_2,t)\cdot\delta(x_3).$$
+
+Покажем, что $E_3(x_1,x_2,x_3,t)$ допускает продолжения на
+бесконечно гладкие функции вида $\varphi(x_1,x_2)\,1(x_3),$ где
+$\varphi(x_1,x_2,t)\in D(\mathbb R^{3}).$ Пусть $\eta_k(x_3)$ ---
+компактное исчерпание единицы в $\mathbb R.$ Тогда имеем:
+
+$$\Bigl(E_3(x_1,x_2,x_3,t),\varphi(x_1,x_2)\eta_k(x_3)\Bigr)=
+\cfrac1{4\pi a^2}\int\limits_0^{\infty}\cfrac
+{dt}t\int\limits_{S_{at}}\varphi(x_1,x_2,t)\eta_k(x_3)\,ds\to$$
+$$\to\cfrac1{4\pi a^2}\int\limits_0^{\infty}\cfrac
+{dt}t\int\limits_{S_{at}}\varphi(x_1,x_2,t)\,ds.\mbox { (по
+тоереме Лебега об ограниченной сходимости)}$$
+
+Посчитаем
+$\int\limits_{x_1^2+x_2^2+x_3^2=a^2t^2}\varphi(x_1,x_2)\,ds.$
+
+Так как $dx_1\,dx_2=\cos(\overline{\nu},x_3)\,ds,$ где
+$$\cos(\overline{\nu},x_3)=\cfrac{x_3}{at}=\cfrac{\sqrt{a^2t^2-x_1^2-x_2^2}}{at}
+\mbox{ и } ds=\cfrac{at}{\sqrt{a^2t^2-x_1^2-x_2^2}}\,dx_1\,dx_2,$$
+то
+$$\int\limits_{x_1^2+x_2^2+x_3^2=a^2t^2}\varphi(x_1,x_2)\,ds=
+2at\int\limits_{x_1^2+x_2^2+x_3^2=a^2t^2}\cfrac{\varphi(x_1,x_2)\,dx_1\,dx_2}
+{\sqrt{a^2t^2-x_1^2-x_2^2}}.$$
+
+Подставим в исходный интеграл:
+
+$$\Bigl(E_3(x_1,x_2,x_3,t),\varphi(x_1,x_2)\eta_k(x_3)\Bigr)\to
+\cfrac1{2\pi a} \int\limits_0^{\infty}\cfrac {dt}t
+\int\limits_{x_1^2+x_2^2+x_3^2=a^2t^2}\cfrac{\varphi(x_1,x_2,t)\,dx_1\,dx_2}
+{\sqrt{a^2t^2-x_1^2-x_2^2}}=$$
+
+$$=\Bigl(\cfrac{\Theta(at-|\,x|)}{2\pi
+a\sqrt{a^2t^2-|\,x|^2}},\varphi(x_1,x_2)\eta_k(x_3)\Bigr),$$ где
+$\cfrac{\Theta(at-|\,x|)}{2\pi a\sqrt{a^2t^2-|\,x|^2}}$ ---
+продолжение функции $E_3(x_1,x_2,x_3,t)$ на
+$\varphi(x_1,x_2,t)1(x_3).$ Тогда, по пред\-ыдущей теореме,
+$$\left(\cfrac{\partial^2}{\partial t^2}-a^2\Bigl(\cfrac{\partial^2
+}{\partial x_1^2}+\cfrac{\partial^2 }{\partial
+x_2^2}\Bigr)\right)E_2(x_1,x_2,t)=\delta(x_1,x_2,t).\blacksquare$$
+
+%lect21
+
+\section{Обобщенная задача Коши для волнового уравнения}
+
+$${\begin{aligned}
+\left\{%
+\begin{array}{ll}
+    u_{tt}-a^2\triangle u=f(x,t),\\
+    u(x,0)=u_0(x), \\
+    u_t(x,0)=u_t(x),  \\
+\end{array}%
+\right.\end{aligned}}\eqno(*)$$
+
+$$(x,t) \in \mathbb R^n\times[0,\infty),\,
+\triangle=\partial^2_{x_1}+\ldots+\partial^2_{x_n},\,a=\const  .$$
+
+$u\in C_2(\mathbb R^n\times[0,\infty))\cap C^1(\mathbb
+R^n\times[0,\infty)), f\in C(\mathbb R^n\times[0,\infty)).$
+Обозначим
+$$\tilde u(x,t)=\left\{%
+\begin{array}{ll}
+    u(x,t), t\ge0, \\
+    0, t<0. \\
+\end{array}%
+\right.$$
+
+Нужно написать для $\tilde u$ явную часть.
+
+Возьмем $\varphi\in\,D(\mathbb R^{n+1}).$ Тогда
+\begin{multline}
+(\tilde u_{tt}-a^2\tilde u_{xx},\varphi)=(\tilde
+u,\varphi_{tt}-a^2\triangle\varphi)= \int\limits_{\mathbb
+R^n}\tilde
+u(x,t)(\varphi_{tt}(x,t)-a^2\triangle\varphi(x,t))\,dx\,dt=\\=
+\int\limits_0^{\infty}dt \int\limits_{\mathbb R^n}dx\,\tilde
+u(x,t)(\varphi_{tt}(x,t)-a^2\triangle\varphi(x,t))=\\=
+\int\limits_{\mathbb
+R^n}dx\,\int\limits_0^{\infty}dt\,u(x,t)\varphi_{tt}(x,t)-
+a^2\int\limits_0^{\infty}dt \int\limits_{\mathbb
+R^n}dx\,u(x,t)\,\triangle\varphi(x,t).
+\end{multline}
+
+$x\in \mathbb R^n$ --- фиксирован.
+
+$$\int\limits_0^{\infty}dt\,u(x,t)\varphi_{tt}(x,t)=
+\Bigl.u(x,t)\varphi_{t}(x,t)\Bigr|_{t=0}^{\infty}-
+\int\limits_0^{\infty}u_t(x,t)\varphi_{t}(x,t)\,dt=$$
+$$=\Bigl.u(x,t)\varphi_{t}(x,t)\Bigr|_{t=0}^{\infty}-
+\Bigl.u_t(x,t)\varphi_{t}(x,t)\Bigr|_{t=0}^{\infty}+
+\int\limits_0^{\infty}u_{tt}(x,t)\varphi(x,t)\,dt=$$
+$$=-u_0(x)\varphi_{t}(x,0)+u_1(x)\varphi_{t}(x,0)+
+\int\limits_0^{\infty}u_{tt}(x,t)\varphi(x,t)\,dt.$$
+
+$t\in [0,\infty)$ --- фиксирован. $\supp \varphi\subset B_r$  ---
+шар достаточно большого радиуса с центром в точке 0.
+
+\begin{multline}
+\int\limits_{\mathbb R^n}u(x,t)\,\triangle\varphi(x,t)\,dx=
+\int\limits_{B_r}u(x,t)\,\triangle\varphi(x,t)\,dx=\\=
+\int\limits_{S_r}u(x,t)\cfrac{\partial \varphi(x,t)}{\partial
+\nu}\,ds-=\int\limits_{B_r}\triangledown_x
+u(x,t)\,\triangledown_x\varphi(x,t)\,dx=\\=
+\int\limits_{S_r}u(x,t)\underbrace{\cfrac{\partial \varphi(x,t)}{\partial
+\nu}}_{\equiv0},ds- \int\limits_{S_r}\cfrac{\partial
+\varphi(x,t)}{\partial
+\nu}\underbrace{\varphi(x,t)}_{\equiv0}\,ds+\int\limits_{B_r}\triangle
+u(x,t)\,\varphi(x,t)\,dx.
+\end{multline}
+
+\begin{multline}
+(\tilde u_{tt}-a^2\tilde u_{xx},\varphi)=
+-\int\limits_{\mathbb
+R^n}u_0(x)\varphi_t(x,0)\,dx+\int\limits_{\mathbb
+R^n}u_1(x)\varphi_t(x,0)\,dx+\\+
+\int\limits_{\mathbb R^n}dx
+\int\limits_0^{\infty}u_{tt}(x,t)\varphi(x,t)\,dt-
+a^2\int\limits_0^{\infty}dt \int\limits_{\mathbb R^n}dx\,\triangle
+u(x,t)\,\varphi(x,t)=\\=
+-\int\limits_{\mathbb
+R^n}u_0(x)\varphi_t(x,0)\,dx+\int\limits_{\mathbb
+R^n}u_1(x)\varphi_t(x,0)\,dx+\int\limits_{\mathbb R^n}dx
+\int\limits_0^{\infty}(\underbrace{u_{tt}-a^2u_{xx}}_{=f(x,t)})\,\varphi(x,t)=\\=
+(u_0\delta'(t),\varphi(x,t))+(u_1\delta(t),\varphi(x,t))+
+(\tilde\rho(x,t),\varphi(x,t)).
+\end{multline}
+
+Пояснение: по определению прямого произведения:
+
+$$(u_0\delta'(t),\varphi(x,t))=(u_0,\delta'(t)\,\varphi(x,t)),$$
+
+$$(\delta'(t),\varphi(x,t))=-(\delta(t),\varphi_t(x,t))=-\varphi_t(x,0).$$
+Т.о., $$(u_0\delta'(t),\varphi(x,t))= -(u_0,\varphi_t(x,t))=
+-\int\limits_{\mathbb R^n}u_0(x)\varphi_t(x,0)\,dx.$$
+
+Аналогично,
+$$(u_t\delta(t),\varphi(x,t))=-\int\limits_{\mathbb R^n}u_0(x)\varphi(x,t)\,dx,$$
+
+$$(\tilde f(x,t),\varphi(x,t))=\int\limits_0^{\infty}dt\int\limits_{\mathbb R^n}f(x,t)\varphi(x,t)\,dx.$$
+
+Т.о., получим:
+
+$$\tilde
+u_{tt}-a^2\tilde u_{xx}=\tilde
+f(x,t)+u_0\,\delta'(t)+u_1\,\delta(t).\,\blacksquare\eqno (1)$$
+
+\textbf{Замечание.} Носитель правой части (1) принадлежит
+множеству $\mathbb R^n\times[0,\infty).$
+
+\textbf{Лемма.} Пусть $F,G\in D'(\mathbb R^{n+1}),$ причем $\supp
+G\subset K=\{(x,t)\in D\mathbb R^{n+1}\colon |\,x|\le at\}$ ---
+замкнутый конус. Тогда существует $F*G$, причем $\supp F*G\subset
+\mathbb R^n\times[0,\infty),$ более того:
+$$\forall\varphi\in\,D(\mathbb R^{n+1})\,\,\,
+(F*G,\varphi)=\Bigl(F(x,y)G(y,\tau),\lambda(t)\lambda(\tau)\lambda(a^2t^2-y^2)\varphi(x+y,t+\tau))\Bigr),$$
+где $\lambda\in C^{\infty}(\mathbb R)\colon
+\left.\lambda\right|_{(-\infty,-2\varepsilon)}\equiv0,\,
+\left.\lambda\right|_{[-\varepsilon,\infty)}\equiv1,\,\varepsilon>0.$
+
+$\square$
+
+Видно ,что все справа - бесконечно гладкая функция с компактным
+носителем. Пусть $\varphi\in\,D(\mathbb R^{n+1}).$ Возьмем
+компактное исчерпание единицы $\eta_s(x,y,t,\tau)$ в $\mathbb
+R^{2n+1}\colon$
+$$\lim_{s\to\infty}(F(x,y,)G(y),\eta_s(x,y,t,\tau)\varphi(x+y,t+\tau))=$$
+$$=\lim_{s\to\infty}(\lambda(t)F(x,y,),\underbrace{\lambda(\tau)\lambda(a^2t^2-y^2)G(y,t)}_{=G(y,t)}\eta_s(x,y,t,\tau)\varphi(x_y,t+\tau))=$$
+$$=\lim_{s\to\infty}(F(x,y)G(y,\tau),\lambda(t)\lambda(\tau)\lambda(a^2t^2-|\,y|^2)\varphi(x+y,t+\tau)),\eqno(2)$$
+где
+$\lambda(t)\lambda(\tau)\lambda(a^2t^2-|\,y|^2)\varphi(x+y,t+\tau)$
+--- бесконечно гладкая с компактным носителем, т.к. у $\varphi$
+компактный носитель. $\lambda(t)\varphi(x+y,t+\tau)\ne0$ при
+$t>-2\varepsilon,$ $\lambda(\tau)\varphi(x+y,t+\tau)\ne0$ при
+$\tau>-2\varepsilon,$ $\lambda(a^2t^2-|\,y|^2)\ne0$ при $y>a\tau.$
+Если $t>A, t+\tau\in(-\alpha,\alpha)\Rightarrow \tau$ ---
+маленькое. Если $\tau$ большое, то $\lambda(t)=0,$ то
+$-2\varepsilon<t\le A, \,-2\varepsilon<\tau\le A.$
+
+$|\,y|^2<C.$ Если $y$ принадлежит компакту, $x+y$ принадлежит
+компакту $\Rightarrow x$ принадлежит компакту, $|\,x|<k.$
+
+$(\eta_s(x,y,t,\tau)=f)$ на $\supp
+(\lambda(t)\lambda(\tau)\lambda(a^2t^2-|\,y|^2)\varphi(x+y,t+\tau)).$
+
+
+Т.о., при достаточно больших $s$
+$$(2)=(F(x,y)G(y,\tau),\lambda(t)\lambda(\tau)\lambda(a^2t^2-|\,y|^2)\varphi(x+y,t+\tau)).$$
+
+Т.о., доказано, что предел (свертка) существует и формула верна.
+$\blacksquare$
+
+\textbf{Определение.} \textbf{Обобщенная задача Коши для волнового
+уравнения:} пусть $F\in D'(\mathbb R^{n+1}), \supp F\subset\mathbb
+R^n\times[0,\infty).$ Найти функцию $u\in D'(\mathbb
+R^{n+1})\colon u\in\mathbb R^n\times[0,\infty)\colon$
+$$u_{tt}-a^2\triangle u=F.\eqno (*)$$
+
+\textbf{Теорема.} Обобщенная задача Коши $(*)$ имеет единственное
+решение.
+
+$\square$
+
+(Существование.) Т.к. $\supp F\subset\mathbb R^n\times[0,\infty)$
+и $\supp E\subset K_n,$ где $E$ --- фундаментальное решение, то
+существует свертка $F*G$ --- решение $(*)$.
+
+(Единственность). Т.к. существует $u*E$.$\,\blacksquare$
+
+%lect22
+
+$$\left\{%
+\begin{array}{ll}
+    \square_a u=f(x,t),x\in \mathbb R^n,t>0,\\
+    u(x,0)=u_0(x),\\
+    u_t(x,0)=u_1(x). \\
+\end{array}%
+\right.$$
+
+$\square_a=\cfrac{\partial^2}{\partial
+t^2}-a^2\cfrac{\partial^2}{\partial x^2},\,a=\const  >0,\,
+\triangle=\cfrac{\partial^2 u}{\partial
+x_1^2}+\ldots+\cfrac{\partial^2 u}{\partial x_n^2}.$
+
+$u\in C^1(\mathbb R^n\times[0,\infty))\cap C^2(\mathbb
+R^n\times(0,\infty)),\,u_0,u_1\in C(\mathbb R^n),\, f\in C(\mathbb
+R^n\times[0,\infty)).$
+
+Обозначим
+$$\tilde u(x,t)=\left\{%
+\begin{array}{ll}
+    u(x,t), t\ge0, \\
+    0, t<0, \\
+\end{array}%
+\right.
+\tilde f(x,t)=\left\{%
+\begin{array}{ll}
+    f(x,t), t\ge0, \\
+    0, t<0. \\
+\end{array}%
+\right.
+$$
+
+$$\square_a \tilde u(x,t)=f(x,t)+u_0(x)\delta'(t)+u_1(x)\delta(t)=F(x,t),$$
+где $\supp F\subset \mathbb R^n\times[0,\infty).$
+
+Обобщенная задача Коши:
+
+$\forall F\in D'(\mathbb R^{n+1})\colon \supp F\subset \mathbb
+R^n\times[0,\infty),$ найти $u\in D'(\mathbb R^{n+1})\colon
+\square_a u(x,t)=F(x,t),$
+
+ $\supp u\subset \mathbb
+R^n\times[0,\infty).$
+
+\textbf{Теорема.} Обобщенное решение задачи Коши существует и
+единственно.
+
+\section{Классическое решение задачи Коши\\для волнового уравнения}
+
+$$\left\{%
+\begin{array}{ll}
+    \square_a u=f(x,t),x\in \mathbb R^n,t>0,\\
+    u(x,0)=u_0(x),\\
+    u_t(x,0)=u_1(x). \\
+\end{array}%
+\right.$$
+
+Будем предполагать ,что на правую часть $f$ и начальные значения
+$u_0,u_1$ следующие условия:
+
+1) в случае $n=2,3$: $f\in C^1(\mathbb R^n\times[0,\infty)),\,
+u_0\in C^3(\mathbb R^n),\,u_0\in C^2(\mathbb R^n);$
+
+2) в случае $n=1$: $f\in C^1(\mathbb R^n\times[0,\infty)),\,
+u_0\in C^2(\mathbb R^n),\,u_0\in C^1(\mathbb R^n);$
+
+\textbf{Определение.} \textbf{Найти классическое решение задачи
+Коши $(*)$} --- значит найти функцию $u\in C^1(\mathbb
+R^n\times[0,\infty))\cup\in C^2(\mathbb R^n\times(0,\infty)),$
+удовлетворяющую соотношениям $(*)$ в классическом (не обобщенном)
+смысле.
+
+\textbf{Теорема.} При сформулированных выше условиях на
+$f,u_0,u_1$ классическое решение задачи Коши $(*)$ существует и
+единственно. Более того, оно равно:
+
+1) \textbf{формула Кирхгофа} $n=3$:
+$$u(x,t)=
+\cfrac1{4\pi
+a^2}\int\limits_{B_{at}^x}\cfrac{f\Bigl(\xi,t-\Bigr|\frac{x-\xi}a\Bigl|\Bigr)}{|\,x-\xi|}\,d\xi+
+\cfrac1{4\pi a^2} \int\limits_{S_{at}^x}u_1(\xi)\,
+ds_{\varepsilon}+ \cfrac1{4\pi a^2}\, \cfrac{\partial}{\partial
+t}\Bigl(\cfrac1t\int\limits_{S_{at}^x}u_0(\xi)\,
+ds_{\varepsilon}\Bigr);$$
+
+2) \textbf{формула Пуассона} $n=2$:
+$$u(x,t)=\cfrac1{2\pi a}\int\limits_0^t d\tau\int\limits_{B_{a(t-\tau)}^x}
+\cfrac{f(\xi,\tau)}{\sqrt{a^2(t-\tau)^2-|\,x-\xi|^2}}\,d\xi+$$
+$$+\cfrac1{2\pi a}\int\limits_{B_{at}^x}
+\cfrac{u_1(\xi)}{\sqrt{a^2(t-\tau)^2-|\,x-\xi|^2}}\,d\xi+
+\cfrac1{2\pi a}\,\cfrac{\partial}{\partial
+t}\int\limits_{B_{at}^x}
+\cfrac{u_0(\xi)}{\sqrt{a^2(t-\tau)^2-|\,x-\xi|^2}}\,d\xi;$$
+
+3) \textbf{формула Даламбера} $n=1$:
+
+$$u(x,t)=\cfrac1{2a}\int\limits_0^t d\tau
+\int\limits_{x-a(t-\tau)}^{x+a(t-\tau)} f(\xi,\tau)\,d\xi+
+\cfrac1{2a}\int\limits_{x-at}^{x+at} u_1(\xi)\,d\xi+
+\cfrac12\Bigl(u_0(x+at)+u_0(x-at)\Bigr).$$
+
+$\square$
+
+$$\square_a\tilde u=\tilde f(x,t)+u_0\,\delta'(t)+u_1\,\delta(t).\eqno
+(**)$$
+
+Свертка правой части $(**)$ с фундаментальным решением оператора
+$\square_a$ существует и она равна $\tilde u(x,t),$ т.к. свертка
+$\tilde u(x,t)$ с фундаментальным решением оператора $\square_a$
+тоже существует. Надо показать, что свертка фундаментального
+решения с правой частью $(**)$ определяется приведенными выше
+формулами Кирхгофа, Пуассона и Даламбера (в зависимости от $n$).
+Тем самым, будет доказана единственность решения. Чтобы доказать
+существование, надо показать, что свертка фундаментального решения
+оператора $\square_a$ имеет класс гладкости $C^1(\mathbb
+R^n\times[0,\infty))\cap C^2(\mathbb R^n\times(0,\infty)).$
+
+Фундаментальные решения оператора $\square_a$:
+
+$$E_1(x,t)=\cfrac1{2a}\,\Theta(a\,t-|x|),\,n=1,$$
+$$E_2(x,t)=\cfrac{\Theta(at-|\,x|)}{2\pi a\sqrt{a^2t^2-|\,x|^2}},\,n=2,$$
+$$E_3(x,t)=\cfrac{\Theta(t)}{4\pi
+a^2t}\,\delta_{S_at}(x),\,n=3.$$
+
+В случае $n=1,2 \, E_n(x,t)$ --- локально суммируемые функции,
+поэтому для свертки $E_n(x,t)$ с правой частью $(**)$ в этом
+случае считается элементарно. Надо только учесть ,что
+$$E_n(x,t)*(u_0(x)\delta'(t))= \cfrac{\partial}{\partial
+t}\Bigl(E_n(x,t)*u_0(x)\delta(t)\Bigr).$$
+
+Нетривиальным является лишь случай $n=3.$ Найдем свертку
+$E_3(x,t)*\tilde f(x,t).$ По доказанному на предыдущей лекции,
+$\forall \varphi\in D(\mathbb R^{n+1})$:
+$$(E_3*\tilde f,\varphi)=
+\Bigr(E_3(\xi,\tau),\lambda(t)\lambda(\tau)\lambda(a^2\tau^2-|\,\xi|^2)\varphi(x+\xi,t+\tau))\Bigr),$$
+где $\lambda$ --- бесконечно гладкая функция.
+
+Т.к. $$\Bigr(E_3(\xi,\tau),\psi(\xi,\tau)\Bigr)=
+\left(\cfrac{\Theta(\tau)}{4\pi
+a^2\tau}\,\delta_{S_a\tau}(\xi),\psi(\xi,\tau)\right)=
+\cfrac1{4\pi
+a^2}\int\limits_0^{\infty}\cfrac{d\tau}{\tau}\int\limits_{S_{a\tau}}\psi(\xi,\tau)\,
+ds_{\varepsilon}=$$
+$$\Bigl|\mbox{замена }a\tau=\rho\Bigr|=
+\cfrac1{4\pi a^2} \int\limits_0^{\infty}\cfrac{d\rho}{\rho}
+\int\limits_{S_{a\rho}}\psi\Bigl(\xi,\cfrac{\rho}a\Bigr)\,
+ds_{\varepsilon}= \cfrac1{4\pi a^2} \int\limits_{\mathbb R^3}
+\cfrac{\psi\Bigl(\xi,\frac{\rho}a\Bigr)}{|\,\xi|}\,d\xi,$$ то
+
+$$(E_3*\tilde f,\varphi)=
+\Bigr(E_3(\xi,\tau),\lambda(t)\lambda(\tau)\lambda(a^2\tau^2-|\,\xi|^2)\varphi(x+\xi,t+\tau))\Bigr)=$$
+$$=\cfrac1{4\pi a^2} \int\limits_{\mathbb R^3}
+\cfrac{\lambda(t)\lambda(\overbrace{\frac{|\,\xi|}a}^{=0})\lambda(\overbrace{a^2(\frac{|\,\xi|}a)^2-|\,\xi|^2}^{=0})
+\varphi(x+\xi,t+\frac{|\,\xi|}a)}{|\,\xi|}\,d\xi=
+\cfrac{\lambda(t)}{4\pi a^2} \int\limits_{\mathbb R^3}
+\cfrac{\varphi(x+\xi,t+\frac{|\,\xi|}a)}{|\,\xi|}\,d\xi.$$
+
+\begin{multline}(E_3*f,\varphi)=
+\cfrac1{4\pi a^2}\int\limits_0^{\infty}dt\int\limits_{\mathbb
+R^3}dx\,f(x,t)\overbrace{\lambda(t)}^{=1} \int\limits_{\mathbb
+R^3} \cfrac{\varphi(x+\xi,t+\frac{|\,\xi|}a)}{|\,\xi|}\,d\xi=\\=
+\cfrac1{4\pi a^2}\int\limits_0^{\infty}dt\int\limits_{\mathbb
+R^3}dx\,f(x,t)\int\limits_{\mathbb R^3}
+\cfrac{\varphi(y,t+\frac{|\,y-x|}a)}{|\,y-x|}\,dy= \cfrac1{4\pi
+a^2}\int\limits_{\mathbb R^3}dx\int\limits_{\mathbb
+R^3}dy\int\limits_0^{\infty}dt\,f(x,t)\cfrac{\varphi(y,t+\frac{|\,y-x|}a)}{|\,y-x|}=\\=
+\cfrac1{4\pi a^2}\int\limits_{\mathbb R^3}dx
+\int\limits_{\frac{|\,y-x|}a}^{\infty}dt\,f\Bigl(x,\Theta-\frac{|\,y-x|}a\Bigr)\cfrac{\varphi(y,\Theta)}{|\,y-x|}=\\=
+\cfrac1{4\pi a^2} \int\limits_0^{\infty}d\Theta
+\int\limits_{\mathbb R^3}dy\,\varphi(y,\Theta)
+\int\limits_{|\,x-y|\le\, a\Theta}dx
+\cfrac{f\Bigl(x,\Theta-\frac{|\,y-x|}a\Bigr)}{|\,y-x|}=\\=
+\Bigl| \Theta\ge \frac{|\,y-x|}a \Leftrightarrow |\,y-x|\le\,a\Theta \Bigr|=
+\left(\cfrac1{4\pi a^2}\int\limits_{B_{a\Theta}^x}f\Bigl(x,\Theta-\frac{|\,y-x|}a\Bigr)\,dx,\varphi(y,\Theta)\right),
+\end{multline}
+где
+$$\cfrac1{4\pi a^2}\int\limits_{B_{a\Theta}^x}f\Bigl(x,\Theta-\frac{|\,y-x|}a\Bigr)\,dx$$
+является первым слагаемым в формуле Кирхгофа.
+
+%lect23
+
+Второе слагаемое в формуле Кирхгофа:
+$$\Bigl(u_1(x)\delta(t)*E_3(x,t),\varphi(x,t)\Bigr)=
+\Bigl(u_1(x)\delta(t)*E_3(\xi,\tau),
+\lambda(t)\lambda(\tau)\lambda(a^2\tau^2-|\,\xi|^2)\varphi(x+\xi,t+\tau)\Bigr)=$$
+$$=\Bigl(u_1(x)\delta(t),
+(E_3(\xi,\tau),\lambda(t)\lambda(\tau)\lambda(a^2\tau^2-|\,\xi|^2)\varphi(x+\xi,t+\tau))\Bigr).$$
+
+Так как $$\Bigl(E_3(\xi,\tau),\psi(\xi,\tau)\Bigr)= \cfrac1{4\pi
+a^2}\int\limits_{\mathbb R^3}
+\cfrac{\psi(\xi,\frac{|\,\xi|}a)}{|\,\xi|}\,d\xi,$$ получим:
+$$\Bigl(E_3(\xi,\tau),\lambda(t)\lambda(\tau)\lambda(a^2\tau^2-|\,\xi|^2)\varphi(x+\xi,t+\tau)\Bigr)=$$
+$$=\cfrac1{4\pi a^2}\int\limits_{\mathbb R^3}
+\cfrac{\lambda(t)\overbrace{\lambda(\frac{|\,\xi|}a)}^{=1}\lambda(a^2(\frac{|\,\xi|}a^2-|\,\xi|)^2)
+\varphi(x+\xi,t+\frac{|\,\xi|}a)}{|\,\xi|}\,d\xi=
+\cfrac{\lambda(t)} {4\pi a^2}\int\limits_{\mathbb
+R^3}\cfrac{\varphi(x+\xi,t+\frac{|\,\xi|}a)}{|\,\xi|}\,d\xi,$$
+
+$$\Bigl(u_1(x)\delta(t)*E_3(x,t),\varphi(x,t)\Bigr)=
+\cfrac1{4\pi a^2}\Bigl(u_1(x)\delta(t),\int\limits_{\mathbb
+R^3}\cfrac{\varphi(x+\xi,t+\frac{|\,\xi|}a)}{|\,\xi|}\,d\xi\Bigr)=$$
+$$=\cfrac1{4\pi a^2}\Bigl(u_1(x),\Bigl(\delta(t),\int\limits_{\mathbb
+R^3}\cfrac{\varphi(x+\xi,t+\frac{|\,\xi|}a)}{|\,\xi|}\,d\xi\Bigr)\Bigr)=
+\cfrac1{4\pi a^2}\Bigl(\underbrace{u_1(x)}_{\in \,C^2(\mathbb
+R^3)},\int\limits_{\mathbb
+R^3}\cfrac{\varphi(x+\xi,\frac{|\,\xi|}a)}{|\,\xi|}\,d\xi\,dx\Bigr)=$$
+$$=\cfrac1{4\pi a^2}\int\limits_{\mathbb
+R^3}dy\int\limits_{\mathbb R^3}d\xi\,u_1(y-\xi)
+\cfrac{\varphi(y,\frac{|\,\xi|}a)}{|\,\xi|}.$$
+
+$y$ --- фиксирован. Сделаем замену $\cfrac ra=\rho$. Тогда
+внутренний интеграл:
+
+$$\int\limits_{\mathbb R^3}d\xi\,u_1(y-\xi)
+\cfrac{\varphi(y,\frac{|\,\xi|}a)}{|\,\xi|}=
+\int\limits_0^{\infty}dr \int\limits_{\xi\in S_r}dS_r u_1(y-\xi)
+\cfrac{\varphi(y,\frac{r}a)}{r}=$$
+$$=\int\limits_0^{\infty}\cfrac{d\rho}{\rho} \int\limits_{\xi\in S_a\rho}dS_r u_1(y-\xi)
+\varphi(y,\rho).$$
+
+Т.о.,
+$$\Bigl(u_1(x)\delta(t)*E_3(x,t),\varphi(x,t)\Bigr)=
+\cfrac1{4\pi a^2}\int\limits_{\mathbb
+R^3}dy\int\limits_0^{\infty}\cfrac{d\rho}{\rho}\,\varphi(y,\rho)
+\int\limits_{\xi\in S_a\rho}dS_r
+u_1(\underbrace{y-\xi}_{=\Theta})=$$
+$$=\cfrac1{4\pi a^2}\int\limits_{\mathbb
+R^3}dy\int\limits_0^{\infty}\cfrac{d\rho}{\rho}\,\varphi(y,\rho)
+\int\limits_{\Theta\in S^y_a\rho}dS_{\Theta}\,u_1(\Theta)=
+\Bigl(\varphi(y,\rho),\cfrac1{4\pi
+a^2}\int\limits_{S^y_a\rho}u_1(\Theta)\,d\Theta\Bigr).$$
+
+Третье слагаемое получается аналогично второму, но с учетом того,
+что
+$$\Bigl(u_0(x)\delta'(t)\Bigr)*E_3(x,t)=
+\cfrac{\partial}{\partial
+t}\Bigl(u_0(x)\delta(t)*E_3(x,t)\Bigr).$$
+
+\textbf{Упражнение.} Получить самостоятельно формулы Пуассона и
+Даламбера.
+
+\subsection{Гладкость правых частей формулы Кирхгофа}
+
+Первое слагаемое:
+
+$$\cfrac1{4\pi a^2}
+\int\limits_{B_{at}^x}\cfrac{f(\xi,t-\Bigr|\frac{x-\xi}a\Bigl|}{|\,x-\xi|}\,d\xi=
+\cfrac1{4\pi a^2}
+\int\limits_{B_{at}}\cfrac{f(x-y,t-\frac{|\,y|}a)}{|\,y|}\,dy,\eqno(1)$$
+
+где $B_{at}$ --- шар с центром в 0,
+$|\,y|=at,\,y=tw,\,|\,w|=a,\,dy=t^3dw.$ Тогда продолжим равенства:
+
+$$(1)=\int\limits_{B_{a}}\cfrac{f(x-at,t-\frac{t|\,w|}a)}{t|\,w|}\,t^3\,dw=
+t^2\int\limits_{B_{a}}\cfrac{f(x-at,t-\frac{t|\,w|}a)}{|\,w|}\,t^2\,dw$$
+
+--- принадлежит классу $C^2(\mathbb R^3\times[0,\infty))$ по
+переменным $(x,t)$, т.к. $f\in C^2(\mathbb R^2\times[0,\infty)).$
+
+Второе слагаемое:
+
+$$\cfrac1{4\pi a^2} \int\limits_{S_{at}^x}u_1(\xi)\,
+dS_{\varepsilon}=\Bigl|\mbox{замена }\xi=y+x\Bigr|= \cfrac1{4\pi
+a^2} \int\limits_{S_{at}}u_1(y+x)\, dS_y,\eqno(2)$$
+
+Если $y=t\Theta,\, |\,y|=at,\, |\,w|=a,\, dS_y=t^2dS_w,$ то
+$$(2)=\cfrac{t^2}{4\pi
+a^2} \int\limits_{S_{a}}u_1(tw+x)\, dS_w$$
+--- принадлежит классу $C^2(\mathbb R^3\times[0,\infty))$ по
+переменным $(x,t)$.
+
+Аналогично, так же и третье слагаемое является класса $C^2(\mathbb
+R^3\times[0,\infty))$ по переменным $(x,t)$.
+
+\textbf{Упражнение.} Проделать аналогичные выкладки для формул
+Пуассона и Даламбера.
+
+\textbf{Утверждение.} Единственность решения классической задачи
+Коши для волнового уравнения вытекает из теории единственности
+решения обобщенной задачи Коши.
+
+Остается ответить на вопрос, почему для функции $$u(x,t)=(\tilde
+f(x,t)+u_0\,\delta'(t)+u_1\,\delta(t))*E_n(x,t),\,n=1,2,3$$ из
+того, что $u\in C^2(\mathbb R^3\times(0,\infty))\cap C(\mathbb
+R^3\times[0,\infty))$ следует из того, что $u(x,t)$ удовлетворяет
+в классическом смысле начальным условиям Коши, т.е.
+$u(x,0)=u_0(x),\,u_t(x,0)=u_1(x).$
+
+$$\tilde u(x,t)=\begin{cases} u(x,t), t\ge0;\\ 0,
+t<0,\end{cases}\tilde f(x,t)=\begin{cases} f(x,t), t\ge0;\\ 0,
+t<0.\end{cases}$$
+
+Получим: $$\square_a\tilde u(x,t)= \tilde
+f(x,t)+u(x,0)\,\delta'(t)+u_t(x,0)\,\delta(t),$$ с другой стороны:
+$$\square_a\tilde u(x,t)=\tilde
+f(x,t)+u_0(x)\,\delta'(t)+u_1(x)\,\delta(t).$$
+
+Значит, $u(x,0)=u_0(x)$ и $u_t(x,0)=u_1(x),$ т.к.
+$u(x,0),u_0(x),u_t(x,0),u_1(x)$ --- непрерывные функции.
+
+\textbf{Упражнение.} Доказать строго последнее утверждение.
+
+\section{Задача Коши для уравнения теплопроводности}
+
+$${\begin{aligned}
+\left\{%
+\begin{array}{ll}
+    u_{t}=a^2\triangle u+f(x,t),\,x\in\mathbb R^n\\
+    u(x,0)=u_0(x). \\
+\end{array}%
+\right.
+\end{aligned}}\eqno(*)$$
+
+\textbf{Определение.} \textbf{Классическое решение задачи $(*)$}
+--- решение $u\in C(\mathbb R^n\times[0,\infty)),$
+$\partial_x^{\,\alpha}\in C(\mathbb R^n\times[0,\infty)),\,
+|\,\alpha|\le2,\,\alpha=(\alpha_1,\ldots,\alpha_n),
+|\alpha|=\alpha_1+\ldots+\alpha_n, \,\partial^{\,\alpha}=\cfrac
+{\partial^{\,|\alpha|}}{\partial x_1^{\,\alpha_1}\ldots \partial
+x_1^{\,\alpha_n}}$
+
+\textbf{Определение.} Через \textbf{M} обозначим множество
+измеримых функций на
+$$\mathbb R^n\times[0,\infty)\colon |\,u(x,t)|\le C \mbox{ для почти всех }
+(x,t)\in \mathbb R^n\times[0,T].$$
+
+Пусть $u$ --- классическое решение задачи Коши $(*)$,
+$$\tilde u(x,t)=\begin{cases} u(x,t), t\ge0;\\ 0,
+t<0,\end{cases}\tilde f(x,t)=\begin{cases} f(x,t), t\ge0;\\ 0,
+t<0.\end{cases}$$
+
+Тогда $\tilde u_{t}-a^2\triangle \tilde u=\tilde
+f(x,t)+u_0(x)\,\delta(t).$
+
+\textbf{Упражнение.} Доказать последнее равенство строго
+(аналогично задаче Коши для волнового оператора).
+
+\textbf{Определение.} \textbf{Обобщенное решение задачи Коши для
+уравнения теплопроводности:} пусть $F\in D'(\mathbb R^{n+1}),
+\supp F\subset \mathbb R^n\times[0,\infty).$ Требуется найти $u\in
+D'(\mathbb R^{n+1}),\supp u \subset \mathbb
+R^n\times[0,\infty)\colon$
+$$u_{t}+a^2\triangle u=F(x,t).\eqno(**)$$
+
+\textbf{Теорема.} Пусть $f\in M,u_1\in L_{\infty}(\mathbb
+R^n),F=\tilde f(x,t)+u_0(x)\,\delta(t).$ Тогда обобщенная задача
+Коши $(**)$ имеет единственное решение из класса $M$:
+$$u(x,t)=
+\Theta(t)\int\limits_0^t \int\limits_{\mathbb R^n}
+\cfrac{f(\xi,\tau)\,e^{-\frac{|\,x-\xi|^2}{4a^2(t-\tau)}}}
+{(2a\sqrt{\pi(t-\tau)})^n}\,d\xi\,dt+
+\cfrac{\Theta(t)}{(2a\sqrt{\pi t})^n} \int\limits_{\mathbb
+R^n}u_0(\xi)\,e^{-\frac{|\,x-\xi|^2}{4a^2\tau}}.$$
+
+$\square$
+
+Возьмем фундаментальное решение оператора теплопроводности:
+$$E(x,t)=\cfrac{\Theta(t)}{(2a\sqrt{\pi t})^n}\,e^{-\frac{|\,x-\xi|^2}{4a^2t}}.$$
+Докажем, что свертка $F*E$ существует:
+
+$$\tilde f*E(X,t)=
+\int\limits_{\mathbb R^{n+1}}\tilde
+f(\xi,\tau)\,E(x-\tau)\,d\xi\,d\tau= \int\limits_{\mathbb
+R^{n+1}}\tilde f(\xi,\tau)\cfrac{\Theta(t-\tau)}{(2a\sqrt{\pi
+(t-\tau)})^n}\,e^{-\frac{|\,x-\xi|^2}{4a^2(t-\tau)}}\,d\xi\,d\tau=$$
+$$=\Theta(t)\int\limits_0^t \int\limits_{\mathbb R^n}
+\cfrac{f(\xi,\tau)\,e^{-\frac{|\,x-\xi|^2}{4a^2(t-\tau)}}}
+{(2a\sqrt{\pi(t-\tau)})^n}\,d\xi\,dt.$$
+
+При этом, $\forall x\in \mathbb R^n, t\in (0,T), T>0:$
+$$|u(x,t)|\le
+\int\limits_0^t \int\limits_{\mathbb R^n}
+\cfrac{|f(\xi,\tau)|\,e^{-\frac{|\,x-\xi|^2}{4a^2(t-\tau)}}}
+{(2a\sqrt{\pi(t-\tau)})^n}\,d\xi\,dt\le \|f\|_{L_{\infty}(\mathbb
+R^n\times[0,\infty))} \int\limits_0^t d\tau \int\limits_{\mathbb
+R^n}\cfrac{e^{-\frac{|\,x-\xi|^2}{4a^2(t-\tau)}}}
+{(2a\sqrt{\pi(t-\tau)})^n}\,d\xi=$$
+$$\Bigl|\mbox{замена }y=\cfrac{|\,x-\xi|}{2a\sqrt{t-\tau}}\Bigr|=
+\|f\|_{L_{\infty}(\mathbb R^n\times[0,\infty))}\int\limits_0^t
+d\tau \underbrace{\int\limits_{\mathbb R^n}\cfrac{e^{-|\,y|^2}}
+{\pi^{\frac n2}}\,dy}_{=1}= T\cdot\|f\|_{L_{\infty}(\mathbb
+R^n\times[0,\infty))}.$$
+
+$$\Bigl(u_0(x)\delta(t)\Bigr)*E(x,t)=
+\Bigl(u_0(x)\delta(t)E(x,t),\eta_k(x,t,\xi,\tau)\underbrace{\varphi(x+\xi,t+\tau)}_{\in
+D(\mathbb R^{n+1})}\Bigr)=$$
+$$=\Bigl(u_0(x)\delta(t),(E(\xi,\tau),\eta_k(x,t,\xi,\tau)\varphi(x+\xi,t+\tau))\Bigr)=$$
+$$\Bigl(u_0(x)\delta(t),\int\limits_{\mathbb
+R^{n+1}}E(\xi,\tau)\eta_k(x,t,\xi,\tau)\varphi(x+\xi,t+\tau)\,d\xi
+\,d\tau\Bigr)=$$
+$$=\Bigl(u_0(x),(\delta(t),\int\limits_{\mathbb
+R^{n+1}}E(\xi,\tau)\eta_k(x,t,\xi,\tau)\varphi(x+\xi,t+\tau)\,d\xi\,d\tau)\Bigr)=$$
+$$\Bigl(u_0(x),\int\limits_{\mathbb
+R^{n+1}}E(\xi,\tau)\eta_k(x,0,\xi,\tau)\varphi(x+\xi,\tau)d\xi
+d\tau\Bigr)=$$
+$$=\int\limits_{\mathbb R^{n}}dx\,u_0(x)\int\limits_{\mathbb
+R^{n+1}}d\xi\,d\tau
+E(\xi,\tau)\eta_k(x,0,\xi,\tau)\varphi(x+\xi,\tau)=
+\Bigl|\mbox{замена }y=x+\xi \Bigr|=$$
+$$=\int\limits_{\mathbb R^{n}}dx\,u_0(x)\int\limits_{\mathbb
+R^{n+1}}dy\,d\tau
+E(y-x,\tau)\eta_k(x,0,y-x,\tau)\varphi(y,\tau)=$$
+$$=\Bigl(\int\limits_{\mathbb R^{n}}E(y-x,\tau)u_0(x)\,dx,\varphi(y,\tau)\Bigr)=
+\Bigl(\int\limits_{\mathbb R^{n}} \cfrac{\Theta(t)}{(2a\sqrt{\pi
+t})^n}\,e^{-\frac{|\,y-x|^2}{4a^2t}}\,dx,\varphi(y,\tau)\Bigr).$$
+
+Оценка для второго слагаемого в формуле Пуассона:
+
+$$\left|\cfrac{\Theta(t)}{(2a\sqrt{\pi
+t})^n}\,e^{-\frac{|\,x-\xi|^2}{4a^2t}}\int\limits_{\mathbb
+R^{n}}e^{-\frac{|\,x-\xi|^2}{4a^2t}}\,d\xi\right|\le
+\cfrac{\Theta(t)}{(2a\sqrt{\pi t})^n}\,\|u_0\|_{L_{\infty}(\mathbb
+R^n\times[0,\infty))} \int\limits_{\mathbb
+R^{n}}e^{-\frac{|\,x-\xi|^2}{4a^2t}}\,d\xi=$$
+$$=\Bigl|y=\cfrac{x-\xi}{2a\sqrt t} \Bigr|=
+\|u_0\|_{L_{\infty}(\mathbb R^n\times[0,\infty))}
+\underbrace{\cfrac1{\pi^{\frac n2}} \int\limits_{\mathbb R^{n}}
+e^{-|\,y|^2}\,dy}_{=1}.$$
+
+Т.к. у любой функции $u\in M\colon \supp u\subset
+R^n\times[0,\infty),$ существует свертка с $E(x,t)$, то решение
+задачи Коши будет единственным в классе функций $u\in M\colon
+\supp u\subset R^n\times[0,\infty).$
+
+%lect25
+
+$u\in C^{2,1}(\mathbb R^n\times(0,\infty))\cap C(\mathbb
+R^n\times[0,\infty))$ --- класс гладкости $C^2$ по $x$ и $C^1$ по
+$t$.
+
+\textbf{Теорема.} (существование и единственность классического
+решения.) Пусть
+$$u_0\in C^{2}(\mathbb R^n)\cap L_{\infty}(\mathbb
+R^n),\,f\in C^{2}(\mathbb R^n\times(0,\infty))\cap M,\,\partial_x
+f,\,\partial_x^2f\in M.$$
+Тогда задача Коши для уравнения
+теплопроводности:
+$$\left\{%
+\begin{array}{ll}
+    u_{t}=a^2\triangle u+f(x,t),\,x\in\mathbb R^n\\
+    u(x,0)=u_0(x), \\
+\end{array}%
+\right.$$ имеет единственное решение из класса $C^{2,1}(\mathbb
+R^n\times(0,\infty))\cap C(\mathbb R^n\times[0,\infty))$.
+
+$\square$
+
+Из теоремы единственности обобщенного решения задачи Коши для
+уравнения теплопроводности получим:
+$$u(x,t)=
+\Theta(t)\int\limits_0^t \int\limits_{\mathbb R^n}
+\cfrac{f(\xi,\tau)\,e^{-\frac{|\,x-\xi|^2}{4a^2(t-\tau)}}}
+{(2a\sqrt{\pi(t-\tau)})^n}\,d\xi\,dt+
+\cfrac{\Theta(t)}{(2a\sqrt{\pi t})^n} \int\limits_{\mathbb
+R^n}u_0(\xi)\,e^{-\frac{|\,x-\xi|^2}{4a^2\tau}}=I_1+I_2$$
+--- обобщенное решение из класса $M$. Надо показать, что $u\in C^{2,1}(\mathbb R^n\times(0,\infty))\cap C(\mathbb
+R^n\times[0,\infty))$. Сделаем замену
+$\zeta=\cfrac{|\,x-\xi|}{2a\sqrt{t-\tau}},$ тогда
+$$I_1=\cfrac1{\pi^{\frac n2}}\int\limits_0^t d\tau \int\limits_{\mathbb R^n}
+f(x-2a\sqrt{t-\tau}\zeta,\tau)\,e^{-|\,\zeta|^2}d\zeta.$$
+
+Аналогично, заменяя $\zeta=\cfrac{|\,x-\xi|}{2a\sqrt{t}},$
+получим: $I_2=\cfrac1{\pi^{\frac n2}} \int\limits_{\mathbb R^n}
+u_0(x-2a\sqrt{t}\zeta,\tau)d\zeta.\,\blacksquare$
+
+\section{Пространство С.\,Л.\,Соболева}
+
+$\Omega\subset\mathbb R^{n}$ --- открытое подмножество,
+$\Omega\ne0.$
+
+\textbf{Определение.} $W_p^m(\Omega)=\{u\in D'(\Omega)\colon u\in
+L_p(\Omega),\,\partial^{\,\alpha} u \in L_p (\Omega),|\,\alpha|=m,
+p>1,m\in\mathbb N_0\}$
+--- \textbf{пространство Соболева.}
+
+\textbf{Определение.} \textbf{Норма в пространстве Соболева}:
+$$\|u\|_{W_p^m(\Omega)}=\|u\|_{L_p(\Omega)}+\sum_{|\,\alpha|=m}
+\|\partial^{\,\alpha}u\|_{L_p(\Omega)}.$$
+
+Более подробно:
+$$\|u\|_{W_p^m(\Omega)}=\left(\int\limits_{\Omega}|\,u|^p dx\right)^{\frac1p}
++\sum_{|\,\alpha|=m}\left(\int\limits_{\Omega}|\,\partial^{\,\alpha}u|^p
+dx\right)^{\frac1p}.$$
+
+Другие, эквивалентные нормы на $W_p^m(\Omega)$:
+$$\|u\|_{W_p^m(\Omega)}=\left(\int\limits_{\Omega}|\,u|^p dx
++\sum_{|\,\alpha|=m}\int\limits_{\Omega}|\,\partial^{\,\alpha}u|^p
+dx\right)^{\frac1p}.$$
+
+\textbf{Замечание.} Нормы $\|\cdot\|_1$ и $\|\cdot\|_2$ на
+линейном пространстве $V$ \textbf{эквивалентны}, если
+
+$\exists \,0<c_1<c_1\colon \forall v\in V\,\,\,
+c_1\|v\|_1\le\|v\|_2\le c_2\|v\|_1.$
+
+\textbf{Теорема.} Пространство $W_p^m(\Omega)$ полно.
+
+$\square$
+
+Пусть $u_k\in W_p^m(\Omega)$ --- фундаментальная
+последовательность $(k=1,2,\ldots)$. Докажем, что существует $u\in
+W_p^m(\Omega)\colon \|u-u_k\|_{W_p^m(\Omega)}\to0,\,k\to{\infty}.$
+
+Тогда $u_k\in W_p^m(\Omega)$ является фундаментальной в
+$L_p(\Omega)$, т.к. $\forall v\in W_p^m(\Omega)\,\,
+\|v\|_{L_p(\Omega)}\le \|v\|_{W_p^m(\Omega)}.$
+
+Аналогично, $\forall \alpha\colon |\,\alpha|=m$ последовательность
+$\partial^{\,\alpha}u_k,\,k=1,2,\ldots,$ также является
+фундаментальной в $L_p(\Omega)$. В самом деле, $\forall v\in
+W_p^m(\Omega)\,\, \|\,\partial^{\,\alpha}v_k\|_{L_p(\Omega)}\le
+\|v\|_{W_p^m(\Omega)},\,\, |\,\alpha|=m.$ В силу полноты
+пространства $L_p(\Omega)$, существуют функции $u\in
+L_p(\Omega),\,u_{\alpha}\in L_p(\Omega) |\,\alpha|=m\colon$
+
+$ \|u-u_k\|_{L_p(\Omega)}\to0,\,k\to{\infty}.$
+
+Покажем, что $\partial^{\,\alpha}u=u_{\alpha}.$ Другими словами,
+надо показать, что
+$$(\partial^{\,\alpha}u,\varphi)=(-1)^{\alpha}\int\limits_{\Omega}u\,\partial^{\,\alpha}\varphi\,dx=
+\int\limits_{\Omega}u_{\alpha}\varphi\,dx= (u_{\alpha},\varphi).$$
+
+Имеем:
+$$(-1)^{|\,\alpha|}\int\limits_{\Omega}u_k\,\partial^{\,\alpha}\varphi\,dx=
+\int\limits_{\Omega}\partial^{\,\alpha}u_k\,\varphi\,dx,$$ при
+этом
+$$\int\limits_{\Omega}u_k\,\partial^{\,\alpha}\varphi\,dx\to
+\int\limits_{\Omega}u\,\partial^{\,\alpha}\varphi\,dx\to0,\,k\to{\infty},\eqno(*)$$
+$$\int\limits_{\Omega}\partial^{\,\alpha}u_k\,\varphi\,dx\to
+\int\limits_{\Omega}u_{\alpha}\varphi\,dx\to0,\,k\to{\infty},\eqno(**)$$
+
+Докажем $(*)$. По неравенству Гельдера, получим:
+$$\left|\int\limits_{\Omega}u_k\,\partial^{\,\alpha}\varphi\,dx-
+\int\limits_{\Omega}u\,\partial^{\,\alpha}\varphi\,dx\right|\le
+\left|\int\limits_{\Omega}|\,u_k-u|\,|\,\partial^{\,\alpha}\varphi|\,dx\right|\le$$
+$$\le \underbrace{\left(\int\limits_{\Omega}|\,u_k-u|^p
+dx\right)^{\frac1p}}_{\to0,\,\,\,k\to{\infty}}\cdot
+\underbrace{\left(\int\limits_{\Omega}|\,\partial^{\,\alpha}\varphi|^{\frac
+p{p-1}} dx\right)^{\frac {p-1}p}}_{\mbox{не зависит от
+k}}\to0,\,\,k\to{\infty}$$ Аналогично доказывается $(**)$.
+
+Переходя к пределу, получим:
+$$(-1)^{\alpha}\int\limits_{\Omega}u\,\partial^{\,\alpha}\varphi\,dx=
+\int\limits_{\Omega}u_{\alpha}\varphi\,dx,$$ т.е.
+$\partial^{\,\alpha}u=u_{\alpha}.$ Т.о., $u_k\to u,\,k\to{\infty}$
+в пространстве $W_p^m(\Omega).\,\blacksquare$
+
+\textbf{Теорема.} Пространство $W_p^m(\Omega)$ сепарабельно.
+
+\textbf{Определение.} Пространство называется
+\textbf{сепарабельным}, если существует счетное всюду плотное
+множество.
+
+$\square$
+
+Рассмотрим вложение $\pi\colon u\mapsto
+(u_1,\ldots,\partial^{\,\alpha}u_1,\ldots), |\,\alpha|=m,$
+пространства $W_p^m(\Omega)$ в пространство
+$V=\underbrace{L_p(\Omega)\times\ldots\times L_p(\Omega)}_{N},$
+где в $V=L_p(\Omega)\times\ldots\times L_p(\Omega)$ норма
+определяется равенством
+$$\|\,v\|_V=\|\,v_1\|_{L_p(\Omega)}+\ldots|+\|\,v_N\|_{L_p(\Omega)},\,
+v=(v_1,\ldots\,v_N)\in V.$$
+
+Отображение $\pi\colon W_p^m(\Omega)\to V$ является изометрией,
+т.\,е.
+$$\forall u\in W_p^m(\Omega)\,\,\|\,\pi(u)\|_V=\|u\|_{W_p^m(\Omega)}.$$
+
+Пространство $V=\underbrace{L_p(\Omega)\times\ldots\times
+L_p(\Omega)}_{N}$ сепарабельно, т.к. $L_p(\Omega)$ ---
+сепарабельно. А замкнутое подпространство сепарабельного
+пространства тоже сепарабельно. Что равносильно сепарабельности
+$W_p^m(\Omega).\blacksquare$
+
+%lect26
+
+Рассмотрим первую краевую задачу Дирихле с однородным краевым
+условием:
+$${\begin{aligned}
+\left\{%
+\begin{array}{ll}
+    \triangle u=f(x),\\
+    \Bigl.u\Bigr|_{\partial \Omega}=0. \\
+\end{array}%
+\right.
+\end{aligned}}\eqno(*)$$
+
+$\Omega\subset \mathbb R^n$ --- ограниченная область,
+$f_0,f_1,\ldots,f_n\in L_2(\Omega).$
+
+\textbf{Определение.} \textbf{Обобщенное (по Соболеву)
+решение задачи} $(*)$ $u\in \overset{\circ}{W_2^1}(\Omega)\colon$
+$$-\int\limits_{\Omega}\underbrace{\sum\limits_{i=1}^n
+\cfrac{\partial u}{\partial x_i} \, \cfrac{\partial
+\varphi}{\partial x_i}}_{=\triangledown
+u\,\triangledown\varphi}\,dx=
+\int\limits_{\Omega}f_0(x)\,\varphi\,dx-
+\int\limits_{\Omega}\sum\limits_{i=1}^n f_i(x) \, \cfrac{\partial
+\varphi}{\partial x_i}\,dx,\,\,\,\forall \varphi \in D(\Omega).$$
+
+\textbf{Пример.} Пусть $u\in C^{\infty}(\overline{\Omega}),$
+$\Omega\subset \mathbb R^n$ --- ограниченная область с бесконечно
+гладкой границей, $f\in C^{\infty}(\overline{\Omega})$ и при этом:
+$${\begin{aligned}
+\left\{%
+\begin{array}{ll}
+    \triangle u=f_0(x)+\sum\limits_{i=1}^n \cfrac{\partial f_i(x)}{\partial x_i},\\
+    \Bigl.u\Bigr|_{\partial \Omega}=0. \\
+\end{array}%
+\right.
+\end{aligned}}\eqno(**)$$
+
+Тогда $\forall \varphi \in D(\Omega)$ будем иметь
+$$\int\limits_{\Omega}\triangle u\,\varphi\,dx=
+\int\limits_{\Omega}f(x)\,\varphi\,dx,$$
+$$-\int\limits_{\Omega}\triangledown
+u\,\triangledown\varphi\,dx=
+\int\limits_{\Omega}f(x)\,\varphi\,dx,$$ т.е. и является
+обобщенным (в смысле Соболева) решением $(**)$.
+
+\textbf{Теорема.} Обобщенное решение задачи Дирихле $(*)$
+существует и единственно.
+
+$\square$
+
+\textbf{Лемма.} \textbf{(Неравенство Фридрихса).} Пусть
+$\Omega\subset \mathbb R^n$ --- ограниченная область. Тогда
+$$\forall u\in \overset{\circ}{W_2^1}(\Omega)\,\exists
+C>0\colon\,\,\,\int\limits_{\Omega}|\,u|^2dx\le C
+\int\limits_{\Omega}|\,\triangledown u|^2 dx.$$
+
+$\square$
+
+Без ограничения общности, можно считать, что $u\in D(\Omega)$.
+Т.к. $\Omega$ --- ограниченная область, то существуют $a<b$
+ такие, что $\Omega$ лежит в полосе $a<x_n<b$ (т.е. $\forall
+ x=(x_1,\ldots,x_n)\in\Omega$ справедливо неравенство $a<x_n<b$).
+
+$x'=(x_1,\ldots,x_{n-1}).$ По теореме Ньютона-Лейбница,
+$$u^2(x',x_n)=u^2(x',a)+\int\limits_a^{x_n}\cfrac{\partial}{\partial t}u^2(x',t)\,dt.$$
+
+При этом мы подразумеваем, что функция продолжается нулем на
+множество $\mathbb R^n\setminus\Omega.$ Т.о.,
+$u(x',a)=0\Rightarrow$
+
+$$u^2(x',x_n)=\int\limits_a^{x_n}\cfrac{\partial}{\partial t}u^2(x',t)\,dt=
+2\int\limits_a^{x_n}u(x',t)\,\cfrac{\partial u(x',t)}{\partial
+t}\,dt,$$
+
+$$u^2(x',x_n)\le \int\limits_a^{b}|u(x',t)|\,\cdot\,\left|\cfrac{\partial u(x',t)}{\partial
+t}\right|\,dt,\,\forall (x',x_n)\in\Omega,$$
+
+$$u^2(x',x_n)\le
+\varepsilon
+\int\limits_{\Omega'}\int\limits_a^{b}|\,u(x',t)|^2\,dt+
+\cfrac1{\varepsilon} \int\limits_{\Omega'}\left|\cfrac{\partial
+u(x',t)}{\partial t}\right|^2\,dt,\,\varepsilon>0.$$
+
+Т.к. $\alpha\beta\le \cfrac12\,(\alpha^2+\beta^2)\le
+\alpha^2+\beta^2,$ то, учитывая, что
+$\alpha=\varepsilon^{\frac12}|\,u(x',t)|,\,
+\beta=\varepsilon^{-\frac12}\left|\cfrac{\partial
+u(x',t)}{\partial t}\right|$, получим:
+
+$$\int\limits_{\Omega'}u^2(x',x_n)\,dx'\le
+\varepsilon
+\int\limits_{\Omega'}\int\limits_a^{b}\,u^2(x',t)\,dx'\,dt+
+\cfrac1{\varepsilon}
+\int\limits_{\Omega'}\int\limits_a^{b}\left|\cfrac{\partial
+u(x',t)}{\partial t}\right|^2\,dx'\,dt,$$ где $\Omega'$ ---
+проекция области $\Omega$ на гиперповерхность
+$x_n=0,\,dx'=dx_1\ldots dx_{n-1}.$
+
+Интегрируя последнее неравенство по $x_n\in(a,b),$ получим:
+$$\int\limits_a^{b}\int\limits_{\Omega'}u^2(x',x_n)\,dx'\,dx_n\le
+\varepsilon\,(b-a)\int\limits_{\Omega'}\int\limits_a^{b}u^2(x',t)\,dx'\,dt+
+\cfrac1{\varepsilon}\,(b-a)
+\int\limits_{\Omega'}\int\limits_a^{b}\left|\cfrac{\partial
+u(x',t)}{\partial t}\right|^2\,dx'\,dt.$$
+
+Другими словами,
+$$\int\limits_{\Omega}u^2\,dx\le
+\varepsilon\,(b-a)\int\limits_{\Omega}u^2\,dx+
+\cfrac1{\varepsilon}\,(b-a) \int\limits_{\Omega}|\,\triangledown
+u|^2\,dx.$$
+
+Возьмем $\varepsilon=\cfrac1{2(b-a)},$ получим:
+$$\int\limits_{\Omega}u^2\,dx\le
+\cfrac12\int\limits_{\Omega}u^2\,dx+2(b-a)^2\int\limits_{\Omega}|\,\triangledown
+u|^2\,dx \Leftrightarrow \int\limits_{\Omega}u^2\,dx\le
+4(b-a)^2\int\limits_{\Omega}|\,\triangledown
+u|^2\,dx.\,\blacksquare$$
+
+$\square$(теоремы)
+
+$\Omega$ --- ограниченная область, поэтому билинейная форма
+$$[u,v]=\int\limits_{\Omega}\triangledown u\,\triangledown
+v\,dx,\,u,v\in \overset{\circ}{W_2^1}(\Omega) \eqno(***)$$
+является скалярным произведением в
+$\overset{\circ}{W_2^1}(\Omega),$ т.к., по неравенству Фридрихса,
+$$\|u\|_{W_p^m(\Omega)}^2\le C\|\triangledown
+u\|^2_{L_2(\Omega)}=C[u,v].$$
+
+Более того, скалярное произведение $(***)$ порождает норму,
+эквивалентную Соболевской норме в
+$\overset{\circ}{W_2^1}(\Omega)$. Рассмотрим в
+$\overset{\circ}{W_2^1}(\Omega)$ следующие линейные функционалы:
+$$l_0=-\int\limits_{\Omega}f\,u\,dx,\,
+l_i=\int\limits_{\Omega}f_i\,\cfrac{\partial u}{\partial
+x_i}\,dx.$$ Эти функционалы, очевидно, будут непрерывны на
+$\overset{\circ}{W_2^1}(\Omega).$ В самом деле,
+$$|\,l_0(u)|\le \int\limits_{\Omega}|\,f|\,|\,u|\,dx\le
+\Bigl(\int\limits_{\Omega}f^2\,dx\Bigr)^{\frac12}
+\Bigl(\int\limits_{\Omega}u^2\,dx\Bigr)^{\frac12}\le \const \,
+\|u\|_{W_p^m(\Omega)}^2,$$
+$$|\,l_i|\le
+\int\limits_{\Omega}|\,f_i|\,\Bigl|\cfrac{\partial u}{\partial
+x_i}\,\Bigr|\,dx\le
+\Bigl(\int\limits_{\Omega}f_i^2\,dx\Bigr)^{\frac12}\,
+\Bigl(\int\limits_{\Omega}|\,\triangledown u|^2dx\Bigr)^{\frac12}
+\le \const \, \|u\|_{W_p^m(\Omega)}^2.$$
+
+По теореме Рисса, существует единственное $u\in
+\overset{\circ}{W_2^1}(\Omega)\colon $
+ $$\forall \, v\in
+\overset{\circ}{W_2^1}(\Omega)\,\,\,\,\, [u,v]=l_0(v)+\sum_{i=1}^n
+l_i(v).$$
+
+Другими словами,
+$$\int\limits_{\Omega}\triangledown u\,\triangledown
+v\,dx=-\int\limits_{\Omega}f_0\, v\,dx+
+\sum_{i=1}^n\int\limits_{\Omega}f_i\,\cfrac{\partial v}{\partial
+x_i}\,dx.\,\blacksquare$$
+
+Неоднородная задача Дирихле в области $\Omega\subset \mathbb R^n$:
+$${\begin{aligned}
+\left\{%
+\begin{array}{ll}
+    \triangle u=f_0(x)+\sum\limits_{i=1}^n \cfrac{\partial f_i(x)}{\partial x_i},\\
+    \Bigl.u\Bigr|_{\partial \Omega}=u_0(x),\,u_0\in\overset{\circ}{W_2^1}(\Omega). \\
+\end{array}%
+\right.
+\end{aligned}}\eqno(****)$$
+
+\textbf{Теорема.} $\Bigl.u\Bigr|_{\partial \Omega}=u_0(x)$
+\textbf{в обобщенном смысле}, если
+$u-u_0\in\overset{\circ}{W_2^1}(\Omega)$.
+
+\textbf{Теорема.} Обобщенная неоднородная задача Дирихле $(****)$
+имеет единственное решение $u\in\overset{\circ}{W_2^1}(\Omega)$.
+
+$\square$
+
+Обозначим $v=u-u_0.$ Тогда $\forall \varphi\in D(\Omega)$ получим:
+$$\int\limits_{\Omega}\triangledown v\,\triangledown
+\varphi\,dx= \int\limits_{\Omega}\triangledown
+u\,\triangledown\varphi\,dx- \int\limits_{\Omega}\triangledown
+u_0\,\triangledown \varphi\,dx.$$
+
+По определению обобщенного решения $(****)$:
+$$-\int\limits_{\Omega}\triangledown u\,\triangledown
+v\,dx=\int\limits_{\Omega}f_0\, v\,dx-
+\sum_{i=1}^n\int\limits_{\Omega}f_i\,\cfrac{\partial v}{\partial
+x_i}\,dx,$$
+
+$$-\int\limits_{\Omega}\triangledown v\,\triangledown
+\varphi\,dx=\int\limits_{\Omega}f_0\, v\,dx-
+\sum_{i=1}^n\int\limits_{\Omega}f_i\,\cfrac{\partial v}{\partial
+x_i}\,dx+\sum_{i=1}^n\int\limits_{\Omega}f_i\,\cfrac{\partial
+u_0}{\partial x_i}\,\cfrac{\partial \varphi}{\partial x_i}\,dx$$
+
+Т.о., $v$ является решением однородной обобщенной задачи Дирихле:
+$$\left\{%
+\begin{array}{ll}
+    \triangle u=f_0(x)+\sum\limits_{i=1}^n \cfrac{\partial g_i(x)}{\partial x_i},\\
+    \Bigl.u\Bigr|_{\partial \Omega}=0, \\
+\end{array}%
+\right.$$ где $g_i=f_i-\cfrac{\partial u_0}{\partial x_i}\in
+L_2(\Omega),\,i=\overline{1,n}.$ По предположению, эта задача
+имеет единственное решение. $\blacksquare$
+
+%lect27
+
+\section{Гармонические функции}
+
+\textbf{Определение.} Функция $f\in D'(\Omega),$ где $\Omega \in
+\mathbb R^n$ --- область, называется \textbf{гармонической} в
+области $\Omega$, если $\triangle u=0$ в $\Omega.$
+
+\textbf{Теорема.} Пусть $u\in D'(\Omega)$\т гармоническая
+функция в области $\Omega$, тогда $u\in C^{\infty}(\Omega)$.
+
+$\square$
+
+Пусть $x_0\in \Omega.$ Возьмем $\varepsilon>0$ настолько малым,
+чтобы $B_{2\varepsilon}^{x_0}\subset \in \Omega$, где
+$B_{2\varepsilon}^{x_0}$ --- шар радиуса $\varepsilon$ с центром в
+точке $x_0$. Пусть также $\eta\in D(B_{2\varepsilon}^{x_0}),$
+причем $\Bigl.\eta\Bigr|_{B_{2\varepsilon}^{x_0}}\equiv1.$
+$\triangle u=\sum\limits_{i=1}^n\cfrac{\partial^2}{\partial
+x_i^2}.$
+
+Имеем:
+
+$$\triangle(\eta\,u)=\triangle\eta\,u+2\triangle\eta\,\triangle
+u+\eta\,\underbrace{\triangle u}_{=0},\,\, \eta\,u\in D'(\mathbb
+R^n),\mbox{ т.к. }\supp \eta\,u\Subset B_{2\varepsilon}^{x_0},$$
+$$\triangle(\eta\,u)=\triangle\eta\,u+2\triangle\eta\,\triangle
+u \Rightarrow \mbox{ по теореме единственности, }
+\eta\,u=E*(\triangle\eta\,u+2\triangle\eta\,\triangle u),$$
+$$\mbox{где }
+E(x)=\left\{%
+\begin{array}{ll}
+    \cfrac1{2\pi}\,\ln|\,x|,\,n=2,      \\
+    -\cfrac1{(n-2)|S_1|}\,\cfrac1{|\,x|^{n-2}},\,n\ge3, \\
+\end{array}%
+\right.$$ Обозначим
+$f(x)=\triangle\eta\,u+2\triangle\eta\,\triangle u\in
+D'(B_{2\varepsilon}^{x_0}),\, \supp f\Subset
+B_{2\varepsilon}^{x_0}.$ Тогда $\forall \varphi\in D'(\mathbb
+R^n)$
+$$\Bigl(E*f(x),\varphi(x)\Bigr)=
+\Bigl(f(x),(E(y),\varphi(x+y))\Bigr)=
+\Bigl(f(x),\int\limits_{\mathbb
+R^n}E(y)\,\varphi(x+y)\,dy\Bigr),$$
+
+$$\int\limits_{\mathbb
+R^n}E(y)\,\varphi(\underbrace{x+y}_{=\xi})\,dy=
+\int\limits_{\mathbb R^n}E(\xi-x)\,\varphi(\xi)\,d\xi,$$
+
+$$\Bigl(E*f(x),\varphi(x)\Bigr)=
+\Bigl(f(x),\int\limits_{\mathbb
+R^n}E(\xi-x)\,\varphi(\xi)\,d\xi\Bigr)=
+\Bigl(f(x)\,\lambda(x),\int\limits_{\mathbb
+R^n}E(\xi-x)\,\varphi(\xi)\,d\xi\Bigr),$$ где $\lambda\in
+D(B_{2\varepsilon}^{x_0}\setminus
+\overline{B_{\varepsilon/2}^{x_0}}),\, \lambda\equiv1$ на $\supp
+f$.
+
+$$\Bigl(E*f(x),\varphi(x)\Bigr)=
+\Bigl(f(x),\int\limits_{\mathbb
+R^n}\underbrace{\lambda(x)\,E(\xi-x)\,\varphi(\xi)}_{\in\,
+C^{\infty}(\overline{B_{2\varepsilon}^{x_0}}\times
+\overline{B_{\varepsilon/2}^{x_0}})}\,d\xi\Bigr)=
+\int\limits_{\mathbb
+R^n}\Bigl(f(x),\lambda(x)\,E(\xi-x)\,\underbrace{\Theta(\xi)\,\varphi(\xi)}_{\equiv
+\varphi(\xi)}\Bigr)\,d\xi,$$ где $\Theta\in
+D(B_{\varepsilon/2}^{x_0})\colon
+\Bigl.\Theta\Bigr|_{B_{\varepsilon/2}^{x_0}}\equiv1.$ Т.о.,
+
+$$\Bigl(E*f(x),\varphi(x)\Bigr)=
+\int\limits_{\mathbb
+R^n}\underbrace{\Bigl(f(x),\lambda(x)\,E(\xi-x)\,\Theta(\xi))\Bigr)}_{\in\,
+C^{\infty}(B_{2\varepsilon}^{x_0}\times
+B_{\varepsilon/2}^{x_0})}\,\varphi(\xi)\,d\xi,$$
+
+$$k(x,\xi)=\lambda(x)\,E(\xi-x)\,\Theta(\xi)\in D(B_{2\varepsilon}^{x_0}\times
+B_{\varepsilon/2}^{x_0}),$$
+$$\Bigl(f(x),k(x,\cdot)\Bigr) \in
+D(B_{\varepsilon/2}^{x_0}).$$
+
+$$\forall \varphi\in D'(B_{\varepsilon/4}^{x_0})\,\,\,\,
+\Bigl((\eta\,u),\varphi\Bigr)= \Bigl(E*f,\varphi\Bigr)=
+\int\limits_{\mathbb R^n}
+\underbrace{\Bigl(f(x),k(x,\xi)\Bigr)}_{\mbox{беск. гладкая по
+$\xi$}}\,\varphi(\xi)\,d\xi,$$
+
+$u=\eta\,u$ --- бесконечно гладкая функция в шаре
+$B_{\varepsilon/4}^{x_0}$. Осталось доказать лемму.
+
+\textbf{Лемма.} Пусть $L\in D(G\times H),$ где $G,H$ --- области в
+$\mathbb R^n,$ $f\in D'(G).$ Тогда
+$$\Bigl(f(x),\int\limits_H L(x,\xi)\,d\xi \Bigr)=
+\int\limits_H\Bigl(f(x), L(x,\xi)\Bigr)\,d\xi.$$
+
+$\square$ Без ограничения общности, можно считать, что $H$ --- это куб в
+$\mathbb R^n$. D простом случае возьмем вместо $H$ достаточно
+большой куб, содержащий это множество. $\xi_i\in\Delta_i$ ---
+элементарная ячейка.
+$$\sum_{i=1}^N L(x,\xi_i)\,|\,\Delta_i| \to \int\limits_H
+L(x,\xi)\,d\xi,$$ когда диаметр разбиения стремится к $0$. В виду
+линейности обобщенной функции $f(x)$, получим:
+$$\underbrace{\Bigl(f(x),\int\limits_H \sum_{i=1}^N L(x,\xi_i)\,|\,\Delta_i|\,d\xi \Bigr)}_
+{\to \Bigl(f(x),\int\limits_H L(x,\xi)\,d\xi \Bigr)\mbox { в
+$D(G)$}}= \underbrace{\sum_{i=1}^N \Bigl(f(x),\int\limits_H
+L(x,\xi_i)\,|\,\Delta_i|\,d\xi \Bigr)}_{\to \int\limits_H
+\Bigl(f(x), L(x,\xi)\Bigr)\,d\xi}$$ Второе верно, т.к.
+$(f(x),L(x,\cdot))\in D(H)$. Первое надо доказать. Имеем:
+
+1) $\supp \Bigl(\,\sum\limits_{i=1}^N
+L(\cdot,\xi_i)\Bigr)\,|\,\Delta_i|$
+--- проекция $\supp L(\cdot,\cdot)$ на $G.$ Т.к. $\supp
+L(\cdot,\cdot)$ --- компакт, то и проекция $\supp L(\cdot,\cdot)$
+на $G$ --- тоже компакт.
+
+2) Для любого мультииндекса $\alpha$
+$$\Bigl\|\, \partial_x^{\,\alpha} \sum_{i=1}^N L(x,\xi_i)\,|\,\Delta_i| -
+\int\limits_H \partial_x^{\,\alpha} L(x,\xi)\,d\xi
+\Bigr\|_{C(F)}\to0.$$
+$$\sum_{i=1}^N \partial_x^{\,\alpha}L(x,\xi_i)\,|\,\Delta_i|-
+\int\limits_H \partial_x^{\,\alpha} L(x,\xi)\,d\xi= \sum_{i=1}^N
+\partial_x^{\,\alpha}L(x,\xi_i)\,|\,\Delta_i|-
+\sum_{i=1}^N \int\limits_{\Delta_i} \partial_x^{\,\alpha}
+L(x,\xi)\,d\xi,\eqno(1)$$ По теореме о среднем, $\forall
+x\,\forall i\,\exists y_i\in\Delta_i\colon \int\limits_{\Delta_i}
+\partial_x^{\,\alpha} L(x,\xi)\,d\xi=
+\partial_x^{\,\alpha}L(x,y_i)\,|\,\Delta_i|,$ продолжим:
+
+$$(1)=\sum_{i=1}^N \Bigl(\partial_x^{\,\alpha}L(x,\xi_i)-
+\partial_x^{\,\alpha}L(x,y_i) \Bigr)\,|\,\Delta_i|.$$
+Т.к. $\partial_x^{\,\alpha}L(x,\xi)$ равномерно непрерывен на
+$\supp L(\cdot,\cdot)\Subset G\times H,$ то $$\sum_{i=1}^N
+\Bigl(\partial_x^{\,\alpha}L(x,\xi_i)-
+\partial_x^{\,\alpha}L(x,y_i) \Bigr)\,|\,\Delta_i|\le
+\varepsilon_N\,\sum_{i=1}^N |\,\Delta_i|=\varepsilon_N\, \mes H,\,
+\varepsilon_N\to0,$$ когда диаметр разбиения стремится к нулю:
+$|\,\xi_i-y_i|\le \diam T$ --- диаметр разбиения, т.е.
+$\xi_i\in\Delta_i,\,y_i\in\Delta_i.\,\blacksquare$
+
+Теорема доказана. $\blacksquare$
+
+\section{Теорема о среднем для гармонических функций}
+
+\textbf{Теорема.} Пусть $u$ --- гармоническая функция в области
+$\Omega\subset\mathbb R^n,\, B_r^{x_0}\subset\Omega,$ тогда
+$$u(x_0)=\cfrac1{|\,S_r|}\,\int\limits_{S_r^{x_0}}u\,ds,$$ где
+$|\,S_r|$ --- площадь $(n-1)$--мерной сферы радиуса $r$.
+
+$\square$
+
+Как было показано в предыдущей лекции, $u\in
+C^{\infty}(B_r^{x_0}).$ Имеем:
+$$0=\int\limits_{B_r^{x_0}\setminus B_{\varepsilon}^{x_0}} E(x-x_0)\,\triangle
+u\,dx,$$
+$$\mbox{где }
+E(x)=\left\{%
+\begin{array}{ll}
+    \cfrac1{2\pi}\,\ln|\,x|,\,n=2,      \\
+    -\cfrac1{(n-2)|S_1|}\,\cfrac1{|\,x|^{n-2}},\,n\ge3, \\
+\end{array}%
+\right.$$ --- фундаментальное решение оператора Лапласа.
+
+Интегрируя  по частям, получим:
+$$0=\int\limits_{B_r^{x_0}\setminus B_{\varepsilon}^{x_0}} E(x-x_0)\,\triangle
+u\,dx= \int\limits_{\partial(B_r^{x_0}\setminus
+B_{\varepsilon}^{x_0})} E(x-x_0)\,\cfrac{\partial
+u}{\partial\nu}\,ds- \int\limits_{B_r^{x_0}\setminus
+B_{\varepsilon}^{x_0}} \triangledown_x E(x-x_0)\, \triangledown
+u\,dx=$$
+
+$$=\int\limits_{\partial(B_r^{x_0}\setminus
+B_{\varepsilon}^{x_0})} E(x-x_0)\,\cfrac{\partial
+u}{\partial\nu}\,ds- \int\limits_{\partial(B_r^{x_0}\setminus
+B_{\varepsilon}^{x_0})} \cfrac{\partial
+E(x-x_0)}{\partial\nu_x}\,u\,ds- \int\limits_{B_r^{x_0}\setminus
+B_{\varepsilon}^{x_0}}\triangle_x E(x-x_0)\, u\,dx,$$ где $\nu$
+--- внешняя нормаль к границе области $\partial(B_r^{x_0}\setminus
+B_{\varepsilon}^{x_0}).$
+
+Т.о., для любого $\varepsilon\in(0,r)$ будем иметь:
+
+$$\int\limits_{S_r^{x_0}} E(x-x_0)\,\cfrac{\partial
+u}{\partial\nu}\,ds+ \int\limits_{S_{\varepsilon}^{x_0}}
+E(x-x_0)\,\cfrac{\partial u}{\partial\nu}\,ds=
+\int\limits_{S_r^{x_0}} \cfrac{\partial
+E(x-x_0)}{\partial\nu_x}\,u\,ds+
+\int\limits_{S_{\varepsilon}^{x_0}} \cfrac{\partial
+E(x-x_0)}{\partial\nu_x}\,u\,ds,$$
+
+$$\int\limits_{S_r^{x_0}} |\,E(x-x_0)|\,\Bigl|\cfrac{\partial
+u}{\partial\nu}\,\Bigr|\,ds\le
+\|\,u\|_{C(\overline{B_r^{x_0}})\,|\,S_1|\,\varepsilon^{n-1}}
+\left\{%
+\begin{array}{ll}
+    \cfrac1{2\pi}\,\ln|\,\varepsilon|,\,n=2,      \\
+    -\cfrac1{(n-2)|S_1|}\,\cfrac1{|\,\varepsilon|^{n-2}},\,n\ge3, \\
+\end{array}%
+\right.$$ где $|\,S_1|\,\varepsilon^{n-1}$ --- площадь
+$(n-1)$--мерной сферы $S_{\varepsilon}^{x_0}.$
+
+$$\int\limits_{S_r^{x_0}} E(x-x_0)\,\cfrac{\partial
+u}{\partial\nu}\,ds+ \Bigl.E(x-x_0) \Bigr|_{x\in S_{r}^{x_0}}
+\int\limits_{S_r^{x_0}}\cfrac{\partial u}{\partial\nu}\,ds,$$ по
+формуле Грина,
+$$\int\limits_{S_r^{x_0}}\cfrac{\partial u}{\partial\nu}\,ds=
+\int\limits_{S_r^{x_0}}\triangle u\,dx=0.$$
+
+Тем самым,
+$$\int\limits_{S_{\varepsilon}^{x_0}} \cfrac{\partial
+E(x-x_0)}{\partial\nu_x}\,u\,ds=-\cfrac{\partial
+E}{\partial\nu_x}\,(x-x_0)=-\cfrac d{dr} \left.
+\left\{%
+\begin{array}{ll}
+    \cfrac1{2\pi}\,\ln r,\,n=2,      \\
+    -\cfrac1{(n-2)|S_1|}\,\cfrac1{ r^{n-2}},\,n\ge3, \\
+\end{array}%
+\right.\right|_{r=\varepsilon}=
+-\cfrac1{|S_1|}\,\cfrac1{|\,\varepsilon|^{n-1}},$$
+
+$$\cfrac1{|S_1|}\,\cfrac1{|\,\varepsilon|^{n-1}}
+\int\limits_{S_{\varepsilon}^{x_0}} u\,ds=
+\cfrac1{|S_1|}\,\cfrac1{|\,\varepsilon|^{n-1}}
+\int\limits_{S_{\varepsilon}^{x_0}} u(x_0)\,ds+
+\cfrac1{|S_1|}\,\cfrac1{|\,\varepsilon|^{n-1}}
+\int\limits_{S_{\varepsilon}^{x_0}} (u(x)-u(x_0))\,ds,$$
+
+$$\cfrac1{|S_1|}\,\cfrac1{|\,\varepsilon|^{n-1}}
+\int\limits_{S_{\varepsilon}^{x_0}} |\,u(x)-u(x_0)|\,ds\le
+\sup_{x\in
+S_{\varepsilon}^{x_0}}|\,u(x)-u(x_0)|\to0,\,\varepsilon\to0,$$
+т.к. $u$ --- непрерывна.
+
+Т.о.,
+
+$$u(x_0)=\int\limits_{S_r^{x_0}} \cfrac{\partial
+E(x-x_0)}{\partial\nu_x}\,u\,ds= \cfrac1{|S_1|}\,\cfrac1{r^{n-1}}
+\int\limits_{S_{r}^{x_0}} u\,ds=\cfrac1{|S_r|}
+\int\limits_{S_{r}^{x_0}} u\,ds.\,\blacksquare$$
+
+\textbf{Теорема.} Пусть $\Omega$ --- область в $\mathbb R^n,\,
+\overline{B_r^{x_0}},\,u$ --- гармоническая функция в $\Omega,$
+тогда
+$$u=\cfrac1{|\,B_r^{x_0}|}\int\limits_{B_r^{x_0}}
+u(x)\,dx.$$
+
+$\square$
+
+$\forall \rho \in (0,r)$ имеем по предыдущей теореме:
+$u(x_0)=\cfrac1{|S_{\rho}|} \int\limits_{S_{\rho}^{x_0}} u\,ds,$
+или  $u(x_0)\,|S_{\rho}^*|=\int\limits_{S_{\rho}^{x_0}} u\,ds.$
+Проинтегрируем последнее равенство от $\rho$ до $r$:
+
+$$u(x_0)\int\limits_0^r d\rho\,|S_{\rho}|=
+\int\limits_0^r d\rho \int\limits_{S_{\rho}^{x_0}} u\,ds\,\,
+\Rightarrow |\,B_r^{x_0}|\,u(x_0)= \int\limits_{B_r^{x_0}}
+u\,dx.\,\blacksquare$$
+
+\section{Принцип максимума для гармонических функций}
+
+\textbf{Теорема.} Пусть $\Omega \subset \mathbb R^n$ --- область,
+$u(x)$ --- гармоническая функция в $\Omega$ и
+$u(x_0)=\sup\limits_{\Omega}u$ для некоторого $x_0\in\Omega.$
+Тогда $u(x)\equiv \const$ в $\Omega$.
+
+$\square$
+
+Обозначим через $E$ множество точек $x\in\Omega\colon
+u(x)=\sup\limits_{\Omega}u$. Т.к. $x_0\in E$, то
+$E\ne\varnothing.$
+
+Т.к. $u\in C(\Omega),$ то $E$ --- замкнуто в топологии,
+индуцированной на $\Omega\subset \mathbb R^n.$ Для достаточного
+малого $\varepsilon>0\colon B_{\varepsilon}^{x}\subset \mathbb
+R^n,$ получим: $u(y)=\sup\limits_{y}u,\,\forall y\in
+B_{\varepsilon}^{x}.$ Почему так?
+
+Пусть $u(y)\ne \sup u$ для некоторого $\in B_{\varepsilon}^{x}.$
+Тогда $u(y)<\sup\limits_{\Omega}u.$ Т.о., из непрерывности $u$
+следует, что существует множество $\omega \subset
+B_{\varepsilon}^{x}\colon \Bigl.u\Bigr|_{\omega}<
+\sup\limits_{\Omega}u< \lambda,\, \mes \omega>0$ для некоторого
+$\lambda>0.$ Поэтому,
+
+$$\cfrac1{|\,B_{\varepsilon}^{x_0}|} \int\limits_{B_{\varepsilon}^{x_0}}
+u(x)\,dx= \cfrac1{|\,B_{\varepsilon}^{x_0}|} \int\limits_{\omega}
+u(x)\,dx+ \cfrac1{|\,B_{\varepsilon}^{x_0}|}
+\int\limits_{B_{\varepsilon}^{x_0}\setminus\omega} u(x)\,dx\le$$
+$$\le \cfrac1{|\,B_{\varepsilon}^{x_0}|} \Bigl(\sup\limits_{\Omega}u-\lambda\Bigr)\,\mes \omega+
+\cfrac1{|\,B_{\varepsilon}^{x_0}|}
+\Bigl(|\,B_{\varepsilon}^{x_0}|-\mes
+\omega\Bigr)\,\sup\limits_{\Omega}u\le$$
+$$\le \sup\limits_{\Omega}u - \lambda\,\cfrac{\mes \omega}{|\,B_{\varepsilon}^{x_0}|}<
+\sup\limits_{\Omega}u=u(x_0)\mbox{ --- противоречие.}$$
+
+Т.о., $B_{\varepsilon}^{x_0}\subset E\Rightarrow E$ --- открытое и
+одновременно замкнутое множество в топологии, индуцированной на
+$\Omega\subset \mathbb R^n.$ Т.к. $\Omega$ --- связное множество и
+$E\ne\varnothing$, то $E=\Omega.\,\blacksquare$
+
+\textbf{Следствие.} Пусть $u\in C(\overline{\Omega}), u$ ---
+гармоническая функция в $\Omega$, где $\Omega\subset \mathbb R^n$
+--- область. Тогда $\max\limits_{\overline{\Omega}}u=\max\limits_{\partial \Omega}u.$
+
+\textbf{Теорема.} (\textbf{Неравенство Харнака}) Пусть $u$ ---
+гармоническая функция в $B_r$. Тогда $\forall r\in (0,R) \,\,
+\sup\limits_{B_R}u\le\gamma \sup\limits_{B_r}u,$ где
+$\gamma=\const>0$ и зависит только от $n,\frac rR.$
+
+\textbf{Лемма.} Пусть $u$ --- гармоническая функция в $B_1$. Тогда
+$\sup\limits_{B_{1/4}}u\le\gamma \inf\limits_{B_{1/4}}u,$ где
+$\gamma=\const>0$ и зависит только от $n.$
+
+$\square$
+
+Пусть $x\in B_{1/4},\, u(x)=\inf\limits_{B_{1/4}}u.$ По теореме о
+среднем, $u(x)=\cfrac1{|\,B_{3/4|}}\int\limits_{B_{3/4|}^x}
+u(\xi)\,d\xi.$ Пусть $y\in B_{1/4|}\colon
+u(y)=\sup\limits_{B_{1/4}}u.$ По теореме о среднем,
+$u(y)=\cfrac1{|\,B_{1/4|}}\int\limits_{B_{1/4|}^y} u(\xi)\,d\xi\le
+\cfrac1{|\,B_{1/4|}}\int\limits_{B_{1/4|}^x} u(\xi)\,d\xi,$ т.к.
+$B_{1/4|}^y\subset B_{3/4|}^x$. Т.о., $u(y)\le
+\cfrac{|\,B_{3/4|}}{|\,B_{1/4|}}\,u(x).\,\blacksquare$
+
+\textbf{Следствие.} Пусть $u\ge0$ --- гармоническая функция в
+$\overline{B_{\varepsilon}^{x_0}},$ тогда
+$\sup\limits_{B_{\varepsilon/4}^{x_0}}u\le\gamma
+\inf\limits_{\overline{B_{\varepsilon/4}^{x_0}}}u,$ где
+$\gamma=\const>0$ и зависит только от $n.$
+
+$\square$
+
+Заменой переменных переводим $B_{\varepsilon}^{x_0}$ в $B_1$ и
+применяем теорему. $\blacksquare$
+
+$\square$ (неравенство Харнака)
+
+Найдется $x\in \overline{B_{r}^{x_0}}\colon
+u(x)=\sup\limits_{B_{r}^{x_0}}u$ и $y\in
+\overline{B_{r}^{x_0}}\colon u(y)=\inf\limits_{B_{r}^{x_0}}u.$
+Соединим $x$ и $y$ прямой в~ $L$. Возьмем $\varepsilon>0\colon
+\forall z\in L\,\, B_{\varepsilon}^{z}\subset B_{r}^{x_0}.$
+Возьмем конечную последовательность точек $x=z_1,\ldots,z_N=y.$
+Шары $\Bigl\{ B_{\varepsilon/4}^{z_i} \Bigr\}_{i=1}^N$ покрывают
+$L$. Для $i=1,\ldots,N$ имеем:
+$\sup\limits_{B_{\varepsilon/4}^{z_i}}u\le\gamma
+\inf\limits_{B_{\varepsilon/4}^{z_i}}u.$ Т.о.,
+$u(x)\le\gamma^N\,u(y).\,\blacksquare$
+
+%lect29
+
+\section{Теорема Лиувилля}
+
+Пусть $\triangle u=0$ в $\mathbb R^n$ и при этом $u(x)\ge0$ в
+$\mathbb R^n$. Тогда $u\equiv\const$ в $\mathbb R^n$.
+
+$\square$
+
+Возьмем некоторое $x_0\in\mathbb R^n.$ Для некоторого
+вещественного $r>0$ имеем: $\sup\limits_{B_r^{x_0}}u\le\gamma
+u(x_0),$ где $\gamma=\const$ и зависит от $n$ --- из неравенства
+Харнака для шаров $B_r^{x_0}\subset B_{2r}^{x_0}$. Устремляя $r$ в
+бесконечность, получим: $\sup\limits_{\mathbb R^n}u\le\gamma\inf
+u(x_0)=0 \Rightarrow u\equiv0$ в $\mathbb R^n.\,\blacksquare$
+
+
+\section{Принцип максимума для решения параболических неравенств}
+
+Пусть $\omega\in \mathbb R^{n+1}$ --- ограниченная область.
+
+\textbf{Определение.} $(x_0,t_0)\in \partial\omega$
+\textbf{принадлежит верхней крышке $\gamma$ множества $\omega$},
+если найдется вещественные числа $r>0,t_2>t_1\colon$
+
+1) $t_0\in(t_1,t_2);$
+
+2) $B_r^{x_0}\times (t_0,t_2)\subset \mathbb R^{n+1}\setminus
+\omega;$
+
+3) $B_r^{x_0}\times (t_1,t_0)\subset \omega,$ где
+$B_r^{x_0}=\Bigl\{ x\in \mathbb R^n\colon |\,x-x_0|<r \Bigr\}.$
+
+\textbf{Определение.} Множество
+$\Gamma=\partial\omega\setminus\gamma$, где $\gamma$ --- верхняя
+крышка области $\omega$, называется \textbf{параболической
+(собственной) границей.}
+
+\textbf{Пример.} $\omega=B_R\times(0,T).$
+
+\textbf{Теорема (принцип максимума).} Пусть $\omega\in \mathbb
+R^{n+1}$ --- область, $\gamma$ --- верхняя крышка области, a
+$\Gamma=\partial\omega\setminus\gamma$ --- параболическая граница
+области $\omega$. Обозначим $\Omega=\omega\cup\gamma.$ И пусть
+$u\in C^1(\Omega)\cap C(\overline{\omega})\colon
+\left\{%
+\begin{array}{ll}
+    \triangle u-u_t\ge0 \mbox { в } \Omega,      \\
+    \Bigl. u \Bigr|_{\partial\Gamma}\le0. \\
+\end{array}%
+\right.$ Тогда $u(x)\le0,\,\forall x\in \overline{\omega}.$
+
+$\square$ (от противного)
+
+Пусть $\max\limits_{\overline{\omega}}u>0.$
+
+Т.к. $u\in C(\overline{\omega})$, то существует $(x_0,t_0)\in
+\overline{\omega}\colon
+u(x_0,t_0)=\max\limits_{\overline{\omega}}u.$ $\Bigl. u
+\Bigr|_{\Gamma}\le0\Rightarrow (x_0,t_0)\in {\Omega}.$ Рассмотрим
+$v(x,t)=u(x,t)-\varepsilon (t-t_0).$ Очевидно, что $\triangle
+v-v_t\ge0 \mbox { в } \Omega.$ C другой стороны, выбирая
+$\varepsilon>0$ достаточно малым, получим: $v(x_0,t_0)=u(x_0,t_0)$
+и
+$$\max\limits_{\Gamma}v=\max\limits_{\Gamma}u+\varepsilon\diam\omega<
+u(x_0,t_0)<v(x_0,t_0).$$ Т.о., найдется точка $(x_1,t_1)\in \Omega
+\colon v(x_1,t_1)=\max\limits_{\omega}v.$ Если $v_t(x_1,t_1)<0,$
+то $v(x_1,t_1)<v(x_1,t_2)$ для некоторого $t_1<t_2\colon
+(x_1,t_2)\in {\Omega}.$ Т.о., $v$ не может достигать максимума в
+точке $(x_2,t_1).$ Пусть $v_t(x_1,t_1)>0,$ тогда $\triangle
+v(x_1,t_1)>v_t(x_1,t_1)\ge0.$ Т.к. $(x_1,t_1)\in \Omega$ и в этой
+точке достигается максимум $v$, то $\triangledown_x v(x_1,t_1)=0$
+и $$\triangle v(x_1,t_1)=\sum_{i=1}^n \cfrac{\partial^2
+v(x_1,t_1)}{\partial {x^i}^2}>0 \Rightarrow \cfrac{\partial^2
+v(x_1,t_1)}{\partial {x^i}^2}>0 \mbox{для некоторого $i$}.$$
+Фиксируя все переменные, кроме $x^i,$ получим:
+$$v(x_1^1,\ldots,x_1^i+h,\ldots,x_i^n,t_1)=
+v(x_1^1,\ldots,x_1^i,\ldots,x_i^n,t_1)+
+\underbrace{\cfrac{\partial v(x_1,t_1)}{\partial {x^i}}}_{=0}\,h+
+\underbrace{\cfrac{\partial^2 v(x_1,t_1)}{\partial
+{x^i}^2}}_{=0}\,h^2+o(h^2)>0.$$ Они равны нулю, т.к.
+$\triangledown_x v(x,t)=0$ для достаточно малых $h$.
+
+Т.о., $v(x_1^1,\ldots,x_1^i+h,\ldots,x_i^n,t_1)>
+v(x_1^1,\ldots,x_1^i,\ldots,x_i^n,t_1)$ для некоторого $h$,
+которое может быть настолько малым, что
+$v(x_1^1,\ldots,x_1^i+h,\ldots,x_i^n,t_1)\in\Omega.$ Это
+противоречит тому, что в
+$(x_1,t_1)=(x_1^1,\ldots,x_1^i,\ldots,x_i^n,t_1)$ достигается
+максимум функции $v$ на множестве
+$\overline{\omega}.\,\blacksquare$
+
+\newpage
+
+\section*{Экзаменационные вопросы}
+
+\begin{enumerate}
+
+\item
+Классификация линейных уравнений второго порядка по
+И.Г.~Петровскому.
+
+\item
+Характеристические и не характеристические поверхности. Теорема
+Коши\ч Ковалевской (на примере линейных уравнений второго
+порядка).
+
+\item
+Пространства ${\mathcal D} (\Omega)$ и ${\mathcal D}' (\Omega)$
+основных и обобщенных функций. Операции сложения обобщенных
+функций и умножения обобщенной функции на бесконечно гладкую.
+Определение производной от обобщенной функции.
+
+\item
+Слабый предел обобщенных функций. Замкнутость пространства
+обобщенных функций относительно слабого предела (без
+доказательства).
+
+\item
+Первообразная от обобщенной функции. Докажите, что у всякой
+обобщенной функции $f \in {\mathcal D}' ({\mathbb R})$ существует
+первообразная, определенная с точностью до константы.
+
+
+\item
+Замена переменной у обобщенной функции.
+
+\item
+Носитель обобщенной функции. Свойства носителя обобщенных функций:
+$$
+    \supp (f + g)
+    \subset
+    \supp f \cup \sup g,
+$$
+$$
+    \supp (f \psi)
+    \subset
+    \supp f \cap \supp \psi,
+$$
+$$
+    \supp \frac{\partial f }{\partial x_i}
+    \subset
+    \supp f,
+$$
+где $f,g \in {\mathcal D}' (\Omega)$, $\psi \in C^\infty
+(\Omega)$, $\Omega$ --- открытое подмножество ${\mathbb R}^n$.
+
+\item
+Обобщенные функции с компактным носителем. Докажите, что всякая
+обобщенная функция $f \in {\mathcal D}' (\Omega)$ с компактным
+носителем $\supp f \Subset \Omega$, где $\Omega$ --- открытое
+подмножество ${\mathbb R}^n$, является непрерывным функционалом на
+пространстве $C^m (\Omega)$ для некоторого целого числа $m \ge 0$.
+
+\item
+Прямое произведение обобщенных функций. Докажите эквивалентность
+двух определений прямого произведения:
+$$
+    (f (x), (g (y), \varphi (x, y)))
+    =
+    (g (y), (f (x), \varphi (x, y)))
+$$
+для всех $f \in {\mathcal D}' (X)$, $g \in {\mathcal D}' (Y)$ и
+$\varphi \in {\mathcal D} (X \times Y)$, где $X \subset {\mathbb
+R}^n$ и $Y \subset {\mathbb R}^m$
+--- открытые множества.
+
+\item
+Свертка обобщенных функций. Коммутативность свертки. Существование
+свертки в случае, когда одна из двух обобщенных функций имеет
+компактный носитель.
+
+\item
+Дифференцирование свертки обобщённых функций.
+
+
+\item
+Фундаментальное решение линейного дифференциального оператора с
+постоянными коэффициентами.
+
+\item
+Теоремы существования и единственности решений уравнения
+$$
+    {\mathcal L}
+    u
+    =
+    f (x)
+$$
+в пространстве обобщенных функций ${\mathcal D}' ({\mathbb R}^n)$,
+где $
+    {\mathcal L}
+    =
+    \sum_{
+        |\alpha| \le m
+    }
+    c_\alpha
+    \partial^\alpha
+$
+--- линейный дифференциальный оператор с постоянными коэффициентами.
+
+\item
+Фундаментальное решение линейного обыкновенного дифференциального
+оператора с постоянными коэффициентами.
+
+\item
+Обобщенная задача Коши для линейного обыкновенного
+дифференциального уравнения с постоянными коэффициентами.
+Существование и единственность решения.
+
+\item
+Формулы Грина: многомерный аналог формулы Ньютона-Лейбница
+$$
+    \int_\Omega
+    \frac{\partial h}{\partial x_i}
+    \,
+    dx
+    =
+    \int_{
+        \partial \Omega
+    }
+    h
+    \cos (\nu, x_i)
+    dS
+$$
+и формула интегрирования по частям
+$$
+    \int_\Omega
+    \frac{\partial f}{\partial x_i}
+    g
+    \,
+    dx
+    =
+    \int_{
+        \partial \Omega
+    }
+    fg
+    \cos (\nu, x_i)
+    dS
+    -
+    \int_\Omega
+    \frac{\partial g}{\partial x_i}
+    f
+    \,
+    dx,
+$$
+где $h,f,g \in C^1 (\Omega) \cap C (\overline \Omega)$, $\Omega$
+--- ограниченное открытое подмножество ${\mathbb R}^n$ с кусочно
+гладкой границей, а $\nu$ --- вектор внешней нормали к $\partial
+\Omega$.
+
+\item
+Фундаментальное решение оператора Лапласа
+$$
+    {\mathcal E}_n (x)
+    =
+    \left\{
+        \begin{array}{ll}
+            \frac{1}{2 \pi}
+            \ln |x|,
+            &
+            n = 2,
+            \\
+            - \frac{
+                1
+            }{
+                (n - 2)
+                |S_1|
+            }
+            \frac{
+                1
+            }{
+                |x|^{n - 2}
+            },
+            &
+            n \ge 3.
+        \end{array}
+    \right.
+$$
+
+\item
+Фундаментальное решение волнового оператора $
+    \square_a = \partial_t^2 - a^2 \partial_x^2,
+$ $a > 0$, случай одномерного основного пространства:
+$$
+    {\mathcal E}_1 (x, t)
+    =
+    \frac{1}{2 a}
+    \theta (a t - |x|),
+    \quad
+    (x, t)
+    \in
+    {\mathbb R}^2.
+$$
+
+\item
+Фундаментальное решение волнового оператора $
+    \square_a = \partial_t^2 - a^2 \triangle,
+$ $a > 0$, случай трехмерного основного пространства:
+$$
+    {\mathcal E}_3 (x, t)
+    =
+    \frac{
+        \theta (t)
+    }{
+        4
+        \pi
+        a^2
+        t
+    }
+    \delta_{
+        S_{at}
+    }
+     (x),
+    \quad
+    (x, t)
+    \in
+    {\mathbb R}^4,
+$$
+где
+$$
+    (\delta_{S_r}, \varphi)
+    =
+    \int_{
+        S_r
+    }
+    \varphi
+    \,
+    dS,
+    \quad
+    \varphi \in {\mathcal D} ({\mathbb R}^3).
+$$
+
+\item
+Фундаментальное решение волнового оператора $
+    \square_a = \partial_t^2 - a^2 \triangle,
+$ $a > 0$, случай двумерного основного пространства:
+$$
+    {\mathcal E}_2 (x, t)
+    =
+    \frac{
+        \theta (at - |x|)
+    }{
+        2
+        \pi
+        a
+        \sqrt{
+            a^2 t^2 - |x|^2
+        }
+    },
+    \quad
+    (x, t)
+    \in
+    {\mathbb R}^3.
+$$
+Теорема о продолжении обобщенных функций из ${\mathcal D}'
+({\mathbb R}^{n+1})$ на функции вида $\varphi (x) 1 (x_n)$, где
+$\varphi \in {\mathcal D} ({\mathbb R}^n)$.
+
+\item
+Фундаментальное решение оператора теплопроводности $
+    \partial_t - a^2 \triangle,
+$ $a > 0$,
+$$
+    {\mathcal E}_n (x, t)
+    =
+    \frac{
+        \theta (t)
+    }{
+        (
+            2
+            a
+            \sqrt{
+                \pi t
+            }
+        )^n
+    }
+    e^{
+        - \frac{
+            |x|^2
+        }{
+            4 a^2 t
+        }
+    },
+    \quad
+    (x, t) \in {\mathbb R}^{n+1}.
+$$
+
+\item
+Обобщенная задача Коши для волнового уравнения. Теорема
+существования и единственности решения (случай размерности
+основного пространства $n = 1,2,3$).
+
+{\it Подсказка.} Считать известным, что в случае размерности
+основного пространства $n = 1,2,3$ фундаментальными решениями
+волнового оператора $
+    \partial_t^2 - a^2 \triangle,
+$ $a > 0$, являются следующие функции:
+$$
+    {\mathcal E}_1 (x, t)
+    =
+    \frac{1}{2 a}
+    \theta (a t - |x|),
+    \quad
+    (x, t)
+    \in
+    {\mathbb R}^2,
+$$
+$$
+    {\mathcal E}_2 (x, t)
+    =
+    \frac{
+        \theta (at - |x|)
+    }{
+        2
+        \pi
+        a
+        \sqrt{
+            a^2 t^2 - |x|^2
+        }
+    },
+    \quad
+    (x, t)
+    \in
+    {\mathbb R}^3,
+$$
+и
+$$
+    {\mathcal E}_3 (x, t)
+    =
+    \frac{
+        \theta (t)
+    }{
+        4
+        \pi
+        a^2
+        t
+    }
+    \delta_{
+        S_{at}
+    }
+     (x),
+    \quad
+    (x, t)
+    \in
+    {\mathbb R}^4,
+$$
+где
+$$
+    (\delta_{S_r}, \varphi)
+    =
+    \int_{
+        S_r
+    }
+    \varphi
+    \,
+    dS,
+    \quad
+    \varphi \in {\mathcal D} ({\mathbb R}^3).
+$$
+
+\item
+Классическая задача Коши для одномерного волнового уравнения
+$$
+    \left\{
+        \begin{array}{l}
+            u_{tt} = a^2 u_{xx} + f (x, t),
+            \quad
+            x \in {\mathbb R},
+            \:
+            t > 0,
+            \\
+            u (x, 0) = u_0 (x),
+            \\
+            u_t (x, 0) = u_1 (x),
+        \end{array}
+    \right.
+$$
+где $a > 0$, $f \in C^1 ({\mathbb R} \times [0, \infty))$, $u_0
+\in C^2 ({\mathbb R})$, $u_1 \in C^1 ({\mathbb R})$.
+%$u \in C^2 ({\mathbb R} \times (0, \infty) \cap C^1 ({\mathbb R} \times [0, \infty))$.
+Существование и единственность решения. Формула Даламбера
+\begin{align*}
+    u (x, t)
+    &
+    =
+    \frac{1}{2 a}
+    \int_0^t
+    \int_{
+        x - a (t - \tau)
+    }^{
+        x + a (t - \tau)
+    }
+    f (\xi, \tau)
+    \,
+    d\xi
+    d\tau
+    +
+    \frac{1}{2 a}
+    \int_{
+        x - a t
+    }^{
+        x + a t
+    }
+    u_1 (\xi)
+    \,
+    d\xi
+    \\
+    &
+    +
+    \frac{1}{2}
+    (
+        u_0 (x + at)
+        +
+        u_0 (x - at)
+    ).
+    \nonumber
+\end{align*}
+{\it Подсказка.} Считать известным, что фундаментальным решением
+одномерного волнового оператора $
+    \partial_t^2 - a^2 \partial_x^2,
+$ $a > 0$, является следующая функция:
+$$
+    {\mathcal E}_1 (x, t)
+    =
+    \frac{1}{2 a}
+    \theta (a t - |x|),
+    \quad
+    (x, t)
+    \in
+    {\mathbb R}^2.
+$$
+
+\item
+Классическая задача Коши для трехмерного волнового уравнения
+$$
+    \left\{
+        \begin{array}{l}
+            u_{tt} = a^2 \triangle u + f (x, t),
+            \quad
+            x \in {\mathbb R}^3,
+            \:
+            t > 0,
+            \\
+            u (x, 0) = u_0 (x),
+            \\
+            u_t (x, 0) = u_1 (x),
+        \end{array}
+    \right.
+$$
+где $a > 0$, $f \in C^2 ({\mathbb R}^3 \times [0, \infty))$, $u_0
+\in C^3 ({\mathbb R}^3)$, $u_1 \in C^2 ({\mathbb R}^3)$.
+Существование и единственность решения. Формула Кирхгофа
+\begin{align*}
+    u (x, t)
+    =
+    {}
+    &
+    \frac{
+        1
+    }{
+        4
+        \pi
+        a^2
+    }
+    \int_{
+        B_{at}^x
+    }
+    \frac{
+        f
+        \left(
+            \xi,
+            t
+            - \frac{
+            |x - \xi|
+            }{
+                a
+            }
+        \right)
+    }{
+        |x - \xi|
+    }
+    \,
+    d\xi
+    +
+    \frac{
+        1
+    }{
+        4
+        \pi
+        a^2
+        t
+    }
+    \int_{
+        S_{at}^x
+    }
+    u_1 (\xi)
+    \,
+    dS
+    \\
+    &
+    +
+        \frac{
+            1
+        }{
+            4
+            \pi
+            a^2
+        }
+    \frac{\partial}{\partial t}
+    \left(
+        \frac{
+            1
+        }{
+            t
+        }
+        \int_{
+            S_{at}^x
+        }
+        u_0 (\xi)
+        \,
+        dS
+    \right).
+\end{align*}
+{\it Подсказка.} Считать известным, что фундаментальным решением
+трехмерного волнового оператора $
+    \partial_t^2 - a^2 \triangle,
+$ $a > 0$, является следующая обобщенная функция:
+$$
+    {\mathcal E}_3 (x, t)
+    =
+    \frac{
+        \theta (t)
+    }{
+        4
+        \pi
+        a^2
+        t
+    }
+    \delta_{
+        S_{at}
+    }
+     (x),
+    \quad
+    (x, t)
+    \in
+    {\mathbb R}^4,
+$$
+где
+$$
+    (\delta_{S_r}, \varphi)
+    =
+    \int_{
+        S_r
+    }
+    \varphi
+    \,
+    dS,
+    \quad
+    \varphi \in {\mathcal D} ({\mathbb R}^3).
+$$
+
+
+\item
+Классическая задача Коши для двумерного волнового уравнения
+$$
+    \left\{
+        \begin{array}{l}
+            u_{tt} = a^2 \triangle u + f (x, t),
+            \quad
+            x \in {\mathbb R}^2,
+            \:
+            t > 0,
+            \\
+            u (x, 0) = u_0 (x),
+            \\
+            u_t (x, 0) = u_1 (x),
+        \end{array}
+    \right.
+$$
+где $a > 0$, $f \in C^2 ({\mathbb R}^2 \times [0, \infty))$, $u_0
+\in C^3 ({\mathbb R}^2)$, $u_1 \in C^2 ({\mathbb R}^2)$.
+Существование и единственность решения. Формула Пуассона
+\begin{align*}
+    u (x, t)
+    =
+    {}
+    &
+    \frac{
+        1
+    }{
+        2
+        \pi
+        a
+    }
+    \int_0^t
+    \int_{
+        B_{
+            a (t - \tau)
+        }^x
+    }
+    \frac{
+        f (\xi, \tau)
+        \,
+        d\xi
+        d\tau
+    }{
+        \sqrt{
+            a^2 (t - \tau)^2
+            -
+            |x - \xi|^2
+        }
+    }
+    +
+    \frac{
+        1
+    }{
+        2
+        \pi
+        a
+    }
+    \int_{
+        B_{
+            a t
+        }^x
+    }
+    \frac{
+        u_1 (\xi)
+        \,
+        d\xi
+    }{
+        \sqrt{
+            a^2 t^2
+            -
+            |x - \xi|^2
+        }
+    }
+    \\
+    &
+    +
+    \frac{
+        1
+    }{
+        2
+        \pi
+        a
+    }
+    \frac{\partial}{\partial t}
+    \left(
+        \int_{
+            B_{
+                a t
+            }^x
+        }
+        \frac{
+            u_0 (\xi)
+            \,
+            d\xi
+        }{
+            \sqrt{
+                a^2 t^2
+                -
+                |x - \xi|^2
+            }
+        }
+    \right).
+\end{align*}
+{\it Подсказка.} Считать известным, что фундаментальным решением
+двумерного волнового оператора $
+    \partial_t^2 - a^2 \triangle,
+$ $a > 0$, является следующая функция:
+$$
+    {\mathcal E}_2 (x, t)
+    =
+    \frac{
+        \theta (at - |x|)
+    }{
+        2
+        \pi
+        a
+        \sqrt{
+            a^2 t^2 - |x|^2
+        }
+    },
+    \quad
+    (x, t)
+    \in
+    {\mathbb R}^3.
+$$
+
+\item
+Теорема существования и единственности решения обобщенной задачи
+Коши для уравнения теплопроводности
+$$
+    \left\{
+        \begin{array}{l}
+            u_t = a^2 \triangle u + f (x, t),
+            \quad
+            x \in {\mathbb R}^n,
+            \:
+            t > 0,
+            \\
+            u (x, 0) = u_0 (x),
+        \end{array}
+    \right.
+$$
+где $f \in {\mathcal M}$, $u_0 \in L_\infty ({\mathbb R}^n)$.
+Формула Пуассона
+\begin{align*}
+    u (x, t)
+    =
+    {}
+    &
+    \int_0^t
+    \int_{
+        {\mathbb R}^n
+    }
+    \frac{
+        f (\xi, \tau)
+    }{
+        (
+            2
+            a
+            \sqrt {
+                \pi
+                (t - \tau)
+            }
+        )^n
+    }
+    e^{
+        - \frac{
+            |x - \xi|^2
+        }{
+            4
+            a^2
+            (t - \tau)
+        }
+    }
+    \,
+    d\xi
+    d\tau
+    \\
+    &
+    +
+    \frac{
+        1
+    }{
+        (
+            2
+            a
+            \sqrt {
+                \pi
+                t
+            }
+        )^n
+    }
+    \int_{
+        {\mathbb R}^n
+    }
+    u_0 (\xi)
+    e^{
+        - \frac{
+            |x - \xi|^2
+        }{
+            4
+            a^2
+            t
+        }
+    }
+    \,
+    d\xi.
+\end{align*}
+
+{\it Подсказка.} Считать известным, что фундаментальным решением
+оператора теплопроводности $
+    \partial_t - a^2 \triangle,
+$ $a > 0$, является следующая функция:
+$$
+    {\mathcal E}_n (x, t)
+    =
+    \frac{
+        \theta (t)
+    }{
+        (
+            2
+            a
+            \sqrt{
+                \pi t
+            }
+        )^n
+    }
+    e^{
+        - \frac{
+            |x|^2
+        }{
+            4 a^2 t
+        }
+    },
+    \quad
+    (x, t) \in {\mathbb R}^{n+1}.
+$$
+
+\item
+Существование и единственности решения классической задачи Коши
+для уравнения теплопроводности
+$$
+    \left\{
+        \begin{array}{l}
+            u_t = a^2 \triangle u + f (x, t),
+            \quad
+            x \in {\mathbb R}^n,
+            \:
+            t > 0,
+            \\
+            u (x, 0) = u_0 (x).
+        \end{array}
+    \right.
+$$
+Докажите, что если все производные по пространственным переменным,
+начиная с нулевого и до второго порядка включительно, от функции
+$f$ принадлежат классу ${\mathcal M} \cap C ({\mathbb R}^n \times
+[0, \infty))$, а от функции $u_0$ --- классу $L_\infty ({\mathbb
+R}^n) \cap C ({\mathbb R}^n)$, то формула Пуассона
+\begin{align*}
+    u (x, t)
+    =
+    {}
+    &
+    \int_0^t
+    \int_{
+        {\mathbb R}^n
+    }
+    \frac{
+        f (\xi, \tau)
+    }{
+        (
+            2
+            a
+            \sqrt {
+                \pi
+                (t - \tau)
+            }
+        )^n
+    }
+    e^{
+        - \frac{
+            |x - \xi|^2
+        }{
+            4
+            a^2
+            (t - \tau)
+        }
+    }
+    \,
+    d\xi
+    d\tau
+    \\
+    &
+    +
+    \frac{
+        1
+    }{
+        (
+            2
+            a
+            \sqrt {
+                \pi
+                t
+            }
+        )^n
+    }
+    \int_{
+        {\mathbb R}^n
+    }
+    u_0 (\xi)
+    e^{
+        - \frac{
+            |x - \xi|^2
+        }{
+            4
+            a^2
+            t
+        }
+    }
+    \,
+    d\xi
+\end{align*}
+гарантирует, что $u \in C ({\mathbb R}^n \times [0, \infty))$,
+$u_t \in C ({\mathbb R}^n \times (0, \infty))$, и при этом $u_{x_i
+x_j} \in C ({\mathbb R}^n \times (0, \infty))$ для всех $i, j = 1,
+\ldots, n$.
+
+\item
+Пространства C.Л.~Соболева $
+    W_p^m
+    (
+        \Omega
+    )
+$ и $
+    \stackrel{\rm o}{W}\!{}_p^m
+    (
+        \Omega
+    ).
+$ Полнота и сепарабельность пространств C.Л.~Соболева.
+
+\item
+Неравенство Фридрихса.
+
+\item
+Обобщенное в смысле С.Л.~Соболева решение первой краевой задачи
+$$
+    \left\{
+        \begin{aligned}
+            &
+            \triangle u
+            =
+            f_0 (x)
+            +
+            \sum_{i = 1}^n
+            \frac{\partial f_i}{\partial x_i}
+            (x)
+            \quad
+            \mbox{в } \Omega,
+            \\
+            &
+            \left.
+                u
+            \right|_{
+                \partial \Omega
+            }
+            =
+            u_0,
+        \end{aligned}
+    \right.
+$$
+где $\Omega$ --- ограниченная область в ${\mathbb R}^n$, $n \ge
+2$, $
+    u_0
+    \in
+    W_2^1
+    (
+        \Omega
+    )
+$ и $f_i \in L_2 (\Omega)$, $i = 0,1,\ldots,n$.
+
+Существование и единственность обобщенного в смысле С.Л.~Соболева
+решения первой краевой задачи.
+
+\item
+Гармонические функции. Докажите, что всякая гармоническая функция
+из пространства ${\mathcal D}' (\Omega)$ принадлежит классу
+$C^\infty (\Omega)$.
+
+{\it Подсказка.} Воспользуйтесь сверткой с фундаментальным
+решением оператора Лапласа
+$$
+    {\mathcal E}_n (x)
+    =
+    \left\{
+        \begin{array}{ll}
+            \frac{1}{2 \pi}
+            \ln |x|,
+            &
+            n = 2,
+            \\
+            - \frac{
+                1
+            }{
+                (n - 2)
+                |S_1|
+            }
+            \frac{
+                1
+            }{
+                |x|^{n - 2}
+            },
+            &
+            n \ge 3.
+        \end{array}
+    \right.
+$$
+
+\item
+Теоремы о среднем для гармонических функций.
+
+\item
+Принцип максимума для гармонических функций.
+
+\item
+Неравенство Харнака для гармонических функций.
+
+\item
+Теорема Лиувилля для гармонических функций.
+
+\item
+Принцип максимума для решений параболических неравенств.
+
+\end{enumerate}
+
+\end{document}

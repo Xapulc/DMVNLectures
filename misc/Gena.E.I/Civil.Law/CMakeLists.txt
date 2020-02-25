@@ -1,0 +1,10 @@
+mm_pack(
+    ARCHIVE
+        civillaw-gena
+    INCLUDE
+        Civil.Law.[9,10].GenaEI.doc
+        Civil.Law.References.doc
+        EP.Civil.Law.GenaEI.doc
+        Government.Particles.GenaEI.doc
+        Strahovoe.pravo.GenaEI.doc
+)

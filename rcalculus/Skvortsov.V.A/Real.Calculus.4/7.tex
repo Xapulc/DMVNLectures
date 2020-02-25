@@ -1,0 +1,324 @@
+
+
+\begin{center} \textbf{Лекция 7.} \end{center}
+
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 12.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+\textbf{Определение.} \quad $f \in N[a, b]$ интегрируема по
+Ньютону, если существует $F(x) : F'(x) = f(x)$
+
+$(N) \int_a^b f dx = F(b) - F(a)$
+
+Интеграл Лебега не покрывает интеграл Ньютона.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    картинка
+
+
+
+
+\textbf{Теорема.} \quad Неопределенный интеграл Лебега дифф. п.в.
+$F(x) = (L) \int_a^x f d\mu \Rightarrow F'(x) = f(x)$ (п.в.)
+
+$f \in L[a,b]$
+
+$L (X, \EuScript{M}, \mu)$ --- пространство Лебега, состоящее из
+классов эквивалентных функций.
+
+$f \thicksim g \Leftrightarrow \mu\{x \in X: \: f(x) \neq g(x)\} =
+0$
+
+$\rho (f, g) = 0 \Leftrightarrow f = g$
+
+$\rho (f,g) = \in_x |f - g| d \mu $ --- метрика $\Rightarrow L(X,
+\EuScript{M}, \mu)$
+
+$\chi \in \EuScript{L}$
+
+$\int_x |f - f^N| d \mu \xrightarrow[N \rightarrow \infty]{} 0$,
+то есть каждая измеримая функция может быть с любой точностью
+приближена ограниченной функцией (по метрике).
+
+$\forall \varepsilon > 0 \; \forall f \in \EuScript{L} \;\;
+\exists |g_\varepsilon (x)| < A: \: \rho(f, g_\varepsilon) <
+\varepsilon$
+
+Если верна теорема Лузина, то ограниченную функцию можно
+приближать непрерывными, ограниченными той же константой. То есть
+$\exists \varphi$ непрерывная, $\mu \{g_\varepsilon \neq \varphi\}
+< \varepsilon/A, $ $|\varphi(x)| < A$
+
+Докажем для отрезка: $\int_a^b |Ђg_\varepsilon(x) - \varphi(x)| d
+\mu < 2A\varepsilon / A = 2\varepsilon$
+
+$\forall f \in \EuScript{L} \quad \exists \varphi$ $\rho(f,
+\varphi) < 3\varepsilon$
+
+
+\textbf{Определение.} \quad $f_n \xrightarrow[]{L} f
+\Leftrightarrow \rho(f_n, f) \xrightarrow[]{n \rightarrow \infty}$
+(сходимость в метрике)
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 13.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+
+
+\textbf{Теорема. (неравенство Чебышева)} \quad
+
+$f \in L(E) \Rightarrow \mu \{x \in E: \; |f(x)|  \geqslant C\}
+\leqslant \frac{1}{c} (L) \int_E |f| d \mu$
+
+$E_c = {x \in E: |f(x) \geqslant C|}$
+
+$c \mu E_c = \int_{E_c} c d\mu \leqslant \int_{E_0} |f| d \mu
+\leqslant \int_E |f| d\mu$
+
+\textbf{Утверждение.} \quad $f_n \in L(E), \int_E |f - f_n| d \mu
+\xrightarrow[n \rightarrow \infty]{} 0 \Rightarrow f_n
+\xrightarrow[]{\mu} f$
+
+\textbf{Доказательство.} \quad $\forall \varepsilon > 0 \;
+\mu\{x\in E: |f(x) - f_n(x)| \geqslant \varepsilon\} \leqslant
+\frac{1}{\varepsilon} \int_E |f- f_n|d\mu \xrightarrow[n
+\rightarrow \infty]{} 0$
+
+\textbf{Задача.} \quad Связь сходимости в метрике с другими видами
+сходимости
+
+\textbf{Задача.} \quad $\mu \{x \in E: |f(x) \geqslant C|\} =
+\b{O}(\frac{1}{c}), c \rightarrow \infty$
+
+Если $f(x)$ суммируема на $E$, то $\mu \{x \in E: |f(x) \geqslant
+C|\} = $ \b{O} $ (\frac{1}{c}), c \rightarrow \infty$
+
+Пример измеримой несуммируемой функции, для которой это выполнено.
+
+
+$L(X, \EuScript{M}, \mu)$ --- нормированное пространство с нормой
+$\|f\| = \int_E |f| d\mu$, при условии, что элементы пространства
+--- классы эквивалентности (иначе нет условия $\|x\| = 0 \Leftrightarrow x =
+0$, 0 в нашем пространстве соответствует классу
+эквивалентности)
+
+Можно рассматривать $L^p$ --- пространство функций, интегрируемых
+р раз по Лебегу.
+
+$f \in L(E) \Rightarrow f \in L(E') \; \forall E' \subset E, E'
+\in \EuScript{M}$
+
+$\varphi(E) = \int_{E_1} f d \mu$ --- неопределенный интеграл
+Лебега
+
+$\varphi$ --- аддитивная функция
+
+\textbf{Определение.} \quad $(X, \EuScript{M}), \; \EuScript{M} -
+\delta$-алгебра
+
+$\varphi$ --- аддитивная функция множества, если
+
+$\varphi: \EuScript{M} \rightarrow \mathbb{R}$ и является
+ $\delta$--аддитивной : $\varphi(\bigcup_{k=1}^{\infty} E_k) =
+\sum_{k=1}^{\infty}\varphi(E_k)$
+
+$E_1 \subset E_2 \subset \ldots \subset E_k \subset_{E_{k+1}}
+\subset \ldots$
+
+$\varphi(\bigcup_{k=1}^\infty E_k) = \lim_{k \rightarrow \infty}
+\varphi (E_k)$ --- доказывается так же, как непрерывность меры.
+
+$A_1 = E_1, \: A_2 = E_2 \ E_1, \: \ldots, \: A_k = E_k \ E_{k-1}$
+
+$\bigcup_{k=1}^\infty E_k = \bigcup_{k=1}^\infty A_k$
+
+$\varphi(\bigcup_{k=1}^\infty) = \sum_{k=1}^\infty \varphi(A_k)$
+
+$E_1 \supset E_2 \supset \ldots \supset E_k \supset E_{k+1}
+\supset \ldots$
+
+$\varphi(\bigcap_{k=1}^\infty E_k) = \lim_{k \rightarrow \infty}
+\varphi(E_k)$
+
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 13.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+Док. переходом к дополнению (не нужно оговаривать конечность меры)
+
+ $\varphi \geqslant 0 \quad E_k$ --- последовательность множеств.
+
+$\varliminf_{k \rightarrow \infty} E_k = \bigcup_k \bigcap_{n
+\geqslant k} E_n$
+
+$\varphi(\varliminf_{k \rightarrow \infty}) \leqslant
+\varliminf_{k \rightarrow \infty} \varphi(E_k) \leqslant
+\varlimsup_{k \rightarrow \infty} \varphi(E_k) \leqslant
+\varphi(\varlimsup_{k \rightarrow \infty} E_k)$
+
+
+$A_k = \bigcap_{n \geqslant k} E_n \nearrow_{k \rightarrow
+\infty}$
+
+$\varphi(\varliminf_{k \rightarrow \infty} E_k) = \lim_{k
+\rightarrow} \varphi(A_k) \leqslant \varliminf_{k \rightarrow
+\infty}(\varphi(E_k))$
+
+Вторая часть доазательства аналогично переходом к $\searrow$
+последовательности или переходом к дополнению.
+
+$(X, \EuScript{M}), \varphi$ --- аддитивная функция.
+
+\textbf{Определение.} \quad \={V}$(E, \varphi)$ --- верхняя
+вариация относительно $\varphi$
+
+\={V} $= \sup_{A \subset E} \varphi(A), A \in \EuScript{M}$
+
+\b{V} $= - \inf_{A \subset E} \varphi(A), A \in \EuScript{M}$ ---
+нижняя вариация
+
+Полная вариация: $V = $ \={V}$(E) + $ \b{V}$(E)$
+
+Из определения следует, что $\varphi(\varnothing) = 0$
+
+\b{V} (E, q) = \={V}$(E, -\varphi)$
+
+$\varphi(E) = \int_E f d \mu$, тогда \={V}$E = \int_E f^+ d\mu$,
+\b{V}$(E) = \int_E f^- d\mu$
+
+$V(E) = \int_E |f| d \mu$
+
+Покажем, что \b{V}, \={V}, $V$ --- аддитивные функции множества
+
+$1. \quad E = \bigcup_{k=1}^\infty, \; E_k \in \EuScript{M}$
+
+$H_k = E_k \ (\bigcup_{n=1}^{k-1} E_n) \quad E =
+\bigcup_{k=1}^\infty H_k$
+
+$A \subset E \; A = \bigcup_{k=1}^\infty (A \bigcap H_k) \; A
+\bigcap H_k \subset E_k \Rightarrow$
+
+$\varphi(A) = \sum_{k=1}^\infty \varphi(A \bigcap H_k) \leqslant
+\sum_{k=1}^\infty$ \={V}$ E_k $, переходя к $sup$ по $A$,
+получаем:  \b{V}$(E) \leqslant \sum_{k=1}^\infty$ \={V} $(E_k)$
+--- полуаддитивность.
+
+То же вернодля \={V}$(E) \Rightarrow$ верно для $V(E)$
+
+2. Проверим конечность \quad \b{V}, \={V}, $V$. Достаточно
+доказать для $V$:
+
+Предположим, что $\exists E: \; V(E) = +\infty$
+
+$E = E_1 \supset E_2 \supset E_3 \supset \ldots \supset E_k
+\supset \ldots , |\varphi(E_k)| \geqslant k - 1$
+
+$V(E_k) = + \infty$
+
+Строим: для $E_1$ это выполнено.
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 14.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+Так как $V(E_k) = + \infty \Rightarrow \exists \: A \subset E_k:
+|\varphi(E_k)| \geqslant |\varphi(E_k)| + k$
+
+$|\varphi(A \ E_k)| \geqslant |\varphi(A)| - |\varphi(E_k)|
+\geqslant k$
+
+$V(E_k) \leqslant V(A) + V(E_k \ A) \Rightarrow V(A)$ $V(E_k \ A)
+= \infty$
+
+В качестве $E_k$ возьмем то из них, на котором вариация ---
+$\infty$
+
+Так как это $\searrow$ последовательность, $\varphi(\bigcap_k E_k)
+= \lim_{k \rightarrow \infty} \varphi(E_k) = \infty \Rightarrow$
+ противоречие с конечностью $\varphi$
+
+3. \quad Докажем противоположное неравенство:
+
+Полагаем $E = \bigcup_{k=1}^\infty E_k$
+
+докажем: \={V}$(E) \geqslant \sum_{k=1}^\infty$ \={V}$(E_k)$ -
+$\varepsilon$
+
+Устремим $\varepsilon$ к нулю, получим:
+
+\={V}$(E) \geqslant \sum_{k=1}^\infty$ \={V}$(E_k)$
+
+\textbf{Разложение Жордана.}
+
+$\varphi(E) =$ \={V}$(E) -$ \b{V}$(E)$
+
+\textbf{Доказательство.}
+
+$A \subset E \quad \varphi(E) = \varphi(A) + \varphi(E \setminus
+A)$
+
+$\varphi(A) = \varphi(E) - \varphi(E \setminus A)$
+
+Переходим к $sup$ и получаем
+
+\={V} $(E) = \varphi(E) - \inf_{A \subset E} \varphi(E \setminus
+A) = \varphi(E) +$ \b{V} $(E)$

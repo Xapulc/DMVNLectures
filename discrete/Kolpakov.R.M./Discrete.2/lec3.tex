@@ -1,0 +1,108 @@
+%\section{Лекция 3.}
+\subsection{Полином Жегалкина.} 
+Пусть $f(x_1, \ldots, x_n)$ --- булева функция. %$f\neq 0$.
+\begin{definition} \textit{Полиномом Жегалкина} функции $f$ называется полином $P$ с коэффициентами в $\{0,1\}$ от переменных $\XXX$ степени не выше $n$, такой что $f(\XXX) = P(\XXX)$. \end{definition}
+\begin{statement}
+    Полином Жегалкина существует для любой функции $f(\XXX)$.
+\end{statement}
+\begin{proof}
+$f(x_1, \ldots, x_n)=\bigvee \limits_{f(\sigma_1 \ldots \sigma_n)=1} x^{\sigma_1} \ldots x^{\sigma_n}=\bigoplus \limits_{f(\sigma_1, \ldots, \sigma_n)=1} x^{\sigma_1} \ldots x^{\sigma_n}=$ 
+\begin{flushright}
+$
+=\bigoplus \limits_{f(\sigma_1, \ldots, \sigma_n)=1} (x_1\oplus \bar{\sigma_1})\ldots(x_n\oplus \bar{\sigma_n})=\bigoplus \limits^n_{k=0} \big( \bigoplus \limits_{i_1<i_2< \ldots<i_k} c_{i_1, \ldots, i_k}x_{i_1} \ldots x_{i_k}\big) $, где  $c_{i_1, \ldots, i_k} \in \{0,1\}$.
+\end{flushright} 
+В этой сумме слагаемое с $k=0$ соответствует произведению пустого множества переменных, то есть свободному члену.
+\end{proof}
+
+Из определения следует, что если $f$ --- константа, то её полином Жегалкина имеет степень $0$, то есть равен $1$ или $0$ (в зависимости от того, какой константой является $f$, разумеется). 
+\begin{statement}
+	Для каждой булевой функции от $n$ переменных существует единственный полином Жегалкина.
+\end{statement}
+\begin{proof}
+    Как было доказано выше, для каждой функции полином Жегалкина существует. Далее, очевидно, что разным функциям соответствуют разные полиномы Жегалкина. Покажем, что всевозможных полиномов степени не выше $n$ от переменных $\XXX$ ровно столько же, сколько всевозможных булевых функций от этих переменных. \\
+    1) $|P_2(n)|=2^{2^{n}}$.\\
+    2) Каждый коэффициент $c_{i_1, \ldots, i_k}$ соответствует подмножеству $\{x_{i_1}, \ldots, x_{i_k}\}$ (возможно пустому) из множества переменных $\{\XXX\}$. Таких подмножеств $2^{n}$. Каждый коэффициент принимает значения $0$ или $1$, значит, всего полиномов $2^{2^n}$. Отсюда всё очевидно.
+%	Полином Жегалкина единственен, так как $c_{i_1}, \ldots, c_{i_n}$ однозначно определены $2^n$ -  коэффицентов $2^{2^n}$ - набор значений коэффицентов $2^{2^n}$ - количество функций от $n$ - переменных $\Rightarrow$ для каждой функции $\exists !$ полином Жегалкина. 
+\end{proof}
+\section{Замкнутые классы булевых функций.}
+\subsection{Функции, сохраняющие ноль и единицу.}
+\begin{definition}
+	$f$ сохраняет 0, если $f(0,\ldots, 0)=0$.
+	$T_0$ --- множество всех функций, сохраняющих ноль. Например, $0,\,x,\,x \& y,\, x \vee y,\, x \oplus y$.
+\end{definition}
+\begin{definition}
+	Селекторная функция --- функция, тождественна равная переменной. 
+\end{definition}
+\begin{lemma}
+	$T_0 $ --- замкнуто. 
+\end{lemma}
+\begin{proof}
+	Тождественная функция содержится в $T_0$. Значит, надо проверить, что если $f(x_1,\ldots, x_n),g_1, \ldots, g_n \in T_0, \text{, то~} f(g_1, \ldots, g_n) \in T_0.$ \\
+	Можем полагать, что $g_1, \ldots, g_n$ зависят от одних и тех же переменных: $x_1, \ldots, x_n$ (иначе можно добавить переменные в качестве фиктивных). Тогда:\\
+	$f(g_1(x_1, \ldots, x_n),\ldots, g_n(x_1, \ldots, x_n))=h(x_1, \ldots, x_n) \\
+	h(0, \ldots, 0)=f(g_1(0,\ldots,0),\ldots,g_n(0, \ldots, 0))=f(0,\ldots,0)=0. \Rightarrow h \in T_0. 
+$
+\end{proof}
+\begin{definition}
+	$f$ сохраняет 1, если $f(1,\ldots, 1)=1$.
+	Обозначим за $T_1$ множество всех функций, сохраняющих единицу. Например, $1,\,x,\,xy\rightarrow y, \,x \vee y$.
+\end{definition}
+\begin{lemma}
+	$T_1 $ --- замкнуто. 
+\end{lemma}
+\begin{proof}
+	Аналогично предыдущей лемме. 
+\end{proof}
+\subsection{Монотонные функции.}	
+Определим правило сравнения на наборах из нулей и единиц.\\
+$\sigma'=\{\sigma_1',\ldots,\sigma_n'\}, \,\sigma''= \{\sigma_1'',\ldots,\sigma_n''\} \in \{0,1\}^n.$ \\
+Будем говорить, что $\sigma'\leq\sigma'',\, \text{если} ~ \forall i \in \{1,\ldots,n\} ~ \sigma_i ' \leq\sigma_i '' .$ \\
+Заметим, что существуют несравнимые наборы, например: $(101)$ и $(010)$. 
+\begin{definition}
+$f$ --- монотонная, если для любых $\sigma' \text{ и } \sigma'' ~ \text{таких, что} ~ \sigma'\leq \sigma'' $ выполняется, что $f(\sigma')\leqslant f(\sigma'').$
+\end{definition}
+\begin{lemma}
+	$M$ является замкнутым классом. 
+\end{lemma}
+\begin{proof}
+	%Воткнуть в обозначения лекций я так и не смог, потому частично взял с Лупанова. 
+Тождественная функция содержится в $M$. Значит, осталось проверить, что если
+$f(x_1, \ldots,x_n), \,g_1, \ldots, g_n \in M$, то $h=f(g_1,\ldots,g_n) \in M $. Можно считать, что  $g_1,\ldots g_n$  --- функции от одного и того же количества переменных, в противном случае недостающие переменные можно добавить в качестве несущественных.  Выберем произвольные различные наборы $ 
+\sigma'=\{\sigma_1',\ldots,\sigma_n'\}, \,\sigma''= \{\sigma_1'',\ldots,\sigma_n''\}$, такие что $ \sigma' \leq \sigma''.\\
+$Рассмотрим $ h(\sigma')=f(g_1(\sigma'),g_2(\sigma'), \ldots, g_n\sigma')) ~\text{и}~ h(\sigma'')=f(g_1(\sigma''),\ldots,g_n(\sigma'')). \\
+g_i(\sigma')<g_i(\sigma''), $ так как $ g_i$ --- монотонная. $ f(g_1(\sigma'),g_2(\sigma'), \ldots, g_n(\sigma')) \leq f(g_1(\sigma''),g_2(\sigma''), \ldots, g_n(\sigma''))$, так как f --- монотонная, то $h$ --- тоже монотонная. 
+\end{proof}
+\begin{lemma}[О немонотонных функциях]
+	$f(x_1,\ldots, x_n)\notin M. $ Тогда $\bar{x} \in [\{f;0;1\}].$
+\end{lemma}	
+\begin{proof}
+	$f \notin M \Rightarrow \exists \,\sigma',\sigma'': \sigma' \leq \sigma'',\,$ $f(\sigma')=1,\, f(\sigma'')=0.$
+%,\, \text{где }  \sigma',  \sigma'' \text{ ---разные}. $\\ кажется, это лишнее?
+Без ограничения общности будем считать, что $\sigma' ~\text{и} ~ \sigma''$ устроены следующим образом: \\$ 
+	\sigma'=(0,\ldots,0,\ldots,0,1,\ldots,1) \\
+	\sigma''=(\underbrace{1,\ldots,1}_k,\underbrace{0,\ldots,0}_s,\underbrace{1,\ldots,1}_{n-k-s}) \\
+	g(x)=f(\underbrace{x, \ldots, x}_k, \underbrace{0, \ldots, 0}_s,\underbrace{1,\ldots,1}_{n-k-s}) =\bar{x},$ так как $g(0)=1 ~ \text{и} ~ g(1)=0$.
+\end{proof}
+\subsection{Самодвойственные функции.}
+\begin{definition} Двойственной функцией к $f(\XXX)$ называется функция $f^*(x_1,\ldots,x_n)=\overline{f(\bar{x}_1,\ldots,\bar{x}_n)}.$ \end{definition}
+\begin{example} $(x\&y)^*=x \vee y$ \end{example}
+
+\noindent Легко заметить, что $(f^*)^*=f.$
+\begin{definition}
+Самодвойственная функция --- функция, двойственная самой себе; множество всех таких функций обозначается $S$.
+\end{definition}
+\begin{statement} 1) $\bar{x},x\oplus y \oplus z, m(x,y,z) \in S$; 2) $0,1,x\oplus y, x\rightarrow y, x \& y, x \vee y \notin S $ 
+\end{statement}
+\begin{proof}
+	В этом несложно убедиться явной проверкой. 
+\end{proof}	
+\begin{lemma}
+	$S$ является замкнутым классом.
+\end{lemma}
+\begin{proof}
+	Тождественная функция содержится в ${S}$. Значит, осталось проверить, что если $f(x_1, \ldots,x_k), g_1, \ldots, g_k \in S$, то $h=f(g_1(\XXX),\ldots,g_k(\XXX)) \in S $. \\
+	$h^*(x_1,\ldots,x_n)=\overline{f(g_1(\bar{x}_1,\ldots,\bar{x}_n)),\ldots,g_k(\bar{x}_1,\ldots,\bar{x}_n)}=\overline{f(\overline{\overline{g_1(\bar{x}_1,\ldots,\bar{x}_n)}},\ldots,\overline{\overline{g_k(\bar{x}_1,\ldots,\bar{x}_n)}}} = \\\overline{f(\overline{g^*_{1}({x_1},\ldots,{x_n})},\ldots,\overline{g^*_k({x_1},\ldots,{x_n})}} $. \\
+	Так как $g_1=g^*_1,\ldots,g_k=g^*_k$, то \\$h=\overline{f(\overline{g_{1}({x_1},\ldots,{x_n})},\ldots,\overline{g_k({x_1},\ldots,{x_n})}}=f^*(g_1(x_1,\ldots, x_n),\ldots,g_k(x_1,\ldots,x_n)).\\ $
+	$f^*=f$, значит 
+	$\,h^*(x_1,\ldots,x_n)=f^*(x_1,\ldots,x_n)=f(x_1,\ldots,x_n)=$\\$=h(x_1,\ldots,x_n) \Rightarrow h \in S.$
+\end{proof}

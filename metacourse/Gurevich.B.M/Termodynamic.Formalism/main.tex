@@ -1,0 +1,53 @@
+\documentclass[10pt]{article}
+\usepackage{dmvn}
+\usepackage{polyglossia}
+\usepackage{unicode-math}
+\usepackage{fontspec}
+\usepackage{makeidx}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+\usepackage{stackrel}
+\defaultfontfeatures{Scale=MatchLowercase, Mapping=tex-text}
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+\setmathfont{Asana-Math.otf} %% I had to make decision. I dit it.
+\newcommand{\type}[2]{\ensuremath{\colon\!#1→#2}}
+\newcommand{\inline}[1]{{\setmainfont{URW Chancery L} (#1)}}
+\newcommand{\inv}[1]{{\frac{1}{#1}}}
+
+
+\begin{document}
+\dmvntitle{Курс естествнно-научного содержания}
+{«Термодинамический формализм»}
+{Лектор -- Гуревич Борис Маркович}
+{IV(V) курс, 7(9) семестр, поток математиков, ЕНС}
+{Москва, 2012г}
+\section*{Dead letter mail}
+
+%% Структуризация оставляет желать лучшего. Пока реализовано на глазок
+%% наборщика. И, ещё. Я даю себе отчет, что Asana-Math выглядит
+%% непривычно, но этот шрифт поддерживает юникод значительно лучше.
+%% Надеюсь, вам не придется переверстывать это под другой матшрифт,
+%% ибо местами я вставлял пробелы руками из-за специфики шрифта.
+
+Для удобства изучения материал разбит в соотвествии с пунктами программы.
+
+
+\input{program}
+\input{part1}
+\input{part2}
+\input{part3}
+\input{part4}
+\input{part5}
+\input{part6}
+\input{part7}
+\input{part8}
+\input{part9}
+\input{part10}
+\tableofcontents
+\end{document}
+
+%% Local Variables:
+%% compile-command: "xelatex -halt-on-error -file-line-error main.tex"
+%% End:

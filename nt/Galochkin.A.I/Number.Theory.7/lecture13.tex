@@ -1,0 +1,145 @@
+
+\begin{theorem}[обобщение теоремы Лиувилля]
+$\alpha_1, ..., \alpha_m \in \mathbb{A}, \kappa_j = \deg\alpha_j$\\
+Тогда $\forall A(x_1,...,x_m) \in \mathbb{Z}[x_1,...,x_m]$:\\
+1) Или $A(\alpha_1, ... , \alpha_m) = 0$\\
+2) Или $\exists C = C(\alpha_1, ..., \alpha_m)$:\\
+$| A(\alpha_1,...,\alpha_m) | > C^{-d} \cdot L^{1 - \kappa_1...\kappa_m)}$\\
+Что это такое?\\
+$A(x_1,...,x_m) = \sum\limits_{k_1,...,k_m, k_1 + ... + k_m \leqslant d} A_{k_1,...,k_m}\cdot x_1^{k_1} ... x_m^{k_m}$,\\
+$d = \deg A, L$~--- длина многочлена: $ L = \sum\limits_{k_1,...,k_m} | A_{k_1,...,k_m} |$
+\end{theorem}
+\begin{note}
+Почему это обобщение теоремы Лиувилля? В ней:\\ $ A(x) = qx - p, |q\alpha - p| > C^{-1} (q + |p|)^{1-n} (\geqslant) $\\
+Можно считать, что $|q\alpha - p| \leqslant q$ (в противном случае оценка очевидна)\\
+В данном случае $|p| \leqslant q(|\alpha| + 1) \Rightarrow$\\
+$(\geqslant) C^{-1} (|\alpha| + 1)^{1-n}q^{1-n}, C^{-1} (|\alpha| + 1)^{1-n} := C$
+\end{note}
+\begin{proof}
+\begin{stm}
+$\alpha_1,...,\alpha_m \in \mathbb{A} \Rightarrow \exists a\in\mathbb{N} : a(\alpha_1...\alpha_m) \in\mathbb{Z}_A$
+\end{stm}
+\begin{proof}
+Произведение алгебраических~--- алгебраическое, а мы видели, что алгебраическое число можно домножить на натуральное, чтобы оно стало целым алгебраическим.
+\end{proof}
+\begin{stm}
+$a^d A(\alpha_1,...,\alpha_m) \in \mathbb{Z}_A$
+\end{stm}
+\begin{proof}
+Достаточно доказать для каждого слагаемого.\\
+$\alpha_1,...\alpha_m \in \mathbb{A} \Rightarrow \exists a\in{N} : a\alpha_j \in \mathbb{Z}_A$\\
+$\forall \alpha_j \exists a_j \in \mathbb{N} : a_j\alpha_j \in\mathbb{Z}_A$\\
+$(a_1...a_m)\alpha_j = (a_j\alpha_j)\cdot a_1...\widehat{a_j}...a_m$
+$a^d A_{k_1,...,k_m} \alpha_1^{k_1}...\alpha_m^{k_m} = A_{k_1,...,k_m} (a\alpha_1)^{k_1}...(a\alpha_m)^{k_m}\cdot a^{d - k_1 - ... - k_m}$
+\end{proof}
+Обозначим $\alpha_j^{(e_j)} $~--- сопряженное к $\alpha_j$.
+\begin{stm}
+$| a^d A(\alpha_1^{(e_1)}...\alpha_m^{(e_m)}) | \leqslant C_1^d L$
+\end{stm}
+\begin{proof}
+$| a^d A_{k_1,...,k_m}( (\alpha_1^{(e_1)})^{k_1}...(\alpha_m^{(e_m)})^{k_m} ) | \leqslant 
+| A_{k_1,...,k_m} |\cdot a^d\cdot (\max\limits_{\substack{j = 1,...m;\\e_j = 1,...,\kappa_j}} (1,\alpha_j^{(e_j)} ) )^d =
+C_1^d | A_{k_1,...,k_m} |$
+\end{proof}
+\begin{stm}
+Рассмотрим многочлен:\\
+ $P(x) = \prod\limits_{e_1 = 1}^{\kappa_1}...\prod\limits_{e_m = 1}^{\kappa_m}(x - a^d A(\alpha_1^{(e_1)},...,\alpha_m^{(e_m)}) ) \in\mathbb{Q}[x]$
+\end{stm}
+\begin{proof}
+Симметрический многочлен. По лемме из первой лекции это многочлен с рациональными коэффициентами.
+\end{proof}
+Теперь рассмотрим число: \\
+$\beta = a^d A(\alpha_1,...,\alpha_m) \in \mathbb{Z}_A$\\
+$\beta_1 = \beta, \beta_2, ... , \beta_m$~--- сопряженные.\\
+Минимальный многочлен $B(x)|P(x) : B(x) = (x - \beta_1)\cdot ... \cdot (x - \beta_n) =$\\
+$ = x^n + b_{n-1}x^{n-1} + ... + b_0 \in\mathbb{Z}[x]$\\
+Рассмотрим $|b_0| = |\beta_1\cdot ... \cdot \beta_n| \Leftrightarrow \beta = 0 \Rightarrow$ утв 1 теоремы\\
+$1\leqslant |b_0| = |\beta_1|\cdot |\beta_2 ... \beta_n| \leqslant a^d |A(\alpha_1,...,\alpha_m)|\cdot (C_1^dL)^{n-1}$,
+$n \leqslant \kappa_1...\kappa_m$.\\
+Получим $| A(\alpha_1,...,\alpha_m) | > (ac_1^{n-1})^{-d}\cdot L^{1 - (\kappa_1 ... \kappa_m)}.$
+\end{proof}
+Придется конструировать некотороые вспомогательные функции. Будем делать с помощью принципа Дирихле.\\
+\textbf{Лемма Зиппеля (1921)}\\
+Рассматривается система однородных уравнений: $a_{ij}\in\mathbb{Z}$,\\$\max|a_{ij}| = A\in\mathbb{N}, p < q$.\\
+$$
+\begin{cases}
+a_{11}x_1 + ... + a_{1q}x_q = 0 \\
+\dots \\
+a_{p1}x_1 + ... + a_{pq}x_q = 0
+\end{cases}
+$$
+(Такая система имеет ненулевое решение, причем его можно найти в целых числах)
+Тогда $\exists x_1,...,x_q $~— решение, $x_j \in \mathbb{Z}:\\ 0 < \max|x_j| < 1 + (qA)^{\frac{p}{q-p}}$
+\begin{proof}
+С помощью приципа Дирихле рассматриваем:\\ $\mathbb{Z}^q \rightarrow \mathbb{Z}^p $\\
+$\overline{x} = (x_1,...,x_q) \rightarrow \overline{L}(\overline{x}) = \{L_1(\overline{x}),...,L_p(\overline{x}) \}$\\
+$L_j(\overline{x}) = a_{j1}x_1 + ... + a_{jq}x_q$\\
+Предположим, что $|x_j| \leqslant X \in \mathbb{N}$.
+
+$(x_1,...,x_q)$ может принимать $(2X + 1)^q $ значений, $ | L_j(\overline{x}) | \leqslant qXA $ \\
+Набор точек $(x_1,...,x_1) \rightarrow (L_1,...,L_p)$ не более $(2qAX + 1)^p$\\
+Если окажется, что $(2X + 1)^q > (2qAX + 1)^p$, то двум различным точкам соответствуют одинаковые наборы значений:\\
+$\exists \overline{x}^{(1)} \not = \overline{x}^{(2)} : \overline{L}(\overline{x}^{(1)}) = \overline{L}(\overline{x}^{(2)})$,
+$\overline{L}(\overline{x}^{(1)} - \overline{x}^{(2)}) = 0, | \overline{x}^{(1)} - \overline{x}^{(1)} | \leqslant 2x$.\\
+Осталось привести количественные оценки и выбрать $x$:\\
+$(2qAX + 1)^p \leqslant (qA)^p(2X + 1)^p$, хотим добиться: $ < (2X + 1)^q$\\
+$2X > (qA)^{\frac{p}{q-p}} - 1$. Если мы это обеспечим, то появятся те две точки $\Rightarrow$ можно добиться $2X \leqslant 1 +  (qA)^{\frac{p}{q-p}}$, а это и есть наше утверждение.
+\end{proof}
+
+\begin{theorem}[Линдеман, 1882]
+$\alpha \in \mathbb{A}, \alpha \not = 0 \Rightarrow e^{\alpha}$~— трансцендентно.
+\end{theorem}
+\begin{note} Есть обобщение теоремы:
+$\alpha_1,...,\alpha_m $~— различные алгебраические $\Rightarrow e^{\alpha_1}, ..., e^{\alpha_m}$~— линейно независимы над $\mathbb{A}$
+\end{note}
+Сегодня не будем доказывать, а приведем следствия.
+\begin{imp}
+$e$~— трансцендентно.
+\end{imp}
+\begin{imp}
+$\pi$~— трансцендентно.
+\end{imp}
+\begin{proof}
+Пусть $\pi$~— алгебраическое. $i$~— алгебраическое, т.к. это корень $x^2 + 1 = 0$, значит и $i\pi$~— алгебраическое, тогда $-1 = e^{i\pi}$~— трансцендентно. Противоречие.
+\end{proof}
+\begin{imp}
+$\forall a\not = 0, a \not = 1, a \in \mathbb{A} : \ln a $~— трансцендентно.
+\end{imp}
+\begin{proof}
+$\ln a$~— алгебраическое, тогда $e^{\ln a} = a$~— трансцендентное. Противоречие
+\end{proof}
+\begin{imp}
+$\alpha \in \mathbb{A}, \alpha \not = 0 \Rightarrow \sin\alpha , \cos\alpha ,$
+$ tg\alpha$ 
+~— трансцендентные.
+\end{imp}
+\begin{proof}
+Пусть $ \mathbb{A} \ni b = \frac{e^{i\alpha} - e^{-i\alpha}}{2i}$, получаем $e^{2i\alpha} - 2ibe^{i\alpha} - 1 = 0$,
+корень уравнения с алгебраическими коэффициэнтами есть алгебраическое число, значит $e^{i\alpha} \in \mathbb{A}$, но по теореме Линдемана $e^{\alpha}$~— трансцендентное $\Rightarrow e^{i\alpha}$~— трансцендентное. Противоречие.
+\end{proof}
+\begin{imp}\textbf{?}\\
+Все решения $\tan x = x$, кроме $0$, трансцендентны.
+\end{imp}
+
+\textbf{Квадратура круга.} По заданному кругу единичного радиуса требуется при помощи циркуля и линейки построить квадрат такой же площади. То есть, требуется по единичному отрезку построить отрезок длины $\sqrt{\pi}$.
+\begin{theorem}
+Квадратура круга неразрешима.
+\end{theorem}
+\begin{proof}
+Вобще, с помощью циркуля и линейки можно строить точки, прямые и окружности.
+\begin{df}
+Точку назовем алгебраической, если ее координаты~— алгебраические числа.\\
+Прямую назовем алгебраической, если она задается уравнением\\ $ax + by +c = 0; a,b,c \in \A$\\
+Окружность назовем алгебраической, если она задается уравнением\\ $(x - a)^2 + (y - b)^2 = R^2; a,b,R \in \A$
+\end{df}
+Какие действия можно с ними совершать?\\
+1) Провести прямую через две заданные точки.\\
+2) Найти точку пересечения двух прямых.\\
+3) Найти точки пересечения прямой с окружностью.\\
+4) Построить окружность с центром в данной точке и заданным радиусом.\\
+5) Найти точки пересечения двух окружностей.\\\\
+Действия с алгебраическими объектами приводят к алгебраическим объектам (т.к. характеристики новых объектов получаются решением уравнений с алгебраическими коэффициентами). Значит, используя эти пять действий требуемый отрезок построить невозможно.\\\\
+6) В произвольное место ставим точку циркуля и проводим окружность.\\\\
+Почему это не подходит? Потому что алгебраические объекты всюду плотны на плоскости, и мы просто не сможем различить алгебраические и трансцендетные объекты с помощью 1)-5).
+\end{proof}
+%\end{document} 

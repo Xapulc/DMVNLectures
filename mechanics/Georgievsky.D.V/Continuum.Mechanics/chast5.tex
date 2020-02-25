@@ -1,0 +1,132 @@
+\part*{ТЕОРИЯ ОПРЕДЕЛЯЮЩИХ СООТНОШЕНИЙ}
+\begin{question}
+Термодинамические потенциалы. Термодинамические независимые и
+зависимые пары. Понятие определяющих соотношений сплошной среды.
+Материальные функции.
+\end{question}
+
+1) Выпишем локальное уравнение энергии: $\rho\frac{du}{dt}=\rho
+q-\divergent{\vec q}+\sigma_{ij}v_{ij}$ и локальное уравнение
+энтропии: $\rho\frac{ds}{dt}\hm=\frac{1}{T}(\rho q-\divergent{\vec
+q}) $. Из них следует следующее равенство:
+$$
+\rho\frac{du}{dt}=\sigma_{ij}v_{ij}+T\rho \frac{ds}{dt}.
+$$
+
+Заметим, что $v_{ij}dt=d\varepsilon_{ij}$. Получим:
+$$
+\rho du=\sigma_{ij}d\varepsilon_{ij}+T\rho ds.
+$$
+
+Если задача не изотермическая, то
+$(\underItilde{\varepsilon},s)$~--- пара независимых
+термодинамических параметров. Через них можно выразить
+$(\underItilde{\sigma},T)$~--- зависимые параметры~--- следующим
+образом:
+$$
+\sigma_{ij}=\rho\frac{\partial u}{\partial \varepsilon_{ij}},
+$$
+$$
+T=\frac{\partial u}{\partial s}.
+$$
+
+2) Пара независимых параметров~--- $(\underItilde{\varepsilon},T)$.
+$f=f(\underItilde{\varepsilon},T)=u-sT$~--- удельная энергия
+Гельмгольца. Продифференцируем формулу. Получим: $\rho df=\rho
+du-\rho sdT-\rho Tds=\sigma_{ij}d\varepsilon_{ij}-\rho sdT$. Из
+этого равенства можно выразить зависимые параметры:
+$$
+\sigma_{ij}=\rho\frac{df}{d\varepsilon_{ij}},
+$$
+$$
+s=-\frac{\partial f}{\partial T}.
+$$
+
+3) Независимые параметры~--- $(\underItilde{\sigma},s)$. Удельная
+энергия Гиббса: $g\hm=g(\sigma,s),$ $\rho g\hm=\rho
+u-\sigma_{ij}\varepsilon_{ij}$. Продифференцируем равенство: $\rho
+dg\hm=\rho
+du\hm-\sigma_{ij}d\varepsilon_{ij}\hm-\varepsilon_{ij}d\sigma_{ij}$.
+
+Подставим из первого пункта: $T\rho ds=\rho
+du-\sigma_{ij}d\varepsilon_{ij}$. Получится:
+$$
+\rho dg=-\varepsilon_{ij}d\sigma_{ij}+T\rho ds.
+$$
+Отсюда можно выразить зависимые параметры:
+$\varepsilon_{ij}=-\rho\frac{\partial g}{\partial \sigma_{ij}}$,
+$T=\frac{\partial g}{\partial s}$.
+
+4) Независимые параметры~--- $(\underItilde{\sigma},T)$. Удельная
+энтропия: $h=h(\sigma,T)$, $\rho h=\rho
+u-\sigma_{ij}\varepsilon_{ij}-sT\rho$. Продифференцируем: $\rho
+dh=\rho
+du-\sigma_{ij}d\varepsilon_{ij}-\varepsilon_{ij}d\sigma_{ij}-\rho
+sdT-\rho Tds$.
+Из пункта 1) $\rho
+du-\sigma_{ij}d\varepsilon_{ij}-\rho Tds\hm=0$. Получается:
+$$
+\rho
+dh=-\varepsilon_{ij}d\sigma_{ij}-\rho sdT.
+$$
+Можно выразить зависимые параметры:
+$$
+\varepsilon_{ij}=-\rho\frac{\partial h}{\partial \sigma_{ij}},
+$$
+$$
+s=-\frac{dh}{dT}.
+$$
+
+
+\begin{question}
+Физически линейные и нелинейные среды. Принцип суперпозиции.
+\end{question}
+
+Отныне считаем $(\underItilde{\varepsilon},T)$ независимыми
+параметрами.
+
+Среда называется физически линейной, если в этой среде зависимость
+$\underItilde{\sigma}=\underItilde{\sigma}(\underItilde{\varepsilon},T)$
+является линейной. В такой среде выполняется принцип суперпозиции.
+
+\begin{question}
+Однородные и неоднородные среды. Композиты и их структурная
+классификация.
+\end{question}
+
+Среда называется однородной, если в выражение
+$$
+\underItilde{\sigma}=\underItilde{\sigma}(\underItilde{\varepsilon}
+(\vec x,t),T(\vec x,t),\vec x)
+$$
+явно не входят координаты.
+
+Неоднородность бывает непрерывная и разрывная
+(не\-пре\-рыв\-ность/раз\-рыв\-ность функции по координатам).
+Разрывно-неоднородные среды называются композитами.
+
+Композиты бывают слоистые, волокнистые и зернистые.
+
+\begin{question}
+Склерономные и реономные среды.
+\end{question}
+
+Реономные среды:
+$\underItilde{\sigma}\hm=\underItilde{\sigma}(\underItilde{\varepsilon}(\vec
+x,t),T(\vec x,t),t)$. Зависимость может быть интегральной,
+диф\-ферен\-ци\-альной~\ldots
+
+Склерономные:
+$\underItilde{\sigma}\hm=\underItilde{\sigma}(\underItilde{\varepsilon}(\vec
+x,t),T(\vec x,t))$~--- нет явной зависимости от времени.
+
+\begin{question}
+Упругие тела и вязкие жидкости.
+\end{question}
+
+Для упругого тела в любой момент времени независимыми параметрами
+являются $\underItilde{\varepsilon}$ и $T$ в этот же момент времени.
+
+Для вязкой жидкости в любой момент независимыми параметрами являются
+скорость тензора деформации и температура, то есть
+$\underItilde{\dot{\varepsilon}}$ и $T$ в этот момент.

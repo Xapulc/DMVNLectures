@@ -1,0 +1,2 @@
+all:
+	wr russian-and-speech-culture-holikov.rar "*.doc"

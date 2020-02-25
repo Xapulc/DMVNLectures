@@ -1,0 +1,107 @@
+\documentclass[a4paper]{article}
+\usepackage{dmvn}
+\newcommand{\xtrmail}{\texttt{sxtr@yandex.ru}}
+\newcommand{\xtrtrail}{%
+\par{\footnotesize\rightline{Последняя компиляция: \texttt{\сегодня~г}.}%
+\rightline{Обновления документа\т на сайте \dmvnwebsite.}%
+\rightline{Об опечатках и неточностях пишите на \xtrmail,
+\dmvnmail.}\par}}
+\newcommand{\vb}[1]{\mathbf{\overline{#1}}}
+\newcommand{\tdf}[1]{\textsl{#1}}
+\newcommand{\vv}{\vDash}
+\newcommand{\nv}{\nvDash}
+\newcommand{\il}{\vee}
+\newcommand{\ii}{\wedge}
+\newcommand{\vt}{\vdash}
+\newcommand{\nt}{\nvdash}
+\newcommand{\vcl}{\vdash_{CL}}
+\newcommand{\vil}{\vdash_{IL}}
+\newcommand{\ncl}{\nvdash_{CL}}
+\newcommand{\nil}{\nvdash_{IL}}
+\newcommand{\eql}[2]{\begin{equation}\label{#2}#1\end{equation}}
+
+
+\title{Задачи к экзамену (и их решения)\\ по курсу <<Логика~(ЕНС)>>}
+\author{Лектор\т Шехтман}
+\date{8 семестр, 2006 г.}
+
+\begin{document}
+\maketitle
+
+{\footnotesize Текст набран Сергеем Гладких.\par}
+
+
+\medskip
+\xtrtrail
+
+\begin{problem}
+Пусть $M$\т линейно упорядоченная модель Крипке. Требуется доказать,
+что \eql{M\vv(p\ra q)\il(q\ra p).}{pr1}
+\end{problem}
+\begin{proof}
+Нам нужно доказать, что для любого мира $u\in W$ либо $u\vv(p\ra
+q)$, либо $u\vv(q\ra p)$. Для этого достаточно доказать, что, как
+только для некоторого мира $v$ имеем $v\nv(p\ra q)$, будет выполнено
+$v\vv(q \ra p).$ Тот факт, что $v\nv(p\ra q)$ означает, что для
+некоторого мира $v_0\ge v$ выполняется $v_0\vv p$, но $v_0\nv q$.
+Но, из того что $v_0\vv p$ следует, что для любого мира $u\ge v_0$
+имеем $u\vv p$, а значит и $u\vv (q\ra p)$.  С другой стороны, это
+означает, что для в любом мире $u\le v_0$ $u\nv q$, откуда $u\vv
+(q\ra p)$. Из линейной упорядоченности следует, что это выполнено
+для любого мира (так как все они сравнимы).
+\end{proof}
+\begin{problem}
+Доказать, что \eql{\nil (p\ra q)\il(q\ra p).}{pr2}
+\end{problem}
+\begin{proof}
+Нужно построить модель, в которой эта формула не выводима. Следуя
+предшествующему доказательству, замечаем, что в модели должны быть
+несравнимые миры. Нам хватит трех (обозначим их $u_1,\ u_2,\ u_3$,
+причем последние два пусть будут несравнимы), таких что \equ{\left\{
+                  \begin{array}{ll}
+                    u_1\nv p, u_1\nv q, & u_1\le u_2,\ u_1\le u_3; \\
+                    u_2\nv p, u_2\vv q; \\
+                    u_3\vv p, u_3\nv q.
+                  \end{array}
+                \right.}
+Теперь уже ясно, что $u_1\nv (p\ra q)\il(q\ra p).$
+\end{proof}
+\begin{problem}
+Доказать, что \eql{\vil A\ra\neg\neg A.}{pr3}
+\end{problem}
+\begin{proof}
+Нам необходимо доказать, что, как только в некотором мире $u\vv A$,
+то $u\vv \neg\neg A$: из этого уже будет следовать, что $v\vv
+\neg\neg A$ для всех более поздних миров $v$, а значит и $u\vv
+\neg\neg A$. Так мы докажем выполнение требуемого тождества во всех
+мирах, где выводится $A$, из чего, очевидно, будет следовать его
+выполнимость во всех остальных мирах.
+
+Итак, пусть $u\vv A$. Тогда, как несложно заметить, $u\vv \neg A\ra
+\neg A$ (очевидно) и $u\vv \neg A\ra A$ (потому что $A$ там и так
+выводится). Остается воспользоваться 10й аксиомой: $(\neg A\ra
+A)\ra((\neg A \ra \neg A)\ra\neg\neg A).$
+\end{proof}
+\begin{problem}
+Доказать, что \eql{\nil \neg\neg A\ra A.}{pr4}
+\end{problem}
+\begin{proof}
+Нужно построить модель, в которой эта формула не выводима. Тут
+хватит одного мира $u$, в котором одновременно $u\nv \neg A$ (других
+миров нет, поэтому отсюда сразу получаем $u\vv \neg\neg A$) и $u\nv
+ A$.
+\end{proof}
+\begin{problem}[Теорема Гливенко]
+Доказать, что \eql{\vcl A\Ra\vil \neg\neg A.}{pr5}
+\end{problem}
+\begin{proof}
+Ясно, что \equ{\vcl A\Ra \vil((A\il \neg A)\ra A).} Это означает,
+что в любом мире $u$ любой модели $M$ имеем: \equ{u\vv(A\il\neg
+A)\ra A,} и во всех последующих мирах $v\ge u$ если $v\vv\neg A$, то
+$v\vv \neg(A\il \neg A).$ Но это невозможно, так как \equ{v\vv\neg
+A\ra(A \il\neg A).} Следовательно, во всех мирах $v\ge u$ получим
+$v\nv \neg A$, а это и означает, что $u\vv \neg\neg A.$
+\end{proof}
+
+
+\end{document}

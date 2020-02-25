@@ -1,0 +1,291 @@
+\part*{ПОСТУЛАТЫ МСС}
+\begin{question}
+Закон об изменении количества движения (интегральная и
+дифференциальная фор\-му\-ли\-ровки). Уравнения движения.
+\end{question}
+
+Интегральная формулировка закона такова:
+$$
+\frac{d}{dt}\int_V\rho\vec v dV=\int_V\rho\vec F
+dV+\int_{\Sigma}\vec P d\Sigma.
+$$
+
+Выведем из нее дифференциальную формулировку:
+$$\frac{d}{dt}\int_V\rho v_idV\hm=\int_V\rho\frac{dv_i}{dt}dV.$$
+Учтем еще равенство
+$\int_{\Sigma}P_id\Sigma\hm=\int_{\Sigma}\sigma_{ij}n_jd\Sigma\hm=\int_V\sigma_{ij,j}dV$.
+Получаем: $\int_V(\rho\frac{dv_i}{dt}\hm-\rho
+F_i\hm-\sigma_{ij,j})dV\hm=0$. Отсюда дифференциальная формулировка
+закона (уравнения движения):
+$$
+\sigma_{ij,j}+\rho F_i=\rho\frac{dv_i}{dt} .
+$$
+
+Или в векторной форме:
+$$
+\divergent\underItilde{\sigma}^T+\rho\vec F =\rho\frac{d\vec v}{dt}.
+$$
+
+\begin{question}
+Закон об изменении момента количества движения (интегральная и
+дифференциальная формулировки). Симметрия тензора напряжений.
+\end{question}
+
+Интегральная формулировка закона такова:
+$$\frac{d}{dt}\int_V\vec x\times\rho\vec v dV=\int_V\vec x\times\rho\vec F dV+\int_{\Sigma}\vec x\times\vec P d\Sigma
+$$
+
+Распишем все по координатам:
+$$\frac{d}{dt}\int_V\epsilon_{ijk}x_j\rho v_kdV=\int_V\epsilon_{ijk}x_j\rho F_kdV+\int_{\Sigma}\epsilon_{ijk}x_iP_kd\Sigma
+$$
+
+Преобразуем левую часть: $\frac{d}{dt}\int_V\epsilon_{ijk}x_j\rho
+v_kdV\hm=\int_V\epsilon_{ijk}\rho(x_j
+\frac{dv_k}{dt}+v_jv_k)dV\hm=\int_V\epsilon_{ijk}\rho x_j
+\frac{dv_k}{dt}+\epsilon_{ijk}\rho v_jv_kdV$. Второе слагаемое
+равно $0$, так как при суммировании по $j$ и $k$ возникнут
+слагаемые $v_jv_k$ и $-v_kv_j$. Итак,
+$$\frac{d}{dt}\int_V\epsilon_{ijk}x_j\rho
+v_kdV\hm=\int_V\epsilon_{ijk}\rho x_j \frac{dv_k}{dt}dV.$$
+
+Теперь преобразуем последний интеграл:
+\begin{equation*}
+\begin{split}
+\int_{\Sigma}\epsilon_{ijk}x_jP_kd\Sigma=\int_{\Sigma}\epsilon_{ijk}x_j\sigma_{km}n_md\Sigma=
+\int_V\epsilon_{ijk}(x_j\sigma_{km})_{,m}dV=\\
+=\int_V\epsilon_{ijk}(\delta_{jm}\sigma_{km}
++x_j\sigma_{km,m})dV\hm=\int_V\epsilon_{ijk}(\sigma_{kj}
++x_j\sigma_{km,m})dV.
+\end{split}
+\end{equation*}
+
+Соберем все вместе. Получится:
+$$
+\int_V\epsilon_{ijk}(\rho x_j \frac{dv_k}{dt}-x_j\rho
+F_k-\sigma_{kj} -x_j\sigma_{km,m})dV=0.
+$$
+
+Отсюда дифференциальная формулировка:
+$$
+\rho\frac{dv_k}{dt}-\rho F_k-\sigma_{km,m}=0.
+$$
+Также как следствие получаем $\epsilon_{ijk}\sigma_{kj}=0$. Это
+говорит, что тензор напряжений симметричен.
+
+\begin{question}
+Главные напряжения и главные площадки напряжений в точке.
+Максимальные ка\-са\-тель\-ные напряжения в точке.
+\end{question}
+
+Главными напряжениями называются собственные значения матрицы
+$\sigma_{ij}$. Их обозначают $\sigma_1$, $\sigma_2$, $\sigma_3$.
+
+\begin{itemize}
+\item[1)] $\sigma_1>\sigma_2>\sigma_3$. Существуют три различных
+собственных вектора и три ортогональных им главные площадки.
+\item[2)] $\sigma_1>\sigma_2=\sigma_3$. Существует двумерное множество
+собственных векторов и главных площадок.
+\item[3)] $\sigma_1=\sigma_2=\sigma_3$. Любая площадка является главной.
+\end{itemize}
+
+На главных площадках касательные напряжения минимальны. Максимальны
+касательные на\-пря\-же\-ния на площадках, которые делят пополам
+углы между собственными векторами.
+
+$n_1=0,$ $n_2=\frac{1}{\sqrt{2}},$ $n_3=-\frac{1}{\sqrt{2}}$.
+Тогда
+$\tau_{max1}^2\hm=\frac{1}{2}\sigma_2^2\hm+\frac{1}{2}\sigma_3^2\hm
+-(\frac{1}{2}\sigma_2+\frac{1}{2}\sigma_3)^2\hm=(\frac{1}{2}\sigma_2-\frac{1}{2}\sigma_3)^2$.
+Получилось $\tau_{max1}=\frac{1}{2}(\sigma_2-\sigma_3)$.
+
+Аналогично, $\tau_{max2}=\frac{1}{2}(\sigma_1-\sigma_3)$.
+$\tau_{max3}=\frac{1}{2}(\sigma_1-\sigma_2)$
+\begin{question}
+Круги Мора. Нормальное и касательное напряжения на октаэдрической
+площадке.
+\end{question}
+
+Известно, что $\tau_{max1}=\frac{1}{2}(\sigma_2-\sigma_3)$,
+$\tau_{max2}=\frac{1}{2}(\sigma_1-\sigma_3)$,
+$\tau_{max3}=\frac{1}{2}(\sigma_1-\sigma_2)$.
+
+\begin{wrapfigure}[8]{o}{110pt}
+\hbox to 110pt{\hss\begin{picture}(0,0)
+\put(15,0){$\sigma_1$}
+\put(50,0){$\sigma_2$}
+\put(105,0){$\sigma_3$}
+\put(15,60){$\tau_{max}$}
+\end{picture}
+\includegraphics[scale=1.]{moure_circles.eps}\hss}
+\end{wrapfigure}
+
+Глобальным максимумом будет $\tau_{max2}$. Проще всего показать
+это с помощью кругов Мора: на оси $\sigma$ отмечаются числа
+$\sigma_1$, $\sigma_2$, $\sigma_3$ и на каждой паре точек как на
+диаметре строится круг. Высшие точки этих кругов показывают
+$\tau_{max}$.
+
+\underline{Октаэдрическая площадка}
+$n_1=n_2=n_3=\frac{1}{\sqrt{3}}.$
+$N\hm=\frac{1}{3}(\sigma_1\hm+\sigma_2\hm+\sigma_3)\hm=\sigma\hm=-p$~--- среднее
+гидростатическое напряжение.
+$$\tau=\sqrt{\frac{1}{3}(\sigma_1^2+\sigma_2^2+\sigma_3^2)-\frac{1}{9}(\sigma_1+\sigma_2+\sigma_3)^2}\hm=
+c\sqrt{\tau_{max1}+\tau_{max2}+\tau_{max3}}$$
+
+\begin{question}
+Теорема об энергии (теорема живых сил).
+\end{question}
+
+Запишем закон сохранения импульса в дифференциальной
+форме: $\sigma_{ij,j}\hm+\rho F_i\hm=\rho\frac{dv_i}{dt} $. Домножим обе
+части на $v_i$ и возьмем интеграл:
+$\int_V\rho\frac{dv_i}{dt}v_i\hm=\int_V\rho
+F_iv_i\hm+\int_V\sigma_{ij,j}v_idV\hm=0$. Преобразуем первую и
+последнюю часть по отдельности.
+
+$$\int_V\rho\frac{dv_i}{dt}v_idV=\frac{1}{2}\frac{d}{dt}\int_V\rho|\vec v|^2dV=\frac{dK}{dt},$$
+где $K\hm=\frac{1}{2}\int_V\rho|\vec v|^2dV$.
+
+$$\int_V\sigma_{ij,j}v_idV=\int_V(\sigma_{ij}v_i)_{,j}dV-\int_V\sigma_{ij}v_{i,j}dV=\int_\Sigma\sigma_{ij}v_in_jd\Sigma-\int_V\sigma_{ij}v_{i,j}dV$$
+
+Получим следующее равенство (теорема живых сил):
+$$dK=\delta A_1^{(e)}+\delta A_2^{(e)}+\delta A^{(i)},$$
+где $\delta A_1^{(e)}=dt\int_V\rho F_i,$ $\delta
+A_2^{(e)}=dt\int_\Sigma\sigma_{ij}v_in_jd\Sigma,$ и $\delta
+A^{(i)}=-dt\int_V\sigma_{ij}v_{i,j}dV$
+
+Теорема живых сил постулатом не является, но очень похожа, потому
+будем ее называть постулатом номер четыре.
+
+\begin{question}
+Единая интегральная форма записи законов сохранения физических
+величин. Изменение, источник, поток и производство величины.
+Дифференциальные следствия для удельных величин.
+\end{question}
+
+Все законы сохранения выглядят следующим образом:
+$$\frac{d}{dt}\int_V\rho\cdot a dV=\int_V \rho AdV+\int_{\Sigma}\vec B\cdot\vec n d\Sigma+\int_VCdV $$
+
+$\frac{d}{dt}\int_V\rho\cdot a dV$~--- изменение величины $a(\vec
+x,t)$.
+
+$\int_V \rho AdV$~--- массовые источники величины $a$.
+
+$\int_{\Sigma}\vec B\cdot\vec n d\Sigma$~--- поток величины $a$
+через поверхность.
+
+$\int_VCdV $~--- производство величины $a$.
+
+Распишем это для всех законов:
+
+\longgapson
+
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+  & a & A & $B\cdot\vec n$ & C \\
+\hline
+I & $1$ & $0$ & $0$ & $0$ \\
+\hline
+II & $\vec v$ & $\vec F$ & $\vec P$ & $0$ \\
+\hline
+III & $\vec x\times\vec v$ & $\vec x\times\vec F$ & $\vec x\times\vec P$ & $0$ \\
+\hline
+IV & $\frac{|v|^2}{2}$ & $\vec F\cdot\vec v$ & $\vec P\cdot\vec v$ & $-\underItilde{\sigma}:\underItilde{v}$ \\
+\hline
+V & $u+\frac{|v|^2}{2}$ & $\vec F\cdot\vec v+q$ & $\vec P\cdot\vec v-\vec q\vec n$ & $0$ \\[6pt]
+\hline
+VI & $s$ & $\cfrac{q}{T}$ & $-\cfrac{q_in_i}{T}$ & $-\cfrac{q_iT_{,i}}{T^2}$ \\[6pt]
+\hline
+\end{tabular}%
+\longgapsoff
+
+Дифференциальными следствиями являются:
+
+$3$ закона (постулата) МСС $\frac{d\rho}{dt}+\rho\divergent{\vec
+v}=0$, $ \rho\frac{d\vec v}{dt}=\Div\underItilde{\sigma}^T+\rho\vec
+F$, $\underItilde{\sigma}=\underItilde{\sigma}^T$;
+
+ локальные уравнения
+энергии и энтропии $\rho\frac{du}{dt}=\rho q-\divergent{\vec
+q}+\sigma_{ij}v_{ij}$,
+$\rho\frac{ds}{dt}\hm=\frac{1}{T}(\rho q-\divergent{\vec q})$.
+
+\begin{question}
+Неизотермические процессы. Первый закон тер\-мо\-дина\-мики
+(интегральная и диф\-фе\-рен\-циальная формулировки). Локальное
+уравнение энергии.
+\end{question}
+
+Изотермические процессы~--- процессы, которые происходят при
+постоянной температуре.
+
+Пусть $u(\vec x,t)$~--- удельная внутренняя энергия, $U=\int_V\rho
+udV$~--- внутренняя энергия, $q(\vec x,t)$~--- мощность массовых
+источников тепла (например, экзотермическая химическая реакция).
+Пусть $\vec q$~--- вектор потока тепла.
+
+Имеет место следующее равенство (первый закон термодинамики):
+$$
+\frac{d}{dt}\int_V \rho \left(u+\frac{|\vec v|^2}{2}\right)dV=
+\int_V\rho\left(\vec F\cdot\vec v+q\right)dV+\int_{\Sigma}
+\left(\vec P\cdot\vec v-\vec q\vec n\right)d\Sigma.
+$$
+
+Его можно переписать в следующем виде:
+$$
+dK+dU=\delta
+A_1^{(e)}+\delta A_2^{(e)}+\delta Q,
+$$
+ где $\delta Q=dt(\int_V\rho qdV-\int_{\Sigma}\vec q\cdot\vec
+ nd\Sigma)$.
+
+Вычтем из этого равенства равенство из теоремы живых сил. Получим
+$$
+\delta U=\delta Q-\delta A^{(i)}.
+$$
+Распишем это равенство: $\frac{d}{dt}\int_V\rho
+udV=\int_V(\rho q-\divergent{\vec
+q})dV+\int_V\underItilde{\sigma}:\underItilde{v}dV,$ откуда
+вытекает равенство, называемое локальным уравнением энергии:
+$$
+\rho\frac{du}{dt}=\rho q-\divergent{\vec q}+\sigma_{ij}v_{ij}.
+$$
+
+\begin{question}
+Второй закон термодинамики (интегральная и дифференциальная
+формулировки). Локальное уравнение энтропии.
+\end{question}
+
+Обозначим за $s(\vec x,t)$ удельную энтропию.
+
+Интегральная формулировка закона:
+$$
+\frac{d}{dt}\int_V \rho sdV=\int_V\frac{\rho
+q}{T}dV-\int_{\Sigma}\frac{q_in_i}{T}d\Sigma-\int_V\frac{q_iT_{,i}}{T^2}dV.
+$$
+Распишем ее: $\int_V\rho\frac{ds}{dt}dV\hm=\int_V\frac{\rho
+q}{T}dV\hm-\int_V(\frac{q_i}{T})_{,i}dV-\int_V\frac{q_iT_{,i}}{T^2}dV.$
+Объединим два последних интеграла. Получится
+$\int_V\rho\frac{ds}{dt}dV\hm=\int_V\frac{1}{T}(\rho
+q-\divergent{\vec q})dV.$ Отсюда следует дифференциальная
+формулировка(локальное уравнение энтропии):
+$$
+\rho\frac{ds}{dt}\hm=\frac{1}{T}(\rho q-\divergent{\vec q}).
+$$
+
+\begin{question} Производство энтропии. Неравенство Клаузиуса.
+Закон теплопроводности Фурье. Тензор теплопроводности.
+\end{question}
+
+Закон теплопроводности Фурье состоит в следующем:
+$$
+\vec q=-\underItilde{\Lambda}\cdot\grad T,
+$$
+где $\underItilde{\Lambda}$~--- тензор теплопроводности.
+
+Производством энтропии называется следующая величина:
+$$
+-\int_V\frac{q_iT_{,i}}{T^2}dV=\int_V\frac{\Lambda_{ij}T_{,i}T_{,j}}{T^2}dV.
+$$
+Неравенство Клаузиуса состоит в том, что в изолированной системе
+производство энтропии не\-отри\-ца\-тельно.

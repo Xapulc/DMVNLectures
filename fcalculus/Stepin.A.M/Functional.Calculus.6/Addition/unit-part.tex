@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\newcommand{\supp}{supp\,}
+
+\begin{document}
+{\bf Теорема.}
+\textit{Пусть имеется открытое множество $\Omega\subset\mathbb{R}^n$ и его открытое покрытие
+$\Omega\subset\bigcup\limits_{\alpha} U_{\alpha}$. Тогда найдутся функции $\psi_i$ ($i=1,2,\dots$), такие что
+\begin{enumerate}
+\item $\forall\,i\;\exists\,\alpha\; \supp\psi_i\subset U_{\alpha};$
+\item $0\le\psi_i\le1\;\forall\,i;$
+\item $\sum\limits_{i=1}^{\infty} \psi_i=1$ на $\Omega;$
+\item для любого компакта $K\subset\Omega$ найдётся окрестность $U$ этого компакта ($K\subset U\subset\Omega$)
+и число $m\in\mathbb{N}$, для которых $\psi_1+\dots+\psi_m\equiv1$ на множестве $U$.
+\end{enumerate}
+}
+
+{\bf Доказательство.} Рассмотрим все замкнутые шары с рациональными радиусами и с центрами в рациональных точках,
+содержащиеся в $\Omega\cap U_{\alpha}$ для некоторого $\alpha$. Таких шаров не более чем счётное множество. Кроме
+того, их количество не может быть конечным. В самом деле, если $x\in\Omega$, то $x$ лежит в некотором
+$U_{\alpha}$, и для некоторого $\varepsilon>0$ $\varepsilon$-окрестность точки $x$ целиком лежит в открытом
+множестве $\Omega\cap U_{\alpha}$. Возьмём рациональную точку $y\in U_{\varepsilon/2}(x)$ (такая всегда есть).
+Тогда $\forall\,r<\varepsilon/2\;\overline{U_r(y)}\subset U_{\varepsilon}(x)\subset\Omega\cap U_{\alpha}$, так как
+$r+\rho(x,y)<\varepsilon/2+\varepsilon/2=\varepsilon$. Но рациональных чисел, меньших $\varepsilon/2$, бесконечно
+много, и все замкнутые шары с такими радиусами с центрами в рациональной точке $y$ лежат в $\Omega\cap
+U_{\alpha}$. Значит, таких шаров бесконечно много, то есть они образуют счётное множество, и мы можем их
+обозначить $B_i$, $i=1,2,\dots$.
+
+Теперь обозначим через $V_i$ открытый шар, концентрический $B_i$, но с вдвое меньшим радиусом. Утверждается, что
+$\bigcup\limits_{i=1}^{\infty} V_i=\Omega$. Действительно, $V_i\subset B_i\subset\Omega$, поэтому включение
+"$\subset$" очевидно. Докажем обратное включение. Возьмём точку $x\in\Omega$. Тогда $x$ лежит в некотором
+$U_{\alpha}$. Так как $\Omega\cap U_{\alpha}$ открыто, то $\exists\,r>0\;U_r(x)\subset\Omega\cap U_{\alpha}$.
+Рассмотрим такую рациональную точку $y$, что $\rho(x,y)<r/3$, и рациональное число $q\in(\rho(x,y);\,r/3)$. Тогда
+шар $U_q(y)$ содержит точку $x$, поскольку $\rho(x,y)<q$. Кроме того, $\rho(x,y)+2q<r/3+2r/3=r$, откуда
+$\overline{U_{2q}(y)}\subset U_r(x)\subset\Omega\cap U_{\alpha}$. Значит, $\exists\,i\;\overline{U_{2q}(y)}=B_i$,
+так как $2q\in\mathbb{Q}$, а $y$ - рациональная точка. Поэтому $V_i=U_q(y)\ni x$, то есть
+$x\in\bigcup\limits_{i=1}^{\infty} V_i$. Последнее верно для любой точки $x\in\Omega$. Мы доказали включение
+"$\supset$". Итак, $\bigcup\limits_{i=1}^{\infty} V_i=\Omega$.
+
+Теперь для каждого $i$ введём функцию $\varphi_i$ на множестве $\mathbb{R}^n$ такую, что $0\le\varphi_i\le1$, вне
+$B_i\,$ $\,\varphi_i\equiv0$, а на $\overline{V_i}\,$ $\,\varphi_i\equiv1$. Положим по определению
+$$\psi_n:=\bigl(\prod\limits_{i=1}^{n-1} (1-\varphi_i)\bigr)\varphi_n=$$
+$$=\prod\limits_{i=1}^{n-1} (1-\varphi_i)-\prod\limits_{i=1}^n (1-\varphi_i).$$
+
+Тогда
+$$
+  \sum\limits_{k=1}^n \psi_k=
+  \sum\limits_{k=1}^n \bigl(\prod\limits_{i=1}^{k-1} (1-\varphi_i)-\prod\limits_{i=1}^k (1-\varphi_i)\bigr)=
+$$
+$$
+  =\prod\limits_{i=1}^0 (1-\varphi_i)-\prod\limits_{i=1}^n (1-\varphi_i)=1-\prod\limits_{i=1}^n (1-\varphi_i).
+$$
+
+Поскольку все функции $\varphi_i$ заключены между $0$ и $1$, то там же заключены и $1-\varphi_i$, а значит, и все
+функции $\psi_n=\bigl(\prod\limits_{i=1}^{n-1} (1-\varphi_i)\bigr)\varphi_n$. Тем самым 2-е условие для набора
+функций $\psi_i$ выполнено.
+
+Для всякого $n$ вне шара $B_n$ равна нулю функция $\varphi_n$ а значит, и функция
+$\psi_n=\bigl(\prod\limits_{i=1}^{n-1} (1-\varphi_i)\bigr)\varphi_n$ ~--- тоже. Поскольку шар $B_n$ замкнут, то он
+содержит носитель функции $\psi_n$, а так как этот шар содержится в некотором $U_{\alpha}$, то $\supp\psi_n\subset
+B_n\subset U_{\alpha}$, что обеспечивает нам выполнение 1-го условия.
+
+Если $x\in\Omega$, то $\exists\,k\;x\in V_k$, и при $n\ge k$
+$$
+  \sum\limits_{i=1}^n \psi_i(x)=1-\prod\limits_{i=1}^n (1-\varphi_i(x))=1,
+$$
+так как в произведение входит множитель, соответствующий $i=k$, а именно, $1-\varphi_k(x)$, который равен нулю,
+ибо $x\in V_k$ и $\varphi_k(x)=1$. Следовательно, всё произведение равно нулю, а $\sum\limits_{i=1}^n
+\psi_i(x)=1$. Если рассмотреть числовой ряд $\sum\limits_{i=1}^{\infty} \psi_i(x)$, то все его частичные суммы,
+начиная с $k$-й, равны $1$. Таким образом, 3-е условие также имеет место ~--- функциональный ряд
+$\sum\limits_{i=1}^{\infty} \psi_i$ поточечно сходится к тождественной единице на множестве $\Omega$.
+
+Рассмотрим теперь компакт $K\subset\Omega=\bigcup\limits_{i=1}^{\infty} V_i$. Здесь построено открытое покрытие
+этого компакта, значит, из него можно выбрать конечное подпокрытие, причём можно считать, что оно состоит из
+нескольких первых множеств набора $V_i$: $K\subset U$, где $U:=\bigcup\limits_{i=1}^m V_i$. Тогда если $x\in U$,
+то $x\in V_k$ для некоторого $k\in\{1,\dots,m\}$, $\varphi_k(x)=1$, $1-\varphi_k(x)=0$, $$\sum\limits_{i=1}^m
+\psi_i(x)=1-\prod\limits_{i=1}^m (1-\varphi_i(x))=1.$$ То есть $\sum\limits_{i=1}^m \psi_i\equiv1$ на всём $U$,
+поэтому функции $\psi_i$ удовлетворяют и 4-му условию. То, что $U\subset\Omega$, следует из того, что $\Omega$
+есть объединение
+\textit{всех} множеств $V_i$, $i\in\mathbb{N}$, а $U$ ~--- объединение конечного набора $V_i$ (не
+по всем $i$, а только по $i\le m$).
+
+Итак, построенные нами функции $\psi_i$ ~--- как раз искомые. $\square$
+
+\end{document}

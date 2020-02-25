@@ -1,0 +1,5 @@
+add_subdirectory(Algebra.3)
+add_subdirectory(EP.Lie.Groups.S)
+add_subdirectory(EP.Linear.Algebra.2)
+add_subdirectory(EP.Reflection.Groups)
+add_subdirectory(EP.Symmetric.Spaces.S)

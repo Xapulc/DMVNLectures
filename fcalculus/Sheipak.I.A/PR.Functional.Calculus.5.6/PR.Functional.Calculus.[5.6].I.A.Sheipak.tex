@@ -1,0 +1,267 @@
+\documentclass[a4paper]{article}
+%\usepackage[utf8]{inputenc}
+%\usepackage[russian]{babel}
+\usepackage[thmnormal,simple,noutf]{dmvn}
+
+\title{Задачи с зачётов по функциональному анализу}
+\author{Преподаватель Игорь Анатольевич Шейпак}
+\date{5--6 семестр, 2004--2005~г.}
+
+\begin{document}
+\maketitle
+
+\centerline{\footnotesize Помните, что данная коллекция ни к коей мере не претендует на полноту!}
+
+\section{V семестр}
+
+\subsection{Контрольная работа №1}
+
+\subsection{Вариант 1}
+\setcounter{problem}{0}
+\begin{problem}
+Найти норму оператора $A\cln  L_2[0,1] \ra L_2[0,1]$:
+\eqn{A f(x) = x^2 \intl{0}{1}f(t)\,dt.}
+\end{problem}
+
+\begin{problem}
+Найти норму функционала в пространстве $\Cb[0,1]$:
+\eqn{f(x) = \liml{n\ra\bes}\intl{0}{1} x(t^n)\,dt.}
+\end{problem}
+
+\begin{problem}
+Найти норму функционала в пространстве $\ell_1$:
+\eqn{f(x)= \suml{k=1}{\bes}\frac{k x_k}{k^2+10}.}
+\end{problem}
+
+\begin{problem}
+Является ли множество $\hc{\sin(t^2+n) \vl n \in \N}$ предкомпактом в $\Cb[0,1]$?
+\end{problem}
+
+\begin{problem}
+Доказать, что пространство $\ell_3$ не гильбертово.
+\end{problem}
+
+\subsubsection{Вариант 2}
+
+\setcounter{problem}{0}
+\begin{problem}
+Найти норму оператора $A\cln \Cb[0,1]\ra \Cb[0,1]$:
+\eqn{Ax(t) = \frac{1}{n+1} \suml{k=1}{n+1}t^k x(t_k), \quad  t_k \in [0,1].}
+\end{problem}
+
+\begin{problem}
+Найти норму функционала в пространстве $L_2[0,1]$:
+\eqn{f(x) = \intl{0}{1} x(t) \sin t \,dt.}
+\end{problem}
+
+\begin{problem}
+Найти норму функционала в пространстве $\ell_1$:
+\eqn{f(x)= \suml{k=1}{\bes}\sin\hr{\frac{1}{\sqrt k}} x_k.}
+\end{problem}
+
+\begin{problem}
+Является ли множество предкомпактом в $\ell_3$:
+\eqn{M = \hc{x \in \ell_3 \vl \suml{k=1}{\bes} k^2 |x_k|^3 \le 1}.}
+\end{problem}
+
+\begin{problem}
+Доказать, что пространство $c$ не гильбертово.
+\end{problem}
+
+\subsection{Контрольная работа №2}
+
+\subsubsection{Вариант 1}
+\setcounter{problem}{0}
+\begin{problem}
+При всех значениях параметров $\la$ и $b$ решить уравнение в $\Cb[0,1]$:
+\eqn{f(x) - 10 \la x^2\intl{0}{1}t^2f(t)\,dt = 2x + bx^2.}
+\end{problem}
+\begin{problem}
+Найти спектр оператора в пространстве $L_2[-\pi,\pi]$:
+\eqn{A f(x) = \intl{-\pi}{\pi} \sums{n \in \Z} 2^{-|n|} e^{inx} e^{-int} f(t)\,dt.}
+\end{problem}
+\begin{problem}
+Решить уравнение в $L_2[0,1]$:
+\eqn{f(x) - \la \intl{0}{1}\min(x,t) f(t)\,dt = \cos\hr{\frac\pi2 x}.}
+\end{problem}
+
+\subsubsection{Вариант 2}
+\setcounter{problem}{0}
+\label{fa.second}
+\begin{problem}
+При всех значениях параметров $\la$ и $b$ решить уравнение в $\Cb[0,1]$:
+\eqn{f(x) - 5\la x^2\intl{0}{1}t^2f(t)\,dt = 4x + bx^2.}
+\end{problem}
+\begin{answer}
+\eqn{f(x) = \case{\frac{5\la+b}{1-\la}x^2+4x, & \la \neq 1;\\px^2+4x, \text{ где } p \in \Cbb, &
+\la=1, b=-5;\\\es, & \la = 1, b \neq -5.}}
+\end{answer}
+
+\begin{problem}
+Найти спектр оператора в пространстве $L_2[0,\pi]$:
+\eqn{A f(x) = \intl{0}{\pi} \suml{n=0}{\infty}\frac{1}{3^n}\cos(n x)\cos(nt)f(t)\,dt.}
+\end{problem}
+\begin{answer}
+Собственные значения: $\si_p(A) = \hc{\frac\pi2\cdot \frac{1}{3^n}}$, непрерывный спектр точка $\la = 0$.
+\end{answer}
+\begin{problem}\label{fa.second.third}
+Решить уравнение в $L_2[0,1]$:
+\eqn{f(x) - \la \intl{0}{1}K(x,t) f(t)\,dt = \cos\hr{2\pi x}, \quad K(x,t)  = \case{(x+1)t, & x \le t; \\ (t+1)x, & t \le x.}}
+\end{problem}
+
+
+\subsubsection{Вариант 3}
+\setcounter{problem}{0}
+\begin{problem}
+При всех значениях параметров $\la$ и $a$ решить уравнение в $\Cb[0,1]$:
+\eqn{f(x) - 6\la x\intl{0}{1}t f(t)\,dt = ax + 2x^2.}
+\end{problem}
+
+\begin{problem}
+Найти спектр оператора в пространстве $L_2[0,\pi]$:
+\eqn{A f(x) = \intl01 \min\hc{x,t} f(t)\,dt.}
+\end{problem}
+
+\begin{problem}
+Совпадает с задачей~\ref{fa.second.third} из~\ref{fa.second}.
+\end{problem}
+
+\subsection{Отдельные задачи}
+
+\setcounter{problem}{0}
+
+\subsubsection{Предкомпактность эллипсоидов в $\ell_p$}
+
+\begin{problem}
+Предкомпактно ли множество $\hc{x \in \ell_2 \vl \sum k^2|x_k|^4 \le 1}$?
+\end{problem}
+
+\begin{problem}
+Предкомпактно ли множество $\hc{x \in \ell_3 \vl \sum k|x_k|^5 \le 1}$?
+\end{problem}
+
+\subsubsection{Спектры}
+
+\begin{problem}
+Найти точечный спектр оператора в пространстве $L_2[0,1]$:
+\eqn{A f(x) = \frac{1}{x} \intl{0}{x} f(t)\,dt.}
+\end{problem}
+\begin{hint}
+Тут нужно вспомнить, что в $L_2$ лежат те функции, которые интегрируются в квадрате. Поэтому
+семейство точек $\la$, которое получится после решения дифференциального уравнения, нужно
+<<уменьшить>>, наложив условие $\Rea\hr{\frac{\la-1}{\la}} < \frac12$.
+\end{hint}
+\begin{answer}
+$\si_p(A) = \hc{\la =x+iy \vl (x-1)^2+y^2 < 1}$ окружность радиуса $1$ с центром с точке $(1,0)$.
+\end{answer}
+
+\begin{problem}
+Найти спектр оператора в пространстве $L_2[0,1]$:
+\eqn{A f(x) = \intl{0}{1} \min(x,t) f(t)\,dt.}
+\end{problem}
+
+\begin{problem}
+Найти спектр и резольвенту оператора в пространствах $L_2[0,1]$ и $\Cb[0,1]$:
+\eqn{A f(x)= f(1-x).}
+\end{problem}
+
+\section{VI семестр}
+
+\subsection{Контрольная (один из вариантов)}
+
+\begin{problem}
+Найти обобщённую производную функции $f(x) = |\sin (\pi x)|$.
+\end{problem}
+
+\begin{problem}
+С помощью преобразования Фурье решить уравнение в обобщённых функциях:
+\eqn{-y''+y = i\de(x).}
+\end{problem}
+
+\begin{problem}
+Решить уравнение в обобщённых функциях:
+\eqn{x y(x) = \cos x.}
+\end{problem}
+
+\begin{problem}
+Найти преобразование Фурье функции
+\eqn{f(x) = \frac12\br{\de(x-h)+ \de(x+h)}.}
+\end{problem}
+
+\subsection{Отдельные задачи}
+\setcounter{problem}{0}
+
+\begin{problem}
+Найти обобщённую производную функции $f(x) = |\cos (\pi x)|$.
+\end{problem}
+
+\begin{problem}
+С помощью преобразования Фурье решить уравнение в обобщённых функциях:
+\eqn{y'-y = \de(x).}
+\end{problem}
+
+
+\begin{problem}
+Решить уравнение в обобщённых функциях:
+\eqn{x y'(x) = \Pc \frac1x.}
+\end{problem}
+
+\begin{problem}
+Найти преобразование Фурье функции
+\eqn{f(x) = |x|.}
+\end{problem}
+
+
+\begin{problem}
+Найти преобразование Фурье функции
+\eqn{f(x) = \ln X_+(x).}
+\end{problem}
+
+\begin{problem}
+Найти преобразование Фурье функции
+\eqn{f(x) = X^{2k}\cdot \sgn x.}
+\end{problem}
+
+\begin{problem}
+Найти спектр оператора в $L_2(\R)$:
+\eqn{f(x) = \ints{\R}e^{\frac{(x-t)^2}2} f(t)\,dt.}
+\end{problem}
+
+\begin{problem}
+Доказать, что интегральное уравнение Абеля
+\eqn{g(x) = \frac{1}{\Ga(1-\al)}\intl0x \frac{f(t)\,dt}{(x-t)^\al}}
+с известной функцией $g(x)$ имеет решение
+\eqn{f(x) = \frac{1}{\Ga(\al)}\intl0x \frac{g'(t)\,dt}{(x-t)^{1-\al}}.}
+\end{problem}
+
+\begin{problem}[Обобщенная формула Сохоцкого]
+Есть обобщенная функция $(x \pm i0)^{\la}$, где $\la\in(-1,0)$.
+Надо доказать, что она равна $C_1X_{+}+C_2X_{-}$. Найти эти самые $C_1, C_2$.
+\end{problem}
+\begin{hint}
+Доказывается например так: разбивается интеграл на два по положительной и отрицательной полуосям.
+Потом из обоих делается интеграл по положительной полуоси. Ну и там можно сразу переходить к пределу.
+В одном так и будет единица, а в другом выпрыгнет $(-1)^{\lambda}$.
+\end{hint}
+
+\begin{problem}
+Есть оператор $I(\al) f= \frac{1}{\Ga(\al)} f*X_+^\al$. Тогда $I(\be)\circ I(\al) = I(\al+\be)$ для $f\in \Dc'_+$.
+\end{problem}
+\begin{hint}
+Вся шутка в том, что для функций, у которых носитель лежит на положительной полуоси, есть ассоциативность
+свертки (это, кстати, тоже задача с зачёта). Остаётся доказать, что
+\eqn{\frac1{\Ga(\al)\Ga(\be)}X_+^\al*X_+^\be=\frac{1}{\Ga(\al+\be)}X_+^{\al+\be}.} Ну а там просто выпрыгнет бета-функция.
+\end{hint}
+
+\begin{problem}
+Найти спектр оператора в $L_2(R)$: $\Ac f(x) = f''(x)+x^2 f(x)$.
+\end{problem}
+
+\begin{problem}
+Доказать, что обобщённая функция из $\Dc'$, у которой носитель точка $0$, есть линейная комбинация $\de$
+функции и её производных.
+\end{problem}
+
+\medskip
+\dmvntrail
+\end{document}

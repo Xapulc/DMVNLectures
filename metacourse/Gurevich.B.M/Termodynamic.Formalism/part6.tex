@@ -1,0 +1,69 @@
+Рассмотрим более общий случай (последовательность Фельмера).
+\begin{df}
+  Пусть $G$ -- счетная группа, $A_n ⊂ G$, $\hn{A_n} < ∞$.
+  Последовательность $\hc{A_n}_{n=1}^∞$ -- последовательность Фельмера,
+  если для любого $g∈G$
+  \begin{equation*}
+    \liml{n→∞}\frac{\hm{gA_n\triangle A_n}}{\hm{A_n}} = 0
+  \end{equation*}
+  Если такая последовательность существует, то группа называется аменабельной.
+\end{df}
+\begin{petit}
+ И к чему это? Дальше идет совершенно другое. Все это надо вычитывать,
+ желательно с пониманием происходящего.
+\end{petit}
+\begin{lemma}
+   $P_V^Φ$ как функция от $Φ$ является Липшицевой с $\const = 1 $.
+\end{lemma}
+\newcommand{\dl}{\frac{d}{dλ}}
+\newcommand{\flp}{{Φ+λΨ}}
+\begin{proof}
+  \begin{equation*}
+    \dl P_V^{\flp} = \frac 1{\hm V}\frac{1}{Z_\flp}\suml{ω∈Ω_V}{} e^{-E_V^\flp}·(-E_V^Ψ(ω))
+    = \suml{ω∈Ω_V}{}\inv{\hm V}\frac{e^{-E_V^\flp}}{Z_V^\flp}·(-E_V^Ψ(ω))
+  \end{equation*}
+  Заметим, что $\frac{e^{-E_V^\flp}}{Z_V^\flp} = P(ω)$, а $\suml{ω∈Ω_V}{} P(ω) = 1$.
+  Выполним оценку
+  \begin{equation*}
+    \hm{E_V^Ψ(ω)} ≤ \suml{t∈V}{}\suml{\mat{V'⊂V\\t∈V'}}{}\inv{\hm{V'}}\hm{Ψ_{V'}(ω')}
+    ≤ \suml{t∈V}{} \nw Ψ = \hm V\nw Ψ
+  \end{equation*}
+  Таким образом, $\hm{\dl P_V^\flp} ≤ \nw Ψ$.  Введя обозначение $f(λ) =
+  P_V^{λΦ_1 + (1-λ)Φ_2}$, имеем
+  \begin{equation*}
+    \hm{P^{Φ_1}-P^{Φ_2}} = \hm{f(0) - f(1)} ≤ \maxl{α∈(0,1)}\hm{f'(α)} ≤ \nw{Φ_1 - Φ_2}
+  \end{equation*}
+\end{proof}
+\begin{lemma}
+  Функция $P_V^\flp$ выпуклая по $λ$.
+\end{lemma}
+\newcommand{\ddl}{\frac{d²}{dl²}}
+\newcommand{\sumo}{\suml{ω∈Ω_V}{}}
+\begin{proof}
+  \begin{equation*}
+    \dl P_V^\flp  = \suml{ω∈Ω_V}{} -\frac{E_V^Ψ(ω)}{\hm V} p(ω)
+  \end{equation*}
+
+  \begin{equation*}
+    \ddl P_V^\flp =
+    \sumo\hc{ \frac{-E_V^Ψ(ω)}{\hm V}· \inv{(Z_V^\flp)²}·\hs{Z_V^\flp·e^{-E^\flp_V(ω)}·(-E_V^Ψ(ω))}
+      - (\dl Z_V^\flp)·e^{-E_V^\flp(ω)}}
+  \end{equation*}
+  \begin{equation*}
+    \ddl P_V^\flp(0) = K^2 \suml{ω,ω'}{}e^{-E_V^Φ(ω) - E_V^Φ(ω')}·\hs{(E^Ψ_V(ω))² - E_V^Ψ(ω')E_V^Ψ(ω)}
+    = K^2\suml{ω,ω'}{}e^{-E_V^Φ(ω) - E_V^Φ(ω')} · \frac 12\hs{E_V^Ψ(ω) - E_V^Ψ(ω')}²
+  \end{equation*}
+  \begin{note}
+    Последнее равенство имеет место в силу соотношения
+    \begin{equation*}
+      \suml{a,b}{}g(a)f(b)\hs{f²(a) - f(a)f(b)} = \suml{a,b}{} g(a)g(b)\hs{f(a) - f(b)}²
+    \end{equation*}
+  \end{note}
+  Получаем, что $\ddl P_V^\flp\evn{λ=0} ≥ 0$. Ввиду произвольности $Φ$,
+  $Ψ$ получаем, что вторая производная положительна для любых $λ$.
+  Таким образом, функция $P_V^\flp$ выпуклая по $λ$.
+\end{proof}
+
+%% Local Variables:
+%% compile-command: "xelatex -halt-on-error -file-line-error main.tex"
+%% End:

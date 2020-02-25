@@ -1,0 +1,34 @@
+\begin{tproblem}
+  Найти магнитное поле постоянного тока плотности $j$, текущего по
+  поверхности цилиндра радиуса $R$
+  \begin{enumerate}
+  \item паралельно оси
+  \item вдоль окружностей.
+  \end{enumerate}
+\end{tproblem}
+\unsafeIO{}
+\begin{solution}
+Заметим, что ввиду симметричности задачи, вектор магнитного поля имеет
+вид $\vecb = B_r\vec e_r + B_z\vec e_z$. По формуле Стокса(стр. 23)  имеем
+\begin{equation*}
+   ∮_{S¹_r}(B_r\vec e_r + B_z\vec e_z)dl = \frac{4π}c\intl{D²_r}{}\vec\jmath dS
+\end{equation*}
+В первом случае, $\vec\jmath = jδ(r-R)\vec e_z$, откуда
+\begin{equation*}
+  \intl{D²_r}{}\vec\jmath dS = 2πj\vec e_zδ_{r≥R}
+\end{equation*}
+откуда заключаем,что
+\begin{equation*}
+   ∮_{S¹_r}(B_r\vec e_r + B_z\vec e_z)dl = \frac{4π}c 2πj\vec e_zδ_{r≥R}
+\end{equation*}
+что означает, что
+\begin{equation*}
+  \begin{array}{cc}
+    B_r ≡ 0 &  2πrB_z =\frac{4π}c j\vec e_z2πRδ_{r≥R}
+  \end{array}
+\end{equation*}
+  Упрощая, $B_z = \frac{4π}cj\frac Rrδ_{r≥R}$.  Во втором случае,
+  вектор $\vec\jmath$ направлен по касательной к окружности, и в
+  правой части уравнения будет $0$ вне зависимости от радиуса круга $r$.
+  Потому во втором случае магнитное поле равно 0.
+\end{solution}

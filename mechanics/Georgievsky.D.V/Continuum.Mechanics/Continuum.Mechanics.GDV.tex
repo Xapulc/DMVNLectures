@@ -1,0 +1,28 @@
+%\documentclass[11pt,draft, titlepage]{article}
+\documentclass[11pt, titlepage]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage{statya}
+\usepackage[normalem]{ulem}
+
+\begin{document}
+\title{
+\newsavebox{\mexmatlogo}
+\sbox{\mexmatlogo}{\includegraphics[scale=0.2]{mexmat.eps}}%
+\vspace{-\ht\mexmatlogo}\usebox{\mexmatlogo}\\%
+Ответы на вопросы по курсу\\
+<<Механика сплошной среды>>\footnote{2007/08 учебный год, 5 курс, 1
+поток. Лектор~--- проф. Д.В. Георгиевский.}}
+\author{Татьяна Антонова\footnote{\TeX ническую поддержку оказывал Облаков Константин.}}
+\maketitle%
+
+\input{chast1}
+\input{chast2}
+\input{chast3}
+\input{chast4}
+\input{chast5}
+\input{chast6}
+\input{chast7}
+\input{chast8}
+\input{chast9}
+\input{chast10}
+\end{document}

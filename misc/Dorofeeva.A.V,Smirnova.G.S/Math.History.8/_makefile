@@ -1,0 +1,26 @@
+DocName = "Math History - A.V. Dorofeeva, G.S. Smirnova"
+RarName = "mathhistory-dorofeeva-smirnova"
+
+t:
+ mp -tex=latex pictures.mp
+ latex --src $(DocName).tex
+ makeindex $(DocName).idx
+ dvips $(DocName).dvi
+a: t
+ wt $(RarName).rar $(DocName).ps
+c:
+ del *.dvi *.mpx *.log *.aux *.toc
+p: t
+ gs -sDEVICE=pdfwrite -sOutputFile=$(DocName).pdf -r1200 -dNOPAUSE -dBATCH -g9912x14028 $(DocName).ps
+b: p
+ wr $(RarName)-pdf.rar $(DocName).pdf
+all: a b
+pda:
+ copy $(DocName).tex $(DocName)-PDA.tex 
+pdall:
+ latex --src $(DocName)-PDA.tex
+ makeindex $(DocName)-PDA.idx
+ dvips $(DocName)-PDA.dvi
+ gs -sDEVICE=pdfwrite -sOutputFile=$(DocName)-PDA.pdf -r1200 -dNOPAUSE -dBATCH -g9912x14028 $(DocName)-PDA.ps
+ wt $(RarName)-pda.rar $(DocName)-PDA.ps
+ wr $(RarName)-pdf-pda.rar $(DocName)-PDA.pdf

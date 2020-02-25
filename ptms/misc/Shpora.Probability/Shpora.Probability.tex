@@ -1,0 +1,24 @@
+\documentclass[a4paper]{article}
+\usepackage{dmvn}
+\def\db{\textbf{\textit{d}}}
+\textwidth 10cm
+\begin{document}
+$\N = \hc{0,1,2,\dots}, \; \Z^+= \hc{1,2,\dots}$.
+
+$\bullet$ Распределения: $P\hc{\xi = k}$ и плотности: \pt{1}. Равномерное: $1/N, k \in \N$. \pt{2}. Геометрическое: $(1-p)p^k, k \in \Z^+$.
+\pt{3}. Биномиальное: $C_n^kp^k(1-p)^{n-k}, k \in \N$. \pt{4}. Пуассоновское: $\frac{\la^k}{k!}e^{-\la}, k \in \N$.
+\pt{5}. Показательное: $\al e^{-\al x}$. \pt{6}. Гамма: $\frac{x^{\al-1}e^{-x}}{\Ga(\al)}$.  \pt{7}. Нормальное:
+$\frac{1}{\si\sqrt{2\pi}}\exp\hr{-\frac{(x-m)^2}{2\si^2}}$.
+
+$\bullet$ Условная. Формула Байеса: $\bigsqcup B_k = \Om \Ra P(A) = \sum P(B_k)P(A|B_k)$ и $P(B_m|A) = \frac{P(B_m)P(A|B_m)}{\sumkun P(B_k) P(A|B_k)}$.
+
+$\bullet$ Распределения: $B \in \Bs, P(\xi \in B) = \ints{B}p_\xi(x)\db x$. Независимость: $F_{\ol{\xi}}(x)=\prod F_{\xi_k}(x_k)$, то же для плотностей
+и дискретных распределений. АНВ: $p_{\xi+\eta}(x) =\ints{\R}p_\xi(y)p_\eta(x-y)\db y$, $F_{\xi+\eta}(x) =\ints{\R}F_\xi(x-y)p_\eta(y)\db y$.
+
+$\bullet$ $M\xi = \ints{\R}x p_\xi(x)\db x$, $M\xi =\sum x_k P(\xi=x_k)$. Если $\eta = g(\xi)$, то
+$M\eta = \ints{\R}g(x) p_\xi(x)\db x$, $M\xi =\sum g(x_k) P(\xi=x_k)$.
+
+Производящая функция: $\ph_\xi(z)=Mz^\xi = \sumkzi z^kP(\xi=k)$.
+
+
+\end{document}

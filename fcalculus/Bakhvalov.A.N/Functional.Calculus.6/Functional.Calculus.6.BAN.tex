@@ -1,0 +1,2857 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{euscript}
+\usepackage{eufrak}
+\usepackage{amsthm}
+\usepackage{amscd}
+
+\pagestyle{plain}
+\oddsidemargin=0mm
+\topmargin=0pt
+\textwidth=170mm
+\textheight=250mm
+\headheight=0mm
+\headsep=0mm
+
+
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}%
+            {\hbox{$\mathsurround=0pt #1$}}{}}
+
+
+\usepackage[english,russian]{babel}
+\author{Бахвалов А.Н.}
+\title{Лекции по функциональному анализу\\(2 часть)}
+
+\usepackage{wrapfig}
+\usepackage{graphics}
+
+
+\graphicspath{{images/}}
+\ifx\pdfoutput\undefined
+\usepackage[dvips]{graphicx}
+\else
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+\fi
+    
+    
+\begin{document}
+\large
+
+\maketitle
+\theoremstyle{definition}
+\newtheorem*{df}{Определение}
+\theoremstyle{plain}
+\newtheorem{thm}{Теорема}[chapter]
+\theoremstyle{plain}
+\newtheorem{lem}{Лемма}[chapter]
+\theoremstyle{plain}
+\newtheorem*{aks}{Аксиома}
+\theoremstyle{remark}
+\newtheorem*{rem}{Замечание}
+\theoremstyle{remark}
+\newtheorem*{ex}{Пример}
+\theoremstyle{plain}
+\newtheorem*{cons}{Следствие}
+\theoremstyle{plain}
+\newtheorem{prop}{Предложение}[chapter]
+
+\setcounter{chapter}{14}
+
+
+
+\chapter{Линейные операторы в нормированных пространствах}
+
+\noindent Нормированное пространство $E$ - линейное пространство над $\mathbb R$ или $\mathbb C$,\\ $\|\quad\|\colon E\to[0;+\infty)$
+
+(1) $\|x\|=0$ $\Leftrightarrow$ $x=0$
+
+(2) $\|\alpha x\|=|\alpha|\cdot\|x\|$
+
+(3) $\|x+y\|\le\|x\|+\|y\|$
+
+
+\begin{df}
+Функция $p\colon E\to[0;+\infty)$ ($E$ - линейное пространство) называется полунормой, если она удовлетворяет аксиомам (2) и (3) нормы
+\end{df}
+
+\noindent Примеры нормированных пространств: $l_p$, $C([a,b])$, $L_p(X,M,\mu)$
+ 
+
+\noindent Банахово пространство: нормированное пространство, полное относительно порожденной метрики $\rho(x,y)=\|x-y\|$
+
+\begin{df} Пусть $E$, $F$ - линейные пространства. Отображение $A\colon$
+
+\noindent $E\to F$ называется линейным оператором, если:
+
+ $\forall x,y\in E\quad A(x+y)=Ax+Ay$
+
+$\forall x\in E$, $\forall\alpha$ - скаляра $A(\alpha x)=\alpha\cdot A(x)$
+
+\noindent Если $E,F$ - нормированное пространство, то для любого отображения $A\colon$ 
+
+\noindent$E\to F$ определено понятие непрерывности
+\end{df}
+
+
+\begin{df} Линейный оператор $A$ из нормированного пространства $E$ в нормированное пространство $F$ называется ограниченным, если $\exists C\colon$ 
+
+$\forall x\in E\quad\|Ax\|_F\le C\cdot\|x\|_E$
+
+Нормой ограниченного оператора $A$ называется
+
+ $\|A\|=\sup\limits_{\substack{x\ne0\\x\in E}}\displaystyle\frac{\|Ax\|}{\|x\|_E}=\sup\limits_{\|x\|=1}\|Ax\|\hm=\sup\limits_{\|x\|\le1}\|Ax\|$
+\end{df}
+
+
+\begin{thm}
+ Пусть $E,F$ - нормированные пространства, $A$ - линейный оператор $E\to F$. Следующие условия эквивалентны:
+
+(1) $A$ - ограниченный
+
+(2) $A$ переводит некоторый шар в ограниченное множество
+
+(3) $A$ непрерывен всюду на $E$
+
+(4) $A$ непрерывен в некоторой точке $x_0\in E$
+
+(5) $A$ непрерывен в нуле
+\end{thm}
+\begin{proof} (1)$\to$(2) Если $\bar B_r(x_0)$ - шар, то $\forall x\in\bar B_r(x_0)$ 
+
+$\|x\|\le\|x_0\|+r$
+
+$\|Ax\|\le\|A\|\cdot(\|x_0\|+r)$
+
+(2)$\to$(1) Пусть $B_r(x_0)$ переходит в ограниченное множество (в шар радиуса $R$)
+
+Тогда $\forall y\quad\|y\|<r$ $y=(y+x_0)-x_0$, где $\|A(y+x_0)\|\le R$, $\|Ax_0\|\le R$
+
+$\|Ay\|=\|A(y+x_0)-Ax_0\|\le\|A(y+x_0)\|+\|Ax_0\|<2R$
+
+$\forall y\quad \|y\|\le1$, $\|Ay\|=\displaystyle\frac2r\|A\left(\frac2r y\right)\|\le\frac{4R}{r}$, т. е. $\|A\|\le\displaystyle\frac{4R}{r}<\infty$, $A$ - ограниченный
+
+(1)$\to$(3) Если $x_n\to x$, то $\|Ax_n-Ax\|=\|A(x_n-x)\|\le$
+
+\noindent$\le\|A\|\cdot\|x_n-x\|\xrightarrow[n\to\infty]{}0$, т. е. $A$ непрерывен в любой т. $x\in E$
+
+(3)$\to$(4) очевидно
+
+(4)$\to$(5) Пусть $A$ непрерывен в т. $x_0$, $y_n\to0$, тогда $x_0+y_n\to x_0$ 
+
+$\Rightarrow$ $A(x_0+y_n)\to Ax_0$ $\Rightarrow$ $Ax_0+Ay_n\to Ax_0$, $Ay_n\to0=A(0)$
+
+(5)$\to$(2) Если $A$ - непрерывен в $x_0=0$, то для $\varepsilon=1$ $\exists\delta>0\colon$ если $\|x\|<\delta$, то $\|Ax\|<1$, т. е. шар $B_\delta(0)$ переходит в ограниченное множество $B_1(0)$ 
+\end{proof}
+
+
+\begin{df} Суммой линейных операторов $A$ и $B\colon E\to F$ называется $(A+B)x=Ax+Bx$
+
+Произведением линейного оператора на скаляр называется $(\alpha A)x=\alpha\cdot Ax=A(\alpha x)$
+\end{df}
+
+Можно проверить, что $\forall$ линейных пространств $E$ и $F$ все линейные пространства образуют линейное пространство относительно этих операций, где нулем является нулевой оператор $0x=0$
+
+
+\begin{df} $\EuScript L(E,F)$ - множество всех ограниченных линейных операторов, действующих из нормированного пространства $E$ в нормированное пространство $F$
+\end{df}
+
+
+\begin{thm} (1) $\EuScript L(E,F)$ есть нормированное пространство относительно введенной выше операторной нормы
+
+(2) Если $F$ - банахово, то $\EuScript L(E,F)$ - банахово
+\end{thm}
+\begin{proof} (1) Пусть $A,B\in\EuScript L(E,F)$. Тогда $\forall x, \|x\|=1$
+
+$\|(A+B)x\|=\|Ax+Bx\|\le\|Ax\|+\|Bx\|\le\|A\|+\|B\|$
+
+Переходя к $\sup\limits_{\|x\|=1}$, имеем $\|A+B\|\le\|A\|+\|B\|$
+
+$\forall x$, $\|x=1\|$, $\forall\alpha\quad\|(\alpha A)x\|=\|\alpha\cdot Ax\|=|\alpha|\cdot\|Ax\|$
+
+Переходя к $\sup\limits_{\|x\|=1}$, имеем $\|\alpha A\|=|\alpha|\cdot\|A\|$, т. е. $\EuScript L(E,F)$ - линейное подпространство, и выполнены 2 и 3 аксиомы нормы
+
+Но $\|A\|=0$ $\Leftrightarrow$ $\sup\limits_{x\ne0}\frac{\|Ax\|}{\|x\|}=0$ $\Leftrightarrow$ $\forall x\quad Ax=0$, $A=0$
+
+(2) Пусть $\{A_n\}$ - фундаментальная последовательность в $\EuScript L(E,F)$. Тогда $\forall x\in E\quad\|A_n x-A_m x\|=\|(A_n-A_m)x\|\le\|A_n-A_m\|\cdot\|x\|\xrightarrow[n,m\to\infty]{}$, т. е. $\{A_n x\}_{n=1}^\infty$ - фундаментальная в $F$
+
+В силу полноты $F$ $A_n x\to y=:Ax$
+
+$\forall x,y$ $\forall\alpha,\beta$  $A_n(\alpha x+\beta y)=\alpha A_n x+\beta A_n y$
+
+$\quad\quad\quad\quad\quad\quad\quad\quad\downarrow\quad\quad\quad\quad\quad\downarrow\quad\quad\quad\downarrow$
+
+$\quad\quad\quad\quad\quad\quad A(\alpha x+\beta y)=\alpha Ax+\beta Ay$ $\quad\Rightarrow$ $A$ - линеен
+
+Т. к. $\{A_n\}$ - фундаментальная, то $\exists C\colon\forall n\quad\|A_n\|\le C$
+
+$\forall x\in E$, $\|x\|\le1$, $\forall n\quad\|A_n x\|\le\|A_n\|\cdot\|x\|\le C$ $\Rightarrow$ $\|Ax\|\le C$
+
+$(\|Ax\|=\lim\|A_n x\|)$ $\Rightarrow$ $\|A\|=\sup\limits_{\|x\|\le1}\|Ax\|\le C<\infty$, т. е. $A\in\EuScript L(E,F)$
+
+Т. к. $\{A_n\}$ - фундаментальная, то $\forall\varepsilon>0\quad\exists N\colon\forall n,m>N$
+
+$|A_n-A_m\|<\varepsilon$, тогда $\forall x$, $\|x\|\le1\quad\|A_n x-A_m x\|<\varepsilon$
+
+Зафиксируем $n>N$ и устремим $m$ к бесконечности в пределе
+
+ $\|A_n x-Ax\|<\varepsilon$, т. е. $\forall n>N\quad\|A_n-A\|=\sup\limits_{\|x\|=1}\|A_n x-Ax\|\le\varepsilon$, т. е. $\|A_n-A\|\xrightarrow[n\to\infty]{}0$
+\end{proof}
+ 
+
+
+\begin{thm}[Принцип равномерной ограниченности, теорема Банаха-Штейнгауза] Пусть $E$ - банахово, $F$ - нормированное
+
+$\{A_\alpha\}\subset\EuScript L(E,F)$, $\forall x\in E\quad\exists C(x)\colon\forall\alpha\quad\|A_\alpha x\|\le C(x)$
+
+Тогда $\exists C\colon\forall\alpha\quad\|A_\alpha\|\le C$
+\end{thm}
+\begin{proof}
+Пусть $E_n=\{x\in E\colon C(x)\le n\}$. Тогда $E=\bigcup\limits_{n=1}^\infty E_n$
+
+Заметим, что $E_n$ - замкнуты, если $x_k\in E_n$, $x_k\to x$, то 
+
+$\forall\alpha\quad\|A_\alpha x\|=\lim\limits_{k\to\infty}\|A_\alpha x_k\|\le n$ $\Rightarrow$ $x\in E_n$
+
+По теореме Бэра $\exists n_0\colon E_{n_0}$ не является нигде не плотным, т. е. $\exists$ шар $\bar B=\bar B_r(x_0)\colon E_{n_0}$ плотно в $\bar B$
+
+В силу замкнутости $E_{n_0}\supset \bar B$, т. е. $\forall x$, $\|x-x_0\|\le r$, $\forall\alpha\quad\|A_\alpha x\|\le n_0$
+
+\noindent$\forall y$, $\|y\|\le r$, $\forall\alpha\quad\|A_\alpha y\|=\|A_\alpha(x_0+y)-A_\alpha x_0\|\le\|A_\alpha(x_0+y)\|+\|A_\alpha x_0\|\le2n_0$
+
+\noindent$\forall z$, $\|z\|\le1$, $\forall\alpha\quad\|A_\alpha z\|=\displaystyle\frac1r\|A_\alpha(rz)\|\le\displaystyle\frac{2n_0}{r}$, т. е. $\forall\alpha\quad\|A_\alpha\|\le\displaystyle\frac{2n_0}{r}$
+\end{proof}
+ 
+
+
+\begin{thm}[Банаха об обратном операторе] Пусть $E,F$ - банаховы пространства, $A\in\EuScript L(E,F)$, $A$ - биективен. Тогда $A^{-1}\in\EuScript L(F,E)$
+\end{thm}
+
+
+
+
+
+
+\chapter{Продолжение линейных непрерывных операторов}
+
+\begin{thm}[Продолжение по непрерывности] Пусть $E$ - нормированное, $F$ - банахово, $E_0$ - линейное подпространство в $E$, $\bar E_0=E$, $A_0\hm\in\EuScript L(E_0,F)$. Тогда $\exists!A\in\EuScript L(E,f)\colon A|_{E_0}=A_0$ и $\|A\|=\|A_0\|$
+\end{thm}
+\begin{proof}
+Пусть $x\in E\setminus E_0$, тогда $\exists x_n\in E_0\colon x_n\to x$
+
+Т. к. $\|A_0 x_n-A_0 x_m\|\le\|A_0\|\cdot\|x_n-x_m\|$, то $\{A_0 x_n\}$ - фундаментальная $\Rightarrow$ $\exists y=\lim\limits_{n\to\infty} A_0 x_n$, $y\in F$
+
+Положим $Ax=y$ - единственно возможное продолжение. При $x\in E_0$ положим $Ax=A_0 x$
+
+Если $x_n'\to x$, $x_n''\to x$, то $\{x_1',x_1'',x_2',x_2'',\ldots\}$ сходится к $x$ $\Rightarrow$ $\lim A_0 x_n'\hm=\lim A_0 x_n''$
+
+Если $x_n\to x$, $y_n\to y$, то $\alpha x_n+\beta y_n\to\alpha x+\beta y$
+
+$\alpha A_0 x_n+\beta A_0 y_n\to\alpha Ax+\beta Ay$, т. е. $A$ - линеен
+
+Если $x\ne0\quad x_n\to x$, то $\displaystyle\frac{\|A_0 x_n\|}{\|x_n\|}\to\displaystyle\frac{\|Ax\|}{\|x\|}$
+
+Следовательно, $\displaystyle\frac{\|Ax\|}{\|x\|}\le\|A_0\|$ $\Rightarrow$ $\|A\|=\sup\limits_{x\ne0}\displaystyle\frac{\|Ax\|}{\|x\|}\le\|A_0\|$
+
+Обратное верно для любого продолжения:
+
+ $\|A_0\|=\sup\limits_{x\in E_0}\displaystyle\frac{\|A_0 x\|}{\|x\|}\le\sup\limits_{x\in E}\displaystyle\frac{\|Ax\|}{\|x\|}\le\|A\|$
+\end{proof}
+ 
+
+
+\begin{df} Пусть $E$ - нормированное пространство над полем $\mathbb F$, $\mathbb F\hm=\mathbb R$ или $\mathbb F=\mathbb C$. Линейным (непрерывным) функционалом на $E$ называется линейный (непрерывный) оператор из $E$ в $\mathbb F$
+
+Пространство $\EuScript L(E,\mathbb F)$ называется сопряженным и обозначается через $E^*$
+\end{df}
+ 
+
+
+\begin{lem} Пусть $E$ - линейное пространство, $E_0$ - подпространство, $E=\mathrm{span}(E_0,z)$ (т. е. $E_0$ имеет коразмерность 1), $p$ - полунорма на $E$, $f_0$ - линейный функционал на $E_0$ и $\forall x\in E_0\quad|f_0(x)|\le p(x)$
+
+Тогда $\exists$ линейный функционал $f$ на $E\colon$
+
+$\forall x\in E_0\quad f(x)=f_0(x)$
+
+$\forall x\in E\quad|f(x)|\le p(x)$
+\end{lem}
+\begin{proof} $\forall x\in E\quad\exists y\in E_0\quad\exists t\in\mathbb R\colon x=y+tz$
+
+Тогда если $f$ - линейный функционал, продолжающий $f_0$, то $f(x)\hm=f(y+tz)=f(y)+tf(z)=f_0(y)+t\cdot c$, где $c=f(z)$. Докажем, что можно выбрать $c$ так, чтобы $f(x)\le p(x)\quad\forall x\in E$
+
+Если $t>0$, то $f_0(y)+t\cdot c\le p(y+tc)$ $\Leftrightarrow$ $f_0(\frac{y}{t})+c\le p(\frac{y}{t}+c)$
+
+Нужно, чтобы $c\le\inf\limits_{y'\in E_0}p(y'+z)-f_0(y')$ для выполнения неравенства $f(x)\le p(x)$
+
+Если $t<0$, то $f_0(y)+tc\le p(y+tz)$ $\Leftrightarrow$ $f_0(-\frac{y}{t})-c\le p(\frac{y}{z}+z)$
+
+Т. е. нужно, чтобы $c\ge-p(\frac{y}{t}+z)-f_0(\frac{y}{t})$, т. е. $c\ge\sup\limits_{y''\in E_0}-p(y''+z)-f_0(y'')$
+
+Докажем, что эти требования на $c$ непротиворечивы
+
+$\forall y',y''\in E_0\quad f_0(y'-y'')\le p(y'-y'')$
+
+$f_0(y'-z)-f_0(y''-z)\le p((y'-z)-(y''-z))\le p(y'-z)-p(y''-z)$
+
+$-f_0(y''-z)-f_0(y''-z)\le p(y'-z)-f_0(y'-z)$
+
+Переходя слева к $\sup\limits_{y''\in E_0}$, а справа к $\inf\limits_{y'\in E_0}$, получаем, что $c_2\le c_1$
+
+Взяв любое $c\in[c_2,c_1]$, получим, что $\forall t\in\mathbb R\quad\forall y\in E_0\quad f(y+tz)\hm\le p(y+tz)$
+
+Наконец, если $f(x)\le p(x)\quad\forall x\in E$, то подставляя $(-x)$, имеем:
+
+$f(-x)\le p(-x)-f(x)\le p(x)$, т. е. $-p(x)\le f(x)\le p(x)$,
+
+ т. е. $|f(x)|\le p(x)$
+\end{proof}
+ 
+
+
+\begin{df} Отношением порядка на множестве $X$ называется отношение $a\prec b$, удовлетворяющее аксиомам:
+
+(1) $\forall a\in X\quad a\prec a$
+
+(2) Если $a\prec b$ и $b\prec a$, то $a=b$
+
+(3) Если $a\prec b$ и $b\prec c$, то $a\prec c$
+
+Множество $X_0\subset X$ называется линейно упорядоченным (цепью), если $\forall a,b\in X_0\quad a\prec b$ или $b\prec a$
+
+Элемент $a\in X$ называется верхней гранью для $X_0\subset X$, если $\forall x\hm\in x_0\quad x\prec a$
+
+Элемент $b\in X$ называется максимальным, если $\nexists a\ne b\colon b\prec a$
+\end{df}
+ 
+
+
+\begin{aks}[Лемма Цорна] Пусть в упорядоченном множестве $X$ всякая цепь имеет верхнюю грань, тогда $\forall x\in X$ $\exists$ максимальный элемент $b\hm\in X\colon x\prec b$
+\end{aks}
+ 
+
+
+\begin{thm}[Вещественная теорема Хана-Банаха] Пусть $E$ - линейное пространство над $\mathbb R$, $E_0$ - его подпространство, $f_0$ - линейный функционал на $E_0$, $p$ - полунорма на $E$, $\forall x\in E_0\quad|f_0(x)|\le p(x)$. Тогда $\exists f$ - линейный функционал на $E\colon\forall x\in E\quad|f(x)|\le p(x)$
+\end{thm}
+\begin{proof}
+Рассмотрим множество всевозможных продолжений $f_0$, т. е. таких пар $(E_1,f_1)\colon E_0\subset E_1$, $f_1|_{E_0}=f_0$, $\forall x\in E_1\quad f_1(x)\le p(x)$, $f_1$ - линейный функционал на $E_1$
+
+Введем отношение порядка: $(E_1,f_1)\prec(E_2,f_2)$, если $E_1\subset E_2$ и $f_2|_{E_1}=f_1$
+
+Пусть $\{(E_\alpha,f_\alpha)\}_{\alpha\in A}$ - цепь в множестве таких пар. Положим $E'=\bigcup\limits_{\alpha\in A}E_\alpha$
+
+Если $x\in E'$, то выберем любое $\alpha_1\colon x\in E_\alpha$ и положим $f'(x)=f_{\alpha_1}(x)$
+
+Если к тому же $x\in E_{\alpha_2}$, то либо $(E_{\alpha_1},f_{\alpha_1})\prec(E_{\alpha_2},f_{\alpha_2})$, либо $(E_{\alpha_2},f_{\alpha_2})\hm\prec(E_{\alpha_1},f_{\alpha_1})$, т. е. $f_{\alpha_1}(x)=f_{\alpha_2}(x)$
+
+Т. е. $f'$ корректно определен на $E'$, и $\forall x\in E\quad|f'(x)|=|f_\alpha(x)|\le p(x)$, если $x\in E_0$, то $f'(x)-f_{\alpha_1}(x)=f_0(x)$
+
+Итак, $(E',f')$ - верхняя грань для цепи
+
+По лемме Цорна $\exists$ максимальный элемент $(\tilde E,\tilde f)$. Предположим, что $\tilde E\ne E$. Тогда $\exists z\in E\setminus\tilde E$
+
+Положим $\Tilde{\tilde E}=\mathrm{span}(\tilde E,z)$. По лемме 16.1 $\exists \Tilde{\tilde f}$ - линейный функционал на $\Tilde{\tilde E}$, $|\Tilde{\tilde f}(x)|\le p(x)\quad\forall x\in\Tilde{\tilde E}$ и $\Tilde{\tilde f}|_{\tilde E}=\tilde f$
+
+По определению это означает, что $(\tilde E,\tilde f)\prec(\Tilde{\tilde E},\Tilde{\tilde f})$, где $\tilde E\ne\Tilde{\tilde E}$, что противоречит максимальности элемента $(\tilde E,\tilde f)$
+
+Поэтому $E=\tilde E$, и тогда $\tilde f(x)$ - искомый
+\end{proof}
+ 
+
+
+\begin{rem}
+Из леммы Цорна можно вывести, что в любом линейном пространстве существует алгебраический базис (такая линейно независимая система ${e_\alpha}$, что $\forall x\in E\quad x=\sum\limits_{k=1}^n c_k e_{\alpha_k}$). Отсюда, в свою очередь, можно вывести, что на любом бесконечномерном нормированном пространстве существует разрывный линейный функционал
+\end{rem}
+ 
+
+
+\begin{df}
+Пусть $E$ - линейное пространство над $\mathbb C$. Его овеществлением называется $E_{\mathbb R}$ - то же самое множество с тем же сложением и умножением только на вещественные скалярные пары
+\end{df}
+ 
+
+
+\begin{ex} 
+$\mathbb R^{2n}$ - овеществление $\mathbb C^n$
+
+Если $f(x)$ - линейный функционал на $E$ - линейным пространством над $\mathbb C$, то его можно представить в виде $f(x)=u(x)+iv(x)$, где $u(x)=\mathrm{Re} f(x)$, $v=\mathrm{Im}f(x)$
+
+Заметим, что $u$ и $v$ - линейные функционалы на $E_{\mathbb R}$
+
+При этом $f(ix)=u(ix)+iv(ix)=iu(x)-v(x)$, т. е. $u(ix)=-v(x)$ (*), $v(ix)=u(x)$
+\end{ex}
+ 
+
+
+\begin{thm}[Комплексная теорема Хана-Банаха] 
+Пусть $E$ - линейное пространство над $\mathbb C$, $E_0$ - подпространство в $E$, $p$ - полунорма на $E$, $f_0$ - линейный функционал на $E_0$, $\forall x\in E_0\quad|f_0(x)|\le p(x)$. Тогда $\exists f$ - линейный функционал на $E\colon\forall x\in E\quad|f(x)|\le p(x)$, $\forall x\in E_0\quad f(x)=f_0(x)$
+\end{thm}
+\begin{proof}
+Пусть $E_{\mathbb R}$ и $E_{0\mathbb R}$ - овеществления $E$ и $E_0$ соответственно, $f_0(x)=u_0(x)+iv_0(x)$. Тогда $|u_0(x)|\le|f_0(x)|\le p(x)$, $u_0$ - линейный функционал на $E_{0\mathbb R}$
+
+По теореме 16.2 $\quad\exists u(x)$ - линейный функционал на $E_{\mathbb R}\colon\forall x\in E\hm=E_{\mathbb R}\quad|u(x)|\le p(x)$ и $\forall x\in E_0=E_{\mathbb R}\quad u(x)=u_0(x)$
+
+Положим $f(x)=u(x)-iu(ix)$. Тогда $\forall x\in E_0\quad f(x)=f_0(x)$ в силу (*)
+
+$\left. \begin{array}{r} f(x+y)=f(x)+f(y)\quad\forall x,y\in E \\ f(\alpha x)=\alpha f(x)\quad\forall x\in E,\forall\alpha\in\mathbb R\\ \end{array}\right\}$ - в силу линейности $u$ на $E_{\mathbb R}$
+
+Т. к. $f((\alpha+i\beta)x)=f(\alpha x)+f(i\beta x)$, то достаточно проверить, что $f(ix)\hm=if(x)$
+
+По определению $f(ix)=u(ix)-iu(i^2 x)=iu(x)+u(ix)=i(u(x)-iu(ix))\hm=if(x)$
+
+Наконец, если $x\in E$, то $\exists\theta\in[0;2\pi)\colon e^{i\theta}f(x)\in[0;+\infty)$, тогда $|f(x)|\hm=|e^{i\theta}f(x)|=e^{i\theta}f(x)=f(e^{i\theta}x)=u(e^{i\theta}x)\le p(e^{i\theta}x)=p(x)$
+\end{proof}
+ 
+
+
+\begin{cons}
+Пусть $E$ - нормированное пространство над $\mathbb R$ или $\mathbb C$, $E_0$ - его подпространство, $f_0$ - линейный непрерывный функционал на $E_0$. Тогда $\exists f$ - линейный непрерывный функционал на $E\colon f|_{E_0}=f_0$, $\|f\|=\|f_0\|$
+\end{cons}
+\begin{proof}
+Функция $p(x)=\|f_0\|\cdot\|x\|$ - полунорма на $E$. По определению нормы линейного оператора $|f_0(x)|\le\|f_0\|\cdot\|x\|=p(x)$
+
+По т. Хана-Банаха $\exists f$ - линейный функционал на $E\colon$
+
+\noindent$\forall x\in E\quad|f(x)|\le p(x)=\|f_0\|\cdot\|x\|$, т. е. $\displaystyle\frac{|f(x)|}{\|x\|}\le\|f_0\|$, $\|f\|\le\|f_0\|$
+
+Но $\|f\|=\sup\limits_{x\in E}\displaystyle\frac{|f(x)|}{\|x\|}\ge\sup\displaystyle\frac{|f(x)|}{\|x\|}=\|f_0\|$, т. е. $\|f\|=\|f_0\|$
+\end{proof}
+
+
+
+
+
+
+\chapter{Сопряженные пространства}
+
+\begin{df}
+Пусть $E$ - нормированное пространство над $\mathbb R$ или $\mathbb C$. Сопряженным к нему называется $E^*=\EuScript L(E,\mathbb R)$ или $E^*=\EuScript L(E,\mathbb C)$ соответственно
+
+$E^*$ - нормированное пространство, оно полно в силу полноты $\mathbb R$ или $\mathbb C$ по теореме 15.2
+\end{df}
+ 
+
+
+\begin{prop}
+Пусть $E$ - линейное пространство, $x\in E\setminus\{0\}$. Тогда $\exists f\in E^*\colon f(x)\ne0$ и $\|f\|$ достигается на $x$ (т. е. $|f(x)|=\|f\|\cdot\|x\|$)
+\end{prop}
+\begin{proof}
+Рассмотрим $E_0=\mathrm{span}\{x\}=\{\lambda x\}$
+
+Положим $f_0(\lambda x)=\lambda$, тогда $\|f_0\|=\sup\limits_{\lambda}\displaystyle\frac{|f_0(\lambda x)|}{\|\lambda x\|}=\displaystyle\frac{1}{\|x\|}$
+
+$1=|f_0(x)|=\|f_0\|\cdot\|x\|$
+
+Применим к $f_0$ на $E_0$ следствие из теоремы Хана-Банаха и получим $f\in E^*\colon\|f\|=\|f_0\|$, $f(\lambda x)=\lambda$
+\end{proof}
+ 
+
+
+\begin{df}
+Пусть $E,F$ - нормированные пространства, $A\in\EuScript L(E,F)$. (Банаховым) сопряженным к $A$ называется $A'\colon F^*\to E^*$ по формуле $(A'f)x\hm=f(Ax)$, $x\in E$, $f\in F^*$
+\end{df}
+ 
+
+
+\begin{prop}
+Если $A\in\EuScript L(E,F)$, то $A'\in\EuScript L(F^*,E^*)$ и $\|A'\|\le\|A\|$
+\end{prop}
+\begin{proof}
+$\|A'\|=\sup\limits_{\|f\|=1}\|A'f\|=\sup\limits_{\|f\|=1}\sup\limits_{\|x\|=1}(A'f)x=\sup\limits_{\|f\|=1}\sup\limits_{\|x\|=1}|f(Ax)|\hm\le\sup\limits_{\substack{\|f\|=1\\ \|x\|=1}}\|f\|\cdot\|A\|\cdot\|x\|=\|A\|$
+\end{proof}
+ 
+
+
+\begin{thm}
+Если $A\in\EuScript L(E,F)$, то $A'\in\EuScript L(F^*,E^*)$ и $\|A'\|=\|A\|$
+\end{thm}
+\begin{proof}
+В силу предыдущего предположения достаточно доказать, что $\|A\|\le\|A'\|$
+
+Если $A=0$, то $A'=0$ и доказывать нечего
+
+Пусть $A\ne0$. $\forall\varepsilon\in(0,\|A\|)\quad\exists x_\varepsilon\in E\colon\|x_\varepsilon\|=1$, $\|Ax_\varepsilon\|>\|A\|-\varepsilon$
+
+Тогда $\|A'\|=\sup\limits_{\|A\|=1}\|A'f\|\ge\|A'f_\varepsilon\|=\sup\limits_{\|x\|=1}|A'f_\varepsilon(x)|=\sup\limits_{\|x\|=1}|f_\varepsilon(Ax)|\hm\ge|f_\varepsilon(Ax_\varepsilon)|=\|Ax_\varepsilon\|>\|A\|-\varepsilon$
+
+Т. к. $\varepsilon>0$ - любое, то $\|A'\|\ge\|A\|$
+\end{proof}
+ 
+
+\noindent Т. к. $E^*$ - нормированное пространство, то можно рассматривать линейные формулы на нем и их непрерывность
+ 
+
+\begin{df}
+Пусть $x\in E$. Обозначим $F_x$ - линейный функционал на $E^*$, действующий по формуле $F_x(f)=f(x)$
+\end{df}
+ 
+
+\begin{thm}
+Если $E$ - нормированное пространство, то отображение $j\colon x\to F_x$ есть изометрический линейный оператор из $E$ в $j(E)\subset E^{**}$
+\end{thm}
+\begin{proof}
+$F_x(f+g)=(f+g)(x)=f(x)+g(x)=F_x(f)+F_x(g)$
+
+$F_{x+y}(f)=f(x+y)=f(x)+f(y)=F_xf+F_yf$, т. е. $j$ - линейное отображение из $E$ в множество линейных функционалов на $E^*$
+
+$\forall x\quad\|F_x\|=\sup\limits_{\|f\|=1}|F_x(f)|=\sup\limits_{\|f\|=1}|f(x)|\le\sup\limits_{\|f\|=1}\|f\|\cdot\|x\|=\|x\|$
+
+Т. е. $\|F_x\|\le\|x\|$, $j\colon E\to E^{**}$, и осталось доказать, что $\|F_x\|\ge\|x\|$
+
+Пусть $x\ne0$, тогда $\exists f_0\colon\|f_0\|=1$, $|f_0(x)|=\|x\|$ (по предположению 17.1)
+
+Тогда $\|F_x\|=\sup\limits_{\|f\|=1}\|F_x f\|\ge\|F_x f_0\|=|f_0(x)|=\|x\|$
+\end{proof}
+ 
+
+
+\begin{df}
+Нормированное пространство $E$ называется рефлексивным, если $j(E)=E^{**}$, т. е. $\forall F\in E^{**}\quad\exists x\in E\colon F=F_x$
+\end{df}
+ 
+
+
+\begin{ex}
+Пусть $E$ - неполное нормированное пространство
+
+Тогда $j(E)$ тоже не полно. По теореме 15.1 $E^{**}=\EuScript L(E^*,\mathbb C)$ полно. Поэтому заведомо $j(E)\ne E^{**}$
+
+При этом $\overline{j(E)}$ - пополнение $E$ по лемме 1.1
+\end{ex}
+ 
+
+
+\begin{rem}
+Бесконечномерное банахово пространство может быть как рефлексивным, так и не рефлексивным
+\end{rem}
+ 
+
+
+\begin{thm}[Об общем виде ЛНФ на $l_p$]
+Пусть $1\le p\le\infty$, $\frac1p+\frac1q=1$
+
+1. Если $y=\{y_n\}_{n=1}^\infty\in l_q$, то выражение $f(x)=\sum\limits_{n=1}^\infty x_n y_n$ ($*$) задает элемент $f\in (l_p)*$, и $\|f\|_{l_p^*}=\|y\|_{l_q}$
+
+2. Если $p<\infty$, $f\in(l_p)^*$, то $\exists! y\in l_q\colon f$ представляется в виде ($*$)
+\end{thm}
+\begin{proof}
+1. Если $1<p<\infty$, то по неравенству Гельдера 
+
+$|f(x)|\le\|x\|_p\cdot\|y\|_q$, т. е. $\sup\limits_{x\ne0}\displaystyle\frac{|f(x)|}{\|x\|_p}\le\|y\|_q$, т. е. $\|f\|\le\|y\|_q$
+
+Если $p=1$, то $|f(x)|=|\sum x_n y_n|\le\sup|y_n|\cdot\sum\limits_{n=1}^\infty|x_n|=\|y\|_\infty\cdot\|x\|_1$, т. е. $\|f\|\le\|y\|_\infty$, и если взять $e^n=(0,0,\ldots,0,1,0,\ldots)$, то $\|f\|\ge\sup\limits_n|f(e^n)|\hm=\sup\limits_n|y_n|=\|y\|_\infty$
+
+Если $p=\infty$, то $|f(x)|=|\sum x_n y_n|\le\sup\limits_n|x_n|\cdot\sum\limits_n|y_n|=\|x\|_\infty\cdot\|y\|_1$, т. е. $\|f\|\le\|y\|_1$ и полагая
+
+ $\mathrm{sgn} y_n=x_n=\begin{cases} 0,& y_n=0\\\frac{|y_n|}{y_n},& y_n\ne0\end{cases}$, 
+
+имеем $f(x)\hm=\sum\limits_n|y_n|=\|y\|_1$, т. е. $\|f\|\ge\|y\|_1$
+
+2. Пусть $f\in l_p^*$. Рассмотрим $e^n=(0,0,\ldots,0,1,0,\ldots)$
+
+Тогда $\forall x\in l_p\quad x=\sum\limits_{n=1}^\infty x_n e^n$ - ряд, сходящийся по норме 
+
+$\|x-\sum\limits_{n=1}^N x_n e^n\|_p=\left(\sum\limits_{n=N+1}^\infty|x_n|^p\right)^{\frac1p}\xrightarrow[N\to\infty]{}0$
+
+Тогда $f(x)=\sum\limits_{n=1}^\infty x_n f(e^n)$, положим $y_n=f(e_n)$ - единственно возможные 
+
+Проверим, что $y=\{y_n\}\in l_q$. Пусть $p>1$, положим 
+
+$x_k^n=\begin{cases}|y_n|^{q-1}\mathrm{sgn}y_k,&k\le n\\0,&k>n\end{cases}$
+
+Тогда $f(x^n)=\sum\limits_{k=1}^\infty x_k^n y_k=\sum\limits_{k=1}^n|y_n|^q$
+
+Но $|f(x^n)|\le\|f\|\cdot\|x^n\|_p=\|f\|\left(\sum\limits_{k=1}^n|x_k^n|^p\right)^{\frac1p}$, где $|x_k^n|^p=\begin{cases}|y_k|^{(q-1)p},&k\le n\\0,&k>n\end{cases}$
+
+Но $(q-1)p=q$, откуда $\left(\sum\limits_{k=1}^\infty|y_k|^q\right)^{\frac1p+\frac1q}\le\|f\|\cdot\left(\sum\limits_{k=1}^n|y_n|^q\right)^{\frac1p}$
+
+Т. е. $\forall n\quad\left(\sum\limits_{k=1}^n|y_k|^q\right)^{\frac1q}\le\|f\|$
+
+При $n\to\infty$ получаем, что $y\in l_q$ и $\|y\|_q\le\|f\|$
+
+При $p=1\colon y_n=f(e^n)$ $\Rightarrow$ $\forall n\quad\|y_n\|\le\|f\|\cdot\|e^n\|=\|f\|$ $\Rightarrow$ $y\in l_\infty$
+\end{proof}
+ 
+
+
+\begin{cons}
+Если $1<p<\infty$, то протсранство $l_p$ рефлексивное
+
+$f(x)=\sum\limits_{n=1}^\infty x_n y_n$, $x\in l_p$, $y\in l_q$
+
+(в силу симметричности выражения всякий $F\in (l_p)^{**}\cong(l_q)^*$ имеет вид $F=F_x$)
+\end{cons}
+ 
+
+
+\begin{rem}
+Пространство $l_1$ не рефлексивно (например, потому что, если $E*$ сепарабельно, то $E$ сепарабельно)
+\end{rem}
+ 
+
+
+\begin{thm}[Общий вид ЛНФ на $L_p$]
+Пусть $(X,M,\mu)$ - пространство с мерой, $\frac1p+\frac1q=1$, $1\le p\le\infty$ 
+
+Тогда : (1) $\forall y\in L_q(X,M,\mu)$ выражение $f(x(\cdot))=\displaystyle\int\limits_X x(t)y(t)d\mu(t)$ ($**$), задает $f\in\left(L_p(X,M,\mu)\right)^*$ и $\|f\|=\|y\|_{L_q}$
+
+(2) Если $p<\infty$, $f\in\left(L_p(X,M,\mu)\right)^*$, то $\exists!y\in L_q(X,M,\mu)\colon f$ представляется в виде ($**$)
+\end{thm}
+ 
+
+
+\begin{thm} \textup{(Теорема Рисса об общем виде ЛНФ на} $C([a,b]))$
+
+(1) $\forall\varphi\in BV([a,b])$ выражение $f(x(\cdot))=(R-S)\displaystyle\int\limits_a^b x(t)d\varphi(t)$ (\symbol{35}) задает $f\in\left(C([a,b])\right)^*$ и $\|f\|\le V_a^b\varphi$
+
+(2) $\forall f\in\left(C([a,b])\right)^*\quad\exists\varphi\in BV([a,b])\colon f$ представляется в виде (\symbol{35}) и $\|f\|=V_a^b\varphi$
+\end{thm}
+\begin{proof}
+Если $f\in C([a,b])$, $\varphi\in BV([a,b])$, то по теореме 14.1 
+
+$\exists(R-S)\displaystyle\int\limits_a^b fd\varphi$ и $\left|\displaystyle\int\limits_a^b fd\varphi\right|\le\max\limits_{[a,b]}|f|\cdot V_a^b\varphi$, т. е. (1) - верно
+
+Рассмотрим пространство $B([a,b])$ ограниченных функций на $[a,b]$ с $\|x\|\hm=\sup\limits_t|x(t)|$
+
+Тогда $C([a,b])$ - подпространство в $B([a,b])$
+
+Тогда если $f\in\left(C([a,b])\right)^*$, то по следствию из теоремы Хана-Банаха его можно продолжить на $B([a,b])$ с сохранением нормы. Выберем такое продолжение и обозначим его той же буквой $f$ 
+
+Положим $\varphi(t)=\begin{cases}f(\chi_{[a,t)}),&\text{если }t<b\\f(\equiv1),&\text{если }t=b\end{cases}$
+
+Тогда $\forall T\quad V_T(\varphi)=\sum\limits_{k=1}^n|\varphi(t_k)-\varphi(t_{k-1})|=\sum\limits_{k=1}^{n-1}|f(\chi_{[t_{k-1},t_k)})|+|f(\chi_{[t_{n-1},b]})|$
+
+$\exists \varepsilon_k\colon|\varepsilon_k|=1$, $|f(\chi_{[t_{k-1},t_k)})|=\varepsilon_k f(\chi_{[t_{k-1},t_k)})$
+
+Тогда $V_T(\varphi)=f\left(\sum\limits_{k=1}^{n-1}\varepsilon_k\chi_{[t_{k-1},t_k)}+\varepsilon_n\chi_{[t_{n-1},b]}\right)$, где $|X_T(t)|\equiv1$, 
+
+\noindent т. е. $\|X_T\|_B=1$, т. е. $|V_T(\varphi)|\le\|f\|\cdot\|X_T\|_B=\|f\|$ $\Rightarrow$ $V_a^b\varphi\le\|f\|$
+
+Тогда $\forall x(t)\in C([a,b])\quad\exists(R-S)\displaystyle\int\limits_a^b x(t)d\varphi(t)$
+
+$\forall\delta>0\quad\exists\delta'<\delta\colon$ если $|t'-t''|<\delta'$, то $|x(t')-x(t'')|<\delta$ в силу равномерной непрерывности $x(t)$ на отрезке
+
+Рассмотрим разбиение $T_\delta=\{t_k\}_{k=0}^n$ с диаметром $\delta_{T_\delta}<\delta'$ и разметим его точками $\{t_k\}_{k=0}^{n-1}$
+
+Рассмотрим фунцию $x_\delta(t)=\sum\limits_{k=1}^{n-1}x(t_{k-1})\chi_{[t_{k-1},t_k)}(t)+x(t_{n-1})\chi_{[t_{n-1},b]}(t)$
+
+Тогда $\|x-x_\delta\|_B\le\delta$ в силу выбора $\delta'$
+
+$\|f(x)-f(x_\delta)\|\le\|f\|\cdot\delta$
+
+Но $f(x_\delta)=\sum\limits_{k=1}^{n-1}x(t_{k-1})f(\chi_{[t_{k-1},t_k)})+x(t_{n-1})f(\chi_{[t_{n-1},b]})=\sum\limits_{k=1}^nx(t_{k-1})(\varphi(t_k)\hm-\varphi(t_{k-1}))=S_{t_\delta}(f,d\varphi)\xrightarrow[\delta_{T_\delta}\to0]{}(R-S)\displaystyle\int\limits_a^b x(t)d\varphi(t)$
+
+При $\delta<0\quad f(x_\delta)\to(R-S)\displaystyle\int\limits_a^b x(t)d\varphi(t)$
+
+$f(x_\delta)\to f(x(\cdot))$
+\end{proof}
+ 
+
+
+\begin{df}
+Пусть $E$ - нормированное пространство. Множество $A\hm\subset E$ называется слабо ограниченным, если $\forall f\in E^*\quad f(A)$ - ограниченное множество. Последовательность элементов $E$ слабо сходится к $x\in E$, если $\forall f\in E^*\quad f(x_n)\to f(x)$ 
+
+(если $\|x_n-x\|\to0$, то $|f(x_n)-f(x)|\le\|f\|\cdot\|x_n-x\|\to0$)
+\end{df}
+ 
+
+
+\begin{df}
+Последовательность функционалов $f_n\in E^*$:
+
+1) слабо сходится, если $\forall F\in E^{**}\quad F(f_n)\to F(f)$
+
+2) $*$-слабо сходится, если $\forall x\in E\quad f_n(x)\to f(x)$
+\end{df}
+ 
+
+
+\begin{rem}
+В случае рефлексивного пространства эти понятия совпадают
+\end{rem}
+ 
+
+
+\begin{thm}
+Пусть $E$ - нормированное пространство, множество $A\hm\subset E$ слабо ограничено т. и т. т. к. оно ограничено
+\end{thm}
+\begin{proof}
+1) Если $A$  - ограниченное, то $\forall f\in E^*\quad\forall x\in A\quad|f(x)|\hm\le\|f\|\sup\limits_{x\in A}\|x\|$ $\Rightarrow$ $A$ слабо ограниченное
+
+2) Пусть $A$ слабо ограниченное. Рассмотрим множество $j(A)$ в $E^**$, т. е. $\{F_x(f)=f(x)\}_{x\in A}$ - семейство в $\EuScript L(E^*,\mathbb C)=E^{**}$ и $\forall f\in E^*\quad\exists c(p)\colon$
+
+$\forall x\in A\quad|F_x(f)|<c(p)$
+
+По теореме 15.2 $E^*$ полно, применима теорема Банаха-Штейнгауза (15.3), т. е. $\exists c\colon\forall x\quad\|F_x\|\le c$
+
+Так как $j$ - изометрия, то $\forall x\in A\quad\|x\|\le c$
+\end{proof}
+ 
+
+
+\begin{df}
+Последовательность $\{f_n\}$ элементов $E^*$, где $E$ - нормированное, называется $*$-слабо сходящейся к $f\in E^*$, если $\forall x\in E\quad f_n(x)\to f(x)$
+\end{df}
+ 
+
+
+\begin{thm}
+Пусть $E$ - сепарабельное нормированное пространство, $\{f_n\}$ - ограниченная последовательность в $E^*$, тогда из $\{f_n\}$ можно выделить $*$-слабо сходящуюся подпоследовательность
+\end{thm}
+\begin{proof}
+Пусть $\exists c\colon\forall n\quad\|f_n\|\le c$. Пусть $\{x_k\}_{k=1}^\infty$ - счетное всюду плотное множество в $E$
+
+$\forall x\in E\quad\{|f_n(x)|\}_{n=1}^\infty$ - ограниченная в $\mathbb C$, т. к. $|f_n(x)|\le c\cdot\|x\|$
+
+Выберем из $\{f_n\}$ подпоследовательность $\{f_{n,1}\}$, для которой $\{f_{n,1}(x_1)\}$ - сходится
+
+Из $\{f_{n,1}\}$ выберем $\{f_{n,2}\}\colon\{f_{n,2}(x_2)\}$ - сходится
+
+Из $\{f_{n,k}\}$ выберем $\{f_{n,k+1}\}\colon\{f_{n,k+1}(x_{k+1})\}$ - сходится
+
+Тогда $\{f_{n,n}(x_k)\}$ сходится $\forall k$
+
+Зафиксируем $x\in E\colon\forall\varepsilon>0\quad\exists k\colon\|x-x_k\|<\frac{\varepsilon}{4c}$
+
+Тогда при достаточно больших $n$ и $m$ имеем:
+
+$|f_{n,n}(x)-f_{m,m}(x)|\le|f_{n,n}(x)-f_{n,n}(x_k)|+|f_{n,n}(x_k)-f_{m,m}(x_k)|+|f_{m,m}(x_k)\hm-f_{m,m}(x)|\le\|f_{n,n}\|\cdot\|x-x_k\|+|f_{n,n}(x_k)-f_{m,m}(x_k)|+\|f_{m,m}\|\cdot\|x-x_k\|\hm<\frac\varepsilon2+|f_{n,n}(x_k)-f_{m,m}(x_k)|<\varepsilon$
+
+Т. е. $\{f_{n,n}(x)\}$ фундаментальная $\forall x\in E$ $\Rightarrow$ $\exists f\colon f_{n,n}(x)\to f(x)\quad\forall x$
+
+$f$ - линеен в силу линейности предела
+
+$\forall x$, $\|x\|\le1\quad|f(x)|=\lim|f_{n,n}(x)|\le c\cdot\|x\|$ $\Rightarrow$ $f\in E^*$
+\end{proof}
+ 
+
+
+\begin{rem}
+Если $E$ - рефлексивно, то из любой ограниченной последовательности элементов $E$ можно выбрать слабо сходящуюся подпоследовательность
+\end{rem}
+
+
+
+
+
+
+\chapter{Гильбертовы пространства}
+
+\begin{df}
+Предгильбертовым (евклидовым) пространством называется линейное пространство $H$ над $\mathbb R$ или $\mathbb C$ с заданным скалярным произведением, т. е. функцией $\langle\cdot,\cdot\rangle\colon H\times H\to\mathbb R$ или $\mathbb C$, удовлетворяющее аксиомам:
+
+(1) $\langle x,x\rangle\ge0$, $\langle x,x\rangle=0$ $\Leftrightarrow$ $x=0$
+
+(2) $\langle x,y\rangle=\overline{\langle y,x\rangle}$
+
+(3) $\langle\alpha x+\beta y,z\rangle=\alpha\langle x,z\rangle+\beta\langle y,z\rangle$
+\end{df}
+ 
+
+
+\begin{rem}
+$\langle z,\alpha x+\beta y\rangle=\overline{\langle\alpha x+\beta y,z\rangle}=\overline{\alpha\langle x,z\rangle}+\overline{\beta\langle y,z\rangle}=\bar\alpha\langle z,x\rangle+\bar\beta\langle z,y\rangle$
+\end{rem}
+ 
+
+
+\begin{thm}[Неравенство Коши-Буняковского-Шварца]
+Если $H$ - предгильбертово, $x,y\in H$, то $|\langle x,y\rangle|\le\sqrt{\langle x,x\rangle\cdot\langle y,y\rangle}$
+\end{thm}
+\begin{proof}
+$\forall t\in\mathbb R\quad f(t)=\langle x+ty,x+ty\rangle=\langle x,x\rangle+t\langle y,x\rangle+t\langle x,y\rangle+t^2\langle y, y\rangle\ge0$
+
+Но $f(t)=\langle x,x\rangle+2t\mathrm{Re}\langle x,y\rangle+t^2\langle y,y\rangle$ - вещественный квадратный трехчлен, т. е. $\frac{D}4=\left(\mathrm{Re}\langle x,y\rangle\right)^2-\langle x,x\rangle\cdot\langle y,y\rangle\le0$, т. е. $|\mathrm{Re}\langle x,y\rangle|\le\sqrt{\langle x,x\rangle}\cdot\sqrt{\langle y,y\rangle}$
+
+Заметим, что $\forall\theta\in\mathbb R\quad\langle e^{i\theta}x,e^{i\theta}x\rangle=e^{i\theta}e^{-i\theta}\langle x,x\rangle=\langle x,x\rangle$
+
+$\forall x,y\quad\exists\theta\in\mathbb R\colon|\langle x,y\rangle|=e^{i\theta}\langle x,y\rangle=\langle e^{i\theta}x,y\rangle=\mathrm{Re}\langle e^{i\theta}x,y\rangle$
+
+Т. е. $|\langle x,y\rangle|=|\mathrm{Re}\langle e^{i\theta}x,y\rangle|\le\sqrt{\langle e^{i\theta}x,e^{i\theta}x\rangle\cdot\langle y,y\rangle}=\sqrt{\langle x,x\rangle\cdot\langle y,y\rangle}$
+\end{proof}
+ 
+
+
+\begin{cons}
+Если $H$ - евклидово, то функция $\|x\|=\sqrt{\langle x,x\rangle}$ есть норма на $H$ (норма, порожденная скалярным произведением)
+\end{cons}
+\begin{proof}
+1 аксиома нормы $\Leftarrow$ 1 аксиома скалярного произведения
+
+2 аксиома: $\|\alpha x\|=\sqrt{\langle\alpha x,\alpha x\rangle}=\sqrt{\alpha\bar\alpha\langle x,x\rangle}=|\alpha|\cdot\|x\|$
+
+3 аксиома: $\|x+y\|=\langle x+y,x+y\rangle=\langle x,x\rangle+\langle x,y\rangle+\langle y,x\rangle+\langle y,y\rangle\hm\le\|x\|^2+\|x\|\cdot\|y\|+\|y\|\cdot\|x\|+\|y\|^2=(\|x\|+\|y\|)^2$ - извлекая корень, получим неравенство треугольника
+\end{proof}
+ 
+
+
+\begin{df}
+Евклидово пространство называется гильбертовым, если оно полно относительно порожденной нормы
+\end{df}
+ 
+
+
+\begin{ex}
+1) $\mathbb C^n$, $\langle x,y\rangle=\sum\limits_{k=1}^n x_k\bar y_k$
+
+2) $l_2$, $\langle x,y\rangle=\sum\limits_{k=1}^\infty x_k\bar y_k$
+
+3) $L_2(X,M,\mu)$, $\langle x,y\rangle=\displaystyle\int\limits_X x(t)\overline{y(t)}d\mu$
+\end{ex}
+ 
+
+
+\begin{df}
+Элементы $x$ и $y$ в евклидовом пространстве называются ортогональными, если $\langle x,y\rangle=0$ $(x\perp y)$
+\end{df}
+ 
+
+
+\begin{prop}[Теорема Пифагора]
+Если $x_1,\ldots,x_n$ - попарно ортогональные элементы евклидового пространства $H$, то $\left\|\sum\limits_{k=1}^n x_k\right\|^2=\sum\limits_{k=1}^n\|x_k\|^2$
+\end{prop}
+\begin{proof}
+$\left\|\sum\limits_{k=1}^n x_k\right\|^2=\sum\limits_{k,j=1}^n\langle x_k,x_j\rangle=\sum\limits_{k=1}^n\langle x_k,x_k\rangle$
+\end{proof}
+ 
+
+
+\begin{df}
+Пусть $A$ - множество в евклидовом пространстве $H$. Его ортогональным дополнением называется $A^\perp=\{x\in H\colon\forall y\in A\quad x\perp y\}$
+\end{df}
+ 
+
+
+\begin{prop}
+Если $A$ - множество в евклидовом пространстве $H$, то $A^\perp$ - замкнутое подпространство в $H$
+\end{prop}
+\begin{proof}
+Если $x_1,x_2\in A^\perp$, то $\forall y\in A\quad\langle\alpha_1 x_1+\alpha_2 x_2,y\rangle=\alpha_1\langle x_1,y\rangle\hm+\alpha_2\langle x_2,y\rangle=\alpha_1\cdot0+\alpha_2\cdot0=0$
+
+Если $x_n\to x$, $x_n\in A^\perp$, то $\forall y\in A\quad|\langle x_n,y\rangle-\langle x,y\rangle|\stackrel{\text{КБШ}}{\le}\|x_n-x\|\hm\cdot\|y\|\xrightarrow[n\to\infty]{}0$
+
+Т. е. в пределе $\langle x,y\rangle=0$
+\end{proof}
+ 
+
+
+\begin{df}
+Если $H_1$ и $H_2$ - подпространства в линейном пространстве $H$, то их суммой называется $H_3=\{x\mid\exists y\in H_1,\exists z\in H_2\colon x=y+z\}\hm=H_1+H_2$
+
+Сумма подпространств называется прямой, если $H_1\cap H_2=\{0\}$ 
+
+(это равносильно единственности пары $(y,z)$. Если $x=y_1+z_1=y_2+z_2$, то $y_1-y_2=z_2-z_1$, где $y_1-y_2\in H_1$, $z_2-z_1\in H_2$)
+\end{df}
+ 
+
+
+\begin{df}
+Сумма подпространств $H_1$ и $H_2$ в евклидовом пространстве $H$ называется ортогональной, если $\forall y\in H_1$, $\forall z\in H_2$ выполнено условие $y\perp z$ $(H_1\perp H_2)$, $H=H_1\oplus H_2$
+\end{df}
+ 
+
+
+\begin{rem}
+Ортогональная сумма - прямая: если $x\in H_1\cap H_2$, то $x\perp x$, 
+
+\noindent т. е. $\langle x,x\rangle=\|x\|^2=0$
+\end{rem}
+ 
+
+
+\begin{prop}
+Если $H$ - гильбертово, $H_1$ и $H_2$ - замкнутые подпространства, $H_1\perp H_2$, то $H_1\oplus H_2$  - замкнутое подпространство
+\end{prop}
+\begin{proof}
+Пусть $x_n=y_n+z_n\to x\in H$. Тогда $\|x_n-x_m\|^2=\|y_n\hm-y_m\|^2+\|z_n-z_m\|^2$ по теореме Пифагора
+
+Из фундаментальности $\{x_n\}$ следует фундаментальность $\{y_n\}$ и $\{z_n\}$. В силу полноты $H$ и замкнутости $H_1$ и $H_2$ $\exists y\in H_1\colon y_n\to y$, $\exists z\in H_2\colon z_n\to z$
+
+Тогда $x=y+z\in H_1\oplus H_2$
+\end{proof}
+ 
+
+
+\begin{thm}
+Пусть $H$ - гильбертово, $H_0$ - замкнутое подпространство, $x_0\in H\setminus H_0$. Тогда $\exists!y_0\in H_0\colon\|x_0-y_0\|=\mathrm{dist}(x_0,H_0)$, причем $x_0-y_0\in H_0^\perp$
+\end{thm}
+\begin{proof}
+Заметим, что если $x,y\in H$, то выполнено тождество параллелограмма: $\|x+y\|^2+\|x-y\|^2=2\|x\|^2+2\|y\|^2$, т. к. $\langle x+y,x+y\rangle+\langle x\hm-y,x-y\rangle=2\langle x,x\rangle+2\langle y,y\rangle+\langle x,y\rangle+\langle y,x\rangle-\langle x,y\rangle-\langle y,x\rangle$
+
+Пусть $y_n\in H_0$ таковы, что $\|x_0-y_n\|\to\inf\limits_{y\in H_0}\|x_0-y\|=\mathrm{dist}(x_0,H_0)=d$. Докажем, что $\{y_n\}$ - фундаментальная
+
+Применим к элементам $x-y_n$ и $x_0-y_m$ тождество параллелограмма: $2\|x_0-y_n\|^2+2\|x_0-y_m\|^2=\|2x_0-(y_n+y_m)\|^2+\|y_n-y_m\|^2$
+
+Пусть $n,m$ столь велики, что $\|x_0-y_n\|^2<d^2+\varepsilon$, $\|x_0-y_m\|^2<d^2+\varepsilon$
+
+Тогда $\|y_n-y_m\|^2+4\left\|x_0-\frac{y_n+y_m}{2}\right\|^2<4d^2+4\varepsilon$
+
+Но $\frac{y_n+y_m}{2}\in H_0$, т. е. $\left\|x_0-\frac{y_n+y_m}2\right\|\ge d$, т. е. $\|y_n-y_m\|^2<4d^2+4\varepsilon-4d=4\varepsilon$
+
+В силу полноты $H$ и замкнутости $H_0\quad\exists y_0=\lim\limits_{y\to\infty}y_n\in H_0$
+
+Если $\exists y_0'\in H_0\colon\|x_0-y_0\|=d$, то рассмотрим последовательность 
+
+$\{y_0,y_0',y_0,y_0',y_0,y_0',\ldots\}\quad \{z_n\}\colon z_{2n-1}=y_0$, $z_{2n}=y_0$
+
+Тогда $\|x_0-z_n\|\to d$ $\Rightarrow$ $\{z_n\}$ - фундаментальная по доказанному 
+
+\noindent $\Rightarrow$ $y_0=y_0'$
+
+Возьмем любой элемент $y_0\in H_0$ и любое $t\in\mathbb R$
+
+Тогда $\|x_0+y_0+ty\|^2=f(t)\ge\|x_0-y_0\|=f(0)=d^2$
+
+$x_0-(y_0-ty)$
+
+Но $f(t)=\|x_0-y_0\|^2-2t\mathrm{Re}\langle x_0-y_0,y\rangle+t^2\|y\|^2$
+
+$\langle(x_0-y_0)+ty,(x_0-y_0)+ty\rangle$
+
+Тогда $f'(0)=2\mathrm{Re}\langle x_0-y_0,y\rangle=0\quad\forall y\in H_0$
+
+Но если $\exists y\in H_0\colon\mathrm{Im}\langle x_0-y_0,y\rangle\ne0$, то $\mathrm{Re}\langle x_0-y_0,iy\rangle\ne0$, т. к. 
+
+\noindent$\langle x_0-y_0,y\rangle=-i\langle x_0-y_0,y\rangle$ $\rightarrow$ $\forall y\in H_0\quad \langle x_0-y_0,y\rangle=0$, т. е. $x_0-y_0\in H_0^\perp$
+\end{proof}
+ 
+
+
+\begin{cons}
+Если $H$ - гильбертово, $H_0$ - замкнутое подпространство, то $H=H_0\oplus H_0^\perp$
+\end{cons}
+\begin{proof}
+Пусть $x\in H$, $y$ - элемент из $H_0$, ближайший к $x$ 
+
+$\left(\|x-y\|=\mathrm{dist}(x,H_0)\right)$
+
+ Тогда $z=x-y\in H_0^\perp$ по т. 17.2 и $x=y+z$, т. е. $H=H_0+H_0^\perp$ и эта сумма ортогональна: $\forall x\in H_0,\forall y\in H_0^\perp\quad\langle x,y\rangle=0$
+\end{proof}
+ 
+
+
+\begin{df}
+Пусть $H$ - евклидово, $H\ne\{0\}$. Система $\{e_\alpha\}$ элементов $H$ называется ортогональной, если:
+
+(1) $\forall\alpha\quad\|e_\alpha\|\ne0$
+
+(2) $\forall\alpha\ne\beta\quad\langle e_\alpha,e_\beta\rangle=0$
+
+\noindent Ортогональная система называется ортонормированной (ОНС), если\\ ${\forall\alpha\quad\|e_\alpha\|=1}$
+\end{df}
+ 
+
+
+\begin{df}
+Коэффицентами Фурье элемента $x\in H$ по ОНС $\{e_\alpha\}$ называются числа $\hat x(\alpha)=c_\alpha(x)=\langle x,e_\alpha\rangle$. Рядом Фурье называется $x\sim\sum\limits_\alpha\hat x(\alpha)e_\alpha$
+\end{df}
+ 
+
+
+\begin{thm}[Экстремальное свойство и тождество Бесселя]
+Пусть $\{e_k\}_{k=1}^n$ - ОНС в евклидовом пространстве $H$. Тогда $\forall c_1,\ldots,c_n\in\mathbb C$
+
+$\|x-\sum\limits_{k=1}^n c_k e_k\|^2\ge\text{(экстремальное свойство)}\|x-\sum\limits_{k=1}^n\hat x(k)e_k\|^2=\\=\text{(тождество Бесселя)}=\|x\|^2-\sum\limits_{k=1}^n|\hat x(k)|^2$
+\end{thm}
+\begin{proof}
+Если $a,b\in\mathbb C$, то $|a-b|^2=(a-b)\overline{(a-b)}=|a|^2-\bar a b\hm-a\bar b+|b|^2$
+
+Поэтому $\forall c_1,\ldots,c_n\in\mathbb C$
+
+$\|x-\sum\limits_{k=1}^n c_k e_k\|^2=\langle x-\sum\limits_{k=1}^n c_k e_k,x-\sum\limits_{j=1}^n c_j e_j\rangle=\|x\|^2-\sum\limits_{k=1}^n c_k\langle e_k,x\rangle\hm-\sum\limits_{j=1}^n\bar c_j\langle x,e_j\rangle+\sum\limits_{k=1}^n|c_k|^2=\|x\|^2-\sum\limits_{k=1}^n c_k\overline{\hat x(k)}-\sum\limits_{k=1}^n\hat x(k)\bar c_k+\sum\limits_{k=1}^n|c_k|^2+\sum\limits_{k=1}^n|\hat x(k)|^2\hm-\sum\limits_{k=1}^n|\hat x(k)|^2=\|x\|^2+\sum\limits_{k=1}^n|c_k-\hat x(k)|^2-\sum\limits_{k=1}^n|\hat x(k)|^2\ge\|x\|^2-\sum\limits_{k=1}^n|\hat x(k)|^2$ и равенство достигается при $c_k=\hat x(k)$
+\end{proof}
+ 
+
+
+\begin{cons}[Неравенство Бесселя]
+(1) Если $\{e_k\}_{k=1}^n$ - ОНС в $H$, $x\in H$, то $\sum\limits_{k=1}^n|\hat x(k)|^2\le\|x\|^2$
+
+(2) Если $\{e_\alpha\}$ - ОНС в $H$, $x\in H$, то $\{\alpha\colon\hat x(\alpha)\ne0\}$ не более чем счетно
+
+(3) Если $\{e_\alpha\}$ - ОНС в $H$, $x\in H$, то $\sum\limits_{\alpha\colon\hat x(\alpha)\ne0}|\hat x(\alpha)|^2\le\|x\|^2$
+\end{cons}
+\begin{proof}
+(1) Сразу следует из тождества Бесселя
+
+(2) Пусть $p\in\mathbb N$. Если $\{e_{\alpha_k}\}$ - такая конечная ОНС, что $\forall k\quad|\hat x(\alpha_k)|>\frac1p$, то в силу п. (1) $\|x\|^2\ge\sum\limits_{k=1}^n|\hat x(k)|^2\ge\frac{n}{p^2}$, т. е. $n\le p^2\|x\|^2$
+
+Поэтому $\{\alpha\colon|\hat x(\alpha)|>\frac1p\}$ - конечно, а $\{\alpha\colon\hat x(\alpha)\ne0\}=\bigcup\limits_{k=1}^\infty\{\alpha\colon|\hat x(\alpha)|>\frac1p\}$ - не более чем счетно
+
+(3) Занумеруем те $\alpha$, для которых $\hat x(\alpha)\ne0$. Пусть это $\{\alpha_k\}$
+
+Если $\{\alpha_k\}$ - конечное, то (3) следует из (1)
+
+Если $\{\alpha_k\}_{k=1}^\infty$ - счетное, то $\forall n\quad\sum\limits_{k=1}^n|\hat x(\alpha_k)|^2\le\|x\|^2$ в силу (1). В пределе при $n\to\infty$ получаем (3)
+
+\end{proof}
+ 
+
+
+\noindent Итак, ряд Фурье $\sum\limits_\alpha\hat x(\alpha)e_\alpha$ корректно определен
+ 
+
+
+\begin{thm}
+Пусть $H$ - евклидово пространство, $\{e_\alpha\}$ - ОНС в $H$
+
+(а) Следующие утверждения эквивалентны:
+
+1) $\forall x\in H\quad x=\sum\limits_{\alpha\colon\hat x(\alpha)\ne0}\hat x(\alpha)e_\alpha$ (система является ортонормированным базисом)
+
+2) $\forall\alpha\in H$ выполнено равенство Парсеваля:
+
+$\|x\|^2=\sum\limits_{\alpha\colon\hat x(\alpha)\ne0}|\hat x(\alpha)|^2$ (замкнутость системы)
+
+3) $\mathrm{span}\{e_\alpha\}=H$ (тотальность системы)
+
+(б) Из свойств 1)-3) следует
+
+4) Если $\forall\alpha\quad\hat x(\alpha)=0$, то $x=0$ (полнота системы)
+
+(в) Если $H$ - гильбертово, то из свойства 4) следуют свойства 1)-3)
+\end{thm}
+\begin{proof}
+Пусть $x\in H$, $\{e_{\alpha_k}\}$ - не элементы системы, для которых $\hat x(\alpha_k)\ne0$
+
+По теореме 18.3(1) $\|x-\sum\limits_{k=1}^n\hat x(\alpha_k)\|^2=\|x\|^2-\sum\limits_{k=1}^n|\hat x(\alpha_k)|^2$
+
+Поэтому $x=\sum\limits_{k=1}^\infty\hat x(\alpha_k)e_k$ $\Leftrightarrow$ для $x$ выполнено равенство Парсеваля, т. е. $1)$ $\Leftrightarrow$ $2)$
+
+1) $\Rightarrow$ 3) Если $x=\sum\hat x(\alpha_k) e_{\alpha_k}$, то $x=\lim\limits_{n\to\infty}\sum\limits_{k=1}^n\hat x(\alpha_k)e_{\alpha_k}$ $\Rightarrow$ $x\in\mathrm{span}\{e_\alpha\}$
+
+3) $\Rightarrow$ 1) Пусть $x=\lim\limits_{n\to\infty} p_n$, где $p_n$ - полином по системе $\{e_\alpha\}$
+
+Рассмотрим $\{e_{\alpha_k}\}$ - последовательность всех элементов системы, участвующих хотя бы в одном $p_n$
+
+Если $m$ столь велико, что $p_n=\sum\limits_{j=1}^l c_j e_{\alpha_{k_j}}$, $k_j\le m$, то по теореме 18.3
+
+$\|x-p_n\|^2\ge\|x-\sum\limits_{k=1}^m\hat x(\alpha_k)e_{\alpha_k}\|^2$ $\Rightarrow$ $x=\sum\limits_{k=1}^\infty \hat x(\alpha_k)e_{\alpha_k}$
+
+(б) Из 2) следует 4) тривиальным образом
+
+(в) Пусть $\{e_\alpha\}$ - полная ОНС, $x\in H$. По следствию из т. 18.3 $\exists$ не более чем счетное $\{\alpha_k\}\colon\hat x(\alpha_k)\ne0$
+
+$\sum\limits_{k=1}^\infty|\hat x(\alpha_k)|^2\le\|x\|^2<\infty$
+
+Рассмотрим элементы $S_n=\sum\limits_{k=1}^n\hat x(\alpha_k)e_{\alpha_k}$
+
+По теореме Пифагора $\|S_n\cdot S_m\|^2=\left\|\sum\limits_{k=m+1}^n\hat x(\alpha_k)e_{\alpha_k}\right\|^2=\sum\limits_{k=m+1}^n\|\hat x(\alpha_k)e_{\alpha_k}\|^2\hm=\sum\limits_{k=m+1}^n|\hat x(\alpha_k)|^2\xrightarrow[n,m\to\infty]{}0$
+
+$\Rightarrow$ $\{S_n\}$ - фундаментальная
+
+В силу полноты $H$ $\exists x_0=\sum\limits_{k=1}^\infty\hat x(\alpha_k)e_{\alpha_k}$
+
+При этом $\widehat{x-x_0}(\alpha_k)=\langle x,e_{\alpha_k}\rangle-\langle x_0,e_{\alpha_k}\rangle=\hat x(\alpha_k)-\left\langle\sum\limits_{j=1}^\infty \hat x(\alpha_j)e_{\alpha_j},e_{\alpha_k}\right\rangle\hm=\hat x(\alpha_k)-\sum\limits_{j=1}^\infty\hat x(\alpha_j)\langle e_{\alpha_j},e_{\alpha_k}\rangle$
+
+Если $\alpha\notin\{\alpha_k\}$, то $\hat x(\alpha)=0$, $\hat x_0(\alpha)=0$
+
+В силу 4) $x-x_0=0$, т. е. $x=x_0=\sum\limits_{k=1}^\infty\hat x(\alpha_k)e_{j_k}$
+\end{proof}
+ 
+
+
+\begin{thm}
+Пусть $H$ - евклидово пространство. Тогда в $H$ существует полная ОНС
+\end{thm}
+\begin{proof}
+Рассмотрим совокупность всех ОНС в $H$ и упорядочим ее по включению $\{e_\alpha\}_{\alpha\in A}\prec\{e_\beta\}_{\beta\in B}$, если $A\subset B$
+
+Рассмотрим цепь систем $\left\{\{e_\alpha\}_{\alpha\in A_\gamma}\right\}_{\gamma\in\Gamma}$ и пусть $A=\bigcup\limits_{\gamma\in\Gamma}A_\gamma$
+
+Если $\alpha_1,\alpha_2\in A$, то $\exists\gamma_1,\gamma_2\in\Gamma\colon\alpha_1\in A_{\gamma_1}$, $\alpha_2\in A_{\gamma_2}$
+
+Но $A_{\gamma_1}\subset A_{\gamma_2}$ или $A_{\gamma_2}\subset A_{\gamma_1}$ в силу сравнимости
+
+Тогда $\langle e_{\alpha_1},e_{\alpha_2}\rangle=0$, т. к. оба элемента лежат либо в ОНС $\{e_\alpha\}_{\alpha\in A_{\gamma_2}}$, либо в ОНС $\{e_\alpha\}_{\alpha\in A_{\gamma_1}}$ $\Rightarrow$ $\{e_\alpha\}_{\alpha\in A}$ - ОНС - верхняя грань для цепи
+
+По лемме Цорна существует максимальный элемент $\{e_\alpha\}_{\alpha\in A_0}$
+
+Пусть эта система не полна, тогда $\exists x\ne0\colon\forall\alpha\in A_0\quad\langle x,e_\alpha\rangle=0$
+
+Тогда $\{e_\alpha\}_{\alpha\in A_0}\prec\{e_\alpha\}_{\alpha\in A_0}\cup\left\{\frac{x}{\|x\|}\right\}$, что противоречит максимальности системы $\{e_\alpha\}_{\alpha\in A_0}$ $\Rightarrow$ система полна
+\end{proof}
+ 
+
+
+\begin{cons}
+Если $H$ - гильбертово пространство, $H\ne\{0\}$, то в $H$ существует ортонормированный базис (из т. 18.5 и 18.4(в))
+\end{cons}
+ 
+
+
+\begin{thm}[Процесс Грамма-Шмидта]
+Пусть $H$ - сепарабельное евклидово пространство, $\{x_n\}_{n=1}^\infty$ - счетное всюду плотное множество. Тогда $\exists$ ОН базис $\{e_k\}_{k=1}^\infty$, лежащий в $\mathrm{span}\{x_n\}_{n=1}^\infty$
+\end{thm}
+\begin{proof}
+Выбросим из $\{x_n\}_{n=1}^\infty$ те элементы, которые выражаются как линейные комбинации предыдущих. Получим ЛНЗ систему $\{y_n\}_{n=1}^\infty$, для которой $\mathrm{span}\{y_n\}_{n=1}^\infty\supset\{x_n\}_{n=1}^\infty$, т. е. $\mathrm{span}\{y_n\}_{n=1}^\infty=H$
+
+Положим $e_1=\displaystyle\frac{y_1}{\|y_1\|}$, если уже определены $e_1,\ldots,e_{n-1}$, то положим 
+
+$z_n=y_n-\sum\limits_{k=1}^{n-1}\langle y_n,e_k\rangle e_k$
+
+Тогда $\forall j<n\quad\langle z_n,e_j\rangle=\langle y_n,e_j\rangle=\sum\limits_{k=1}^{n-1}\langle y_n,e_k\rangle\langle e_k,e_j\rangle=0$ и $e_n=\displaystyle\frac{z_n}{\|z_n\|}$ ($z_n\ne0$, т. к. $\{y_n\}$ - ЛНЗ)
+
+Тогда $\|e_n\|=1$, $\forall j<n\quad\langle e_n,e_j\rangle=0$
+
+По индукции получаем ОНС $\{e_n\}_{n=1}^\infty$
+
+При этом $y_n=\|z_n\|e_n+\sum\limits_{k=1}^{n-1}\langle y_n,e_k\rangle e_k$, т. е. $y_n\in\mathrm{span}\{e_k\}_{k=1}^\infty=H$, т. е. $\{e_k\}_{k=1}^\infty$ - тотальная ОНС
+
+$\Rightarrow$ по теореме 18.4(а) $\{e_k\}_{k=1}^\infty$ - ортонормированный базис, лежащий в $\mathrm{span}\{y_n\}_{n=1}^\infty$
+\end{proof}
+ 
+
+
+\begin{thm}
+(1) Пусть $H$ - сепарабельное гильбертово бесконечномерное пространство над $\mathbb R$ или $\mathbb C$. Тогда оно изометрически изоморфно $l_2$ над этим полем
+
+(2) Любые два бесконечномерных гильбертовых сепарабельных пространства над одном полем изометрически изоморфны друг другу
+\end{thm}
+\begin{proof}
+Пусть $H$ - дано. Рассмотрим в нем ортонормированный базис $\{e_n\}_{n=1}^\infty$ (по теореме 18.6 $\exists$ не более чем счетный ОН базис, но он не может быть конечным, т. к. $\mathrm{dim}H=\infty$)
+
+Тогда $\forall x\in H\quad x=\sum\limits_{k=1}^\infty\hat x(k)e_k$, и в силу равенства Парсеваля 
+
+$\sum|\hat x(k)|^2=\|x\|^2\le\infty$
+
+Поэтому оператор $A\colon x\mapsto\{\hat x(k)\}_{k=1}^\infty$ есть изометрический оператор из $H$ в $l_2$ (он линеен, т. к. $\widehat{\alpha x+\beta y}(k)=\langle\alpha x+\beta y,e_k\rangle=\alpha\hat x(k)+\beta\hat y(k)$, $\|Ax\|_2\hm=\|x\|_H<\infty$)
+
+Оператор сохраняет норму $\Rightarrow$ инъективен
+
+Пусть $\{c_k\}_{k=1}^\infty\in l_2$. Рассмотрим $S_n=\sum\limits_{k=1}^n c_k e_k$. Тогда $\{S_n\}$ - фундаментальная по теореме Пифагора
+
+В силу полноты $H\quad\exists x=\sum\limits_{k=1}^n c_k e_k$ и $\forall n\quad\hat x(n)=\left\langle\sum\limits_{k=1}^\infty c_k e_k,e_n\right\rangle=$
+
+\noindent $=\sum\limits_{k=1}^\infty c_k\langle e_k,e_n\rangle=c_n$, т. е. $Ax=\{c_k\}_{k=1}^\infty$
+
+$A$ биективен; пункт (1) доказан
+
+(2) сдедует из (1), т. к. композиция изометрических изоморфизмов есть изоморфизм
+\end{proof}
+ 
+
+
+\begin{thm}[Рисса об общем виде ЛНФ на гильбертовых пространствах]
+Пусть $H$ - гильбертово, $f\in H^*$ $\Leftrightarrow$ $\exists y\in H\colon f(x)=\langle x,y\rangle$, причем $\|f\|_{H^*}\hm=\|y\|_H$
+\end{thm}
+\begin{proof}
+($\Leftarrow$) $f(x)=\langle x,y\rangle$ линеен по $x$, по неравенству КБШ $|f(x)|\le\|x\|\cdot\|y\|$, т. е. $\|f\|\le\|y\|$, при $x=y$ имеем $\frac{|f(y)|}{\|y\|}=\|y\|$, т. е. $\|f\|\ge\|y\|$
+
+($\Rightarrow$) Если $f\equiv0$, то при $y=0\quad 0=\langle x,0\rangle$
+
+Пусть $f\not\equiv0$, т. е. $\mathrm{Ker} f=\{x\colon f(x)=0\}\ne H$
+
+$\mathrm{Ker}f$ - замкнуто (в силу непрерывности $f$), т. е. $H=\mathrm{Ker}f\oplus(\mathrm{Ker}f)^\perp$
+
+Пусть $e\in(\mathrm{Ker}f)^\perp$, $\|e\|=1$, тогда $\forall x\in H\quad x=\frac{f(x)}{f(e)}e+(x-\frac{f(x)}{f(e)}e)$, где $f(x-\frac{f(x)}{f(e)}e)=0$
+
+Поэтому $H=\mathrm{Ker}f\oplus\mathrm{span}\{e\}$, т. е. $(\mathrm{Ker}f)^\perp=\mathrm{span}\{e\}$
+
+По свойству ортогонального различия (???) $x-\frac{f(x)}{f(e)}e$ - единственный ближайший к $x$ в $\mathrm{Ker}f$
+
+Но $\{e\}$ - ОНС из 1 элемента,поэтому $\|x-ce\|$ достигает минимума при $c=\langle x,e\rangle$ по экстремальному свойству коэффицентов Фурье
+
+Следовательно $\frac{f(x)}{f(e)}=\langle x,e\rangle$ $\Rightarrow$ $f(x)=\langle x,\overline{f(e)}e\rangle=\langle x,y\rangle$
+\end{proof}
+ 
+
+
+\begin{df}
+Пусть $H$ - гильбертово, $A\in\EuScript L(H)$. Эрмитово сопряженным к $A$ называется такой $A^*\in\EuScript L(H)$, что $\forall x,y\in H\quad\langle Ax,y\rangle=\langle x,A^*y\rangle$. Оператор $A\in\EuScript L(H)$ называется самосопряженным, если $A=A^*$
+\end{df}
+ 
+
+
+\begin{thm}
+Пусть $H$ - гильбертово, $A\in\EuScript L(H)$, и $\|A\|=\|A^*\|$
+\end{thm}
+\begin{proof}
+Фиксируем $y\in H$. Тогда $f_y(x)=\langle Ax,y\rangle\in H^*$ в силу линейности скалярного произведения и неравенства КБШ
+
+По теореме 18.8(Рисса) $\exists!z\in H\colon\forall x\in H\quad f_y(x)=\langle Ax,y\rangle=\langle x,z\rangle$
+
+Положим $A^*y=z$. Т. к. $\langle Ax,\alpha y_1+\beta y_2\rangle=\bar\alpha\langle Ax,y_1\rangle+\bar\beta\langle Ax,y_2\rangle\hm=\bar\alpha\langle x,z_1\rangle+\bar\beta\langle x,z_2\rangle=\langle x,\alpha z_1+\beta z_2\rangle$, то $A^*$ - линеен
+
+Далее $\|A^*y\|\stackrel{\text{т. Рисса}}{=}\|f_y\|_{H^*}=\sup\limits_{\|x\|=1}|\langle Ax,y\rangle|\le\sup\limits_{\|x\|=1}\|Ax\|\cdot\|y\|\le\|A\|\cdot\|y\|$, т. е. $\|A^*\|\le\|A\|<\infty$
+
+Но т. к. $A^{**}=A$, то $\|A\|=\|(A^*)^*\|\le\|A^*\|$ $\Rightarrow$ $\|A\|=\|A^*\|$
+\end{proof}
+ 
+
+
+\begin{df}
+Пусть $H$ - гильбертово, $H_0$ - замкнутое подпространство. Ортогональным проектором на $H_0$ называется $P_{H_0}\colon$ элементу $x=y+z$, $y\in H_0$, $z\in H_0^\perp$ сопоставляется $y$
+\end{df}
+ 
+
+
+\begin{prop}
+Если $H_0$ - замкнутое подпространство в гильбертовом $H$, то $P_{H_0}$ - самосопряженный линейный ограниченный оператор в $H$, и если $H_0\ne\{0\}$, то $\|P_{H_0}\|=1$
+\end{prop}
+\begin{proof}
+Если $x_1=y_1+z_1$, $x_2=y_2+z_2$, $y_1,y_2\in H_0$, $z_1,z_2\in H_0^\perp$, то $\alpha x_1+\beta x_2=(\alpha y_1+\beta y_2)+(\alpha z_1+\beta z_2)$ $\Rightarrow$ $P_{H_0}$ - линеен
+
+По теореме Пифагора $\|x\|^2=\|y\|^2+\|z\|^2$, т. е. $\|y\|\le\|x\|$ и при $z=0$, $y\ne0$ достигается равенство $\Rightarrow$ $\|P\|=1$
+
+\noindent$\langle P x_1,x_2\rangle=\langle y_1,y_2+z_2\rangle=\langle y_1,y_2\rangle=\langle y_1+z_1,y_2\rangle=\langle x_1,Px_2\rangle$, т. е. $P=P^*$
+\end{proof}
+
+
+
+
+
+
+
+
+\chapter{Спектры операторов}
+
+Обозначения: $E$ - банахово пространство, $I$ - тождественный оператор в $E$
+
+$A^{-1}$ - обратный к $A\colon AA^{-1}=A^{-1}A=I$
+
+По теореме Банаха об ограниченном операторе: если $A\in\EuScript L(E)$ и $\exists A^{-1}$, то $A^{-1}$ тоже ограничен
+ 
+
+\begin{df}
+Пусть $A\in\EuScript L(E)$
+
+Оператором $A$ называется $\sigma(A)=\{\lambda\hm\in\mathbb C\colon\nexists(A-\lambda Y)^{-1}\}$. Резолвентным множеством $A$ называется $\rho(A)=\{\lambda\in\mathbb C\colon\exists(A-\lambda I)^{-1}\}$, $\lambda\in\rho(A)$ называется регулярным значением, а оператор $R_\lambda(A)=(A-\lambda I)^{-1}$ - резольвентный $A$
+\end{df}
+ 
+
+
+\begin{df}[Классификация спектра]
+Пусть $A\in\EuScript L(E)$
+
+Точечным спектром $A$ называется: 
+\begin{equation*}\sigma_p(A)=\Big\{\lambda\in\mathbb C\colon\mathrm{Ker}(A-\lambda I)\ne\{0\}\Big\}\end{equation*} ($\lambda$ - собственное значение, $x\in\mathrm{Ker}(A-\lambda I)\ne\{0\}$ - собственный вектор)
+
+Непрерывным спектром $A$ называется: 
+\begin{equation*}\sigma_c(A)=\left\{\lambda\in\mathbb C\colon\mathrm{Ker}(A-\lambda I)=\{0\},\\ \mathrm{Im}(A-\lambda I)\ne E,\overline{\mathrm{Im}(A-\lambda I)}=E\right\}\end{equation*}
+
+Остаточным спектром $A$ называется 
+\begin{equation*}\sigma_r(A)=\left\{\lambda\in\mathbb C\colon\mathrm{Ker}(A-\lambda I)=\{0\},\overline{\mathrm{Im}(A-\lambda I)}\ne E\right\}\end{equation*} 
+\end{df}
+ 
+
+
+\begin{rem}
+$\sigma(A)=\sigma_p(A)\sqcup\sigma_c(A)\sqcup\sigma_r(A)$
+\end{rem}
+ 
+
+
+\begin{lem}
+Пусть $A\in\EuScript L(E)$, $\|A\|<1$. Тогда $\exists(I-A)^{-1}=\sum\limits_{n=0}^\infty A^n$, \\ где $A^0=I$
+\end{lem}
+\begin{proof}
+Пусть $B_n=\sum\limits_{k=0}^n A^k$, тогда при $n<m$ $\|B_n-B_m\|\hm=\left\|\sum\limits_{k=n+1}^m A^k\right\|=\sum\limits_{k=n+1}^m\|A^k\|\le\sum\limits_{k=n+1}^\infty\|A\|^k\le\displaystyle\frac{\|A\|^{n+1}}{1-\|A\|}\xrightarrow[n\to\infty]{}0$, т. е. $\{B_n\}$ - фундаментальна
+
+Но $E$ - полно $\Rightarrow$ $\EuScript L(E)$ полно $\Rightarrow$ $\exists B=\lim\limits_{n\to\infty}B_n\in\EuScript L(E)$
+
+Но $(I-A)B_n=\sum\limits_{k=0}^n A^k-\sum\limits_{k=1}^{n+1}A^k=I-A^{n+1}$, где $\|A^{n+1}\|\le\|A\|^{n+1}\to0$
+
+Но $\|(I-A)B_n-(I-A)B\|=\|(I-A)(B_n-B)\|\le\|I-A\|\cdot\|B_n-B\|\xrightarrow[n\to\infty]{}0$
+
+$\Rightarrow$ $(I-A)B=I$, аналогично $B(I-A)=I$ 
+\end{proof}
+ 
+
+
+\begin{thm}
+Пусть $A\in\EuScript L(E)$
+
+(1) $\sigma(A)\subset\{|\lambda|\le\|A\|\}$, т. е. $\sigma(A)$ ограничен, и вне этого круга резольвента разлагается в сходящийся ряд по отрицательным степеням $\lambda$
+
+(2) $\sigma(A)$ замкнут, и в окрестности любого регулярного значения $\lambda_0$ резольвента разлагается в сходящийся ряд по степеням $\lambda-\lambda_0$
+\end{thm}
+\begin{proof}
+(1) Пусть $|\lambda|>\|A\|$, тогда $\left\|\frac{A}\lambda\right\|<1$, $A-\lambda I=-\lambda(I-\frac{A}{\lambda})$
+
+По лемме 19.1 $\exists (A-\lambda I)^{-1}=-\displaystyle\frac1\lambda\sum\limits_{n=0}^\infty\displaystyle\frac{A^n}{\lambda^n}=\sum\limits_{n=1}^\infty\frac{-1}{\lambda^n}A^{n-1}$
+
+(2) Пусть $\lambda_0$ - регулярное, $|\lambda-\lambda_0|$ достаточно мало
+
+$A-\lambda I=(A-\lambda_0)I+(\lambda_0-\lambda)I=(A-\lambda_0)I+(A-\lambda_0 I)(A-\lambda_0 I)^{-1}\cdot(\lambda-\lambda_0)I\hm=(A-\lambda_0 I)(I-(A-\lambda_0 I)^{-1}(\lambda-\lambda_0)I)$
+
+Если $|\lambda-\lambda_0|<\displaystyle\frac{1}{\|(A-\lambda_0 I)^{-1}\|}$, то $\|(A-\lambda_0 I)^{-1}(\lambda-\lambda_0)I\|<1$
+
+По лемме 19.1 $\exists (A-\lambda I)^{-1}=\sum\limits_{n=0}^\infty(\lambda-\lambda_0)^n(A-\lambda_0 I)^{-n}(A-\lambda_0 I)^{-1}\hm=\sum\limits_{n=0}^\infty(\lambda-\lambda_0)^n(A-\lambda_0 I)^{-n-1}$
+
+Итак, $\rho(A)$ открыто $\Rightarrow$ $\sigma(A)$ замкнут
+\end{proof}
+ 
+
+
+\begin{thm}
+Пусть $A\in\EuScript L(E)$. Тогда $\sigma(A)\ne\varnothing$
+\end{thm}
+\begin{proof}
+Пусть $\sigma(A)=\varnothing$. Пусть $f\in\left(\EuScript L(E)\right)^*$ - линейный функционал на $\EuScript L(E)$
+
+Рассмотрим функцию $\varphi_f(\lambda)=f(R_\lambda(A))\colon\mathbb C\to\mathbb C$
+
+1. $\forall\lambda_0\in\mathbb C\quad\lambda_0$ - регулярная $\Rightarrow$ $\varphi_f(\lambda)=f\left(\sum\limits_{n=0}^\infty(\lambda-\lambda_0)^n(R_{\lambda}(A))^{n+1}\right)\hm=\sum\limits_{n=0}^\infty f\left((R_{\lambda_0}(A))^{n-1}\right)(\lambda-\lambda_0)^n$ - степенной ряд, сходящийся при $|\lambda-\lambda_0|\hm<\displaystyle\frac{1}{\|R_{\lambda_0}(A)\|}$
+
+Т. е. $\varphi_f(\lambda)$ голоморфна в окрестности $\lambda_0$, т. е. голоморфна в $\mathbb C$
+
+2. Если $|\lambda|>\|A\|$, то $\varphi_f(\lambda)=f\left(\sum\limits_{n=1}^\infty\displaystyle\frac{-1}{\lambda^n}A^{n-1}\right)=\sum\limits_{n=1}^\infty f(-A^{n-1})\displaystyle\frac{1}{\lambda^n}$, т. к. $\varphi_f(\lambda)\xrightarrow[\lambda\to\infty]{}0$
+
+По теореме Лиувилля $\varphi_f(\lambda)=0$
+
+Фиксируем $\lambda\in\mathbb C$ и рассматривая все $f\in\left(\EuScript L(E)\right)^*$, получаем, что ${R_\lambda(A)=0}$ (для $x\ne0\quad\exists f\colon f(x)\ne0$)
+
+Но $R_\lambda(A)$ - обратимый $\Rightarrow$ получено противоречие
+\end{proof}
+ 
+
+
+\begin{df}
+Пусть $A\in\EuScript L(E)$. Его спектральным радиусом называется $r(A)=\max\limits_{\lambda\in\sigma(A)}|\lambda|$
+\end{df}
+ 
+
+
+\begin{thm}[О спектральном радиусе]
+Пусть $A\in\EuScript L(E)$. Тогда $r(A)\hm=\inf\limits_n\|A^n\|^{\frac1n}=\lim\limits_{n\to\infty}\|A^n\|^{\frac1n}$, причем предел существует
+\end{thm}
+\begin{proof}
+(1) Докажем второе равенство
+
+По определению $a=\inf\limits_n\|A^n\|^{\frac1n}\le\varliminf\limits_{n\to\infty}\|A^n\|^{\frac1n}$
+
+Пусть $\varepsilon>0$, докажем, что $\varlimsup\limits_{n\to\infty}\|A^n\|^\frac1n\le a+\varepsilon$
+
+Тогда в милу произвольности $\varepsilon$ $\exists\lim\limits_{n\to\infty}\|A^n\|^{\frac1n}=a$
+
+По определению $\exists p\colon\|A^p\|^\frac1p<a+\varepsilon$, $\|A^p\|<(a+\varepsilon)^p$
+
+Если $n>p$, то $\exists k\in\mathbb N\quad\exists q\in\{0,\ldots,p-1\}\colon n=pk+q$
+
+$\|A^n\|=\|(A^p)^k\cdot A^q\|\le\|A^p\|^k\cdot\|A^q\|\le(a+\varepsilon)^{pk}\|A\|^q$
+
+$\|A^n\|^\frac1n\le(a+\varepsilon)^\frac{n-q}{n}\cdot\|A\|^\frac{q}{n}=(a+\varepsilon)^{1-\frac{q}{n}}\cdot\|A\|^\frac{q}{n}$
+
+Но $\frac{q}{n}\to0$ при $n\to\infty$, поэтому в пределе $\varlimsup\limits_{n\to\infty}\|A^n\|^\frac1n\le(a+\varepsilon)$
+
+(2) Пусть $|\lambda|>l>r(A)$, тогда $\exists n_0\quad\forall n>n_0\quad\|A^n\|<l^n$,\\ $\left\|\displaystyle\frac{A^n}{\lambda^n}\right\|<\left(\displaystyle\frac{l}{|\lambda|}\right)^n$
+
+Тогда ряд $-\displaystyle\frac1\lambda\sum\limits_{n=0}^\infty\displaystyle\frac{A^n}{\lambda^n}$ сходится при $|\lambda|>l$, и его сумма равна $R_\lambda(A)$
+
+При $B_m=-\displaystyle\frac1\lambda\sum\limits_{n=0}^m\displaystyle\frac{A^n}{\lambda^n}$ имеем $(A-\lambda I)B_m=-\displaystyle\frac1\lambda\sum\limits_{n=0}^m\displaystyle\frac{A^{n+1}}{\lambda^{n+1}}+\sum\limits_{n=0}^m\displaystyle\frac{A^n}{\lambda^n}\hm=I-\displaystyle\frac{A^{m+1}}{\lambda^{m+1}}\to I$
+
+Т. е. $\lim\limits_{n\to\infty}\|A^n\|^\frac1n\ge r(A)$
+
+Предположим, что $r(A)<l$. Рассмотрим $\lambda\colon\bar r(A)<|\lambda|$
+
+$\lambda$ - регулярная точка $\Rightarrow$ резольвента разлагается в ряд в окрестности $\lambda$ $\Rightarrow$ $\forall f\in(\EuScript L(E))^*\quad f(R_z(A))$ голоморфна по $z$ в окрестности точки $\lambda$ (разлагается в ряд по степеням $(z-\lambda)$)
+
+Т. к. $\lambda$ - любое из кольца $\{r(A)<|\lambda|\}$, то $f(R_z(A))$ голоморфна в кольце $\{|z|>r(A)\}$
+
+Но на $\{|z|>\|A\|\}$ $f(R_z(A))=\sum\limits_{n=0}^\infty f(-A^n)\displaystyle\frac1{z^{n+1}}$
+
+В силу единственности разложения в ряд Лорана это разложение сходится при $|z|>r(A)$
+
+Фиксируем $\lambda\colon r(A)<|\lambda|<l$. Тогда $f\left(-\displaystyle\frac{A^n}{\lambda^{n+1}}\right)\to0$ как член сходящегося ряда, т. е. $-\displaystyle\frac{A^n}{\lambda^{n+1}}\to0$ слабо 
+
+$\Rightarrow$ по теореме 17.6 $\exists c\quad\forall n\left\|\displaystyle\frac{A^n}{\lambda^{n+1}}\right\|\le c$, $\|A^n\|\le c\cdot|\lambda^{n+1}|$, $\|A^n\|^\frac1n\le c^\frac1n\hm\cdot|\lambda|^\frac1n|\lambda|$
+
+При $n\to\infty$ имеем $l\le|\lambda|$ - противоречие
+\end{proof}
+ 
+
+
+\begin{df}
+Оператор $A\in\EuScript L(H)$ называется нормальным, если \\$A^*A=AA^*$ (самосопряженный оператор нормален)
+\end{df}
+ 
+
+
+\begin{lem}
+Пусть $A\in\EuScript L(H)$. Тогда:
+
+(1) $H=\mathrm{Ker}A\oplus\mathrm{Im}A^*$
+
+(2) $\mathrm{Ker}A=\mathrm{Ker}(A^*A)$
+
+(3) $\overline{\mathrm{Im}A^*}=\overline{\mathrm{Im}A^*A}$
+\end{lem}
+\begin{proof}
+$\forall$ подпространства $H_0\subset H\quad H_0^\perp=\bar H_0^\perp$
+
+Действительно, вложение $\bar H_0^\perp\subset H_0^\perp$ тривиально, а если $x\in H_0^\perp$, $y\in\bar H_0$, $y=\lim\limits_{n\to\infty} y_n$, $y_n\in H_0$, то $\langle x,y\rangle=\lim\limits_{n\to\infty}\langle x,y_n\rangle=\lim\limits_{n\to\infty}0=0$, т. е. $x\in\bar H_0^\perp$, $x\in(\mathrm{Im}A^*)^\perp$ $\Leftrightarrow$ $\forall y\quad\langle x,A^*y\rangle=0$ $\Leftrightarrow$ $\forall y\quad\langle Ax,y\rangle=0$ $\Leftrightarrow$ $Ax=0$
+
+Т. е. $(\mathrm{Im}A^*)=\left(\overline{\mathrm{Im}A^*}\right)^\perp=\mathrm{Ker}A$
+
+Но по теореме об ортогональном различии $H=\overline{\mathrm{Im}A^*}\oplus\left(\overline{\mathrm{Im}A^*}\right)^\perp$ $\Rightarrow$ (1)
+
+(2) Если $Ax=0$, то $A^*Ax=A^*0=0$
+
+Если $A^*A=0$, то $\langle A^*Ax,x\rangle=\|Ax\|^2=0$, т. к. $Ax=0$
+
+(3) В силу п. (1) $H=\mathrm{Ker}A\oplus\overline{\mathrm{Im}A^*}$
+
+Поэтому (2) $\Rightarrow$ (3)
+\end{proof}
+ 
+
+
+\begin{lem}
+Если $A$ - нормальный, то $\forall\lambda\in\mathbb C\quad B=A-\lambda I$ - нормальный
+\end{lem}
+\begin{proof}
+$B^*B=(A-\lambda I)^*(A-\lambda I)=(A^*-\bar\lambda I)(A-\lambda I)=A^*A\hm-\bar\lambda A-\lambda A^*+|\lambda|^2I=(A-\lambda I)(A^*-\bar\lambda I)=BB^*$
+\end{proof}
+ 
+
+
+\begin{thm}
+Пусть $A$ - нормальный. Тогда его остаточный спектр пуст
+\end{thm}
+\begin{proof}
+Пусть $\exists\lambda\in\mathbb C\colon$ для $B=A-\lambda I$ выполнено $\mathrm{Ker}B=\{0\}$, $\overline{\mathrm{Im}B}\ne H$
+
+По лемме 19.3 $B$ нормален
+
+По лемме 19.2 $H=\mathrm{Ker}B^*\oplus\overline{\mathrm{Im}B}$
+
+$\overline{\mathrm{Im}B}\ne H$ $\Rightarrow$ $\mathrm{Ker}B^*\ne\{0\}$
+
+По лемме 19.2(2) $\mathrm{Ker}B^*=\mathrm{Ker}(BB^*)=\mathrm{Ker}(B^*B)=\mathrm{Ker}B$ - противоречие с условием $\mathrm{Ker}B=\{0\}$
+\end{proof}
+ 
+
+
+\begin{thm}[Критерий Вейля]
+Пусть $A$ - оператор из $\EuScript L(H)$ с пустым остаточным спектром (в частности, нормальный)
+
+Тогда $\lambda\in\sigma(A)$ $\Leftrightarrow$ для $A-\lambda I$ существует последовательность Вейля
+\end{thm}
+\begin{proof}
+По условию $\sigma(A)=\sigma_p(A)\cup\sigma_p(A)$
+
+Если $\lambda\in\sigma_p(A)$, то $\exists x\ne0\colon Ax=\lambda x$
+
+Положим $x_n=\displaystyle\frac{x}{\|x\|}\quad\forall n$, тогда $\{x_n\}$ - последовательность Вейля \\ для $A-\lambda I$
+
+Пусть $B=A-\lambda I$, $\mathrm{Ker}B=\{0\}$
+
+Предположим, что для $B$ не существует последовательности Вейля. Тогда $\alpha=\inf\limits_{\|x\|=1}\|Bx\|>0$
+
+$\forall x\ne0\quad\|Bx\|=\|x\|\cdot\left\|B\displaystyle\frac{x}{\|x\|}\right\|\ge\alpha\|x\|$
+
+Если $\mathrm{Im}B\supset y_n=Bx_n\to y$, то $\|B(y_n-y_m)\|\ge\alpha\|x_n-x_m\|$, $\{x_n\}$ - фундаментальная в $H$
+
+$\Rightarrow$ $\exists x\colon x_n\to x$, $Bx_n\to Bx=y\in\mathrm{Im}B$, т. е. $\mathrm{Im}B$ замкнут, $\mathrm{Im}(A-\lambda I)$ замкнут, $\lambda\notin\sigma_c(A)$
+
+$(\Leftarrow)$ Если для $B=A-\lambda I\quad\exists$ последовательность Вейля $\{x_n\}$, то\\ $\inf\limits_x{\displaystyle\frac{\|Bx\|}{\|x\|}=0}$, $\sup\displaystyle\frac{\|x\|}{\|Bx\|}=\infty$, $B^{-1}$ не может быть ограничено оператором
+\end{proof}
+ 
+
+
+\begin{thm}
+Пусть $A\in\EuScript L(H)$, $A=A^*$. Тогда $\sigma(A)\subset\mathbb R$
+\end{thm}
+\begin{proof}
+Пусть $\lambda=\alpha+i\beta$, $\alpha\in\mathbb R$, $\beta\in\mathbb R$, $\beta\ne0$
+
+Тогда $\forall x\in H\quad\|x\|=1$, $\|(A-\lambda I)x\|^2=\langle A-(\alpha+i\beta)x,Ax-(\alpha+i\beta)x\rangle\hm=\langle Ax-\alpha x,Ax-\alpha x\rangle-\langle Ax,i\beta x\rangle-\langle i\beta x,Ax\rangle+\langle i\beta x,i\beta x\rangle=\|Ax-\alpha x\|^2\hm+i\beta\langle Ax,x\rangle-i\beta\langle x,Ax\rangle+|\beta|^2\cdot\|x\|^2\ge|\beta|^2\cdot\|x\|^2$
+
+Т. е. $\|(A-\lambda I)x\|\ge|\beta|\cdot\|x\|=|\beta|$, для $(A-\lambda I)$ не существует последовательности Вейля, $\lambda\in\rho(A)$
+\end{proof}
+ 
+
+
+\begin{df}
+Квадратичной формой (самосопряженного) оператора $A$ в гильбертовом пространстве $H$ называется $Q_A(x)=\langle Ax,x\rangle$
+\end{df}
+ 
+
+
+\begin{thm}
+Пусть $A\in\EuScript L(H)$, $A=A^*$, $m_A=\inf\limits_{\|x\|=1}Q_A(x)$, $M_A\hm=\sup\limits_{\|x\|=1}Q_A(x)$, $M=\max\{M_A-m_A\}=\sup\limits_{\|x\|=1}|Q_A(x)|$ 
+
+Тогда: (1) $\|A\|=M$
+
+(2) $\sigma(A)\subset[m_A,M_A]$
+
+(3) $\{m_A,M_A\}\subset\sigma(A)$
+\end{thm}
+\begin{proof}
+(1) $\forall x$, $\|x\|=1\quad|Q_A(x)|=|\langle Ax,x\rangle|\le\|A\|\cdot\|x\|^2=\|A\|$ $\Rightarrow$ $M\le\|A\|$
+
+Обратно, $\|A\|=\sup\limits_{\|x\|=1}\|Ax\|=\sup\limits_{\substack{\|x\|=1\\ \|y\|=1}}|\langle Ax,y\rangle|=\sup\limits_{\substack{\|x\|=1\\ \|y\|=1}}|\mathrm{Re}\langle Ax,y\rangle|=\\ =\frac14\sup\limits_{\substack{\|x\|=1\\ \|y\|=1}}|\langle A(x+y),x+y\rangle-\langle A(x-y),x-y\rangle|\le\frac14\sup\limits_{\substack{\|x\|=1\\ \|y\|=1}}(M\|x+y\|^2+M\|x-y\|^2)\hm=\frac{M}4\sup\limits_{\substack{\|x\|=1\\ \|y\|=1}}(2\|x\|^2+2\|y\|^2)=M$
+
+(2) Пусть $\lambda\in\sigma(A)$, $\{x_n\}$ - последовательность Вейля для $(A-\lambda I)$ , т. е. $\|(A-\lambda I)x_n\|\to0$, $\|x_n\|=1$
+
+$\langle(A-\lambda I)x_n,x_n\rangle\xrightarrow[n\to\infty]{}0$ по неравенству КБШ, т. е. $\langle Ax_n,x_n\rangle={Q_A(x_n)\to\lambda}$
+
+Но $Q_A(x_n)\in[m_A,M_A]$ $\Rightarrow$ $\lambda\in[m_A,M_A]$ $\Rightarrow$ $\sigma(A)\subset[m_A,M_A]$
+
+(3) Пусть $M=M_A=\|A\|$. Тогда $\exists x_n\colon\|x_n\|=1$, $Q_A(x_n)\to M_A$
+
+$\|A x_n-M_Ax_n\|^2=\langle Ax_n,Ax_n\rangle-2M_A\langle Ax_n,x_n\rangle+M_A^2\langle x_n,x_n\rangle=\|Ax_n\|^2\hm-2M_A Q_A(x_n)+M_A^2\le2M_A^2-2M_A Q_A(x_n)\xrightarrow[n\to\infty]{}0$, т. е. $\{x_n\}$ - последовательность Вейля для $A-M_A I$, $M_A\in\sigma(A)$
+
+Заметим, что если $c\in\mathbb R$, то $Q_{A+cI}(x)=\langle(A+cI)x,x\rangle=Q_A(x)+c\|x\|^2$
+
+Т. е. $m_{A+cI}=m_{A+c}$, $M_{A+cI}=M_{A+c}$, но $\lambda\in\sigma(A)$ $\Leftrightarrow$ $\lambda+c\in\sigma(A+cI)$
+
+Выбирая подходящее $с$, можно добиться, чтобы $|m_{A+cI}|>|M_{A+cI}|$ или наоборот. Поэтому $\{m_A,M_A\}\subset\sigma(A)$
+\end{proof}
+ 
+
+
+\begin{cons}
+Если $A\in\EuScript L(H)$, $A=A^*$, то $r(A)=\|A\|$
+\end{cons}
+\begin{proof}
+$\|A\|=M=\max\{M_A,-m_A\}=r(A)$
+\end{proof}
+
+
+
+
+
+
+
+
+
+\chapter{Компактные операторы}
+
+\begin{df}
+Пусть $E,F$ - банаховы пространства. Оператор $A\in\EuScript L(E,F)$ называется компактным, если $A$ переводит единичный шар $\{x\colon\|x\|\le1\}$ в предкомпактное множество (обозначается: $A\in\EuScript K(E,F)$)
+\end{df}
+ 
+
+
+\begin{prop}
+Пусть $A\in\EuScript K(E,F)$, $M$ - ограниченное множество. Тогда $A(M)$ - предкомпактное
+\end{prop}
+\begin{proof}
+$M$ ограниченное $\Leftrightarrow$ $\exists R\colon M\subset B_R(0)$
+
+Но если образ $B_1(0)$ предкомпактен, то $\forall\varepsilon>0$ по критерию Хаусдорфа $\exists$ конечная $\frac{\varepsilon}{R}$-сеть $y_1,\ldots,y_n$ для образа $A(B_1(0))$
+
+Тогда $\{R_{y_1},\ldots,R_{y_n}\}$ - конечная $\varepsilon$-сеть для $A(B_R(0))$ и тем более для $A(M)$ $\Rightarrow$ $A(M)$ пердкомпактно
+
+$\Bigl($Если $\|x\|<R$, то $\left\|\frac{x}{R}\right\|<1$, $\exists k\in\{1,\ldots,n\}\colon\|A\frac{x}{R}-y_k\|<\frac{\varepsilon}{R}$ \\$\Rightarrow$ $\|Ax-R_{y_k}\|<\varepsilon\Bigr)$
+\end{proof}
+ 
+
+
+\begin{thm}
+($E,F,G$ - банаховы)
+
+(1) Если $A\in\EuScript L(E,F)$, $\mathrm{dim}(\mathrm{Im}A)<\infty$, то $A\in\EuScript K(E,F)$
+
+(2) $\EuScript K(E,F)$ - замкнутое подпространство в $\EuScript L(E,F)$
+
+(3) Если $A\in\EuScript K(E,F)$, $B\in\EuScript(F,G)$, $C\in\EuScript L(G,E)$, то $BA\in\EuScript(E,G)$, $AC\hm\in\EuScript K(G,F)$
+\end{thm}
+\begin{proof}
+(1) Пусть $\mathrm{Im}A=F_0\subset F$, $\mathrm{dim}F_0<\infty$
+Все нормы на $F_0$ эквивалентны, в частности норма, суженная из $F$, эквивалентна евклидовой норме (для какого-то базиса)
+
+$V=A(B_1(0))$ - ограниченное множество в $F_0$ (т. к. $A$ - ограниченный)
+
+$\Rightarrow$ $V$ - предкомпактно в евклидой норме $\Rightarrow$ $V$ - предкомпактно в норме $F$ $\Rightarrow$ $A$ - компактен
+
+(2) Пусть $A,B$ - компактные операторы. Тогда $\forall\alpha,\beta\in\mathbb C\quad \alpha A$ и $\beta B$ - компактны 
+
+$\Bigl($Если $\{x_n\}$ - последовательность в $U=B_1(0)$, то $\exists$ фундаментальная $\{A x_{n_k}\}$ $\Rightarrow$ $\{\alpha A x_{n_k}\}$ - тоже фунаментальная $\Rightarrow$ $\alpha A(U)$ - тоже предкомпактен$\Bigr)$
+
+Пусть $A$ и $B\in\EuScript L(E,F)$, $\{x_n\}$ - последовательность элементов $U$
+
+$\exists$ фундаментальная подпоследовательность $\{A x_{n_k}\}$, $\exists$ фундаментальная подпоследовательность $\{B x_{n_{k_l}}\}$, тогда $\{Ax_{n_{k_l}}+Bx_{n_{k_l}}\}$ - фундаментальная подпоследовательность $\Rightarrow$ $A+B\in\EuScript K(E,F)$
+
+Пусть $\{A_n\}$ - последовательность в $\EuScript K(E,F)$, $A\in\EuScript K(E,F)$, $\|A_n-A\|\to0$
+
+Фиксируем $\varepsilon>0$. Фиксируем $n\colon\|A_n-A\|<\frac\varepsilon2$
+
+$A_n(U)$ - предкомпактное множество, пусть $\{y_k\}_{k=1}^m$ - конечная $\frac\varepsilon2$-сеть для $A_n(U)$
+
+Тогда $\forall x\in U\quad\exists j\colon\|A_n x-y_j\|<\frac\varepsilon2$, для этого $j\quad\|Ax-y_j\|\le\|Ax\hm-A_nx\|+\|A_nx-y_j\|\le\|A_n-A\|\cdot\|x\|+\frac\varepsilon2<\varepsilon$, т. е. $\{y_k\}_{k=1}^m$ - $\varepsilon$-сеть для $A(U)$
+
+(3) Если $C\in\EuScript L(G,E)$, $A\in\EuScript K(E,F)$, то $U$ - единичный шар в $G$, $C(U)$ - ограниченное множество $\Rightarrow$ $A(C(U))$ - предкомпактно $\Rightarrow$ $AC\in\EuScript K(E,F)$
+
+Если $B\in\EuScript L(F,G)$, $A\in\EuScript K(E,F)$, $U$ - единичный шар в $E$, то $A(U)$ - предкомпактное множество 
+
+$\Rightarrow$ Если $\{y_j\}_{j=1}^n$ - конечная $\varepsilon$-сеть для $A(U)$, то $\{By_j\}_{j=1}^n$ - конечная $(\|B\|\varepsilon)$-сеть для $BA(U)$, в силу произволньности $\varepsilon>0\quad BA(U)$ вполне ограничено $\Rightarrow$ $BA\in\EuScript K(E,G)$
+\end{proof}
+ 
+
+
+\begin{cons}
+Следующие свойства банахова пространства $E$ эквивалентны:
+
+(1) $\mathrm{dim}E<\infty$
+
+(2) $I\in\EuScript K(E)$
+
+(3) $\exists$ обратимый $A\in\EuScript K(E)$
+\end{cons}
+\begin{proof}
+$(1)\to(2)$ Образ единичного шара для $I$ - единичный шар, он предкомпактен $\Leftrightarrow$ $\mathrm{dim}E<\infty$ (см. тему 3)
+
+$(2)\to(3)$ тривиально
+
+$(3)\to(2)$ Если $\exists A\in\EuScript K(E)$ - обратимый, то $A^{-1}A=I\in\EuScript K(E)$ в силу п. (3) теоремы 20.1
+\end{proof}
+ 
+
+
+\begin{lem}[Усиленная теорема Арцела]
+Пусть $K$ - компакт, $X=C(K)$ - множество непрерывных функций из $K$ в $\mathbb C$. Это банахово пространство с нормой $\|f\|=\max\limits_{x\in K}|f(x)|$
+
+Множество $E\subset X$ предкомпактно, если оно ограничено и равностепенно непрерывно (т. е. $\forall\varepsilon>0\quad\exists\delta>0\colon\forall x,y\in K\colon\rho(x,y)<\delta\quad\forall {f\in E} \\|f(x)-f(y)|<\varepsilon$)
+\end{lem}
+\begin{proof}
+$Е$ - ограниченно $\Leftrightarrow$ $\exists c>0\colon\forall x\in K,\forall f\in E\quad|f(x)|<c$
+
+Рассмотрим $B(K)$ - пространство ограниченных на $K$ функций с $\|f\|\hm=\sup\limits_{x\in K}|f(x)|$, тогда $C(K)$ - подпространство в $B(K)$
+
+Фиксируем $\varepsilon>0$, по числу $\frac\varepsilon2$ выберем $\delta>0$ из условия равностепенной непрерывности $E$
+
+Пусть $\{x_k\}_{k=1}^n$ - $\frac\delta2$-сеть для $K$, а $\{y_j\}_{j=1}^m$ - $\frac\varepsilon2$-сеть для $\{z\in\mathbb C\colon|z|\le c\}$
+
+Пусть $V_1=B_{\frac\delta2}(x_1)$, $V_k=B_{\frac\delta2}(x_k)\setminus\bigcup\limits_{l=1}^{k-1}V_l$
+
+Тогда $K=\bigsqcup\limits_{k=1}^n V_k$. Рассмотрим семейство функций $F$, которые на каждом $V_k$ постоянны и равны одному из $y_j$. Тогда $F$ содержит не более $m^n$ функций, т. е. конечно
+
+Покажем, что $F$ - $\varepsilon$-сеть для $E$ в $B(K)$
+
+$\forall k\quad\forall x',x''\in V_k\quad\rho(x',x'')<\delta$, т. к. $V_k\subset B_{\frac\delta2}(x_k)$
+
+Если $f\in F$, то для каждого $k=1,\ldots n$ возьмем любую $\tilde x_k\in V_k$ и выберем $j_k\colon|f(\tilde x_k)-y_{j_k}|<\frac\varepsilon2$
+
+Пусть $g=\sum\limits_{k=1}^n y_{j_k}\chi_{V_k}\in F$. Тогда $\forall k\quad\forall x\in V_k\quad|f(x)-g(x)|\le|f(x)\hm-f(\tilde x_k)|+|f(\tilde x_k)-g(\tilde x_k)|+|g(x)-g(\tilde x_k)|<\frac\varepsilon2+\frac\varepsilon2+0=\varepsilon$, т. е. $\|f-g\|<\varepsilon$
+
+По лемме из темы 3 $\exists 2\varepsilon$-сеть для $E$, состоящая из элементов $E$ 
+
+По критерию Хаусдорфа $E$ предкомпактно
+\end{proof}
+ 
+
+
+\begin{thm}
+Пусть $E,F$ - банаховы, $A\in\EuScript K(E,F)$. Тогда $A'\in\EuScript K(F^*,E^*)$
+\end{thm}
+\begin{proof}
+По определению $(A'f)(x)=f(Ax)$. Пусть $\{f_n\}$ - ограниченная последовательность в $F^*$ $\|f_n\|<1$
+
+Нужно выделить из $\{A'f_n\}$ фундаментальную подпоследовательность
+
+Пусть $U$ - единичный шар в $E$, $\forall f\quad\|A'f\|=\sup\limits_x\|A'f(x)\|=\sup\limits_x\|f(Ax)\|$
+
+Пусть $F\supset\Omega=\overline{A(U)}$, тогда $\Omega$ - компакт, т. к. $A$ компактен
+
+Рассмотрим $f_n$ как элементы $C(\Omega)$ и проверим ограниченность и равностепенную непрерывность $\{f_n\}$
+
+Действительно, $\forall y_1,y_2\in\Omega\quad|f_n(y_1)-f_n(y_2)|<\|f_n\|\cdot\|y_1-y_2\|_F\le\|y_1-y_2\|$
+
+$|f_n(y)|\le\|y\|\le\|A\|$
+
+Из $\{f_n\}$ можно выделить подпоследовательность, фундаментальную в $C(\Omega)$, по лемме 20.1, т. е. при $k,l>k_0$
+
+$\varepsilon>\|f_{n_k}-f_{n_l}\|_{C(\Omega)}=\sup\limits_\Omega\|f_{n_k}(x)-f_{n_l}\|\ge\sup\limits_{x\in U}\|f_{n_k}(Ax)-f_{n_l}(Ax)\|\hm=\|A' f_{n_k}-A'f_{n_l}\|$, т. е. $\{A'f_{n_k}\}$ - фундаментальная в $E^*$
+\end{proof}
+ 
+
+
+\begin{rem}
+Верно и обратное: если $A'\in\EuScript K(F^*,E^*)$, то $A\in\EuScript K(E,F)$
+\end{rem}
+ 
+
+
+\begin{cons}
+Если $H$ - гильбертово, $A\in\EuScript K(H)$, то $A^*\in\EuScript K(H)$
+\end{cons}
+\begin{proof}
+Пусть $\{y_n\}$ - последовательность, $\|y_n\|\le1$, $f_n(x)=\langle x,y_n\rangle$
+
+По теореме 20.2 из $\{A'f_n\}$ можно выделить фундаментальную подпоследовательность
+
+$A'f_n(x)=f_n(Ax)=\langle Ax,y_n\rangle=\langle x_n,A^* y_n\rangle$
+
+$A'f_n(x)$ - элементы $H^*$, задаваемые вектором $A^*y_n$, и $\|A'f_n\|=\|A^*y_n\|$, $\|A'f_{n_k}-A'f_{n_l}\|=\|A^*y_{n_k}-A^*y_{n_l}\|$, т. е. соответствующая последовательность $\{A^*y_{n_k}\}$ тоже фундаментальна
+\end{proof}
+ 
+
+
+\begin{lem}
+Пусть $\{\varphi_n\}_{n=1}^\infty$ и $\{\psi_k\}_{k=1}^\infty$ - полные ОНС в $L_2(X,M,\mu)$, $\mu\times\mu$ - прямое произведение $\mu$ на себя, определенное на $\sigma$-алгебре $\mathfrak M$ с единицей $X^2$. Обозначим для краткости $L_2(\square)=L_2(X^2,\mathfrak M,\mu\times\mu)$. Тогда $\{\varphi_n(x)\psi_k(y)\}_{n,k}$ - полная ОНС в $L_2(\square)$
+\end{lem}
+\begin{proof}
+По теореме Фубини $\langle\varphi_n(x)\psi_k(y),\varphi_m(x)\psi_l(y)\rangle=\\ =\displaystyle\int\limits_{X^2}\varphi_n(x)\psi_k(y)\overline{\varphi_m(x)}\overline{\psi_l(y)}d\mu\times d\mu(x,y)=\displaystyle\int\limits_X\varphi_n(x)\overline{\varphi_m(x)}d\mu(x)\cdot\displaystyle\int\limits_X\psi_k(y)\overline{\psi_l(y)}d\mu(y)\hm=\delta_{nm}\delta_{kl}$ $\Rightarrow$ $\{\varphi_n(x)\psi_k(y)\}$ - ОНС
+
+Пусть $f\in L_2(\square)$, $\forall n,k\quad\langle f,\varphi_n(x)\psi_k(y)\rangle=0$
+
+По теореме Фубини $\langle f,\varphi_n(x)\psi_k(y)\rangle=\displaystyle\int\limits_X\left(\displaystyle\int\limits_Xf(x,y)\overline{\varphi_n(x)}d\mu(x)\right)\overline{\psi_k(y)}d\mu(y)$
+
+Фиксируем $n$ и рассмотрим функцию $\Phi_n(y)=\displaystyle\int\limits_X f(x,y)\overline{\varphi_n(x)}d\mu(x)$, тогда $\langle\varphi_n,\psi_k\rangle=0$ $\forall k$, т. е. $\Phi_n(y)=0$ почти всюду $\forall n$
+
+Пусть $E=X\setminus\bigcup\limits_{n=1}^\infty\{y\colon\Phi_n(y)\ne0\}$, $\mu(X\setminus E)=0$
+
+Тогда $\forall y\in E$ $\forall n\quad\displaystyle\int\limits_X f(x,y)\overline{\varphi_n(x)}d\mu(x)=0$ $\Rightarrow$ $f(x,y)=0$ для $\mu$-почти всех $x$
+
+Но $f$  - измерима $\Rightarrow$ по теореме Тонелли (Фубини) $\displaystyle\int\limits_{X^2}|f^2(x,y)|d\mu\times\mu\hm=\displaystyle\int\limits_X\displaystyle\int\limits_X|f^2(x,y)|d\mu(x)d\mu(y)=0$ $\Rightarrow$ $f=0$ в смысле $L_2(\square)$
+\end{proof}
+ 
+
+
+\begin{lem}
+Пусть (в обозначениях предыдущей леммы) $K\in L_2(\square)$, тогда формула $Af(x)=\displaystyle\int\limits_X k(x,y)f(y)d\mu(y)$ задает оператор $A\in\EuScript L(L_2(X,M,\mu))$
+\end{lem}
+\begin{proof}
+$\|Af\|_{L_2(x)}^2=\displaystyle\int\limits_X\left|\displaystyle\int\limits_X K(x,y)f(y)d\mu(y)\right|^2d\mu(x)\stackrel{\text{КБШ}}{\le}\\ \stackrel{\text{КБШ}}{\le}\displaystyle\int\limits_X\left(\displaystyle\int\limits_X|K(x,y)|^2d\mu(y)\right)\left(\displaystyle\int\limits_X|f(y)|^2d\mu(y)\right)d\mu(x)\stackrel{\text{т. Фубини}}{=}\|f\|_{L_2(x)}^2\cdot\|K\|_{L_2(\square)}^2$ $\Rightarrow$ $\|A\|\le\|K\|_{L_2(\square)}<\infty$
+\end{proof}
+ 
+
+
+\begin{thm}
+Если (в тех же обозначениях) $K\in L_2(\square)$, $A$ - оператор, определенный в лемме 20.3, $L_2(x)$ - сепарабельно, то $A\in\EuScript K(L_2(x))$
+\end{thm}
+\begin{proof}
+Пусть $\{\varphi_n\}_{n=1}^\infty$ - полная ОНС в $L_2(x)$, тогда $\{\varphi_n(x)\varphi_k(y)\}$ - полная ОНС в $L_2(\square)$ по лемме 20.2 ($\Rightarrow$ базис)
+
+Разложим $K(x,y)$ в ряд Фурье по этой системе: 
+
+$K(x,y)=\sum\limits_{n=1}^\infty\sum\limits_{k=1}^\infty\langle K,\varphi_n(x)\varphi_k(y)\rangle\cdot\varphi_n(x)\varphi_k(y)$
+
+Пусть $K_N(x,y)=\sum\limits_{n=1}^N\sum\limits_{k=1}^N\langle K,\varphi_n(x)\varphi_k(y)\rangle\varphi_n(x)\varphi_k(y)$
+
+Тогда в силу базисности системы $\|K-K_N\|_{L_2(\square)}\to0$
+
+Тогда если $A_N f(x)=\displaystyle\int\limits_X K_N(x,y)f(y)d\mu(y)$, то $\|A-A_N\|\to0$ по лемме 20.3, т. к. $(A-A_N)f(x)=\displaystyle\int\limits_X\left(K(x,y)-K_N(x,y)\right)f(y)d\mu(y)$
+
+В силу равенства Парсеваля $\|A_N\|<\|K_N\|_{L_2(\square)}\le\|K\|_{L_2(\square)}$ 
+
+$\Rightarrow$ $A_N\in\EuScript L(L_2(x))$ и т. к. $A_N$ имеет конечный образ, то по теореме 20.1(1),(3) $A\in\EuScript K(L_2(x))$
+
+$Af(x)=\displaystyle\int\limits_X K(x,y)f(y)d\mu(y)$
+
+$K(y)\sim\sum\limits_{n,m=1}^\infty\hat K(n,m)\varphi_n(x)\varphi_m(y)$
+
+$\hat K(n,m)=\displaystyle\int\limits_{X^2}K(s,t)\overline{\varphi_n(s)\varphi_m(t)}d(\mu\times\mu)$
+
+$K_N(x,y)=\sum\limits_{n=1}^N\sum\limits_{m=1}^N\hat K(n,m)\varphi_n(x)\varphi_m(y)$
+
+$A_N f(x)=\displaystyle\int\limits_X K_N(x,y)f(y)d\mu(y)$
+
+$A_N f(x)=\displaystyle\int\limits_X\left(\sum\limits_{n=1}^N\sum\limits_{m=1}^N\varphi_n(x)\varphi_m(y)\hat K(n,m)\right)f(y)d\mu(y)=\\=\sum\limits_{n=1}^N\left(\sum\limits_{m=1}^N\hat K(n,m)\displaystyle\int\limits_X\varphi_m(y)f(y)d\mu(y)\right)\varphi_n(x)$, т. е. $\mathrm{Im}A_N\subset\mathrm{span}\{\varphi_1,\ldots,\varphi_N\}$
+
+$\|A_N\|\le\|K_N\|_{L_2(\square)}\le\|K\|_{L_2(\square)}<\infty$
+
+$\Rightarrow$ по теореме 20.1(1) $A_N$ компактен
+\end{proof}
+\bigskip\bigskip\bigskip
+
+\Large
+
+\textbf{Спектры компактных операторов}
+\large
+ 
+
+\begin{lem}
+Пусть $E$ - банахово, $K\in\EuScript K(E,F)$, $E_0$ - замкнутое подпространство. Тогда $K|_{E_0}\in\EuScript K(E_0,F)$
+\end{lem}
+\begin{proof}
+$U_0=\{x\in E_0\colon\|x\|\le1\}\subset U=\{x\in E\colon\|x\|\le1\}$
+
+Поэтому из вполне ограниченности $K(U)$ следует вполне ограниченность $K(U_0)$
+\end{proof}
+ 
+
+
+\begin{lem}
+Пусть $E$ - банахово, $E_0$ - подпространство, $\mathrm{dim}E_0<\infty$, $x_0\in E\setminus E_0$. Тогда $\exists y_0\in E_0\colon\|x_0-y_0\|=\mathrm{dist}(x_0,E_0)\le\|x_0\|$
+\end{lem}
+\begin{proof}
+Если $y\in E_0$, $\|y\|>2\|x_0\|$, то $\|x_0-y\|\ge\|y\|-\|x_0\|>\|x_0\|$
+
+Поэтому $\mathrm{dist}(x_0,E_0)=\inf\limits_{\{x\in E_0\colon\|y\|\le2\|x_0\|\}}\|x_0-y\|$
+
+Но $\bar B=\{y\in E_0\colon\|y\|\le2\|x_0\|\}$ - компактно как шар в конечномерном пространстве, т. е. если $y_n$ таковы, что $\|x_0-y_n\|\to d$, то $\exists\{y_{n_k}\}$, ${\exists y_0\in\bar B\colon} y_{n_k}\to y_0$, по непрерывности нормы $\|x_0-y_0\|=d$
+\end{proof}
+ 
+
+
+\begin{lem}
+Пусть $E$ - банахово, $K\in\EuScript K(E)$, тогда $\mathrm{dimKer}(I-K)<\infty$ и $\mathrm{Im}(I-K)$ замкнут
+\end{lem}
+\begin{proof}
+(1) $\mathrm{Ker}(I-K)$ - замкнутое подпространство в $E$. На этом подпространстве $(I-K)x=0$, т. е. $I=K$
+
+Но $K$ компактен на $E$ $\Rightarrow$ $I$ компактен на $\mathrm{Ker}(I-K)$ $\Rightarrow$ по следствию из теоремы 20.1 $\mathrm{Ker}(I-K)<\infty$
+
+(2) Пусть $y_n=(I-K)x_n\to y$. Нужно найти $x\colon y=(I-K)x$
+
+а) Если $\{x_n\}$ или хотя бы их подпоследовательность ограничена, то
+
+ $\exists\{n_k\}\colon\{Kx_{n_k}\}$ сходятся, тогда $y_{n_k}=x_{n_k}-K x_{n_k}$, $x_{n_k}=y_{n_k}+Kx_{n_k}$ - сходятся как сумма двух сходящихся
+
+$\exists x\colon x_{n_k}\to x$, тогда $(I-K)x_{n_k}=y_{n_k}\to(I-K)x=y$ $\Rightarrow$ $y\in\mathrm{Im}(I-K)$
+
+б) Пусть $d_n=\mathrm{dist}(x_n,Z)$, $Z=\mathrm{Ker}(I-K)$
+
+По лемме 20.5 $d_n$ достигаются на элементах $z_n\in Z$. Если $\exists$ ограниченная последовательность $\{d_{n_k}\}$, то полагая $\tilde x_{n_k}=x_{n_k}-z_{n_k}$, имеем: 
+
+$(I-K)\tilde x_{n_k}=(I-K)x_{n_k}-(I-K)z_{n_k}=y_{n_k}-0=y_{n_k}$
+
+$\exists c\colon\forall k\quad\|\tilde x_{n_k}\|=d_{n_k}\le c$
+
+Применяя к $\{\tilde x_{n_k}\}$ рассуждение из пункта а), получим, что $y\in\mathrm{Im}(I-K)$
+
+в) Предположим, что $d_n\to\infty$. Положим $v_n=\displaystyle\frac{x_n-z_n}{\|x_n-z_n\|}$; $\|v_n\|=1$
+
+$(I-K)v_n=\displaystyle\frac1{\|x_n-z_n\|}(I-K)x_n=\displaystyle\frac1{d_n}y_n$, но $\{y_n\}$ - ограниченная, т. к. сходится $\Rightarrow$ $(I-K)v_n\to0$
+
+$\{v_n\}$ - ограниченная $\Rightarrow$ из $\{Kv_n\}$ можно выбрать сходящуюся подпоследовательность $\{Kv_{n_j}\}$
+
+Тогда $v_{n_j}=Kv_{n_j}+\displaystyle\frac1{d_n}y_{n_j}$ сходится к некоторому элементу $v$, причем $(I-K)v=\lim\limits_{j\to\infty}(I-K)v_{n_j}=0$, т. е. $v\in\mathrm{Ker}(I-K)$
+
+Но $\mathrm{dist}(v_n,Z)=\inf\limits_{z\in Z}\left\|\displaystyle\frac{x_n-z_n}{\|x_n-z_n\|}-z\right\|=\displaystyle\frac1{\|x_n-z_n\|}\inf\limits_{z\in Z}\bigl\|x_n-z_n+z\|x_n\hm-z_n\|\bigr\|\ge\displaystyle\frac{d_n}{d_n}=1$, т. е. $\{v_{n_j}\}$ не может сходиться к $v\in Z$
+
+Противоречие. Случай в) невозможен
+\end{proof}
+ 
+
+
+\begin{thm}[О спектре компактного оператора]
+Пусть $E$ - банахово, $\mathrm{dim}E=\infty$, $A\in\EuScript K(E)$. Тогда: 
+
+(1) $\sigma(A)=\{0\}\cup\sigma_p(A)$ (0 может быть, а может не быть собственным значением)
+
+(2) $\forall\lambda\in\sigma(A)\setminus\{0\}\quad\mathrm{dimKer}(A-\lambda I)<\infty$
+
+(3) Если $\sigma(A)$ - бесконечное множество, то $\sigma(A)$ счетен и при $\sigma(A)\hm=\{\lambda_n\}_{n=1}^\infty$ выполняется $\lambda_n\to0$
+\end{thm}
+\begin{proof}
+По следствию из теоремы 20.1 $0\in\sigma(A)$
+
+Если $\lambda\in\sigma_p(A)\ \{0\}$, то $\mathrm{dimKer}(A-\lambda I)=\mathrm{dimKer}(I-\frac1\lambda A)<\infty$ по лемме 20.6(1)
+
+Предположим, что $\lambda\in\sigma(A)\setminus\{0\}$ и $\lambda$ - не собственное значение. Переходя к оператору $\frac{A}\lambda$, можно считать, что $\lambda=1$\
+
+Итак, $\mathrm{Ker}(I-A)=\{0\}$. По лемме 20.6(2) $\mathrm{Im}(I-A)=E_1\subset E$ - замкнутое подпространство, причем $(I-A)$ биективно отображает $E$ на $E_1$
+
+Если $E=E_1$, то $I-A$ обратим, $1\notin\sigma(A)$
+
+Пусть $E_1\ne E$. Рассмотрим подпространство $E_n=(I-A)(E_n-1)$
+
+В силу биективности $(I-A)$ $\forall n$ имеем $E_n\ne E_{n-1}$
+
+$\forall n\quad A\in\EuScript K(E_{n-1},E)$ по лемме 20.4 $\Rightarrow$ по лемме 20.6 $E_n$ замкнуто (по индукции)
+
+По лемме о почти перпендикуляре $\forall n\quad\exists x_n\in E_n\colon\|x_n\|=1$, \\$\mathrm{dist}(x_n,E_n+1)>\frac12$
+
+Пусть $n<m$, тогда $\|Ax_n-Ax_m\|=\|x_n-x_m-(I-A)x_n+(I-A)x_m\|\hm\ge\mathrm{dist}(x_n,E_{n+1})>\frac12$, т. к. $E_n\supset E_{n+1}\supset E_m\supset E_{m+1}$
+
+Из $\{Ax_n\}$ нельзя выбрать фундамнтальную подпоследовательность - противоречие 
+
+(3) Докажем, что $\forall\sigma>0\quad\{\lambda\in\sigma(A)\colon|\lambda|>\sigma\}$ конечно, тогда $\sigma(A)\setminus\{0\}\hm=\bigcup\limits_{n=1}^\infty\{\lambda\in\sigma(A)\colon|\lambda|>\frac1n\}$ - счетно
+
+И $\lambda_n\to0$, т. к. это единственная возможная предельная точка
+
+Пусть $\exists\sigma>0$. $\exists\lambda_n\in\sigma(A)$, $\lambda_n\ne\lambda_m$, $n\in\mathbb N\colon|\lambda_n|>\sigma$
+
+По доказанному в п. 1 $\exists x_n\ne0\colon Ax_n=\lambda_n x_n$
+
+Предположим, что $\{x_n\}_{n=1}^\infty$ - линейно зависимая система
+
+Тогда $\exists m\colon\{x_1,\ldots,x_{m-1}\}$ - ЛНЗ, а $\{x_1,\ldots,x_n\}$ - ЛЗ, т. е. $\sum\limits_{n=1}^m\alpha_n x_n=0$
+
+Подействуем оператором $A$: $\sum\limits_{n=1}^m \alpha_n\lambda_n x_n=0$, поделим на $\lambda_m\ne0$ и вычтем $\sum\limits_{n=1}^{m-1}\left(1-\displaystyle\frac{\lambda_n}{\lambda_m}\right)\alpha_n x_n=0$, что противоречит выбору $m$, т. е. $\{x_n\}_{n=1}^\infty$ - ЛНЗ
+
+Пусть $E_n=\mathrm{span}\{x_1,\ldots,x_n\}$. Тогда $E_1\subset E_2\subset E_3\subset\ldots$ и они замкнуты
+
+$\forall n\quad\exists y_n\in x_n\colon\|y_n\|=1$, $\mathrm{dist}(y_n,E_{n-1})>\frac12$ (по лемме о почти перпендикуляре)
+
+Заметим, что $A(E_n)\subset E_n$
+
+$\exists z_{n-1}\in E_{n-1}$, $\exists\alpha_n\in\mathbb C\colon y_n=\alpha_n x_n+z_{n-1}$
+
+Тогда при $n>m$:
+
+$\|Ay_n-Ay_m\|=\|\alpha_n\lambda_n x_n+Az_{n-1}-Ay_m\|=\|\lambda_n y_n-(\lambda_n z_{n-1}-Az_{n-1}\hm+Ay_m)\|\ge|\lambda_n|\cdot\mathrm{dist}(y_n,E_{n-1})>\frac{\sigma}2$, т. е. из $\{Ay_n\}$ нельзя выделить фундаментальную подпоследовательность
+\end{proof}
+ 
+
+
+\begin{lem}
+Пусть $H$ - гильбертово, $A\in\EuScript K(H)$, $A=A^*$. Тогда $\sigma_p(A)\ne\varnothing$
+\end{lem}
+\begin{proof}
+Если $A=0$, то утверждение верно ($\forall x\in H$ $x$ - собственный для $\lambda\ne0$)
+
+Если $A\ne0$, то $\sigma(A)\ni\{M_A,m_A\}$, где $M_A=\sup\limits_{\|x\|=1}\langle Ax,x\rangle$, $m_A=\inf\limits_{\|x\|=1}\langle Ax,x\rangle$, $\|A\|=\max\{M_A,m_A\}\ne0$, т. е. либо $M_A\ne0$, либо $m_A\ne0$ (по теореме 19.7)
+
+То из чисел $M_A$ и $m_A$, которое не нуль, будет собственным значением по теореме 20.4
+\end{proof}
+ 
+
+
+\begin{lem}
+Если $H$ - гильбертово, $A=A^*$, $\lambda\ne\mu$, $\lambda,\mu\in\sigma_p(A)$, $Ax=\lambda x$, $Ay=\mu y$, то $\langle x,y\rangle=0$
+\end{lem}
+\begin{proof}
+По доказанному ранее $\lambda,\mu\in\mathbb R$
+
+$\langle Ax,y\rangle=\langle x,Ay\rangle$ $\Rightarrow$ $\lambda\langle x,y\rangle=\mu\langle x,y\rangle$ $\Rightarrow$ $\langle x,y\rangle=0$
+\end{proof}
+ 
+
+
+\begin{lem}
+Если $H$ - гильбертово, $A=A^*$, $H_0$ - замкнутое подпространство, $A(H_0)\subset H_0$, то $A(H_0^\perp)\subset H_0^\perp$
+\end{lem}
+\begin{proof}
+Пусть $z=Ay$, $y_0\in H_0^\perp$, тогда $\forall x\in H_0\quad\langle z,x\rangle=\langle Ay,x\rangle\hm=\langle y,Ax\rangle=0$, т. е. $z\in H_0^\perp$
+\end{proof}
+ 
+
+
+\begin{thm}[Гильберта-Шмидта]
+Пусть $H$ - гильбертово, $A\in\EuScript K(H)$, $A=A^*$. Тогда $\exists$ ортонормированный базис в $H$, состоящий из собственных векторов оператора $A$ (причем весь базис, кроме не более чем счетной подсистемы, соответствует $\mathrm{Ker}A$, т. е. $\lambda=0$)
+\end{thm}
+\begin{proof}
+По теореме о спектре компактного оператора $\sigma(A)\hm=\sigma_p(A)\cup\{0\}$, где $\sigma_p(A)$ - не более чем счетен, и $\forall\lambda\ne0\quad{\mathrm{dimKer}(A-\lambda I)<\infty}$. Пусть $\{\lambda_n\}$ - все ненулевые собственные значения $A$, а $\{e_{n,k}\}_{n,k}$ - (конечный) ортонормированный базис в собственном подпространстве $\mathrm{Ker}(A-\lambda I)$
+
+Пусть $H_0=\overline{\mathrm{span}\{e_{n,k}\}_{n,k}}$, тогда $\{e_{n,k}\}_{n,k}$ - тотальная ОНС в $H_0$ (если $n\ne m$, то $\forall j,k\quad e_{n,k}\perp e_{m,j}$ как собственные вектора, соответствующие разным собственным значениям) $\Rightarrow$ $\{e_{n,k}\}_{n,k}$ - базис в $H_0$
+
+$\forall x\in H_0\quad x=\sum\limits_{n,k}\langle x, e_{n,k}\rangle e_{n,k}$ - сходится
+
+$Ax=\sum\limits_{n,k}\lambda_n\langle x,e_{n,k}\rangle e_{n,k}\in H_0$
+
+Поэтому $H_0$ - инвариантно $(A(H_0)\subset H_0)$. Тогда $H_1=H_0^\perp$ - тоже инварианто
+
+Оператор $A|_{H_1}$ - компактный самосопряженный оператор (если $\langle Ax,y\rangle\hm=\langle x,Ay\rangle$ верно $\forall x,y\in H$, то тем более верно $\forall x,y\in H_1$)
+
+Есть 2 варианта:
+
+1) $A|_{H_1}\ne0$ $\Rightarrow$ $\exists\lambda^*\in\sigma_p(A|_{H_1})\setminus\{0\}$ и соответствующий собственный вектор $e^*$, $Ae^*=\lambda^* e^*$, тогда $\lambda^*\in\sigma_p(A)$ $\Rightarrow$ $\exists n\colon\lambda^*=\lambda_n$ $\Rightarrow$ $e^*=\sum\limits_k\langle e^*,e_{n,k}\rangle {e_{n,k}=0}$, т. к. $\forall k\quad e_{n,k}\in H_0$, а $e^*\in H_0^\perp$. Противоречие
+
+2) $A|_{H_1}=0$ $\Rightarrow$ любой ОН базис в $H_1$ состоит из собственных векторов $A$, соответствующих $\lambda=0$. Возьмем такой базис $\{\tilde e_\alpha\}$
+
+Заметим, что $\{e_{n,k}\}\cup\{\tilde e_\alpha\}$ - ОН базис в $H$. Действительно, если $x\in H$, то $x=y+z$, где $y\in H_0$, $z\in H_0^\perp=H_1$, $y=\sum\limits_{n,k}\langle y,e_{n,k}\rangle e_{n,k}$
+
+$z=\sum\limits_{\alpha\colon\langle z,\tilde e_{\alpha}\rangle\ne0}\langle z,\tilde e_\alpha\rangle\tilde e_\alpha=\sum\limits_{\alpha\colon\langle z,\tilde e_\alpha\rangle\ne0}\langle x,\tilde e_\alpha\rangle\tilde e_\alpha$
+\end{proof}
+
+
+
+
+
+
+
+
+\chapter{Теоремы Фредгольма}
+
+В конечномерном случае 
+
+(1) $Ax=0$ (3) $A^*x=0$
+
+(2) $Ax=y$ (4) $A^*x=y$
+
+(2) разрешимо $\forall y$ $\Leftrightarrow$ (1) имеет только нулевое решение
+
+(1) и (3) имеют одинаковое число ЛНЗ рещений
+
+(2) разрешимо $\Leftrightarrow$ $y$ ортогонален всем решениям (3)
+ 
+
+
+\begin{lem}
+Пусть $H$ - гильбертово, $K\in\EuScript K(H)$, $A=I-K$. Тогда $H\mathrm{Ker}(I-K^*)\oplus\mathrm{Im}(I-K)$, причем $\mathrm{dimKer}(I-K^*)<\infty$
+\end{lem}
+\begin{proof}
+Для любого оператора $H=\mathrm{Ker}(I-K^*)\oplus\overline{\mathrm{Im}(I-K)}$, но $\mathrm{Im}(I-K)$ замкнут для компактного $K$, и т. к. $K\in\EuScript K(H)$ $\Rightarrow$ $K^*\in\EuScript K(H)$, то $\mathrm{dimKer}(I-K^*)<\infty$
+\end{proof}
+ 
+
+
+\begin{cons}[Первая теорема Фредгольма]
+(1) Пусть $E$ - банахово, $K\in\EuScript K(H)$, тогда уравнение $(I-K)x=y$ разрешимо $\Leftrightarrow$ $\forall f\in\mathrm{Ker}(I-K')$ выполнено $f(y)=0$
+
+(2) Пусть $H$ - гильбертово, $K\in\EuScript K(H)$, тогда уравнение $(I-K)x=y$ разрешимо $\Leftrightarrow$ $y\perp\mathrm{Ker}(I-K^*)$ 
+\end{cons}
+\begin{proof}
+(2) Уравнение разрешимо $\Leftrightarrow$ $y\in\mathrm{Im}(I-K)$ $\Rightarrow$ из леммы получаем следствие
+\end{proof}
+ 
+
+
+\begin{lem}
+Пусть $H$ - гильбертово, $K\in\EuScript K(H)$, $T=I-K$, $H_0=H$, $H_n=T(H_{n-1})$. Тогда $\exists n_0\colon\forall n\ge n_0\quad H_n=H_{n+1}$
+\end{lem}
+\begin{proof}
+Если $H_{n_0}=H_{n_0+1}$, то по индукции $\forall n>n_0\quad\\ H_n=T(H_{n-1})=T(H_n)=H_{n+1}$
+
+Предположим, что $\forall n\quad H_n\ne H_{n+1}$
+
+Выберем элемент $e_n\in H_n\ominus H_{n+1}$, $\|e_n\|=1$
+
+Тогда $\forall l>n\quad\|Ke_n-Ke_l\|=\|e_n-\underbrace{Te_n-e_l+Te_l}_{H_{n+1}}\|\ge1$, т. к. $e_n\perp H_{n+1}$
+
+Т. е. из $\{Ke_n\}$ нельзя выбрать фундаментальную последовательность, что противоречит компактности $K$
+\end{proof}
+ 
+
+
+\begin{thm}[Альтернатива Фредгольма]
+Пусть $E$ - банахово, \\$K\hm\in\EuScript K(H)$, $T=I-K$. Тогда верно ровно одно из двух:
+
+(1) Уравнение $Tx=y$ разрешимо $\forall y$
+
+(2) Уравнение $Tx=0$ имеет ненулевое решение
+\end{thm}
+\begin{proof}
+(Для гильбертова пространства)
+
+Пусть (2) нарушено, т. е. $\mathrm{Ker} T=\{0\}$, т. е. $T$ - биективен, тогда, если $\mathrm{Im}T\ne H$, т. е. $T(H)=H_1\ne H$, тогда в силу биективности $\forall n\quad H_{n+1}\hm=T(H_n)\ne H_n$, что противоречит лемме 21.2
+
+Т. е. если (2) нарушено, то (1) выполнено. Обратно, пусть $\mathrm{Im}T=H$, т. е. выполнено (1). Тогда $\mathrm{Ker}(T^*)=\{0\}$ (по лемме 21.1)
+
+Но $T^*=I-K^*$ $\Rightarrow$ $\mathrm{Im} T^*=H$ по доказанному $\Rightarrow$ $\mathrm{Ker}T=\{0\}$ по лемме 21.1, т. е. (2) нарушено
+\end{proof}
+ 
+
+
+\begin{thm}[Третья теорема Фредгольма]
+Пусть $E$ - банахово, $K\hm\in\EuScript K(E)$. Тогда $\mathrm{dimKer}(I-K)=\mathrm{dimKer}(I-K')<\infty$, а если пространство гильбертово, то $\mathrm{dimKer}(I-K)=\mathrm{dimKer}(I^*-K)<\infty$
+\end{thm}
+\begin{proof}
+(для гильбертова пространства)
+
+Конечность размерностей уже известна
+
+Пусть $n=\mathrm{dimKer}(I-K)$, $m=\mathrm{dimKer}(I-K^*)$
+
+$\{\varphi_k\}_{k=1}^n$ - ОН базис $\mathrm{Ker}(I-K)$, $\{\psi_k\}_{k=1}^m$ - ОН базис $\mathrm{Ker}(I-K^*)$
+
+Докажем, что $n\ge m$ (тогда $m\ge n$ т. к. $K^{**}=K$)
+
+Предположим, что $n<m$. Пусть $T=I-K$. Рассмотрим оператор $Sx=Tx-\sum\limits_{k=1}^n\langle x,\varphi_k\rangle\psi_k=Ix-(Kx-\sum\limits_{k=1}^n\langle x,\varphi_k\rangle\psi_k)=(I-\tilde K)x$, где $\tilde K\in\EuScript K(H)$ как сумма двух компактных
+
+Для оператора $S$ верна альтернатива Фредгольма. Найдем $\mathrm{Ker}S\colon$
+
+$Sx=0=Tx-\underbrace{\sum\limits_{k=1}^n\langle x,\varphi_k\rangle\psi_k}_{\in\mathrm{Ker}T^*}$, т. е. $Tx\perp\sum\limits_{k=1}^n\langle x,\varphi_k\rangle\psi_k$
+
+Поэтому $\begin{cases} Tx=0\\\sum\limits_{k=1}^n\langle x,\varphi_k\rangle\psi_k=0\end{cases}$ $\Rightarrow$ $\begin{cases} Tx=0\\\forall k=1,\ldots,n\quad\langle x,\varphi_k\rangle=0\end{cases}$
+
+$\Rightarrow$ $x=\sum\limits_{k=1}^n\langle x,\varphi_k\rangle\varphi_k=0$, т. е. $\mathrm{Ker}S=\{0\}\stackrel{\text{альт. Фр.}}{\Rightarrow}$ $\mathrm{Im}S=H$
+
+Тогда $\exists y\colon Sy=\psi_{n+1}=Ty+\sum\limits_{k=1}^n\langle y,\varphi_k\rangle\psi_k$
+
+Скалярно умножим на $\psi_{n+1}$:
+
+$\|\psi_{n+1}\|^2=1=\langle Ty,\psi_{m+1}\rangle+\sum\limits_{k=1}^n\langle y,\varphi_k\rangle\langle\psi_k,\psi_{n+1}\rangle=0$, \\но $\psi_{n+1}\in\mathrm{Ker} T^*\perp\mathrm{Im}T$ $\Rightarrow$ $\langle Ty,\psi_{m+1}\rangle=0$
+
+Противроечие $\Rightarrow$ $n\ge m$
+\end{proof}
+ 
+
+
+\begin{rem}
+Теоремы Фредгольма записывают иногда для операторов вида $\lambda I-K$ $(\lambda\ne0)$ или $I-\lambda K$
+\end{rem}
+
+
+
+
+
+
+
+
+\chapter{Полинормированные пространства}
+
+\begin{df}
+Пусть $E$ - линейное пространство над $\mathbb R$ или $\mathbb C$. Полунормой на нем называется $p\colon E\to[0;+\infty)$
+
+(1) $p(\alpha x)=|\alpha|px$
+
+(2) $p(x+y)\le p(x)+p(y)$
+
+(при этом $p(0)=p(0\cdot0)=0\cdot p(0)=0$)
+
+\noindent Например: Если $f$ - линейный функционал на $E$, то $p(x)=|f(x)|$ - {полунорма}
+\end{df}
+ 
+
+
+\begin{df}
+Полинормированное пространство называется линейным пространством $E$ над $\mathbb R$ или $\mathbb C$ с заданной на нем системой полунорм $\{p_\alpha\}_{\alpha\in A}$
+
+Шаром в полинормированном пространстве называется $U_{\alpha_1,\ldots,\alpha_n}^\varepsilon(x)\hm=\{y\in E\colon\forall k=1,\ldots,n\quad P_{\alpha_k}(y-x)<\varepsilon\}$, где $\varepsilon>0$, $\{\alpha_1,\ldots,\alpha_n\}\subset A$
+
+Топология в ПНП: множество отрыто, если оно каждую точку содержит с некоторым шаром
+
+Корректность: $\Phi,E$ - открыты, если $V_\beta$ - открыты, то $\bigcup\limits_\beta V_\beta$ - открыто
+
+Пусть $V_1,V_2$ - открыты, $x\in V_1\cap V_2$, т. е. $\exists\alpha_1,\ldots,\alpha_n,\varepsilon_1,\alpha_{n+1},\ldots,\alpha_m,\varepsilon_2\colon\\ U_{\alpha_1,\ldots,\alpha_n}^{\varepsilon_1}(x)\subset V_1$, $U_{\alpha_{n+1},\ldots,\alpha_m}^{\varepsilon_2}(x)\subset V_2$
+
+Тогда при $\varepsilon=\min(\varepsilon_1,\varepsilon_2)>0$ имеем $U_{\alpha_1,\ldots,\alpha_m}^\varepsilon(x)\subset V_1\cap V_2$ $\Rightarrow$ $V_1\cap V_2$ открыто
+
+По индукции пересечение конечного числа открытых - открыто
+\end{df}
+ 
+
+
+\begin{df}
+Пусть $(E,\{p_\alpha\})$ и $(F,\{q_\beta\})$ - два ПНП. Линейное отображение $A\colon E\to F$ называется ограниченым, если $\forall\beta\quad\exists c>0$, $\exists\alpha_1,\ldots,\alpha_n\colon\forall {x\in E}\\ q_\beta(Ax)\le C\max\limits_{k=1,\ldots,n}p_{\alpha_k}(x)$  $(\|Ax\|_F\le C\|x\|_E)$
+\end{df}
+ 
+
+
+\begin{thm}
+Пусть $(E,\{p_\alpha\})$ и $(F,\{q_\beta\})$ - два ПНП, $A$ - линейное отображение $E\to F$. Тогда следующие условия эквивалентны:
+
+(1) $A$ ограничено
+
+(2) $A$ непрерывно в каждой точке
+
+(3) $A$ непрерывно в нуле 
+
+(непрерывность понимается в смысле топологии)
+\end{thm}
+\begin{proof}
+$(2)\to(3)$ - тривиально
+
+$(1)\to(2)$ Пусть $Ax_0=y_0$, $V\ni y_0$ - окрестность, т. е. $\exists\varepsilon>0$ $\exists\beta_1,\ldots,\beta_n\colon \\U_{\beta_1,\ldots,\beta_n}^\varepsilon(y)\subset V$
+
+В силу ограниченности $\forall k=1,\ldots,n$ $\exists\alpha_{k,i}$, $i=1,\ldots,i_k$ $\exists c_i\colon\\ q_{\beta_k}(Ax)\le c_k\max\limits_{i=1,\ldots,i_k}p_{\alpha_{k,i}}(x)$
+
+Тогда при $\delta=\displaystyle\frac{\varepsilon}{\max\limits_{k=1,\ldots,n}c_k}$ имеем: если $x\in U_{\{\alpha_{k,i}\}}^\delta(x_0)$, то $\forall k,i\\ p_{\alpha_{k,i}}(x-x_0)<\delta$ $\Rightarrow$ $q_{\beta_k}(Ax-y_0)<c_k\delta<\varepsilon$
+
+Т. к. шар - открытое множество (по неравенству треугольника), то мы доказали непрерывность $A$ в точке $x_0$
+
+$(3)\to(1)$ Зафиксируем $\beta$. В силу непрерыности в нуле $\exists\delta>0$ $\exists\alpha_1,\ldots,\alpha_n\colon\\\forall x\in U_{\alpha_1,\ldots,\alpha_n}^\delta(0)$, $\alpha x\in U_\beta^1(0)$
+
+Докажем, что $\forall x\quad q_\beta(Ax)\le\frac2\delta\max\limits_k p_{\alpha_k}(x)$ $(*)$
+
+Пусть $p(x)=\max\limits_{k=1,\ldots,n}p_{\alpha_k}(x)$. Если $p(x)>0$, то $\frac{\delta x}{2p(x)}\in U_{\alpha_1,\ldots,\alpha_n}^\delta(0)$ 
+
+$\Rightarrow$ $q_\beta\left(A\frac{\delta x}{2p(x)}<1\right)<1$ $\Rightarrow$ $q_\beta(Ax)\le\frac2\delta p(x)$
+
+Если же $\beta(x)=0$, тогда $\forall\lambda$ $\forall k=1,\ldots,n\quad p_{\alpha_k}(\lambda x)=\lambda p_{\alpha_k}(x)=0$
+
+$\Rightarrow$ $\forall\lambda\quad\lambda x\in U_{\alpha_1,\ldots,\alpha_n}^\delta(0)$, т. е. $\forall\lambda\quad q_\beta\left(A(\lambda x)\right)<1$, т. е. $\forall\lambda\quad|\lambda|q_\beta(Ax)<1$ $\Rightarrow$(при $\lambda\to+\infty$) $q_\beta(Ax)=0$, и $(*)$ принимает вид $0\le\frac2\delta\cdot0$
+\end{proof}
+ 
+
+
+\begin{cons}
+Пусть $E$ - ПНП, $\{p_\alpha\}$, $\alpha\in A$ и $\{q_\beta\}$, $\beta\in B$ - две системы полунорм на нем. Они задают одну и ту же топологию на $E$ (такие системы будем называть эквивалентными) т. и т. т. к.:
+
+(1) $\forall\beta\in B\quad\exists c$ $\exists\alpha_1,\ldots,\alpha_n\in A\colon\forall x\in E\quad q_\beta(x)\le c\max\limits_k p_{\alpha_k}$
+
+(2) $\forall\alpha\in A\quad\exists c$ $\exists\beta_1,\ldots,\beta_n\in B\colon\forall x\in E\quad p_\alpha(x)\le c\max\limits_k q_{\beta_k}$
+\end{cons}
+\begin{proof}
+(1) и (2) $\Leftrightarrow$ $I$ ограничен в обе стороны $\Leftrightarrow$ (т. 22.1) $I$ непрерывен в обе стороны $\Leftrightarrow$ топологии совпадают
+\end{proof}
+ 
+
+
+\begin{lem}
+Полинормированное пространство $\left(E,\{p_\alpha\}\right)$ является хаусдорфовым т. и т. т. к. $\forall x\in E$, $x\ne0$ $\exists\alpha\colon p_\alpha(x)\ne0$
+\end{lem}
+\begin{proof}
+Пусть $x\in E$, $x\ne0$, $\forall\alpha\quad p_\alpha(x)=0$
+
+Тогда $\forall\delta>0$ $\forall\alpha_1,\ldots,\alpha_n\quad x\in U_{\alpha_1,\ldots,\alpha_n}^\delta(0)=\{y\colon p_{\alpha_k}(y)<\delta,\!k=1,\ldots,n\}$
+
+Т. е. $x$ лежит в любой окрестности 0, пространство не хаусдорфово
+
+Обратно, пусть $\forall x\in E$, $x\ne0$, $\exists\alpha\colon p_\alpha(x)\ne0$
+
+$\forall x_1\ne x_2\quad\exists\alpha\colon p_\alpha(x_1-x_2)=\delta>0$
+
+Тогда $U_\alpha^{\frac\delta2}(x_1)\cap U_\alpha^{\frac\delta2}(x_2)=\varnothing$ по неравенству треугольника (если $y$ - их общая точка, то $p_\alpha(x_1-x_2)\le p_\alpha(x_1-y)+p_\alpha(y-x_2)<\frac\delta2+\frac\delta2=\delta$)
+\end{proof}
+ 
+
+
+\begin{thm}
+Пусть $(E,p_\alpha)$ - хаусдорфово ПНП и система полунорм эквивалентна не более чем счетной. Тогда на $E$ существует метрика, задающая ту же топологию
+\end{thm}
+\begin{rem}
+Верно и обратное (без доказательства)
+\end{rem}
+\begin{proof}
+В силу следствия из т. 22.1 можно считать, что $\{p_n\}$ - не более чем счетная система полунорм (задана)
+
+Введем на $E\times E$ функцию $\rho(x,y)=\sum\limits_{n=1}^\infty\displaystyle\frac1{2^n}\displaystyle\frac{p_n(x-y)}{1+p_n(x-y)}$
+
+Т. к. $p_n(x-y)\ge0$, то $0\le\displaystyle\frac{p_n(x-y)}{1+p_n(x-y)}<1$
+
+$\forall x,y$ ряд сходится, $\rho(x,y)\ge0$
+
+Проверим, что $\rho$ - метрика:
+
+(1) $\rho(x,y)=0$ $\Leftrightarrow$ $\forall n\quad p_n(x-y)=0$ $\stackrel{\text{л. 22.1}}{\Longleftrightarrow}$ $x=y$, т. к. дано, что $E$ - хаусдорфово
+
+(2) $\rho(x,y)=\rho(y,x)$, т. к. $\forall n\quad p_n(x-y)=p_n(y-x)$
+
+Заметим, что $\forall a,b,c\ge0$ из $a\le b+c$ следует, что $\frac{a}{1+a}\le\frac{b}{1+b}+\frac{c}{1+c}$ $(**)$
+
+Действительно, функция $\varphi(t)=\frac{t}{1+t}$ возрастает на $[0;+\infty)$, т. е. если либо $b\ge a$, либо $c\ge a$, то $(**)$ выполнено
+
+Если же $b<a$ и $c<a$, то $\frac{a}{1+a}\le\frac{b}{1+a}+\frac{c}{1+a}\le\frac{b}{1+b}+\frac{c}{1+c}$
+
+Поэтому $\forall x,y,z\in E\quad\displaystyle\frac{p_n(x-z)}{1+p_n(x-z)}\le\displaystyle\frac{p_n(x-y)}{1+p_n(x-y)}+\displaystyle\frac{p_n(x-z)}{1+p_n(y-z)}$
+
+Умножаем на $\displaystyle\frac1{2^n}$ и суммируем по $n$: $\rho(x,z)\le\rho(x,y)+\rho(y,z)$
+
+Пусть $x_0\in E$, $\varepsilon>0$, $U_\rho^\varepsilon(x_0)=\{x\colon\rho(x,x_0)<\varepsilon\}$
+
+Найдем $\delta>0$, $N\colon U_{1,2,\ldots,N}^\delta(x_0)\subset U_\rho^\varepsilon(x_0)$
+
+Выберем $N\colon\sum\limits_{n=N+1}^\infty\displaystyle\frac1{2^n}=\displaystyle\frac1{2^N}<\displaystyle\frac\varepsilon2$
+
+Выберем $\delta>0$ так, чтобы $\sum\limits_{n=1}^N\displaystyle\frac1{2^n}\displaystyle\frac{p_n(x-y)}{1+p_n(x-y)}<\displaystyle\frac\varepsilon2$, например $\forall n\hm=1,\ldots,N\quad\displaystyle\frac{p_n(x-y)}{1+p_n(x-y)}<\displaystyle\frac{\varepsilon}{2N}2^n$, т. е. можно взять $\delta=\displaystyle\frac{\varepsilon}{2N}$
+
+Тогда если $x=U_{1,2,\ldots,N}^\delta(x_0)$, то $\rho(x,x_0)=\left(\sum\limits_{n=1}^N+\sum\limits_{n=N+1}^\infty\right)\cdot\displaystyle\frac{1}{2^n}\displaystyle\frac{p_n(x-x_0)}{1+p_n(x-x_0)}\hm\le\sum\limits_{n=1}^N\displaystyle\frac1{2^n}\frac\delta{1+\delta}+\sum\limits_{n=N+1}^\infty\displaystyle\frac1{2^n}\le\delta\cdot N+\displaystyle\frac\varepsilon2=\varepsilon$
+
+Обратно, пусть задан шар $U_{n_1,\ldots,n_k}^\varepsilon(x_0)$, $m<n_2<\ldots<n_k$
+
+Если $\rho(x,x_0)<\delta$, то $\forall n$ при $\delta<\displaystyle\frac1{2^n}$ имеем: $\displaystyle\frac{p_n(x-x_0)}{1+p_n(x-x_0)}<2^n\delta$,\\$p_n(x-x_0)<\displaystyle\frac{2^n\delta}{1-2^n\delta}$
+
+Выбираем $\delta$ столь малым, чтобы $\delta<\displaystyle\frac1{2^{n_k}}$ и $\displaystyle\frac{2^{n_j}\delta}{1-2^{n_j}\delta}<\varepsilon$ при $j=1,\ldots,k$ получаем, что если $\rho(x,x_0)<\delta$, то $\forall j=1,\ldots,k\quad p_{n_j}(x-x_0)<\varepsilon$, т. е. $U_\rho^\delta(x_0)\subset U_{n_1,\ldots,n_j}^\varepsilon(x_0)$
+
+Итак, топологии совпадают
+\end{proof}
+ 
+
+
+\begin{df}
+Пусть $(E,\{p_\alpha\})$ - полинормированное пространство. Сопряженным к нему называется $E^*$ - множество всех линейных непрерывных функционалов на $E$ с топологией, заданной системой полунорм $p_x(f)\hm=|f(x)|$, $x\in E$ ($*$ - слабая топология)
+\end{df}
+ 
+
+\begin{df}
+Пусть $A$ - непрерывный оператор на полинормированном пространстве $E$. Сопряженным к нему называется $A'=E^*\to E^*\colon A'f(x)\hm=f(Ax)$
+\end{df}
+ 
+
+
+\begin{prop}
+Если $A$ - непрерывный оператор на ПНП $E$, то $A'$ - корректно определенный непрерывный оператор на $E^*$ 
+\end{prop}
+\begin{proof}
+Корректность: $A'f=f\circ A$ - линеен и непрерывен как композиция двух линейных отображений. $A'$ линеен как функция $f$ по опреелению суммы функционалов
+
+Ограниченность: $\forall x\in E\quad p_x(A'f)=|A'f(x)|=|f(Ax)|=p_{Ax}(f)$. Оператор $A'$ ограничен по определению
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+\chapter{Пространства основных и обобщенных функций}
+
+$\mathbb R^m$, $f$ - гладкая функция $\mathbb R^m\to\mathbb R$
+
+$(\alpha_1,\ldots,\alpha_m)\in(\mathbb Z_+)^m$, $D^\alpha f=\left(\displaystyle\frac{\partial}{\partial x^1}\right)^{\alpha_1}\ldots\left(\displaystyle\frac{\partial}{\partial x^m}\right)^{\alpha_m}f$
+
+$|\alpha|=\sum\limits_{k=1}^m\alpha_k$
+
+
+
+\begin{df}
+Пространством $\EuScript E(\mathbb R^m)$ называется множество всех бесконечно гладких $(C^\infty)$ на $\mathbb R^m$ с системой полунорм $p_{k,\alpha}^{\EuScript E}(\varphi)=\max\limits_{x\colon\|x\|\le k}|D^\alpha\varphi(x)|$, $\alpha\in(\mathbb Z_+)^m$, $k\in\mathbb N$, где $\|x\|=\sqrt{\sum\limits_{k=1}^m|x_k|^2}$
+
+Можно рассмотреть также эквивалентные ей системы, например\\ $p_k(\varphi)=\max\limits_{x\colon\|x\|\le k}\max\limits_{\alpha\colon|\alpha|\le k}|D^\alpha\varphi(x)|$
+\end{df}
+
+
+\begin{df}
+Пространством $S(\mathbb R^m)$ называется множество всех тех $\varphi\in C^\infty(\mathbb R^m)$, для которых при всех $k\in\mathbb Z_+$ и всех $\alpha\in(\mathbb Z_+)^m$ конечны величины $p_{k,\alpha}^S(\varphi)=\sup\limits_{x\in\mathbb R^m}(1+\|x\|^k)\cdot|D^\alpha\varphi(x)|$ с системой полунорм $\{p_{k,\alpha}^S(\varphi)\}$
+\end{df}
+
+
+\begin{df}
+Носителем функции $\varphi$ называется $\mathrm{supp}\varphi=\{x\colon\varphi(x)\ne0\}$
+\end{df}
+
+
+\begin{df}
+Пространством $\EuScript D(\mathbb R^m)$ называется \\$\bigl\{\varphi\in C^\infty(\mathbb R^m)\colon \mathrm{supp}\varphi\subset\{\|x\|\le N\}\bigl\}$ с полунормами $p_\alpha^{\EuScript D_N}(\varphi)=\max\limits_{x\in\mathbb R^m}|D^\alpha\varphi(x)|$
+\end{df}
+
+
+\begin{df}
+$\EuScript D(\mathbb R^m)=\bigcup\limits_{N=1}^\infty\EuScript D_N(\mathbb R^m)$
+\end{df}
+
+
+\begin{df}
+Стандартной сходимостью в $\EuScript D$ называется следующая: 
+
+$\varphi_n\to\varphi$, если:
+
+(1) $\exists N\colon\forall n\quad\varphi_n\in\EuScript D(\mathbb R^m)$, $\varphi\in\EuScript D(\mathbb R^m)$ (у последовательности есть общий носитель)
+
+(2) $\varphi_n\to\varphi$ в $\EuScript D_N(\mathbb R^m)$, т. е. $\forall\alpha\in(\mathbb Z_+)^m\quad D^\alpha\varphi_n\rightrightarrows D^\alpha\varphi$
+\end{df}
+
+
+\begin{lem}
+(1) Функция $\varphi(x)=\begin{cases} e^{-\frac1{(1-x^2)^2}},&|x|<1\\0,&|x|\ge1 \end{cases}$ принадлежит $\EuScript D_1(\mathbb R)$ $(*)$
+
+(2) $\forall a,b,c,d\in\mathbb R,$ $a<b<c<d\quad\exists\varphi\in\EuScript D(\mathbb R)\colon\mathrm{supp}\varphi\subset[a,b]$
+
+$\varphi\equiv1$ на $[b,c]$, $\varphi$ - неубывающая на $[a,b]$ и $\varphi$ не возрастающая на $[c,d]$
+
+(3) $\forall m$ $\forall N\quad\exists\varphi\in\EuScript D_{N+1}(\mathbb R^m)\colon\varphi\equiv1$ на $\{\|x\|\le N\}$, $\varphi$ - невозрастающая функция от $\|x\|$
+
+$\bigr($в пункте (2) взять $a,b<0$, $c=N$, $d=N+1$, $\varphi(\|x\|)$ - искомая$\bigl)$
+\end{lem}
+
+
+\begin{df}
+Полунорма $p$ на пространстве $D(\mathbb R^m)$ называется допустимой, если $\forall N\in\mathbb N\quad\exists c=c(N)\quad\exists d=d(N)\colon\forall\varphi\in\EuScript D_N(\mathbb R^m)$ выполняется оценка $|p(\varphi)|\le c\cdot\max\limits_{|\alpha|\le d}p_\alpha^{\EuScript D_N}(\varphi)=c\max\limits_{|\alpha|\le d}\max\limits_{\|x\|\le N}|D^\alpha\varphi(x)|$
+\end{df}
+
+
+\begin{df}
+Топологией $\EuScript D(\mathbb R^m)$ называется топология на нем, заданная системой всех допустимых полунорм
+\end{df}
+
+
+\begin{thm}
+Стандартная сходимость в $\EuScript D(\mathbb R^m)$ совпадает со сходимостью в топологии, заданной системой всех дополнительных полунорм, т. е. со сходимостью по любой допустимой полунорме
+\end{thm}
+\begin{proof}
+$(\Rightarrow)$ Если $\varphi_n\to\varphi$ стнадартно, то $\exists N$ из $(*)$
+
+$\forall$ допустимой $\EuScript D$ возьмем соответствующие $c$ и $d$ для этого $N$
+
+$p(\varphi-\varphi_n)\le c\max\limits_{|\alpha|\le d}\max\limits_x|D^\alpha(\varphi_n-\varphi)|\xrightarrow[n\to\infty]{}0$ $\forall\alpha$ в силу (2)
+
+$(\Leftarrow)$ Пусть $\varphi_n\to\varphi$ по любой допустимой полунорме
+
+ В частности, $\forall\alpha\quad p_\alpha=\max\limits_x|D^\alpha(\varphi)|$ - допустимая $\Rightarrow$ (2) выполнено
+
+Предположим, что (1) нарушено. Тогда $\exists\{n_k\}$, $\exists\{x_k\}$, $x_k\in\mathbb R^m$, $x_k\to\infty$
+
+$\varphi_{n_k}(x)=b_k\ne0$
+
+Рассмотрим $p(\varphi)=\sum\limits_{k=1}^\infty\displaystyle\frac{k}{|b_k|}|\varphi(x_k)|$
+
+$\forall\varphi\in\EuScript D$ ряд сходится, т. к. $\{\varphi(x_k)\}$ - финитная, $p$ - полунорма
+
+$\forall N$ $\exists M\colon\forall k>M\quad\|x_k\|>N$
+
+Тогда $\forall\varphi\in\EuScript D_N\quad p(\varphi)\le\displaystyle\frac{M^2}{\min\limits_{k=1,\ldots,M}|b_k|}\max\limits_x|\varphi(x)|$ $\Rightarrow$ $p$ - допустимая
+
+Но $p(\varphi_{n_k})\ge\displaystyle\frac{k}{|b_k|}|\varphi_{n_k}(x_k)|=k\to\infty$
+
+(как только $k$ столь велико, что $\varphi(x_k)=0$, то и $p(\varphi_{n_k}-\varphi)=k$)
+\end{proof}
+
+
+Напоминание из топологии:
+
+$f\colon X\to Y$, $X,Y$ - топологические пространства
+
+$f(x)=y$
+
+$(1)$ $f$ непрерывна в т. $x$
+
+(2) $f$ - секвенциально непрерывна в т. $x$, если $\forall\{x_n\}\colon x_n\to x$ выполнено $f(x_n)\to y$
+ 
+
+\begin{lem}
+Если отображение топологического пространства непрерывно, то оно секвенциально непрерывно. Если $X$ - метрическое, то верно и обратное
+\end{lem}
+\begin{proof}
+$(\Rightarrow)$ Пусть $x_n\to x$, т. е. $\forall$  открытого $U\ni x\\ \exists n_0$ $\forall n>n_0\quad x_n\in U$
+
+Но если $V$ - окрестность $y$, то $\exists U\colon f(U)\subset V$, т. е. $\forall n>n_0\quad f(x_n)\in V$, т. е. $f(x_n)\to y$
+
+$(\Leftarrow)$ Пусть $f$ - разрывно в т. $x$
+
+$\exists V$ - окрестность $y$ $\forall U$ - окрестности $x\quad\exists x'\in U\colon f(x')\notin V$
+
+В частности, $\forall n\quad\exists x_n\in B_{\frac1n}(x)\colon f(x_n)\notin V$, тогда $x_n\to x$, но $f(x_n){\nrightarrow y}$
+\end{proof}
+
+
+\begin{cons}
+Отображение любого из пространств $\EuScript E(\mathbb R^m)$, $S(\mathbb R^m)$, $\EuScript D_N(\mathbb R^m)$ в любое топологическое пространство непрерывно $\Leftrightarrow$ оно секвенциально непрерывно
+\end{cons}
+\begin{proof}
+Топологии этих пространств задаются счетными системами полунорм и они хаусдорфовы. По теореме 22.2 топологии этих пространств можно задать метрикой $\Rightarrow$ по лемме выполнено утверждение следствия
+\end{proof}
+
+
+\begin{thm}
+Пусть $A$ - линейное отображение $\EuScript D(\mathbb R^m)$ в произвольное ПНП $\left(X,\{q_\beta\}\right)$. Следующие условия эквивалентны:
+
+(1) $A$ - непрерывно
+
+(2) $\forall n\quad A|_{\EuScript D_N}$ непрерывно
+
+(3) $A$ секвенциально непрерывно
+\end{thm}
+\begin{proof}
+$(1)\to(3)$ по лемме 23.2
+
+$(3)\to(2)$ $A$ - секвенциаотно непрерывно $\Rightarrow$ $A|_{\EuScript D_N}$ секвенциально непрерывно $\Rightarrow$ $A|_{\EuScript D_N}$ - непрерывно по следствию из леммы 23.2
+
+$(2)\to(1)$ Пусть $\forall N\quad A|_{\EuScript D_N}$ непрерывно, тогда $A|_{\EuScript D_N}$ - ограниченное линейное отображение
+
+Пусть $q$ - любая полунорма из системы полунорм $X$
+
+Рассмотрим на $D$ функцию $p_q(x)=q(Ax)$. Это полунорма, т. к. $A$ - линейное
+
+Проверим ее допустимость:
+
+$\forall N$ $\exists c$, $\exists\EuScript D\colon\forall\varphi\in\EuScript D_N\quad q(Ax)\le c\max\limits_{|\alpha|\le d}p_\alpha^{\EuScript D_N}(\varphi)$, т. е. допустимость $p_q$ равносильна ограниченности всех $A|_{\EuScript D_N}$
+
+Но $q(Ax)\le p_q(x)$ - каждая полунорма $q(Ax)$ оценивается некоторой допустимой полунормой $p_q(x)$, т. е. $A$ - ограниченное
+\end{proof}
+
+
+\begin{prop}
+$\forall\alpha\in(\mathbb Z_+)^m$ оператор $D^\alpha$ непрерывен на $\EuScript E(\mathbb R^m)$, $S(\mathbb R^m)$, $\EuScript D(\mathbb R^m)$
+\end{prop}
+\begin{proof}
+$p_{k,\beta}^{\EuScript E}(D^\alpha\varphi)=\max\limits_{\|x\|\le k}|D^\beta(D^\alpha\varphi)(x)|=p_{k,\alpha+\beta}^{\EuScript E}(\varphi)$
+
+$p_{k,\beta}^S=p_{k,\alpha+\beta}^S(\varphi)$
+
+Если $\varphi_n\to\varphi$ стандартно в $\EuScript D$, то $\mathrm{supp}(D^\alpha\varphi_n)\subset\mathrm{supp}\varphi_n$ и $D^{\alpha+\beta}(D^\alpha\varphi_n)\hm=D^{\alpha+\beta}\varphi_n\rightrightarrows D^{\alpha+\beta}\varphi$, т. е. $D^\alpha\varphi_n\to D^\alpha\varphi$ стандартно
+
+$\Rightarrow$ по теореме 23.2 оператор непрерывен на $\EuScript D$
+\end{proof}
+
+
+\begin{cons}
+Любой дифференциальный оператор с постоянными коэффицентами непрерывен на $\EuScript E(\mathbb R^m)$, $S(\mathbb R^m)$, $\EuScript D(\mathbb R^m)$
+\end{cons}
+
+
+\begin{rem}
+Оператор $A\varphi(x)=a(x)\varphi(x)$ непрерывен на $\EuScript D(\mathbb R^m)$ и $\EuScript E(\mathbb R^m)$ для любой $a\in C^\infty(\mathbb R^m)$ и непрерывен на $S(\mathbb R^m)$, если $a$ - многочлен
+\end{rem}
+
+
+\begin{df}
+Пространствами обобщенных функций $\EuScript E'(\mathbb R^m)$, $S'(\mathbb R^m)$, $\EuScript D'(\mathbb R^m)$ называются пространства, сопряженные к $\EuScript E(\mathbb R^m)$, $S(\mathbb R^m)$, $\EuScript D(\mathbb R^m)$ с $*$-слабой топологией/сходимостью
+\end{df}
+
+
+\begin{df}
+Измеримая функция $f$ называется локально интегрируемой на $\mathbb R^m$, если $\forall N\quad f\in L(\{x\in\mathbb R^m\colon\|x\|\le N\})$ по стандартной мере $L_{1,\mathrm{loc}}(\mathbb R^m)$ - множеству классов эквивалентности локально интегрируемых функций
+\end{df}
+
+
+\begin{ex}
+Если $f\in L_{1,\mathrm{loc}}(\mathbb R^m)$, то $F_f(\varphi)=\displaystyle\int\limits_{\mathbb R^m}f(x)\varphi(x)d\mu(x)$ задает\\ $F_f\in\EuScript D'(\mathbb R^m)$
+
+Действительно, если $\varphi\in\EuScript D_N(\mathbb R^m)$, то $|F_f(\varphi)|\le\left(\displaystyle\int\limits_{\{\|x\|\le N\}}|f(x)|d\mu\right)\hm\cdot\max\limits_x|\varphi(x)|$, т. е. $p(\varphi)=|F_f(\varphi)|$ - допустимая полунорма $\Rightarrow$ $F_f$ непрерывна
+\end{ex}
+
+
+\begin{prop}
+Если $f,g$ - локально интегрируемы, $f\nsim g$, то $\exists\varphi\in\EuScript D(\mathbb R^m)\colon(F_f,\varphi)\ne(F_g,\varphi)$
+\end{prop}
+\begin{proof}
+Перейдем к паре $(f-g,0)$. Если $f\nsim0$, то $\exists E\colon\displaystyle\int\limits_E d\mu\ne0$
+
+Тогда $\exists B\in R(S)$ - конечное объединение параллелепипедов: $\displaystyle\int\limits_B fd\mu\ne0$ (по определению измеримого множества и свойству абсолютно непрерывного интеграла)
+
+$\Rightarrow$ $\exists I$ - параллелепипед: $\displaystyle\int\limits_I fd\mu\ne0$
+
+Пусть $I=(a_1,b_1)\times(a_2,b_2)\times\ldots\times(a_m,b_m)$
+
+Пусть $\varphi_n^k\in\EuScript D$. $\varphi_n^k\equiv0$ вне $(a_k,b_k)$
+
+$\varphi_n^k(x)\equiv1$ на $[a_k+\frac1n,b_k-\frac1n]$, $\varphi_n^k$ не убывает на $[a_k,a_k+\frac1n]$, $\varphi_n^k$ не возрастает на $[b_k-\frac1n,b_k]$
+
+$\varphi_n(\bar x)=\prod\limits_{k=1}^m\varphi_n^k(x_k)$
+
+Тогда $\forall x\in I\quad\varphi_n(x)\xrightarrow[n\to\infty]{}1$
+
+$f_n(x)=f(x)\varphi_n(x)\to f(x)$
+
+Но $|f_n(x)|\le|f(x)|$
+
+По теореме Лебега о предельном переходе $\displaystyle\int\limits_I f_n(x)d\mu\to\displaystyle\int\limits_I f(x)d\mu$, где $\displaystyle\int\limits_I f_n(x)d\mu=\displaystyle\int\limits_{\mathbb R^m}f(x)\varphi_n(x)d\mu=(F_f,\varphi_n)$
+
+$\Rightarrow$ $\exists n_0\colon\forall n>n_0\quad F_f(\varphi_n)\ne0$
+\end{proof}
+
+
+\begin{df}
+Обобщенная функция называется регулярной, если \\$\exists f\in L_{1,\mathrm{loc}}(\mathbb R^m)\colon F(\varphi)=F_f(\varphi)$ $\forall\varphi$ и сингулярной иначе
+\end{df}
+
+
+\begin{ex}
+$\delta(\varphi)=\varphi(0)$ - сингулярная обобщенная функция
+\end{ex}
+
+
+\begin{df}
+Пусть $\alpha\in(\mathbb Z_+)^m$. Оператором дифференцирования $D^\alpha$ на $\EuScript E'(\mathbb R^m)$, $S'(\mathbb R^m)$, $\EuScript D'(\mathbb R^m)$ называется $D^\alpha F(\varphi)=(-1)^{|\alpha|}F(D^\alpha\varphi)$
+\end{df}
+
+
+\begin{thm}
+(1) $\forall\alpha\in(\mathbb Z_+)^m$ $D^\alpha$ есть непрерывный оператор на пространстве обобщенных функций
+
+(2) Если $f\in C^{(|\alpha|)}(I)$ $\forall$ параллелепипеда $I$, (тогда $f\in L_{1,\mathrm{loc}}$), то $D^\alpha F_f=F_{D^\alpha f}$
+\end{thm}
+\begin{proof}
+(1) Оператор $A'F(\varphi)=F(D^\alpha\varphi)$ непрерывен по предложению 22.1 $\Rightarrow$ $D^\alpha F=\pm A'$ непрерывен
+
+(2) Достаточно рассмотреть случай $(1,0,\ldots,0)=\alpha$, $D^\alpha=D^1$
+
+Имеем: пусть $\varphi\in\EuScript D$, $I=[-N,N]^m$ - куб, $I=\mathrm{supp}\varphi$
+
+Тогда $D^1F_f(\varphi)=-F_f\left(\frac{\partial}{\partial x_1}\varphi\right)=-\displaystyle\int\limits_{\mathbb R^m}f(x)\frac{\partial}{\partial x_1}\varphi(x)d\mu=\\
+=-\displaystyle\int\limits_{[-N,N]^m}f(x)\frac{\partial}{\partial x_1}\varphi(x)d\mu(x)=$(по т. Фубини)$=\\
+=-\displaystyle\int\limits_{[-N,N]^{m-1}}\left(\displaystyle\int\limits_{[-N,N]}f(x_1,\ldots,x_m)\frac{\partial}{\partial x_1}\varphi(x_1,\ldots,x_m)d\mu(x_1)\right)d\mu(x_2,\ldots,x_m)=\\
+=$(инт. по частям)$=\displaystyle\int\limits_{[-N,N]^{m-1}}\left(\displaystyle\int\limits_{[-N,N]}\frac{\partial f}{\partial x_1}(x)\varphi(x)d\mu(x_1)\right)d\mu(x_2,\ldots,x_m)=\\=\displaystyle\int\limits_I\frac{\partial f}{\partial x_1}(x)\varphi(x)d\mu(x)=F_{D^1f}(\varphi)$
+\end{proof}
+
+
+\begin{df}
+Пусть $a/in C^\infty(\mathbb R^m)$. Произведением $aF$, где $a$ - обобщенная функция, называется $aF(\varphi)=F(a\varphi)$
+
+Если $A\varphi=a\varphi$ - непрерывный оператор в пространстве основных функций, то $A'F=aF$ - сопряженный к нему, т. е. $A'$ - непрерывный
+
+Если $F=F_f$ - регулярная, то $AF_f(\varphi)=F_f(a\varphi)=\displaystyle\int\limits_{\mathbb R}f(x)a(x)\varphi(x)d\mu\hm=F_{af}(\varphi)$, т. е. для регулярных обобщенных функций умножение на гладкие совпадает с поточечным
+\end{df}
+
+
+\begin{lem}
+Пусть $F\in\EuScript D'(\mathbb R^1)$, $F'=0$. Тогда $\exists c\in\mathbb C\colon F(\varphi)=F_c(\varphi)\hm=\displaystyle\int\limits_{\mathbb R}c\varphi(x)d\mu$
+\end{lem}
+\begin{proof}
+Пусть $F'=0$, т. е. $\forall\varphi\in\EuScript D\quad F'(\varphi)=F(-\varphi')=0$
+
+Т. е. $F=0$ на $F=\{\psi\in\EuScript D\colon\exists\varphi\in\EuScript D\colon\psi=\varphi'\}$
+
+Если $\psi=\varphi'$, то $\varphi(x)=\displaystyle\int\limits_{-\infty}^x\psi(t)dt\in C^\infty(\mathbb R)$, где $\varphi(x)\in\EuScript D(\mathbb R)$ $\Leftrightarrow$ ${\displaystyle\int\limits_{\mathbb R}\psi(t)dt=0}$
+
+Зафиксируем $\varphi_0\colon\displaystyle\int\limits_{\mathbb R}\varphi_0(t)dt=1$
+
+$\forall\varphi\in\EuScript D(\mathbb R)$ имеем $\varphi(x)=\varphi_0(x)\displaystyle\int\limits_{\mathbb R}\varphi(t)+\left(\varphi(x)-\varphi_0(x)\displaystyle\int\limits_{\mathbb R}\varphi(t)dt\right)$
+
+Тогда $F(\varphi)=F(\varphi_0)\displaystyle\int\limits_{\mathbb R}\varphi(t)dt+0$
+
+При $F(\varphi_0)=c$ имеем $F(\varphi)=\displaystyle\int\limits_{\mathbb R}c\varphi(t)dt$
+\end{proof}
+
+
+\begin{thm}
+Пусть $F\in\EuScript D'(\mathbb R)$, тогда $\exists G\in\EuScript D'(\mathbb R)\colon G'=F$ и для любых $G_1$ и $G_2\colon G_1'=G_2'=F$ выполнено $G_1-G_2=F_c$, $c\in\mathbb C$
+\end{thm}
+\begin{proof}
+Второе утверждение непосредственно следует из предыдущей леммы
+
+Зафиксируем $\varphi_0\in\EuScript D(\mathbb R)\colon\displaystyle\int\limits_{\mathbb R}\varphi_0(x)dx=1$. Для всякой $\varphi\in\EuScript D(\mathbb R)$ положим $\psi_\varphi(x)=\varphi(x)-\left(\displaystyle\int\limits_{\mathbb R}\varphi(t)dt\right)\cdot\varphi_0(x)$
+
+Соответствие $\varphi\mapsto\psi_\varphi$ есть линейный непрерывный оператор на $\EuScript D(\mathbb R)$
+
+Если $\varphi_j\to\varphi$ в $\EuScript D$, то:
+
+(1) $\mathrm{supp}\psi_{\varphi_j}\subset\mathrm{supp}\varphi_j\cup\mathrm{supp}\varphi_0$ $\Rightarrow$ $\exists N\colon\forall j\quad\psi_{\varphi_j}\in\EuScript D_N$
+
+(2) $\psi_{\varphi_j}^{(k)}(x)=\varphi_j^{(k)}(x)-\left(\displaystyle\int\limits_{\mathbb R}\varphi_j(t)dt\right)\varphi_0^{(k)}(x)\rightrightarrows\psi_{\varphi}^{(k)}(x)$, т. к. \\$\varphi_j^{(k)}(x)\rightrightarrows\varphi^{(k)}(x)$, $\displaystyle\int\limits_{\mathbb R}\varphi_j(t)dt\to\displaystyle\int\limits_{\mathbb R}\varphi(t)dt$
+
+Т. е. оператор перехода от $\varphi\mapsto\psi_\varphi$ секвенциально непрерывен, и по теореме об эквивалентном условии непрерывности на $\EuScript D$ он непрерывен
+
+Положим $X_\varphi(x)=-\displaystyle\int\limits_{-\infty}^x\psi_\varphi(t)dt$, тогда т. к. $\displaystyle\int\limits_{\mathbb R}\psi_\varphi(t)dt=0$, то $X_\varphi\in\EuScript D(\mathbb R)$
+
+Соответствие $\varphi\mapsto X_\varphi$ есть линейный непрерывный оператор на $\EuScript D$
+
+Если $\varphi_j\to\varphi$ в $\EuScript D$, то $\psi_{\varphi_j}\to\psi_\varphi$ в $\EuScript D$ и $\exists N\colon\forall j\quad\psi_{\varphi_j}\in\EuScript D_N$, $\psi_\varphi\in\EuScript D_N$
+
+Но тогда $X_{\varphi_j}\in\EuScript D_N$, $X_\varphi\in\EuScript D_N$
+
+$\forall k\ge1\quad X_{\varphi_j}^{(k)}(x)=-\psi_{\varphi_j}^{(k-1)}(x)\rightrightarrows\psi_\varphi^{(k-1)}(x)=X_\varphi^{(k)}(x)$
+
+При $k=0\quad |X_{\varphi_j}(x)-X_\varphi(x)|\le\displaystyle\int\limits_{-\infty}^x|\psi_{\varphi_0}(t)-\psi_\varphi(t)|dt\stackrel{x<N}{\le}\\
+\le2N\max\limits_t|\psi_{\varphi_j}(t)-\psi_\varphi(t)|\xrightarrow[j\to\infty]{}0$
+
+Заметим, что $X_{\varphi'}(x)=-\displaystyle\int\limits_{-\infty}^x\psi_{\varphi'}(t)dt=-\displaystyle\int\limits_{-\infty}^x(\varphi'(t)-\varphi_0(t)\displaystyle\int\limits_{\mathbb R}\varphi'(s)ds)dt\hm=-\displaystyle\int\limits_{-\infty}^x\varphi'(t)dt=-\varphi(x)$
+
+Положим $(G,\varphi)=(F,X_\varphi)$, $G$ непрерывен как композиция $\varphi\mapsto X_\varphi$ и $F$
+
+\noindentТогда $\forall\varphi\in\EuScript D(\mathbb R)\quad(G',\varphi)=-(G,\varphi')=-(F,X_{\varphi'})=(F,\varphi)$, т. е. $G'=F$
+\end{proof}
+
+
+
+
+
+
+
+\chapter{Преобразование Фурье в $S(\mathbb R)$ и в $L_2(\mathbb R)$}
+
+Было: $\forall f\in L_1(\mathbb R)\quad\hat f\in C_0(\mathbb R)$ и $\|\hat f\|_{C_0(\mathbb R)}\le\frac1{\sqrt{2\pi}}\|f\|_{L_1}(\mathbb R)$
+
+\begin{rem}
+$S(\mathbb R)\subset L_1(\mathbb R)$, т. к. $\displaystyle\int\limits_{\mathbb R}|\varphi(t)|dt\le\displaystyle\int\limits_{\mathbb R}\frac{dt}{1+t^2}\max\limits_t\left( (1+|t|^2)|\varphi(t)|\right)\hm=\pi p_{2,0}^S(\varphi)$
+\end{rem}
+
+
+\begin{thm}
+Преобразование Фурье $\EuScript F$ есть линейный непрерывный оператор из $S(\mathbb R)$ в себя, причем $\EuScript F^4=I$ (в частности, $\exists \EuScript F^{-1}=\EuScript F^3$)
+\end{thm}
+\begin{proof}
+Оценим $p_{k,n}^S(\hat\varphi)=\max\limits_x(1+|x|^k)\hat\varphi^{(n)}(x)$
+
+$\forall x$, $\forall k$, $\forall n\quad|x^k\hat f^{(n)}(x)|=|x^k\widehat{t^n f}(x)|=|\widehat{(t^n f)^{(k)}}(x)|=\left|\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}t^j f^{(e)}(t)e^{-itx}dt\right|\hm\le\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}|t|^j|f^{(e)}(t)|dt\le\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}\frac{dt}{1+t^2}\max\limits_{\mathbb R}\left(|t|^j(1+t^2)|f^{(e)}(t)|\right)\le\\
+\le\sqrt{\frac\pi2}\left(p_{j,e}^S(f)+p_{j+2,e}^S(f)\right)$
+
+Тогда $\max\limits_x\left|\widehat{(t^nf)^{(k)}}(x)\right|$ оценивается через не более чем $2k+2$ полунормы $f$ в $S$, т. е. $p_{k,n}^S(\varphi)$ оценивается не более чем $4k+4$ полунормами $\varphi$ в $S$, т. е. $\EuScript F$ - оператор на $S$
+
+Пусть $\varphi\in S$, тогда $\hat\varphi\in S\subset L_1$, и в каждой точке для $\varphi$ выполнено условие Дини
+
+$\varphi(x)=\lim\limits_{n\to\infty}\displaystyle\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{-n}^n\hat\varphi(t)e^{itx}dt=\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}\hat\varphi(t)e^{itx}dt=\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}\hat\varphi(t)e^{-it(-x)}dt\hm=\EuScript F^2\varphi(-x)$, т. е. $\EuScript F^2\varphi(x)=\varphi(-x)$ $\Rightarrow$ $\EuScript F^4\varphi(x)=\varphi(-(-x))=\varphi(x)$
+\end{proof}
+
+
+\begin{df}
+Преобразованием Фурье в пространстве $D'(\mathbb R)$ называется оператор, сопряженный к преобразованию Фурье в $S(\mathbb R)$, т. е. $(\hat F,\varphi)=(F,\hat\varphi)$
+\end{df}
+
+
+\begin{prop}
+Если $f\in L_1(\mathbb R)$, то $\hat F_f=F_{\hat f}$
+\end{prop}
+\begin{proof}
+Если $f\in L_1(\mathbb R)$, $\varphi\in S(\mathbb R)\subset L_1(\mathbb R)$, то $|f(t)\varphi(x)|\in L_1(\mathbb R^2)$ по теореме Тонелли
+
+Тогда по теореме Фубини $(F_{\hat f},\varphi)=\displaystyle\int\limits_{\mathbb R}\left(\textstyle\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}f(t) e^{-itx}dt\right)\varphi(x)dx=\\=\displaystyle\int\limits_{\mathbb R}\left(\textstyle\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}\varphi(x)e^{-itx}dx\right)f(t)dt=(F_f,\hat\varphi)=(\hat F_f,\varphi)$
+\end{proof}
+
+
+\begin{ex}
+$\delta(\varphi)=\varphi(0)$
+
+$\hat\delta(\varphi)=\delta(\hat\varphi)=\hat\varphi(0)=\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}\varphi(t)e^{-it0}dt=\left(\textstyle\frac1{\sqrt{2\pi}},\varphi\right)$; $\hat\delta=\frac1{\sqrt{2\pi}}$
+\end{ex}
+
+
+\begin{lem}
+Пусть $f\in L_1(\mathbb R)\cap L_2(\mathbb R)$. Тогда $\exists\varphi_n\in S(\mathbb R)\colon\|f-\varphi_n\|_1\to0$, $\|f-\varphi_n\|_2\to0$
+\end{lem}
+\begin{proof}
+По теореме Лебега о предельном переходе для $f_n=f\chi_{[-n,n]}$ выполнено, что $\|f-f_n\|_1\to0$, $\|f-f_n\|\to0$
+
+Для заданного $\varepsilon>0$ $\exists N\colon\|f-f_N\|_1<\varepsilon$, $\|f-f_N\|_2<\varepsilon$
+
+На $[-N,N]$ выполнена оценка $\displaystyle\int\limits_{[-N,N]}|g(x)|dx\le\left(\displaystyle\int|g(x)|^2dx\right)^{\frac12}\sqrt{2N}$
+
+Т. к. непрерывные функции плотны в $L_2([-N,N])$, то $\exists g\in C([a,b])$
+
+$\|g-f_N\|_{l_2[-N,N]}<\frac\varepsilon{\sqrt{2N}}$, тогда $\|g-f_N\|_{L_2[-N,N]}<\varepsilon$
+
+$\exists$ многочлен $p\colon\max\limits_{[-N,N]}|p(x)-g(x)|<\frac{\varepsilon}{2N}$, тогда: 
+
+$\|g-p\|_{L_1[-N,-N]}<\varepsilon$
+
+$\|g-p\|_{L_2[-N,-N]}<\sqrt{2N\frac{\varepsilon^2}{(2N)^2}}<\varepsilon$
+
+Пусть $\varphi_k\in\EuScript D$, $\varphi_k\equiv0$ вне $[-N,N]$
+
+$\varphi_k\equiv1$ на $\left[-N+\frac1k,N-\frac1k\right]$, $\varphi_k$ неубывающая на $\left[-N,-N+\frac1k\right]$ и не возрастающая на $\left[N-\frac1k,N\right]$
+
+Тогда по теореме Лебега $\|p-p_{\varphi_k}\|_{L_1[-N,N]}\to0$, $\|p-p_{\varphi_k}\|_{L_2[-N,N]}\to0$
+
+При достаточно большом $k$ обе нормы меньше $\varepsilon$, и тогда $\|f-p_{\varphi_k}\|_1<4\varphi$, $\|f-p_{\varphi_k}\|_2<4\varepsilon$
+
+Повторяем построение при $\varepsilon_n=\frac1n$, получаем искомую последовательность
+\end{proof}
+
+
+\begin{lem}
+Пусть $f,g\in L_2(\mathbb R)\cap L_1(\mathbb R)$, в частности, $f,g\in S(\mathbb R)$. Тогда $\langle f,\check g\rangle=\langle\hat f,g\rangle$; $\check\quad$ - обратное к преобразованию Фурье
+\end{lem}
+\begin{proof}
+$f(x)\overline{g(y)}e^{-ixy}\in L_1(\mathbb R^2)$ по теореме Тонелли $\Rightarrow$ по теореме Фубини повторные интегралы равны
+
+$\langle\hat f,g\rangle=\displaystyle\int\limits_{\mathbb R}\left(\textstyle\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}f(x)e^{-ixy}dx\right)\overline{g(y)}dy=\\=\displaystyle\int\limits_{\mathbb R}\textstyle\frac1{\sqrt{2\pi}}f(x)\left(\displaystyle\int\limits_{\mathbb R}\overline{g(y)e^{ixy}}dy\right)dx=\langle f,\check g\rangle$
+\end{proof}
+
+
+Для $f,g\in S$, применяя лемму к паре $(f,\hat g)$, получаем, что $\langle\hat f,\hat g\rangle=\langle f,\check{\hat g}\rangle=\langle f,g\rangle$
+
+В частности, $\|f\|_{L_2(\mathbb R)}=\|\hat f\|_{L_2(\mathbb R)}$
+
+\begin{thm}[Планшереля]Существует оператор $\EuScript F\in\EuScript L(L_2(\mathbb R))$, обладающий следующими свойствами:
+
+(1) $\forall f\in L_2$, $\|f\|=\|\EuScript F f\|$, $\forall f,g\in L_2(\mathbb R)\quad\langle f,g\rangle=\langle\EuScript F f,\EuScript Fg\rangle$
+
+(2) $\EuScript F^4=I$, как следствие, $\exists\EuScript F^{-1}=\EuScript F^3$
+
+(3) Если $f\in L_2(\mathbb R)\cap L_1(\mathbb R)$, то $\EuScript F f(\xi)=\hat f(\xi)$
+
+(4) $\forall f\in L_2(\mathbb R)\quad\EuScript Ff(\xi)=\lim\limits_{n\to\infty}\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{-n}^n f(x)e^{-ix\xi}dx$, где предел понимается в смысле $L_2(\mathbb R)$
+\end{thm}
+\begin{proof}
+(1) По лемме 24.1 $S(\mathbb R)$ плотно в $L_2(\mathbb R)$
+
+Положим $\EuScript Ff(\xi)=f(\xi)$ для $f\in S(\mathbb R)$
+
+По лемме 24.2 $\forall f,g\in S(\mathbb R)\quad\langle f,g\rangle=\langle\EuScript Ff,\EuScript Fg\rangle$, $\|f\|_2=\|\EuScript Ff\|_2$
+
+По теореме 16.1 $\EuScript F$ продолжается до ортогонального оператора на $L_2(\mathbb R)$, т. к. скалярное произведение непрерывно, то если $S\ni f_n\to f$, $S\ni g_n\to g$, то $\langle f,g\rangle=\lim\limits_{n\to\infty}\langle f_n,g_n\rangle=\lim\limits_{n\to\infty}\langle\EuScript F f_n,\EuScript F g_n\rangle=\langle \EuScript Ff,\EuScript Fg\rangle$, тогда и $\|f\|=\|\EuScript Ff\|$
+
+(2) По теореме 24.1 $\EuScript F^4=I$ на $S(\mathbb R)$. Но если два непрерывных оператора совпадают на плотном множестве, то они совпадают всюду
+
+(3) Пусть $f\in L_1(\mathbb R)\cap L_2(\mathbb R)$
+
+Возьмем $f_n\in S(\mathbb R)\colon f_n\to f$ в $L_1$ и в $L_2$ (существует по лемме 24.1)
+
+Тогда $\hat f_n\rightrightarrows\hat f$ по свойствам преобразования Фурье на $L_1$
+
+$\EuScript F f_n\to\EuScript Ff$ по норме $L_2(\mathbb R)$ в силу пункта (1), т. е. 
+
+$\displaystyle\int\limits_{\mathbb R}\left|\EuScript F f_n(\xi)-\EuScript F f(\xi)\right|^2d\xi\xrightarrow[n\to\infty]{}0$
+
+По неравенству Чебышева $\forall\varepsilon>0$ $\mu\{\xi\colon|\EuScript F f_n(\xi)-\EuScript F f(\xi)|>\varepsilon\}\le\\\le\displaystyle\frac1{\varepsilon^2}\displaystyle\int\limits_{\mathbb R}|\EuScript F f_n(\xi)-\EuScript F f(\xi)|^2d\xi$, т. е. $\EuScript F f_n\to\EuScript F f$ по мере
+
+По теореме Рисса $\exists\{n_k\}\colon\EuScript F f_{n_k}\to\EuScript F f$ почти всюду. Но $\EuScript F f_{n_k}=\hat f_{n_k}\rightrightarrows\hat f$, \\т. е. $\EuScript F f(\xi)=\hat f(\xi)$ почти всюду, т. е. равны в смысле $L_2(\mathbb R)$
+
+(4) Пусть $f\in L_2$. Предположим $f_n(x)=f(x)\chi_{[-n,n]}(x)$
+
+Тогда по теореме Лебега $\|f-f_n\|_{L_2(\mathbb R)}\to0$
+
+Но т. к. $L_2([-n,n])\subset L_1([-n,n])$
+
+Тогда $f_n\in L_2([-n,n])\subset L_1([-n,n])$, $f_n=0$ вне $[-n,n]$ $\Rightarrow$ $f_n\in L_1(\mathbb R)$
+
+В силу пункта (3) $\EuScript Ff_n(\xi)=\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}f_n(x)e^{-ix\xi}dx=\textstyle\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{-n}^nf(x)e^{-ix\xi}dx$
+
+Но $\|f-f_n\|_{L_2(\mathbb R)}\to0$ $\Rightarrow$ $\|\EuScript Ff-\EuScript F f_n\|_{L_2(\mathbb R)}\to0$ в силу пункта (1)
+\end{proof}
+
+
+\begin{prop}
+Пусть $f\in L_2(\mathbb R)$, $F_f$ - соответствующая регулярная обобщенная функция из $S'(\mathbb R)$. Тогда $\hat F_f=F_{\EuScript Ff}$
+\end{prop}
+\begin{proof}
+По определению $\forall\varphi\in S$ имеем $(\hat F_f,\varphi)=(F_f,\hat\varphi)=\\=\displaystyle\int\limits_{\mathbb R}f(x)\hat\varphi(x)dx=\langle f,\bar{\hat\varphi}\rangle\stackrel{\text{п.(1)}}{=}\langle\EuScript Ff,\EuScript F\bar{\hat\varphi}\rangle\stackrel{\text{п.(3)}}{=}\langle\EuScript Ff,\hat{\bar{\hat\varphi}}\rangle=\langle\EuScript Ff,\hat{\check{\bar\varphi}}\rangle=\langle\EuScript Ff,\bar\varphi\rangle\hm=\displaystyle\int\limits_{\mathbb R}\EuScript Ff(\xi)\varphi(\xi)d\xi=(F_{\EuScript Ff},\varphi)$
+
+Причем $\bar{\hat\varphi}=\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}\varphi(x)e^{-ix\xi}dx=\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}\bar\varphi(x)e^{ix\xi}dx=\check{\bar\varphi}(\xi)$
+\end{proof}
+
+
+\begin{thm}
+Пусть $\rho(x)>0$ на $\mathbb R$, $\rho(x)\le c e^{-b|x|}$ для некоторого $b>0$, $f\in L_2(\mathbb R)$ и $\forall n\in\mathbb Z_+$ $\displaystyle\int\limits_{\mathbb R}f(x)\rho(x)x^ndx=0$ $(\forall n\in\mathbb Z_+\quad\langle f,x^n\rho(x)\rangle=0)$
+
+Тогда $f(x)=0$ почти всюду
+\end{thm}
+\begin{proof}
+По неравенству Коши-Буняковского $f(x)\rho(x)e^{a|x|}\in L_1(\mathbb R)$
+
+$\displaystyle\int\limits_{\mathbb R}|f(x)|\rho(x)e^{ax}|dx\le\|f\|_{L_2}\left(\displaystyle\int\limits_{\mathbb R}\rho^2(x)e^{2ax}dx\right)^{\frac12}$
+
+Взяв $F(x)=f(x)\rho(x)$, по свойствам преобразования Фурье в $L_1$ имеем, что $\hat F(\xi)$ голоморфно продолжается в полосу $|\mathrm{Im}\xi|<b$
+
+По следствию из той же теоремы $\hat F^{(n)}(\xi)=\frac1{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}(-ix)^nF(x)e^{-ix\xi}dx$
+
+В частности, при $\xi=0$ имеем: $\hat F^{(n)}(0)=\frac{(-i)^n}{\sqrt{2\pi}}\displaystyle\int\limits_{\mathbb R}x^nF(x)dx=0$, т. е. $\hat F$ имеет нулевой ряд Тейлора в точке $\xi=0$
+
+По теореме единственности для голоморфной функции $\hat F(\xi)\equiv0$ при $|\mathrm{Im}\xi|<b$ $\Rightarrow$ $F(x)=0$ почти всюду на $\mathbb R$ по теореме единственности преобразования Фурье $\Rightarrow$ $f(x)=0$ почти всюду (т. к. $\rho(x)>0$)
+\end{proof}
+
+
+\begin{df}
+Для $n\in\mathbb Z_+$ многочленом Эрмита называется\\ $H_n(x)=e^{x^2}\displaystyle\frac{d^n}{dx^n}(e^{-x^2})$
+
+Функцией Эрмита называется $\varphi_n(x)=e^{-\frac{x^2}{2}}H_n(x)=e^{\frac{x^2}{2}}\displaystyle\frac{d^n}{dx^n}(e^{-x^2})$
+\end{df}
+
+
+\begin{thm}
+(1) $H_n(x)$ - многочлен степени ровно $n$ (поэтому {$\varphi_n\hm\in L_2(\mathbb R)$})
+
+(2) $\exists c_n\colon\{c_n\varphi_n\}_{n=0}^\infty$ - полная ОНС в $L_2(\mathbb R)$
+
+(3) Функция Эрмита удовлетворяет рекуррентной формуле \\ $\varphi_{n+1}(x)=\varphi_n'(x)-x\varphi_n(x)$
+
+(4) $\forall n\quad\EuScript F\varphi_n(x)=(-i)^n\varphi_n(x)$ $\EuScript F$ - преобразование Фурье
+\end{thm}
+\begin{proof}
+(1) $H_0(x)=e^{x^2}e^{-x^2}=1$
+
+Если $H_n$ - многочлен степени $n$, то $H_{n+1}(x)=e^{x^2}\displaystyle\frac{d}{dx}\left(\displaystyle\frac{d^n}{dx^n}e^{-x^2}\right)=\\=e^{x^2}\displaystyle\frac{d}{dx}\left(H_n(x)e^{-x^2}\right)=H_n'-2xH_n$ - многочлен степени $n+1$
+
+(2) Пусть $n>m$, тогда $\langle\varphi_n,\varphi_m\rangle=\displaystyle\int\limits_{\mathbb R}\left((e^{\frac{x^2}{2}})^2\frac{d^n}{dx^n}(e^{-x^2})\frac{d^m}{dx^m}e^{-x^2}\right)dx\hm=\displaystyle\int\limits_{\mathbb R}H_m(x)\frac{d^n}{dx^n}(e^{-x^2})dx=$(интегрируем $n$ раз по частям)$=$\\$=(-1)^n\displaystyle\int\limits_{\mathbb R}\left(\frac{d^n}{dx^n}H_m(x)\right)e^{-x^2}dx=0$
+
+При $c_n=\displaystyle\frac1{\|\varphi_n\|_2}$ получаем ОНС $\{c_n\varphi_n\}$
+
+Пусть $f\in L_2(\mathbb R)$ и $\forall n\quad\langle f,\varphi_n\rangle=0$
+
+\noindentНо $\bigl(\forall n\in\mathbb Z_+$ $\displaystyle\int\limits_{\mathbb R}H_n(x)f(x)e^{-\frac{x^2}{2}}dx=0\bigr)$ $\Longleftrightarrow$ $\bigl(\forall n\in\mathbb Z_+$ $\displaystyle\int\limits_{\mathbb R}x^nf(x)e^{-\frac{x^2}{2}}dx=0\bigr)$
+
+(т. к. $x^n=\displaystyle\frac1{(-2)^n}H_n+$многочлен степени $(n-1)$)
+
+По теореме 24.3 $f(x)=0$ почти всюду, т. е. система $\{c_n\varphi_n\}$ полна (и является базисом)
+
+(3) $\varphi_n(x)=e^{\frac{x^2}{2}}\displaystyle\frac{d^n}{dx^n}(e^{-x^2})$
+
+$\varphi_n'(x)=xe^{\frac{x^2}{2}}\displaystyle\frac{d^n}{dx^n}(e^{-x^2})+e^{\frac{x^2}{2}}\displaystyle\frac{d^{n+1}}{dx^{n+1}}(e^{-x^2})=x\varphi_n(x)+\varphi_{n+1}(x)$, т. е. \\$\varphi_{n+1}(x)=\varphi_n'(x)-x\varphi_n(x)$
+
+(4) При $n=0$: $\widehat{e^{-\frac{x^2}{2}}(\xi)}=e^{-\frac{\xi^2}{2}}$
+
+Пусть $\hat\varphi_n(\xi)=(-i)^n\varphi_n(\xi)$
+
+Тогда $\hat\varphi_{n+1}(\xi)=\widehat{\varphi_n'}(\xi)-\widehat{x\varphi_n}(\xi)=i\xi\hat\varphi_n(\xi)-i\hat\varphi_n'(\xi)=(-i)^n(i\xi\varphi_n(\xi)\hm-i\varphi_n'(\xi))=(-i)^{n+1}\varphi_{n+1}(\xi)$, где $\widehat{\varphi'}=i\xi\hat\varphi$; $\hat\varphi'=i\widehat{x\varphi}$
+\end{proof}
+
+
+\begin{prop}
+Пусть $A\in\EuScript L(E)$, $E$ - банахово, $P$ - многочлен. Тогда $\sigma(P(A))=P(\sigma(A))$ $\bigl(P(x)=\sum\limits_{k=0}^n c_kx^k$ $\Rightarrow$ $P(A)=\sum\limits_{k=0}^n c_k A^k$, $A^0=I\bigr)$
+\end{prop}
+\begin{proof}
+Пусть $\mu\in\mathbb C$,$P(x)-\mu=a_n\prod\limits_{k=1}^n(x-\lambda_k)$, т. е. $\{\lambda_k\}_{k=1}^n$ - корни с учетом кратности
+
+При этом $P(x)=\mu$ $\Leftrightarrow$ $x\in\{\lambda_k\}_{k=1}^n$
+
+$P(A)-\mu I=a_n(A-\lambda_1 I)\ldots(A-\lambda_n I)$, где операторы в правой части перестановочны
+
+Если $\lambda_k\notin\sigma(A)$, $k=1,\ldots,n$ $\Leftrightarrow$ $\mu\notin P(\sigma(A))$ то $\forall k$ $(A-\lambda_kI)$ обратим\\$\Rightarrow$ $P(A)-\mu I$ обратим как композиция обратимых $\Rightarrow$ $\mu\notin\sigma(P(A))$
+
+Обратно, пусть $\exists k\colon\lambda_k\in\sigma(A)$ $\Leftrightarrow$ $\mu\in P(\sigma(A))$
+
+Тогда либо $\mathrm{Ker}(A-\lambda_k I)\ne\{0\}$, либо $\mathrm{Im}(A-\lambda_k I)\ne E$
+
+В первом случае переставим $(A-\lambda_k I)$ в самую правую позицию, тогда $\mathrm{Ker}(P(A)-\mu I)\ne\{0\}$; $\mu\in\sigma(P(A))$
+
+Во втором случае переставим $(A-\lambda_k I)$ в самую левую позицию
+
+Тогда $\mathrm{Im}(P(A)-\mu I)\ne E$, $\mu\in\hat\sigma(P(A))$
+\end{proof}
+
+
+\begin{cons}
+Для оператора $\EuScript F$ преобразования Фурье на $L_2(\mathbb R)$ выполнено, что $\sigma(\EuScript F)=\{1,-1,i,-i\}$
+\end{cons}
+\begin{proof}
+$\EuScript F^4=I$, для многочлена $P(x)=x^4-1$ имеем $P(\EuScript F)=0$, $\sigma(P(\EuScript F))=\{0\}=P(\sigma(\EuScript F))$
+
+Т. е. $\forall\lambda\in\sigma(\EuScript F)$ выполнено $P(\lambda)=\lambda^4-1=0$, т. е. $\sigma(\EuScript F)\subset\{1,-1,i,-i\}$
+
+Но по теореме 24.4(4) $\varphi_0,\varphi_1,\varphi_2,\varphi_3$ - собственные функции, соответствующие собственным значениям $0,-i,-1,i$ соответственно $\Rightarrow$ $\sigma(\EuScript F)=\{1,-1,i,-i\}$
+\end{proof}
+
+
+\end{document}

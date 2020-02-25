@@ -1,0 +1,331 @@
+% -*- latex-*-
+\subsubsection{Выражение НОД и НОК через разложения исходных чисел в произведение простых}
+
+\begin{stm}
+  Для натуральных чисел $a={p_1}^{\al_1}\sd {p_n}^{\al_n}$ и 
+	$b={p_1}^{\be_1}\sd {p_n}^{\be_n}\;(p_i \text{~— простые}$, 
+	$\al_i\bw\in\Z^+,\,\be_i\bw\in\Z^+)$ условие $b\divs a$ выполняется тогда 
+	и только тогда, когда $\forall j=1\dots n$ $\be_j\le\al_j$
+        %$\be_1\le\al_1\sco\be_n\le\al_n$.
+\end{stm}
+\begin{proof}
+  \textit{Необходимость.} Если $b\divs a$, то $\exi c\colon a=bc$, где $c={p_1}^{\ga_1}\sd {p_n}^{\ga_n}$. Имеем
+  $$
+    {p_1}^{\al_1}\sd {p_n}^{\al_n}={p_1}^{\be_1+\ga_1}\sd {p_n}^{\be_n+\ga_n}.
+  $$
+
+  Отсюда
+  $$
+    \al_i=\be_i+\ga_i\ge\be_i,\;i=1\sco n.
+  $$
+
+  \textit{Достаточность.} Имеет место соотношение:
+  $$
+    a=b\cdot {p_1}^{\al_1-\be_1}\sd {p_n}^{\al_n-\be_n}.
+  $$
+  Тогда $c:={p_1}^{\al_1-\be_1}\sd {p_n}^{\al_n-\be_n}$~— требуемое в определении делимости $b\divs a$ число~$c$.
+\end{proof}
+
+\begin{imp} Для $a={p_1}^{\al_1}\sd {p_n}^{\al_n}$ и $b={p_1}^{\be_1}\sd {p_n}^{\be_n}$ имеют место:
+  \begin{points}{0}
+    \label{nod_nok_primes}
+    \item $(a,b)={p_1}^{\min(\al_1,\,\be_1)}\sd {p_n}^{\min(\al_n,\,\be_n)},$
+    \item $[a,b]={p_1}^{\max(\al_1,\,\be_1)}\sd {p_n}^{\max(\al_n,\,\be_n)}.$
+  \end{points}
+\end{imp}
+\begin{proof}
+  Докажем \pt{1} (\pt{2} делается аналогично).
+
+  Пусть $c={p_1}^{\ga_1}\sd {p_n}^{\ga_n},\,c\divs a,\,c\divs b.$ Тогда
+  $$
+    \ga_i\le\al_i,\,\ga_i\le\be_i,\,i=1\sco n\Longleftrightarrow\ga_i\le\minl{}{(\al_i,\,\be_i)},\,i=1\sco n.
+  $$
+
+  Очевидно, самое большое из таких $c$ получится в случае строгих равенств $\ga_i\bw=\minl{}{(\al_i,\,\be_i)},\,i\bw=1\sco n$. При этом самое большое из таких $c$ по определению и есть $(a,b)$.
+\end{proof}
+
+\subsubsection{Теорема Евклида о бесконечности множества простых чисел}
+
+\begin{theorem}[Евклид]
+  Множество простых чисел бесконечно.
+\end{theorem}
+\begin{proof}
+  \textit{Доказательство Евклида.} Предположим обратное: пусть $p_1\sco p_n$~— все простые числа. Рассмотрим число $p_1\sd p_n+1$. Оно не делится ни на одно из $p_i$ (иначе $p_i\divs 1$), значит, оно простое. Противоречие.
+
+  \textit{Доказательство Эйлера.} Предположим обратное: пусть $p_1\sco p_n$~— все простые числа. Тогда
+  $$
+    \prod_{k=1}^n\frac{1}{1-\tfrac{1}{p_k}}=\prod_{k=1}^n\sum_{l=0}^\infty\frac{1}{{p_k}^l}=
+    \sum_{m=0}^n\sum_{\al_i\in\Z^+}\frac{1}{{p_1}^{\al_1}\sd{p_m}^{\al_m}}=\sum_{n=1}^\infty\frac1n.
+  $$
+  Здесь мы сначала превратили дробь в сумму геометрической прогрессии, затем перемножили $n$ получившихся бесконечных абсолютно сходящихся рядов и получили сумму обратных ко всем возможным произведениям простых чисел, что в силу основной теоремы арифметики означает, что получили сумму обратных ко всем натуральным числам, которая является расходящимся рядом. С другой стороны, произведение в левой части сходится просто в силу своей конечности. Противоречие.
+\end{proof}
+
+
+\subsection{Оценки Чебышева}
+
+Рассмотрим функцию
+$$
+  \pi(x):=\Card\,\{p\text{~— простые}\colon p\le x\}.
+$$
+
+Глобальной целью первого раздела является доказательство \notion{асимптотического закона распределения простых чисел}, который в 1896 году независимо друг от друга доказали Шарль Жан ла Валле Пуссен и Жак Адамар:
+$$
+  \pi(x)\sim\frac{x}{\ln{x}},
+$$
+и оценки Чебышева~— первый шаг на этом пути. 
+
+\subsubsection{Формулировка теоремы об оценках Чебышева}
+
+Они состоят в следующем:
+\begin{theorem}[Оценки Чебышева]
+  Cуществуют (положительные) константы $a$ и~$b$ такие, что для любого $x\ge2$ верно соотношение
+  $$
+    a\,\frac{x}{\ln{x}}<\pi(x)<b\,\frac{x}{\ln{x}}.
+  $$
+\end{theorem}
+
+\subsubsection{Определение функций $\Ta(x)$ и $\psi(x)$}
+
+Займемся подготовительной работой.
+
+Введем
+\begin{gather*}
+  \Ta(x):=\sum_{p\,\le\,x}\ln{p},\\
+  \psi(x):=\sum_{\substack{p,\,n\in\N\colon\\p^n\le\,x}}\ln{p}=\sum_{p\,\le\,x}\left[\frac{\ln{x}}{\ln{p}}\right]\ln{p}=\sum_{n\,\le\,x}\La(n),\\
+  \text{где } \La(n):=
+  \begin{cases}
+    \ln{p},&\text{если $n=p^k$};\\
+    0&\text{иначе.}
+  \end{cases}
+\end{gather*}\par
+Фактически $\Ta(x)$ есть сумма логарифмов простых чисел на $[1;\,x]$, $\psi(x)$~— сумма по всем простым из $[1;\,x]$ такого количества логарифмов каждого из них, сколько степеней этого простого лежат на этом отрезке.
+
+\begin{note}
+  Рассмотрим
+  $$
+    [1,2\sco x]=\LCM(1,2\sco x)=\prod_{p\,\le\,x}p^{\,\al_p}.
+  $$
+
+  В силу следствия $\ref{nod_nok_primes}$, которое очевидным образом распространяется со случая двух элементов до случая любого конечного числа элементов, имеем
+  $$
+    \al_p=\left[\frac{\ln{x}}{\ln{p}}\right].
+  $$
+
+  Значит,
+  $$
+    [1,2\sco x]=\prod_{p\,\le\,x}p^{\left[\tfrac{\ln{x}}{\ln{p}}\right]}=e^{\psi(x)}.
+  $$
+  В этом заключается арифметический смысл $\psi(x)$.
+\end{note}
+
+\subsubsection{Равенство верхних и нижних пределов $\Ta(x)/x$, $\psi(x)/x$ и $\pi(x)\ln{x}/x$}
+
+\begin{lemma}
+  Введем величины $L_1$, $L_2$, $L_3$, $l_1$, $l_2$, $l_3$:
+  $$
+    L_1 = \ulim_{x\rightarrow+\infty}\frac{\Ta(x)}{x},\,
+    L_2 = \ulim_{x\rightarrow+\infty}\frac{\psi(x)}{x},\,
+    L_3 = \ulim_{x\rightarrow+\infty}\frac{\pi(x)}{x}\ln{x},
+  $$
+
+  $l_1,\,l_2,\,l_3$~— соответствующие нижние пределы. Тогда имеют место равенства:
+  \begin{gather*}
+    L_1 = L_2 = L_3,\\
+    l_1 = l_2 = l_3.
+  \end{gather*}
+\end{lemma}
+\begin{proof}
+  Докажем для $L_j$, для $l_j$ доказательство аналогично.
+
+  Очевидно,
+  $$
+    0\le l_j\le L_j\le+\infty.
+  $$
+
+  \pt{1} Имеет место следующее неравенство:
+  $$
+    \sum_{p\,\le\,x}\ln{p}\le\sum_{p\,\le\,x}\left[\frac{\ln{x}}{\ln{p}}\right]\ln{p}\le
+    \sum_{p\,\le\,x}\frac{\ln{x}}{\ln{p}}\ln{p}=\ln{x}\cdot\Card\,\{p\text{~— простые}\colon p\le x\},
+  $$
+  что эквивалентно
+  $$
+    \Ta(x)\le\psi(x)\le\pi(x)\ln{x}.
+  $$
+
+  Поделим все на~$x$, перейдем к верхнему пределу и получим
+  $$
+    L_1\le L_2\le L_3.
+  $$
+
+  \pt{2} Выберем $\al\in(0,1)$. Проделаем следующие выкладки:
+  $$
+    \Ta(x)=
+    \sum_{p\,\le\,x}\ln{p}\ge\sum_{x^\al\,\le\,p\,\le\,x}\ln{p}>\sum_{x^\al\,\le\,p\,\le\,x}\ln{x^\al}=\al\ln{x}\cdot(\pi(x)-\pi(x^\al))\ge
+    \al\ln{x}\cdot(\pi(x)-x^\al).
+  $$
+
+  Разделив на~$x$, имеем
+  $$
+    \frac{\Ta(x)}{x}\ge\al\,\frac{\pi(x)\ln{x}}{x}-\al\,\frac{\ln{x}}{x^{1-\al}},
+  $$
+  и, переходя к верхнему пределу, получаем
+  $$
+    L_1\ge\al L_3,$$откуда, устремляя $\al$ к $1$: $$L_1\ge L_3.
+  $$
+
+  Результаты \pt{1}, \pt{2} доказывают лемму.
+\end{proof}
+
+\begin{note}
+  Смысл, собственно, в том, что $l:=l_j$ и $L:=L_j$ есть почти оценки Чебышева (возможно, их лишь потребуется слегка модифицировать), и в дальнейшем мы просто будем пользоваться удобной нам формой определения этих констант.
+\end{note}
+
+\subsubsection{Доказательство оценок Чебышева}
+
+Перейдем к доказательству теоремы об оценках Чебышева.
+\begin{proof}
+  \pt{1} (\textit{верхняя оценка})\par
+	Рассмотрим
+  $$
+    2^{2n}=\sum_{k=0}^{2n}\binom{2n}{k}\ge\binom{2n}{n}=\frac{(n+1)\sd 2n}{n!}\ge\prod_{n\,<\,p\,\le\,2n}p.
+  $$
+
+  Прологарифмируем неравенство:
+  $$
+    2n\ln{2}\ge\sum_{n\,<\,p\,\le\,2n}\ln{p}=\Ta(2n)-\Ta(n).
+  $$
+
+  Из этих соотношений мы получим сначала оценку для $\Ta(2^m)$, а затем через нее и для $\Ta(x)$. Для $\Ta(2^m)$ имеем
+  \begin{mlc*}
+    \Ta(2^m)=
+    \sum_{k=0}^{m-1}\left(\Ta\left(2^{k+1}\right)-\Ta\left(2^k\right)\right)\le\sum_{k=0}^{m-1}\left(2^{k+1}\ln{2}\right)=\\
+    =2\cdot(2^m-1)\ln{2}=
+    (2^{m+1}-2)\ln{2}\le
+    2^{m+1}\ln{2}
+  \end{mlc*}
+
+  В силу того, что для любого $x$ существует $n$ такое, что $2^{n-1}\le x<2^n,$ можем получить:
+  $$
+    \Ta(x)\le\Ta\left(2^n\right)\le2^{n+1}\ln{2}=4\ln{2}\cdot2^{n-1}\le(4\ln{2})\,x.
+  $$
+
+  Значит,
+  $$
+    L=\ulim_{x\rightarrow+\infty}\frac{\Ta(x)}{x}\le4\ln{2}.
+  $$
+
+  \pt{2} (\textit{нижняя оценка})
+
+  $$
+    0<I_n=\int\limits_0^1x^n(1-x)^ndx\le\int\limits_0^1\left(\frac{1}{4}\right)^n\,dx=\left(\frac{1}{4}\right)^n.
+  $$
+
+  С другой стороны, в силу $x^n(1-x)^n=a_nx^n\spl a_{2n}x^{2n},\,a_k\in\Z\setminus\{0\}$ имеем
+  $$
+    I_n=\frac{a_n}{n+1}\spl\frac{a_{2n}}{2n+1},
+  $$
+  откуда следует $I_n\cdot[1,2\sco2n+1]\in\N,$ а значит, $I_n\cdot[1,2\sco2n+1]\ge1.$ Таким образом,
+  $$
+    1\le I_n\cdot[1,2\sco2n+1]=I_n\cdot e^{\psi(2n+1)}\le\left(\frac{1}{4}\right)^ne^{\psi(2n+1)}.
+  $$
+
+  Логарифмируя, получим
+  $$
+    \psi(2n+1)\ge n\ln{4}=2n\ln{2},
+  $$
+  а для произвольно $\psi(x)$
+  $$
+    \psi(x)\ge\psi\left(2\left[\frac{x}{2}\right]-1\right)=\psi\left(2\left(\left[\frac{x}{2}\right]-1\right)+1\right)\ge
+    2\left(\left[\frac{x}{2}\right]-1\right)\ln{2}\ge2\left(\frac{x}{2}-2\right)\ln{2}.
+  $$
+
+  Значит,
+  $$
+    l=\llim_{x\rightarrow+\infty}\frac{\psi(x)}{x}\ge\ln{2}.
+  $$
+
+  Из \pt{1}, \pt{2} имеем
+  $$
+    \ln{2}\le l=\llim_{x\rightarrow+\infty}\frac{\pi(x)}{x}\ln{x}\le\ulim_{x\rightarrow+\infty}\frac{\pi(x)}{x}\ln{x}=L\le4\ln{2},
+  $$
+  откуда имеем, что $\tfrac{\pi(x)}{x}\ln{x}$ ограничена этими константами в некоторой окрестности $+\infty$; очевидно также, что она ограничена и на любом положительном конечном интервале, поэтому, увеличивая при необходимости правую и уменьшая левую константы, получаем требуемое.
+\end{proof}
+
+\subsubsection{Следствия оценок Чебышева. Оценка для $p_n$. Расходимость ряда $\displaystyle \sum_p 1/p$}
+
+\begin{imp}
+  Существует положительная константа $C$ такая, что для произвольного $n\ge2$
+  $$
+    [1,2\sco n]=e^{\psi(n)}<e^{Cn}
+  $$
+\end{imp}
+\begin{proof}
+  Согласно предыдущей теореме,
+  $$
+    \ln{2}\le\llim_{x\rightarrow+\infty}\frac{\psi(x)}{x}\le\ulim_{x\rightarrow+\infty}\frac{\psi(x)}{x}\le4\ln{2},
+  $$
+  откуда рассуждениями, аналогичными только что приведенным,
+  $$
+    \exi C_1,C_2>0\colon \fa n\;C_1<\frac{\psi(n)}{n}<C_2.
+  $$
+
+  Отсюда очевидными манипуляциями приходим к требуемому.
+\end{proof}
+
+\begin{imp}
+  Существуют константы $\al$ и~$\be$ такие, что для произвольного $n\ge2$
+  $$
+    \al\cdot n\ln{n}<p_n<\be\cdot n\ln{n},
+  $$
+  где $p_n$~— $n$-ое простое число.
+\end{imp}
+\begin{proof} Имеет место оценка
+  \begin{equation}
+    \label{pi(p_n) estimate}
+    a\,\frac{p_n}{\ln{p_n}}<\pi(p_n)=n<b\,\frac{p_n}{\ln{p_n}}.
+  \end{equation}
+
+  Прологарифмируем:
+  \begin{equation}
+    \label{log pi(p_n) estimate}
+    \ln{a}+\ln{p_n}-\ln{\ln{p_n}}<\ln{n}<\ln{b}+\ln{p_n}-\ln{\ln{p_n}}.
+  \end{equation}
+
+  Теперь перемножим почленно (\ref{pi(p_n) estimate}), (\ref{log pi(p_n) estimate}):
+  $$
+    ap_n\left(1-\frac{\ln{\ln{p_n}}-\ln{a}}{\ln{p_n}}\right)<n\ln{n}<bp_n\left(1-\frac{\ln{\ln{p_n}}-\ln{b}}{\ln{p_n}}\right).
+  $$
+
+  Дроби, очевидно, ограничены, значит, найдутся $\al,\,\be$ такие, что
+  $$
+    \frac{1}{\be}\,p_n<n\ln{n}<\frac{1}{\al}\,p_n,
+  $$
+  откуда получаем требуемое.
+\end{proof}
+
+\begin{imp}
+  Ряд $\displaystyle \sum\dfrac{1}{p}$, где суммирование идет по простым $p$, расходится.
+\end{imp}
+\begin{proof}
+  \textit{Первый способ.}
+  $$
+    \sum\frac1p=\sum_{n=1}^\infty\frac1{p_n}>\frac12+\sum_{n=2}^\infty\frac1{\be\cdot n\ln{n}}=\frac12+\frac1{\be}\sum_{n=2}^\infty\frac1{n\ln{n}}
+  $$~—
+  расходится по интегральному признаку:
+  $$
+    \int\limits_2^\infty\left.\frac{dx}{x\ln{x}}=\ln{\ln{x}}\right|_2^{+\infty}\text{ расходится}.
+  $$
+
+  \textit{Второй способ (схема).} Воспользуемся доказательством Эйлера бесконечности множества простых чисел. Оттуда имеем, что бесконечное произведение
+  $$
+    \prod_{k=1}^\infty\frac{1}{1-\tfrac{1}{p_k}}
+  $$
+  расходится, а значит, расходится ряд из логарифмов
+  $$
+    \sum_{k=1}^\infty\ln{\left(1-\frac1{p_k}\right)},
+  $$
+  при этом
+  $$
+    \sum_{k=1}^\infty\ln{\left(1-\frac1{p_k}\right)}\sim\sum_{k=1}^\infty\frac1{p_k}=\sum_p\frac1p.
+  $$
+\end{proof} 

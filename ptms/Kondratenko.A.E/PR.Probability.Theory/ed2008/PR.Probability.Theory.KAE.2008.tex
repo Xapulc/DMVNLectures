@@ -1,0 +1,1027 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{a4wide,amssymb,amsmath}
+
+\newcounter{pcount}
+\setcounter{pcount}{0}
+\newenvironment{problem}{%новая задача
+  \addtocounter{pcount}{1}
+  \par \bf Задача \arabic{pcount}.\it}
+ {\rm \par}
+\newcommand{\sol}{\bf{Решение.}\rm \ } %начало решения
+\newcommand{\esol}{$\ \blacksquare$} % конец решения (черный квадрат)
+\newcommand{\emsol}{\begin{flushright}\ $\blacksquare $\end{flushright}}% черный квадрат в конце строки
+\newcommand{\mseq}[1]{\mathop{\{#1\}}\nolimits}
+\newcommand{\ans}{\bf{Ответ:}\rm \ }
+\newcommand{\IntInfty}{\int\limits_{-\infty}^{\infty}}
+\newcommand{\toP}{\stackrel{P}{\rightarrow}} % сходимость по вероятности
+\newcommand{\tod}{\stackrel{d}{\rightarrow}} % сходимость по распределению
+\newcommand{\eps}{\varepsilon}       % нормальная эпсилон
+\newcommand{\lsl}{\leqslant}         % меньше либо равно
+\newcommand{\gsl}{\geqslant}         % больше либо равно
+\newcommand{\lslt}[3]{#1\lsl #2 \lsl #3} % a < b < c
+\newcommand{\ett}[1]{e^{-\frac{#1^2}2}}  % экспонента в нужной степени
+\newcommand{\mii}{\!\!\!\!\!}            % 5 отрицательных пробелов
+
+% подгон чтобы бумаги меньше тратить
+\textwidth=19cm
+\oddsidemargin=-1.5cm
+\textheight=24cm
+\topmargin=-2cm
+
+
+\begin{document}
+\begin{center}\Large Задачи с зачётов по теории вероятностей\end{center}
+\begin{center}{\large Преподаватель~--- Александр Евгеньевич Кондратенко}\end{center}
+\begin{center}4 семестр, архив за 2004--2008 г\end{center}
+\begin{center}Издание 2-е, исправленное и дополненное\end{center}
+
+\medskip
+
+\begin{center}\textbf{Предисловие ко второму изданию}\end{center}
+
+\hbox to \textwidth{\hfil\hbox to 13cm{\vbox{\hsize=13cm\small В прошлом семестре (весна 2008) я был в группе, в которой
+теорию вероятностей преподавал А.\,Е.\,Кондратенко и мне и моим товарищам очень помогли
+задачи, выложенные у вас на сайте. Походив на зачеты, мы
+поняли, что в них надо многое исправить. И тут мы, главным образом я,
+жутко ступили. Надо было выслать вам несколько новых задач и замечания,
+или хотя бы попросить исходники, чтобы их исправить. Но мы решили
+полностью перенабрать эти 60 задач (из которых, как оказалось, 2 можно
+было выкинуть). Как бы то ни было, сейчас у меня наконец дошли руки до
+того, чтобы причесать и доделать наше художество. Мы добавили несколько
+новых задач и написали решения там, где их знали.\par
+\hfill Андрей (\texttt{avolk07@mail.ru})\par}}\hskip1cm}
+
+\hbox to \textwidth{\hfill Размещено на сайте \texttt{http:/\kern-2pt/dmvn.mexmat.net}\kern1cm}
+
+\bigskip
+
+\begin{center}\textbf{Предисловие к первому изданию}\end{center}
+
+{\small \hfill Посвящается всем, безвременно погибшим\kern1cm\par\hfill на зачётах от теории вероятностей\kern1cm\par}
+\medskip
+
+\centerline{\footnotesize Решения: Д.\,Вельтищев, М.\,Вельтищев, А.\,Климаков}
+\centerline{\footnotesize В.\,Клепцын, Ю.\,Кудряшов, В.\,Степанов, Т.\,Архангельский}
+\centerline{\footnotesize Свёрстано Д.\,Вельтищевым, Ю.\,Кудряшовым или Т.\,Архангельским с вероятностью $\frac13$}
+
+\bigskip
+
+\begin{problem}
+ Есть $n$ палок, каждую из которых разломали на 2 части. После этого получившиеся части соединили в
+ пары произвольным образом. Какова вероятность того, что получились в точности исходные палки?
+\end{problem}
+
+\sol Точно исходные палки получатся в единственном из всех случаев сборки. Посчитаем количество
+     вариантов собрать $n$ пар из $2n$ частей. Представим, что мы положили части в определенном
+     порядке и потом соединяем 1 и 2, 3 и 4 и так далее. Тогда способов разложить части будет
+     $(2n)!$ Нам неважно, в каком порядке будут лежать части <<внутри палки>>~--- палка получится
+     одинаковая. То есть из одного упорядоченного разложения просто перекладывая части <<внутри палки>> мы можем получить $2^n$ эквивалентных сборок. Поэтому делим на $2^n$.
+     Кроме того, нас не интересует, в каком порядке будут в итоге лежать получившиеся палки.
+     Способов их переложить $n!$. Значит, искомая вероятность $\frac{n!2^n}{(2n)!}$
+\esol
+
+\begin{problem}
+ У страховой компании $10^4$ клиентов, вероятность смерти каждого равна $6\cdot10^{-3}$, страховой
+ взнос $12$ у.е., выплата в случае смерти - $10^3\$$. Найти вероятность того, что доход компании
+ превысит $4\cdot10^4$ и вероятность разорения.
+\end{problem}
+
+\sol
+ Подробно рассмотрим случай небывалого дохода, разорение - аналогично. Годовой доход равен
+ $12\cdot10^4$, значит, должно произойти не более $80$ смертей. Применим теорему Муавра-Лапласа:
+ $$
+   P\bigl(a\lsl\frac{\mu_n-np}{\sqrt{npq}}\lsl b\bigr) \approx \frac1{\sqrt{2\pi}}\int\limits_a^b
+   e^{-\frac{t^2}2}dt.
+ $$
+
+ Подгоним под формулу:
+ $$
+   \mu_n\lsl 80 \Leftrightarrow \frac{\mu_n -10000\cdot0.006}{\sqrt{10000\cdot0.006(1-0.006)}}
+    \lsl \frac{80-10000\cdot0.006}{\sqrt{10000\cdot0.006(1-0.006)}} = b.
+ $$
+ В нашем случае $a=-\infty$, поэтому искомая вероятность равна
+ $$
+   P(\mu_n\lsl 80)=\frac1{\sqrt{2\pi}}\int\limits_{-\infty}^b\ett{t}dt = \frac12 + \frac1{\sqrt{2\pi}}
+   \int\limits_0^b\ett{t}dt = \frac12 + \Phi_0(b).
+ $$
+ \emsol
+
+\begin{problem}
+ Вероятность попадания одной пули в бочку с бензином равна $p$. При одном попадании бочка
+ взрывается с вероятностью $p_1$, при двух и более - взрывается наверняка. Найти вероятность того,
+ что бочка рванет при $n$ выстрелах.
+\end{problem}
+
+\sol
+ Рассмотрим три случая: не попали ни разу, одно попадание и больше двух попаданий.
+ Обозначим эти события $A_0,\ A_1$ и $A_2$ соответственно. Обозначим событие $A$
+ - бочка взорвалась. Тогда $P(A) = P(A|A_0)P(A_0) +
+ P(A|A_1)P(A_1) + P(A|A_2)P(A_2)$. \\
+ Имеем $P(A_0) = (1-p)^n, P(A_1) = C_n^1p(1-p)^{n-1}, P(A_2) = 1 - P(A_0) - P(A_1)$.\\
+ Из условия $P(A|A_0) = 0, P(A|A_1) = p_1, P(A|A_2) = 1$ \\
+ Подставляем, $P(A) = npp_1(1-p)^{n-1} + 1 - np(1-p)^{n-1} - (1-p)^n =
+ 1 + (1-p)^{n-1}(np(p_1-1)) - (1-p)^n = 1 +(1-p)^{n-1}(np(p_1-1)-(1-p)) $
+ \esol
+
+\begin{problem}
+ Завод выпускает изделия с вероятностью брака $0.04$. Первый контролер находит брак из брака с
+ вероятностью $0.92$, второй - $0.98$. Найти вероятность, с которой признанное годным изделие
+ будет бракованным
+\end{problem}
+\sol
+ Пусть события $A_1$ - деталь изготовлена с браком, $P(A_1) = 0.04$, $A_2$ - без брака,
+ $P(A_2) = 0.96$, $B$ - деталь признана годной. Тогда искомая вероятность
+ $$
+   P(A_1|B) = \frac{P(B|A_1)P(A_1)}{P(B|A_1)P(A_1)+P(B|A_2)P(A_2)} =
+   \frac{0.04\cdot P(B|A_1)}{0.04\cdot P(B|A_1)+0.96\cdot1} = \frac1{481}
+ $$
+так как $P(B|A_1) = \frac{0.08+0.02}2 = 0.05$
+\esol
+
+\begin{problem}
+ Вероятность прихода в бюро $k$ человек равна $e^{-\lambda}\frac{\lambda^k}{k!}.$ Вероятность
+ получения отказа $p$. Найти вероятность ровно $m$ отказов.
+\end{problem}
+\sol
+ Введем дополнительное обозначение: $\eta$ - количество деталей.
+ $$
+   P(\xi=m) = P(\xi=m, (\eta=m)+(\eta=s+1)+\dotsb) = \sum\limits_{k=m}^{\infty}P(\xi=m|\eta=k)P(\eta=k)=
+ $$
+ $$
+   \sum\limits_{k=m}^{\infty}e^{-\lambda}\frac{\lambda^k}{k!}p^{m}q^{k-m}C_{k}^{m}=
+   \sum\limits_{k=m}^{\infty}e^{-\lambda}\frac{\lambda^k}{k!}p^{m}q^{k-m}\frac{k!}{m!(k-m)!}=
+   e^{-\lambda}\frac{p^{m}}{m!}\sum\limits_{k=m}^{\infty}\frac{\lambda^k}{(k-m)!}q^{k-m}=
+ $$
+ $$
+   e^{-\lambda}\lambda^{m}\frac{p^{m}}{m!}\sum\limits_{k=m}^{\infty}\frac{\lambda^{k-m}}{(k-m)!}q^{k-m}=
+   e^{-\lambda}e^{\lambda(1-p)}\frac{p^{m}\lambda^{m}}{m!} = e^{-p\lambda}\frac{(p\lambda)^{m}}{m!}.
+ $$
+\esol
+
+\begin{problem}
+ На отрезок $[0,L]$ бросают три точки. Найти вероятность того, что третья окажется между первыми двумя
+\end{problem}
+
+\sol По сути требуется найти объем множества $\{(x,y,z)| (x<z<y)\vee(y<z<x)\}$. Так как все множества
+ вида $\{(x,y,z)| (x<y<z)\}$ ($x,y,z$ идут в определенном порядке) получаются друг из друга движениями,
+ не пересекаются и в сумме покрывают весь куб кроме множества нулевой меры, а всего их 6, то объем
+ каждого из них 1/6. Значит, объем нашего множества 1/3.
+\esol
+
+
+\begin{problem}
+ Найти мат.ожидание и дисперсию случайной величины:
+  $$
+    p(x) = \left\{\begin{array}{l}
+     \frac{4x^2}{\alpha^3\sqrt{\pi}}e^{-\frac{x^2}{\alpha^2}},\\
+     0,
+     \end{array}
+     \begin{array}{l}
+      x>0;\\
+      x\lsl 0.
+     \end{array}
+    \right.
+  $$
+\end{problem}
+
+\ans $M\xi = \frac{\alpha}{2\sqrt{\pi}}, M\xi^2 = \frac38\alpha^2$
+\esol
+
+\begin{problem}
+ На отрезок бросаются две точки. Найти мат. ожидание и дисперсию расстояния между ними.
+\end{problem}
+
+\sol Мат. ожидание:
+$$
+  M|\xi-\eta| = \iint\limits_{\begin{array}{c} \scriptstyle \lslt0x1 \\[-0.5em] \scriptstyle\lslt0y1 \end{array}}
+  |x-y|dxdy =
+  2\!\!\iint\limits_{\lslt0xy\lsl1}(y-x)dxdy =
+  2\Bigl( \iint\limits_{\lslt0xy\lsl1}\!\!y\,dx\,dy - \iint\limits_{\lslt0xy\lsl1}\!\!x\,dx\,dy\Bigr) = \frac13
+$$
+Дисперсия:
+\begin{flushleft}
+$
+  \displaystyle D|\xi-\eta| = M(\xi-\eta)^2 - \frac19 =
+$
+\end{flushleft}
+\begin{flushright}
+$
+ \displaystyle
+ = \iint\limits_{\begin{array}{c} \scriptstyle \lslt0x1 \\[-0.5em] \scriptstyle\lslt0y1 \end{array}}
+  (x-y)^2dxdy -\frac19 =
+ \int\limits_0^1\Bigl(\frac13-y+y^2\Bigr)dy - \frac19 = \frac13 - \frac12 + \frac13 - \frac19
+ = \frac1{18}
+$
+\end{flushright}
+\emsol
+
+\begin{problem}
+ Найти мат. ожидание и дисперсию величины $\xi$ с плотностью $p(x) = \frac1{2\alpha}
+ e^{-\frac{|x-a|}{\alpha}}$
+\end{problem}
+
+\sol Плотность симметрична относительно  точки $x=a$ , поэтому $M\xi=a$. Найдем дисперсию:
+
+ \begin{flushleft}
+ $\displaystyle
+ D\xi = \frac1{2\alpha}\IntInfty(x-a)^2e^{-\frac{|x-a|}{\alpha}}dx =
+ \frac1{2\alpha}\IntInfty x^2e^{|x|}{\alpha}dx =
+ \frac{\alpha^3}{2\alpha}\IntInfty x^2 e^{-|x|}dx = $
+ \end{flushleft}
+
+ \begin{flushright}
+ $\displaystyle
+ \frac{\alpha}2\IntInfty x^2 e^{-|x|} dx =
+ \alpha^2 \int\limits_0^{\infty} x^2 e^{-x}dx = \alpha^2\Gamma(3) = 2\alpha^2 $
+ \end{flushright}
+\emsol
+
+\begin{problem}
+ Найти мат. ожидание и дисперсию гипергеометрического распределения.
+\end{problem}
+\sol
+ Гипергеометрическое распределение задается $p_m = \frac{C_M^mC_{N-M}^{n-m}}{C_N^n}$\\
+ Его смысл: в урне находится $N$ шаров, из них $M$ белых. Из урны достают без возвращения $n$ шаров,
+ выписана вероятность того, что $m$ из них будут белыми.\\
+ Решаем через индикаторы: наша с.в. - количество вынутых белых шаров $\xi = I_1+\ldots+I_n$, где
+ $I_i$ - с.в. равная 1, если $i$-тый вытащенный шар белый, $0$ иначе. Индикаторы зависимы,
+ $P(I_i=1)=\frac{M}{N}$, $P(I_iI_j=1)=\frac{M(M-1)}{N(N-1)}$ при $i \ne j$.
+ $MI_i = MI_i^2 = \frac{M}{N}$. Поэтому
+$$
+  M\xi = \sum\limits_{i=1}^n MI_i = \frac{nM}{N}
+$$
+\begin{flushleft}
+$
+ \displaystyle
+ M\xi^2 = M(I_1+\ldots + I_n)^2 = MI_1^2+\ldots+MI_n^2+2\mii\sum\limits_{1\lsl i \lsl j \lsl n}
+ \mii MI_iI_j =
+$
+\end{flushleft}
+
+\begin{flushright}
+$
+ \displaystyle
+   = M\xi + 2\cdot\frac{n!}{(n-2)!2!}\frac{M}{N}\cdot\frac{M-1}{N-1} =
+   \frac{nM}{N} \left( \frac{(n-1)(M-1)}{N-1} + 1 \right)
+$
+\end{flushright}
+Отсюда
+
+$$
+   D\xi = M\xi^2 - M^2\xi = \ldots = \frac{nM(N-n)(N-M)}{N^2(N-1)}
+$$
+\emsol
+
+\begin{problem}
+ Найти мат. ожидание и дисперсию числа смен успеха на неуспех и неуспеха на успех
+ в схеме Бернулли.
+\end{problem}
+\sol
+ Решим задачу для смен успеха на неуспех. Вероятность смены успеха на неуспех при переходе
+ с $i$-той позиции на $j$-тую равна $pq$. Следовательно, мат. ожидание числа смен успеха на
+ неуспех при этом переходе равно $pq$. Но мат. ожидание суммы равно сумме мат. ожиданий.
+ Следовательно, $M\xi = (n-1)pq$. Дисперсию сами.
+\esol
+
+\begin{problem}
+ Пусть $\xi_1, \xi_2$ - случайные пуассоновские величины с параметрами $\lambda_1$ и $\lambda_2$
+ соответственно, причём $\lambda_1 \lsl \lambda_2$. Доказать, что $\forall t > 0$ выполняется
+ $P(\xi_1 \lsl t) \gsl P(\xi_2 \lsl t)$.
+\end{problem}
+
+\sol Заметим, что
+$$
+   P(\xi \lsl t) = \sum\limits_{k=0}^{[t]}P(\xi=k) =
+   \sum\limits_{k=0}^{[t]}\frac{\lambda^k}{k!} = e^{-\lambda}Q_{[t]}(\lambda)
+$$
+Найдём производную этой вероятности по $\lambda$:
+$$
+  P'_{\lambda}(\xi_{\lambda} \lsl t) = (e^{-\lambda}Q_{[t]}(\lambda))'_{\lambda} =
+  -e^{-\lambda}Q_{[t]}(\lambda) + e^{-\lambda}Q'_{[t]}(\lambda) =
+  -e^{-\lambda}(Q_{[t]}(\lambda) - Q_{[t]-1}(\lambda)) = -e^{-\lambda}\frac{\lambda^{[t]}}{[t]!} < 0
+$$
+Из чего следует утверждение задачи.
+\esol
+
+\begin{problem}
+ Даны $\xi_1,\xi_2$ - независимые, имеют геометрическое распределение. Найти вероятность того, что
+ $\xi_1=k$ при условии что $\xi_1 + \xi_2 = n$
+\end{problem}
+
+\sol По определению, $P(A|B) = \frac{P(AB)}{P(B)}$\\
+     Найдем вероятность того, что $\xi_1 = k \mbox{ и } \xi_1+\xi_2 = n$:
+ $$
+     P(\xi_1=k,\xi_1+\xi_2 = n) = P(\xi_1=k,\xi2=n-k) = p_1q_1^kp_2q_2^{n-k}
+ $$
+ Теперь найдем вероятность того, что $\xi_1+\xi_2 = n$:
+ $$
+   P(\xi_1+\xi_2=n) = \sum\limits_{k=0}^nP(\xi_1=k,\xi_1+\xi_2=n) =
+   \sum\limits_{k=0}^np_1q_1^kp_2q_2^{n-k} = p_1p_2\frac{q_1^{n+1}-q_2^{n+1}}{q_1-q_2}
+ $$
+ Осталось поделить одно на другое.
+\esol
+
+\begin{problem}
+ Пусть $\xi$ - геометрически распределенная случайная величина. Найти распределение величины
+ $ \eta = \xi \frac{1+(-1)^\xi}{2}.$
+\end{problem}
+
+\sol Заметим, что $\eta = \xi$, если $\xi$ принимает четное значение и $\eta=0$ в противном случае.
+ Значит, $P(\eta=0) = \sum\limits_{k=0}^{\infty}P(\xi=2k+1) = \sum\limits_{k=0}^{\infty}pq^{2k+1}=
+ \frac{pq}{1-q^2}$, $P(\eta=2k+1)=0$, $P(\eta = 2k) = pq^{2k}$
+\esol
+
+\begin{problem}
+$\xi,\eta$ - независимые случайные величины с распределением $\cal{N} \rm(0,1)$.
+Найти распределение (или плотность) величины $\chi = \xi^2 + \eta^2$
+\end{problem}
+
+\sol Найдем функцию распределения. $F_{\chi}(t) = 0$ при $t \lsl 0$, так как
+$\chi \gsl 0$. При $t>0$:
+$$
+F_{\chi}(t) = P(\chi\lsl t) = \iint\limits_{x^2+y^2\lsl t} p_{\xi,\eta}(x,y)dxdy =
+\iint\limits_{x^2+y^2\lsl t} p_{\xi}(x)p_{\eta}(y)dxdy =
+\frac1{2\pi} \iint\limits_{x^2+y^2\lsl t} e^{-\frac{x^2+y^2}2}dxdy
+$$
+Перейдем к полярным координатам, получим:
+$$
+ F_{\chi}(t) = \frac1{2\pi}\int\limits_0^{2\pi}d\varphi\int\limits_0^{\sqrt t} e^{-\frac{r^2}2}rdr =
+ \int\limits_0^{\sqrt t} e^{-\frac{r^2}2} d\frac{r^2}2 = \int\limits_0^{t/2} e^{-u} du =
+ -e^{-u}\bigr |_0^{t/2} = 1 - e^{-\frac{t}2}
+$$
+
+Плотность будет
+$$
+   p_{\chi}(t) = \left\{ \begin{array}{l} \frac12 e^{-\frac{t}2},\ t\gsl 0 \\[0.5em] 0,\ t < 0\end{array} \right.
+$$
+\emsol
+
+\begin{problem}
+Пусть $\xi,\eta$ - нормальные распределения с параметрами $(0,1)$ Найти распределение $\frac{\xi}{\eta}$
+\end{problem}
+\sol
+ Зная, что $p_{\xi}(x) = p_{\eta}(x) = \frac1{\sqrt{2\pi}}e^{-\frac{x^2}2}$, найдем распределение%
+$$
+ \displaystyle
+  F_{\frac{\xi}{\eta}}(t) = \iint\limits_{\frac{y}{x} \lsl t} \frac{e^{-\frac{x^2+y^2}2}}{2\pi}dx\,dy =
+  \iint\limits_{\tg\varphi \lsl t} \frac{e^{-\frac{r^2}2}}{2\pi} r\,dr\,d\varphi =
+  2\Bigl(\frac{\pi}2 +\arctg t\Bigr)\cdot\frac1{2\pi}\int\limits_{0}^{\infty}e^{-u}du =
+  \frac12 + \frac{\arctg t}{\pi}
+$$
+ Получили распределение Коши.
+\esol
+
+\begin{problem}
+ Даны $\xi, \eta$ - независимые нормально распределенные величины с параметрами $(0,1)$.
+ Найти $F_{\frac{\xi}{\eta},\xi^2+\eta^2}$
+\end{problem}
+
+\begin{problem}
+ Пусть $\eta$ - распределение Коши, $\xi = b\eta +a$, где $b\ne0$. Найти $p_{\frac1{\xi}}(x)$
+\end{problem}
+
+
+
+
+
+
+\begin{problem}
+Выполняется ли ЗБЧ для такой последовательности случайных величин:
+$$ P(\xi_n = 2^n) = P(\xi_n = -2^n) = 2^{-2n+1},\, P(\xi_n = 0) = 1-2^{-2n}?$$
+\end{problem}
+
+\sol Да, так как дисперсии $D_{\xi_n} = M\xi_n^2 = 1$ ограничены в совокупности.
+\esol
+
+\begin{problem}
+ Пусть $M\xi=0.$ Доказать, что $M|\xi|\lsl \frac12 (D\xi+1)$
+\end{problem}
+
+\sol
+ $M\xi=0$, значит, $D\xi=M\xi^2$. Надо доказать, что $2M|\xi|\lsl M(\xi^2+1)$, то есть
+ $M(\xi^2-2|\xi|+1)\gsl 0$ - правда, так как мат. ожидание неотрицательной величины
+ неотрицательно.
+\esol
+
+\begin{problem}
+ Дана $\mseq{\xi_n}_{i=1}^{\infty}$ - последовательность независимых случайных величин,
+ $M\xi_i=0, D\xi_i < K \quad \forall i\in \mathbb{N}$ Доказать, что
+ $\mathrm A_n = \frac{1}{\sqrt{n}}M \bigl | \sum\limits_{i=1}^n \xi_i \bigr |$
+ ограничены в совокупности.
+\end{problem}
+
+\sol Обозначим $\eta_n = \frac{\xi_1+\ldots+\xi_n}{\sqrt{n}}$ Так как $M\eta_n = 0$, то
+  $M|\eta_n|\lsl \frac{D\eta_n +1}2$. Кроме того,
+ $D\eta_n = \frac{D\xi_1+\ldots+D\xi_n}{n} \lsl \frac{Kn}{n} = K$.
+  Значит, $\mathrm A_n  = M|\eta_n|\lsl \frac{K+1}2$ \esol
+
+\begin{problem}
+ Пусть $\xi_1,\ldots,\xi_n$ - независимые одинаково распределенные случайные величины,
+ $\eta_n = \xi_1 + \ldots + \xi_n$. При этом $M\xi_i = 0 \mbox{ и } \exists D\xi_i$.
+ Также дано, что $\lim\limits_{n\to\infty}P(\eta_n>\sqrt{n}) = \frac13$. Найти $D\xi_i$
+ и доказать, что $\forall a,b < \infty  \lim\limits_{n\to\infty}P(\eta_n\in[a,b]) = 0$
+\end{problem}
+
+\sol
+Обозначим $\sigma^2 = D\xi_i.$ Применим ЦПТ:\\[0.5em]
+ $
+   \frac13=\lim\limits_{n\to\infty}P(\eta_n>\sqrt{n}) =
+   \lim\limits_{n\to\infty}P(\frac{\eta_n}{\sqrt{n}\sigma}>\frac1{\sigma}) =
+   1 - \lim\limits_{n\to\infty}P(\frac{\eta_n}{\sqrt{n}\sigma}<\frac1{\sigma}) = \\ \\
+   =1 - \int\limits_{-\infty}^{1/\sigma}e^{-\frac{t^2}2}dt = \frac12 - \int\limits_0^{1/\sigma}e^{-\frac{t^2}2}dt=
+   \frac12 - \Phi_0(1/\sigma).
+ $\\
+ Таким образом, $D\xi_i = \sigma^2 = \left(\frac1{\Phi_0^{-1}(1/6)}\right)^2$.
+ Посмотрим на второе утверждение:
+ $$
+   a\lsl \eta_n \lsl b \Leftrightarrow
+   \frac{a}{\sigma\sqrt{n}}\lsl \frac{\eta_n}{\sigma\sqrt{n}} \lsl \frac{b}{\sigma\sqrt{n}}
+ $$
+
+ Применим ЦПТ:
+ $$
+ P(\frac{a}{\sigma\sqrt{n}}\lsl \frac{\eta_n}{\sigma\sqrt{n}} \lsl \frac{b}{\sigma\sqrt{n}})
+  \to \int\limits_{a/(\sigma\sqrt{n})}^{b/(\sigma\sqrt{n})}e^{-\frac{t^2}2}dt \to 0,\ n\to\infty.
+ $$
+
+\begin{problem}
+ Дана производящая функция $\Phi$. Найти характеристическую.
+\end{problem}
+
+\sol
+ По определению,
+$$
+  f(t) = Me^{it\xi} = \sum\limits_{k=0}^{\infty}P(\xi=k)e^{itk} =
+  \sum\limits_{k=0}^{\infty}\left(e^{it}\right)^k = \Phi(e^{it})
+$$
+\emsol
+
+\begin{problem}
+Доказать, что $ \IntInfty p^2(x)dx = \frac1{2\pi}\IntInfty|f(t)|^2dt$
+\end{problem}
+
+\sol
+ Рассмотрим независимые случайные величины $\xi_1,\xi_2$ с плотностью $p$. Тогда характеристическая
+ функция их разности будет в точности $f_{\xi_1-\xi_2}(t) = |f_{\xi}(t)|^2$.\\
+ По формуле свёртки $p_{\xi_1-\xi_2}(x) = \IntInfty p(t-x)p(t)dt$, так как $p_{-\xi}(x) = p_{\xi}(-x)$\\
+ Запишем формулу обращения:
+ $$
+    p_{\xi_1-\xi_2}(x) = \frac1{2\pi}\IntInfty e^{-itx}|f(t)|^2dt.
+ $$
+ Приравниваем правые части из обоих формул, подставляем $x=0$, получаем требуемое утверждение.
+\esol
+
+\begin{problem}
+ Пусть $(\xi_n-\xi)^2\toP 0.$ Доказать%
+ \footnote{Верен и более общий факт, который, кстати, и доказывается более изящно.
+ Именно, если $\xi_i\toP\xi ,\mbox{a } f$ непрерывна, то $f(\xi_i)\toP f(\xi)$.
+ Доказательство смотри М.И.Дьяченко, П.Л.Ульянов. \sl{Мера и интеграл}, стр. 52-53.}
+ , что $\xi_n^2\toP \xi^2$
+\end{problem}
+
+\sol
+ Докажем, что $\xi_n \toP \xi$. Действительно, $P(|\xi_n - \xi|>\eps)=
+ P((\xi_n - \xi)^2>\eps^2) \to 0\mbox{ при }n\to\infty.$
+ Теперь докажем, что из $\xi_n \toP \xi$ следует $\xi_n^2 \toP \xi^2$:\\[0.5em]
+$
+ P(|\xi_n^2-\xi^2|>\eps) =\\
+ P(|\xi_n^2-\xi^2|>\eps, |\xi|>C-1) + P(|\xi_n^2-\xi^2|>\eps,|\xi|\lsl C-1,
+ |\xi_n|\lsl C) + $ \\
+ $P(|\xi_n^2-\xi^2|>\eps,|\xi|\lsl C-1,|\xi_n|>C) \lsl
+  P(|\xi|>C-1) + P(|\xi-\xi_n|>\frac{\eps}{2C})+P(|\xi - \xi_n|>1)$\\[0.5em]
+ Сначала выберем $C$ так, чтобы первое слагаемое стало маленьким. Потом выберем $N$ так, что
+ при $n>N$ второе и третье слагаемое тоже стали малы.
+\esol
+
+\begin{problem}
+ Пусть $b>a>0, \Phi$ - производящая функция. Доказать, что
+ $$
+   M\frac1{(\xi+a)(\xi+b)} = \int\limits_0^1 z^{b-a-1}\int\limits_0^z u^{a-1}\Phi(u)dudz
+ $$
+\end{problem}
+
+\sol По определению,
+
+ \begin{flushleft} $
+  \int\limits_0^1 z^{b-a-1}\int\limits_0^z u^{a-1}\Phi(u)dudz =
+  \int\limits_0^1 z^{b-a-1}\int\limits_0^z u^{a-1}\sum\limits_{k=0}^{\infty}p_ku^k dudz =
+ $ \end{flushleft}
+ \begin{center} $
+  \sum\limits_{k=0}^{\infty}p_k\int\limits_0^1 z^{b-a-1}\int\limits_0^z u^{k+a-1}dudz =
+  \sum\limits_{k=0}^{\infty}p_k\int\limits_0^1 z^{b-a-1}\frac{z^{k+a}}{k+a}dz =
+ $ \end{center}
+ \begin{flushright} $
+  \sum\limits_{k=0}^{\infty}p_k\int\limits_0^1 \frac{z^{b+k-1}}{k+a}dz =
+  \sum\limits_{k=0}^{\infty}p_k\frac1{(k+a)(k+b)} = M\frac1{(k+a)(k+b)}
+ $ \end{flushright}
+\emsol
+
+\begin{problem}
+ Пусть $\xi_i$ - независимые одинаково распределенные случайные величины, $M\xi_i = a,
+ D\xi_i = \sigma^2.$ Доказать, что последовательность $\frac{\xi_1+\ldots+\xi_n}
+ {\xi_1^2+\ldots+\xi_n^2}$ сходится и найти к чему.
+\end{problem}
+
+\sol Эта последовательность сходится к $\frac{a}{a^2+\sigma^2}$ Действительно,\\[1em]
+ $ \displaystyle M\xi_i^2 = M^2\xi_i + D\xi_i = a^2 + \sigma^2. $ Еще заметим, что
+$
+ \displaystyle
+ \frac{\xi_1+\ldots+\xi_n}{\xi_1^2+\ldots+\xi_n^2} = \frac{\xi_1+\ldots+\xi_n}{n} \cdot
+ \frac{n}{\xi_1^2+\ldots+\xi_n^2}.
+$ \\[1em]
+Но первая из дробей, согласно ЗБЧ, сходится к $a$, а последовательность, обратная второй - к
+$a^2+\sigma^2.$ Осталось доказать, что предел частного есть частное пределов для
+ сходимости по вероятности.
+\esol
+
+\begin{problem}
+ Пусть $\xi_i$ - н.о.р.с.в., у которых $M\xi_i=0, D\xi_i=1.$ Доказать, что величина
+ $\eta_n = \frac{\sqrt{n}(\xi_1+\ldots+\xi_n)}{\xi_1^2+\ldots+\xi_n^2}$ асимптотически нормально
+ распределенная
+\end{problem}
+
+\sol Заметим, что по ЦПТ $\frac{\xi_1+\ldots+\xi_n}{\sqrt{n}}$  сходится к нормальному распределению,
+ а $\frac{\xi_1^2+\ldots+\xi_n^2}{n}$ по ЗБЧ сходится к своему мат. ожиданию, в нашем случае к 1.
+ Теперь надо правильно сказать, что частное последовательностей сходится к частному пределов.
+\esol
+
+\begin{problem}
+ Доказать, что $\xi$ - геометрически распределенная случайная величина тогда и только тогда когда
+ $P(\xi=n+k|\xi\gsl k) = P(\xi=n).$
+\end{problem}
+
+\sol
+ Посчитаем для геометрического распределения $P(\xi=n+k|\xi \gsl k)$:
+ $$
+   P(\xi=n+k|\xi\gsl k) = \frac{P(\xi=n+k,\xi\gsl k)}{P(\xi\gsl k)}
+ $$
+ Если $\xi$ геометрически распределена, то $P(\xi=k) = (1-q)q^k$, отсюда
+ $$
+   P(\xi \gsl k) = \sum\limits_{i=k}^{\infty}P(\xi=i) = (1-q)q^k(1+q+q^2+\ldots) =
+   (1-q)\frac{q^k}{1-q} = q^k
+ $$
+ Числитель:
+ $$
+   P(\xi=n+k,\xi \gsl k) = P(\xi=n+k,n+k\gsl k) = P(\xi=n+k,n \gsl 0) = P(\xi=n+k) = (1-q)q^{n+k}
+ $$
+ Значит,
+
+ $$
+   P(\xi=n+k|\xi\gsl k) = \frac{(1-q)q^{n+k}}{q^k} = (1-q)q^n = P(\xi=n)
+ $$
+ Заметим, что для $n<0$ числитель будет $0$, как и $P(\xi=n)$.\\
+ В одну сторону доказали. Теперь докажем, что это свойство и число $p = 1-q = P(\xi=0)$ однозначно
+ Задает распределение $\xi$. Действительно, при $n<0$ числитель нулевой, значит, $P(\xi<0)=0$.
+ Подставляя $n=0$ в свойство, получим:
+  $$
+ p = P(\xi=0) = P(\xi=k|\xi\gsl k) = \frac{P(\xi=k,\xi\gsl k)}{P(\xi \gsl k)} =
+ \frac{P(\xi=k)}{P(\xi \gsl k)}
+  $$
+ значит,
+  $$
+    P(\xi=k) = p\cdot P(\xi \gsl k) = p(1-P(\xi<k))
+  $$
+ Зная, что $P(\xi<0)=0, P(\xi=0)=p$ и подставляя в это соотношение $k=1,2,\ldots$ можно
+ найти все вероятности, то есть распределение определено однозначно. Одно такое мы знаем
+  - геометрическое, значит, это оно и есть.
+\esol
+
+\begin{problem}
+ Найти свёртку двух нормальных распределений с параметрами $(a_1,\sigma_1^2)$ и $(a_2,\sigma_2^2)$
+\end{problem}
+
+\sol
+ Нормальное распределение с произвольными параметрами $\eta \sim \mathcal{N}(a,\sigma^2)$ может быть
+ представлено в виде $\eta = \sigma\xi+a, \xi \sim \mathcal{N}(0,1)$. Характеристическая
+ функция нормального распределения $f_{\xi}(t) = \ett{t}$. Кроме того,
+ $f_{b\xi+a} = e^{ita}f_{\xi}(bt)$
+ Значит, $f_{\eta} = f_{\sigma\xi+a} = e^{ita}e^{-\frac{\sigma^2 t^2}2}$. Нашли характеристическую
+ функцию нормального распределения с параметрами $(a,\sigma^2)$.\\[0.5em]
+ Теперь задача. Пусть $\xi_1 \sim \mathcal{N}(a_1,\sigma_1^2),\xi_2 \sim \mathcal{N}(a_2,\sigma_2^2)$.
+ Тогда
+ $$
+  f_{\xi_1+\xi_2}(t) = f_{\xi_1}(t)f_{\xi_2}(t) = e^{ita_1}\ett{\sigma_1 t}
+        e^{ita_2}\ett{\sigma_2 t}  = e^{it(a_1+a_2)}e^{-\frac{(\sigma_1^2+\sigma_2^2) t^2}2}
+ $$
+ Значит, $\xi_1 + \xi_2 \sim \mathcal{N}(a_1+a_2,\sigma_1^2+\sigma_2^2)$
+\esol
+
+\begin{problem}
+ Найти свёртку двух равномерно распределённых на отрезках $[A,B]$ и $[C,D]$ случайных величин.
+\end{problem}
+
+\sol
+ Надо найти распределение суммы. Другими словами, надо найти, какую часть площади  прямоугольника
+ с углами $(A,C)$ и $(B,D)$ лежит в полуплоскости $x + y \lsl \alpha$. Из геометрии очевидно, что
+ при $\alpha < A + C$ эта площадь равна нулю, при $\alpha \in (A + C, A + D)$ происходит квадратичный
+ рост, при $\alpha \in (A + D, C + B)$ - линейный рост, при $\alpha \in (C + B, B + D)$ - опять
+ квадратичный рост, а при $\alpha > B + D$ доля площади равна единице. Таким образом, плотность
+ сначала равна нулю, потом линейно растёт, потом константа, потом линейно убывает, потом опять ноль.
+\esol
+
+\begin{problem}
+ Являются ли $\sin x, \cos x$ и $|\cos x|$ характеристическими функциями?
+\end{problem}
+\sol
+ $\sin x$ не является, так как $\sin0 = 0 \ne 1$.\\
+ $\cos x$ выражается через $e^{ix}$ и $e^{-ix}$ через формулы Эйлера:
+ $$
+    \left\{
+    \begin{array}{rcl}
+    e^{ix} &=& \cos x + i\sin x \\
+    e^{-ix} &=& \cos x - i\sin x
+    \end{array}
+    \right.
+ $$
+
+ То есть, $\cos t = 1/2(e^{it} + e^{-it})$, что соответствует характеристической функции
+ дискретного распределения $\xi : P(\xi=1) = P(\xi=-1) = 1/2$
+
+ $|\cos x|$ в окрестности нуля совпадает с просто косинусом и имеет в нуле вторую производную, а
+ значит, если это характеристическая функция какой-то случайной величины, то у этой с.в. должен быть
+ момент второго порядка, но если есть момент $k$-того порядка, то у характеристической функции
+ всюду существует $k$-тая производная, но у $|\cos x|$ нет производных в точках $\frac{\pi}2 + \pi n$.
+ Противоречие.
+\esol
+
+\begin{problem}
+ Является ли функция
+ $$
+   f(t) = \left\{\begin{array}{rl} 1-t^2\!\!\! &,|t| \lsl 1;\\
+                                       0\!\!\! &, \mbox{иначе}.
+          \end{array}
+          \right.
+ $$
+ характеристической, если да, то для какого распределения?
+\end{problem}
+\sol
+  Не является, так как имеет вторую производную в нуле, но не имеет производной в точках $\pm1$
+\esol
+
+\begin{problem}
+  Является ли $e^{-t^4}$ характеристической функцией?
+\end{problem}
+\sol
+ Не является.\\
+ Кратко - по теореме Марцинкевича (если х.ф. представляется в виде экспонента в степени многочлен, то
+ такой многочлен не может быть степени больше 2).\\
+ Строго:\\
+ При разложении в ряд $e^{-t^4}$ первый член, содержащий $t$ будет иметь степень 4. Это значит, что в
+ нуле у нашей функции первая и вторая (и третья) производные равны 0. Но мы знаем, что
+ $f^{(k)}(0) = i^k\alpha_k$, то есть, у нашей предполагаемой с.в. первый и второй моменты нулевые.
+ Это значит, что мат. ожидание $M\xi = \alpha_1$ и дисперсия $D\xi = \alpha_2 - \alpha_1^2$ равны $0$.
+ Значит, $P(\xi=const)=1$, но у константы х.ф. $e^{itc}$, противоречие.
+\esol
+
+\begin{problem}
+ Пусть $\sum\limits_{k=1}^n a_k =1$, будет ли $\sum\limits_{k=1}^n a_k \cos kt$ характеристической
+ функцией?
+\end{problem}
+\sol Рассмотрим $\xi$:
+ $$
+   \left( \begin{array}{ccccccc}
+    -n           &  -n+1           & \ldots & -1          & 1           & \ldots & n       \\
+    \frac{a_n}2  & \frac{a_{n-1}}2 & \ldots & \frac{a_1}2 & \frac{a_1}2 & \ldots & \frac{a_n}2
+   \end{array}\right)
+ $$
+Тогда $f_{\xi} = \sum\limits_{k=1}^n a_k \frac{e^{itk}+e^{-itk}}2 = \sum\limits_{k=1}^n a_k \cos kt.$
+\esol
+
+\begin {problem}
+ Пусть $f(t)$ - характеристическая функция. Является ли $Re\ f(t)$ характеристической
+ функцией (а если да, то какого распределения)?
+\end{problem}
+\ans Да, является. (Указание: $Re\ f(t) = \frac{f(t)+f(-t)}2$).
+
+
+\begin{problem}
+ Найти распределение суммы пуассоновских случайных величин через производящие функции
+\end{problem}
+\sol
+ Производящая функция для пуассоновского распределения с параметром $\lambda$:
+ $$
+   \xi \sim \Pi(\lambda), \Phi_\xi(x) = \sum\limits_{k=0}^{\infty} e^{-\lambda}
+   \frac{x^k\lambda^k}{k!} = e^{-\lambda}\sum\limits_{k=0}^{\infty} \frac{(\lambda x)^k}{k!} =
+   e^{-\lambda}e^{\lambda x} = e^{\lambda(x-1)}
+ $$
+ Таким образом, если $\xi_1 \sim \Pi(\lambda_1), \xi_2 \sim \Pi(\lambda_2)$, то
+ $$
+   \Phi_{\xi_1 + \xi_2}(x) = \Phi_{\xi_1}(x)\Phi_{\xi_2}(x) = e^{\lambda_1(x-1)}e^{\lambda_2(x-1)} =
+   e^{(x-1)(\lambda_1+\lambda_2)} = \Phi_{\Pi(\lambda_1+\lambda_2)}
+ $$
+ То есть $\Pi(\lambda_1) + \Pi(\lambda_2) \sim \Pi(\lambda_1+\lambda_2)$
+\esol
+
+\begin{problem}
+ Пусть $\xi_n \toP 0$. Доказать, что $\forall \xi$, такого, что $\xi$ независимо с любым $\xi_n$,
+ выполнено $\xi\xi_n \toP 0$.
+\end{problem}
+
+\sol
+ Пусть $\eps>0$, тогда $P(|\xi_n\xi|\gsl \eps) = P(|\xi_n| \gsl \frac{\eps}{|\xi|})P(|\xi|>0)
+ + P(0 \gsl \eps)P(|\xi|=0) = P(|\xi_n| \gsl \frac{\eps}{C})P(0 \lsl |\xi| < C)
+ + P(|\xi_n| \gsl \frac{\eps}{C})P(|\xi| \gsl C).$ Тогда $\forall \delta >0 \ \exists C >0:
+ P(|\xi_n| \gsl \frac{\eps}{|\xi|})P(|\xi|\gsl C) < 1\cdot\delta = \delta$, тогда
+ $\exists N >0 : \forall n>N$ выполнено $P(|\xi_n|\gsl\frac{\eps}{C})P(0\lsl|\xi|< C)<\delta\cdot 1 =\delta$.
+ Значит, $\xi_n \toP 0.$
+\esol
+
+\begin{problem}
+ Пусть $\xi_n \tod \xi$, верно ли, что $\xi_n-\xi \tod 0$?
+\end{problem}
+\ans Не верно.
+
+\begin{problem}
+Пусть $xi_n$ - н.о.р.с.в., $\eta_n = \frac{\xi_1+\ldots+\xi_n}{n}$ и $p_{\xi_n} =
+\frac{1-\cos x}{\pi x^2}$\quad $\xi_n \tod$?
+\end{problem}
+
+\begin{problem}
+Пусть $xi_n$ - н.о.р.с.в. Доказать, что $\forall k \lsl n: M\left(
+ \frac{\xi_1+\ldots + \xi_k}{\xi_1+\ldots+\xi_n} = \frac{k}{n} \right)$
+\end{problem}
+
+\begin{problem}
+ Доказать формулу Байеса.
+\end{problem}
+
+\begin{problem}
+ Доказать интегральную теорему Муавра-Лапласа (без использования ЦПТ).
+\end{problem}
+
+\begin{problem}
+ Доказать эквивалентность сходимости $\xi_i \tod \xi$ и сходимости их производящих функций.
+\end{problem}
+
+\begin{problem}
+ Доказать ЗБЧ (в простой форме).
+\end{problem}
+
+\begin{problem}
+ Доказать ЦПТ (в простой форме).
+\end{problem}
+
+{\bf Решения } смотри учебник Севастьянова.
+
+\begin{problem}
+ Доказать,что мощность $\sigma$-алгебры не может равняться 130.
+\end{problem}
+
+\sol
+ У всякой конечной $\sigma$-алгебры есть порождающее множество,т.е. множество таких элементов $a_i$, что
+ $\forall\omega\ $ из $\sigma$-алгебры пересечение $a_i$ и $\omega$ равно либо $a_i$, либо $\varnothing$,
+ и при этом $\bigcup a_i=\Omega$. Такое множество можно построить: взять элемент $A$ из $\sigma$-алгебры, потом
+ взять $B$ и, если $A$ и $B$ пересекаются, то оставить вместо них $A\setminus B,B\setminus A$ и $A\bigcap B$.
+ Затем берём элемент $C$ и продолжаем данную процедуру. Она оборвётся на некотором шаге в силу конечности
+ алгебры. В итоге получится порождающее множество мощности $n$. Но тогда можно установить биекцию между $n$-
+ битными словами и элементами $\sigma$-алгебры по следующему принципу: на $i$-ая буква есть 1, если $a_i\in\omega $,
+ и 0 в противном случае. Так как таких слов $2^n$, то и мощность $\sigma$-алгебры есть $2^n$.
+\esol
+
+\begin{problem}
+ Доказать,что мощность $\sigma$-алгебры не может быть счётной.
+\end{problem}
+
+\sol
+ Пусть $\sigma$-алгебра счётна, тогда можно построить счётную последовательность непустых непересекающихся
+ её элементов таким образом: возьмём $A\ne\Omega $ за первый элемент и $\bar{A}$ за второй. Очевидно, что
+ они не пересекаются, и хотя бы один из них можно опять поделить (иначе $\sigma$-алгебра была бы конечной).
+ Будем продолжать этот процесс до тех пор, пока не получим $\aleph_0$ непустых непересекающихся элементов. Но
+ любое счётное объединение элементов из неё будет принадлежать $\sigma$-алгебре а если брать объединения
+ различных элементов, то получать будем так же разные. Т.о. в $\sigma$-алгебре присутствуют как минимум
+ $2^{\aleph_0}=\mathfrak{c}$ элементов.
+\esol
+
+\begin{problem}
+ $\xi>0, \exists M\xi$. Доказать,что $1\lsl M\xi M\frac1\xi$.
+\end{problem}
+
+\sol
+ Нужно доказать, что $1-M\xi M\frac1\xi\lsl 0$.Посмотрим на это выражение, как
+ на дискриминант некоторого квадратного уравнения:
+$$
+ D\lsl0\Leftrightarrow M\xi x^2-x+\frac14 M\frac1{\xi}\gsl0\Leftrightarrow
+ M\left(\frac1\xi (4x^2\xi^2-4x\xi+1)\right) \gsl0\Leftrightarrow M\frac{(2x\xi+1)^2}{\xi}\gsl0,
+$$
+ что верно при любых $x$, так как это математическое ожидание неотрицательной функции.
+\esol
+
+\begin{problem}
+ $\xi_i -$ последовательность независимых неотрицательных целочисленных одинаково распределённых случайных
+ величин, $\nu -$ независимая с ними неотрицательная целочисленная случайная величина. Найти $\Phi_{\xi_1+
+ \ldots+\xi_\nu}$.
+\end{problem}
+
+\sol
+ $\Phi_{\xi_1+\ldots+\xi_\nu}=Mx^{\xi_1+\ldots+\xi_\nu}=\sum\limits_{k=0}^{\infty}x^k P(\xi_1+\ldots+\xi_\nu=k)=
+ \sum\limits_{k=0}^{\infty}\sum\limits_{m=0}^{\infty}x^k P(\xi_1+\ldots+\xi_m=k\mid\nu=m)=
+ \sum\limits_{m=0}^{\infty}\sum\limits_{k=0}^{\infty}x^k P(\xi_1+\ldots+\xi_m=k)P(\nu=m)=
+ \sum\limits_{m=0}^{\infty} (\Phi_{\xi_1(x)})^m P(\nu=m)=\Phi_\nu(\Phi_{\xi_1}(x))$
+\esol
+
+\begin{problem}
+ Доказать, что если $\xi$ и $\eta$ независимы, то $\rho$ (коэффициент корреляции) равен нулю,
+ но обратное не всегда верно.
+\end{problem}
+
+\sol
+ $\Rightarrow$ Если $\xi$ и $\eta$ независимы, то $cov(\xi,\eta)=M\xi\eta-M\xi M\eta=0$,а значит и $\rho$=0.$\\$
+ $\Leftarrow$ Рассмотрим величину $\xi$, принимающие значения 0,$\frac\pi2$ и $\pi$ с равными вероятностями,
+ и величины $\sin{\xi}$ и $\cos{\xi}$. $0=P(\cos{\xi}=1,\sin{\xi}=1)\ne P(\cos{\xi}=1)P(\sin{\xi}=1)=\frac19$,
+ значит величины зависимы.При этом $cov(\cos{\xi},\sin{\xi})=M\cos{\xi}\sin{\xi}-M\cos{\xi}M\sin{\xi}=
+ \frac12 M\sin{2\xi}=0$.
+\esol
+
+\begin{problem}
+ Доказать, что $|\rho(\xi, \eta)| = 1 \Leftrightarrow \eta = a\xi + b$.
+\end{problem}
+
+\sol
+ То, что $|\rho(\xi,\eta)| \lsl 1$ следует из неравенства Коши-Буняковского
+ $M^2 \xi \eta \lsl M\xi^2 M\eta^2 $. Вспомним, как мы его доказывали:
+ $M(\xi + \lambda \eta)^2$ неотрицательно как мат. ожидание неотрицательной случайной величины,
+ притом равенство нулю достигается тогда, когда эта случайная величина с вероятностью 1
+ является константой 0. С другой стороны,
+ $$
+ M(\xi + \lambda \eta)^2 = M\xi^2 + 2\lambda M\xi\eta + \lambda^2 M \eta^2 \gsl 0
+ $$
+ Это означает, что дискриминант квадратного уравнения на $\lambda$ меньше либо равен нулю,
+ что и даёт нам неравенство Коши-Буняковского. Пусть он равен нулю (как раз в этом случае
+ $|\rho(\xi, \eta)| = 1$), это значит, что существует такое $\lambda$, что
+ $M(\xi + \lambda \eta)^2 = 0$, откуда заключаем, что с вероятностью $1$ выполнено
+ $\xi = - \lambda \eta$
+\esol
+
+\begin{problem}
+ Про производящую функцию $\Phi_\xi (x)$ известно, что $\forall n\gsl0 \,\ \Phi_\xi (\frac{1}{2^n})=\frac{1}{2^n}$.
+ Найти распределение $\xi$.
+\end{problem}
+
+\sol
+ $\Phi_\xi(0)=\Phi_\xi\left(\lim\limits_{n\to\infty}\frac{1}{2^n}\right)=\lim\limits_{n\to\infty}\Phi_\xi (\frac{1}{2^n})=0$,
+ значит $p_0=0$.Выпишем два равенства:
+ $$
+ \sum\limits_{k=0}^{\infty}\frac{1}{2^k}p_k=p_0+\frac12 p_1+\frac14 p_2+\ldots=\frac12
+ $$
+ $$
+ \sum\limits_{k=0}^{\infty}\frac{1}{2^{2k}}p_k=p_0+\frac14 p_1+\frac{1}{16} p_2+\ldots=\frac14
+ $$
+ Домножим второе равенство на 2 и вычтем из первого, помня, что $p_0=0$:
+ $$
+ 0+0+\frac18 p_2+\ldots=0
+ $$
+ Все $p_i$ и коэффициенты перед ними неотрицательны, значит все $p_i$, кроме $p_1$, равны 0. Отсюда $p_1=1$.
+\esol
+
+\begin{problem}
+ Является ли функция $\Phi(x)=\frac{2e}{e^2+1}\ch x $ производящей, и если да, то какого
+ распределения?
+\end{problem}
+
+\sol
+ Нужно проверить, чтобы в точке $x=1$ функция равнялась единице и чтобы все её производные в нуле были неотрицательны. Первое условие выполнено.
+$$
+ \Phi^{2n+1}(x)=-\frac{2e}{e^2+1}\sh x,
+$$
+$$
+ \Phi^{2n}(x)=\Phi(x).
+$$
+ В нуле чётные производные равны $\frac{2e}{e^2+1}$, а нечётные равны 0. Таким образом,
+$$
+ p_{2n+1}=0, p_{2n}=\frac{2e}{(e^2+1)(2n)!}.
+$$
+\esol
+
+\begin{problem}
+ Верно ли, что сходимость почти всюду равносильна сходимости по вероятности?
+\end{problem}
+
+\sol
+ Из сходимости почти всюду следует сходимость по вероятности, обратное неверно.
+\esol
+
+\begin{problem}
+ Известно, что $\xi_n \toP \xi$, $\xi_n \toP \eta$. Доказать, что $P(\xi = \eta)=1$.
+\end{problem}
+
+\begin{problem}
+ Известно, что $\xi_n \toP 0$,$\eta_n \toP \eta$. Доказать, что $\xi_n\eta_n \toP 0$.
+\end{problem}
+
+\begin{problem}
+ Пусть $\xi_i$ - независимые одинаково распределённые случайные величины, с характеристической функцией
+  $$
+   f_{\xi_i}(t) = \left\{\begin{array}{rl} 1-|t|\!\!\! &,|t| < 1;\\
+                                       0\!\!\! &,|t| \gsl 1.
+          \end{array}
+          \right.
+ $$
+ найти $\frac{\xi_1+\ldots+\xi_n}{n} \tod $ ?
+\end{problem}
+
+\sol
+ Обозначим $\eta_n=\frac{\xi_1+\ldots+\xi_n}{n}$.
+ Найдём $f_{\eta_n}(t)$:
+ $$
+   f_{\eta_n}(t) = (f_{\frac{\xi_1}{n}}(t))^n = (f_{\xi_1}(\frac{t}{n}))^n = (1-\frac{|t|}{n})^n
+ $$
+ отсюда получаем:
+ $$
+   \lim\limits_{n \to \infty}f_{\eta_n}(t) = e^{-|t|}
+ $$
+\esol
+
+\begin{problem}
+ Про события $A$ и $B$ известно, что $P(A) = P(B) = \frac12$. Доказать, что $P(AB) = P(\bar A \bar B)$
+\end{problem}
+\sol
+ Напомню обозначения для событий-множеств: $A \cup B = A+B$, $A \cap\! B = AB$.\\
+ Теперь, имея на руках тождество $P(A+B) = P(A)+P(B)-P(AB)$ и правило де Моргана $\overline{A+B}
+ = \bar A \bar B$, подгоним искомое равенство:
+ $$
+   P(AB) = P(A) + P(B) - P(A+B) = 1 - P\Bigl(\overline{\overline{A+B}}\Bigr)
+   = 1 - P\Bigl(\overline{\bar A \bar B}\Bigr) = 1 - (1 - P(\bar A \bar B)) = P(\bar A \bar B).
+ $$
+ \emsol
+
+\begin{problem}
+  Известно, что $\xi_n \tod \xi$.\par
+  Верно ли:\par
+  а) $\forall i \ \exists M\xi_i \Rightarrow \exists M\xi$\par
+  б) $\exists M\xi \Rightarrow \exists M\xi_i$, начиная с некоторого номера\par
+  в) $\exists M\xi_i, \exists M\xi  \Rightarrow M\xi_i \to M\xi$
+\end{problem}
+
+\sol
+ Ничего не верно. Приводим контрпримеры:\\
+ а) Возьмем $\eta$ - последовательность Коши, а
+ $$
+ \xi_n = \left\{ \begin{array}{l}
+                  \eta,\ \eta \in [-n,n]\\
+                  0 \mbox{ иначе}
+                  \end{array} \right.
+ $$
+ Вроде это называется обрезкой. Получаем $\xi_i \tod \eta= \xi$.
+ Из-за того, что плотность у распределения Коши симметрична
+ относительно 0, а интеграл по конечной области можно взять, то $\forall i\ M\xi_i=0$, но,
+ как мы знаем, $\not\!\exists\, M\!\xi$\\
+ б) Опять с Коши. Возьмем
+  $$
+ \xi_n = \left\{ \begin{array}{l}
+                  0,\ \eta \in [-n,n]\\
+                  \eta \mbox{ иначе}
+                  \end{array} \right.
+  $$
+  Тогда предельная последовательность будет всюду $0$ и мат. ожидание у нее $0$, но у любой $\xi_i$
+  мат. ожидания нет, так как у нее остались от Коши <<хвосты>> на бесконечности, которые, домноженные на
+  $x$, дают расходящийся интеграл.\\
+ в) Было на лекции скорее всего. Возьмем дискретную с.в.:
+   $$
+      \xi_n \left( \begin{array}{cc}
+            0              & n      \\
+            \frac{n-1}{n}  & \frac1{n}
+        \end{array} \right)
+   $$
+   Она опять же стремится к константе $0$  с мат. ожиданием $0$. Но $M\xi_n = 0\cdot \frac{n-1}{n}
+   + n\cdot \frac1{n} = 1$
+ \esol
+
+\begin{problem}
+ Найти коэффициент корреляции между числом выпадения единиц и числом выпадения шестёрок при бросании
+ кубика n раз
+\end{problem}
+
+\sol
+ Рассмотрим случайные величины $\xi_i$=числу выпадения грани $i$. Очевидно, что они распределены
+ одинаковы и по сути нет разницы между $\xi_1$ и $\xi_6$. Так же ясно,что при бросании кубика n раз
+ выпадет n граней (n-константа). Таким образом получаем:
+$$
+ 0=D(n)=D(\xi_1+\cdots+\xi_6)=D\xi_1+\cdots+D\xi_6+2\sum\limits_{1\lsl i<j\lsl6}cov(\xi_i,\xi_j)=
+ 6D\xi_1+2 C_6^2 cov(\xi_1,\xi_6),
+$$
+ отсюда следует,что $\rho(\xi_1,\xi_6)=\frac{cov(\xi_1,\xi_6)}{\sqrt{D\xi_1}\sqrt{D\xi_6}}=
+ \frac{cov(\xi_1,\xi_6)}{D\xi_1}=-\frac15$.
+\esol
+
+\begin{problem}
+ Доказать, что если $\xi, \eta$ имеют совместное нормальное распределение (вектор $(\xi, \eta)^T$
+ нормально распределен) и их ковариация равна нулю, то $\xi$ и $\eta$ независимы.
+\end{problem}
+
+\begin{problem}
+ Двумерная случайная величина $(\xi, \eta)$ равномерно распределена на прямоугольнике. Что можно
+ сказать о зависимости $\xi$ и $\eta$?
+\end{problem}
+
+\ans Независимы.
+
+\begin{problem}
+ Двумерная случайная величина $(\xi, \eta)$ равномерно распределена на круге. Что можно
+ сказать о зависимости $\xi$ и $\eta$?
+\end{problem}
+
+\ans Зависимы.
+
+\end{document}

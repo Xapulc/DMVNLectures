@@ -1,0 +1,256 @@
+\part*{НЕУПРУГОЕ ПОВЕДЕНИЕ МАТЕРИАЛОВ}
+\begin{question}
+Кривая "растяжение--сжатие"\ для неупругого стержня и характерные
+точки на ней. Нагружение и разгрузка. Остаточные деформации.
+Пластичность. Идеально пластические тела. Упрочнение.
+\end{question}
+
+\begin{wrapfigure}[10]{o}{120pt}
+\hbox to 120pt{\hss\begin{picture}(0,0)
+\put(35,65){$A$}
+\put(55,80){$B$}
+\put(85,80){$C$}
+\put(105,95){$D$}
+\put(10,10){$O$}
+\put(5,95){$\sigma_{11}$}
+\put(95,10){$\varepsilon_{11}$}
+\end{picture}
+\includegraphics[scale=1.]{push-pull-curve.eps}\hss}
+\end{wrapfigure}
+
+$OA$~--- участок линейной упругости.
+$\sigma_M\hm=E\varepsilon_{11}$.
+
+$AB$~--- участок нелинейной упругости. Упругость~--- это
+отсутствие остаточных деформаций. $A$~--- предел
+пропорциональности, $B$~--- предел упругости.
+
+$BC$~--- участок текучести (пластичности). Если на этом участке
+снять нагрузку, материал пойдет по кривой, параллельной $OA$.
+
+Есть материалы, где текучесть так и идет до разрыва. Это~---
+идеально пластические. А есть те, где есть $CD$~--- участок
+упрочнения. Если на этом участке снять нагрузку, а потом снова
+нагрузить, участок упругости будет больше~--- материал упрочнился.
+
+\begin{question}
+Критерии пластичности Мизеса--Генки и Треска--Кулона--Сен-Венана.
+Их графическая интерпретация.
+\end{question}
+
+1) Критерий Мизеса--Генки (квадратичный критерий).
+$\sigma_s\hm=\sqrt{s_{ij}s_{ij}}$; $\sigma_u\hm=\sigma_s$~---
+поверхность текучести, $\sigma_u<\sigma_s$~--- упругость.
+$$
+\sigma_u=\sqrt{s_{11}^2+s_{22}^2+s_{33}^2+2(s_{12}^2+s_{13}^2+s_{23}^2)}.
+$$
+$$
+(\sigma_{11}-\sigma_{22})^2+(\sigma_{22}-\sigma_{33})^2+(\sigma_{33}-
+\sigma_{11})^2+6(\sigma_{12}^2+\sigma_{23}^2+\sigma_{13}^2)=3\sigma_{s}^2.
+$$
+(Чтобы понять, откуда взялась разность, см. билет 32)
+
+В главных осях:
+$$
+(\sigma_1-\sigma_2)^2+(\sigma_2-\sigma_3)^2+(\sigma_3-\sigma_1)^2=3\sigma_s.
+$$
+Это будет эллипсоид, а если $\sigma_3=0$~--- эллипс.
+
+2) Критерий Треска--Кулона--Сен-Венана.
+
+$\tau_{12}=\frac{|\sigma_1-\sigma_2|}{2}$;
+$\tau_{13}=\frac{|\sigma_1-\sigma_3|}{2}$;
+$\tau_{23}=\frac{|\sigma_3-\sigma_2|}{2}$. Критерий, насколько я
+поняла, состоит в том, что $\sigma_u$ должно быть меньше минимума из
+них. Положим $\sigma_3=0$ и изобразим все это в плоскости
+$\sigma_1O\sigma_2$. Получится шестиугольник. Он не вписан и не
+описан около эллипса Мизеса-Генки, просто лежит близко.
+
+\begin{question}
+Упруго-пластическое тело. Теория малых упруго-пластических
+деформаций Ильюшина. Постановки задач.
+\end{question}
+
+\begin{wrapfigure}[9]{o}{140pt}
+\hbox to 140pt{\hss\begin{picture}(0,0)
+\put(15,50){$1$}
+\put(60,10){$\varepsilon_3$}
+\put(30,80){$\omega(\varepsilon_u)$}
+\put(140,25){$\varepsilon_u$}
+\end{picture}
+\includegraphics[scale=1.]{ilyushin.eps}\hss}
+\end{wrapfigure}
+
+Нагрузку и разгрузку упруго-пластического тела удобнее всего
+представлять так:
+$$
+\sigma_k=\Phi(\varepsilon_k).
+$$
+
+Функция Ильюшина:
+$$
+\Phi(\varepsilon_k)=2\mu\varepsilon_u(1-w(\varepsilon_u)).
+$$
+
+\begin{question}
+Вязкоупругие тела. Ползучесть и релаксация.
+\end{question}
+
+Ползучесть~--- явление нарастания деформации при постоянном
+напряжении. Ползучесть бывает ограниченная и неограниченная.
+
+Релаксация~--- уменьшение напряжения при постоянной деформации.
+
+\begin{question}
+Гуковский и ньютоновский элементы. Модели Фойгта и Максвелла.
+Модель Кельвина.
+\end{question}
+
+Гуковский элемент~--- "пружинка"{}~--- характеризуется соотношением
+$\sigma\hm=E\varepsilon$. Ньютоновский элемент~--- "поршенек",
+модель вязкой жидкости~--- соотношением
+$\sigma\hm=\mu\check{d}\varepsilon$.
+
+\underline{Ступеньки Хевисайда}
+
+а) $\sigma=\sigma_0h(t)$. Какая будет деформация?
+
+б) $\varepsilon(t)=\varepsilon_0h(t)$. Какой будет отклик
+напряжения?
+
+Для поршенька:
+
+а) $\varepsilon(t)=\frac{1}{\mu}\sigma_0th(t)$,
+
+б) $\sigma(t)=\mu\varepsilon_0\delta(t)$.
+
+\begin{wrapfigure}[9]{o}{140pt}
+\hbox to 140pt{\hss\begin{picture}(0,0)
+\put(140,25){$t$}
+\put(10,50){$\cfrac{\sigma_0}{E}$}
+\put(30,80){$\varepsilon$}
+\end{picture}
+\includegraphics[scale=1.]{voight.eps}\hss}
+\end{wrapfigure}
+
+\underline{Модель Фойгта}~--- параллельное соединение поршенька и
+пружинки. $\varepsilon_1\hm=\varepsilon_2\hm=\varepsilon$;
+$\sigma_1\hm=E\varepsilon_1$; $\sigma_2\hm=\mu\check{d}\varepsilon_2$.
+Как зависит деформация от напряжения?
+$(E\hm+\mu\check{d})\varepsilon\hm=\sigma$. Решая дифференцальное
+уравнение, получим:
+$$
+\varepsilon(t)=\frac{1}{\mu}\int_0^te^{-\frac{E}{\mu}(t-\tau)}\sigma(\tau)d\tau.
+$$
+
+a) $\sigma=\sigma_0h(t)$. В таком случае
+$\varepsilon(t)=\frac{\sigma_0}{\mu}\int_0^te^{-\frac{E}{\mu}(t-\tau)}d\tau\hm=
+\frac{\sigma_0}{E}(1-e^{-\frac{E}{\mu}t})$. Введем обозначение
+$\frac{\mu}{E}=t_p$~--- время релаксации. Тогда
+$\varepsilon(t)\hm=\frac{\sigma_0}{E}(1\hm-e^{-\frac{t}{t_p}})$. Мы
+имеем дело с ограниченной ползучестью.
+
+б) $\varepsilon(t)=\varepsilon_0h(t)$. В таком случае
+$\sigma(t)=E\varepsilon_0h(t)+\mu\varepsilon_0\delta(t)$.
+
+\begin{wrapfigure}[12]{o}{140pt}
+\hbox to 140pt{\hss\begin{picture}(0,0)
+\put(140,25){$t$}
+\put(0,50){$E\varepsilon_0$}
+\put(30,80){$\sigma$}
+\end{picture}
+\includegraphics[scale=1.]{makswell.eps}\hss}
+\end{wrapfigure}
+
+\underline{Модель Максвелла}~--- последовательное соединение
+поршенька и пружинки.
+$\varepsilon\hm=\varepsilon_1\hm+\varepsilon_2$;
+$\sigma_1\hm=\sigma_2\hm=\sigma$. Запишем выражение для
+$\varepsilon$.
+
+$$
+\dot{\varepsilon}=\dot{\varepsilon_1}+\dot{\varepsilon_2}=
+\frac{\dot{\sigma_1}}{E}+\frac{\sigma_2}{\mu}
+=(\frac{\check{d}}{E}+\frac{1}{\mu})\sigma;
+$$
+$$
+\varepsilon=\frac{E+\mu\check{d}}{E\mu\check{d}}\sigma;~\sigma=
+E\left(1-\frac{E}{E+\mu\check{d}}\right)\varepsilon;
+$$
+$$
+\sigma(t)=E\varepsilon(t)-\frac{E^2}{\mu}\int_0^te^{-\frac{E}{\mu}(t-\tau)}\varepsilon(\tau)d\tau.
+$$
+
+a) $\sigma=\sigma_0h(t)$. Тогда
+$\varepsilon(t)=\frac{\sigma_0}{E}h(t)+\frac{\sigma_0}{\mu}th(t)$.
+
+б) $\varepsilon(t)=\varepsilon_0h(t)$. В таком случае
+$\sigma(t)\hm=E\varepsilon_0h(t)\hm-\frac{E^2\varepsilon_0}{\mu}\int_0^t
+e^{-\frac{E}{\mu}(t-\tau)}d\tau\hm=E\varepsilon_0h(t)\hm-E\varepsilon_0(1\hm-
+e^{-\frac{E}{\mu}t})\hm=E\varepsilon_0e^{-t/t_p}h(t)$. Мы имеем дело
+с релаксацией~--- уменьшением напряжения при постоянной деформации.
+
+\underline{Модель Кельвина}~--- пружинка и поршенек соединены
+параллельно, к ним последовательно подсоединена еще одна пружинка.
+$\varepsilon\hm=\varepsilon_1\hm+\varepsilon_2\hm=\frac{\sigma_1}{E_1\hm+\mu\check{d}}\hm
++\frac{\sigma_2}{E_2}\hm=(\frac{1}{E_1+\mu\check{d}}\hm+\frac{1}{E_2})\sigma$,
+$E_2(E_1\hm+\mu\check{d})\varepsilon\hm=(E_1\hm+E_2\hm+\mu\check{d})\sigma$,
+$E_1E_2\varepsilon\hm+E_2\mu\dot{\varepsilon}\hm=(E_1+E_2)\hm+\mu\dot{\sigma}$
+
+\hbox to \textwidth{\hss
+\begin{picture}(0,0)
+\put(140,25){$t$}
+\put(0,40){$\varepsilon_1$}
+\put(0,70){$\varepsilon_2$}
+\put(40,0){а) $\sigma\hm=\sigma_0h(t)$}
+\end{picture}
+\includegraphics[scale=1.]{kelvinA.eps}
+\hss
+\begin{picture}(0,0)
+\put(140,25){$t$}
+\put(30,80){$\sigma$}
+\put(40,0){б) $\varepsilon\hm=\varepsilon_0h(t)$}
+\end{picture}
+\includegraphics[scale=1.]{kelvinB.eps}
+\hss}
+
+\begin{question}
+Определяющие соотношения линейной вязкоупругости в виде
+многочленов от оператора дифференцирования по времени.
+\end{question}
+
+В общем случае зависимость между деформацией и напряжением
+выражается следующим выражением:
+$$
+P_n(\check{d})\sigma=Q_m(\check{d})\varepsilon.
+$$
+Выполнено одно из следующих равенств: $n=m$, либо $n=m-1$.
+Максимальная степень многочлена определяется числом поршеньков в
+модели.
+
+\begin{question}
+Интегральные определяющие соотношения линейной вязкоупругости.
+Интегральные ядра и функции ползучести и релаксации.
+\end{question}
+
+Определяющие соотношения в интегральной форме выглядят так:
+$$
+\sigma(t)=\int_0^t\Gamma(t,\tau)\varepsilon(\tau)d\tau,
+$$
+где
+$\Gamma$~--- ядро релаксации. Обратное соотношение:
+$$
+\varepsilon(t)=\int_0^tK(t,\tau)\sigma(\tau)d\tau,
+$$
+где $K$~--- ядро ползучести.
+
+Если $\Gamma(t,\tau)=\Gamma(t-\tau)$ и $K(t,\tau) hm=K(t-\tau)$,
+материал называется нестареющим. Тогда пишут:
+$$
+\sigma(t)=\int_0^tR(t-\tau)d\varepsilon(\tau),
+$$
+$$
+\varepsilon(t)=\int_0^t\Pi(t-\tau)d\sigma(\tau),
+$$
+где $R(t)$~--- функция релаксации, $\Pi$~--- функция ползучести.
+Они определяются экспериментально.

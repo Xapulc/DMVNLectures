@@ -1,0 +1,214 @@
+\part*{ОСНОВЫ ТЕНЗОРНОЙ АЛГЕБРЫ И ТЕНЗОРНОГО АНАЛИЗА}
+
+\begin{question}
+Виды произведений векторов и тензоров второго ранга
+\end{question}
+
+В прямоугольной системе координат  базисные векторы обозначаются
+через $\vec e_i$. Знак суммирования от одного до трех мы будем
+опускать. Запись $\vec a=a_i\vec e_i$ означает
+$\vec a\hm=a_1\vec e_1\hm+a_2\vec e_2\hm+a_3\vec e_3$.
+
+Символом Леви--Чивиты обозначается следующая функция:
+$\epsilon_{ijk}\hm=1$, если перестановка $ijk$~--- четная,
+$\epsilon_{ijk}\hm=-1$, если перестановка нечетная,
+$\epsilon_{ijk}\hm=0$, если среди чисел $ijk$ есть повторяющиеся.
+
+Произведения векторов бывают следующие:
+\begin{itemize}
+\item[1)] Скалярное произведение.
+$$\vec a\cdot\vec b\hm=a_i\vec e_i\cdot
+b_j\vec e_j\hm=a_ib_j\delta_{ij}\hm=a_ib_i$$
+\item[2)] Векторное произведение.
+$$\vec a\times\vec b=a_i\vec e_i\times
+b_j\vec e_j=a_ib_j\epsilon_{ijk}\vec e_k$$
+\item[3)] Тензорное произведение (диада).
+$$\vec a\otimes\vec b=\vec a\vec b=a_i\vec e_i\otimes b_j
+\vec e_j=a_ib_j\vec e_i\otimes\vec e_j$$
+\end{itemize}
+
+Тензоры второго ранга будем обозначать большими латинскими буквами с
+тильдой внизу $\underItilde{A}\hm=A_{ij}\vec e_i\otimes\vec e_j$
+
+Произведения тензоров второго ранга бывают следующие:
+
+1) Скалярное произведение.
+$$\underItilde{A}\cdot\underItilde{B}=A_{ij}\vec e_i\otimes\vec e_j\cdot B_{kl}\vec e_k\otimes\vec e_l=A_{ij}B_{kl}\vec e_i\otimes\vec e_l\delta_{jk}
+=A_{ij}B_{jl}\vec e_i\otimes\vec e_l$$ Это произведение
+соответствует перемножению матриц.
+
+2) Полная свертка.
+$$\underItilde{A}:\underItilde{B}=A_{ij}B_{kl}\delta_{jk}\delta_{il}=A_{ij}B_{ji}$$
+Это след произведения матриц $\underItilde{A}$ и
+$\underItilde{B}$.
+
+3) Векторное произведение.
+$$\underItilde{A}\times\underItilde{B}\hm=A_{ij}B_{kl}\vec e_i\otimes\vec e_j\times\vec e_k\otimes\vec e_l
+=A_{ij}B_{kl}\delta_{il}\epsilon_{jkm}\vec
+e_m\hm=A_{ij}B_{ki}\epsilon_{jkm}\vec e_m$$
+
+\begin{question}
+Оператор набла $\vec\nabla$. Дивергенция, ротор, градиент и
+оператор Лапласа вектора и тензора второго ранга.
+\end{question}
+
+Оператором набла называется следующая комбинация:
+$\vec\nabla\hm=\vec e_i\partial_i$,
+$\partial_i=\frac{\partial}{\partial x_i}$. Такие операции как
+дивергенция, ротор и градиент получаются в результате различных
+произведений вектора набла на некий вектор или тензор второго
+ранга.
+
+Произведения $\vec\nabla$ с вектором и тензором второго ранга:
+
+\begin{itemize}
+\item[1)] Скалярное.
+$$\vec\nabla\cdot\vec a=\vec e_i\partial_i\cdot
+a_j\vec e_j=a_{j,i}\delta_{ij}=a_{i,i}=\divergent(\vec a)$$
+$$\vec\nabla\cdot\underItilde{A}=\vec e_i\partial_i\cdot A_{jk}\vec e_j\otimes\vec e_k=A_{jk,i}\vec e_k\delta_{ij}
+=A_{jk,j}\vec e_k=\Div(\underItilde{A})$$
+
+\item[2)] Векторное произведение.
+$$\vec\nabla\times\vec a=\partial_i\vec e_i\times
+a_j\vec e_j=a_{j,i}\epsilon_{ijk}\vec e_k=\rot(\vec a)$$
+$$\vec\nabla\times\underItilde{A}=\vec e_i\partial_i\times A_{jk}\vec e_j\otimes\vec e_k
+=\epsilon_{ijm}A_{jk,i}\vec e_m\otimes\vec
+e_k\hm=\Rot(\underItilde{A})$$
+
+\item[3)]Тензорное произведение.
+$$\vec\nabla\otimes\vec a=\vec e_i\partial_i\otimes a_j
+\vec e_j=a_{j,i}\vec e_i\otimes\vec e_j=\Grad(\vec a)$$
+\end{itemize}
+
+Тензорное произведение вектора набла с тензором второго ранга не
+рас\-смат\-ри\-ва\-ется, зато рас\-смат\-ривается тензорное
+произведение со скалярной функцией: $$\vec\nabla\otimes p=p_{,i}\vec
+e_i=\grad(p)$$
+
+Оператор Лапласа~--- это скалярный квадрат оператора набла:
+$\triangle\hm=\vec\nabla\cdot\vec\nabla\hm=\partial^2_1+\partial^2_2+\partial^2_3$.
+Рассмотрим применение оператора Лапласа к скалярной функции:
+$\triangle p=\frac{\partial^2 p}{\partial x_1^2}+\frac{\partial^2
+p}{\partial x_2^2}+\frac{\partial^2 p}{\partial x_3^2}$
+
+\begin{question}
+Разложение тензора второго ранга на девиатор и шаровую часть
+\end{question}
+
+Шаровой частью тензора называется следующее выражение:
+$$\frac{1}{3}A_{kk}\vec e_i\otimes\vec e_i=\frac{1}{3}\tr\underItilde{A}\vec e_i\otimes\vec e_i.$$
+Разность тензора и его шаровой части называется девиатором:
+$$\underItilde{\bar{A}}=\underItilde{A}-\frac{1}{3}\tr\underItilde{A}\vec e_i\otimes\vec e_j$$
+Шаровая часть девиатора равна нулю.
+
+\begin{question}
+Собственные значения и собственные векторы симметрического тензора
+второго ранга.
+\end{question}
+
+Все собственные значения симметрического тензора второго ранга
+вещественны. Можно найти ортогональный базис из собственных
+векторов.
+
+\begin{question}
+Инварианты тензора второго ранга. Теорема Га\-миль\-то\-на--Кэ\-ли.
+\end{question}
+
+Построим характеристический многочлен матрицы, задающей данный
+тензор. Его коэффициенты будут инвариантны относительно замен
+базиса. Если подставить матрицу в её характеристический многочлен,
+получится $0$.
+
+\begin{question}
+Полиада. Тензоры четвертого ранга. Единичный тензор четвертого
+ранга.
+\end{question}
+
+При тензорном произведении тензоров второго ранга получается
+тензор четвертого ранга. Может, это произведение они называются
+полиадой. В общем, так: $$
+\underItilde{A}\otimes\underItilde{B}\hm= A_{ij}B_{kl}\vec
+e_i\otimes\vec e_j\otimes\vec e_k\otimes\vec e_l\hm =C_{ijkl}\vec
+e_i\otimes\vec e_j\otimes\vec e_k\otimes\vec
+e_l\hm=\underIdoubletilde{C}$$ Единичным называется следующий
+тензор $\underIdoubletilde{\Delta}$ четвертого ранга:
+$\Delta_{ijkl}\hm=\frac{1}{2}(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk})$
+
+\begin{question}
+Потенциальные и соленоидальные векторные поля. Циркуляция вдоль
+контура. Поток через поверхность.
+\end{question}
+
+Векторное поле $\vec v$ называется потенциальным, если существует
+функция $\varphi$, называемая потенциалом, такая что $\vec
+v\hm=\grad{\varphi}$. В таком случае $\rot{\vec v}\hm=0$.
+Поверхности, на которых $\varphi=const$, называются
+эквипотенциальными.
+
+Векторное поле $\vec v$ называется соленоидальным, если
+существует функция $\psi$, такая что $\vec v\hm=\rot{\psi}$. В
+таком случае $\divergent{\vec v}\hm=0$.
+
+Циркуляцией векторного поля $\vec a$ вдоль контура $\Gamma$
+называется следующее выражение: $$\oint_{\Gamma}\vec
+a\overrightarrow{dl}$$.
+
+Потоком векторного поля через поверхность $\Sigma$ называется
+$$\int_{\Sigma}\vec a\cdot\vec n d\Sigma$$
+
+
+\begin{question}
+Теорема Остроградского--Гаусса. Теорема Стокса.
+\end{question}
+
+В лекции было без доказательств. Надеюсь, на экзаменах будет так
+же.
+
+Теорема Гаусса--Остроградского. Пусть $V$~--- некий объем,
+ограниченный поверхностью $\Sigma$, $\vec a$~--- векторное поле.
+Имеет место равенство:
+$$\int_{V}\divergent\vec a dV\hm=\int_{\Sigma}\vec a\cdot\vec nd\Sigma$$
+
+Теорема Стокса. Пусть $\Sigma$~--- поверхность, затягивающая
+контур $\Gamma$, $\vec a$~--- векторное поле. Имеет место
+равенство:
+$$\oint_{\Gamma}\vec a\overrightarrow{dl}=\int_{\Sigma}\rot{\vec a}\cdot\vec nd\Sigma$$
+
+\begin{question}
+Криволинейные координаты. Фундаментальная матрица. Символы
+Кристоффеля.
+\end{question}
+
+В криволинейных координатах радиус-вектор зависит от точки не
+линейно. $\vec r\hm=\vec r(y^1,y^2,y^3)$. Локальным ковариантным
+базисом называется следующий набор векторов: $\vec
+k_i=\frac{\partial\vec r}{\partial y^i}$
+
+Фундаментальной матрицей называется матрица с элементами
+$g_{ij}\hm=\vec k_i\cdot\vec k_j$, Обратная к ней матрица состоит
+из элементов $g^{ij}$.
+
+Векторы в криволинейной системе координат можно дифференцировать по
+координатам. Для записи этих производных используются символы
+Кристоффеля $\Gamma^i_{jk}$.
+$$\frac{d\vec v}{dy_k}\hm=\frac{\partial v^i}{\partial y^k}\vec k_i+v_i\frac{\partial \vec k^i}{\partial y^k}\hm
+=\frac{\partial v^i}{\partial y^k}\vec k_i+v_i\Gamma^j_{ik}\vec
+k^j.$$
+
+Такое дифференцирование называется ковариантным.
+
+\begin{question}
+Ковариантное дифференцирование компонент вектора и тензора второго
+ранга. Физи\-чес\-кие компоненты.
+\end{question}
+
+Про дифференцирование~--- см. выше. Про тензоры напишу, когда
+откопаю конспекты по дифгему.
+
+Физические компоненты векторов и тензоров второго ранга
+определяются следующим образом:
+$$a_{\alpha}^{\Phi}=\frac{a_{\alpha}}{\sqrt{g_{\alpha\alpha}}}
+$$ $$B_{\alpha\beta}^{\Phi}=\frac{B_{\alpha\beta}}{\sqrt{g_{\alpha\alpha}g_{\beta\beta}}}
+$$
+Все физические компоненты имеют одинаковую размерность (что ценно
+при решении задач).

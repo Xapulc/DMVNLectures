@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{dmvn}
+
+
+\begin{document}
+\begin{center}
+{\bf Problems}
+\end{center}
+1. Let ${\cal P}=\{P_{\theta},\:\theta\in \Theta\}$ be a family of distributions on a
+measurable space $({\cal X},\:{\cal A})$ and let $T:({\cal X},\:{\cal A})\rightarrow
+({\cal T},\:{\cal B})$ be a statistic. Set $Q_{\theta}(B)=P_{\theta}(T^{-1}B),\:B
+\in {\cal B},\:
+{\cal Q}=\{Q_{\theta},\:\theta\in \Theta\}$.\\
+Prove that if $T$ is sufficient for ${\cal P}$ and $S:({\cal T},\:{\cal B})\rightarrow
+({\cal S},\:{\cal C})$ is sufficient for ${\cal Q}$, then $S$ is sufficient for ${\cal P}$.\\
+\\
+2. Let $(x_{1},\ldots, x_{n})$ be a random sample from a population with density
+\[f(x-\theta)=(1/3{\sqrt 2})(x-\theta)^{4}e^{(-x-\theta)^{2}/2},\:\theta \in R.\]
+Calculate the Fisher information on $\theta$ contained in the sample and the
+efficiency of $\bar x=(x_{1}+\ldots+x_{n})/n$ as an estimator of $\theta$.\\
+\\
+3. Two identical coins with $P\{H\}=1-P\{T\}=p$ are tossed independently $n$
+times. Let $n_{0},n_{1},n_{2}$ denote the number of times when both coins fall
+tail, one falls tail and the other falls head, both coins fall head, respectively.\\
+Find if $n_{2}/n$ is an admissible estimator of $p^{2}$ for the quadratic loss function.\\
+\\
+4. Let observations $x_{1},\ldots, x_{n}$ be of the form
+\[x_{i}=\theta a_{i}+\epsilon_{i},\:i=1,\ldots, n,\]
+where $a_{1},\ldots, a_{n}$ are known constants, $\theta$ is a parameter to be
+estimated, $\epsilon_{1},\ldots, \epsilon_{n}$ are independent random variables
+with zero means and known variances var$(\epsilon_{i})=\sigma_{i}^{2}<\infty.$\\
+Find the minimum variance linear unbiased estimator of $\theta$ and calculate its variance.\\
+Assuming $\epsilon_{1},\epsilon_{2},\ldots$ normally distributed, study the consistency
+of the above estimator (as $n\rightarrow \infty$.)\\
+\\
+5. Let the prior distribution of a parameter $\theta$ be Beta$(\alpha,\beta)$, i.e., the density of $\theta$ is
+\[\pi(\theta;\alpha,\beta)=\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\theta^{\alpha-1}(1-\theta)^{\beta-1},\:\theta\in (0,1),\]
+where
+$\alpha>0,\:\beta>0,\:\Gamma(u)$ is the Gamma function.\\
+Given $\theta$, observations $X_{1},\ldots, X_{n}$ are independent binary
+random variables with
+\[P\{X_{i}=1|\theta\}=1-P\{X_{i}=0|\theta\}=\theta.\]
+For the quadratic loss function, find the Bayes estimator of $\theta$.\\
+\\
+6. Let $(x'_{1},\ldots, x'_{n})$ and $(x''_{1},\ldots, x''_{n})$ be two independent
+samples from normal populations $N(\mu_{1},\sigma^{2})$ and $N(\mu_{2},\sigma^{2})$,
+respectively, with $\sigma^{2}$ unknown.\\
+Develop the $t$-goodness-of fit test  of level $\alpha$ for testing the hypothesis
+$H_{0}:\mu_{2}=2\mu_{1}.$
+\end{document}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%

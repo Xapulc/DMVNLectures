@@ -1,0 +1,5 @@
+#add_subdirectory(Beklemishev.L.D)
+add_subdirectory(Lupanov.O.B)
+add_subdirectory(Ugolnikov.A.B)
+add_subdirectory(Uspensky.V.A)
+mmtodo("Add Beklemishev.L.D to build tree")

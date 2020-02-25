@@ -1,0 +1,621 @@
+
+\documentclass[10pt]{article}
+\usepackage[russian]{babel}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{graphicx}
+
+
+\sloppy \textwidth18cm \textheight25cm \hoffset-2.5cm \voffset-3cm
+\parindent=0cm
+\parskip=2.5mm
+\unitlength=1cm
+
+
+
+
+
+\def\ve{{\varepsilon}}
+\def\pa{{\partial}}
+\def\{{\protect\lbrace}
+\def\}{\protect\rbrace}
+\let\no\operatorname
+\let\cal\mathcal
+\let\lm\limits
+\let\<\langle
+\let\>\rangle
+\let\ds\displaystyle
+\def\S{$\mathchar"278$}
+
+\def\va{{\varphi}}
+\def\ve{{\varepsilon}}
+\def\pa{{\partial}}
+\def\t{{\tau}}
+
+\def\cK{{\cal K}}
+\def\ot{{\overline{\theta}}}
+\def\oA{{\overline{A}}}
+\def\od{{\stackrel{\rm def} {=} }}
+\def\bS{{\bf S}}
+\def\ch{{\no{ch}}}
+
+\def\Const{{\rm Const}}\def\l{\left}
+\def\r{\right}
+\def\div{{\rm div}}
+\def\eq{{\no{eq}}}
+\def\lin{{\no{lin}}}
+\def\ext{{\no{ext}}}
+\def\var{{\no{var}}}
+
+\def\bG{{\bf G}}
+\def\pa{\partial}
+\def\cO{{\cal O}}
+
+
+
+\newcommand{\dist}{\mathop{\rm dist}\nolimits}
+\newcommand{\const}{\mathop{\rm const}\nolimits}
+\newcommand{\str}{\mathop{\rm str}\nolimits}
+\newcommand{\as}{\mathop{\rm as}\nolimits}
+\newcommand{\an}{\mathop{\rm an}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\renewcommand{\div}{\mathop{\rm div}\nolimits}
+\renewcommand{\Im}{\mathop{\rm Im}\nolimits}
+\renewcommand{\Re}{\mathop{\rm Re}\nolimits}
+\newcommand{\proof}{{\bf Доказательство.\quad}}
+\newtheorem{defi}{Определение}[section]
+\newtheorem{theo}{Теорема}[section]
+\newtheorem{lem}{Лемма}[section]
+\newtheorem{cond}{Условие}[section]
+\newtheorem{app}{Аррендикс}[section]
+\newtheorem{conc}{Заключение}[section]
+\newtheorem{comm}{Комментарий}
+\newtheorem{prop}{Предложение}[section]
+\newtheorem{cor}{Следствие}[section]
+\newtheorem{rem}{Замечание}[section]
+\newtheorem{exm}{Пример}[section]
+\newtheorem{prob}{Задача}[section]
+\newtheorem{design}{Обозначение}[section]
+
+\begin{document}
+
+{\large\bf 2 Лекция,~~~I семестр,~~~ лектор профессор Е.В.
+Радкевич }
+\bigskip
+
+{\large\bf Задача Коши.~} Выше мы уже говорили, что базовой задачей для моделей, описывающих физические
+процессы, является задача Коши. Рассмотрим эволюционную модель
+\begin{equation}
+L_j(u_1,\dots,u_N)\,\equiv\,F_j(\pa_x^\alpha\,u_1,\,|\alpha|\le
+m_1,\dots,\pa_x^\alpha\,u_N,|\alpha|\le m_N,x,t)=0,\quad
+j=1,\dots,N,~~x\in R^n,\label{NS}
+\end{equation}
+в которой среди независимых переменных выделено время $x=(t,y)$,
+функции $F_j$ не зависят от $y$ явно. Какие выводы можно сделать о
+структуре и свойствах решений без привлечения дополнительной
+физической информации? Т.е. подойдем к исследованию задачи с чисто
+математической точки зрения: есть абстрактный объект, какова его
+структура? Но, помнить будем (см. Р. Курант: "Уравнения с частными
+производными") научное кредо Гильберта: всегда предпочитать чисто
+формальной общности глубокое проникновение в самую суть
+математической задачи.
+
+Простейший вариант задачи Коши мы получим для так называемых
+однородных решений $v(x,t)\equiv\,v(t)$ этой системы. Тогда
+система (\ref{NS}) становится системой обыкновенных нелинейных
+уравнений
+\begin{gather}
+F_j(d_t^\alpha\,u_1(t),0\le\alpha\le
+m_1,\dots,d_t^\alpha\,u_N(t),0\le\alpha\le m_N,\,t)=0,\quad
+j=1,\dots,N,\quad d_t=\frac{d}{dt},\label{SK}\\
+U_j|_{t=0}=u_j^0,\quad j=1,\dots,N.\nonumber
+\end{gather}
+Обсудим проблему существования вещественно-аналитических решений
+(теорему Коши) $u_j\in\,{\cal A},~j=1,\dots,N,$ которые имеют
+локальное разложение в абсолютно сходящиеся ряды в окрестности
+любой точки области определения $t_0\in{\cal D}$:
+$$
+u_j(t)=\sum_{j=0}^\infty\,a_{j,s}(t_0)\,(t-t_0)^s
+$$
+Для простоты рассмотрим одно нелинейное уравнение:
+\begin{equation}
+\frac{d\,u}{dt}=F(u,t),\quad u|_{t=0}=u_0.\label{ODU}
+\end{equation}
+(доказательство в общем случае аналогично). Приведем (\ref{ODU}) к
+однородным данным Коши, положив $u=v+u_0$. Тогда
+\begin{equation}
+\frac{d\,v}{dt}=f(v,t),\quad v|_{t=0}=0,\label{ODU}
+\end{equation}
+где $f(v,t)\in{\cal A}_{loc}$ локально вещественно аналитическая
+по переменным $(v,t)$ функция.
+\bigskip
+
+{\large\bf Теорема Коши.~} Первое доказательство существования и
+единственности решения задачи Коши для обыкновенного
+дифференциального уравнения первого порядка
+\begin{gather}
+\frac{dv}{dt}=f(t,v),~~t>t_0,~~~~v(t_0)=0, \label{1d}
+\end{gather}
+было получено Коши при условии  голоморфности функции $f$ в
+окрестности точки $(t_0,0)$. В этом случае им было доказано
+существование, притом только одного, решения $u(t)$ , голоморфного
+в окрестности точки $t_0$. Идея доказательства проста. Решение
+ищем в классе ${\cal A}^1_{loc}$ локально аналитических функций
+$v(t)$, представимых в окрестности $t=t_0$ в виде степенного ряда
+$$
+v(t)=\sum_{j=0}^\infty\,a_j(t-t_0)^j,~a_j\in{\bf C},~t\in\,R.
+$$
+Напомним некоторые общие свойства аналитических ${\cal A}^m_{loc}$
+вектор-функций $f(t,x,u)\in{\cal A}^m_{loc},~t\in\,R^1,~u,f\in{\bf
+R}^m,\,x\in\,R^n,$
+\begin{gather}
+f(t,u)=\sum_{k,|\alpha|,|\beta|\ge0}\,f_{k,,\beta,\alpha}(t-t_0)^k
+(x-x_0)^\beta(u-u_0)^\alpha,\label{md}\\
+\alpha=(\alpha_1,\dots,\alpha_m),~\beta=(\beta_1,\dots,\beta_n),~
+f_{k,\alpha}\in{\bf C}^m.\nonumber
+\end{gather}
+
+\noindent{\large\bf Определение мажоранты.} Вещественнозначную
+аналитическую в точке $(t_0,x_0,u_0)$ функцию
+$$
+g(t,x,u)=\sum_{k,|\alpha|,|\beta|\ge0}\,g_{k,\beta,\alpha}(t-t_0)^k
+(x-x_0)^\beta(u-u_0)^\alpha
+$$
+будем называть мажорантой $g\,\succ\,f$ вектор-функции $f(t,x,u)$
+в этой точке, если для всех
+$k,\alpha_j\ge0,\beta_l\ge0,\,j=1,\dots,m, l=1,\dots,n,$
+справедливы неравенства
+$$
+|f_{k,\beta,\alpha}|\le\,g_{k,\beta,\alpha}.
+$$
+Очевидно, что для любой аналитической в окрестности
+$(t_0,x_0,u_0)$ функции $f(t,x,u)$ существует мажоранта в этой
+точке. В качестве мажоранты, например, можно взять
+$$
+g=\sum_{k,|\beta|,|\alpha|\ge0}\,|f_{k,\beta,\alpha}|(t-t_0)^k
+(x-x_0)^\beta(u-u_0)^\alpha.
+$$
+Мажоранту можно построить также следующим образом. Пусть ряд
+(\ref{md}) абсолютно сходится в кубе
+$K_\varrho(t_0,x_0,u_0)=\{|t-t_0|\le\varrho,|x-x_0|\le\varrho,|u-u_0|\le
+\varrho\}.$ Тогда существует такое положительное $M_f$, что
+$$
+|f_{k,\beta,\alpha}|\le\,M_f\varrho^{-(k+|\beta|+|\alpha|)},\quad\forall~
+k,\,|\beta|\ge0,\,|\alpha|\ge0.
+$$
+Это значит, что мажорантой этой функции являются функции:
+$$
+g=\sum_{k,|\beta|,|\alpha|\ge0}\frac{M_f(t-t_0)^k
+(x-x_0)^\beta(u-u_0)^\alpha}{\varrho^{k+|\beta|+|\alpha|}}=
+$$
+$$
+=M_f\bigg\{\Big(1-\frac{t-t_0}\varrho\Big)\Big(1-\frac{u_1-u^0_1}\varrho\Big)
+\dots\Big(1-\frac{u_m-u^0_m}\varrho\Big)
+\Big(1-\frac{x_1-x^0_1}\varrho\Big)
+\dots\Big(1-\frac{x_n-x^0_n}\varrho\Big)\bigg\}^{-1},
+$$
+а также
+$$
+g=M_f\bigg\{1-\frac{(u_1-u^0_1)+\dots+(u_m-u^0_m)+
+(x_1-x_1^0)+\dots+(x_n-x_n^0)+N(t-t_0)}\varrho\bigg\}^{-1},~~
+\forall\,N\ge1.
+$$
+Здесь мы воспользовались тем, что
+$$
+\frac{M_fN^k(|\alpha|+|\beta|)!}
+{\varrho^{k+|\beta|+|\alpha|}\alpha!\beta!}\ge|f_{k,\alpha}|,
+~\forall\,k,|\alpha|\ge0.
+$$
+Сформулируем свойства мажорант , как ряд утверждений леммы:
+
+\begin{lem}\label{lem} Если:
+
+1.
+\begin{equation}
+g\,\succ\,f~~~\Longrightarrow~~\pa_t^k\pa_x^\alpha\pa_u^\beta\,g
+\,\succ\,\pa_t^k\pa_x^\alpha\pa_u^\beta\,f,~~~~\forall\,k\ge0,\,|\alpha|\ge0,|\beta|\ge0,\label{1M}.
+\end{equation}
+2.
+\begin{equation}
+g\,\succ\,f,~g_1\,\succ\,f_1
+~~~\Longrightarrow~~\gamma_1g+\gamma_2g_2\,\succ\,\gamma_1f_1+\gamma_2
+f_2,\quad\forall\,\gamma_1,\gamma_2\in\,R,~\gamma_1,\gamma_2>0.
+\label{2M}
+\end{equation}
+3.
+\begin{equation}
+g\,\succ\,f~~~\Longrightarrow~~\int_{t_0}^t\int_{x_0}^x\int_{u_0}^u\,
+g(\tau,y)
+d\tau\,dy\,\succ\,\,\int_{t_0}^t\int_{x_0}^x\int_{u_0}^u\,f(\tau,y)d\tau\,dy.
+\label{3M}
+\end{equation}
+4.
+\begin{equation}
+\mbox{Если}~~g\,\succ\,f,g_1\,\succ\,f_1~~~~\Longrightarrow~~
+g\,g_1\,\succ\,f\,f_1. \label{4M}
+\end{equation}
+5.
+\begin{gather}
+g(t,x,u)\,\succ\,f(t,x,u),\,U(t,x)\,\succ\,u(t,x)~~
+\Longrightarrow\label{5M}\\
+\qquad\qquad\qquad\Longrightarrow~~g(t,x,U(t,x))\,\succ\,f(t,x,u(t,x)).\nonumber
+\end{gather}
+
+\end{lem}
+Перейдем к доказательству теоремы Коши для уравнения (\ref{1d}).
+Рассмотрим правую часть $f(t,v)$ в классе локально аналитических
+функций $f\in{\cal A}_{loc}^2$, т.е. функций представимых в
+некоторой окрестности ${\cal
+Q}_0=Q_0\times(t_0-\delta,t_0+\delta)$ точки $(t_0,0)$,
+$Q_0\in\,R^1-$ окрестность $v=0$, в виде абсолютно сходящегося
+степенного ряда
+\begin{equation}
+f(t,v)=\sum_{k,\alpha\ge0}^\infty\,f_{k,\alpha}v^\alpha(t-t_0)^k.
+\label{1f}
+\end{equation}
+Решение ищем в виде ряда
+\begin{equation}
+v(t)=\sum_{j=0}^\infty\,a_j(t-t_0)^j. \label{1u}
+\end{equation}
+Подставляя (9) в (8), найдем коэффициенты $a_j$
+$$
+a_0=0,~~a_1=f(t_0,u_0),~~a_2=\frac12\Big(\pa_tf(t,v)+\pa_vf(t,v)\Big)
+\Big|_{t=t_0,v=0},\dots.
+$$
+Все последующие коэффициенты находятся дифференцированием обеих
+частей уравнения (\ref{1d}) и подстановкой в них $t=t_0$ и
+коэффициентов, полученных на предыдущих шагах. Таким образом,
+коэффициенты $a_j$ однозначно определяются из уравнения и
+начальных данных. Для доказательства существования решения
+достаточно показать, что степенной ряд (\ref{1u}) сходится в
+некоторой окрестности точки $t_0$. Здесь применим метод мажорант.
+Из свойств Леммы (\ref{lem}) следует, что мажорирующей задачей
+Коши будет следующая
+\begin{equation}
+\frac{dm}{dt}=\frac{M_f}{\Big(1-\frac{t-t_0}\varrho\Big)\Big(
+1-\frac{m}\varrho\Big)},~~t>t_0,~~~~m(t_0)=0, \label{mp}
+\end{equation}
+которая решается методом разделения переменных:
+\begin{equation}
+m(t)=\frac1{2\varrho}m(t)^2-\varrho\,M_f\ln\Big(1-\frac{t-t_0}\varrho\Big),
+\label{1mb}
+\end{equation}
+т.е.
+$$
+m(t)=\varrho\Big(1-\sqrt{1+2\varrho^2M_f\ln\Big(1-\frac{t-t_0}\varrho\Big)}\Big)
+$$
+
+{\large\bf Замечание} Как можно показать, что уравнение (\ref{mp})
+мажорирует уравнение (\ref{1d}). Дифференциальное уравнение
+(\ref{1d}) эквивалентно интегральному уравнению
+\begin{equation}
+v(t)=\int_0^t\,f(u(s),s)ds.\label{ieq}
+\end{equation}
+В силу Леммы (\ref{lem}) правая часть (\ref{ieq}) мажорируется
+выражением
+$$
+\int_0^t\,\frac{M_f}{\Big(1-\frac{s-t_0}\varrho\Big)\Big(
+1-\frac{m(s)}\varrho\Big)}ds,
+$$
+если $m(t)$ мажоранта для $v(t)$. Отсюда мажорирующим интегральным
+уравнением для (\ref{ieq}) будет
+$$
+m(t)=\int_0^t\,\frac{M_f}{\Big(1-\frac{s-t_0}\varrho\Big)\Big(
+1-\frac{m(s)}\varrho\Big)}ds,
+$$
+что эквивалентно уравнению (\ref{mp}).
+\bigskip
+
+
+Из (\ref{1M})-(\ref{5M}) следует, что при достаточно малом
+$\varrho>0$ ряд в правой части (\ref{1mb}) мажорирует ряд
+(\ref{1u}), т.е.
+$$
+|a_j|\le\,m_j,~~~\forall j\ge0,
+$$
+если $m_j\ge0,\,j\ge1,\,m_0=0$. Осталось показать, что
+\begin{equation}
+ m_j>0,\,j\ge1.\label{mj}
+\end{equation}
+Первым делом заметим, что степенной ряд функции
+\begin{equation}
+-\ln\Big(1-\frac{t-t_0}\varrho\Big)=\sum_{j\ge1}\,\frac1j\Big(\frac{t-t_0}\varrho\Big)^j\label{step}
+\end{equation}
+имеет положительные коэффициенты. Тогда из (\ref{1mb})
+последовательно можно показать справедливость (\ref{mj})~~($m_j$
+определяются по коэффициентам степенного ряда (\ref{step}) и
+коэффициентам $m_s,\,1\le\,s\le(j-1)$, вычисленным на предыдущих
+шагах). Например
+$$
+m_1=M_f>0,~~~~m_2=\frac1{2\varrho}m_1^2+\frac{M_f}{2\varrho}>0,~~~m_3=\frac1\varrho\,m_1m_2+\frac{M_f}{3\varrho^2}>0.
+$$
+ Отсюда следует сходимость рядя для $v(t)$ и
+существование решения задачи Коши (\ref{1d}).
+\bigskip
+
+{\large\bf Теорема Ковалевской.} Теорема Коши была обобщена С.В.
+Ковалевской на дифференциальные уравнения с частными производными.
+Эта теорема относится к классу уравнений, которые теперь
+называются уравнениями типа Ковалевской
+\begin{equation}
+\pa_t^{n_i}u_i=f_i(t,x,u,\pa_tu,\pa_xu,\dots),~~~i=1,\dots,m.
+\label{SK}
+\end{equation}
+Здесь $\pa_t$ и $\pa_{x_k}$ производные по $t$ и пространственным
+переменным $x=(x_1,\dots,x_{n-1}),~u=(u_1,\dots,u_m),$ функции
+$f_i$ при каждом $i=1,\dots,m,$ зависят от производных
+$\pa_t^{\alpha_0}\pa_x^\alpha\,u_j$ функций $u_j,\,j=1,\dots,m,$
+только до порядка $n_j$, не зависит от $\pa_t^{n_j}u_j$ и являются
+вещественно аналитическими от всех своих аргументов. Задача Коши
+для (1.1) состоит в построении решения этой системы, которое прим
+$t=0$ принимает заданные начальные значения
+\begin{equation}
+\pa_t^ku_i(0,x)=\varphi_{i,k}(x),~~k=0,1,\dots,n_i-1,~~i=1,\dots,m.
+\label{Kd}
+\end{equation}
+Предполагается, что начальные данные $\varphi_{i,k}(x)$ являются
+вещественно аналитическими функциями переменных $x$ в некоторой
+окрестности ${\cal Q}_0$ точки $x=0$. Очевидно, что также как
+выше, начальные условия позволяют вычислить значения всех
+аргументов функций $f_i$ в окрестности точки $x=0$ при $t=0$.
+Фиксируя значения этих производных, дополнительно будем считать,
+что функции $f_i$--вещественно аналитические в окрестности этих
+фиксированных значений.
+\begin{theo}(Теорема Ковалевской [1])
+Задача Коши (1.1), (1.2) при сделанных предположениях имеет одно и
+только одно решение $u(t,x)$, вещественно аналитическое в
+окрестности точки $t=0,x=0.$
+\end{theo}
+Содержание этой теоремы является достаточно простым. Если
+аналитическая функция $u(t,x)$ удовлетворяет уравнению (\ref{SK})
+и условиям (\ref{Kd}), то ее производные любого порядка в точке
+$t=0,x=0$ определяются однозначно. При этом, если порядок
+дифференцирования функции $u_i$ по переменной $t$ не превосходит
+$n_i-1$, то эти производные находятся из условий (\ref{Kd}).
+Остальные производные определяются с помощью дифференцирования
+уравнения (\ref{SK}).
+
+Таким образом, мы можем найти все коэффициенты ряда Тейлора
+искомого решения в точке $(0,0)$, откуда следует единственность
+аналитического решения. Для доказательства существования решения
+требуется доказать сходимость построенных степенных рядов для
+функций $u_i$, коэффициенты которых определяются по указанной
+выше схеме. Это технически сложное доказательство, основанное на
+методе мажорант. В упрощенном варианте доказательство мы приведем
+ниже.
+\bigskip
+
+{\large\bf Теоремы Ковалевской} Если принять производные решения
+$v_{j,\alpha_0,\alpha}=\pa_t^{\alpha_0}\pa_x^\alpha\,u_j,\,\alpha_0+|\alpha|<n_j,$
+за новые неизвестные функции, то можно свести задачу (\ref{SK}),
+(\ref{Kd}) к системе квазилинейных дифференциальных уравнений
+первого порядка
+$$
+\pa_tv_i=\sum_{s=1}^K\sum_{j=1}^na_{ijs}(t,x,v_1,\dots,v_N)\pa_{x_j}v_s+f_i(t,x,v_1,\dots,
+v_N),~~i=1,\dots,K;
+$$
+$$
+v_i(0,x)=\varphi_i(x),~~i=1,\dots,K.
+$$
+Для простоты рассмотрим линейную систему, для которой
+$$
+a_{ijs}(t,x,v_1,\dots,v_N)=a_{ijs}(x,t),~~f_i(t,x,v_1,\dots,v_N)=\sum_{s=1}^K\,b_{is}(x,t)v_s
++f_i(x,t).
+$$
+Прежде всего сделаем замену функций
+$v_i(t,x)=\varphi_i(x)+w_i(t,x)$. Отсюда получим
+\begin{gather}
+\pa_tw_i=\sum_{s=1}^K\sum_{j=1}^na_{ijs}(t,x)\pa_{x_j}w_s+\sum_{s=1}^Kb_{is}(x,t)w_s+g_i(t,x),
+\label{lSK}\\
+w_i(0,x)=0,~~i=1,\dots,K. \label{lKd}\\
+g_i=f_i+\sum_{s=1}^K\sum_{j=1}^na_{ijs}(t,x)\pa_{x_j}\varphi_s+\sum_{s=1}^Kb_{is}(x,t)\varphi_s
+~~i=1,\dots,K;\nonumber
+\end{gather}
+В силу (\ref{1M})-(\ref{5M}), для достаточно большого
+$M>0,~\forall\,N\ge1$, достаточно малого $\varrho>0$, мажорирующая
+задача Коши для (\ref{lSK}), (\ref{lKd}) определяется следующей
+системой
+\begin{equation}
+\pa_tW_i=M\Big(1-\frac{(x_1-x^0_1)+\dots+(x_n-x_n^0)+N(t-t_0)}\varrho\Big)^{-1}
+\bigg[\sum_{j=1}^K\Big(\sum_{l=1}^n\,\pa_{x_l}+1\Big)W_j+1\bigg],~~i=1,\dots,K;\label{mlSK}
+\end{equation}
+с начальными данными вида:
+\begin{equation}
+W_i(0,x)=0~~i=1,\dots,K.\label{mlKd}
+\end{equation}
+Наша задача--доказать существование аналитичного в точке
+$(t_0,x_0)$ мажорантного решения, коэффициенты степенного ряда
+которого неотрицательны.
+
+Вспомогательное решение задачи будем искать в виде
+\begin{gather}
+W_j=V_j(\eta),~~j=1,\dots,K,~~~~~\eta=
+\Big((x_1-x^0_1)+\dots+(x_n-x^0_n)+N(t-t_0)\Big)/\varrho,\nonumber\\
+W_j|_{\eta=0}=0,~~~j=1,\dots,K.\nonumber
+\end{gather}
+Тогда получим
+\begin{equation}
+\Big(\frac{N}\varrho-\frac{Mn}{\varrho(1-\eta)}\Big)\frac{d}{d\eta}V_j=\frac1{a-\eta}\Big(\frac{Mn}\varrho\sum_{j\ne\,i,
+\,i,j=1,\dots,K}
+\frac{d}{d\eta}V_i+M(\sum_{i=1}^KV_i+1)\Big),~~j=1,\dots,K.
+\label{Vj}
+\end{equation}
+Отсюда следует, что
+\begin{equation}
+\frac{d}{d\eta}V_j=\frac1{a-\eta}\Big(b\sum_{j\ne\,i,\,i,j=1,\dots,K}
+\frac{d}{d\eta}V_i+c\varrho(\sum_{i=1}^KV_i+1)\Big),~~j=1,\dots,K.
+\label{Vj}
+\end{equation}
+Здесь $a=(N-Mn)/N,b=Mn/N,c=M/N$, достаточно большое $N\gg1$ и
+достаточно малое $\varrho=\varrho(N)\le1$ выбираются из условий
+$a>0$ и
+$$
+\frac{N}\varrho(a-\eta)=N\Big(1-\frac{(x_1-x^0_1)+\dots+(x_n-x^0_n)+N(t-t_0)}\varrho\Big)-Mn\ge
+\frac12N,
+$$
+$$
+|t-t_0|\le\frac12\varrho,|x_j-x_j^0|\le\frac12\varrho,~~~j=1,\dots,n.
+$$
+Положим ${\cal W}=\sum_{i=1}^KV_i$. Суммируя уравнения
+(\ref{Vj}), сведем эту систему к обыкновенному уравнению
+\begin{equation}
+\frac{d}{d\eta}{\cal W}=\frac{cK\varrho}{a-(K-1)b-\eta}({\cal
+W}+1),\quad {\cal W}|_{\eta=0}=0,\label{W}
+\end{equation}
+решая которое, получим
+$$
+{\cal
+W}=\frac{(a-(K-1)b)^{cK\varrho}}{(a-(K-1)b-\eta)^{cK\varrho}}-1.
+$$
+Здесь мы воспользовались тем, что для достаточно большого $N$
+$$
+a-(K-1)b>0,~~~a-(K-1)b-\eta>\frac12,
+$$
+если
+$$
+|t-t_0|\le\frac12\varrho(N),~~~|x_j-x_j^0|\le\frac12\varrho(N),~~j=1,\dots,n,~~~~\varrho(N)\ll1.
+$$
+Так как $0<a-(K-1)b<1$, то степенной ряд функции
+$$
+\Big(a-(K-1)b-\eta\Big)^{-1}=(a-(K-1)b)^{-1}\Big(1+d_1\eta+\dots\Big),
+$$
+в нуле имеет
+неотрицательные коэффициенты. Отсюда, в силу (\ref{W}), степенной
+ряд в нуле функции ${\cal W}$ также имеет неотрицательные
+коэффициенты. Подставляя (\ref{W}) в (\ref{Vj}), получим
+\begin{equation}
+\frac{d}{d\eta}V_j+\frac{b}{a-\eta}V_j=\frac1{a-\eta}\Big(b\frac{d}{d\eta}{\cal
+W}+c\varrho {\cal W}+1\Big),~~V_j(0)=0,~~j=1,\dots,N.
+\label{usechVj}
+\end{equation}
+Следовательно, коэффициенты степенного ряда в нуле правой части в
+(\ref{usechVj})-- неотрицательны. Положим
+$$
+V_j=\sum_{k\ge1}\,v_{jk}\,\eta^k,~~~~~G_j=\sum_{k\ge0}\,g_{jk}\,\eta^k.
+$$
+Умножим (\ref{usechVj}) на $(a-\eta)$ и подставим в
+(\ref{usechVj}) степенные ряды в нуле для функций $V_j$ и правой
+части $G_j$ в (\ref{usechVj}). Получим систему для коэффициентов
+$$
+a\,k\,v_{j,k}=(k-1-b)v_{j,k-1}+g_{j,k-1},~~~j\ge2,~~~v_{j,0}=0,v_{j,1}=g_{j,0}/a.
+$$
+Так как $0<b<1$, то все коэффициенты $v_j\ge0$. Следовательно
+функции
+$$
+V_j|_{t=t_0}=\sum_{s\ge1}v_{j,s}\frac{((x_1-x^0_1)+\dots+(x_n-x^0_n))^s}{\varrho^s}\succ\,0,\quad~j=1,\dots,N
+$$
+мажорируют начальные данные $w_j|_{t=t_0}=0$ функций
+$w_j(t,x),~j=1,\dots,N$. Простым следствием леммы (\ref{lem})
+является следующее утверждение:
+
+Пусть коэффициенты правых частей уравнений
+\begin{gather}
+\pa_tV_j=\sum_{s=1}^K\Big(\sum_{i=1}^nA_{jsi}(x,t)\pa_{x_i}V_s+B_{js}(t,x)V_s\Big)+F_j(x,t),\nonumber\\
+\pa_tw_j=\sum_{s=1}^K\Big(\sum_{i=1}^na_{jsi}(x,t)\pa_{x_i}w_s+b_{js}(x,t)w_s\Big)+f_j(x,t),\nonumber
+\end{gather}
+мажорируют друг друга
+$$
+A_{jsi}(x,t)\,\succ\,a_{jsi}(x,t),~~B_{js}(x,t)\,\succ\,b_{j,s}(x,t),~~F_j(x,t)\,\succ\,f_j(x,t),
+$$
+и начальные данные для $V_j$
+$$
+V_j|_{t=t_0}=V^0_j(x)\,\succ\,w_j|_{t=t_0}\equiv0
+$$
+мажорируют начальные данные для $w_j$. Тогда решение первой задачи
+Коши
+$$
+V_j(t,x)\,\succ\,w_j(x,t),\quad j=1,\dots,K,
+$$
+мажорируют решение второй задачи Коши. Отсюда получаем, что
+$$
+V_j\,\succ\,w_j,\quad j=1,\dots,K.
+$$
+в нашем случае. Это завершает доказательство теоремы Ковалевской
+для системы (\ref{lSK}).
+
+{\large\bf Некоторые обобщения теоремы Ковалевской} Рассмотрим
+случай, когда система уравнений не приведена к нормальному виду,
+т.е. не разрешена относительно старшей производной
+\begin{equation}
+F_i(x,u,\pa_xu,\dots,\pa_x^\alpha\,u,\dots)=0,~~~i=1,\dots,m,\label{F}
+\end{equation}
+где
+$u=(u_1,\dots,u_m),~\pa_x^\beta\,u=\frac{\pa^\beta}{\pa\,x^\beta}u$.
+Предположим, что функции $F_i$ являются аналитическими и зависят
+от производных функций $u_j$ порядка $\le\,n_j$. Начальные условия
+рассмотрим на гладкой аналитической гиперповерхности $\Gamma$
+\begin{equation}
+\pa_\nu^ku_i(x)=\varphi_{i,k}(x),~~~x\in\Gamma,~~k=0,1,\dots,n_i-1;~
+i=1,\dots,m. \label{KdF}
+\end{equation}
+Здесь $\pa_\nu$ производная по нормали к $\Gamma$.
+
+Сначала сведем эту задачу к задаче вида (\ref{SK}), (\ref{Kd}).
+Сделать это можно при дополнительных условиях. Введём в
+окрестности некоторой точки $P_0\in\Gamma$ локальную систему
+координат $(t,y_1,\dots,y_{n-1})$ так, чтобы эти координаты
+выражались через $x$  аналитически и чтобы переменная $t$ менялась
+в направлении нормали к $\Gamma$ так, что поверхность $\Gamma$
+определяется равенством $t=0$, а координаты $y_1,\dots,y_{n-1}$
+при $t=0$ были бы локальными координатами на $\Gamma$. Условие
+(\ref{KdF}) позволяет вычислить все производные функции $u_j$ при
+$t=0$ до порядка $n_j-1$, так что в новых координатах начальные
+условия приобретают форму (\ref{Kd}). Более того,
+дифференцирование начальных условий позволяет найти при $t=0$ все
+производные $\pa_t^k\pa_y^\alpha\,u_j$, которые имеют по $t$
+порядок $\le\,n_j-1$ ( любого порядка по $y$). Таким образом, при
+$t=0$ из начальных условий можно найти значения всех аргументов
+функций $F_i$, исключая производные по направлению нормали $\nu$
+максимального порядка $n_j$ для $u_j$, так что эти уравнения при
+$t=0$ можно записать в виде уравнений
+\begin{equation}
+\Phi_i(y,\pa_\nu^{n_1}u_1,\dots,\pa_\nu^{n_m}u_m)=0,~~~i=1,\dots,m.
+\label{Phi}
+\end{equation}
+относительно нормальных производных. Если потребовать, чтобы
+якобиан
+$$
+\frac{\pa(\Phi_1,\dots,\Phi_m)}{\pa(\pa_\nu\,y^{n_1}u_1,\dots,
+\pa_\nu\,y^{n_m}u_m)}\ne0
+$$
+был отличен от нуля при $t=0$, систему (\ref{F}) можно привести к
+виду (\ref{SK}).
+
+
+Если поверхность $\Gamma$ задается уравнением
+$S(x)=0,|\nabla_xS|\ne0,$ то это условие можно записать в виде
+\begin{equation}
+\det\Big|\Big|\sum_{|\alpha|=n_j}\frac{\pa\,F_i}{\pa(\pa_x^\alpha\,u_j)}
+(\pa_xS)^\alpha\Big|\Big|_{i,j=1,\dots,m}\ne0,~~~t=0.
+\label{nonchar}
+\end{equation}
+Условие нехарактеристичности (\ref{nonchar}) имеет особенно
+простой смысл, когда $F_i$ линейно зависят от производных.
+Например
+\begin{equation}
+\sum_{|\alpha|\le\,m}a_\alpha(x)\pa_x^\alpha\,u+f(x)=0,\label{exampl}
+\end{equation}
+тогда условие (\ref{nonchar}) примет вид
+$$
+\sum_{|\alpha|=m}a_\alpha(x)(\pa_xS)^\alpha\ne0,~~~S(x)=0.
+$$
+
+В точках, в которых (\ref{nonchar}) равен нулю, говорят что
+нормаль к $\Gamma$ в таких точках имеет характеристическое
+направление. Если в любой точке $\Gamma$ определитель в
+(\ref{nonchar}) равен нулю, поверхность $\Gamma$ называется
+характеристической. В этом случае система (\ref{F}) порождает при
+$t=0$ нетривиальное соотношение для начальных данных
+$$
+{\cal
+R}(\varphi_{1,0},\dots,\varphi_{m,0},\dots,\pa_x\varphi_{i,j},
+\dots)=0.
+$$
+Например для (\ref{exampl}) при $S(t,y)=t,\,x=(t,y),$ получим
+соотношение
+$$
+\sum_{k\,n-1,k+|\beta|=m}a_{k,\beta}(0,y)\pa_y^\beta\varphi_k(y)
++f(y,0))=0.
+$$
+
+
+\end{document}

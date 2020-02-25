@@ -1,0 +1,22 @@
+mm_texify(
+    SOURCES
+        Variational.Calculus.ONP
+    INCLUDE
+        Lection01.tex
+        Lection02.tex
+        Lection03.tex
+        Lection04.tex
+        Lection05.tex
+        Lection06.tex
+        Lection07.tex
+        Lection08.tex
+        Lection09.tex
+        Lection10.tex
+        Lection11.tex
+        Lection12.tex
+        Lection13.tex
+        Lection14.tex
+        Lection15.tex
+    ARCHIVE
+        variational.calculus-osmolovsky
+)

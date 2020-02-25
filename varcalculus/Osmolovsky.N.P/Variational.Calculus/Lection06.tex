@@ -1,0 +1,450 @@
+\chapter*{Лекция 6.}
+\section*{Аппарат теории экстремума (продолжение)}
+\subparagraph*{1. Оценка расстояния до нулевого уровня
+нелинейного опе\-ра\-то\-ра.}
+
+Пусть $X$,$Y$~--- банаховы пространства, $U\subset X$~---
+открытое множество, $g:U\to Y$~--- оператор,
+$$
+M=\{x\in U\mid g(x)=0\}=g^{-1}(0)
+$$
+--- нулевой уровень этого оператора.
+\begin{theorem}[о поправке]
+Пусть $x_0\in U$ такова, что $g(x_0)=0$ (т.\,е. $x_0\in M$), $g$
+строго дифференцируем в точке $x_0$ и $g'(x_0)X=Y$. Тогда
+существуют окрестность $B(x_0,\delta)$ $(\delta>0)$ точки $x_0$ и
+$K>0$ такие, что $\forall\, x\in B(x_0,\delta)\
+\exists\,\bar{x}\in X$ такой, что $g(x+\bar{x})=0$;
+$\|\bar{x}\|\leqslant K\|g(x)\|$ и, следовательно,
+$d(x,M)\leqslant K\|g(x)\|$.
+
+
+%\картинка!!!!!!!!!
+Смотри рисунок $L6-1.pcx$
+
+
+\end{theorem}
+\begin{proof}
+Пусть в точке $x_0$ выполнены условия теоремы. Тогда $g$
+метрически регулярен в окрестности точки $x_0$. Следовательно,
+су\-щест\-вуют $\delta>0$ и $K_0>0$ такие, что
+$$
+d(x,g^{-1}(0))\leqslant K_0\|g(x)\|\qquad\forall x\in B(x_0,\delta)
+$$
+(в определении метрической регулярности следует положить $y=0$).
+
+Пусть $\varepsilon>0$. Положим $K=(1+\varepsilon)K_0$. Покажем,
+что с таким $K$ поправка существует.
+\begin{enumerate}
+\item[а)] Если $g(x)=0$, то полагаем $\bar{x}=0$.
+\item[б)] Пусть $\|g(x)\|>0$, но $d(x,g^{-1}(0))=0$. Тогда найдется $x_1$ такой, что
+$$
+g(x_1)=0, \qquad\|x-x_1\|\leqslant K\|g(x)\|.
+$$
+
+Для $\bar{x}=x-x_1$ оценка имеет место.
+\item[в)] Пусть $\|g(x)\|>0$ и $d(x,g^{-1}(0))>0$. Тогда найдется $x_1\in g^{-1}(0)$ такой, что
+$$
+\|x_1-x\|\leqslant (1+\varepsilon)d(x,g^{-1}(0)).
+$$
+\end{enumerate}
+Для $\bar{x}=x_1-x$ оценка имеет место. Теорема доказана.
+\end{proof}
+\subparagraph{Теорема Люстерника о касательном многообразии.}
+
+Пусть $X$~--- банахово, $M\subset X$~--- множество, $x_0\in M$~--- точка.
+\begin{defin}Вектор $\bar{x}$ называется (односторонним) \emph{касательным}
+век\-то\-ром к $M$ в точке $x_0$, если существует <<кривая>>
+$$
+\tilde{x}(\varepsilon):(0,\varepsilon_0)\to X\qquad(\varepsilon_0>0)
+$$
+такая, что
+\begin{enumerate}
+\item[1)] $x_0+\varepsilon\bar{x}+\tilde{x}(\varepsilon)\in M\quad\forall\varepsilon\in(0,
+\varepsilon_0)$,
+\item[2)] $\frac{\|\tilde{x}(\varepsilon)\|}{\varepsilon}\to 0$ при
+$\varepsilon\to+0$, т.\,е.
+$\|\tilde{x}(\varepsilon)\|=o(\varepsilon)$,
+\end{enumerate}
+
+%\картинка!!!!!!!!
+Смотри рисунок $L6-2.pcx$
+
+
+\end{defin}
+Обозначим через $TM(x_0)$ множество всех касательных векторов в точке $x_0$.
+
+Если $\bar{x}\in TM(x_0)$ и $\lambda>0$, то $\lambda\bar{x}\in TM(x_0)$.
+Следовательно, $TM(x_0)$~--- конус (с вершиной с нуле).
+\begin{exams}
+\begin{enumerate}
+\item[$1^0$.] Если $x_0\in \inf M$, то $TM(x_0)=X$.
+\item[$2^0$.] Пусть $M=\{x\in \mathbb{R}^n\mid x>0\}\bigcup\{0\}$.
+Тогда касательный конус в нуле есть замыкание множества $M$.
+\item[$3^0$.] Пусть $M=\{(x,y)\in \mathbb{R}^2\mid x^2+y^2\leqslant
+1\}$. Касательный конус в точке $(1,0)$ есть полуплоскость
+$\{(x,y)\in \mathbb{R}^2\mid x\leqslant 0\}$,
+
+
+
+%\картинка!!!!!!!!
+Смотри рисунок $L6-3.pcx$
+
+
+\item[$4^0$.] Пусть $M=\{(x,y)\in \mathbb{R}^2\mid x^2+y^2=1\}$. Касательный конус
+в точке $(1,0)$ есть подпространство
+$\{(x,y)\in \mathbb{R}^2\mid x=0\}$~--- касательное подпространство.
+\end{enumerate}
+\end{exams}
+\begin{theorem}[Л.\,А.~Люстерник]
+Пусть $X$,$Y$~--- банаховы, $U\subset X$~--- открытое множество, $x_0\in U$~---
+точка, $g(x_0)=0$. Пусть
+$$
+M=\{x\in U\mid g(x)=0\}.
+$$
+Пусть оператор $g$ стого дифференцируем в точке $x_0$ и $g'(x_0)X=Y$
+(условие Люстерника). Тогда
+$$
+TM(x_0)=\{\bar{x}\in X\mid g'(x_0)\bar{x}=0\},
+$$
+т.\,е. касательный конус к множеству нулей оператора есть
+под\-прост\-ранст\-во, совпадающее с ядром его производной.
+\end{theorem}
+\begin{propos}
+Независимо от выполнения условия Люстерника имеет место включение
+$$
+TM(x_0)\subset Ker\,g'(x_0).
+$$
+\end{propos}
+\begin{proof}
+Пусть $\bar{x}\in TM(x_0)$.Тогда $\exists$ функция
+$$
+\tilde{x}(\varepsilon):(0,\varepsilon_0)\to X\qquad (\varepsilon_0>0)
+$$
+такая, что
+$$
+g(x_0+\varepsilon\bar{x}+\tilde{x}(\varepsilon))=0\qquad\forall\varepsilon\in (0,\varepsilon_0)
+\qquad \|\tilde{x}(\varepsilon)\|=o(\varepsilon)
+$$
+Следовательно,
+$$
+0=g(x_0)+g'(x_0)(\varepsilon\bar{x}+\tilde{x}(\varepsilon))+r(\varepsilon),
+$$
+где $\|r(\varepsilon)\|=o(\varepsilon)$. Но $g(x_0)=0$, следовательно,
+$$
+g'(x_0)(\varepsilon\bar{x})+r_1(\varepsilon)=0,
+$$
+где $\|r_1(\varepsilon)\|=o(\varepsilon)$.
+
+Деля это равенство на $\varepsilon$ и переходя к пределу по $\varepsilon\to+0$, получаем, что
+$g'(x_0)\bar{x}=0$. Следовательно, $\bar{x}\in Ker\,g'(x_0)$.
+\end{proof}
+
+\begin{proof}[Доказательство теоремы Люстерника.]
+Пусть выполнены условия тео\-ре\-мы. Требуется показать, что
+$$
+Ker\,g'(x_0)\subset TM(x_0).
+$$
+Пусть $g'(x_0)\bar{x}=0$. Тогда
+$$
+g(x_0+\varepsilon\bar{x})=g(x_0)+g'(x_0)\varepsilon\bar{x}+r(\varepsilon)=r(\varepsilon),
+$$
+где $\|r(\varepsilon)\|=o(\varepsilon)$.
+
+Поскольку $g$ обладает оценкой расстояния до нулевого уровня в
+ок\-рест\-нос\-ти точки $x_0$, то по теореме о поправке существуют
+$K>0$ и функция $\tilde{x}(\varepsilon):(0,\varepsilon_0)\to X$\
+($\varepsilon>0$) такие , что
+$$
+g(x_0+\varepsilon\bar{x}+\tilde{x}(\varepsilon))=0,
+$$
+$$
+\|\tilde{x}(\varepsilon)\|\leqslant
+K\|g(x_0+\varepsilon\bar{x})\|=o(\varepsilon).
+$$
+Следовательно, $\bar{x}\in TM(x_0)$.
+\end{proof}
+
+Отметим, что теорема Люстерника доказана в предположении о
+стро\-гой дифференцируемости $g$ в точке $x_0$ вместо непрерывной
+дифференци\-руемос\-ти в этой точке, которая предполагалась в
+первоначальной фор\-му\-ли\-ров\-ке теоремы Люстерника. Заметим
+также, что понятия: <<накрыва\-ние>>, <<мет\-ри\-чес\-кая
+регулярность>> и связанные с ними теоремы, возникли из анализа
+доказательства теоремы Люстерника и так или иначе были с ней
+связаны.
+
+\subparagraph{3. Отделимость выпуклых множеств.}
+
+Пусть $X$~--- банахово прос\-транст\-во, $x_1,x_2\in X$. Через
+$[x_1,x_2]$ мы обозначаем отрезок в $X$ с концами $x_1$, $x_2$,
+т.\,е. множество точек, представимых в виде $x=\alpha x_1+\beta
+x_2$, где $\alpha\geqslant0$, $\beta\geqslant0$, $\alpha+\beta=1$.
+
+Множество $M\subset X$~--- называется \emph{выпуклым}, если
+вместе с каждыми двумя точками оно содержит соединяющий их
+отрезок. Через $X^*$ мы обозначаем сопряженное пространство к
+$X$, состоящее из всех линейных непрерывных функционалов
+$x^*:X\to \mathbb{R}$. По определению
+$$
+\|x^*\|=\sup_{\|x\|\leqslant 1}\langle x^*,x\rangle
+$$
+--- норма в $X^*$. Пространство $X^*$ является банаховым.
+
+Пусть $A$,$B$~--- два множества в $X$.
+\begin{defin}
+Функционал $x^*\in X^*$, $x^*\neq0$ \emph{разделяет} $A$ и $B$, если
+\begin{equation}\label{6m1}
+\sup_{x\in A}\langle x^*,x\rangle\leqslant \inf_{x\in B}\langle
+x^*,x\rangle
+\end{equation}
+\end{defin}
+
+Пусть $c$~--- число, заключенное между левой и правой частями
+не\-ра\-венст\-ва (\ref{6m1}). Тогда гиперплоскость
+$\{x\mid\,\langle x^*,x\rangle\,=c\}$ \emph{разделяет}  $A$ и $B$
+(или \emph{отделяет} $A$ и $B$ друг от друга) в том смысле, что
+$A$ лежит в полупространстве
+$$
+\{x\mid\langle x^*,x\rangle\leqslant c\},
+$$
+а $B$ лежит в полупространстве
+$$
+\{x\mid\langle x^*,x\rangle\geqslant c\},
+$$
+
+
+%\картинка!!!!!!!!!!!!
+Смотри рисунок $L6-4.pcx$
+
+
+(см.~АТФ, стр.\,124)
+\begin{theoremotdel}
+Пусть $A$~--- выпуклое открытое множество, $B$~--- выпуклое
+множество. Пусть $A\cap B=\varnothing$. Тогда су\-щест\-вует
+ненулевой линейный непрерывный функционал, разделяющий $A$ и $B$.
+\end{theoremotdel}
+\begin{exercis}
+Докажите обратное.
+\end{exercis}
+
+Пусть $M\subset X$~--- множество, $x^*\in X^*$~--- функционал.
+\begin{defin}
+Функционал $x^*$ называется \emph{опорным} к множеству $M$, если
+$$
+\inf x^*(M):=\inf_{x \in M}\langle x^*,x \rangle >-\infty.
+$$
+\end{defin}
+Это означает, что $M\subset \{x\mid\langle x^*,x\rangle\geqslant
+a\}$ при некотором $a$. Множество всех опорных к $M$ обозначим
+через $M^*$.
+
+Покажите, что $M^*$~--- выпуклый конус.
+
+Напомним, что $K\subset X$~--- конус, если из условий \mbox{$x\in
+K,\lambda>0\Rightarrow \lambda x\in K$}. Конус $K$ является
+выпуклым $\Leftrightarrow$ из условий $x,y\in K\Rightarrow x
++y\in K$ (покажите !!).
+
+Пусть $K$~--- конус. Тогда
+$$
+x^*\in K^*\Leftrightarrow \langle x^*,x \rangle\geqslant0\qquad
+\forall\,x\in K
+$$
+(покажите !!)
+\begin{exams}
+\begin{enumerate}
+\item[$1^0$.] Пусть $K=\{x\in \mathbb{R}^n\mid x>0\}$.
+
+Тогда $K^*=\{y\in \mathbb{R}^n\mid y\geqslant0\}$.
+\item[$2^0$.] Пусть $M=\{x\in \mathbb{R}^2\mid x_1>0,x_2>0,x_1x_2\geqslant1\}$.
+
+
+
+%\картинка!!!!!!!!!!!
+%% совсем маленькая - не стали рисовать
+
+Тогда $M^*=\{y\in \mathbb{R}^2\mid y\geqslant0\}$.
+\end{enumerate}
+\end{exams}
+Пусть $A$ и $B$ два множества в $X$. Покажите, что $A$ и $B$ можно отделить
+$\Leftrightarrow\ \exists$ ненулевые функционалы $x^*$ и $y^*$ такие, что
+$$
+x^*\in A^*,\quad y^*\in B^*,
+$$
+$$
+x^*+y^*=0,
+$$
+$$
+\inf\langle x^*,A \rangle+\inf \langle x^*,B\rangle\geqslant0.
+$$
+При такой формулировке понятия отделимости теорему отделимости
+можно обобщить на конечное число множеств.
+\begin{theorem}[Дубовицкий и Милютин]
+Пусть в банаховом прост\-ранст\-ве $X$ заданы непустые выпуклые
+открытые множества $M_1,M_2,\ldots ,M_n$ и непустое выпуклое
+множество $M$. Тогда условие
+$$
+M_1\cap\ldots\cap M_n\cap M=\varnothing
+$$
+эквивалентно существованию набора функционалов
+$$
+x_1^*,\ldots,x_n^*,x^*
+$$
+такого, что
+$$
+x_1^*+\ldots+x_n^*+x^*=0,\eqno{(a)}
+$$
+$$
+\|x_1^*\|+\ldots+\|x_n^*\|+\|x^*\|>0,\eqno{(b)}
+$$
+$$
+\inf\langle x_1^*,M\rangle+\ldots+\inf\langle
+x_n^*,M_n\rangle+\inf(x^*,M)\geqslant0.\eqno{(c)}
+$$
+Из последнего условия вытекает, что
+$$
+x_1^*\in M^*_1,\ldots,x_n^*\in M^*_n,\quad x^*\in M^*.
+$$
+\end{theorem}
+\begin{proof}
+Для доказательства нам понадобится следующий факт. Пусть
+$X_1,X_2,\ldots ,X_n$~--- банаховы пространства,
+$\widehat{X}=X_1\times \ldots \times X_n$~--- их произведение.
+Тогда $\hat{x}^*\in \widehat{X}^*\Leftrightarrow\exists\,x^*_k\in
+X^*_k$ такие, что для любого
+$$
+\hat{x}=(x_1,\ldots,x_n)\in \widehat{X}
+$$
+имеем
+$$
+\langle\hat{x}^*,\hat{x}\rangle=\langle
+x^*_1,x_1\rangle+\ldots+\langle x^*_n,x_n\rangle
+$$
+(покажите это !!).
+
+Приступим к доказательству теоремы.
+\begin{enumerate}
+\item[а)] \emph{Необходимость.}
+
+Пусть
+$$
+M_1\cap\ldots\cap M_n \cap M=\varnothing.
+$$
+В произведении
+$$
+\widehat{X}=\underbrace{X\times X\ldots\times X}_{\mbox{n раз}}=X^n
+$$
+рассмотрим множество $A$, состоящее из всех наборов вида
+$$
+\hat{x}=(x_1-x,x_2-x,\ldots ,x_n-x),
+$$
+где $x_1\in M_1,\ldots ,x_n\in M_n, x\in M$. Тогда $A$ не содержит нуля $\hat{0}$
+пространства $\widehat{X}$ (в противном случае $x_1=x_2=\ldots =x_n=x$~---
+общий элемент множеств $M_1,M_2,\ldots ,M_n,M$). Множество $A$ открыто, ибо открыто
+произведение
+$$
+M_1\times M_2\ldots\times M_n,
+$$
+а $A$ есть объединение его <<сдвигов>> на элемент $-(x,\ldots
+,x)$ по всем $x\in M$. Далее, из выпуклости $M_1,M_2,\ldots
+,M_n,M$ вытекает выпуклость $A$ (проверьте !!). Следовательно,
+$\exists$ ненулевой линейный непрерывный функционал
+$\hat{x^*}=(x_1^*, \ldots ,x_n^*)$, отделяющий $A$ от нуля. Не
+ограничивая общности считаем, что $\hat{x^*}(A)\geqslant0$, т.\,е.
+\begin{multline*}
+\langle x_1^*,x_1-x\rangle+\ldots+\langle x_n^*,x_1-x\rangle\geqslant0 \\
+      \forall\,x_1\in M_1,\ldots,x_n\in M_n,\qquad x\in M.
+\end{multline*}
+Положим $x^*=-x_1^*-\ldots-x_n^*$. Тогда $x_1^*+\ldots+x_n^*+x^*$=0, не все функционалы
+$x_1^*,\ldots,x_n^*$~--- нулевые (набор нетривиален) и
+\begin{multline*}
+\langle x_1^*,x_1\rangle+\ldots+\langle x_n^*,x_n\rangle+\langle x^*,x\rangle\geqslant0 \\
+\forall\,x_1\in M_1,\ldots,x_n\in M_n,\quad x\in M.
+\end{multline*}
+Последнее условие равносильно тому, что
+$$
+\inf x_1^*(M_1)+\ldots+\inf x_n^*(M_n)+\inf x^*(M)\geqslant0.
+$$
+Необходимость даказана.
+\item[б)] \emph{Достаточность.}
+
+Пусть $\exists$ $x_1^*,\ldots,x_n^*,x^*$, удовлетворяющие
+условиям (a), (b), (c) теоремы, но при этом пересечение
+$M_1\cap\ldots\cap M_n\cap M$ непусто.
+
+Пусть $x_0$~--- общий элемент всех множеств $M_1,M_2,\ldots
+,M_n,M$.
+
+\noindent Тогда
+$$
+\langle x_1^*,x_0\rangle+\ldots+\langle x_n^*,x_0\rangle+\langle
+x^*,x_0\rangle=0.
+$$
+Выберем среди $x_1^*,\ldots,x_n^*$ ненулевой функционал. Пусть
+это будет $x_1^*$. Найдется элемент $\bar{x}\in X$ такой, что
+$\langle x_1^*,\bar{x}\rangle<0$. Поскольку \mbox{$x_0\in M_1$} и
+$M_1$ открыто, то $x_0+\varepsilon\bar{x}\in M_1$ при малом
+$\varepsilon>0$. Тогда
+$$
+\langle x_1^*,x_0+\varepsilon\bar{x}\rangle+\langle
+x_2^*,x_0\rangle+\ldots+\langle x_n^*,x_0 \rangle+\langle
+x^*,x_0\rangle<0,
+$$
+где $x_0+\varepsilon\bar{x}\in M_1\ x_0\in M_2,\ldots ,x_0\in M_n,x_0\in M\Rightarrow$
+$$
+\inf x_1^*(M_1)+\inf x_2^*(M_2)+\ldots+\inf x_n^*(M_n)+(x^*,M)<0
+$$
+--- противоречие.
+
+Достаточность доказана.
+
+Теорема доказана.
+\end{enumerate}
+\end{proof}
+\noindent Мы уже отмечали, что если $K$~--- конус и $\inf
+x^*(K)>-\infty$, то \mbox{$\inf x^*(K)=0$}. Последнее означает,
+что $\langle x^*,x\rangle\geqslant0\quad\forall\,x\in K$, т.\,е.
+$x^*\in K^*$. Поэтому для конусов теорема Дубовицкого--Милютина
+имеет следующую более простую формулировку.
+\begin{theorem}[Дубовицкий и Милютин]
+Пусть $\Omega_1,\ldots,\Omega_n$ непустые отк\-ры\-тые выпуклые
+конусы в банаховом пространстве $X$, а $\Omega\subset X$~---
+непустой выпуклый конус. Тогда условие
+$$
+\Omega_1\cap\ldots\cap\Omega_n\cap\Omega=\varnothing
+$$
+равносильно существованию функционалов
+$$
+x^*_1\in \Omega^*_1,\ldots,x^*_n\in \Omega^*_n,x^*\in \Omega^*,
+$$
+таких, что
+$$
+x^*_1+\ldots+x^*_n+x^*=0
+$$
+и при этом
+$$
+\|x^*_1\|+\ldots+\|x^*_n\|>0
+$$
+(последнее означает, что набор $x^*_1,\ldots,x^*_n$ нетривиален).
+\end{theorem}
+\subparagraph{4. Лемма о нетривиальности аннулятора.}
+Пусть $L\subset X$~--- подпостранство. Положим
+$$
+L^\perp=\{x^*\in X^* \mid \langle x^*,x\rangle=0\quad\forall x\in L\}
+$$
+и назовем $L^\perp$ \emph{аннулятором} подпространства $L$. Ясно, что любой $x^*\in L^\perp$
+является опорным к $L$, но верно и обратное (поясните!!). Таким образом, $L^\perp=L^*$.
+Очевидно, $L^\perp\subset X^*$~--- подпространство.
+\begin{lemma}
+Пусть $L\subset X$~--- подпространство, не совпадающее с $X$.
+Тогда $L^\perp$ содержит ненулевой элемент.
+\end{lemma}
+\begin{proof}
+Пусть $x\in X\smallsetminus L$ . Тогда $B(x,\varepsilon)\subset X\smallsetminus L$
+при некотором $\varepsilon>0$. Отделим $B(x,\varepsilon)$ от $L$ ненулевым функционалом.
+Тогда $x^*\in L^\perp$, $x^*\neq0$ (поясните почему!!).
+\end{proof}
+(АТФ, стр.\,127)
+
+\endinput

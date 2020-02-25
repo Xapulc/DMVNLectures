@@ -1,0 +1,102 @@
+
+\subsection{Решения некоторых задач}
+
+\def\psp{\psi^+}
+\def\psm{\psi^-}
+
+\def\pspm{\psi^\pm}
+
+\def\apsp{\overset{*}{\psi}{}^+}
+\def\apsm{\overset{*}{\psi}{}^-}
+\def\apspm{\overset{*}{\psi}{}^\pm}
+
+\def\avpm{\overset{*}{v}{}^\pm}
+
+\def\aphp{\overset{*}{\ph}{}^+}
+
+\def\aapm{\overset{*}{a}{}^\pm}
+\def\aamp{\overset{*}{a}{}^\mp}
+
+\def\avp{\overset{*}{v}{}^+}
+\def\avm{\overset{*}{v}{}^-}
+
+Ниже следует более общее доказательство написанной в соответствующей главе теоремы. (С) А.\,Юхименко
+\begin{problem}[Задача 23]
+Для вектора энергии-импульса вещественного скалярного поля получить выражение через
+$a^{\pm}(\k)$.
+\end{problem}
+\begin{solution}
+Для начала получим выражение для энергии, \те $P^0$. Как известно,
+\mln{
+P^0=\int \dxt  T^{00}=\frac12\int \dxt
+\hr{\sum_{\mu=0}^3\pd_\mu \ph\pd_\mu \ph+m^2\ph^2}=\\=\frac12\int \dxt
+\hr{\sum_{\mu=0}^3\pd_\mu (\php +\ph^-)\pd_\mu (\php +\ph^-)+m^2(\php +\ph^-)^2}=\\=
+\frac12\int \dxt
+\hr{\sum_{\mu=0}^3\pd_\mu \php \pd_\mu \php +m^2(\php )^2}+I^{+-}+I^{-+}+I^{--}.
+}
+Посчитаем лишь $I^{++}$ и $I^{+-}$, тогда станет ясно чему равны остальные. Итак,
+\mln{
+I^{++}=\frac12\frac1{(2\pi)^3}\int \dxt \dkt \dlt  \hr{\sum_{n=0}^3ik^nil^n+m^2}\frac{e^{i(k^0+l^0)x^0}e^{i(\k+\l)\mathbf{x}}}{\sqrt{2k^0}\sqrt{2l^0}}a^+(\k)a^+(\l)=\\=
+\hc{(2\pi)^{-3}\int \dxt e^{i\k\mathbf{x}}=\de(\k)}= \frac12\int \dkt \dlt \hr{m^2-k^0l^0-\k\l}\frac{e^{i(k^0+l^0)x_0}}{\sqrt{2k^0}\sqrt{2l^0}}\,a^+(\k)a^+(\l)\de(\k+\l)=\\=\hc{(k^0)^2=m^2+\k^2}=0.
+}
+
+\mln{
+I^{+-}=\frac12\frac1{(2\pi)^3}\int \dxt \dkt \dlt \hr{\sum_{n=0}^3ik_n(-il_n)+m^2}\frac{e^{i(k^0-l^0)x^0}e^{i(\k-\l)\mathbf{x}}}{\sqrt{2k^0}\sqrt{2l^0}}a^+(\k)a^-(\l)=\\=
+\hc{(2\pi)^{-3}\int \dxt e^{i\k\mathbf{x}}=\de(\k)}= \frac12\int \dkt \int
+\dlt \hr{m^2+k^0l^0+\k\l}\frac{e^{i(k^0-l^0)x^0}}{\sqrt{2k^0}\sqrt{2l^0}}\,a^+(\k)a^+(\l)\de(\k-\l)=\\=
+\frac12\int \dkt
+(m^2+(k^0)^2+\k^2)\frac1{\sqrt{2k^0}\sqrt{2k^0}}\,a^+(\k)a^-(\k)= \frac12\int
+\dkt  k^0a^+(\k)a^-(\k).
+}
+Итак,
+\eqn{P^0=\frac12\int \dkt  k^0\hr{a^+(\k)a^-(\k)+a^-(\k)a^+(\k)},}
+а общий ответ такой:
+\eqn{P^{\mu}=I^{-+}+I^{+-}=\frac12\int \dkt k^{\mu}\hr{\ap (\k)a^-(\k)+a^-(\k)\ap(\k)}.}
+\end{solution}
+
+\begin{problem}[Задача 43]
+Вывести из уравнения Дирака уравнения на $\chi^{\pm}(\k)$ и $(\chi^*)^{\pm}(\k)$.
+\end{problem}
+\begin{solution}
+$\psi(t)$ должно удовлетворять уравнению $(i\ga^{\mu}\pd_\mu -m)\psi(x)=0$, распишем чему равно
+$\psi(x)$:
+$$
+\psi(x)=\psp (x)+\psi^-(x)=\int \dkt  e^{ikx}\chi^+(\k)+\int
+\dkt  e^{-ikx}\chi^-(\k),
+$$
+поэтому
+$$
+0=\int \dkt  e^{ikx}(ii\ga^{\mu}k_\mu-m)\chi^+(\k)+\int \dkt e^{-ikx}(-ii\ga^{\mu}k_\mu-m)\chi^-(\k).
+$$
+Поэтому
+$$
+(\ga^{\mu}k_\mu\pm m)\chi^{\pm}(\k)=0.
+$$
+Уравнение на $(\chi^*)^{\pm}(\k)$ получается из этого простым сопряжением:
+$$
+(\chi^*)^{\pm}(\k)(\ga^{\mu})^* k_\mu\pm m=0.
+$$
+\end{solution}
+
+\begin{problem}[Задача 45]
+Получить условие нормировки решений, сопряженных по Дираку:
+$$
+\ol v^{\pm}_s(\k)v^{\mp}_r(\k)=\pm\frac{m}{k_0}\,\de^s_r.
+$$
+\end{problem}
+\begin{solution}
+Доказательство нагло скатаем с книжки Боголюбова\ч Ширкова. Умножим равенство
+$$
+(\ga^{\mu}k_\mu+m)v^+_r(\k)=0
+$$
+слева на $\avm_s(\k)$, получим (учитывая, что $\avpm_r\ga^0=\ol v^{\pm}_r$)
+$$
+k_0\ol v^-_sv^+_r-k_\mu \avm_s\ga^{\mu}v^+_r+m \avm_s v^+_r=0.
+$$
+Применим к полученному эрмитово сопряжение (и воспользуемся тем, что $\avpm_r=(v^{\mp}_r)^*$ и
+$\ga^{\mu *}=-\ga^{\mu}$):
+$$
+k_0\ol v^-_rv^+_s+k_\mu \avm_r\ga^{\mu}v^+_s+m\avm_rv_s^+=0.
+$$
+Сравнивая эти два выражения, получаем требуемое.
+\end{solution}

@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amssymb,amsmath}
+\textwidth=19cm \textheight=23.5cm
+\advance\voffset-2cm\hoffset=-3.75cm \sloppy
+\newcommand{\intl}[2]{\int\limits_{{#1}}^{{#2}}}
+\newcommand{\suml}[2]{\sum\limits_{{#1}}^{{#2}}}
+\newcommand{\contdi}[4]{\in \textbf{C}[#1,#2]\times(#3,#4)}
+\newcommand{\contd}[4]{\in \textbf{C}[#1,#2]\times[#3,#4]}
+\newcommand{\cont}[2]{\in \textbf{C}[#1,#2]}
+\newcommand{\conti}[2]{\in \textbf{C}(#1,#2)}
+\newcommand{\diff}[2]{\in \textbf{D}(#1,#2)}
+\newcommand{\then}{\Rightarrow}
+\newcommand{\sel}[1]{\par\textbf{\textit{#1}}\par}
+\newcommand{\ph}{\varphi}
+\newcommand{\ps}{\psi}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\dra}{\rightrightarrows}
+\renewcommand{\ge}{\geqslant}
+\newcommand{\fa}{\,\forall\,}
+\newcommand{\exi}{\,\exists\,}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\npxl}{\frac{n\pi x}{l}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\vp}{v.p.}
+\newcommand{\bh}[1]{\left(#1\right)}
+\newcommand{\delim}{\vskip 1pt \hrule \vskip 1pt}
+\begin{document}
+\scriptsize
+\setlength{\baselineskip}{0pt}
+
+%\sel{Непрерывность интеграла}
+\delim
+1. $f \contd{a}{A}{b}{B} \then F(y)=\intl{a}{A}f(x,y)dx \cont{b}{B}$, можно менять порядок интегрирования.
+
+2. Если, кроме того, $f'_y \contd{a}{A}{b}{B} \then \frac{d}{dy}\intl{a}{A}f(x,y)dx=\intl{a}{A}f'_y(x,y)dx$ при  $y \in (b,B)$.
+
+3. Пусть $\ph(y), \ps(y) \diff{a}{A} \then \frac{d}{dy}\intl{\ph}{\ps}f(x,y)dx=f(\ps,y)\ps'-f(\ph,y)\ph'+\intl{\ph}{\ps}f'_y(x,y)dx$.
+\delim
+%\sel{Равномерная сходимость, дифференцирование и интегрирование}
+1. Если $\intl{a}{\infty}f(x,y)dx$ сходится равномерно на $(y_1,y_2)$, и $f \contdi{a}{\infty}{y_1}{y_2} \then \intl{a}{\infty}f(x,y)dx \conti{y_1}{y_2}$.
+
+2. Если $f,f'_y \contdi{a}{\infty}{y_1}{y_2}$, $\intl{a}{\infty}f(x,y)dx \to$, $\intl{a}{\infty}f'_y(x,y)dx \dra$, то
+$\frac{d}{dy}\intl{a}{\infty}f(x,y)dx=\intl{a}{\infty}f'_y(x,y)dx$.
+
+3. Если $f \contd{a}{\infty}{y_1}{y_2}$ и $\intl{a}{\infty}f(x,y)dx \dra$ на $[y_1,y_2]$, то $\intl{y_1}{y_2}\intl{a}{\infty}f(x,y)dxdy=
+\intl{a}{\infty}\intl{y_1}{y_2}f(x,y)dydx$.
+
+4. (3) верно и для неограниченных $(y_1,y_2)$, если $f(x,y) \ge 0$ и внутренние интегралы непрерывны.
+\delim
+%\sel{Полезные формулы}
+1. Фруллани: $\intl{0}{\infty}\frac{f(ax)-f(bx)}{x}dx=f(0)\ln\frac{b}{a}$, где $a,b>0, f \cont{0}{\infty}$ и $\fa A>0 \exi
+\intl{A}{\infty}\frac{f(x)}{x}dx$.
+
+2. Эйлера -- Пуассона: $\intl{0}{\infty}e^{-x^2}dx=\frac{\sqrt{\pi}}{2}$.
+
+3. Дирихле: $\intl{0}{\infty}\frac{\sin\alpha x}{x}dx=\frac{\pi}{2}\sgn \alpha$.
+
+4. $\Gamma(x)=\intl{0}{\infty}t^{x-1}e^{-t}dt$, понижение $\Gamma(x+1)=x\Gamma(x)$, $\Gamma(n+1)=n!$, дополнение $\Gamma(x)\Gamma(1-x)=\frac{\pi}{\sin \pi x}$.
+
+5. $\textbf{B}(x,y)=\intl{0}{1}t^{x-1}(1-t)^{y-1}dt$, связь $\textbf{B}(x,y)=\frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}$.
+\delim
+%\sel{Фурье}
+1. Если $f:\R \to \R$, то $f(x)=\intl{0}{\infty}[a(t)\cos tx+b(t)\sin tx]dt$, где $a(t)=\frac{1}{\pi}\intl{-\infty}{\infty}f(x)\cos tx dx$ и
+$b(t)=\frac{1}{\pi}\intl{-\infty}{\infty}f(x)\sin tx dx$.
+
+2. $F(x)=\frac{1}{\sqrt{2\pi}}\intl{-\infty}{\infty}f(t)e^{-itx}dt$, а $f(x)=\frac{1}{\sqrt{2\pi}}\vp\intl{-\infty}{\infty}F(t)e^{itx}dt$.
+
+3. $f(x)=\frac{a_0}{2}+\suml{n=1}{\infty}\bh{a_n\cos\npxl+b_n\sin\npxl}$, где $a_n=\frac{1}{l}\intl{-l}{l}f(x)\cos\npxl dx$,
+а $b_n=\frac{1}{l}\intl{-l}{l}f(x)\sin\npxl dx$.
+\delim
+\end{document}

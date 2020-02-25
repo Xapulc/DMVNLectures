@@ -1,0 +1,1047 @@
+\section{Определители}
+\label{det}
+
+\epigraph{We build too many walls and not enough bridges.}{Isaac
+  Newton}
+
+\subsection{Определение}
+
+\label{matrixdet:def}
+
+Путь задана некоторая квадратная матрица $A$, каждый элемент которой
+есть элемент коммутативного кольца с единицей.\index{определитель}\index{матрица!квадратная}
+
+$$ A =
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{pmatrix}
+$$
+
+Тогда определителем матрицы называют следующую сумму по всем
+перестановкам $n$ символов:
+
+$$
+\det A = \mbmat { a_{11} & \cdots & a_{1n} \\ \vdots & \ddots &
+\vdots \\ a_{n1} & \cdots & a_{nn} } =
+\sum_\sigma(
+\sgn\sigma\cdot
+a_{1\sigma(1)}
+a_{2\sigma(2)}
+\cdots
+a_{n\sigma(n)}),\cln\text{Где}\cln\sigma=\rbmat{1&2&\cdots&n\\i_1&i_2&\cdots&i_n}
+$$
+
+%Простейшие определители матриц:
+%\begin{description}
+%	\item[Порядок $2\times2$:]
+%		\begin{math}
+%			\mbmat{a_1&b_1\\a_2&b_2} = a_1b_2 - a_2b_1
+%		\end{math}
+%	\item[Порядок $3\times3$:]
+%		\begin{math}
+%			\mbmat{a_1&b_1&c_1\\a_2&b_2&c_2\\a_3&b_3&c_3} =
+%			a_1b_2c_3+a_2b_3c_1+a_3b_1c_2-a_3b_2c_1-b_3c_2a_1-c_3a_2b_1
+%		\end{math}
+%\end{description}
+
+\begin{df}
+  Матрица называется \emph{вырожденной}\index{матрица!вырожденная}, если её определитель равен 0 и \emph{невырожденной}\index{матрица!невырожденная} в обратном случае.
+\end{df}
+
+\subsection{Свойства определителей}
+
+\label{matrixdet:props}
+
+\begin{itemize}
+	\item $\det A^\Tb=\det A$. Доказательство
+		заключается в том, чтобы выразить элемент $A^\Tb$
+		через элементы $A$:
+		$$
+			\det A^\Tb\eqdef
+			\sum_\sigma\sgn\sigma\cdot
+			a^\Tb_{1\sigma(1)}
+			a^\Tb_{2\sigma(2)}
+			\cdots
+			a^\Tb_{n\sigma(n)} =
+			\sum_\sigma\sgn\sigma\cdot
+			a_{\sigma(1)1}
+			a_{\sigma(2)2}
+			\cdots
+			a_{\sigma(n)n} =
+		$$ $$
+			= \sum_\sigma\sgn\sigma\cdot
+			a_{1\sigma^{-1}(1)}
+			a_{2\sigma^{-1}(2)}
+			\cdots
+			a_{n\sigma^{-1}(n)} =
+			\left\{\tau=\sigma^{-1};\;|\tau|=|\sigma|\right\} =
+		$$ $$
+			= \sum_\tau(-1)^{|\tau|}
+			a_{1\tau(1)}
+			a_{2\tau(2)}
+			\cdots
+			a_{n\tau(n)} = \det A
+		$$
+	\item При умножении какой-либо строки/столбца на $\lambda$,
+		определитель матрицы тоже увеличивается в $\lambda$ раз.
+		$$
+		\mbmat {
+		a_{11} & a_{22} & \cdots & a_{1n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		\lambda a_{i1} & \lambda a_{i2} & \cdots & \lambda a_{in} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \cdots & a_{nn} } =
+		\lambda
+		\mbmat{
+		a_{11} & a_{22} & \cdots & a_{1n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{i1} & a_{i2} & \cdots & a_{in} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \cdots & a_{nn} }
+		$$
+		Доказательство тривиально.
+	\item Если каждый элемент одной строки/столбца разбит на сумму, то
+		определитель матрицы разбивается на сумму определителей.
+		$$
+		\mbmat{
+		a_{11} & \cdots & a_{1n} \\
+		\vdots & \ddots & \vdots \\
+		a'_{i1} + a''_{i1} & \cdots & a'_{in} + a''_{in} \\
+		\vdots & \ddots & \vdots \\
+		a_{n1} & \cdots & a_{nn}
+		} = \mbmat{
+		a_{11} & \cdots & a_{1n} \\
+		\vdots & \ddots & \vdots \\
+		a'_{i1} & \cdots & a'_{in} \\
+		\vdots & \ddots & \vdots \\
+		a_{n1} & \cdots & a_{nn}
+		} + \mbmat{
+		a_{11} & \cdots & a_{1n} \\
+		\vdots & \ddots & \vdots \\
+		a''_{i1} & \cdots & a''_{in} \\
+		\vdots & \ddots & \vdots \\
+		a_{n1} & \cdots & a_{nn}
+		}
+		$$
+		Для доказательства рассмотрим левую часть:
+		$$
+		\sum_\sigma\sgn\sigma\cdot
+		a_{1\sigma(1)}
+		a_{2\sigma(2)}
+		\cdots
+		\left(a'_{i\sigma(i)} + a''_{i\sigma(i)}\right)
+		\cdots
+		a_{n\sigma(n)} =
+		$$ $$
+		= \sum_\sigma\sgn\sigma\cdot\left(
+		a_{1\sigma(1)}
+		a_{2\sigma(2)}
+		\cdots
+		a'_{i\sigma(i)}
+		\cdots
+		a_{n\sigma(n)}
+		+
+		a_{1\sigma(1)}
+		a_{2\sigma(2)}
+		\cdots
+		a''_{i\sigma(i)}
+		\cdots
+		a_{n\sigma(n)}
+		\right) =
+		$$ $$
+		\sum_\sigma\sgn\sigma\cdot
+		a_{1\sigma(1)}
+		a_{2\sigma(2)}
+		\cdots
+		a'_{i\sigma(i)}
+		\cdots
+		a_{n\sigma(n)}
+		+
+		\sum_\sigma\sgn\sigma\cdot
+		a_{1\sigma(1)}
+		a_{2\sigma(2)}
+		\cdots
+		a''_{i\sigma(i)}
+		\cdots
+		a_{n\sigma(n)} \eqdef
+		$$ $$
+		\eqdef \det A_1 + \det A_2
+		$$
+		($A_1$, $A_2$~--- матрицы правой части)
+\end{itemize}
+
+\subsection{Частные случаи при вычислении определителя}
+
+\label{matrixdet:part}
+
+\begin{theorem}
+	\label{matrixdet:part:swaprows}
+	Если в матрице поменять местами две строки, то определитель поменяет
+	знак.
+\end{theorem}
+\begin{proof}
+	Пусть начальная матрица~--- $A$, и в ней поменяли местами $i$-ую и
+	$j$-ую строки и получили матрицу $\tilde A$. Тогда имеют место
+	следующие соотношения;
+	$$
+	\begin{cases}
+		\det A &\eqdef
+			\sum\limits_\sigma\sgn\sigma\cdot
+			a_{1\sigma(1)}
+			\cdots
+			a_{i\sigma(i)}
+			\cdots
+			a_{j\sigma(j)}
+			\cdots
+			a_{n\sigma(n)}
+		\\
+		\det\tilde A &\eqdef
+			\sum\limits_\sigma\sgn\sigma\cdot
+			a_{1\sigma(1)}
+			\cdots
+			a_{i\sigma(j)}
+			\cdots
+			a_{j\sigma(i)}
+			\cdots
+			a_{n\sigma(n)}
+	\end{cases}
+	$$
+	Пусть подстановка $\sigma$ имеет такой вид:
+\begin{center}
+\scalebox{0.7}{
+	$\sigma=\rbmat{
+		1&\cdots&i&\cdots&j&\cdots&n \\
+		p_1&\cdots&p_i&\cdots&p_j&\cdots&p_n
+	}$
+}
+\end{center}
+	Тогда введем подстановку $\tau$:
+\begin{center}
+\scalebox{0.7}{
+	$\tau=\rbmat{
+		1&\cdots&i&\cdots&j&\cdots&n \\
+		p_1&\cdots&p_j&\cdots&p_i&\cdots&p_n
+	}$
+}
+\end{center}
+
+	То есть подстановку, отличающуюся от $\sigma$ транспозицией $(ij)$.
+	Из этого следует, что $\sgn\sigma=-\sgn\tau$. Ясно, что количество
+	всевозможных $\sigma$ и $\tau$ совпадает, так как существует
+	взаимооднозначное соответствие между ними. То есть нет разницы,
+	суммировать по всем $\sigma$ или по всем $\tau$. Заменим тогда
+	в $\det\tilde A$ подстановку:
+
+	$$
+	\det\tilde A =
+	\sum_\sigma \sgn\sigma\cdot
+		a_{1\sigma(1)}
+		\cdots
+		a_{i\sigma(j)}
+		\cdots
+		a_{j\sigma(i)}
+		\cdots
+		a_{n\sigma(n)}
+	=
+	$$ $$
+	= \sum_\tau (-1)\sgn\tau
+		a_{1\tau(1)}
+		\cdots
+		a_{i\tau(i)}
+		\cdots
+		a_{j\tau(j)}
+		\cdots
+		a_{n\tau(n)}
+	= -\det A
+	$$
+\end{proof}
+
+\begin{theorem}
+  Определитель с двумя одинаковыми строками равен нулю
+  \label{matrixdet:part:samerows}
+\end{theorem}
+\begin{proof}
+  Доказательство тривиально и основано на предыдущей теореме.
+\end{proof}
+
+\begin{theorem}
+	Определитель матрицы не изменится, если к какой-либо ее строке
+	добавить другую строку, умноженную на $\lambda$.
+\end{theorem}
+\begin{proof}
+	$$
+	\mbmat{
+	a_{11} & a_{12} & a_{13} & \cdots & a_{1n} \\
+	\vdots & \vdots & \vdots & \ddots & \vdots \\
+	\left(a_{i1} + \lambda a_{j1}\right) & \left(a_{i2} + \lambda
+	a_{j2}\right) & \left(a_{i3} + \lambda a_{j3}\right) & \cdots & \left(a_{in} + \lambda a_{jn}\right) \\
+	\vdots & \vdots & \vdots & \ddots & \vdots \\
+	a_{j1} & a_{j2} & a_{j3} & \cdots & a_{jn} \\
+	\vdots & \vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & a_{n3} & \cdots & a_{nn}
+	} =
+	$$ $$
+	= \mbmat{
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{i1} & a_{i2} & \cdots & a_{in} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{j1} & a_{j2} & \cdots & a_{jn} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	} + \lambda\underbrace{\mbmat{
+	a_{11} & a_{12} & \cdots & a_{1n} \\
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{j1} & a_{j2} & \cdots & a_{jn} \\
+	\hline
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{j1} & a_{j2} & \cdots & a_{jn} \\
+	\hline
+	\vdots & \vdots & \ddots & \vdots \\
+	a_{n1} & a_{n2} & \cdots & a_{nn}
+	}}_{=\cln0\;\text{(\ref{matrixdet:part:samerows})}}
+	= \mbmat{
+	a_{11} & \cdots & a_{1n} \\
+	\vdots & \ddots & \vdots \\
+	a_{n1} & \cdots & a_{nn}
+	}
+	$$
+\end{proof}
+
+Из этих частных случаев следует, что матрица является невырожденной тогда и только тогда, когда система её строк линейно независима.
+
+\subsection{Аксиоматический подход}
+
+Стоит отметить, что определитель однозначно определяется своими свойствами, а именно можно ввести функцию определителя и аксиоматически:
+
+\emph{Определителем}\index{определитель} называется функция $\det\colon M_{n\times n}(\R)\to\R$, удовлетворяющая следующим условиям:
+
+\begin{enumerate}
+	\item(линейность)\par
+		К $i$-ой строке можно прибавить $j$-ю, домноженную на некоторое число
+		$\lambda\in\R$. Также $i$-ю строку можно домножить на ненулевое число
+		$\lambda\in\R$. При этом определитель не изменяется.
+		$$
+			\mbmat{\cdots\\ i\\\cdots\\ j\\\cdots}=
+			\mbmat{\cdots\\ i+\lambda j\\\cdots\\ j\\\cdots}
+		$$ $$
+			\mbmat{\cdots\\ i\\\cdots}=
+			\mbmat{\cdots\\\lambda i\\\cdots}
+		$$
+	\item(кососимметричность)\par
+		Если $i$-ю и $j$-ю строки поменять местами, то определитель изменит знак.
+		$$
+			\mbmat{\cdots\\ i\\\cdots\\ j\\\cdots}=-
+			\mbmat{\cdots\\ j\\\cdots\\ i\\\cdots}
+		$$
+	\item(равенство нулю)\par
+		Если две строки матрицы совпадают, то ее определитель равен нулю.
+		$$
+			\mbmat{\cdots\\\alpha\\\cdots\\\alpha\\\cdots}=0
+		$$
+	\item(нормировка)\par
+		Определитель единичной матрицы равен единице.
+		$$ \det E=1 $$
+\end{enumerate}
+
+Покажем вывод развёрнутой формулы определителя по заданным условиям:
+
+\begin{multline*}
+	\det A=
+	\mbmat{a_{11} & \cdots & a_{1n} \\ \vdots & \ddots & \vdots \\ a_{n1} & \cdots & a_{nn}}=
+	\mbmat{
+		a_{11}\varepsilon_1+a_{12}\varepsilon_2+\cdots+a_{1n}\varepsilon_n\\
+		\cdots \\
+		a_{n1}\varepsilon_1+a_{n2}\varepsilon_2+\cdots+a_{nn}\varepsilon_n
+	}= \\
+	=\{\text{раскрывая по линейности определителя}\}= \\
+	=\sum_{i_1,\cdots,i_n\in\{1,\cdots,n\}}\mbmat{
+		a_{1i_1}\varepsilon_{i_1} \\
+		a_{2i_2}\varepsilon_{i_2} \\
+		\cdots \\
+		a_{ni_n}\varepsilon_{i_n}
+	}=
+	\sum_{i_1,\cdots,i_n\in\{1,\cdots,n\}}
+	a_{1i_1}a_{2i_2}\cdots a_{ni_n}
+	\mbmat{
+		\varepsilon_{i_1} \\
+		\varepsilon_{i_2} \\
+		\cdots \\
+		\varepsilon_{i_n}
+	}= \\
+	=\{\text{убираем нулевые слагаемые}\}=
+	\sum_{\substack{
+		i_1,\cdots,i_n\in\{1,\cdots,n\} \\
+		\forall\alpha,\beta\in\{1,\cdots,n\}\colon i_\alpha\ne i_\beta
+	}}
+	a_{1i_1}a_{2i_2}\cdots a_{ni_n}
+	\mbmat{
+		\varepsilon_{i_1} \\
+		\varepsilon_{i_2} \\
+		\cdots \\
+		\varepsilon_{i_n}
+	}= \\
+	=\{\text{введем подстановку $\sigma\in\Sb_n\colon\rbmat{1&\cdots&n\\i_1&\cdots&i_n}$}\}=
+	\sum_{\sigma\in\Sb_n}
+	a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}
+	\mbmat{
+		\varepsilon_{\sigma(1)} \\
+		\varepsilon_{\sigma(2)} \\
+		\cdots \\
+		\varepsilon_{\sigma(n)}
+	}
+\end{multline*}
+
+Теперь остается понять, что матрица, составленная из строк $\varepsilon_{\sigma(1)},
+\varepsilon_{\sigma(2)}, \cdots, \varepsilon_{\sigma(n)}$, есть единичная
+матрица со строками, переставленными в соответствии с подстановкой $\sigma$. То есть
+определитель этой переставленной матрицы равен $\sgn\sigma\cdot\det E$.
+
+Тогда:
+
+$$
+	\det A
+	=\sum_{\sigma\in\Sb_n}
+	\sgn\sigma
+	a_{1\sigma(1)}a_{2\sigma(2)}\cdots a_{n\sigma(n)}
+	\underbrace{\det E}_{=\cln1}
+$$
+
+\subsection{Треугольная матрица}\index{матрица!треугольная}\index{матрица!ступенчатая}
+
+\label{matrixdet:triangular}
+
+Треугольной матрицей называется матрица, имеющая следующий вид:
+$$ A = \rbmat{
+a_{11} & a_{12} & a_{23} & \cdots & a_{1n} \\
+0      & a_{22} & a_{23} & \cdots & a_{2n} \\
+0      & 0      & a_{33} & \cdots & a_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0      & 0      & 0      & 0      & a_{nn}
+}
+$$
+
+Отсюда видно, что $\det A = a_{11} a_{22} a_{33} \cdots a_{nn}$, так как
+существует единственная (диагональная) подстановка, которая не содержит
+нулевых элементов.
+
+Любую матрицу можно привести к треугольному виду ({\ref{mat:echelon}}).
+
+\subsection{Разложение определителя по строке или столбцу}
+
+\label{matrixdet:rowexpansion}
+
+\begin{lemma}[Об определителе блочной матрицы]\index{лемма!об определителе блочной матрицы}
+	\label{matrixdet:blocklemma}
+	Пусть задана матрица размером $n\times n$ следующего вида:
+	$$
+	M =
+	\left(
+	\begin{array}{rcl|rrrclll}
+		& &  &  &&& &&& \\
+		&A&  &  &&&*&&& \\
+		&_{k \times k}&  &  &&& &&& \\
+		\hline
+		& &  &  &&& &&& \\
+		& &  &  &&& &&& \\
+		&0&  &  &&&B&&& \\
+		& &  &  &&& &&& \\
+		& &  &  &&&_{(n-k)\times(n-k)}&&&
+	\end{array}
+	\right)
+	$$
+	$A$, $B$~--- некоторые подматрицы; $*$~--- произвольные элементы; $0$~--- нулевые элементы. Тогда выполняется следующее равенство:
+	$$ \det M = \det A \cdot \det B $$
+\end{lemma}
+\begin{proof}
+  Будем приводить матрицы $A$ и $B$ к треугольному виду. Очевидно, что эти же преобразования, применённые к исходной матрице приведут и её к треугольному виду. Тогда её определитель будет равен произведению элементов главной диагонали, то есть произведению диагональных элементов первой матрицы, умноженному на произведение диагональных элементов второй матрицы. Доказательство завершено.
+\end{proof}
+
+Теперь рассмотрим определитель матрицы размером $n\times n$.
+
+$$
+\mbmat{
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i1} & a_{i2} & \cdots & a_{in} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+}
+=
+\mbmat{
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{i1} &    0   & \cdots &    0   \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+}
++ \cdots +
+\mbmat{
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+   0   &    0   & \cdots & a_{in} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}
+}
+$$
+
+Такое разложение можно получить, представив $i$-ю строку в виде суммы:
+
+$$
+\left(a_{i1},a_{i2},a_{i3},\cdots,a_{in}\right) =
+\left(a_{i1},   0  ,   0  ,\cdots,   0  \right) +
+\left(   0  ,a_{i2},a_{i3},\cdots,a_{in}\right) =
+$$ $$
+=
+\left(a_{i1},   0  ,   0  ,\cdots,   0  \right) +
+\left(   0  ,a_{i2},   0  ,\cdots,   0  \right) +
+\left(   0  ,   0  ,a_{i3},\cdots,a_{in}\right) =
+$$ $$
+=
+\left(a_{i1},   0  ,   0  ,\cdots,   0  \right) +
+\cdots                                          +
+\left(   0  ,   0  ,   0  ,\cdots,a_{in}\right)
+$$
+
+Теперь в правой части из каждого определителя вынесем элемент $i$-ой
+строки:
+
+$$
+\cdots =
+a_{i1}\left|
+\begin{array}{|c|ccc}
+\cline{1-1}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\hline
+\multicolumn{1}{|c|}{1} & 0 & \cdots &\multicolumn{1}{c|}{0}\\
+\hline
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn} \\
+\cline{1-1}
+\end{array}\right|
++
+a_{i2}\left|
+\begin{array}{c|c|cc}
+\cline{2-2}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\hline
+\multicolumn{1}{|c}{0} & \multicolumn{1}{|c|}{1} & \cdots &\multicolumn{1}{c|}{0}\\
+\hline
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn} \\
+\cline{2-2}
+\end{array}\right|
++
+\cdots
++
+a_{in}\left|
+\begin{array}{ccc|c|}
+\cline{4-4}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\hline
+\multicolumn{1}{|c}{0} & 0 & \cdots &\multicolumn{1}{|c|}{1}\\
+\hline
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn} \\
+\cline{4-4}
+\end{array}\right|
+$$
+
+Теперь будем менять местами столбцы, передвигая $j$-й столбец (с
+единицей в $i$-ой строке) на первое место. При этом знак определителя
+изменится $(i-1)+(j-1)$ раз. Таким образом:
+
+\begin{multline*}
+\cdots=
+(-1)^{(i-1)+(1-1)}\cdot a_{i1}\left|
+\begin{array}{cccc}
+1 & 0 & \cdots & 0 \\
+\cline{2-4}
+a_{11} & \multicolumn{1}{|c}{a_{12}} & \cdots & \multicolumn{1}{c|}{a_{1n}} \\
+\vdots & \multicolumn{1}{|c}{\vdots} & \ddots & \multicolumn{1}{c|}{\vdots} \\
+\widehat{a_{i1}} & \multicolumn{1}{|c}{\widehat{a_{i2}}} & \cdots & \multicolumn{1}{c|}{\widehat{a_{in}}} \\
+\vdots & \multicolumn{1}{|c}{\vdots} & \ddots & \multicolumn{1}{c|}{\vdots} \\
+a_{n1} & \multicolumn{1}{|c}{a_{n2}} & \cdots & \multicolumn{1}{c|}{a_{nn}} \\
+\cline{2-4}
+\end{array}\right|
++ \\ +
+(-1)^{(i-1)+(2-1)}\cdot a_{i2}\left|
+\begin{array}{ccccc}
+1 & 0 & 0 & \cdots & 0 \\
+\cline{2-5}
+a_{12} & \multicolumn{1}{|c}{a_{11}} & a_{13} & \cdots & \multicolumn{1}{c|}{a_{1n}} \\
+\vdots & \multicolumn{1}{|c}{\vdots} & \vdots & \ddots & \multicolumn{1}{c|}{\vdots} \\
+\widehat{a_{i2}} & \multicolumn{1}{|c}{\widehat{a_{i1}}} & \widehat{a_{i3}} & \cdots & \multicolumn{1}{c|}{\widehat{a_{in}}} \\
+\vdots & \multicolumn{1}{|c}{\vdots} & \vdots & \ddots & \multicolumn{1}{c|}{\vdots} \\
+a_{n2} & \multicolumn{1}{|c}{a_{n1}} & a_{n3} & \cdots & \multicolumn{1}{c|}{a_{nn}} \\
+\cline{2-5}
+\end{array}\right|
++\cdots \\ \cdots+
+(-1)^{(i-1)+(n-1)}\cdot a_{in}\left|
+\begin{array}{ccccc}
+1 & 0 & 0 & \cdots & 0 \\
+\cline{2-5}
+a_{1n} & \multicolumn{1}{|c}{a_{11}} & a_{12} & \cdots & \multicolumn{1}{c|}{a_{1(n-1)}} \\
+\vdots & \multicolumn{1}{|c}{\vdots} & \vdots & \ddots & \multicolumn{1}{c|}{\vdots} \\
+\widehat{a_{in}} & \multicolumn{1}{|c}{\widehat{a_{i1}}} & \widehat{a_{i2}} & \cdots & \multicolumn{1}{c|}{\widehat{a_{i(n-1)}}} \\
+\vdots & \multicolumn{1}{|c}{\vdots} & \vdots & \ddots & \multicolumn{1}{c|}{\vdots} \\
+a_{nn} & \multicolumn{1}{|c}{a_{n1}} & a_{n2} & \cdots & \multicolumn{1}{c|}{a_{n(n-1)}} \\
+\cline{2-5}
+\end{array}\right|
+=\cdots
+\end{multline*}
+
+Назовем \emph{минором}\index{минор} $i$-ой строки и $j$-ого столбца определитель
+матрицы, полученный <<вычеркиванием>> $i$-ой строки и $j$-ого столбца
+(обозначим за $M_{ij}$). По лемме о блочной матрице
+(\ref{matrixdet:blocklemma}) разложим определители в полученном
+выражении. Также заметим, что если к степени $(-1)$ прибавить двойку, то
+ничего не изменится. Таким образом, заменяя соответствующие определители
+минорами, получаем.
+
+$$
+\cdots=
+a_{i1}\cdot(-1)^{i+1}\cdot M_{i1} +
+a_{i2}\cdot(-1)^{i+2}\cdot M_{i2} +
+\cdots                            +
+a_{in}\cdot(-1)^{i+n}\cdot M_{in} +
+=
+\sum_{j=1}^n a_{ij}\cdot(-1)^{i+j}\cdot M_{ij}
+=\cdots
+$$
+
+Назовем выражение $A_{ij}=(-1)^{i+j}\cdot M_{ij}$ \emph{алгебраическим
+дополнением}\index{алгебраическое дополнение} к элементу $a_{ij}$. Тогда окончательно получаем формулу
+разложения определителя матрицы по строке:
+
+$$
+\Delta = \cdots = \sum_{j=1}^n a_{ij}\cdot A_{ij}
+$$
+
+%Можно легко получить связь миноров и алгебраических дополнений: знаки
+%$+$ и $-$, расставленные в матрице, будут образовывть шахматную сетку:
+
+%$$
+%\begin{array}{|c|c|c|c|c}
+%	\hline
+%	+ & - & + & - & \cdots \\
+%	\hline
+%	- & + & - & + & \cdots \\
+%	\hline
+%	+ & - & + & - & \cdots \\
+%	\hline
+%	- & + & - & + & \cdots \\
+%	\hline
+%	\vdots & \vdots & \vdots & \vdots & \ddots
+%\end{array}
+%$$
+
+%\begin{sample}
+%	Разложим определитель матрицы по второй строке:
+%	$$\mbmat{1&-3&2&4\\a&b&c&d\\0&-1&1&2\\1&1&0&3}=
+%	a\cdot A_{21}+b\cdot A_{22}+c\cdot A_{23}+d\cdot A_{24}$$
+%	Вычислим $A_{2i}$:
+%	\begin{description}
+%		\item[$A_{21}=$]
+%			\begin{math}
+%				-\mbmat{-3&2&4\\-1&1&2\\\phm1&0&3}=-(-3)=3
+%			\end{math}
+%		\item[$A_{22}=$]
+%			\begin{math}
+%				\phm\mbmat{-1&2&4\\\phm0&1&2\\\phm1&0&3}=3
+%			\end{math}
+%		\item[$A_{23}=$]
+%			\begin{math}
+%				-\mbmat{1&-3&4\\0&-1&2\\1&\phm1&3}=-(-9)=9
+%			\end{math}
+%		\item[$A_{24}=$]
+%			\begin{math}
+%				\phm\mbmat{1&-3&2\\0&-1&1\\1&\phm1&0}=-2=2
+%			\end{math}
+%	\end{description}
+%	Таком образом,
+%	$$\Delta=3a+3b+9c+2d$$
+%\end{sample}
+
+С разложением по строке связана следующая лемма:
+
+\begin{lemma}
+	\label{matrixdet:rowexpansion:replace}
+	Если в разложении матрицы по $i$-ой строке вместо элементов $i$-ой
+	строки взять элементы $j$-ой строки, то получится нуль.
+	$$
+	a_{i1}\cdot A_{i1}+\cdots+a_{in}\cdot A_{in}=\Delta
+	$$ $$
+	a_{i1}\cdot A_{j1}+\cdots+a_{in}\cdot A_{jn}=0
+	$$
+\end{lemma}
+\begin{proof}
+	$$\Delta =a_{j1}\cdot A_{j1}+\cdots+a_{jn}\cdot A_{jn}$$
+	Так как $A_{ji}$ не зависит от элементов $j$-ой строки, то можно
+	<<подставить>> на $j$-ую строку элементы $i$-ой:
+	$$\Delta'=a_{i1}\cdot A_{j1}+\cdots+a_{in}\cdot A_{jn}$$
+	А $\Delta'=0$, так как в матрице получились две одинаковые строки
+	(\ref{matrixdet:part:samerows}).
+	Значит, равенство верно.
+\end{proof}
+
+\subsection{Определитель произведения матриц}
+\label{matrixdet:mul}
+
+\begin{theorem}
+	Определитель\index{определитель!произведения матриц} произведения двух квадратных матриц размера $n\times n$
+	равен произведению их определителей.
+	$$C=AB \ra \det C = \det A \det B$$
+\end{theorem}
+
+\begin{lemma}
+  Всякая невырожденная матрица представляется в виде произведения элементарных матриц. Всякая вырожденная матрица представляется в виде произведения элементарных матриц и матрицы, имеющей нулевую строку.
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}
+  \item Если $A$ -- элементарная матрица, то равенство очевидно.
+
+  \item Если $A$ -- невырожденная матрица, она может быть представлена в виде произведения элементарных матриц на единичную:
+  $$A=U_nU_{n-1}\dots U_1E$$
+
+  Тогда применяя применяя пункт 1 получаем, что $\det(AB)=\det(U_n\dots U_1B)\bw=\det U_n\det(U_{n-1}\dots U_1B)=\dots =\det U_n \dots\det U_1 \det B=\det A\cdot\det B$
+
+  \item Если $A$ -- вырожденная матрица, то используя пп. 1 и 2 получаем, что
+  $$\det(AB)=\det U_n \dots\det U_1 \det(A'B),$$ где $A'$ имеет нулевую строку, а следовательно и $A'B$ имеет нулевую строку, $\det(AB)\bw=\det A\det B=0$.
+\end{enumerate}
+\end{proof}
+
+%%\begin{proof}
+%	Из определения операции умножения следует:
+
+%	$$
+%	c_{ij}=\sum_k^n a_{ik}b_{kj}
+%	$$
+
+%	Определитель же матрицы $C$, по определению, равен:
+
+%	$$
+%	\det C=
+%	\sum_\sigma\sgn\sigma\cdot
+%	c_{1\sigma(1)}
+%	c_{2\sigma(2)}
+%	\cdots
+%	c_{n\sigma(n)}
+%	$$
+
+%	Пусть $\sigma=\rbmat{1&2&\cdots&n\\i_1&i_2&\cdots&i_n}$. Введем для
+%	элеметнов матрицы $C$ индекс суммирования: $k$-ый элемент $i$-ой строки
+%	матрицы $C$~--- это $c_{ik}=\sum_{j_k}^n a_{ij_k} b_{j_kk}$ (индекс
+%	суммирования -- $j$). Тогда:
+
+%	$$
+%	\det C=
+%	\sum_{i_1,\cdots,i_n}
+%	\sgn\sigma\cdot
+%	\left(\sum_{j_1} a_{1j_1}b_{j_1i_1}\right)
+%	\left(\sum_{j_2} a_{2j_2}b_{j_2i_2}\right)
+%	\cdots
+%	\left(\sum_{j_n} a_{nj_n}b_{j_ni_n}\right)
+%	=\cdots
+%	$$
+
+%	Все суммы по $j$ можно объединить в одну, последовательно объединяя
+%	соседние скобки\linebreak($\left(\sum_a x_a\right)\left(\sum_b
+%	y_b\right)=\sum_{a,b} x_ay_b$):
+
+%	$$
+%	\cdots=
+%	\sum_{i_1,\cdots,i_n}
+%	\sgn\sigma\cdot
+%	\sum_{j_1,\cdots,j_n}
+%	a_{1j_1}b_{j_1i_1}
+%	\cdot
+%	a_{2j_2}b_{j_2i_2}
+%	\cdots
+%	a_{nj_n}b_{j_ni_n}
+%	=\cdots
+%	$$
+
+%	Внесем также $(-1)$ под знак суммы и поменяем порядок суммирования:
+%	внешнее по $i$, а внутреннее~по~$j$.
+
+%	$$
+%	\cdots=
+%	\sum_{j_1,\cdots,j_n}
+%	\sum_{i_1,\cdots,i_n}
+%	\sgn\sigma\cdot
+%	a_{1j_1}b_{j_1i_1}
+%	\cdot
+%	a_{2j_2}b_{j_2i_2}
+%	\cdots
+%	a_{nj_n}b_{j_ni_n}
+%	=\cdots
+%	$$
+
+%	Теперь вынесем из-под внутренней суммы $a_{kj_k}$, так как они не
+%	зависят от $i_k$.
+
+%	$$
+%	\cdots=
+%	\sum_{j_1,\cdots,j_n}
+%	a_{1j_1} a_{2j_2} \cdots a_{nj_n}
+%	\underbrace{
+%		\sum_{i_1,\cdots,i_n}
+%		\sgn\sigma\cdot
+%		b_{j_1i_1} b_{j_2i_2} \cdots b_{j_ni_n}
+%	}_{=\cln\det\tilde B}
+%	=\cdots
+%	$$
+
+%	$\tilde B$~--- это матрица, полученная из матрицы $B$ путем
+%	некоторых перестановок строк:
+
+%	$$
+%	B=\rbmat{
+%	b_{11} & \cdots & b_{1n} \\
+%	\vdots & \ddots & \vdots \\
+%	b_{n1} & \cdots & b_{nn}
+%	}
+%	\ra
+%	\tilde B=\rbmat{
+%	b_{j_11} & \cdots & b_{j_1n} \\
+%	\vdots   & \ddots & \vdots   \\
+%	b_{j_n1} & \cdots & b_{j_nn}
+%	}
+%	$$
+
+%	Очевидно, что если все $j$ различны (то есть не существует таких
+%	$\alpha$ и $\beta$, что $j_\alpha=j_\beta$), то можно задать
+%	перестановку $\tau$:
+
+%	$$
+%	\exists\tau=\rbmat{1&2&\cdots&n\\j_1&j_2&\cdots&j_n}
+%	$$
+
+%	Тогда $\det\tilde B=(-1)^{|\tau|}\det B$ (если четное число раз
+%	поменяли строки, то знак определителя остался прежним, а значит
+%	равен $\det B$; в противном случае~---$\,-\det B$).
+
+%	Если есть такие $\alpha$ и $\beta$, что $j_\alpha=j_\beta$, то тогда
+%	определитель матрицы $\tilde B$ равен нулю из-за одинаковых строк
+%	(\ref{matrixdet:part:samerows}).
+
+%	Таким образом, можно считать, что все $j$ различны, так как
+%	одинаковые $j$ дают нулевое слагаемое, которое не влияет на
+%	окончательную сумму.
+
+%	Тогда окончательно получаем:
+%	$$
+%	\det C=
+%	\sum_{j_1,\cdots,j_n}
+%	a_{1j_1} a_{2j_2} \cdots a_{nj_n}
+%	(-1)^{|\tau|}\cdot\det B\eqdef\det A\det B
+%	$$
+%%\end{proof}
+
+
+\subsection{Определитель Вандермонда. Интерполяция}\index{определитель!Вандермонда}\index{интерполяция}
+\label{sle:interpolation}
+
+Определитель Вандермонда $V(a_1,\dots a_n)$ --- определитель следующей матрицы:
+
+$$\mbmat{
+1 &    1 & \cdots & 1 \\
+a_{1} & a_{2} & \cdots & a_{n} \\
+a_{1}^2 & a_{2}^2 & \cdots & a_{n}^2 \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{1}^{n-1} & a_{2}^{n-1} & \cdots & a_{n}^{n-1}
+}
+$$
+Сделаем все элементы первого столбца, кроме самого первого, нулями. Для этого вычтем из $n$-й строки $a_1$ раз $n-1$-ю, из $n-1$-й~--- $a_1$ раз ${n-2}$-ю и т.д. По схеме вычисления определителя блочной матрицы, определитель исходной матрицы равен определителю следующей матрицы
+\begin{multline*}
+\mbmat{
+a_2-a_1 &    a_3-a_1 & \cdots & a_n-a_1 \\
+a_2^2-a_2a_1 & a_3^2-a_3a_1 & \cdots & a_n^2-a_na_1 \\
+%a_2^3-a_1a_2^2 & a_3^3-a_1a_3^2 & \cdots & a_n^2 \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{2}^{n-1} - a_1a_2^{n-2} & a_{3}^{n-1} - a_1a_3^{n-2} & \cdots & a_{n}^{n-1}-a_1a_n^{n-2}
+}=\\=(a_2-a_1)(a_3-a_1)\dots(a_n-a_1)\mbmat{
+1 &    1 & \cdots & 1 \\
+a_{2} & a_{3} & \cdots & a_{n} \\
+a_{2}^2 & a_{3}^2 & \cdots & a_{n}^2 \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{2}^{n-2} & a_{3}^{n-2} & \cdots & a_{n}^{n-2}
+}=\dots=\prod_{i>j}(a_i-a_j)
+\end{multline*}
+
+Этот определитель тесно связан с интерполяцией функций. Действительно, через любые $n+1$ точек с разными абсциссами обязательно проходит многочлен степени не больше $n$, причём только один (по двум точкам можно построить единственную прямую, проходящую через них, по трём~--- единственную параболу и т.п.)
+
+Пусть у нас имеется набор из $n$ точек $(x_i,y_i)$. Пусть искомый многочлен имеет вид $$P(x)=a_0+a_1x+\dots+a_nx^n.$$ Нам известно, что $\forall i\cln P(x_i)=y_i$. Запишем эти условия в виде системы ($n$ уравнений, $a_0,\dots a_n$~--- неизвестные):
+$$
+\left\{
+ \begin{array}{lllllllll}
+  a_0&+&a_1x_1&+&\dots&+&a_nx_1^n&=&y_1\\
+%  a_0&+&a_1x_2&+&\dots&+&a_nx_2^n&=&y_2\\
+  \hdotsfor[2]{9}\\
+  a_0&+&a_1x_{n+1}&+&\dots&+&a_nx_{n+1}^n&=&y_{n+1}\\
+ \end{array}
+\right.
+$$
+Эта система имеет единственное решение (см. выше).
+
+Теперь найдём саму интерполированную функцию: введём многочлен
+
+  \begin{center}
+ \scalebox{0.8}{ $L_i(x)=\frac{ (x-x_1) \dots (x-x_{i-1}) (x-x_{i+1}) \dots (x-x_{n+1}) }{(x_i-x_1) \dots (x_i-x_{i-1}) (x_i-x_{i+1}) \dots (x_i-x_{n+1})}$}
+  \end{center}
+
+ Этот многочлен называется интерполяционным многочленом Лагранжа. $L_i(x_j)\bw=0$, $L_i(x_i)=1$. Тогда искомая функция будет иметь вид
+ $$P(x)=\sum_{i=1}^{n+1}y_iL_i(x)$$
+
+\subsection{Обратная матрица}
+\label{matrixdet:reverse}
+
+\begin{df}
+	\emph{Обратной матрицей} $A^{-1}$ к матрице $A$ называется такая\index{матрица!обратная}
+	матрица, что выполнено следующее равенство:
+	$$ A^{-1}A=AA^{-1}=E$$%\quad\dim A=\dim A^{-1} $$
+	Где $E$~--- единичная матрица.
+\end{df}
+
+\begin{note}
+	Понятие обратной матрицы вводится в том случае, если элементы
+	$A$~--- элементы некоторого поля.
+\end{note}
+
+%\begin{df}
+%	Матрица называется \emph{вырожденной}, если ее определитель равен
+%	нулю и называется \emph{невырожденной} в обратном случае.
+%\end{df}
+
+\begin{theorem}
+	Если существует обратная матрица, то она единственна.
+\end{theorem}
+\begin{proof}
+	Пусть существуют различные две матрицы $B_1$ и $B_2$, обратные к $A$.
+	Рассмотрим произведение $B_1AB_2$. В силу ассоциативности умножения
+	матриц, имеем:
+	$$(B_1A)B_2=B_1(AB_2) \ra EB_2=B_1E \ra B_2=B_1$$
+	Значит, они совпадают. Противоречие с тем, что $B_1\ne B_2$.
+\end{proof}
+
+\begin{theorem}
+	Невырожденность матрицы является необходимым и достаточным условием\index{матрица!невырожденная}
+	для существования обратной матрицы.
+\end{theorem}
+\begin{proof}[Необходимость]
+	Доказательство проведем от обратного. Пусть $B$~--- обратная
+	матрица к $A$ и $\det A=0$. Тогда, по определению, $AB=BA=E$. По теореме об
+	определителе произведение (\ref{matrixdet:mul}), имеем равенство:
+
+	$$\det AB=\det E \ra \det A\det B=\det E$$
+	$$0\cdot\det B=1 \ra \det B=\frac10$$
+
+	Такого в поле быть не может, поэтому предположение неверно.
+\end{proof}
+\begin{proof}[Достаточность]
+	Для доказательства достаточности воспользуемся формулой обратной
+	матрицы:
+
+	$$
+	A^{-1}=
+	\frac1{\det A}\rbmat{
+	A_{11} & \cdots & A_{1n} \\
+	\vdots & \ddots & \vdots \\
+	A_{n1} & \cdots & A_{nn}}^T=
+	\frac1{\det A}\rbmat{
+	A_{11} & \cdots & A_{n1} \\
+	\vdots & \ddots & \vdots \\
+	A_{1n} & \cdots & A_{nn}}
+	$$
+
+	Где $A_{ij}$~--- алгебраическое дополнение к элементу $a_{ij}$ (см.
+	\ref{matrixdet:rowexpansion}).\index{алгебраическое дополнение}
+
+	Остается проверить, что эта матрица действительно является обратной
+	к $A$. Обозначим произведение $AA^{-1}=X$. Тогда:
+
+	$$
+	X=\frac1{\det A}
+	\rbmat{
+	a_{11} & \cdots & a_{1n} \\
+	\vdots & \ddots & \vdots \\
+	a_{n1} & \cdots & a_{nn}
+	}
+	\rbmat{
+	A_{11} & \cdots & A_{n1} \\
+	\vdots & \ddots & \vdots \\
+	A_{1n} & \cdots & A_{nn}
+	}
+	=
+	\frac1{\det A}
+	\rbmat{
+	x_{11} & \cdots & x_{1n} \\
+	\vdots & \ddots & \vdots \\
+	x_{n1} & \cdots & x_{nn}
+	}
+	$$
+
+	Найдем элементы $x_{ij}$:
+
+	$$
+	\begin{array}{rclcl}
+		x_{11}&=&a_{11}A_{11}+a_{12}A_{12}+\cdots+a_{1n}A_{1n}&=&\det A \\
+		x_{12}&=&a_{11}A_{21}+a_{12}A_{22}+\cdots+a_{1n}A_{2n}&=&0 \\
+		&\cdots&&\cdots& \\
+		x_{21}&=&a_{21}A_{11}+a_{22}A_{12}+\cdots+a_{2n}A_{1n}&=&0 \\
+		x_{22}&=&a_{21}A_{21}+a_{22}A_{22}+\cdots+a_{2n}A_{2n}&=&\det A \\
+		&\cdots&&\cdots& \\
+		x_{n(n-1)}&=&a_{n1}A_{(n-1)1}+a_{n2}A_{(n-1)2}+\cdots+a_{nn}A_{(n-1)n}&=&0 \\
+		x_{nn}    &=&a_{n1}A_{n    1}+a_{n2}A_{n    2}+\cdots+a_{nn}A_{n    n}&=&\det A \\
+	\end{array}
+	$$
+
+	Таким образом:
+
+	$$
+	X=\frac1{\det A}
+	\rbmat{
+	\det A & 0      & 0      & \cdots & 0      \\
+	0      & \det A & 0      & \cdots & 0      \\
+	0      & 0      & \det A & \cdots & 0      \\
+	\vdots & \vdots & \vdots & \ddots & \vdots \\
+	0      & 0      & 0      & \cdots & \det A
+	}=
+	\rbmat{
+	1      & 0      & 0      & \cdots & 0      \\
+	0      & 1      & 0      & \cdots & 0      \\
+	0      & 0      & 1      & \cdots & 0      \\
+	\vdots & \vdots & \vdots & \ddots & \vdots \\
+	0      & 0      & 0      & \cdots & 1
+	}=
+	E
+	$$
+
+	Аналогично проверяется и произведение $A^{-1}A$.
+\end{proof}
+
+Обратная матрица легко вычисляется с помощью элементарных преобразований: будем приводить исходную матрицу к единичной, применяя одновременно те же преобразования к единичной матрице. В тот момент, когда из исходной мы получим единичную, из единичной мы получим обратную.\index{матрица!единичная}
+ $$\left(A\mid E \right) \longrightarrow \left(E\mid A^{-1} \right)$$
+
+\newpage
+\subsection{Характеризация ранга матрицы в терминах миноров}\index{ранг!матрицы}\index{минор}
+
+\begin{theorem}
+  Ранг матрицы равен наибольшему порядку её отличных от нуля миноров
+\end{theorem}
+\begin{proof}
+  Пусть ранг матрицы равен $r$. Тогда всякая система столбцов или строк, содержащая в себе больше, чем $r$ векторов, будет линейно зависима. Тогда и укороченные вектора будут линейно зависимы, то есть миноры порядков $r+1$ и больших будут равны нулю.
+
+  Теперь покажем, что существует минор порядка $r$, отличный от нуля. Выберем в исходной матрице $r$ линейно независимых строки, ранг этой матрицы по строкам, а следовательно и по столбцам равен $r$. То есть мы можем выбрать в ней $r$ линейно независимых столбцов, тем самым получаем квадратную подматрицу порядка $r$, ранг которой равен $r$, то есть определитель которой не равен нулю.
+
+  Доказательство завершено.
+\end{proof}
+%  Пусть $s$ -- максимальный порядок отличных от нуля миноров, а ранг матрицы равен $r$. Выберем в матрице минор $M\ne 0$ с порядком $s$. Тогда $s$ столбцов (строк) матрицы, проходящих через $M$ образуют линейно независимую систему (если укороченные векторы линейно независимы, то и полные векторы также линейно независимы). Таким образом мы показали, что $r \ge s$.

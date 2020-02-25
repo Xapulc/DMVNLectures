@@ -1,0 +1,17 @@
+RarName = "continuummechanics-kovalev"
+CompName = Continuum Mechanics [Composite Version] - V.L. Kovalev.pdf
+
+t:
+ rm -rf *.pdf
+ bash compile.sh
+ cmd /c ren *.psf *.pdf
+a: t
+ wt $(RarName).rar *.ps
+c:
+ rm *.dvi *.mpx *.log *.aux *.toc
+b: t
+ wr $(RarName)-pdf.rar *.pdf 
+ cp "composite/$(CompName)" .
+ wr $(RarName)-composite-pdf.rar "$(CompName)"
+ rm "$(CompName)"
+all: a b

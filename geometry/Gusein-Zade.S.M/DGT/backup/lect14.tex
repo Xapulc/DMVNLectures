@@ -1,0 +1,329 @@
+%% Lust updated:
+
+%% \documentstyle[12pt]{article}
+\documentstyle[cyralt]{article}
+
+\input amssym.def
+\input amssym.tex
+
+%% \marginparwidth 40pt
+\textwidth=167mm
+%% \textwidth=140mm
+\textheight=245mm
+%% \textheight=205mm
+\addtolength{\topmargin}{-70pt}
+\addtolength{\oddsidemargin}{-1.5cm}
+
+\def\R{\Bbb R}
+\def\N{\Bbb N}
+\def\Z{\Bbb Z}
+\def\Q{\Bbb Q}
+\def\C{\Bbb C}
+\def\CP{\Bbb C\Bbb P}
+\def\RP{\Bbb R\Bbb P}
+\font\sf=cmss10
+
+% Theorem environments for normal usage
+% arabic numbering:
+%% \newtheorem{theorem}{Теорема}
+%% \newtheorem{corollary}{Следствие}
+%% \newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+
+% Non-italic
+% \theorembodyfont{\rmfamily}
+
+\newenvironment{definition}
+{\smallskip\noindent{\bf Определение\/}:}{\smallskip\par}
+\newenvironment{def-equiv}
+{\smallskip\noindent{\bf Определение${}'$\/}:}{\smallskip\par}
+\newenvironment{theorem}
+{\smallskip\noindent{\bf Теорема\/}.}{\smallskip\par}
+\newenvironment{theorem*}
+{\smallskip\noindent{\bf Теорема}}{\smallskip\par}
+\newenvironment{lemma}
+{\smallskip\noindent{\bf Лемма\/}.}{\smallskip\par}
+%% \newenvironment{proposition}
+%% {\smallskip\noindent{\bf Proposition\/}.}{\smallskip\par}
+\newenvironment{statement}
+{\smallskip\noindent{\bf Утверждение\/}.}{\smallskip\par}
+\newenvironment{example}
+{\smallskip\noindent{\bf Пример\/}.}{\smallskip\par}
+\newenvironment{examples}
+{\smallskip\noindent{\bf Примеры\/}:}{\smallskip\par}
+\newenvironment{remark}
+{\smallskip\noindent{\bf Замечание\/}.}{\smallskip\par}
+\newenvironment{remarks}
+{\smallskip\noindent{\bf Замечания\/}.}{\smallskip\par}
+\newenvironment{proof}
+{\noindent{\bf Доказательство\/}.}{{ $\Box$}\smallskip\par}
+\newenvironment{Proof}
+{\noindent{\bf Доказательство\/}}{{ $\Box$}\smallskip\par}
+\newenvironment{problem}
+{\noindent{\bf Задача\/}.}{\smallskip\par}
+\newenvironment{problem^*}
+{\noindent{\bf Задача${}^*$}.}{\smallskip\par}
+\newenvironment{problem^**}
+{\noindent{\bf Задача${}^{**}$}.}{\smallskip\par}
+\newenvironment{problem_*}
+{\noindent{\bf Задача${}_{*}$}.}{\smallskip\par}
+\newenvironment{problem_**}
+{\noindent{\bf Задача${}_{**}$}.}{\smallskip\par}
+\newenvironment{corollary}
+{\noindent{\bf Следствие}.}{\smallskip\par}
+\newenvironment{Corollary}
+{\noindent{\bf {Следствие }}}{\smallskip\par}
+
+\title{Дифференциальная геометрия, лекции для студентов III курса,
+осенний семестр 2001--2002 уч.г.}
+\author{С.М.Гусейн-Заде}
+\date{}
+% Not to forget to restore the \date command finally.
+\begin{document}
+\sloppy
+
+\def\Aut{{\operatorname{Aut}}}
+\def\eps{\varepsilon}
+
+%% {\bf Лекция 14.}
+%%
+%% 26.11.2001
+
+Пусть $T_{ij}$, $T_i^j$ и $T^{ij}$~--- тензоры типов $(0, 2)$, $(1, 1)$
+и $(2, 0)$ соответственно.
+
+\begin{theorem}
+$$
+T_{ij;q}={{\partial T_{ij}}\over{\partial x^q}}-
+\Gamma_{iq}^p T_{pj}-\Gamma_{jq}^p T_{ip},
+$$
+$$
+T^i_{j;q}={{\partial T^i_j}\over{\partial x^q}}+
+\Gamma_{pq}^i T^p_j-\Gamma_{jq}^p T^i_p,
+$$
+$$
+T^{ij}_{;q}={{\partial T^{ij}}\over{\partial x^q}}+
+\Gamma_{pq}^i T^{pj}+\Gamma_{pq}^j T^{ip}.
+$$
+\end{theorem}
+
+\begin{proof}
+Докажем это утверждение для тензора типа $(0, 2)$. Любой тензор типа
+$(0, 2)$ представим (по крайней мере локально) в виде суммы тензоров
+вида $\xi_i\eta_j$, т.е. тензорных произведений ковекторов. Поэтому
+утверждение достаточно доказать для тензора
+$T_{ij}=\xi_i\eta_j$. Имеем
+$$T_{ij;q}=(\xi_i\eta_j)_{;q}=\xi_{i;q}\eta_j+\xi_i\eta_{j;q}=
+\left({{\partial\xi_i}\over{\partial x^q}}-\Gamma_{iq}^p\xi_p\right)\eta_j+
+\xi_i\left({{\partial\eta_j}\over{\partial x^q}}-\Gamma_{jq}^p\eta_p\right)=
+$$
+$$
+={{\partial(\xi_i\eta_j)}\over{\partial x^q}}-\Gamma_{iq}^p\xi_p\eta_j
+-\Gamma_{jq}^p\xi_i\eta_p=
+{{\partial T_{ij}}\over{\partial x^q}}-\Gamma_{iq}^p T_{pj}
+-\Gamma_{jq}^p T_{ip},
+$$
+что и требовалось доказать.
+\end{proof}
+
+\begin{problem_*}
+Доказать указанные формулы для тензоров типа $(1, 1)$ и $(2, 0)$.
+\end{problem_*}
+
+\begin{problem^*}
+Написать и доказать аналогичную формулу для ковариантной производной
+тензора произвольного типа.
+\end{problem^*}
+
+\medskip
+{\bf Метрический тензор и ковариантное дифференцирование.}
+
+\smallskip
+Обсуждение ковариантного дифференцирования тензоров на произвольных
+многообразиях мы начинали (используя в качестве модельного примера)
+с (ковариантного) дифференцирования векторов (или, точнее, векторных
+полей) на подмногообразиях аффинного пространства. В действительности,
+описанная нами конструкция имела смысл не в произвольном аффинном
+пространстве, а в евклидовом: существенной частью конструкции было
+рассмотрение (ортогонального) проектирования на касательное пространство
+к подмногообразию. Аналогом евклидовой структуры на аффинном пространстве
+является риманова метрика на гладком многообразии. Мы знаем, что на
+любом многообразии существует риманова метрика.
+
+\begin{remark}
+Некоторые из последующих утверждений имеют место и на многообразиях с,
+так называемой, псевдоримановой метрикой. Псевдоримановой метрикой
+называется симметричное невырожденное ($det\,(g_{ij})\ne0$) тензорное
+поле типа $(0, 2)$. Положительно определенная квадратичная форма
+невырождена. Поэтому риманова метрика является частным случаем
+псевдоримановой метрики.
+\end{remark}
+
+Мы заметили, что перенос векторов вдоль кривой на подмногообразии
+евклидова пространства обладает следующим свойством (см. замечание
+после соответствующего обсуждения). Если $u(t)$ (аналогично $v(t)$)~---
+векторное поле вдоль кривой $\gamma(t)$, полученное переносом одного
+вектора вдоль этой кривой, то скалярное произведение $(u(t), v(t))$
+векторов $u(t)$ и $v(t)$ есть $o(t)$, т.е. ${{d(u(t), v(t))}\over{dt}}_
+{\vert t=0}=0$. Если вектора $u(t)$ получены операцией перенесения
+вдоль кривой $\gamma(t)$ с $\dot{\gamma}(0)=w$ из одного вектора,
+то $\nabla_{w}u(t)=0$ (аналогично для $v(t)$).
+(В этом случае в числителе соответствующего предела, определяющего
+$\nabla_wv(t)$, стоит тождественный ноль.) Скалярное произведение
+$(u, v)=g_{ij}u^iv^j$~--- это скаляр. Следовательно, его (обычная)
+производная (по направлению вектора $w$) совпадает с ковариантной:
+$$0={{d(u(t), v(t))}\over{dt}}_{\vert t=0}=(u(t), v(t))_{;w}=
+g_{ij;w}u^iv^j+g_{ij}u^i_{;w}v^j+g_{ij}u^iv^j_{;w}=g_{ij;w}u^iv^j
+$$
+(т.к. $u^i_{;w}=v^i_{;w}=0$). Отсюда следует, что $g_{ij;w}=0$.
+Это является мотивировкой следующего определения.
+
+\begin{definition}
+Говорят, что аффинная связность на римановом многообразии $M^k$
+согласована с римановой метрикой, если $g_{ij;q}=0$.
+\end{definition}
+
+\begin{theorem}
+На римановом многообразии существует и единственна симметричная аффинная
+связность, согласованная с метрикой.
+\end{theorem}
+
+\begin{proof}
+Пусть $\Gamma^i_{pq}$~--- коэффициенты связности в локальных координатах
+$x^1$, \dots, $x^k$. Имеем:
+$$
+0=g_{ij;q}={{\partial g_{ij}}\over{\partial x^q}}-
+\Gamma^p_{iq}g_{pj}-\Gamma^p_{jq}g_{ip}=
+{{\partial g_{ij}}\over{\partial x^q}}-
+\Gamma^p_{iq}g_{pj}-\Gamma^p_{jq}g_{pi}.\eqno(0)
+$$
+Пусть $\Gamma_{j,iq}=\Gamma^p_{iq}g_{pj}$~--- результат опускания
+индекса у величин $\Gamma^p_{iq}$ ($\Gamma^p_{iq}$~--- не тензор,
+поэтому и $\Gamma_{j,iq}$ тензором не является). Имеет место
+симметрия $\Gamma_{j,iq}=\Gamma_{j,qi}$.
+С учетом этих обозначений уравнение (0) может быть записано в виде
+$$
+\Gamma_{j,iq}+\Gamma_{i,jq}={{\partial g_{ij}}\over{\partial x^q}}.
+\eqno(1)
+$$
+Циклически переставляя индексы в уравнении (1) получаем еще два уравнения:
+$$
+\Gamma_{q,ji}+\Gamma_{j,qi}={{\partial g_{jq}}\over{\partial x^i}},
+\eqno(2)
+$$
+$$
+\Gamma_{i,qj}+\Gamma_{q,ij}={{\partial g_{qi}}\over{\partial x^j}}.
+\eqno(3)
+$$
+Имеем
+$$
+(3)+(1)-(2)= 2\cdot \Gamma_{i,jq}=\left(
+{{\partial g_{ij}}\over{\partial x^q}}+
+{{\partial g_{qi}}\over{\partial x^j}}-
+{{\partial g_{jq}}\over{\partial x^i}}
+\right)
+$$
+(здесь мы пользовались симметричностью связности). Таким образом
+$$
+\Gamma_{i,jq}={{1}\over{2}}\left(
+{{\partial g_{ij}}\over{\partial x^q}}+
+{{\partial g_{qi}}\over{\partial x^j}}-
+{{\partial g_{jq}}\over{\partial x^i}}
+\right).
+$$
+Поднимая индекс у $\Gamma_{i,jq}$, получаем
+$$
+\Gamma^s_{jq}\,(=g^{si}\Gamma_{i,jq})={{g^{si}}\over{2}}\left(
+{{\partial g_{ij}}\over{\partial x^q}}+
+{{\partial g_{qi}}\over{\partial x^j}}-
+{{\partial g_{jq}}\over{\partial x^i}}
+\right).\eqno(4)
+$$
+
+Тем самым единственность связности доказана. В действительности
+одновременно мы (почти) доказали и ее существование. Оно вытекает
+из следующих рассуждений. В каждой карте рассмотрим связность,
+коэффициенты которой определяются формулой (4). Нам надо доказать,
+что получается действительно
+связность, т.е. при переходе от карты $(U_\alpha,\Phi_\alpha)$
+к карте $(U_\beta,\Phi_\beta)$ коэффициенты преобразуются
+требуемым образом. Рассмотрим связность, получаемую из связности
+на $U_\alpha$ при переходе от карты $(U_\alpha,\Phi_\alpha)$
+к карте $(U_\beta,\Phi_\beta)$ (т.е.~--- связность на
+$U_\alpha\cap U_\beta$, определённую известными нам формулами
+преобразования). Относительно этой связности производная
+метрического тензора равна нулю и по доказанному в карте $U_\beta$ она
+единственна и задаётся такой же формулой (4), что и требовалось
+доказать.
+\end{proof}
+
+\begin{remark}
+Аффинная связность, согласованная с метрикой, называется связностью
+Леви--Чивита. Нетрудно видеть, что утверждение о существовании и
+единственности согласованной с метрикой аффинной связности имеет
+место и для псевдориманова многообразия.
+\end{remark}
+
+\medskip
+Ковариантная производная векторного поля $v=v(x)$ по направлению вектора $w$
+на подмногообразии $M^k$ евклидова пространства $\R^n$ ($w\in T_{x_0}M^k$)
+определялась через операцию переноса вектора ($v(\gamma(t))$) вдоль кривой
+$\gamma(t)$ на многообразии $M^k$ ($\gamma(0)=x_0$,
+${{d\gamma}\over{dt}}(0)=w$). Если предположить, что вектора $v(\gamma(t))$
+получены из вектора $v(\gamma(0))$ переносом вдоль кривой $\gamma(t)$,
+то ковариантная производная $\nabla_{\dot{\gamma}(t)}v^i$ равна нулю
+при любом $t$ (мы воспользовались тем, что результат переноса вектора вдоль
+кривой $\gamma(t)$ из точки с $t=t_0$ в точку с $t=t_1$ с последующим
+переносом из точки с $t=t_1$ в точку с $t=t_2$ совпадает с его переносом
+из точки с $t=t_0$ в точку с $t=t_2$). Отсюда вытекает, что
+$$
+\nabla_{\dot{\gamma}(t)}v^i={{\partial v^i}\over{\partial x^q}}
+{{d x^q}\over{dt}}+\Gamma^i_{pq}v^p\dot{\gamma}^q(t)=
+{{d v^i(\gamma(t))}\over{dt}}+\Gamma^i_{pq}v^p\dot{\gamma}^q(t)=0.
+$$
+
+Это является мотивировкой для следующего общего определения.
+
+\begin{definition}
+Пусть $M^k$~--- многообразие с аффинной связностью. Говорят, что вектора
+$v(\gamma(t))\in T_{\gamma(t)}M^k$ получены из вектора $v_0\in T_{x_0}M^k$
+($x_0=\gamma(0)$) параллельным переносом вдоль кривой $\gamma(t)$, если
+они удовлетворяют дифференциальному уравнению
+$$
+\nabla_{\dot{\gamma}(t)}v^i={{d v^i(\gamma(t))}\over{dt}}+
+\Gamma^i_{pq}v^p\dot{\gamma}^q(t)=0, \eqno(1)
+$$
+$v(\gamma(0))=v_0$.
+\end{definition}
+
+(1) является (линейным) обыкновенным дифференциальным уравнением первого
+порядка, разрешенным относительно производной.
+
+\begin{corollary}
+Для любого (дифференцируемого) пути $\gamma(t)$ корректно определена
+операция параллельного переноса векторов, которая является линейным
+отображением $T_{\gamma(0)}M^k\to T_{\gamma(t)}M^k$ и гладко зависит
+от $t$.
+\end{corollary}
+
+\begin{remark}
+Результат параллельного переноса из точки $\gamma(0)$ в точку $\gamma(t_0)$,
+вообще говоря, зависит от пути $\gamma(t)$, а не только от концов $\gamma(0)$
+и $\gamma(t_0)$.
+\end{remark}
+
+При движении материальной точки по подмногообразию в евклидовом пространстве
+(скажем, по поверхности в $\R^3$) сила и, следовательно, ускорение
+ортогональны к касательному пространству к подмногообразию. В терминах
+ковариантоного дифференцирования это означает, что ковариантная производная
+вектора скорости точки вдоль ее траектории (т.е. вдоль того же вектора
+скорости) равна нулю. Такое описание создает основу для следующего
+определения.
+
+\begin{definition}
+Кривая $\gamma=\gamma(t)$ на многообразии $M^n$ с аффинной связностью
+называется геодезической, если
+$$\nabla_{\dot{\gamma}(t)}\dot{\gamma}(t)=0.\eqno(*)$$
+\end{definition}
+
+\end{document}

@@ -1,0 +1,287 @@
+
+% шестая лекция по комплану. сказания о интеграле Лебега
+
+\begin{center} \textbf{Лекция 6.}
+
+
+\textbf{$\delta-$ аддитивность интеграла Лебега}\end{center}
+
+$E = \bigcup_{k=1}^{\infty} E_k, \; E_k$
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 10.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+
+$f,$ инт. для $f$ имеет смысл
+
+Тогда $\int_E f d\mu = \sum_{k=1}^{\infty} \int_{E_k} f d \mu$
+
+\textbf{Задача.} \quad Из правой части не следует, что интеграл
+слева существует
+
+\textbf{Доказательство.} Сначала докажем для неотрицательныхъ
+функций $f \geqslant 0, \; f = \sum_{k=1}^{\infty} f \dot
+\chi_{E_k}$
+
+Так как этот ряд можно почленно интегрировать, получаем требуемое
+равенство. Если $f(x)$ любого знака, то $f = f^+ + f^-$ , далее
+примен. доказанную часть теоремы для $f^+$ и $f^-$ (примен., так
+как предполагается, что интегрирование слева имеет смысл)
+
+
+ $f_k \nearrow f$ п.в.,  $f_k \geqslant 0$,
+измерим. (на измеримом множестве $E$) $\Rightarrow$ \\ $\lim_{k
+\rightarrow \infty} \int_E f_k d \mu = \int_E f d \mu$
+
+\textbf{Доказательство.} \quad Ясно, что $\lim_{k \rightarrow
+\infty} \int_E f_k d \mu \leqslant \int_E f d \mu$
+
+Если $\exists k: \; \int_E f_k d \mu = + \infty$, то будет
+равенство. Оставшуюся часть доказательства можно провести в
+предположении: $\int_E f_k d \mu$ конечен $\Rightarrow f_k$ кон.
+п.в.
+
+Пусть $f_k$ кон. вне $F_k, \: \mu F_k = 0$
+
+$F_0$ --- множество, на котором не имеет места монотонная
+сходимость
+
+На $E \ (\bigcup_{k=0}^{\infty} F_k) \; f_k \nearrow f$ и все
+$f_k$ конечны
+
+Значит, $f = f_1 + \sum_{k=1}^{\infty} (f_{k+1} - f_k)$ $E \
+(\bigcup_{k=0}^{\infty} F_k)$
+
+$\int_E f d\mu = \int_E f_1 d \mu + \sum_{k=1}^{\infty} \int_E
+(f_{k+1} - f_k) d \mu = \sum_{k=1}^{\infty}(\int_E f_{k+1} d \mu -
+\int_E f_k d \mu) + \int_E f_1 d \mu$
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 11.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+$\lim_{k \rightarrow \infty} \int_E f_k d \mu = \int_E f d \mu$
+
+\textbf{Теорема Б. Леви.} \quad
+
+$f_k(x) \nearrow f(x)$ п.в. $f_k \in L(E) \Rightarrow \lim_{k
+\rightarrow \infty} \int_E f_k d \mu = \int_E f d \mu$
+
+$\lozenge$ Переходим к $f_k - f_1 \nearrow f - f_1$
+
+$lim_{k \rightarrow \infty} (\int_E f_k - \int_E f_1) = \int_E f d
+\mu - \int_E f_1 d \mu$ $\blacklozenge$
+
+
+\textbf{Следствие.} \quad Если в условиях теоремы Б. Леви$\int_E
+f_k d \mu \leqslant C \Rightarrow f$ кон. п.в. и интегрируема.
+
+Если $\lim_{k \rightarrow \infty} \int_E f_k d \mu = + \infty
+\Rightarrow \; f$ неинтегрируема.
+
+\textbf{Теорема Фату.} \quad  $f_k \rightarrow f$ п.в. на $E, \;
+f_k(x) \geqslant 0$. Тогда $\int_E f d \mu \leqslant \varliminf_{k
+\rightarrow \infty} \int_E f_k d \mu$
+
+\textbf{Задача.} \quad Показать, что этих условий недостаточно для
+выполнения равенства
+
+\textbf{Доказательство.} \quad $\varphi_k (x) = \inf_{n \geqslant
+k} f_n (x)$. Это монотонно $\nearrow$ последовательность.
+
+$\varphi_k(x) \nearrow f(x)$ $\varphi_k(x) \leqslant f_k(x)$
+
+$\int_E f d \mu = \lim_{k \rightarrow \infty} \int_E \varphi_k d
+\mu \leqslant \varliminf \int_E f_k d \mu$
+
+\textbf{Теорема Лебега.} \quad
+
+$f_k(x) \longrightarrow f(x) $ $|f_k(x)| \leqslant \varphi(x) \in
+L(E) \; \Rightarrow \int_E f d \mu = \lim_{k \rightarrow \infty}
+\int f_k d \mu$
+
+$\lozenge$ $|f_k(x)| \leqslant \varphi(x) \Rightarrow(x) f(x)$ ---
+интегрируема.
+
+Сначала докажем для $f_k(x) \geqslant 0$
+
+$\int_E f d \mu \leqslant \varliminf_{k \rightarrow \infty} \int_E
+f_k d \mu \leqslant \int_E \varphi d \mu$ по теореме Фату.
+
+$\varphi - f_k \geqslant 0$
+
+$\int_E \varphi d \mu - \int_E f d \mu \leqslant \varliminf_{k
+\rightarrow} \int_E (\varphi - f_k) d \mu \leqslant \int_E \varphi
+d \mu -$
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 11.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+$ \varlimsup_{k \rightarrow \infty} \int_E f_K d \mu \Rightarrow
+\int_E f d\mu \geqslant \varlimsup_{k \rightarrow \infty} \int_E
+f_k d \mu \Rightarrow \int_E f d \mu = \lim_{k \rightarrow \infty}
+f_k d \mu$
+
+$-\varphi(x) \leqslant f_k(x) \leqslant \varphi(x)$
+
+$0 \leqslant f_k(x) + \varphi(x) \leqslant 2 \varphi(x)$
+
+Доказанная часть применима к этой последовательности:
+ $\lim_{k \rightarrow \infty} (\int_E f_k d \mu + \int_E
+\varphi d \mu) = \int_E (f + \varphi) d \mu$ $\blacklozenge$
+
+\textbf{Задача.} \quad Показать, что в теореме Леви условие
+интегрируемости нельзя заменить на условие существенной
+интегрируемости
+
+\textbf{Задача.} Доказать, что \quad $\lim_{n \rightarrow \infty}
+\int_0^{\infty} \frac{1}{(1 + x/n)^n x^{1/n}} = 1$ (обосновать
+предельный переход под знаком интеграла)
+
+\textbf{Задача.} \quad $\mu E < \infty, f(x) \geqslant C$.
+Доказать, что верна теорема Лебега.
+
+
+\textbf{Определение.} \quad Срезка $f(x)$
+
+$f^N(x) =
+\begin {cases}
+f(x), &\text |f(x)| \leqslant N  \\
+N, &\text f(x) > N \\
+-N, &\text f(x) < -N
+\end {cases} $
+
+
+$\int_E f d \mu = \lim_{N \rightarrow \infty} \int_E f^N d \mu,$
+так как $|f^N| \leqslant f \in L(E)$
+
+Если $f \geqslant 0$, то кон. $\lim_{N \rightarrow \infty} \int_E
+f^N d\mu$ --- условие существования $\int_E f d \mu$. Это следует
+из теоремы Леви.
+
+\textbf{Теорема.} \quad Если $f$ --- интегрируема на $E$, то
+$\int_E |f - f^N| d\mu \xrightarrow[N \rightarrow \infty]{} 0$
+
+$\lozenge$ $f - f^N = f^+ - (f^N)^+ - (f^- - (f^N)^-)$
+
+Применим утверждение для положительной и отрицательной части
+функции и получим требуемое утверждение. $\blacklozenge$
+
+\textbf{Лемма.} \quad $E \subset [a, b], \: E$ измерима.
+$\Rightarrow$
+
+$\EuScript{(M)} \int_a^b \chi_E d x = \mu(E) = (L) \int_{[a,b]}
+\chi_E d \mu$
+
+$\lozenge$ Пусть $E$ --- открытое множество, $E = G =
+\bigcup_n(\alpha_n, \beta_n)$
+
+$\chi_G(x) = \lim_{k \rightarrow \infty} (\bigcup_{n=1}^k
+(\alpha_n, \beta_n))$
+
+По теореме Б. Леви предельным переходом
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 12.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+получаем требуемую формулу. Переходом к дополнению получим такое
+утверждение для замкнутых множеств.  $\blacklozenge$
+
+$E$ --- измерим., $\{F_k\}$ --- замкнут.
+
+$F_k \subset F_{k+1} \subset \ldots \subset E$
+
+$\mu (E \ \bigcup_k F_k) = 0$ (так как для измеримого множества
+возможно приближение с любой точностью)
+
+$\chi_E = \chi_A + \chi_{\bigcup_k F_k} \; (A = E \ \bigcup_k
+F_k)$
+
+$\chi_E = \chi_A + \lim_{k \rightarrow \infty} \chi_{F_k}, \;
+\chi_{F_k} \nearrow \chi$
+
+Применим теорему Б. Леви (или теорему о неотрицательных функциях).
+Интеграл Мак--Шейна и Лебега совпадают для $\chi_A$ и
+$\chi_{\bigcup_k F_k} \Rightarrow$ они совпадают для $\chi_E$
+
+
+\textbf{Теорема.} \quad На отрезке прямой интеграл Мак-Шейна
+совпадает с интегралом Лебега.
+
+$\lozenge$ Докажем сперва для неотрицательных функций. $f_k
+\nearrow f, f_k$ --- простые
+
+Интегралы $f_k$ совпадают. Применим теорему Леви и получим
+совпадение пределов.
+
+Если $f$ --- произвольного знака, то $f = f^+ + f^-$. Если $f$
+интегрируема по Лебегу $\Rightarrow \; f^+, f^-$ интегрируемы по
+Лебегу. $\Rightarrow \; f^+, f^-$ интегрируемы по Мак--Шейну
+$\Rightarrow \; f$ интегрируема по Мак--Шейну $\Rightarrow \; |f|$
+интегрируема по Мак-Шейну $\Rightarrow \; f^+, f^-$ интегрируемы
+по Мак--Шейну$\Rightarrow f^+, f^-$ интегрируемы по Лебегу
+$\Rightarrow f$ интегрируема по Лебегу. $\blacklozenge$
+
+
+
+\textbf{Теорема.} \quad Если некоторые интегралы сходятся
+абсолютно на отрезке $\Rightarrow$ функция интегрируема по Лебегу.
+
+\textbf{Задача.} \quad Привести пример того, что обратное неверно.
+
+\textbf{Задача.} \quad Обобщить утверждение теоремы для всей
+прямой.

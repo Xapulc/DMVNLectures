@@ -1,0 +1,82 @@
+\RequirePackage{amssymb, amsmath, amsfonts}%
+\RequirePackage[T2A]{fontenc}%
+\RequirePackage[russian]{babel}%
+\RequirePackage[dvips]{graphicx}%
+\RequirePackage{euscript}%
+\RequirePackage{array}%
+\RequirePackage{wrapfig}%
+%\usepackage{ulem}
+%
+
+\setlength{\textwidth}{177mm} \setlength{\textheight}{260mm}
+\setlength{\oddsidemargin}{-7mm} \setlength{\topmargin}{-18mm}
+\setlength{\evensidemargin}{-7mm} %\setlength{\margin}{-10mm}
+
+\renewcommand{\@makecaption}[2]{
+\vspace{\abovecaptionskip}%
+\sbox{\@tempboxa}{#1. #2}%
+\ifdim \wd\@tempboxa > \hsize%
+\begin{center}%
+#1.~#2%
+\end{center}%
+\looseness=-1
+%\par%
+\else%
+\global\@minipagefalse%
+\hbox to \hsize {\hfil #1.~#2\hfil}%
+\fi \vspace{\belowcaptionskip}}
+%
+\newcounter{abctheorem}%
+\setcounter{abctheorem}{1}%
+\newcommand{\inctheorem}{%
+\arabic{abctheorem}%
+\addtocounter{abctheorem}{1}%
+}%
+\newtheorem{zadacha}{Задача}
+\renewcommand{\thezadacha}{\theabctheorem}
+\newtheorem{opred}{Определение}
+\renewcommand{\theopred}{\theabctheorem}
+\newtheorem{lemma}{Лемма}
+\renewcommand{\thelemma}{\theabctheorem}
+\newtheorem{theorem}{Теорема}
+\renewcommand{\thetheorem}{\theabctheorem}
+\newtheorem{predl}{Предложение}
+\renewcommand{\thepredl}{\theabctheorem}
+\newtheorem{utverj}{Утверждение}
+\renewcommand{\theutverj}{\theabctheorem}
+\newtheorem{gipoteza}{Гипотеза}
+\renewcommand{\thegipoteza}{\theabctheorem}
+\newtheorem{zamech}{Замечание}
+\renewcommand{\thezamech}{\theabctheorem}
+\newtheorem{question}{Вопрос}
+\renewcommand{\thequestion}{\theabctheorem}
+%
+\renewcommand{\@begintheorem}[2]{\begin{trivlist}%
+\item[\hspace{\labelsep}{\bfseries #1\ \inctheorem.}]%
+\itshape}%
+\renewcommand{\@opargbegintheorem}[3]{\begin{trivlist}%
+\item[\hspace{\labelsep}{\bfseries #1\ \inctheorem\ (#3).}]%
+\itshape}%
+\renewcommand{\@endtheorem}{\end{trivlist}}%
+%
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}%
+{\hbox{$\mathsurround=0pt #1$}}{}}%
+\newcommand{\undertilde}[1]{\underset{\widetilde{\hphantom{#1}}}{#1}}%
+\newcommand{\underItilde}[1]{\underset{\widetilde{\hphantom{#1I}}}{#1}}%
+\newcommand{\undertextedtilde}[2]{\underset{\widetilde{\hphantom{#2}}}{#1}}%
+\newcommand{\underdoubletilde}[1]{\underset{\widetilde{\widetilde{\hphantom{#1}}}}{#1}}%
+\newcommand{\underIdoubletilde}[1]{\underset{\widetilde{\widetilde{\hphantom{#1I}}}}{#1}}%
+\newcommand{\undertexteddoubletilde}[2]{\underset{\widetilde{\widetilde{\hphantom{#2}}}}{#1}}%
+\DeclareMathOperator{\tr}{tr}%
+\DeclareMathOperator{\Rot}{Rot}%
+\DeclareMathOperator{\rot}{rot}%
+\DeclareMathOperator{\Div}{Div}%
+\DeclareMathOperator{\divergent}{div}%
+\DeclareMathOperator{\grad}{grad}%
+\DeclareMathOperator{\Grad}{Grad}%
+\emergencystretch=5pt%
+%\textwidth=450pt%
+\newlength{\longgap}
+\longgap=5pt plus 5pt minus 5pt
+\newcommand{\longgapson}{\extrarowheight=\longgap}
+\newcommand{\longgapsoff}{\extrarowheight=0pt}

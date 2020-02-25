@@ -1,0 +1,73 @@
+\begin{center}
+\Large Контрольная работа №3. Вариант 1.\\
+\end{center}
+\begin{tproblem}
+На плоскости задан квадрат с вершинами в точках A(0,1), B(1,0), C(0,-1), D(-1,0). Пусть $\chi(x,y)$ - характеристическая функция этого квадрата. Найти $\chi_{xx}-\chi_{yy}$ в $\Ds(\R^2)$.
+\end{tproblem}
+\begin{solution}
+$(\chi_{xx}-\chi_{yy},\ph) = (\chi,\ph_{xx}-\ph_{yy}) = \ints{ABCD}\ph_{xx}-\ph_{yy}\,dS$. Сделаем замену:
+$
+\left\{
+\begin{aligned}
+&\xi=x+y\\
+&\eta=x-y
+\end{aligned}
+\right.
+$.\\
+Тогда
+$
+\left\{
+\begin{aligned}
+&\ph_{xx}=\psi_{\xi\xi}+2\psi_{\xi\eta}+\psi_{\eta\eta}\\
+&\ph_{yy}=\psi_{\xi\xi}-2\psi_{\xi\eta}+\psi_{\eta\eta}\\
+\end{aligned}
+\right.
+$. Кроме того, когда сделаем замену в интеграле, появится якобиан, равный $\frac12$. Квадрат ABCD перейдёт в квадрат A'B'C'D' с вершинами в точках $(\pm 1, \pm 1)$.\\
+Имеем $\ints{ABCD}\ph_{xx}-\ph_{yy}\,dS \bw= \ints{A'B'C'D'}4\psi_{\xi\eta}\frac12\,dS = \intl{-1}{1}\intl{-1}{1}2\psi_{\xi\eta}(\xi,\eta)\,d\xi\,db = 2\intl{-1}{1} \psi_{\xi\eta}(\xi,1) - \psi_{\xi\eta}(\xi,-1) \,d\xi = 2\psi(1,1) -2\psi(-1,1)-2\psi(1,-1)\bw+2\psi(-1,-1) = 2\ph(1,0) -2\ph(0,-1)-2\ph(0,1)+2\ph(-1,0)$, откуда окончательно получаем: $\chi_{xx}-\chi_{yy} = 2\delta(x-1,y) -2\delta(x,y+1)-2\delta(x,y-1)+2\delta(x+1,y)$.
+\end{solution}
+\begin{tproblem}
+Докажите, что $E(r)=-\frac{\cos kr}{4\pi r}$, $r=|x-x_0|$, является фундаментальным решением оператора $\Delta+k^2$ ($x\in\R^3$).
+\end{tproblem}
+\begin{solution}
+$\Delta\Es = e^{\pm i k r}\Delta\frac1{4\pi r}+ 2 \nabla(e^{\pm i k r})\nabla(-\frac1{4\pi r})+(-\frac1{4\pi r})\Delta e^{\pm i k r}.$ Первое слагаемое $e^{\pm i k r}\Delta\frac1{4\pi r}$ даёт $\delta$-функцию, так как $-\frac1{4\pi r}$ фундаментальное решение оператора Лапласа в $\R^3$.
+Остаётся проверить, что \\$2 \nabla(e^{\pm i k r})\nabla(-\frac1{4\pi r})-\frac1{4\pi r}\Delta e^{\pm i k r} - k^2 \frac{e^{\pm i k r}}{4\pi r} = 0$ (используя, например, $\Delta V(r) = V_{rr}+\frac{2}{r}V_r$).
+%Возможно рабоче-крестьянское решение с помощью преобразования Фурье. Сдвинем всё в 0 для краткости записи. $(\Delta+k^2)\Es=\delta(x)$, применяя преобразование Фурье (определение используем из задачника Владимирова), получаем $\widehat{(\Delta+k^2)\Es}=\widehat{\delta(x)}=1$. В силу свойств преобразования Фурье $/*\widehat{(f'(x))}=(-iy)\widehat{f(x)})*/$ имеем $\Delta\Es = -(x^2+y^2+z^2)\Es = -r^2\Es$, откуда $\widehat{\Es} = \frac{1}{k^2-r^2}$, осталось убедиться, что подходят функции вида $-\frac{e^{\pm i k r}}{4\pi r}$.\\
+\end{solution}
+\begin{tproblem}
+Дана гармоническая в кольце $Q = {1<x^2+y^2<2}$ функция u(x,y), удовлетворяющая условиям: u(x,y)=x при $x^2+y^2=2$, $\pd_\nu u+(1-y^2) u = 0$ при $x^2+y^2=1$. ($\nu$ - внешняя нормаль). Не находя решения, найдите $\maxl{\overline{Q}}|u(x,y)|$.
+\end{tproblem}
+\begin{solution}
+Гармоническая функция u, очевидно, не константа, следовательно, по принципу экстремума её модуль не может принимать максимальное значение внутри области. Исследуем её на границе. Условие переписывается так: $\pd_\nu u+ x^2 u = 0$. По лемме о нормальной производной $\pd_\nu u>0$ в точке максимума и $\pd_\nu u<0$ в точке минимума; экстремум не может достигаться при x=0. Таким образом, из $\pd_\nu u = - x^2 u$ заключаем, что в точке максимума $u<0$, а в точке минимума $u>0$, а такой функции не существует. Противоречие означает, что u принимает максимум на $x^2+y^2=2$ равный, очевидно $\sqrt 2$ (так как там u(x,y)=x).
+\end{solution}
+\begin{tproblem}
+Пусть u(x,t) - решение задачи Коши:
+$
+\left\{
+\begin{aligned}
+&u_t=\Delta u,~~x\in\R^3,~t>0\\
+&u|_{t=0}=\sin(x_1)\sin(x_2)\sin(x_3)I_\Pi=\ph,~\Pi=[0,\pi]^3\\
+\end{aligned}
+\right.\\
+$
+(под $I_\Pi$ понимается индикатор $\Pi$). Найти $\liml{t\to\infty}\ints{\R^3}u(x,t)\,dx$.
+\end{tproblem}
+\begin{solution}
+%Внимание! Похоже на лажу!\\
+Решение задачи Коши уравнения теплопроводности представимо в виде:\\
+$u(x,t) = \frac1{(2\sqrt{\pi t})^3} \ints{\R^3}\ph(y)e^{-\frac{|x-y|^2}{4t}}\,dy$. Тогда $\liml{t\to\infty}\ints{\R^3}u(x,t)\,dx = \liml{t\to\infty}\ints{\R^3}\ints{\R^3}\frac1{(2\sqrt{\pi t})^3}\ph(y)e^{-\frac{|x-y|^2}{4t}}\,dy\,dx$. 
+Решение от Т.А.: $\liml{t\to\infty}\ints{\R^3}\ints{\R^3}\frac1{(2\sqrt{\pi t})^3}\ph(y)e^{-\frac{|x-y|^2}{4t}}\,dy\,dx = 
+\liml{t\to\infty}\ints{\R^3}\ph(y)\ints{\R^3}\frac1{(2\sqrt{\pi t})^3}e^{-\frac{|x-y|^2}{4t}}\,dx\,dy =
+\ints{\R^3}\ph(y)\ints{\R^3}\frac{e^{-\eta^2}}{\pi^{3/2}}\,d\eta\,dy=
+\ints{\R^3}\ph(y)\,dy=8$.
+(другое решение) Замена: $\frac{y-x}{2\sqrt{t}} = \eta$, имеем $\liml{t\to\infty}\ints{\R^3}u(x,t)\,dx = \liml{t\to\infty}\ints{\R^3}\ints{\R^3}\ph(x+2\eta\sqrt t)e^{-|\eta|}\,d\eta\,dx\map{?}\ints{\R^3}\ph(x)\,dx = 8$.\\
+Про последний предельный переход:
+Сведём к одномерной задаче (впрочем, дальнейшие рассуждения можно провести и сразу для исходной задачи): ищем решение в виде $u(\overline{x},t)=u_1(x_1,t)u_2(x_2,t)u_3(x_3,t)$.
+Подставляя, получаем 3 задачи : $ \left\{ \begin{aligned} &(u_i)_t=\Delta u_i,~~x\in\R,~t>0\\ &(u_i)|_{t=0}=\sin(x_i)I_{[0,\pi]}\\ \end{aligned} \right. $
+Для любой их них получаем по аналогичным соображениям $\liml{t\to\infty}\ints{\R}\ints{\R}\ph(x+2\eta\sqrt t)e^{-|\eta|}\,d\eta\,dx$. Тогда понятно, что чем больше t, тем меньше отрезок интегрирования по $\eta$ $x+2\eta\sqrt t\notin [0,\pi] \Ra \ph(x+2\eta\sqrt t) = 0$), тем ближе $e^{|\eta|}$ к 1, а соответствующий интеграл - к интегралу от синуса.
+\end{solution}
+\begin{tproblem}
+Постройте функцию Грина задачи Дирихле для полукруга $K=\{x: |x|<1,~x_2>0\}$ на плоскости $(x_1,x_2)\in\R^2$.
+\end{tproblem}
+\begin{solution}
+Введём естественным образом комплексные координаты: $(x_1,x_2)\to x_1+ix_2 = z$. Конформное отображение $w(z) = \left(\frac{z+1}{z-1}\right)^2$  переводит К на полуплоскость $\{z: \Im z>0\}$. На ней функция Грина известна: $G(z,z_0)=\frac1{2\pi}\ln\frac{|z-\ol{z_0}|}{|z-z_0|}$, тогда функция Грина для полукруга имеет вид $\frac1{2\pi}\ln\frac{|w(z)-\ol{w(z_0)}|}{|w(z)-w(z_0)|}$, который элементарными преобразованиями приводится к виду $\frac1{2\pi}\ln\frac{|z-\ol{z_0}||1-z\ol{z_0}|}{|z-z_0||1-zz_0|}$.
+\end{solution}

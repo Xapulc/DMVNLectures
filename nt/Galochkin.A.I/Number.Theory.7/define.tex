@@ -1,0 +1,56 @@
+
+\newcommand{\newlecture}[2]{\begin{flushright} \textsc{Лекция №#1. #2} \end{flushright}}
+\newcommand{\intlim}{\int\limits}
+\newcommand{\sumlim}{\sum\limits}
+\newcommand{\limlim}{\lim\limits}
+\newcommand{\prodlim}{\prod\limits}
+\newcommand{\llra}{\Longleftrightarrow}
+\newcommand{\lRa}{\Longrightarrow}
+\newcommand{\eq}{\equiv}
+\newenvironment{mlc}{\begin{equation}\begin{gathered}}{\end{gathered}\end{equation}}
+\newenvironment{mlc*}{\begin{equation*}\begin{gathered}}{\end{gathered}\end{equation*}}
+\newcommand{\notion}{\emph}
+\DeclareMathOperator{\li}{li}
+
+\makeatletter
+
+\renewcommand{\@listI}{%
+\leftmargin=40pt
+\rightmargin=0pt
+\labelsep=5pt
+\labelwidth=20pt
+\itemindent=0pt
+\listparindent=0pt
+\topsep=2pt plus 1pt minus 1pt
+\partopsep=1pt plus 1pt
+\parsep=1pt plus 1pt
+\itemsep=\parsep}
+
+\renewcommand{\@listii}{%
+\leftmargin=25pt
+\rightmargin=0pt
+\labelsep=5pt
+\labelwidth=20pt
+\itemindent=0pt
+\listparindent=0pt
+\topsep=0pt plus 1pt
+\partopsep=0pt plus 1pt
+\parsep=0pt
+\itemsep=\parsep}
+
+\makeatother
+
+% hyperref options
+%\hypersetup{linkcolor = blue}    % Цвет текста ссылок на мишени внутри документа; по умолчанию --- red.
+%\hypersetup{filecolor = cyan}    % Цвет текста ссылок на локальные PDF файлы; по умолчанию --- cyan.
+%\hypersetup{citecolor = green}   % Цвет библиографических ссылок, которые печатает команда \cite; по умолчанию --- green.
+%\hypersetup{urlcolor  = magenta} % Цвет текста URL-ссылок; по умолчанию --- magenta.
+%\hypersetup{unicode   = true}
+\newenvironment*{authornote}
+{\setmainfont{URW Chancery L}
+  \begin{flushleft}
+  \tiny
+  \hangafter 0
+  \hangindent=0.5\textwidth
+}
+{\end{flushleft}}

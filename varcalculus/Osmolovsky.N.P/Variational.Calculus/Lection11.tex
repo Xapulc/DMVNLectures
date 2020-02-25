@@ -1,0 +1,490 @@
+\chapter*{Лекция}
+\section*{Тема 11: Принцип максимума.}
+
+\subparagraph{1. Система уравнений в вариациях.}Пусть отрезок
+$[\tau_0,\tau_1]$ раз\-бит на $r$ последовательных интервалов,
+полуинтервалов или отрезков $\sigma_1,\ldots,\sigma_r$.
+Обозна\-чим через $\chi_k(\tau)$ характеристическую функцию
+множества ${\sigma_k},\ k=1,\ldots,r$. Рассмотрим задачу Коши
+\setcounter{equation}{0}
+\begin{equation}\label{11m1}
+\frac{dx}{d\tau}=f(x,\hat{u}(\tau))\sum_{k=1}^r z_k\chi_k(\tau),
+\end{equation}
+\begin{equation}\label{11m2}
+x(\tau_0)=x_0,
+\end{equation}
+где $z_k$~--- числа, $k=1,\ldots,r$, $x_0\in\mathbb{R}^n$ -
+вектор, $\hat{u}(t)$~--- фиксированная ограниченная измеримая
+функция.
+
+Положим, $z=(z_1,\ldots,z_r)$. Как и выше, предполагаем, что $f$
+и $f_x$ непрерывны по $x$, $u$.
+
+Коротко задачу (\ref{11m1}),(\ref{11m2}) запишем в виде
+\begin{equation}\label{11m3}
+\frac{dx}{d\tau}=vf(x,\hat{u}(\tau)),\ \ x(\tau_0)=x_0,
+\end{equation}
+где $v=\sum z_k\chi_k(\tau).$
+
+\setcounter{theorema}{0}
+\begin{theorema}
+Пусть при некоторых
+$(\hat{x}_0,\hat{z})\in\mathbb{R}^n\times\mathbb{R}^r$ задача
+Коши (\ref{11m1}),(\ref{11m2}) имеет решение $\hat{x}(\tau)$,
+определенное на $[\tau_0,\tau_1]$. Тогда в некоторой окрест\-ности
+${\cal{U}}$ точки $(\hat{x}_0,\hat{z},v^0)$ задача
+(\ref{11m1}),(\ref{11m2}) определяет непрерывно
+диффе\-рен\-ци\-руемый по Фреше оператор
+\begin{equation}\label{11m4}
+(x_0,z)\in {\cal{U}}\mapsto x(\cdot)\in
+W_1^1([\tau_0,\tau_1],\mathbb{R}^n),
+\end{equation}
+причем производная Фреше этого оператора в точке
+$(\hat{x}_0,\hat{z},v^0)$ есть линей\-ный оператор, отображающий
+пару $(\bar{x}_0,\bar{z})\in\mathbb{R}^n\times\mathbb{R}^r$ в
+функцию $\bar{x}(\cdot)\in W_1^1([\tau_0,\tau_1],\mathbb{R}^n)$,
+определяемую как решение задачи Коши
+\begin{equation}\label{11m5}
+\frac{d\bar{x}}{d\tau}=f'_x(\hat{x}(\tau),\hat{u}(\tau))\bar{x}
+\sum_{k=1}^r \hat{z}_k\chi_k(\tau)+f(\hat{x}(\tau),\hat{u}(\tau))
+\sum_{k=1}^r \bar{z}_k\chi_k(\tau),
+\end{equation}
+\begin{equation}\label{11m6}
+\bar{x}(\tau_0)=\bar{x}_0.
+\end{equation}
+\end{theorema}
+
+Коротко задачу Коши (\ref{11m5}),(\ref{11m6}) запишем в виде
+\begin{equation}\label{11m7}
+\frac{d\bar{x}}{d\tau}=\hat{v}\hat{f}_x\bar{x}+\bar{v}\hat{f},\ \
+\ \ \bar{x}(\tau_0)=\bar{x}_0,
+\end{equation}
+где $\hat{v}=\sum\hat{z}_k\chi_k,\ \bar{v}=\sum\bar{z}_k\chi_k,\
+\hat{f}_x=f_x(\hat{x},\hat{u}), \ \hat{f}=f(\hat{x},\hat{u}).$
+Система уравнений (\ref{11m5}) называется \emph{системой
+уравнений в вариациях} для системы (\ref{11m1}).
+
+В теореме 1 несущественно, что $\chi_k$ - характеристические
+функции множеств. Важно лишь то, что параметры $z_k$ входят в
+правую часть системы (\ref{11m1}) линейным образом (хотя и при
+нелинейном вхождении пара\-метров теорема имеет соответствующий
+аналог).
+
+\begin{proof}(теоремы 1) Положим,
+\begin{equation}\label{11m8}
+\Psi(x_0,z,x(\cdot))=\Big(x(\tau_0)-x_0 \ ,\
+\frac{dx}{d\tau}-f(x,\hat{u})\sum z_k\chi_k \Big)
+\end{equation}
+Это равенство определяет оператор
+$$
+\Psi:\mathbb{R}^n\times\mathbb{R}^r\times W_1^1 \mapsto \mathbb{R}^n\times L_1
+$$
+такой, что
+$$
+\Psi(\hat{x}_0,\hat{z},\hat{x}(\cdot))=(0,0).
+$$
+Последнее имеет место потому, что $\hat{x}(\cdot)$ есть решение
+задачи Коши (\ref{11m1}),(\ref{11m2}) при $x_0=\hat{x}_0$,
+$z=\hat{z}$.
+
+Нетрудно проверить (сделайте это сами), что $\Psi$ непрерывно
+диферен\-цируема по Фреше, и что его производная Фреше в точке
+$(\hat{x}_0,\hat{z},\hat{x}(\cdot))$ есть линейный оператор
+\begin{equation}\label{11m9}
+\hat{\Psi}':\Big (\bar{x}_0,\bar{z},\bar{x}(\cdot)\Big ) \mapsto
+\Big (\bar{x}(\tau_0)-\bar{x}_0\  ,\
+\frac{d\bar{x}}{d\tau}-\hat{f}_x\bar{x}\sum \hat{z}_k\chi_k-
+\hat{f}\sum \bar{z}_k\chi_k\Big)
+\end{equation}
+$$\hat{\Psi}':\mathbb{R}^n\times\mathbb{R}^r\times W_1^1 \mapsto \mathbb{R}^n\times L_1.$$
+
+Частная производная оператора $\Psi$ по переменной $x(\cdot)$ есть
+оператор
+$$
+\hat{\Psi}'_{x(\cdot)}:\bar{x} \mapsto \Big (\bar{x}(\tau_0)\  ,\
+\frac{d\bar{x}}{d\tau}-\hat{f}_x\bar{x}\sum \hat{z}_k\chi_k\Big),
+$$
+$$
+\hat{\Psi}'_{x(\cdot)}:W_1^1 \mapsto\mathbb{R}^n\times L_1.
+$$
+Он получается из $\hat{\Psi}'$ при $\bar{x_0}=0,\ \bar{z}=0$.
+Покажем, что $\Psi'_{x(\cdot)}$ имеет обратный.
+
+В образе этого оператора возьмем произвольный элемент
+$(\bar{\xi},\bar{f})$,
+где
+$$
+\bar{\xi}\in\mathbb{R}^n, \ \ \ \bar{f}(\cdot)\in L_1,
+$$
+и рассмотрим задачу Коши
+\begin{equation}\label{11m10}
+\frac{d\bar{x}}{d\tau}=\hat{f}_x\bar{x}\sum
+\hat{z}_k\chi_k+\bar{f}, \ \ \bar{x}(\tau_0)=\bar{\xi}.
+\end{equation}
+Поскольку $\hat{f}_x(\cdot)\in L_\infty$, то при любых
+$\bar{\xi}\in\mathbb{R}^n$, $\bar{f}\in L_1$ эта задача имеет
+единственное решение $\bar{x}(\tau)$ на $[\tau_0,\tau_1]$,
+$\bar{x}(\cdot)\in W_1^1$ (см. АТФ, с. 191). Таким образом, задача
+(\ref{11m10}) определяет линейный оператор
+$$
+(\bar{\xi},\bar{f})\in\mathbb{R}^n\times L_1 \mapsto
+\bar{x}(\cdot)\in W_1^1,
+$$
+который и является обратным к
+оператору $\hat{\Psi}'_{x(\cdot)}.$
+
+Итак, для оператора $\Psi$ выполнены условия теоремы о неявной
+функ\-ции. По этой теореме существует непрерыано диференцируемая
+по Фре\-ше функция (оператор)
+$$\varphi:(x_0,z)\mapsto x(\cdot),$$
+определенная в некоторой окрестности ${\cal{U}}$ точки
+$(\hat{x}_0,\hat{z})$:
+$$
+\varphi:{\cal{U}}\mapsto W^1_1,
+$$
+такая, что
+$$\varphi(\hat{x}_0,\hat{z})=\hat{x}(\cdot)$$
+и при этом значение $x(\cdot)=\varphi(x_0,z)$ определяется из
+условия $$\Psi(x_0,z,x(\cdot))=(0,0),$$ т.е. как решение задачи
+Коши (\ref{11m1}),(\ref{11m2}).
+
+Производная Фреше операторв $\varphi$ в точке
+$(\hat{x}_0,\hat{z})$ есть линейный опе\-ра\-тор $\hat{\varphi}'$
+определяемый из условия
+$$
+\hat{\Psi}'_{x_0z}+\hat{\Psi}'_{x(\cdot)}\hat \varphi'=0,
+$$
+где $\hat{\Psi}'_{x_0z}$~--- частная производная оператора $\Psi$
+по $x_0,z$ в точке $(\hat{x}_0,\hat{z},\hat{x}(\cdot)).$ Из
+приведенного равенства вытекает, что
+$$
+\hat{\Psi}'_{x_0z}(\bar{x}_0,\bar{z})+\hat{\Psi}'_{x(\cdot)}
+\hat \varphi'(\bar{x}_0,\bar{z})=0, \ \ \ \forall
+\bar{x}_0,\bar{z} \in \mathbb{R}^n\times\mathbb{R}^r.
+$$
+Положим
+$$
+\hat \varphi'(\bar{x}_0,\bar{z})=\bar{x}(\cdot).
+$$
+Тогда
+$$
+\hat{\Psi}'_{x_0z}(\bar{x}_0,\bar{z})+\hat{\Psi}'_{x(\cdot)}
+\bar{x}(\cdot)=0,
+$$
+что эквивалентно равенству
+\begin{equation}\label{11m11}
+\hat \Psi' (\bar{x}_0,\bar{z},\bar{x}(\cdot))=0.
+\end{equation}
+Итак, $\bar{x}(\cdot)$ определяется  (посредством $\hat
+\varphi'$) по $(\bar{x}_0,\bar{z})$ из равенства (\ref{11m11}). В
+силу (\ref{11m9}) это означает, что $\bar{x}(\cdot)$ находится
+как решение задачи Коши (\ref{11m5}),(\ref{11m6}). Теорема
+доказана.
+\end{proof}
+
+Далее через $p$ обозначим пару $(x_0,x_1)$, где
+$x_0\in\mathbb{R}^n,\ x_1\in\mathbb{R}^n$, т.е. $p\in
+\mathbb{R}^{2n}.$
+
+Введем конечномерный оператор $p=P(x_0,z)$ такой, что
+\begin{equation}\label{11m12}
+P:(x_0,z)\in {\cal{U}} \mapsto p=(x_0,x(\tau_1))\in
+\mathbb{R}^{2n},
+\end{equation}
+где $x(\cdot)=\varphi(x_0,z)$~--- решение задачи Коши
+(\ref{11m1}),(\ref{11m2}),
+${\cal{U}}\in\mathbb{R}^{n}\times\mathbb{R}^{r}$~---
+окрест\-ность точки $(\hat x_0,\hat z)$, указанная в теореме 1.
+Мы считаем, что условия этой теоремы выполнены. Непосредственно
+из теоремы 1 вытекает следующая теорема.
+
+\begin{theorema}
+Конечномерный оператор (\ref{11m12}) определен и непрерывно
+диф\-ференцируем в некоторой окрест\-ности ${\cal{U}}$ точки
+$(\hat x_0,\hat z).$ Его производная в этой точке есть
+конечномерный линейный оператор
+$$
+\hat P':(\bar x_0,\bar z)\in\mathbb{R}^{n}\times\mathbb{R}^{r}
+\mapsto \bar p=(\bar x_0,\bar x_1)\in \mathbb{R}^{2n},
+$$
+где
+$\bar x_1=\bar x(\tau_1),$ а $\bar x(\cdot)$ определяется как
+решение задачи Коши (\ref{11m5}),(\ref{11m6}).
+\end{theorema}
+
+\setcounter{equation}{0}
+\section*{Тема: принцип максимума задачи $B$.}
+
+\subparagraph{1. Формулировка прин\-ци\-па максимума задачи $B$.}
+Напомним постановку задачи $B$:
+\begin{equation}\label{11n1}
+J=F(x_0,x_1)\rightarrow min, \ \ F(x_0,x_1)\leqslant 0, \ \
+K(x_0,x_1)=0,
+\end{equation}
+\begin{equation}\label{11n2}
+\dot{x}=f(x,u), \ \ \ u\in U,
+\end{equation}
+где $x_0=x(t_0),\ x_1=x(t_1)$, а $t_0,t_1$ - свободны.
+
+Здесь \eqref{11n1}~--- \emph{концевой блок задачи}, \eqref{11n2}
+~--- \emph{управляемая система} задачи. Положим
+$$
+l=l(x_0,x_1,\alpha_0,\alpha,\beta)=\alpha_0F_0(x_0,x_1)+
+\alpha F(x_0,x_1)+\beta K(x_0,x_1),
+$$
+где $\alpha_0$~--- число, $\alpha$ и $\beta$ - величины тех же
+размерностей, что и $F$ и $K$ соответственно, т.е.
+$\alpha\in\mathbb{R}^k, \beta\in\mathbb{R}^s.$  Назовем $l$ -
+\emph{концевой функцией Лагранжа}. Удобно считать, что $\alpha$ и
+$\beta$~--- вектор-строки.
+
+Далее положим,
+$$
+H=H(t,x,u,\psi)=\psi f(t,x,u),
+$$
+где $\psi\in \mathbb{R}^n$~--- вектор-строка. Назовем $H$~---
+\emph{функцией Понтрягина}.
+
+Пусть ${\cal{T}}=\{{x(t)},{u(t)}\ |\ t\in[{t_0},{t_1}]\}$~---
+допустимая траектория задачи $B$. Будем говорить, что для нее
+выполнены условия \emph{принципа максимума Понтрягина}, если
+существуют число $\alpha_0$, векторы
+$$
+\alpha\in\mathbb{R}^k,\ \ \ \beta\in\mathbb{R}^s
+$$
+и абсолютно непрерывная функция
+$$
+\psi(t): [{t_0},{t_1}] \rightarrow \mathbb{R}^n,
+$$
+такие, что
+\begin{enumerate}
+\item[\textrm{(i)}]$\ \alpha_0\geqslant0 , \alpha\geqslant0,$\\
+\item[\textrm{(ii)}]$\ \alpha_0+|\alpha|+|\beta|>0,$\\
+\item[\textrm{(iii)}]$\ \alpha_iF_i(x(t_0),x(t_1))=0, \ \ i=1,\ldots,k,$\\
+\item[\textrm{(iv)}]$\ -\dot{\psi}(t)=H_x'(t,x(t),u(t),\psi(t))\text{ п.в.
+на } [{t_0},{t_1}],$\\
+\item[\textrm{(v)}]$\ \psi(t_0)=l_{x_0}'(x(t_0),x(t_1),\alpha_0,\alpha,\beta),$\\
+          \ $-\psi(t_1)=l_{x_1}'(x(t_0),x(t_1),\alpha_0,\alpha,\beta),$\\
+\item[\textrm{(vi)}]$\ H(t,x(t),u,\psi(t))\leqslant0, \ \ \ \forall t\in [{t_0},{t_1}] \ \ \forall u\in U $\\
+\item[\textrm{(vii)}]$\ H(t,x(t),u(t),\psi(t))=0, \text{ п.в. на }
+[{t_0},{t_1}].$\\
+\end{enumerate}
+
+Из условий \textrm{(vi)} и \textrm{(vii)} следует, что почти для
+всех $t\in [{t_0},{t_1}]$ функция
+$$
+u\mapsto H(t,x(t),u,\psi(t))
+$$
+достигает максимума по $u\in U$ в
+точке $u=u(t).$ Поэтому $(\text{v}i)$ называют \emph{условием
+максимума}.
+
+Функцию
+$$
+{\cal H}(t,x,\psi)=\max\limits_{u\in U} H(t,x,u,\psi)
+$$
+называют \emph{гамильтонианом.}
+
+Из сказанного вытекает,  что
+$$
+{\cal H}(t,x(t),\psi(t))=H(t,x(t),u(t),\psi(t)) \text{ п.в. на
+}[{t_0},{t_1}].
+$$
+Поэтому условие \textrm{(vii)} называют \emph{условием равенства
+нулю га\-миль\-то\-ниана}.
+
+Используют также следующие названия:
+
+\textrm{(i)}~--- условия неотрицательности,
+
+\textrm{(ii)}~--- условие нетривиальности,
+
+\textrm{(iii)}~--- условия дополняющей нежесткости,
+
+\textrm{(iv)}~--- сопряженная система (для $\psi$),
+
+\textrm{(v)}~--- условия трансверсальности (для $\psi$).
+
+Переменную $\psi$ называют двойственой или сопряженной (adjoint)
+пе\-ре\-менной, а $\alpha_0,\alpha,\beta$~--- \emph{множителями
+Лагранжа концевого блока задачи.}
+
+Набор $\lambda=(\alpha_0,\alpha,\beta,\psi(\cdot))$ называют
+\emph{набором множителей Лагранжа} задачи $B.$
+
+\begin{theorema}
+Пусть траектория
+$$
+{\cal{T}}=({x(t)},{u(t)}\ |\ t\in[{t_0},{t_1}])
+$$
+~--- оптимальная в задаче $B.$ Тогда для нее выполнены условия
+принципа максимума Понтрягина.
+\end{theorema}
+
+Мы переходим непосредственно к доказательству этой теоремы.
+
+\subparagraph{2. Индекс $\theta$.}
+ Пусть
+$$
+\hat{\cal{T}}=(\hat{x}(t),\hat{u}(t)\ |\
+t\in[\hat{t_0},\hat{t_1}])\
+$$
+~--- решение задачи $B.$ С этим решением мы свяжем семейство
+конечномер\-ных задач $B^\theta$ и их оптимальных решений
+$(x_0^\theta,z^\theta),$ занумерованных индек\-сом $\theta$.
+
+Под индексом будем понимать набор значений времени и управления
+$$
+\theta=\{t^1,\ldots,t^N,u^1,\ldots,u^N\}
+$$
+такой, что
+$$
+\hat t_0\leqslant t_1\leqslant\ldots\leqslant t^N\leqslant\hat
+t_1
+$$
+$$
+u^k\in U,\ \ \ \ k=1,\ldots,N.
+$$
+Здесь $N=N(\theta)$~--- зависит от $\theta$.
+
+Определим отрезок $[\tau_0,\tau_1]$ следующим образом: берем
+отрезок $[\hat t_0,\hat t_1]$  и в точках $t^1,\ldots,t^N$
+вставляем отрезки единичной длины , сохраняя всякий раз положение
+точки $\hat t_0$.
+
+%%  сюда  не помешало бы вставить рисуночек.
+\textbf{Смотри рисунок $L11-1.pcx$}
+
+
+В результате получаем отрезок $[\tau_0,\tau_1]$ с концами
+$$\tau_0=\hat t_0,\ \ \ \tau_1=\hat t_1+N.$$
+
+
+\textbf{Смотри рисунок $L11-1.pcx$}
+
+
+Положим
+$$
+\begin{array}{l}
+  \Delta^1=[t^1,t^1+1],\\
+  \Delta^2=[t^2+1,t^2+2],\\
+  .\ldots\ldots\ldots\ldots\ldots\ldots .\\
+  \Delta^N=[t^N+(N-1),t^N+N],\\
+  {\cal{M}}_0=\bigcup\limits_{1}^{N}\Delta^k,\ \ {\cal{M}}_+=[\tau_0,\tau_1]\backslash
+  {\cal{M}}_0\\
+\end{array}
+$$
+Пусть
+$$
+v^\theta(\tau)=\left\{
+  \begin{array}{l}
+    0,\quad \tau\in M_0,\\
+    1,\quad \tau\in M_+,
+  \end{array}
+\right.
+$$
+$$
+t^\theta(\tau)=\hat t_0 +\int\limits_{\tau_0}^\tau
+  v^\theta(s)ds,\ \ \ \tau\in[\tau_0,\tau_1].
+$$
+Тогда
+$$
+\frac{dt^\theta(\tau)}{d\tau}=v^\theta(\tau),\quad t^\theta(\tau_0)=\hat t_0.
+$$
+Ясно, что $t^\theta(\tau_1)=\hat t_1.$ Таким образом,
+$t^\theta(\tau)$~--- кусочно-линейная неубываю\-щая функция
+такая, что
+$$
+t^\theta(\tau):[\tau_0,\tau_1]\overset{HA}\rightarrow [\hat t_0,\hat t_1],
+$$
+причем, $\Delta^k$~--- её отрезки постоянства и
+$$
+t^\theta(\Delta^k)=t^k, \ \ \ k=1,\ldots,s.
+$$
+Положим
+$$
+u^\theta(\tau)=\left\{
+\begin{array}{l}
+  \hat u(t^\theta(\tau)),\quad \tau\in M_+,\\
+  u^k,\quad \tau\in \Delta^k,\quad k=1,\dots,N
+\end{array}
+\right.
+$$
+Тогда $u^\theta(\tau):[\tau_0,\tau_1]\rightarrow
+\mathbb{R}^m$~--- ограниченная измеримая функция
+удовлетво\-ря\-ющая условию $u^\theta(\tau)\in U \text{ п.в. на }
+[\tau_0,\tau_1]$ (почему?).
+
+Положим
+$$
+x^\theta(\tau)=\hat x(t^\theta(\tau)), \quad \tau\in
+[\tau_0,\tau_1].
+$$
+\setcounter{proposit}{0}
+
+\begin{proposit}
+\begin{enumerate}
+\item[(a)] Имеют место равенства
+\begin{equation}
+x^\theta(\tau_0)=\hat x(\hat t_0), \ \ \ x^\theta(\tau_1)=\hat
+x(\hat t_1);\\
+\end{equation}
+\item[(b)] п.в. на  $[\tau_0,\tau_1]$ имеет место равенство
+\begin{equation}\label{11n4}
+\frac{dx^\theta(\tau)}{d\tau}=v^{\theta}(\tau)f(x^\theta(\tau),u^\theta(\tau)).
+\end{equation}
+\end{enumerate}
+\end{proposit}
+\begin{proof}
+(a)~--- вытекает из условий $t^\theta(\tau_0)=\hat t_0, \
+t^\theta(\tau_1)=\hat t_1.$
+
+(b)~--- Пусть $\Delta^k$~--- один из отрезков множества
+${\cal{M}}_0$. Тогда из условия $t^\theta(\tau)=const$ на
+$\Delta^k \Rightarrow \frac{dx^\theta(\tau)}{d\tau}=0$ на
+$\Delta^k.$
+
+Одновременно
+$$
+v^\theta(\tau)=0 \ \ \text{ на } \Delta^k.
+$$
+Следовательно (\ref{11n4}) имеет место на $\Delta^k$, а, значит ,
+п.в. на ${\cal{M}}_0.$
+
+Пусть теперь $\Delta_+$~--- интервал множества ${\cal{M}}_+.$
+Согласно формуле заме\-ны переменной на $\Delta_+$ имеем:
+$$
+\frac{dx^\theta(\tau)}{d\tau}=\frac{d\hat
+x(t^\theta(\tau))}{dt}\cdot\frac{dt^\theta(\tau)}{d\tau}=
+$$
+$$
+=f(\hat x(t^\theta(\tau)),\hat
+u(t^\theta(\tau)))v^\theta(\tau)=f(x^\theta(\tau),u^\theta(\tau))v^\theta(\tau)
+$$
+Следовательно (\ref{11n4}) имеет место на на $\Delta_+$, а тогда
+и п.в. на ${\cal{M}}_+$. Но ${\cal{M}}_0\cup
+{\cal{M}}_+=[\tau_0,\tau_1].$
+
+Значит, (\ref{11n4}) имеет место п.в. на $[\tau_0,\tau_1].$
+\end{proof}
+
+Множество ${\cal{M}}_0$ состоит из конечного числа отрезков
+$\Delta^k$ , $k=1,\ldots, N.$ Множество ${\cal{M}}_+$ - из
+конечного числа интервалов или полуинтервалов. Все указанные
+отрезки, интервалы и полуинтервалы множеств ${\cal{M}}_0$ и
+${\cal{M}}_+$ обьединим в набор, упорядочим и обозначим
+составляющие этого набора через $\sigma_k,\ \ k=1,\ldots,r.$
+Итак, $[\tau_0,\tau_1]=\bigcup_1^r \sigma_k,$ причем, различные
+$\sigma_k$ не пересекаются. Обозначим через $\chi_k(\tau)$
+характеристическую функцию множества $\sigma_k,\ \ k=1,\ldots,r.$
+
+Пусть $\hat z_k$~--- значение $v^\theta(\tau)$ на $\sigma_k,\
+k=1,\ldots,r,$ т.е.
+$$
+v^\theta(\tau)=\sum_{k=1}^r \hat z_k\chi_k(\tau) \ \ \text{п.в.}.
+$$
+Положим $\hat z=(\hat z_1,\ldots,\hat z_r), \ \hat x_0=\hat
+x(\hat t_0).$ Напомним, что $\hat z_k=0$, если $\sigma_k\subset
+{\cal{M}}_0,$ и $\hat z_k=1$, если $\sigma_k\subset {\cal{M}}_+.$
+
+\endinput

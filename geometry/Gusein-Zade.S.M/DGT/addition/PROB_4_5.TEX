@@ -1,0 +1,182 @@
+%% Lust updated: February 24, 1999.
+
+\documentstyle[12pt]{article}
+%% \documentstyle{article}
+
+\input amssym.def
+\input amssym.tex
+
+\marginparwidth 40pt
+\textwidth=158mm
+%% \textwidth=140mm
+%% \textheight=200mm
+\textheight=235mm
+
+\def\R{\Bbb R}
+\def\N{\Bbb N}
+\def\Z{\Bbb Z}
+\def\Q{\Bbb Q}
+\def\C{\Bbb C}
+\def\CP{\Bbb C\Bbb P}
+\def\RP{\Bbb R\Bbb P}
+\font\sf=cmss10
+
+% Theorem environments for normal usage
+% arabic numbering:
+\newtheorem{theorem}{Теорема}
+\newtheorem{corollary}{Следствие}
+\newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+
+% Non-italic
+% \theorembodyfont{\rmfamily}
+
+\newenvironment{definition}
+{\smallskip\noindent{\bf Определение\/}:}{\smallskip\par}
+\newenvironment{def-equiv}
+{\smallskip\noindent{\bf Определение'\/}:}{\smallskip\par}
+%% \newenvironment{proposition}
+%% {\smallskip\noindent{\bf Proposition\/}.}{\smallskip\par}
+\newenvironment{example}
+{\smallskip\noindent{\bf Пример\/}.}{\smallskip\par}
+\newenvironment{examples}
+{\smallskip\noindent{\bf Примеры\/}.}{\smallskip\par}
+\newenvironment{remark}
+{\smallskip\noindent{\bf Замечание\/}.}{\smallskip\par}
+\newenvironment{remarks}
+{\smallskip\noindent{\bf Замечания\/}.}{\smallskip\par}
+\newenvironment{proof}
+{\noindent{\bf Доказательство\/}.}{{ $\Box$}\smallskip\par}
+\newenvironment{Proof}
+{\noindent{\bf Доказательство\/}}{{ $\Box$}\smallskip\par}
+\newenvironment{problem}
+{\noindent{\bf Задача\/}.}{\smallskip\par}
+\newenvironment{problem^*}
+{\noindent{\bf Задача${}^*$}.}{\smallskip\par}
+\newenvironment{problem^**}
+{\noindent{\bf Задача${}^{**}$}.}{\smallskip\par}
+\newenvironment{problem_*}
+{\noindent{\bf Задача${}_{*}$}.}{\smallskip\par}
+\newenvironment{problem_**}
+{\noindent{\bf Задача${}_{**}$}.}{\smallskip\par}
+
+\title{Дифференциальная геометрия, III курс,
+осенний семестр 2000--2001 уч.г. Задачи.}
+\author{С.М.Гусейн--Заде}
+\date{}
+% Not to forget to restore the \date command finally.
+\begin{document}
+
+\def\Aut{{\operatorname{Aut}}}
+\def\eps{\varepsilon}
+
+\maketitle
+
+\begin{problem_*}
+Доказать, что $T\otimes S$ действительно является тензором.
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $\delta_{ij}=\left\{
+\begin{array}{cc}
+1 & \mbox{ при }i=j,\\
+0 & \mbox{ при }i\ne j.
+\end{array}
+\right.$
+Доказать, что $\delta_{ij}$ не является тензором (типа $(0, 2)$).
+Доказать, что $\delta_{ij}$ не является тензором никакого типа.
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $\delta^i_{j}=\left\{
+\begin{array}{cc}
+1 & \mbox{ при }i=j,\\
+0 & \mbox{ при }i\ne j.
+\end{array}
+\right.$
+Доказать, что $\delta^i_{j}$ является тензором типа $(1, 1)$.
+Что за оператор (в касательном пространстве к рассматриваемому
+многообразию) отвечает этому тензору?
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $f$~--- функция на многообразии $M^n$. Доказать, что
+$v^i={{\partial f}\over{\partial x^i}}$ вектором, вообще говоря,
+не является.
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $u^i$ и $v^j$~--- вектора (в одной точке). Является ли вектором
+$w^i = u^i v^i$?
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $u^i$ ($i=1, 2$)~--- вектор в некоторой точке поверхности.
+Является ли вектором $v^i$, где $v^1=-u^2$, $v^2=u^1$?
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $f$~--- функция на многообразии $M^n$. Доказать, что
+${{\partial^2 f}\over{\partial x^i \partial x^j}}$ тензором
+(типа $(0, 2)$), вообще говоря, не является.
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $f$~--- функция на многообразии $M^n$. Доказать,
+что в критических точках функции $f$ (т.е. в точках, в которых
+${{\partial f}\over{\partial x^i}}=0$)
+${{\partial^2 f}\over{\partial x^i \partial x^j}}$ является тензором
+типа $(0, 2)$.
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $v^i=v^i(x)$~--- векторное поле на многообразии $M^n$. Доказать, что
+${{\partial v^i}\over{\partial x^j}}$ тензором (типа $(1, 1)$), вообще
+говоря, не является.
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $v^i=v^i(x)$~--- векторное поле на многообразии $M^n$. Доказать, что
+$T^{ij}={{\partial v^i}\over{\partial x^j}}$ тензором (типа $(2, 0)$), вообще
+говоря, не является.
+\end{problem_*}
+
+\begin{problem}
+Пусть $u^i=u^i(x)$ и $v^i=v^i(x)$~--- векторные поля на многообразии $M^n$.
+Является ли векторным полем $w^{i} = u^j{{\partial v^i}\over{\partial x^j}}-
+v^j{{\partial u^i}\over{\partial x^j}}$.
+\end{problem}
+
+\begin{problem_*}
+Пусть $\alpha_i=\alpha_i(x)$~--- ковекторное поле на многообразии $M^n$.
+Доказать, что ${{\partial \alpha_i}\over{\partial x^j}}$ тензором (типа
+$(0, 2)$), вообще говоря, не является.
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $T^{ij}_{kl}$~--- тензор типа $(2, 2)$. Доказать, что
+${\widehat T}^i_\ell=T^{ij}_{j\ell}$ является тензором (типа
+$(1, 1)$).
+\end{problem_*}
+
+%% \begin{problem}
+%% Пусть $T^{ij}_{k\ell}$~--- тензор типа $(2, 2)$,
+%% ${\widehat T}^j_\ell=\det (T^{ij}_{k\ell})_{i, k}$ (здесь $(T^{ij}_{kl})$~---
+%% матрица размера $n\times n$ ($i=1, \ldots, n$, $k=1, \ldots, n$)
+%% с фиксированными $j$ и $\ell$). Доказать, что $T^j_\ell$
+%% является тензором.
+%% \end{problem}
+
+\begin{problem}
+Пусть $v^i=v^i(x)$~--- векторное поле на многообразии $M^n$. Доказать, что
+в точках, в которых $v_i$ обращается в ноль, ${{\partial v^i}\over
+{\partial x^j}}$ является тензором типа $(1, 1)$.
+\end{problem}
+
+\begin{problem}
+Пусть $g_{ij}$~--- тензор типа $(0, 2)$ такой, что $\mbox{det}(g_{ij})\ne 0$,
+$(g^{ij})=(g_{ij})^{-1}$ ($(g_{ij})$ и $(g^{ij})$~--- соответствующие
+матрицы). Доказать, что $g^{ij}$~--- тензор типа $(2, 0)$.
+\end{problem}
+
+\end{document}

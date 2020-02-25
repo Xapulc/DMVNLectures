@@ -1,0 +1,48 @@
+\documentclass[a4paper]{article}
+\usepackage[simple]{dmvn}
+
+\begin{document}
+\cent{{\Large <<Science and Technology>>\\The Computer Verification of Calculation Models\par}}
+
+I would like to speak about some field in mathematical logic connected with modeling of
+calculation processes. The methods of pure logic become more and more practically applicable
+now with the development of computer science.
+
+First, we will discuss a notion of calculation process. This is a pair $\ha{\Sbb, \tau}$ where
+$\Sbb$ is a model state space and $\tau$ is the transition function: $\tau\cln \Sbb\ra \Sbb$.
+Whole calculation, hence, consists of sequence (maybe infinite) of steps when our model turns
+from one state to another under action of transition function. For example, the Euclid's algorithm
+of finding the greatest common divider is the calculation process. The state space of this model
+is the Cartesian product $\N \times \N$ and transition function consists of division one
+number by another and storing rest in the place of divisible. The process stops when division performs
+with zero rest.
+
+Another example of process that can be described in such way is the transferring file from one
+workstation to another via the LAN. Some people, maybe disagree with me that such a complex processes
+can be describes in logic formulas, but if we abstract from some things, it is really possible!
+
+Now let us discuss a bit a purpose of such things as logical modeling. The first purpose is the real
+model verification. Consider we have a very complicated program written, say, in C++ that contains
+a bug, so it works incorrectly. There are two ways to fix it: first, and rather efficient is to use
+the army of programmers and testers who will examine program flow and search a bug. It's now a good time
+to remember that all bugs can be classified it two groups: logical bugs and mistakes that are completely
+different. Sometimes, it is easy to fix a mistake, but it is very hard even to find the logical error in
+program. The scientists proudly say that with increasing of speed of computers, it can be possible to find
+such bugs using the computer verifier~--- the program that analyzes the logical structure of our buggy
+program and finds errors. Note that the verification may took a plenty of time, but if such techniques were
+used when Intel Corporation produced a Pentium microprocessor containing a FDIV bug, this company won't lost
+\$1.000.000 that gone on replacement of buggy processors.
+
+Now se should say a few words about the way that we use on turning our real process into a logical model.
+In the case of buggy program, one can ask: why shouldn't we use, say, C++ code for building a skeleton of model?
+The answer is easy: because all existing programming languages cannot supply needed pure logical structuring
+and formality. To fix this problem, a new language was developed by the Logic Department of Microsoft Corporation:
+it is called ASML for Abstract State Machines Language. This notion includes, in particular, the formal models
+of calculation processes.
+
+Returning to problem of verification I must add that some hardware manufacturers nowadays use such techniques.
+The Advanced Micro Devices, firstly applied them to verification of their microprocessors. In conclusion I'd like to
+cite one of ASML fathers: <<Soon comes a day when we will write computer programs that will be completely verified
+using computer programs>>. This will ultimately lead to rising up the quality of all computer-connected production.
+
+\end{document}

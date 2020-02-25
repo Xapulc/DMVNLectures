@@ -1,0 +1,9 @@
+\RequirePackage[russian]{babel}
+\newcounter{tmp}
+\newcommand*{\ralph}[1]{\@ralph{\@nameuse{c@#1}}}
+\newcommand{\ralphp}[1]{\setcounter{tmp}{#1}\ralph{tmp}}
+\newcommand{\alphp}[1]{\setcounter{tmp}{#1}\alph{tmp}}
+\newcommand*{\@ralph}[1]%
+{\ifcase #1\or à\or á\or â\or ã\or ä\or å\or æ\or ç\or è\or ê%
+\or ë\or ì\or í\or î\or ï\or ð\or ñ\or ò\or ó\or ô\or õ\or ö%
+\else\@ctrerr \fi}

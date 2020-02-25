@@ -1,0 +1,234 @@
+
+% 11 лекция по действлану.
+
+\begin{center} \textbf{Лекция 11.} \end{center}
+
+\begin{center} \textbf{Сравнение интеграла Римана--Стилтьеса
+с интегралом Лебега--Стильтьеса} \end{center}
+
+$(RS) \int_a^b f d g$
+
+$a = x_0 < x_1 < x_2 < \ldots < x_{i-1} < x_i < x_i < \ldots < x_n
+= b$
+
+$P$ --- разбиение отрезка
+
+$M_i = sup_{x \in [x_{i-1}, x_i]} f(x), \; m_i = inf_{x \in
+[x_{i-1}, x_i]} f(x)$
+
+$g$ берем непрерывной слева.
+
+\textbf{Верхняя сумма Дарбу.} \quad $U(f, g, P) = \sum_{i=1}^n M_i
+g(\triangle_i)$
+
+\textbf{Нижняя сумма Дарбу.} \quad $L(f, g, P) = \sum_{i=1}^n m_i
+g(\triangle_i)$
+
+Если $\inf U = \sup L$, то $\exists$ интеграл Римана--Стильтьеса,
+равный этой величине.
+
+Если $\exists \: \int_a^b f d g$, то можно взять
+последовательность разбиений $P_k, P_k \subset P_{k+1}$
+ и получить интеграл как $\sigma(P_k) \rightarrow 0 $ предел при $k
+\rightarrow \infty$ сумм Дарбу.
+
+\textbf{Теорема.} \quad В случае существования интеграла
+Римана--Стильтьеса $(LS) \int_a^b f d \mu_g$
+
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 20.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+\textbf{Доказательство.} \quad
+
+$U_k(x) = M_i, \; x \in [x_{i-1}, x_i)$
+
+$L_k(x) = m_i, \; x \in [x_{i-1}, x_i)$
+
+$U(f, g, P_k) = (LS) \int_a^b U_k d \mu_g \rightarrow (RS)
+\int_a^b f d f$
+
+$L(f, g, P_k) = (LS) \int_a^b L_k d \mu_g\nearrow$
+
+$U_k \searrow U$
+
+$L_k \nearrow L$
+
+$U_k (x) \geqslant U(x) \geqslant (x) \geqslant f(x) \geqslant
+L(x) \geqslant L_k(x)$
+
+По теореме Б. Леви можно переходить к пределу под знаком интеграла
+Лебега.
+
+$(LS) \int_a^b U d \mu_g = (LS) \int_a^b L d \mu_g $
+
+$(LS) \int_a^b (U - L)d \mu_g = 0 \Rightarrow U - L = 0$ $\mu_g$
+$\Rightarrow$ $U(x) = f(x) = L(x)$
+
+$(LS) \int_a^b f d \mu_g = (LS)\int_a^b U d \mu_g = (LS) \int_a^b
+\mu_g = (RS) \int_a^b f d g$
+
+Теорема будет верна для $g \in VB$ (педст. в виде разности двух
+монотонных функций)
+
+Задача (*). Интеграл не зависит от представления $g$ (но будем
+ист. представление \={V} - \b{V})
+
+\begin{center} \textbf{Теорема Фубини} \end{center}
+
+$(X, S, \mu_x)  \quad (Y, T, \mu_y)$
+
+$X \times Y$
+
+$A \in S, B \in T \quad C = A \times B$
+
+$\mu(C) = ^{\!\!\!\!\!\! def} \mu_x A \times \mu_y B$
+
+Задача $C = A \times B, A \in S, B \in T, \{C\}$ образует
+полукольцо.
+
+Мера определена на полукольце $\rightarrow$ определим её на
+минимальном кольце $\rightarrow$ с помощью конструкции Лебега
+определим $\mu^* \rightarrow$ с помощью определения Каратеодори
+определим класс измеримых множеств.
+
+Получим меру, называемую производной мер $\mu_x$ и $\mu_y$ на$X
+\times Y, \; \mu = \mu_x \times \mu_y$
+
+
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 20.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+Проверим $\sigma$--аддитивность меры на полукольце $C =
+\bigcup_{k=1}^\infty, \quad C_k = A_k \times B_k$
+
+$\mu C = \mu_x A \times \mu_y B = \int_x \chi_A(x) \mu_y B d \mu_x
+= \int_x \sum_k \chi_{A_k} \mu_y B_k d \mu_x = \sum_k \mu_x A_k
+\mu_y B_k$
+
+$f(x,y)$ определена на $X \times Y$ --- измерим., неотриц.
+
+Тогда $\int_{X \times Y} f(x,y) d \mu = \int_X( \int_Y f(x,y) d
+\mu_y) d \mu_x$, если имеет смысл левая часть.
+
+Считаем: $f(x,y)$ измерима при фиксированном $x$ на $Y$ для п.в.
+$y$
+
+Тогда $F(x) = \int_Y f(x,y) d \mu_y$ имеет смысл и предполагается
+измеримой.
+
+Сначала докажем теорему для характеристической функции
+$\chi_A(x,y)$ измеримого множества относительно $\mu = \mu_x
+\times \mu_y$.
+
+Сначала рассмотрим $A = A' \times A"$.
+
+Для такой $\chi_A$ --- очевидно. ($\chi_{\text{элемента кольца}} =
+\sum \chi_{\text{элемента полукольца}}$)
+
+
+\textbf{Лемма.} \quad $\forall$ измеримого $A \; \exists B_{n_k}$
+--- последовательность элементов кольца, $B_{n_k} \uparrow B_n, \; B_{n_k} \downarrow B, \; n
+\rightarrow \infty$ и $\mu B = \mu A, \; B supset A$
+
+\textbf{Доказательство.} \quad
+
+$\mu A = \inf_{\bigcup P_i \supset A} \sum_{i=1}^\infty \mu P_i$
+
+$\mu A + 1/n > \sum_{i=1}^\infty \mu P_i \geqslant \mu (\bigcup_i
+P_i)$
+
+Хотим, чтобы $B_n \supset B_{n+1}$
+
+ $(\bigcup_i P_i) \bigcap (\bigcup_k P_k') =
+\bigcup_{i,k}(P_i \bigcap P_k')$
+
+Пользуясь этим, получим $\mu A + 1/n > \mu(B_n)$
+
+$\lim_{n \rightarrow \infty} \mu B_n = \mu(\bigcap_{n=1}^\infty
+D_n) = \mu B = \mu A$
+
+$B_{n_k} = \bigcup_{i=1}^{k} P_i$
+
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 21.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+Итак, для $\chi_{B_{n_k}}$ теорема Фубини верна.
+
+$A_x = \{y: (x,y) \in A\}$
+
+$\int_{X \times Y} \chi_{B_n} (x,y) d \mu = $ $\lim_{k \rightarrow
+\infty} \int_{X \times Y} \chi_{B_{n_k}} (x,y) d \mu = \lim_{k
+\rightarrow \infty} \\ \int_X \underbrace{(\int_Y \chi_{B_{n_k}}
+(x,y) d \mu_y)}_{\text{монот. посл. функций}} d \mu_x = $
+(Применяем теорему Б. Леви)  $= \int_X (\lim_{k \rightarrow
+\infty} \int_Y \chi_{B_{n_k}} (x,y)  \mu_y) d \mu_x$
+
+$\int_{X \times Y} \chi_{B_n} (x,y) d \mu = \int_X \lim_{k
+\rightarrow \infty} \mu_y (B_{n_k}) f \mu_x = \int_X \mu_y (B_n)_x
+d \mu_x = \int_X (\int_Y \chi_{B_n} (x,y) d \mu_y) d \mu_x$
+
+Докажем для $\chi_{B_n}$. Аналогичен переход $\chi_{B_n}
+\rightarrow \chi_B$
+
+$A = B \setminus(B \setminus A)$
+
+$\chi_A = \chi_B - \chi_{B \setminus A}, \quad \mu(B \setminus A)
+= 0$
+
+Докажем теорему Фубини для любого измеримого множества меры 0.
+
+$C \subset B', \mu C = \mu B' = 0$ ( аналогично $B'$ - изм.
+оболочка)
+
+Для $B'$ теорема доказана.
+
+$\int_{X \times Y} \chi_C (x,y) d \mu = \int_{X \times Y}
+\chi_{B'} d \mu = \int_X (\int_Y \chi_{B'} d \mu_y) d \mu_x = 0
+\Rightarrow \int_Y \chi_{B'} d \mu_y = 0$ $x$
+
+$\mu_y B_x ' = 0$ $\Rightarrow \mu C_x = 0$
+
+$\int_{X \times Y} \chi_C (x, y) d \mu = 0$
+
+$\int_X(\int_Y \chi_C (x,y) d \mu_y) d \mu_x = 0$

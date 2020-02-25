@@ -1,0 +1,211 @@
+
+
+\begin{center}
+\textbf{Лекция 2.}
+\end{center}
+
+$$\mu ^* E = \inf\limits_{\bigcup_{k=1}^{\infty} \supset E}
+\sum\limits_{k=1}^{\infty} m\:P_k, \; P_k \in S.$$
+
+\textbf{Задача.} \quad Определить $\mu^*$ для покрытий
+$\bigcup_{k=1}^{\infty} \supset E$, эквивалентных~исходному.
+
+Если $A \in R(S)$, то $\mu^*(A) = m'(A)$
+
+$A \subset \bigcup_{k=1}^{\infty}P_k \quad m'(A)\leqslant \sum_k
+mP_k \Rightarrow m'(A) \leqslant \mu^*(A)$
+
+Так как $A \in R(S)$, то $A = \bigcup_{i=1}^n A_i, \; A_i \in S.$
+
+$m'(A) = \sum_{i=1}^n mA_i \geqslant \mu^*(A)$, (т.к.
+$\bigcup_{i=1}^n A_i$ --- одно из покрытий $A$)
+
+Далее будем считать, что есть функция $\lambda$, определенная на
+всех подмножествах~Х и обладающая свойствами внешней меры $\mu^*$:
+
+1) $\lambda(\o) = 0$
+
+2) $A \subset B \Rightarrow \lambda(A) \leqslant \lambda(B)$
+
+3) $A = \bigcup_{i=1}^{\infty} \Rightarrow \lambda(A) \leqslant
+\sum_{i=1}^{\infty} \lambda(A_i)$
+
+$E \subset X$ называется $\lambda$-измеримым, если $\forall A
+\quad \lambda(A) = \lambda(A \bigcap E) + \lambda(A \setminus E)$
+
+
+\textbf{Теорема.} \quad Семейство множеств, измеримых по
+Каратеодори, образует $\delta$-алгебру множеств, и внешняя мера
+$\lambda$ является $\delta$-аддитивной мерой на этой алгебре.
+
+\textbf{Задача.} \quad Для проверки того, что семейство является
+алгеброй, достаточно проверить его замкнутость относительно
+дополнения и $\bigcup$.
+
+Замкнутость относительно дополнения видна из определения:
+
+$\lambda (A)~=~\lambda~(A \bigcap E)~+~\lambda(A\bigcap\;
+(X\setminus E))$, т.е. выполнение равенства для Е влечет за собой
+выполнение равенства для $X \setminus E$
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%         стр 3.1     %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+Проверка замкнутости относительно $\bigcup\;$:
+
+$\lambda(A \bigcap \; (E_1 \bigcup E_2)) + \lambda (A \setminus
+(E_1 \bigcup E_2)) = \lambda (A \bigcap \; (E_1 \bigcup E_2)
+\bigcap E_1) + \lambda (A \bigcap \; (E_1 \bigcup E_2) \setminus
+E_1) + \lambda (A \setminus (E_1 \bigcup E_2)) = \lambda (A
+\bigcap E_1) + \lambda (A \setminus E_1) = \lambda(A).$
+
+Индуктивно доказывается замкнутость относительно любого конечного
+количества объединений:
+
+$\lambda (E_1 \bigcup E_2) = \lambda(E_1) + \lambda(E_2)$
+
+$E = \bigcup_{i=1}^{\infty} E_i, \quad S_n = \bigcup_{i=1}^n E_i$
+
+$\lambda(A) = \lambda (A \bigcap S_n) + \lambda (A \setminus S_n)
+\geqslant \sum_{i=1}^n \lambda(A \bigcap E_i) + \lambda (A
+\setminus \bigsqcup_{i=1}^{\infty} E_i) \Rightarrow
+\lambda(A)~\geqslant~\sum_{i=1}^{\infty} \lambda(A \bigcap E_i) +
+\lambda(A \setminus \bigsqcup_{i=1}^{\infty}E_i) \geqslant
+\lambda(A \bigcap E) + \lambda (A \setminus E) \geqslant
+\lambda(A)$, т.е. все неравенства можно заменить на равенства.
+
+$\delta$-аддитивность: возьмем в качества $A$ само $E$. Получим:
+
+$\lambda (E) = \sum_{i=1}^{\infty} \lambda(E_i)$
+
+$E = \bigcup_{i=1}^{\infty} \lambda (E_i)$
+
+$E = \bigcup_{i=1}^{\infty} E_i = E_1 \bigcup (E_2 \setminus E_1)
+\bigcup \ldots \bigcup \;(E_i \setminus \bigcup_{k=1}^{i-1})
+\bigcup \ldots = \\ E_1 \bigsqcup \;(E_2 \setminus E_1) \bigsqcup
+\ldots \bigsqcup (E_i \setminus \bigcup_{k=1}^{i-1} E_k) \bigsqcup
+\ldots \Rightarrow$ получается $\delta$-алгебра.
+
+Применяя определение Каратеодори к $\mu^*$, будем называть
+получившийся класс множеств \textbf{множествами, измеримыми по
+Лебегу.}
+
+Если $\lambda(E)=0 \Rightarrow E$ --- измеримо.
+
+\textbf{Определение.} \quad Мера называется полной, если при
+$\delta(E)=0 \; \forall \;E_1 \subset E$ имеем $\delta(E_1) = 0$
+
+Для множеств, имеримых по Лебегу, $\mu^*$ обозначается $\mu$.
+
+\textbf{Определение.} \quad Наименьшая $\delta$--алгебра множеств,
+содержащая все открытые множества, называется \textbf{борелевской}
+алгеброй. Каждое множество --- борелевским множеством.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%    4 стр.  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+$\EuScript{F}$ --- замкнутые множества, $\EuScript{Y}$ ---
+открытые множества.
+
+$\EuScript{F_{\sigma}}$ --- объединение, $\EuScript{Y_{\delta}}$
+--- пересечение.
+
+$\EuScript{F_{\sigma \delta}}, \EuScript{Y_{\delta \sigma}}$
+
+$\lambda$ определяем на подмножествах метрического пространства.
+
+
+Мера~$\lambda$ называется~\textbf{метрической}, если $\forall A, B
+\; \rho(A, B){>}0$ имеем: $\\ \lambda~(A \bigsqcup B)
+=~\lambda(A)~+~\lambda(B) \\ \rho(A, B) = \inf\limits_{x \in A, y
+\in B} \rho(x, y).$
+
+\textbf{Лемма.} \quad $X$ --- метрическое пространство, $\lambda$
+--- метрическая мера, $E~\in~G, \; G - \mbox{открытое}, \; E_k = \{ x \in E : \;
+\rho(x, x\setminus G) \geqslant 1/k \} \Rightarrow \lim_{k
+\rightarrow \infty} \lambda E_k = \lambda E$
+
+Очевидно, что $\lim_{k \rightarrow \infty} \lambda E_k \leqslant
+\lambda E, \;$ т.к. $E_k$ --- последовательность расширяющихся
+множеств.
+
+Обозначим $D_k = E_{k+1} \setminus E_k. \\ \rho(D_{k+1}, E_k) \\
+x \in E_k, \; y \in D_{k+1},\; z \in X\backslash G \\ \frac{1}{k}
+\leqslant \rho(x, z) \leqslant \rho (z, y) + \rho(y, x) \\
+\rho(y, x) \geqslant \frac{1}{k} - \frac{1}{k+1} - \varepsilon >
+\alpha > 0$
+
+Тогда имеем: $\rho\:(D_{k+1}, E_k) > 0 \\ \lambda(E) \leqslant
+\lambda(E_k) + \sum_{i=k}^{\infty}\lambda(D_i) \Rightarrow \\
+\lambda(E) \leqslant \lim_{k \rightarrow \infty} \lambda(E_k)
+\quad \mbox{(если ряд сходится)}$
+
+$\rho (D_{k+1}, D_{k-1}) > 0 \\ \sum_{i=k}^{\infty} \lambda(D_i) =
+\sum\limits_{i = 2t} + \sum\limits_{i = 2t + 1} \\
+\mbox{Хотя бы один ряд сходится к +} \infty. \; \mbox{Допустим,
+что } \sum_{i=1}^{\infty} \lambda(D_{2k}) = + \infty \\
+\lambda(E_{2k+1}) \rightarrow {k \rightarrow \infty} + \infty,
+\mbox{но тогда } lim_{k \rightarrow \infty} = + \infty \;
+\Rightarrow \; lim_{k \rightarrow \infty} \lambda E_k \geqslant
+\lambda E$
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%        стр 4.1            %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Теорема.} \quad Если $\lambda$ --- внешняя метрическая
+мера, то класс борелевых множеств входит в $\delta$--алгебру
+$\lambda$--измеримых множеств.
+
+Достаточно доказать для замкнутых множеств. \\
+$E$ --- замкнуто,
+$\; A$ --- произвольное множество, $\; G = X \setminus E \\
+B_k =
+\{ x \in A: \rho (x, E) \geqslant \frac{1}{k} \} \\ \lim_{k
+\rightarrow +\infty} \lambda B_k = \lambda (A \setminus E) \quad
+\mbox{(по лемме)} \\
+\mbox{В силу метричности } \lambda: \\
+\lambda(B_k \bigsqcup \: (A
+\bigcap E)) = \lambda (B_k) + \lambda (A \bigcap E),\quad
+\lambda(B_k \bigsqcup \: (A \bigcap E)) \leqslant
+\lambda (A)\\
+\lambda(A) \geqslant \lambda(A \setminus E) + \lambda(A \bigcap
+E)\\
+\lambda(A) \leqslant \lambda(A \setminus E) + \lambda(A \bigcap E)
+\mbox{ в силу полуаддитивности} \\ \Rightarrow \lambda(A) =
+\lambda(A \setminus E) + \lambda(A \bigcap E)$
+
+Покажем, что в $\mathbb{R}^* \; \mu^*$ является метрической, если
+$\rho(E_1, E_2) = \alpha > 0$. (В~покрытии будем использовать
+$k$-мерные интервалы диаметром меньше~$\alpha / 2$. Тогда покрытие
+разделяется, и при переходе к inf получим аддитивность)
+
+Если мера определена на~$\delta$-алгебре борелевских множеств,
+будем называть её борелевской.

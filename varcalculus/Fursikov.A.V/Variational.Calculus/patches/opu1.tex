@@ -1,0 +1,23 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{dmvn}
+
+\begin{document}
+¬о-первых, все-таки сделаем тот шаг ‘урсикова, который € убрал: поскольку $y_k$ сход€тс€
+к $\hat y$ почти всюду, то по теореме ≈горова дл€ вс€кого $\ep>0$ существует множество
+$E_\ep$, такое что
+$$y_k\rightrightarrows\hat y\;\mbox{на $E_\ep$},\quad mes (\Omega\setminus E_\ep)<\ep.$$
+–ассмотрим множество:
+$$F_\ep:=\left\{x\colon |\hat y(x)|+|\nabla\hat y(x)|<\frac{1}{\ep}\right\}.$$
+ѕри $k>k(\ep)$, в силу равномерной сходимости, дл€ любого $x\in G_\ep:=E_\ep\cap F_\ep$
+будет $|y_k(x)|<\frac{2}{\ep}$. ƒалее, на множестве
+$$M_\ep:=\left\{(x,y,p)\colon x\in\overline\Omega,\;|y|+|p|\le\frac{3}{\ep}\right\}$$
+непрерывные функции $L$ и $L_p$ ограничены: $|L|+|L_p|<C(\ep)$.
+
+»так, что же мы получили: $mes (\Omega\setminus G_\ep)\to0$ и при всех $k>k(\ep)$ и $x\in
+G_\ep$ выполнены неравенства
+$$|L(x,\hat y(x),\nabla\hat y(x))|<C(\ep),$$
+$$|L_p(x,\hat y(x),\nabla\hat y(x))|<C(\ep),$$
+$$|L(x,y_k(x),\nabla\hat y(x))|<C(\ep),$$
+$$|L_p(x,y_k(x),\nabla\hat y(x))|<C(\ep).$$
+Ётого, видимо, достаточно дл€ проведени€ доказательства.
+\end{document}

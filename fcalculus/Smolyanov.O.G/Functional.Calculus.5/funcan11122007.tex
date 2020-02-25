@@ -1,0 +1,143 @@
+\documentclass[12pt,titlepage, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amssymb}
+\begin{document}
+
+$\hat f(z)=\int_{\mathbb{R}}e^{-ixz}f(x)dx$.
+
+Теорема. Если $f\in L_1(\mathbb{R})$ и $[x\mapsto xf(x)]\in
+L_1(\mathbb{R})$, то $(\hat f)'(z)=\widehat{-ixf(x)}$.
+
+Доказательство. $\forall \alpha ,\beta
+|e^{i\alpha}-e^{i\beta}|\leqslant |\alpha-\beta|$. Отсюда
+$|\frac{e^{-ix(z+\Delta z)}-e^{-ixz}}{\Delta z}|\leqslant |x|$.
+Поэтому $\hat f'(z)=\lim_{\Delta z\longrightarrow
+0}\int_{\mathbb{R}} |\frac{e^{-ix(z+\Delta z)}-e^{-ixz}}{\Delta
+z}|=\int_{\mathbb{R}}-ixe^{-ixz}f(x)dx$.
+
+Итак, $(\hat f)'(z)=\widehat{-ixf(x)}(z)$
+
+$\widehat {f'}(z)=iz\hat f(z)$
+
+Теорема.$\widehat{f(\frac{x}{a})}(z)=a\hat f(az)$.
+
+Доказательство.
+$\widehat{f(\frac{x}{a})}(z)=\int_{\mathbb{R}^n}f(\frac{x}{a})e^{-ixz}dx=
+\int_{\mathbb{R}^n}af(y)e^{-iayz}dx=a\hat f(az)$, где была сделана
+замена $x=ay$.
+
+Теорема.$\hat f(x+a)(z)=e^{iaz}f(z)$.
+
+Доказательство. $\hat
+f(x+a)(z)=\int_{\mathbb{R}^n}f(x+a)e^{-ixz}dx=
+\int_{\mathbb{R}^n}f(y)e^{-i(y-a)z}dx=e^{iaz}\hat f(z)$, где была
+сделана замена $x=y+a$.
+
+Теорема. Равенство Парсеваля.
+
+Если $f,g\in L_1(\mathbb{R})$, то $\int_\mathbb{R}\hat
+f(x)g(x)dx=\int_\mathbb{R}f(x)\hat g(x)dx$.
+
+Доказательство. $\int_\mathbb{R}\hat f(x)g(x)dx=
+\int_\mathbb{R}(\int_\mathbb{R}f(z)e^{-ixz}dz)g(x)dx=
+\int_\mathbb{R}(\int_\mathbb{R}g(x)e^{-ixz}dx)f(z)dz=
+\int_\mathbb{R}\hat g(z)f(z)dz$.
+
+Здесь была использована теорема Фубини. Это возможно, поскольку
+$\iint_{\mathbb{R}^2}|f(x)||g(x)|dzdx=\int |f(z)|dz\cdot\int
+|g(x)|dx <\infty$.
+
+Пример. Пусть $f(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$.
+Тогда $(\hat f)'(z)=\widehat {-ixf(x)}(z)=\widehat {if'}=i\cdot
+iz\hat f(z)=-z\hat f(z)$. Получаем обыкновенное дифференциальное
+уравнение $(\hat f)'(z)=-z\hat f(z)$. Общее решение $\hat
+f(z)=Ce^{-\frac{x^2}{2}}$. Константа $C$ определяется из условия
+$\hat f(0)=C$. Но $\hat f(0)=\int_{\mathbb{R}}f(x)dx=1$. Поэтому
+$\hat f(z)=e^{-\frac{z^2}{2}}$.
+
+Замечание. $S\subset L_1$.
+
+Теорема. $\forall\varphi\in S \hat \varphi\in S$ и отображение
+$\varphi \mapsto \hat \varphi$ непрерывно.
+
+Доказательство. Проверим, что $\forall n,k \sup_{x\in\mathbb{R}}
+(1+|x|^{2k})\cdot |\hat {\varphi}^{(n)}(x)|<\infty$.
+%тут нечетко
+$(1+x^{2k})\widehat {(-iz)^n\varphi(z)}(x)+\widehat
+{((-iz)^n\varphi)^{2k}}(x)\cdot (-i)^{2k}$. Оценивая по модулю это
+выражение, получаем требуемое.%тут надо дополнить
+
+Теорема. $\varphi\in S \Rightarrow \forall P \forall
+m=0,1,2,\ldots P(x)\varphi^m(x)\in S$, где $P$ --- многочлен.
+
+Теорема. Если $\varphi_n \xrightarrow[n\rightarrow \infty]{S} 0$,
+то $P\varphi_{n}^{(m)} \xrightarrow[n\rightarrow \infty]{S} 0$.
+
+Теорема. $\varphi_n \xrightarrow[n\rightarrow \infty]{S} 0
+\Rightarrow \varphi_n \xrightarrow[n\rightarrow \infty]{L_1} 0$.
+
+Доказательство. $\varphi_n(x)=\frac{1}{1+x^2}\cdot
+(1+x^2)\varphi_n(x)$.
+
+$|\varphi_n(x)|=|\frac{1}{1+x^2}\cdot
+(1+x^2)\varphi_n(x)|\leqslant \|\varphi\|\cdot \frac{1}{1+x^2}$.
+$\|\varphi_n\|_{L_1}=\int_\mathbb{R}|\varphi_n(x)|dx=\|\varphi_n\|_{2,0}\cdot
+(\int_\mathbb{R}\frac{dx}{1+x^2})\leqslant C\|\varphi_n\|_{2,0}$.
+
+Замечание. Из этой теоремы следует, что отображение $\varphi
+\mapsto \hat \varphi$ непрерывно.
+
+Теорема. Пусть $\Lambda \colon S \rightarrow S, \Lambda
+(\varphi)=\hat \varphi$. Тогда $\varphi
+(x)=\frac{1}{(2\pi)^n}\int_{\mathbb{R}^n}e^{i(x,z)}\hat
+\varphi(z)dz$.
+
+Доказательство (в одномерном случае). Пусть $\varphi, \phi\in S$.
+Тогда $\int_\mathbb{R}\varphi(\frac{x}{a})\hat\psi(x)dx$=
+$a\int_\mathbb{R}\varphi(y)\hat\psi(ay)dy$=
+$\int_\mathbb{R}\varphi(y)\hat\psi(\frac{x}{a})(y)dy$=
+$\int_\mathbb{R}\hat\varphi(x)\psi(\frac{x}{a})dx$. При
+$a\rightarrow \infty$ получаем
+$\varphi(0)\int_\mathbb{R}\hat\psi(x)dx$=
+$\psi(0)\int_\mathbb{R}\hat\varphi(x)dx$.
+
+Пусть $\psi (x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$. Тогда
+$\frac{1}{\sqrt{2\pi}}\int_{\mathbb{R}}\hat\varphi (x)dx=$
+$\varphi (0)\int_{\mathbb{R}}e^{-\frac{x^2}{2}}dx=$ $\varphi
+(0)\sqrt{2\pi}$. Отсюда $\varphi
+(0)=\frac{1}{2\pi}\int_{\mathbb{R}}\hat\varphi (x)dx$. Положим
+$\varphi_1(x)=\varphi (x+z)$,Тогда $\varphi_1\in S$. $\varphi
+(z)=\varphi_1(0)=\frac{1}{2\pi}\int_{\mathbb{R}}\hat\varphi_1
+(x)dx=$$\frac{1}{2\pi}\int_{\mathbb{R}}\widehat{\varphi
+(x_1+z)}(x)dx=$ $\frac{1}{2\pi}\int_{\mathbb{R}}e^{izx}\hat\varphi
+(x)dx$.
+
+Итак, $\varphi(z)=
+\frac{1}{2\pi}\int_{\mathbb{R}}e^{izx}\hat\varphi(x)dx$.
+
+Обозначим $\check \varphi(z)=
+\frac{1}{2\pi}\int_{\mathbb{R}}e^{izx}\varphi(x)dx$.
+
+Предложение. Если $\varphi\in S$, то $\check\varphi\in S$.
+
+Предложение. $\Lambda$ --- сюръекция.
+
+Доказательство. $\varphi\in S\Rightarrow \check\varphi\in S$.
+$\check{\hat\varphi}=\varphi\Rightarrow \varphi\in Im \Lambda$.
+
+\begin{center}
+Преобразование Фурье обобщенных функций
+\end{center}
+
+Определение. Преобразованием Фурье для $F\in S^*$ называется
+обобщенная функция $\hat F : (\hat F,\varphi)=(F,\hat\varphi)$.
+
+Предложение. $\hat F$ непрерывно на $S$.
+
+Доказательство. Пусть $\varphi_n\rightarrow\varphi$, проверим, что
+$(\hat F,\varphi_n)\rightarrow (\hat F,\varphi)$.
+
+$(\hat F,\varphi_n)=(F,\widehat{\varphi_n})\rightarrow
+(F,\hat\varphi)=(\hat F,\varphi)$.
+\end{document}

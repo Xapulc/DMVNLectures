@@ -1,0 +1,8 @@
+add_subdirectory(Ecology.and.Environmental.Protection)
+add_subdirectory(Economy.and.Finance)
+add_subdirectory(English-Speaking.Countries)
+add_subdirectory(Math.Methods.in.Economics)
+add_subdirectory(MSU.Department.of.Mathematics.and.Mechanics)
+add_subdirectory(Outstanding.Personalities)
+add_subdirectory(Science.and.Technology)
+add_subdirectory(World.Affairs)

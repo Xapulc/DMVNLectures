@@ -1,0 +1,65 @@
+\newcommand{\alt}{\tilde{\al}}
+\newcommand{\tlb}{\tilde{\beta}}
+\newcommand{\xt}{\tilde{x}}
+\newcommand{\tf}{\tilde{f}}
+\newcommand{\hf}{\widehat{f}}
+\newcommand*{\hhf}{\hat{\hat{f}}}
+\newcommand*{\hg}{\widehat{g}}
+\newcommand{\ag}{\ensuremath{\mathfrak{A}}}
+\newcommand{\queq}{\stackrel{\mbox{\tiny\rm{?}}}{=}} 
+\newcommand{\PD}{\Pb_\mathbf{2}}
+\newcommand{\pcoef}{a_j\in\hc{0,1}\subseq\PD}
+%NewWind
+\newcommand{\set}[2][\alpha] {\ensuremath{#1_1,#1_2\etc,#1_{#2}}}
+\newcommand{\setf}[2][\alpha]{#1_2,#1_3\etc,#1_{#2}}
+\newcommand{\seti}[3][\alpha]{#1_{#2}\etc,#1_{#3}}
+\newcommand{\uset}[3][\alpha]{ (\set[#1]{#2}), #1_j\in#3}
+\newcommand{\setof}[2]{\hc{#1 | #2}}
+\newcommand{\gset}[2][\alpha]{\tilde#1= (\set{#1}{#2})}
+\newcommand{\svee}[3][\alpha]{#1_{#2}\vee\ldots\vee#1_{#3}}
+%\newcommand
+\newcommand{\exset}[1]{\exists\tilde{#1}= (\set[#1])\in\Ef^n}
+\newcommand{\allset}[2][\alpha]{\forall\tilde#1= (\set[#1]{2})\in\Ef^n}
+\newcommand{\dsn}[1][x]{\ensuremath{#1_1\vee#1_2\vee\dots\vee#1_n}}
+\newcommand{\cls}[1]{[\{#1\}]}
+\newcommand{\dn}{x\vee{y}}
+\newcommand{\Oib}{\Ob^\bes}
+\newcommand{\WHY}{\textcolor{red}{/*Почему?*/}}
+\newcommand{\THEN}{\textcolor{red}{/*Что дальше?*/}}
+\newcommand{\PROOF}{\textcolor{red}{/*Доказать?*/}}
+\newcommand{\BACK}{\textcolor{red}{/*Обратно?*/}}
+\newcommand{\CHECK}{\textcolor{red}{/*Проверить!*/}}
+\newcommand*{\ACC}{\textcolor{red}{/*Оформление!*/}}
+\newcommand*{\REF}{\textcolor{red}{/*Ссылки!*/}}
+\newcommand{\fij}{f^i_j}
+\newcommand{\fK}{f_{\Kb}}
+\newcommand{\fD}{f_{\Db}}
+\newcommand{\fM}{f_{\Mb}}
+\newcommand{\fL}{f_{\Lb}}
+\newcommand{\fS}{f_{\Sb}}
+\renewcommand*{\Ff}{\Fb_f}
+\newcommand*{\nsubseq}{\nsubseteq}
+\newcommand*{\property}{\par\textbf{Свойства:}}
+\newcommand*{\impl}{\ensuremath{x\to\  y}}
+\newcommand*{\mcr}{\ensuremath{\rbmat{n\\r_1r_2\dots r_m}}}
+\newcommand*{\inv}[1]{\frac{1}{#1}}
+\newcommand*{\sss}{\mathsrc{s}}
+\newcommand*{\cnka}[2]{\rbmat{\!\!\!\rbmat{#1\\#2}\!\!\!}}
+\newcommand*{\arp}{A_\R(P)}
+\newcommand*{\Ksr}{\Ks\!\hs{\hs{x}}}
+\newcommand*{\Ksm}{\Ks\!\hs{x}}
+\newcommand*{\Csr}{\Cbb\hs{\hs{x}}}
+\newcommand*{\sumind}[3]{\sum_{#1=#2}^{#3}}
+\newcommand*{\dega}{\deg^*}
+\newcommand*{\seq}[2]{\hc{#1}_{j=#2}^\infty}
+%Author note environment. To be moved to package.
+\newenvironment*{authornote}
+{\setmainfont{URW Chancery L}
+  \begin{flushleft}
+  \tiny
+  \hangafter 0
+  \hangindent=0.5\textwidth
+}
+{\end{flushleft}}
+  
+

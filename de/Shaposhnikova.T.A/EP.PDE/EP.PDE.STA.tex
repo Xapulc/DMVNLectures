@@ -1,0 +1,75 @@
+\documentclass[a4paper]{article}
+\usepackage[xe,simple,thmnormal]{dmvn}
+\usepackage{dmvnadd}
+
+\title{Задачи экзаменов по УрЧП}
+\author{Лектор\т Т.\,А.\,Шапошникова}
+\date{V--VI семестры, 2004--2005 г.}
+
+\begin{document}
+\maketitle
+
+\newcommand{\evub}[3]{% back skip
+\newbox\evalbox%
+\setbox\evalbox\hbox{{\scriptsize$#1$}}
+\mskip2mu\vrule height #3 width .4pt depth #2\mskip2mu\lower#2\hbox{{\scriptsize$#1$}}\hskip-.75\wd\evalbox}
+\newcommand{\evb}[2]{\evub{#1}{#2}{.65pc}}
+\newcommand{\evnb}[1]{\evb{#1}{10pt}}
+
+\section{Основной экзамен 6 июня 2005 г.}
+
+\subsection{Вариант 2}
+
+\subsubsection{Часть первая (практика)}
+
+\begin{problem}[3 балла]
+Найдите плотность распределения зарядов по поверхности сферы $|x|=3, x \in \R^3$, если известно,
+что потенциал простого слоя поля, создаваемого этими зарядами равен $\frac4r$ вне шара $|x| \le 3$.
+\end{problem}
+
+\begin{problem}[2 балла]
+Решите в $\Dc'(\R)$ уравнение: $y''+4y = \de(2-x)$.
+\end{problem}
+\begin{problem}[4 балла]
+Рассмотрим задачу: $ u_{tt} = u_{xx}$, где $x,t \in \R$. Пусть
+\eqn{u\evnb{t=x} = \ph(x), \quad u_t\evnb{t=x} = \psi(x), \quad x \in \R.}
+При каких $\ph(x)$ и $\psi(x)$ из $\Cb^2(\R)$ существует решение
+$u \in \Cb^2(\R^2)$ этой задачи? Ответ обосновать. Найти все такие решения.
+\end{problem}
+\begin{problem}[3 балла]
+Пусть $u(x,t)$\т решение задачи Коши:
+\eqn{\case{u_t = u_{xx}, \quad x \in \R, \quad t>0;\\
+u\evnb{t=0} = e^{-x-4x^2}.}}
+Найдите предел
+\eqn{\liml{t\ra\bes}\ints{\R} u(x,t)\,dx.}
+\end{problem}
+\begin{problem}[3 балла за каждый пункт]
+Существует ли в круге $Q := \hc{x^2+y^2 <1}$ решение $u(x,y) \bw\in \Cb^2(Q)\cap \Cb^1(\ol Q)$
+уравнения $\De u = xy$, такое, что
+\eqn{\ints{x^2+y^2<1} u(x,y)\,dx\,dy=1,}
+и при этом: \textbf{а)} $u(0,0)=0$; \textbf{б)} $u(1,0)=0$. Ответ обосновать.
+\end{problem}
+
+\medskip
+
+\subsubsection{Часть вторая (теория)}
+
+\medskip
+\setcounter{problem}{0}
+\begin{problem}[3 балла]
+Сформулируйте постановку внешней задачи Неймана. Докажите теорему единственности решения этой задачи.
+\end{problem}
+
+\begin{problem}[3 балла]
+Сформулируйте и докажите принцип максимума для решения уравнения теплопроводности в ограниченной области.
+\end{problem}
+
+\begin{problem}[3 балла]
+Сформулируйте и докажите теорему о скачке потенциала двойного слоя.
+\end{problem}
+\begin{problem}[2 балла]
+Дайте понятие корректно поставленной задачи. Приведите пример Адамара.
+\end{problem}
+
+\medskip\dmvntrail
+\end{document}

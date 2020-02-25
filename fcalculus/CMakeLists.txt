@@ -1,0 +1,8 @@
+add_subdirectory(Aptekarev.A.I,Sorokin.V.N)
+add_subdirectory(Bakhvalov.A.N)
+add_subdirectory(Bogachev.V.I)
+add_subdirectory(Helemsky.A.Ya)
+add_subdirectory(Ryzhikov.V.V)
+add_subdirectory(Sheipak.I.A)
+add_subdirectory(Smolyanov.O.G)
+add_subdirectory(Stepin.A.M)

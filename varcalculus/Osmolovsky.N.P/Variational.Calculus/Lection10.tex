@@ -1,0 +1,408 @@
+\chapter*{Лекция 10}
+\section*{Тема: Принцип максимума, $v$-задача, теорема о неявной функции,
+уравнение в вариациях}
+
+\subparagraph{1. О монотонных кусочно-линейных функциях
+(про\-дол\-же\-ние).}
+\setcounter{proposit}{1}
+\begin{proposit}
+Пусть
+$$
+\tilde{x}(\tau):[\tau_0,\tau_1]\rightarrow\mathbb{R}^n
+$$
+~--- липшицева функция такая, что
+\setcounter{equation}{0}
+\begin{equation}\label{10m1}
+\frac{d\tilde{x}(\tau)}{d\tau}=\tilde{v}(\tau)\tilde{\varphi}(\tau)
+\ \ \hbox{п.в. на } \ [\tau_0,\tau_1],
+\end{equation}
+где
+$\tilde{\varphi}(\tau):[\tau_0,\tau_1]\rightarrow\mathbb{R}^n$
+ограниченная измеримая функция, а $\tilde{v}(\tau)$~--- кусочно-
+постоянная неотрицательная функция. Пусть
+\begin{equation}\label{10m2}
+\tilde{t}(\tau)=t_0+\int_{t_0}^t \tilde{v}(\tau)d\tau \ \ \ \
+t\in[t_0,t_1]
+\end{equation}
+и пусть $\tilde{\tau}(t) :
+[t_0,t_1]\rightarrow[\tau_0,\tau_1],$~--- правая обратная к
+$\tilde{t}(\tau) : [\tau_0,\tau_1]\rightarrow [t_0,t_1]$,
+непрерывная слева. Положим,
+$$
+x(t)=\tilde{x}(\tilde{\tau}(t)), \ \ t\in[t_0,t_1].
+$$
+Тогда $x(t):[t_0,t_1]\rightarrow\mathbb{R}^n$~--- липшицева
+фунция такая, что
+\begin{equation}\label{10m3}
+x(t_0)=\tilde{x}(\tau_0), \ \ \ x(t_1)=\tilde{x}(\tau_1).
+\end{equation}
+Более того,
+\begin{equation}\label{10m4}
+\frac{dx(t)}{dt}=\varphi(t) \ \hbox{п.в. на } \ [t_0,t_1],
+\end{equation}
+где
+$$
+\varphi(t)=\tilde{\varphi}(\tilde{\tau}(t)), \ \
+t\in[t_0,t_1].
+$$
+\end{proposit}
+
+\begin{proof}
+Напомним, что на прошлой лекции через
+$$\Delta^k=[\tau_0^k,\tau_1^k], \ \ \ k=1,\ldots,s$$
+мы обозначили отрезки постоянства кусочно линейной функции
+$\tilde{t}(\tau)$, через $t^k$ - ее значение на $\Delta^k, \ \ \
+k=1,\ldots,s$. Мы положили
+$$
+{\cal{M}}_0=\bigcup_1^s\Delta^k, \ \ \
+{\cal{M}}_+=[\tau_0,\tau_1]\backslash{\cal{M}}_0.
+$$
+$$
+{\cal{N}}_0=\{t^1,\ldots,t^s\}, \ \ \
+{\cal{N}}_+=[t_0,t_1]\backslash{\cal{N}}_0.
+$$
+
+\begin{enumerate}
+\item[a)] Покажем, что $x(t)$~--- липшицева функция. На любом интервале
+множества ${\cal{N}}_+$ функция $\tilde{\tau}(t)$ линейна и,
+следовательно, $x(t)=\tilde{x}(\tilde{\tau}(t))$~--- липшицева
+(ибо $\tilde{x}(\cdot)$--- липшицева). Следовательно, достаточно
+лишь показать, что $x(t)$ непрерывна в каждой точке $t^k$
+множества ${\cal{N}}_0$ (несмотря на то, что $\tilde{\tau}(t)$ в
+каждой такой точке разрывна). Отсюда последует липшицевость
+$x(t)$.
+
+Заметим, что в силу уравнения (\ref{10m1}) функция
+$\tilde{x}(\tau)=const$ на $\Delta^k \ (\ \ k=1,\ldots,s)$, ибо
+$\tilde{v}(\tau)=0$ на $\Delta^k$. Следовательно,
+\begin{equation}\label{10m5}
+\tilde{x}(\tau_0^k)=\tilde{x}(\tau_1^k), \ \ \ k=1,\ldots,s).
+\end{equation}
+
+Возьмем произвольную точку $t^k\in {\cal{N}}_0.$ Проверим
+непрерывность $x(t)$ в точке $t^k$. Имеем
+\begin{equation}\label{10m6}
+x(t^k-0)=\tilde{x}(\tilde{\tau}(t^k-0))=\tilde{x}(\tilde{\tau}(t^k))=x(t^k),
+\end{equation}
+так как $\tilde{\tau}$ непрерывна слева. При этом
+\begin{equation}\label{10m7}
+\tilde{\tau}(t^k)=\tau_0^k \Rightarrow
+x(t^k-0)=\tilde{x}(\tau^k_0).
+\end{equation}
+Далее,
+\begin{equation}\label{10m8}
+x(t^k+0)=\tilde{x}(\tilde{\tau}(t^k+0))=\tilde{x}(\tau^k_1),
+\end{equation}
+так как $\tilde{\tau}(t^k+0)=\tau^k_1$. Из
+(\ref{10m5})-(\ref{10m8}) следует, что
+$$
+x(t^k-0)=x(t^k)=\tilde{x}(\tau_0^k)=\tilde{x}(\tau_1^k)=x(t^k+0).
+$$
+Итак, $x(t)$ непрерывна в каждой точке $t^k$, а, значит,
+липшицева на $[t_0,t_1]$.
+
+\item[б)] Докажем свойство (\ref{10m3})~--- совпадение концов.
+
+$\ \ \ \hbox{б}_0)$ По определению $\tilde{\tau}(t_0)=\tau_0$.
+Следовательно,
+$$
+x(t_0)=\tilde{x}(\tilde{\tau}(t_0))=\tilde{x}(\tau_0).
+$$
+
+$\ \ \ \hbox{б}_1)$ Если $\tau_1\in M_+$, то есть $\tau_1$ не
+является концом последнего отрезка постоянства функции
+$\tilde{t}(\tau)$ - отрезка $\Delta^s$, то
+$\tilde{\tau}(t_1)=\tau_1$ и, следовательно,
+$$
+x(t_1)=\tilde{x}(\tilde{\tau}(t_1))=\tilde{x}(\tau_1).
+$$
+Если же $\tau_1$ является концом отрезка
+$\Delta^s=[\tau_0^s,\tau_1^s]$ (правым), то
+$\tilde{\tau}(t_1)=\tau_0^s$ (поскольку $\tilde{\tau}$ непрерывна
+слева). Следовательно,
+$$
+x(t_1)=\tilde{x}(\tilde{\tau}(t_1))=\tilde{x}(\tau_0^s).
+$$
+Но в силу (\ref{10m5})
+$$
+\tilde{x}(\tau_0^s)=\tilde{x}(\tau_1^s)=\tilde{x}(\tau_1).
+$$
+Таким образом, и в этом случае $x(t_1)=\tilde{x}(\tau_1).$
+
+Вообще можно доказать, что $x(\tilde{t}(\tau))=\tilde{x}(\tau) \
+\ \forall \tau\in[\tau_0,\tau_1]$, откуда (\ref{10m3}) следует,
+ибо $\tilde{t}(\tau_0)=t_0$ и $\tilde{t}(\tau_1)=t_1$ (докажите
+это свойство).
+
+\item[в)] Наконец, установим для $x(t)=\tilde{x}(\tilde{\tau}(t))$
+свойство (\ref{10m4}). Пусть ${\cal{E}}\subset[\tau_0,\tau_1]$~---
+множество полной меры, на котором:
+\end{enumerate}
+\begin{enumerate}
+\item[(i)] $\tilde{x}(t)$ имеет производную,
+\item[(ii)] $\tilde{t}(\tau)$ имеет производную,
+\item[(iii)] выполнено уравнение
+$$
+\frac{d\tilde{x}(\tau)}{d\tau}=\frac{d\tilde{t}(\tau)}{d\tau}\tilde{\varphi}(\tau).
+$$
+\end{enumerate}
+Пусть ${\cal{E}}_+={\cal{E}}\cap {\cal{M}}_+.$ Поскольку
+$mes[\tilde{t}(M_+)]=t_1-t_0$, то и
+$mes[\tilde{t}({\cal{E}}_+)]=t_1-t_0$
+
+Действительно, ${\cal{E}}_+\subset {\cal{M}}_+$ и если
+$m:={\cal{M}}_+\backslash{\cal{E}}_+$, то $mes[m]=0$, ибо
+${\cal{E}}$ имеет полную меру в $[\tau_0,\tau_1]$. Тогда и
+$mes[\tilde{t}(m)]=0$, ибо всякая липшицева функция, каковой
+является $\tilde{t}(\tau)$, переводит множество меры нуль в
+мно\-жество меры нуль (докажите). Тогда из включения
+$$
+\tilde{t}({\cal{E}}_+)=\tilde{t}({\cal{M}}_+\backslash
+m)\supset\tilde{t}({\cal{M}}_+)\backslash\tilde{t}(m)
+$$
+вытекает, что
+$$
+mes[\tilde{t}({\cal{E}}_+)]\geqslant
+mes[\tilde{t}({\cal{M}}_+)]=t_1-t_0 \Rightarrow
+mes[\tilde{t}({\cal{E}}_+)]=t_1-t_0.
+$$
+Таким образом, $\tilde{t}({\cal{E}}_+)$ имеет полную меру в
+$[t_0,t_1]$.
+
+Пусть $t_*\in \tilde{t}({\cal{E}}_+)$, то есть
+$t_*=\tilde{t}(\tau_*)$, где $\tau_*\in {\cal{E}}_+$ и тогда
+$\tilde{\tau}(t_*)=\tau_*.$
+
+Покажем, что в точке $t_*$ функция
+$x(t)=\tilde{x}(\tilde{\tau}(t))$ имеет производную.
+Действительно, в любой точке множества ${\cal{N}}_+$ функция
+$\tilde{\tau}$ имеет произ\-водную, значит, и в точке $t_*$.
+Поскольку $\tau_*\in {\cal{E}}_+$ и ${\cal{E}}_+ \in {\cal{E}}$,
+то $\tilde{x}$ имеет производную в точке $\tau_*$. По правилу
+дифференцирования сложной функ\-ции
+$$
+\frac{dx}{dt}(t_*)\overset{def}{=}\frac{d}{dt}\tilde{x}(\tilde{\tau}(t))\Big
+|_{t=t_*}=\frac{d\tilde{x}}{d\tau}(\tau_*)\cdot\frac{d\tilde{\tau}}{dt}(t_*)=
+(\text{т.к.}\tau_*\in{\cal{E}})=
+$$
+$$
+=\frac{d\tilde{t}}{d\tau}(\tau_*)\cdot\tilde{\varphi}(\tau_*)\cdot
+\frac{d\tilde{\tau}}{dt}(t_*)=\tilde{\varphi}(\tilde{\tau}(t_*))
+\cdot\frac{d\tilde{t}}{d\tau}(\tau_*)\cdot\frac{d\tilde{\tau}}{dt}(t_*)
+$$
+Но $\tilde{\varphi}(\tilde{\tau}(t_*))=\varphi(t_*)$ по
+определению функции $\varphi$. Кроме того,
+$$
+\frac{d\tilde{t}}{d\tau}(\tau_*)\cdot\frac{d\tilde{\tau}}{dt}(t_*)=1,
+$$
+поскольку
+$$
+\tilde{t}(\tilde{\tau}(t))=t \ \ \ \ \forall t\in[t_0,t_1]
+$$
+и обе производные существуют ($\tilde{t}$ дифференцируема в точке
+$$
+\tilde{\tau}(t_*)=\tau_*\in{\cal{E}}_+\subset {\cal{M}}_+,
+$$
+а $\tilde{\tau}$ дифференцируема в точке $t_*$).
+
+Итак, в любой точке $t_*\in\tilde{t}({\cal{E}}_+)$ выполнено
+равенство
+$$
+\frac{dx}{dt}(t_*)=\varphi(t_*).
+$$
+Поскольку  $\tilde{t}({\cal{E}}_+)$ имеет полную меру в
+$[t_0,t_1]$, то равенство $$\frac{dx}{dt}=\varphi$$ имеет место
+п.в. на $[t_0,t_1]$.
+\end{proof}
+
+\subparagraph{2. Управляемая система задачи $B$ и расширенная
+управля\-е\-мая система задачи $B$, связь между ними.} Напомним
+формули\-ров\-ку леммы 2 прошлой лекции и докажем её.
+
+
+\begin{lemma1}
+Для любой траектории расширенной управляемой системы
+\begin{equation}\label{10m9}
+\frac{dx}{d\tau}=vf(x,u), \ \ \ \frac{dt}{d\tau}=v, \ \ \ u\in U,
+\ \ \ v\geqslant 0,
+\end{equation}
+где $x$ и $t$ абсолютно непрерывны,  $u$~--- ограничена и
+измерима, а $v$~--- кусочно-постоянна, существует траектория
+системы
+\begin{equation}\label{10m10}
+\frac{dx}{dt}=f(x,u), \ \ \ u\in U
+\end{equation}
+с теми же $x_0, x_1$.
+\end{lemma1}
+\begin{proof}
+Пусть
+$$
+(\tilde{t}(\tau), \tilde{x}(\tau), \tilde{u}(\tau), \tilde{v}(\tau) \
+| \ \tau\in[\tau_0,\tau_1])
+$$
+~--- траектория решенной системы (\ref{10m9}). Положим
+$t_0=\tilde{t}(\tau_0), \ t_1=\tilde{t}(\tau_1)$, и пусть
+$$
+\tilde{\tau}(t) : [t_0,t_1]\rightarrow[\tau_0,\tau_1]
+$$
+~--- правая обратная к $\tilde{t}(\tau)$, непрерывная слева.
+Положим
+$$
+x(t)=\tilde{x}(\tilde{\tau}(t)), \ \ u(t)=\tilde{u}(\tilde{\tau}(t)), \ \ t\in[t_0,t_1]
+$$
+
+Согласно Предложению 1 $\ u(t)$ - ограниченая измеримая функция
+такая, что $u(t)\in U$ п.в. на $[t_0,t_1]$.
+
+Согласно Предложению 2 $\ \ x(t)$~--- липшицева функция на
+$[t_0,t_1]$, при\-чём,
+$$
+x(t_0)=\tilde{x}(\tau_0),\ \ \ x(t_1)=\tilde{x}(\tau_1)
+$$
+$$
+\frac{dx(t)}{dt}=f(x(t),u(t))\ \  \text{п.в. на } [t_0,t_1].
+$$
+Последнее, в силу Предложения 2, вытекает из условий
+$$
+\frac{d\tilde{x}(\tau)}{d\tau}=\tilde{v}(\tau)f(\tilde{x}(\tau),\tilde{u}(\tau))
+$$
+$$
+f(\tilde{x}(\tilde{\tau}(t)),\tilde{u}(\tilde{\tau}(t)))=f(x(t),u(t)).
+$$
+
+Следовательно, $(x(t),u(t)\ |\ t\in[t_0,t_1])$~--- траектория
+системы (\ref{10m10}). Лемма доказана.
+\end{proof}
+
+
+\subparagraph{3. Задача $B$ и задача $\tilde{B}$, связь между
+ними.} Рассмотрим снова задачу $B$:
+$$
+F_0(x_0,x_1)\rightarrow min, \ \ F(x_0,x_1)\leqslant 0, \ \
+K(x_0,x_1)=0,
+$$
+$$
+\dot{x}=f(x,u), \ \ \ u\in U,
+$$
+где $x_0=x(t_0),\ x_1=x(t_1)$, $\ x(t)$~--- липшицева, а $u(t)$ -
+ограниченная измери\-мая на $[t_0,t_1]$, причем, $t_0,t_1$ -
+свободны.
+
+Наряду с задачей $B$ будем рассматривать задачу $\tilde{B}$:
+$$
+F_0(x_0,x_1)\rightarrow min, \ \ F(x_0,x_1)\leqslant 0, \ \
+K(x_0,x_1)=0,
+$$
+$$
+\frac{dx}{d\tau}=vf(x,u), \ \ \ \frac{dt}{d\tau}=v,\ \ \ v\geqslant0, \ \ \ u\in U,
+$$
+где $x_0=x(\tau_0),\ x_1=x(\tau_1)$, функции
+$x(\tau),t(\tau)$~--- абсолютно непрерывны, $u(\tau)$~---
+ограничена и  измерима, $v(\tau)$~--- кусочно постоянна,
+
+$\tau\in[\tau_0,\tau_1] \ \ \ $, $\tau_0,\tau_1$ - свободны.
+
+\begin{theorem}(О связи задач $B$ и $\tilde{B}$)
+Пусть
+$$
+{\cal{T}}=(x(t),u(t)\ |\ t\in[t_0,t_1])
+$$
+~--- оптимальная траектория задачи $B$.
+
+Пусть
+$$
+\tilde{\cal{T}}=(\tilde{t}(\tau),\tilde{x}(\tau),\tilde{u}(\tau),\tilde{v}(\tau)\
+|\ \tau\in[\tau_0,\tau_1])
+$$
+~--- допустимая траектория задачи $\tilde{B}$ такая, что
+$$
+\tilde{x}(\tau_0)=x(t_0), \ \ \ \tilde{x}(\tau_1)=x(t_1).
+$$
+Тогда $\tilde{\cal{T}}$~-- оптимальная траектория задачи
+$\tilde{B}$.
+\end{theorem}
+
+\begin{proof}
+Пусть $\tilde{\cal{T}}$ не оптимальна в задаче $\tilde{B}$. Тогда
+найдется допустимая траектория задачи $\tilde{B}$
+$$
+\tilde{\cal{T}}'=(\tilde{t}'(\tau),\tilde{x}'(\tau),\tilde{u}'(\tau),
+\tilde{v}'(\tau)\ |\ \tau\in[\tau'_0,\tau'_1])
+$$
+с меньшим начением целевой функции:
+$$
+F_0(\tilde{x}'(\tau'_0),\tilde{x}'(\tau'_1))<F_0(\tilde{x}(\tau_0),\tilde{x}(\tau_1)).
+$$
+Расширенная управляемая система задачи $B$ совпадает с
+управляемой системой задачи $\tilde{B}$. По лемме 2 найдется
+траектория управляемой сис\-темы задачи $B$
+$$
+{\cal{T}}'=(x'(t),u'(t)\ |\ t\in[t'_0,t'_1])
+$$
+такая, что
+$$
+x'(t'_0)=\tilde{x}'(\tau'_0), \ \ \ x'(t'_1)=\tilde{x}'(\tau'_1).
+$$
+Тогда ${\cal{T}}'$~--- допустимая траектория задачи $B$ (поскольку
+$\tilde{\cal{T}}'$ допустима в задаче $\tilde{B}$) и при этом
+$$
+F_0(x'(t'_0),x'(t'_1))<F_0(x(t_0),x(t_1)).
+$$
+Значит, $F_0$ не оптимальна в задаче $B$.
+\end{proof}
+
+Мы провели важную подготовительную работу перед
+до\-ка\-за\-тель\-ством принципа максимума, связав между собой
+задачи $B$ и $\tilde{B}$. Последнюю будем также называть \emph{
+расширением задачи $B$}.
+
+
+Перед доказательством принципа максимума, сформулируем и
+дока\-жем еще один важный результат, относящийся к обыкновенным
+диффе\-ренциальным уравнениям: о гладкой зависимости решения от
+начальных условий и параметров. Для его доказательства нам
+понадобится теорема о неявной функции в абстрактной формулировке.
+Начнем с неё.
+
+\subparagraph{4. Теорема о неявной функции.}
+
+\begin{theorem}(АТФ, с. 166).
+Пусть $X,Y,Z$~--- банаховы пространства, $W$~--- окрестность
+точки $(x_0,y_0)\in X\times Y.$
+$$
+\Psi(x,y):W\rightarrow Z
+$$
+~--- оператор, непрерывно дифференцируемый по Фреше на $W$, причем
+\begin{enumerate}
+\item[(a)] $\Psi(x_0,y_0)=0$, \\
+\item[(b)] $\text{линейный оператор} \\
+\Psi'_y(x_0,y_0):Y\rightarrow Z,$ \\
+\end{enumerate}
+представляющий собой частную производную Фреше по переменной $y$
+оператора $\Psi$ в точке $(x_0,y_0)$, имеет обратный
+$[\Psi'_y(x_0,y_0)]^{-1}:Z\rightarrow Y.$
+
+Тогда существует функция $y=\varphi(x)$, оп\-ре\-де\-лен\-ная в
+некоторой ок\-рест\-нос\-ти $U$ точки $x_0$ и принимающая значения
+в $Y$, такая, что
+\begin{enumerate}
+\item[(i)]$\varphi(x_0)=y_0;$\\
+\item[(ii)]$\Psi(x,\varphi(x))=0 \ \ \forall x\in U;$\\
+\item[(iii)]$\text{ в малой окрестности точки } (x_0,y_0)\\
+\text{ равенство } \Psi(x,y)=0 \text{ возможно }\\
+\text{ лишь при } y=\varphi(x);$ \\
+\item[(iiii)]$\text{ функция } \varphi - \text{ класса } \mathcal{C}^1(U)\text{ и при этом}\\
+\varphi'(x)=-[\Psi'_y(x,\varphi(x))]^{-1}\Psi'_x(x,\varphi(x)).$
+\end{enumerate}
+\end{theorem}
+
+Отметим, что последняя формула вытекает из (ii) и правила
+диф\-фе\-рен\-цирования сложной функции.
+
+Итак, равенство $\Psi(x,y)=0$ задает неявную функцию
+$y=\varphi(x)$.
+
+С доказательством можно ознакомиться в книге АТФ или известных
+руководствах по функциональному анализу.
+
+\endinput

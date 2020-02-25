@@ -1,0 +1,567 @@
+\chapter*{Лекция 13.}
+
+
+\subparagraph{1. Представление условий стационарности в задаче
+$B^\theta$ с по\-мощью функции $\psi(t)$. Принцип максимума
+индекса $\theta.$}
+
+Пусть $\theta$~--- фиксированный ин\-декс. Ему соответствует
+от\-ре\-зок $[\tau_0,\tau_1]$, от\-рез\-ки $\Delta^k\subset
+[\tau_0,\tau_1],\quad k=1,\ldots,N$, множества
+${\cal{M}}_0=\bigcup\limits^N_{k=1}\Delta^k,\quad
+{\cal{M}}_+=[\tau_0,\tau_1]\backslash {\cal{M}}_0$.
+
+
+Вместе отрезки $\Delta^k$ множества ${\cal{M}}_0$ и интервалы
+(полуинтервалы) мно\-жества  ${\cal{M}}_+$ образуют набор
+$\sigma_1,\ldots,\sigma_k.$
+
+
+Функция $v^\theta(\tau)$ равна нулю на ${\cal{M}}_0$ и единице на
+${\cal{M}}_+$. Мы пользуемся представлением
+$$v^\theta(\tau)=\sum\hat{z}_k\chi_k(\tau),$$
+где $\chi_k$~--- характеристическая функция отрезка $\sigma_k$,
+$\hat{z}_k$ принимает значения 0 или 1. Если $\hat{z}_k=0$, то
+$\sigma_k\subset {\cal{M}}_0$; если $\hat{z}_k=1$, то
+$\sigma_k\subset {\cal{M}}_k.$ Наконец, $t^\theta(\tau)$ таковы,
+что
+$$
+\frac{dt^\theta}{d\tau}=v^\theta,\qquad
+t^\theta(\tau_0)=\hat{t}_0\Rightarrow t^\theta(\tau_1)=\hat{t}_1.
+$$
+Обозначим через $\tau^\theta(t):[\hat{t}_0,\hat{t}_1]\to
+[\tau_0,\tau_1]$ правую обратную функцию к функции
+$t^\theta(\tau)$, непрерывную слева. Тогда
+$$
+t^\theta(\tau^\theta(t))=t\qquad \forall t\in\hat{\Delta}, \ \
+\text{где}\quad\hat{\Delta}=[\hat{t}_0,\hat{t}_1].
+$$
+Пусть $\lambda^\theta=(\alpha_0,\alpha,\beta,\psi^\theta)$~---
+набор, удовлетворяющий условиям (29) теоре\-мы 3 лекции 12.
+
+Положим
+$$
+\psi(t)=\psi^\theta(\tau^\theta(t))\qquad\forall
+t\in\hat{\Delta}.
+$$
+
+Согласно предложению 2 лекции 10 из уравнения
+$$
+-\frac{d\psi^\theta}{d\tau}=v^\theta\psi^\theta f^\theta_x,
+\quad\text{где}\quad f^\theta_x=f_x(x^\theta,u^\theta)
+$$
+вытекает, что
+$$
+-\frac{d\psi(t)}{dt}=\psi(t)f_x(x^\theta(\tau^\theta(t)),
+u^\theta(\tau^\theta(t))).
+$$
+
+Пусть ${\cal{N}}_+ =[\hat t_0,\hat t_1]
+\backslash\{t^1,\ldots,t^N\}.$ Поскольку
+$u^\theta(\tau)=\hat{u}(t^\theta(\tau))$ на ${\cal{M}}_+$ и
+$\tau^\theta(t)$ переводит $\cal{N}_+$ в ${\cal{M}}_+$, то на
+$\cal{N}_+$ имеем:
+$$u^\theta(\tau^\theta(t))=\hat{u}(t^\theta(\tau^\theta(t)))=\hat{u}(t).$$
+Следовательно п.в. на $[\hat{t}_0,\hat{t}_1]$ имеем:
+$$u^\theta(\tau^\theta(t))=\hat{u}(t).$$
+Далее,
+$$
+x^\theta(\tau^\theta(t))=\hat{x}(t^\theta(\tau^\theta(t)))=\hat{x}(t)\qquad\forall
+t\in[\hat{t}_0,\hat{t}_1].
+$$
+Следовательно,
+$$
+-\frac{d\psi}{dt}=\psi\hat{f}_x\quad\text{п.в. на}
+[\hat{t}_0,\hat{t}_1]\quad\text{где}\hat{f}_x=f_x(\hat{x},\hat{u}).
+$$
+При этом в силу того же предложения 2 лекции 10:
+$$
+\psi(\hat{t}_0)=\psi^\theta(\tau_0),\ \
+\psi(\hat{t}_1)=\psi^\theta(\tau_1).
+$$
+Следовательно,
+$$
+\psi(\hat{t}_0)=\hat{l}_{x_0},\ \ -\psi(\hat{t}_1)=\hat{l}_{x_1},
+$$
+где
+$$
+\hat{l}_{x_0}=l_{x_0}(\hat{p},\alpha_0,\alpha,\beta),
+$$
+$$
+\hat{l}_{x_1}=l_{x_1}(\hat{p},\alpha_0,\alpha,\beta),
+$$
+$$
+\hat{p}=(\hat{x}_0,\hat{x}_1),\quad\hat{x}_0=\hat{x}(\hat{t}_0),
+\quad\hat{x}_0=\hat{x}(\hat{t}_0).
+$$
+
+Проанализируем теперь условие (27) лекции 12:
+\setcounter{equation}{0}
+\begin{equation}\label{13m1}
+\int\limits_{\sigma_k}\psi^\theta(\tau)f(x^\theta(\tau),u^\theta(\tau))d\tau=0,
+\end{equation}
+если $\sigma_k\subset {\cal{M}}_+$. Пусть $\sigma_k\subset
+{\cal{M}}_+$. Тогда $t^\theta(\sigma_k)\subset \cal{N}_+.$ В интеграле
+(\ref{13m1}) произведем замену переменной $\tau=\tau^\theta(t)$.
+Поскольку
+$$
+\frac{d\tau^\theta(t)}{dt}=1\ \ \hbox{на}\ \  \cal{N}_+
+$$
+$$
+\psi^\theta(\tau^\theta(t))\overset{def}{=}\psi(t)\ \ \hbox{на} \ \
+\hat{\Delta},
+$$
+$$
+x^\theta(\tau^\theta(t))=x(t) \ \ \hbox{на}\ \  \hat{\Delta},
+$$
+$$
+u^\theta(\tau^\theta(t))=u(t) \ \ \hbox{на}\ \  \cal{N}_+,
+$$
+и следовательно, те же равенства верны на $t^\theta(\sigma_k)$, то
+по формуле замены переменной из (\ref{13m1}) получаем:
+$$
+\int\limits_{t^\theta(\sigma_k)}\psi(t)f(\hat{x}(t),\hat{u}(t))dt=0.
+$$
+Здесь $t^\theta(\sigma_k)$ один из интервалов (полуинтервалов),
+составляющих мно\-жество $\cal{N}_+$. Обозначим его через$\Delta_+$.
+Тогда
+$$
+\int\limits_{\Delta_+}\psi\hat{f}dt=0,\quad \text{где} \quad
+\hat{f}=f(\hat{x},\hat{u}).
+$$
+Это условие выполнено для любого $\Delta_+\subset \cal{N}_+.$
+
+Проанализируем теперь условие (28) лекции 12:
+\begin{equation}\label{13m2}
+\int\limits_{\Delta_k}\psi^\theta(\tau)f(x^\theta(\tau),u^\theta(\tau))d\tau
+\leqslant 0,
+\end{equation}
+где $\Delta_k\subset {\cal{M}}_0.$ Напомним, что
+$$
+\Delta_k:=[\tau^k_0,\tau^k_1],\quad \tau^\theta(t^k)=\tau^k_0.
+$$
+Поскольку
+$$
+t^\theta(\tau)=t^k \ \ \hbox{на}\ \  \Delta^k,
+$$
+то
+$$
+x^\theta(\tau)\overset{def}{=}\hat{x}(t^\theta(\tau))=\hat{x}(t^k) \ \
+\hbox{на}\ \ \Delta_k.
+$$
+Далее, из условий
+$$
+-\frac{d\psi^\theta}{d\tau}=v^\theta\psi^\theta
+f^\theta_x=0\quad\text{на}\ \ \Delta_k
+$$
+вытекает, что на $\Delta_k$
+$$
+\psi^\theta(\tau)=\psi^\theta(\tau^k_0)=\psi^\theta(\tau^\theta(t^k))\overset{def}{=}\psi(t^k).
+$$
+Наконец, по определению функции $u^\theta$ имеем  на $\Delta^k$
+
+$$u^\theta(\tau)=u^k.$$
+Следовательно, из условия (\ref{13m2}) получаем, что
+$$
+\psi(t^k)f(\hat{x}(t^k),u^k)\leqslant 0,\quad k=1,\ldots,N.
+$$
+Таким образом, из теоремы 3 лекции 12 вытекает:
+\setcounter{theorema}{3}
+\begin{theorema}[Принцип максимума индекса $\theta$]
+Для любого индекса $\theta$ существует набор
+$\lambda=(\alpha_0,\alpha,\beta,\psi)$ такой, что
+\begin{equation}\label{13m3}
+\begin{split}
+&(a)\qquad\alpha_0\geqslant 0,\quad\alpha\geqslant 0;\ \ \alpha_0+|\alpha|+|\beta|=1;\\
+&(b)\qquad\alpha F(\hat{p})=0;\\
+&(c)\qquad-\dot{\psi}=\psi\hat{f}_x;\\
+&(d)\qquad\psi(\hat{t}_0)=\hat{l}_{x_0}; \quad-\psi(\hat{t}_1)=\hat{l}_{x_1};\\
+&(e)\qquad\psi(t^k)f(\hat{x}(t^k),u^k)\leqslant 0,\quad k=1, \ldots,N;\\
+&(f)\qquad\int\limits_{\Delta_+}\psi\hat{f}dt=0,
+\end{split}
+\end{equation}
+
+для любого интервала или полуинтервала $\Delta_+$, из которых
+состоит $\cal{N}_+$.
+\end{theorema}
+
+Здесь
+$$
+\hat{f}=f(\hat{x},\hat{u}); \qquad \hat{f}_x=f_x(\hat{x},\hat{u});
+$$
+$$
+\hat{l}_{x_0}=l_{x_0}(\hat{p},\alpha_0,\alpha,\beta);\ \ \
+\hat{l}_{x_1}=l_{x_1}(\hat{p},\alpha_0,\alpha,\beta);
+$$
+$$
+\hat{p}=(\hat{x}_0,\hat{x}_1)=(\hat{x}(\hat{t}_0),\hat{x}(\hat{t}_1)).
+$$
+
+Множество наборов $\lambda$, удовлетворяющих условиям
+(\ref{13m3}), обозначим $M^\theta$.
+\begin{propos} $M^\theta$~--- конечномерный
+компакт, причем, проектор
+\begin{equation}\label{13m4}
+\lambda=(\alpha_0,\alpha,\beta,\psi)\mapsto
+(\alpha_0,\alpha,\beta)
+\end{equation}
+инъективен на $M^\theta$.
+\end{propos}
+
+\begin{proof}
+Действительно, набор $(\alpha_0,\alpha,\beta)$ однозначно
+опреде\-ля\-ет вектор
+$\hat{l}_{x_0}=l_{x_0}(\hat{p},\alpha_0,\alpha,\beta)$, а значит
+и $\psi$ - с помощью условий
+$$
+-\dot{\psi}=\psi\hat{f}_x,\qquad\psi(\hat{t}_0)=\hat{l}_{x_0}.
+$$
+Следовательно, проектор (\ref{13m4}) инъективен на $M^\theta$.
+
+Ограниченность $M^\theta$ вытекает из условия нормировки
+$\alpha_0+|\alpha|+|\beta|=1$. Замкнутость $M^\theta$ очевидна.
+Следовательно, $M^\theta$~--- конечный компакт.
+\end{proof}
+
+\subparagraph{2. Лемма о равенстве нулю измеримой функции.}
+\begin{lemma}Пусть $h(t):[\hat{t}_0,\hat{t}_1]\rightarrow
+\mathbb{R}$~--- ограниченная измеримая функция. Пусть для любого
+отрезка $\Delta\subset[\hat{t}_0,\hat{t}_1]$ имет место равенство:
+$$
+\int\limits_\Delta h(t)dt=0.
+$$
+Тогда $h(t)=0 \ $ п.в. на $\hat{\Delta}:=[\hat{t}_0,\hat{t}_1].$
+\end{lemma}
+\begin{proof}
+Предположим, что данное утверждение не верно.$\ $ Тог\-да
+существует множество положительной меры на котором $\ h(t)\neq 0.$
+Сле\-довательно, существует множество положительной меры на
+котором $h(t)$ сохраняет знак. Обозначим его $A.$ Пусть для
+определенности $h(t)>0$ на $A$. Поскольку $A$~--- измеримое
+множество, то $\forall\ \varepsilon>0$ найдется покрытие множества
+$A$ не более, чем счетной системой отрезков $\{\Delta_k\}$
+$(\Delta_k\subset\hat{\Delta} \quad \forall\ k)$, не имеющих
+общих внутренних точек, такое, что множество
+$$m=(\bigcup\Delta_k)\backslash A$$ имеет меру не превосходящую
+$\varepsilon$. Поскольку
+$$
+\bigcup\Delta_k=A\cup m,\quad A\cap m=\varnothing,
+$$
+то
+\begin{equation}\label{13m5}
+\int\limits_{\bigcup\Delta_k}h(t)dt=\int\limits_Ah(t)dt+\int\limits_mh(t)dt.
+\end{equation}
+В силу $\sigma$-аддитивности интеграла и условия леммы левая часть
+этого равенства равна нулю. Интeграл по $m$ в правой части
+удовлетворяет оценке
+$$
+\left |\int\limits_mh(t)dt\right |\leqslant\|h\|_{\infty} {\rm
+mes}(m)\leqslant\|h\|_{\infty}\cdot\varepsilon
+$$
+
+Поскольку $\varepsilon$~--- произвольно мало, то из (\ref{13m5})
+получаем:
+$$
+\int\limits_Ah(t)dt =0.
+$$
+Последнее противоречит условиям
+$$
+h(t)>0\quad\text{на}\quad
+A,\quad{\rm mes}(A)>0.
+$$
+Лемма доказана.
+\end{proof}
+\subparagraph{3. Организация принципов максимумов индексов
+$\theta$. Завер\-шение доказательства принципа максимума задачи
+$B$.} Ниже нам будет удобно понимать индекс $\theta$ как множество
+пар $(t^k,u^k),\quad k=1,\ldots,s$, где $t^k$ упорядочены,
+$t^k\in[\hat{t}_0,\hat{t}_1],\quad u^k\in U\quad\forall k.$
+
+
+Введем на множестве индексов $\theta$ отношение частичного
+порядка: \mbox {$\theta_1<\theta_2$} ($\theta_1$ предшествует
+$\theta_2$ или $\theta_2$ следует за $\theta_1$), если для любого
+значения $t^k$ индекса $\theta_1$ и соответствующего значения
+$u^k$ этого индекса найдутся значения $t^{k'}$ и $u^{k'}$ индекса
+$\theta_2$ такие, что $t^k=t^{k'},\quad u^k=u^{k'}$ (т.е. любая
+пара ($t^k,u^k$) первого индекса принадлежит второму индексу).
+
+
+Пусть имеется пара ирдексов $\theta^1$ и $\theta^2$, возможно не
+сравнимых. Возь\-мем все пары $(t^k,u^k)$ первого индекса и все
+пары $(t^{k'},u^{k'})$ второго индекса и объединим их. Из
+объединения пар составим новый индекс $\theta_3$. Поло\-жим
+$$
+\theta_3=\theta_1\vee\theta_2,
+$$
+где операция $\vee$ соответствует объединению пар $t^k,u^k$.
+Ясно, что $\theta_1<\theta_3$ и $\theta_2<\theta_3$. Итак, за
+любыми двумя индексами следует третий.
+
+
+Отметим еще одно важное свойство следования, вытекающее из
+опре\-делений:
+$$
+\theta_1<\theta_2\Rightarrow M^{\theta_2}\subset M^{\theta_1}.
+$$
+
+Положим
+$$
+M=\bigcap\limits_{\theta}M^{\theta},
+$$
+где пересечение берется по всем индексам $\theta$.
+
+
+\begin{lemma}
+Множество $M$ непусто.
+\end{lemma}
+\begin{proof}
+Фиксируем индекс $\theta_0$ и рассмотрим все индексы $\theta$
+сле\-дую\-щие за $\theta_0$ : $\theta_0<\theta.$ Тогда
+$$
+M=\bigcap\limits_{\theta_0<\theta}M^{\theta}
+$$
+(Действительно, включение
+$$
+M\subset\bigcap\limits_{\theta_0<\theta}M^{\theta}
+$$
+очевидно. Обратно, для любого индекса $\theta_1$ найдется $\theta$
+такой, что $\theta_0<\theta$ и $\theta_1<\theta$. Следовательно,
+$M^{\theta}\subset M^{\theta_1}$. Отсюда вытекает, что
+$$
+\bigcap\limits_{\theta_0<\theta}M^{\theta}\subset M.
+$$
+Значит, имеет место равенство.)
+
+Множества $M^\theta$ такие, что $\theta_0<\theta$, образуют
+центрированную систему замкнутых подмножеств компакта
+$M^{\theta_0}$. Действительно, если имеется конечная подсистема
+$$
+M^{\theta_1},\ldots,M^{\theta_s},\quad\text{где}\quad
+\theta_0<\theta_1,\ldots,\theta_0<\theta_s,
+$$
+то полагая
+$$
+\theta=\theta_1 \vee \theta_2 \vee \ldots \vee\theta_s,
+$$
+получаем непустой компакт $M^\theta$, содержащийся в каждом
+$M^{\theta_k}$ (ибо $\theta_k<\theta$), а значит, и в их
+пересечении. Поскольку центрированная система замкнутых
+подмножеств компакта имеет непустое пересечение, то мно\-жество
+$M$ непусто. Лемма доказана.
+\end{proof}
+
+Итак, компакт $M$ непуст. Возьмем
+$\lambda=(\alpha_0,\alpha,\beta,\psi)\in M.$ Для него выполнены
+все условия (\ref{13m3}) принципа максимума любого индекса
+$\theta$. Для любых $t=t^k\in[\hat{t}_0,\hat{t}_1],\quad u=u^k\in
+U$ пара $(t^k,u^k)$ входит в некоторый индекс $\theta$.
+
+Для этого индекса из (\ref{13m3}),(е) получаем:
+$$
+\psi(t)=f(\hat{x}(t),u)\leqslant 0.
+$$
+Это условие выполнено для любого $t\in[\hat{t}_0,\hat{t}_1]$ и
+любого $u\in U$. Это и есть условие максимума. Далее, для любого
+интервала $\Delta\subset[\hat{t}_0,\hat{t}_1]$ найдется индекс
+$\theta$ такой, что $\Delta=\Delta_+$~--- один из интервалов
+множества $\cal{N}_+$ дан\-но\-го индекса. Следовательно, в силу
+(\ref{13m3}),(f)
+$$
+\int\limits_{\Delta}\psi\hat{f}dt=0
+$$
+для любого $\Delta\subset [\hat{t}_0,\hat{t}_1]$. Отсюда в силу
+леммы 1 получаем:
+$$
+\psi\hat{f}=0\quad\text{п.в. на}\quad[\hat{t}_0,\hat{t}_1],
+$$
+т.е.
+$$
+\psi(t)f(\hat{x}(t),\hat{u}(t))=0\quad\text{п.в.
+на}\quad[\hat{t}_0,\hat{t}_1].
+$$
+Это условие равенства нулю гамильтониана. Остальные условия
+(неот\-рицательности, нетривиальности, дополняющей нежесткости,
+сопряжен\-ное уравнение и условие трансверсальности) совпадают для
+всех индек\-сов. Принцип максимума задачи $B$ полностью доказан.
+Таким образом, завершено доказательство теоремы 3 лекции 11.
+
+
+\subparagraph{4. Принцип максимума в задаче $A$.} Напомним
+постановку за\-дачи $A$:
+$$
+F_0(p)\to\min,\quad F(p)\leqslant 0,\quad K(p)=0,\quad
+\dot{x}=f(t,x,u),\quad u\in U,
+$$
+где
+$$
+p=(t_0,x_0,t_1,x_1),\quad x_0=x(t_0),\quad x_1=x(t_1),
+$$
+$t_0,t_1$~--- нефиксированы, $F\in \mathbb{R}^k,\ K\in
+\mathbb{R}^s, \ x\in\mathbb{R}^n,\ u\in\mathbb{R}^m,\
+f\in\mathbb{R}^n.$
+
+Пусть траектория $${\cal{T}}=(x(t),u(t),\ |\ t\in[t_0,t_1])$$
+допустима в задаче $B$. Сформулируем для нее условия принципа
+мак\-си\-мума. Положим $$l=\alpha_0F_0+\alpha F+\beta K,$$ где
+$\alpha_0\in \mathbb{R},\quad \alpha\in{(\mathbb{R}^k)}^*,\quad
+\beta\in{(\mathbb{R}^s)}^*,$
+$$H=\psi_xf+\psi_t,$$
+где $\psi_x\in{(\mathbb{R}^n)}^*,\quad\psi_t\in \mathbb{R}$. Тогда
+
+$$
+l=l(p,\alpha_0,\alpha,\beta)
+$$
+~--- \emph{концевая функция Лагранжа}
+$$
+H=H(t,x,u,\psi_t,\psi_x)
+$$
+~--- \emph{функция Понтрягина}.
+
+
+Отметим, что здесь $\psi_x$ и $\psi_t$ - двойственные переменные,
+связанные с переменными $x$ и $t$ соответственно (ранее нижний
+индекс $x$ всегда означал вычисление градиента по $x$, например,
+$f_x$; здесь индексы $x$ и $t$ имеют другой смысл; надеемся, что
+это не приведет к путанице).
+
+
+\begin{defin} Будем говорить, что для траектории $\cal{T}$ имеет место принцип
+максимума, если существуют число $\alpha_0$, векторы
+$$
+\alpha\in{(\mathbb{R}^k)}^*,\beta\in{(\mathbb{R}^s)}^*
+$$
+и липшицевы функции
+$$
+\psi_x(t):[t_0,t_1]\rightarrow{(\mathbb{R}^n)}^*, \ \ \
+\psi_t(t):[t_0,t_1]\rightarrow \mathbb{R}
+$$
+такие, что выполнены условия: $ \\ $
+\begin{enumerate}
+\item[\textrm{(I)}]неотрицательности
+$$
+\alpha_0\geqslant 0,\quad \alpha\geqslant 0;
+$$
+\item[\textrm{(II)}] нетривиальности
+$$
+\alpha_0+|\alpha|+|\beta|>0;
+$$
+\item[\textrm{(III)}]
+дополняющей нежесткости
+$$
+\alpha_iF_i(p)=0,\quad i=1,\ldots,k, \quad\text{где}\quad p=(t_0,x(t_0),t_1,x(t_1))
+$$
+$$
+\alpha_i\:\text{и}\:F_i\quad\text{компоненты векторов}\ \alpha\:\text{и}\:F
+\quad\text{соответственно};
+$$
+\item[\textrm{(IV)}]
+сопряженные уравнения
+$$
+-\dot{\psi}_x(t)=H_x(t,x(t),u(t),\psi_t(t),\psi_x(t)),
+$$
+$$
+-\dot{\psi}_t(t)=H_t(t,x(t),u(t),\psi_t(t),\psi_x(t));
+$$
+\item[\textrm{(V)}]
+трансверсальности
+$$
+\psi_t(t_0)=l_{t_0},\quad-\psi_t(t_1)=l_{t_1},
+$$
+$$
+\psi_x(t_0)=l_{x_0},\quad-\psi_x(t_1)=l_{x_1},
+$$
+где градиенты $l_{t_0},l_{t_1},l_{x_0},l_{x_1}$ вычисляются в
+точке
+$$
+(t_0,x(t_0),t_1,x(t_1),\alpha_0,\alpha,\beta);
+$$
+\item[\textrm{(VI)}]
+максимума
+$$
+H(t,x(t),u,\psi_t(t),\psi_x(t))\leqslant 0
+$$
+для любых $t\in[t_0,t_1],\quad u\in U;$\\
+\item[\textrm{(VII)}]
+равенство нулю гамильтониана
+$$
+H(t,x(t),u(t),\psi_t(t),\psi_x(t))=0\quad\text{п.в.
+на}\quad[t_0,t_1].
+$$
+\end{enumerate}
+\end{defin}
+
+\begin{theorem}
+Если ${\cal{T}}$~--- решение задачи $A$, то для ${\cal{T}}$ имеет
+место принцип максимума.
+\end{theorem}
+
+\subparagraph{5. Доказательство принципа максимума задачи $A.\\$}
+
+
+\begin{proof}
+Пусть $$ {\cal{T}}=(x(t),u(t)|t\in[t_0,t_1])
+$$
+~--- решение задачи $A$. Положим
+$$
+\tau_0=t_0,\ \:\tau_1=t_1,\ \:t(\tau)=\tau.
+$$
+Тогда
+${\cal{T}}'=(t(\tau),x(\tau),u(\tau)|\tau\in[\tau_0,\tau_1])$
+~--- решение следующей задачи $A'$:
+$$
+F_0(p)\to\min,\quad F(p)\leqslant 0,\quad K(p)=0
+$$
+$$
+\frac{dx}{d\tau}=f(t,x,u),\quad\frac{dt}{d\tau}=1,
+$$
+где $p=(t(\tau_0),x(\tau_0),t(\tau_1),x(\tau_1))$.
+
+Это было объяснено в лекции 11. Задача $A'$ того же типа, что и
+задача $B$. Выпишем условия принципа максимума для траекторий
+${\cal{T}}'$ в задаче $B'$:
+
+существуют число $ \alpha_0$, векторы $\alpha$ и $\beta$,
+липшицевы функции
+$$
+\psi_x(\tau):[\tau_0,\tau_1]\rightarrow{(\mathbb{R}^n)}^*,
+\ \ \ \psi_t(\tau):[\tau_0,\tau_1]\to \mathbb{R}
+$$
+ такие, что
+$$
+\alpha_0\geqslant 0,\:\alpha\geqslant 0,\ \:\alpha_0+|\alpha|+|\beta|>0,\: \
+\alpha F(p)=0
+$$
+$$
+-\frac{d\psi_x}{d\tau}=H_x,\ \ \ -\frac{d\psi_t}{d\tau}=H_t,
+$$
+$$
+\psi_x(\tau_0)=l_{x_0},\ \ -\psi_x(\tau_1)=l_{x_1},\notag
+$$
+\begin{equation}\label{13m6}
+\psi_t(\tau_0)=l_{t_0},\ \ -\psi_t(\tau_1)=l_{t_1},
+\end{equation}
+$$
+H(t(\tau),x(\tau),u(\tau),\psi_t(\tau),\psi_x(\tau))\leqslant
+0,\quad\forall\tau\in[\tau_0,\tau_1]\quad\forall u\in U;
+$$
+$$
+H(t(\tau),x(\tau),u(\tau),\psi_t(\tau),\psi_x(\tau))=
+0,\quad\text{п.в. на}\quad[\tau_0,\tau_1],
+$$
+где \ $l=\alpha_0 F_0+\alpha F+\beta K,\qquad H=\psi_x f+\psi_t,$
+градиенты функции $l$ вычисляются в точке
+$(t(\tau_0),x(\tau_0),t(\tau_1),x(\tau_1))$, а градиенты функции
+$H$~--- в точке
+$$
+(t(\tau),x(\tau),u(\tau);\psi_t(\tau),\psi_x(\tau)),\:\tau\in[\tau_0,\tau_1].
+$$
+Рассмотрим набор
+$$
+\alpha_0,\alpha,\beta,\psi_t(t),\psi_x(t).
+$$
+Элементарно проверяется, что он удовлетворяет всем условиям
+принципа максимума для траектории ${\cal{T}}$ в задаче $A$.
+Теорема доказана.
+\end{proof}
+\endinput

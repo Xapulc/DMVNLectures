@@ -1,0 +1,6 @@
+add_subdirectory(Beloshapka.V.K)
+add_subdirectory(Dolzhenko.E.P)
+add_subdirectory(Domrin.A.V,Sergeev.A.G)
+add_subdirectory(Sergeev.A.G)
+add_subdirectory(Sorokin.V.N)
+add_subdirectory(Vyacheslavov.N.S)

@@ -1,0 +1,25 @@
+\begin{tproblem}
+  Найти вектор-потенциал магнитного поля, создаваемого прямолинейным тонким током.
+\end{tproblem}
+\unsafeIO{}
+\begin{solution}
+  Сначала найдем магнитное поле $\vecb$. Не ограничивая общности,
+  можно считать, что плотность электрического тока равна $\vec\jmath =
+  jδ(x)δ(y)\eZ$.  Из соображений симметричности, $\vecb = B_z\eZ +
+  B_r\eR$. По теореме Стокса(стр. 23), взяв в качестве $S$ круг
+  радиуса $r$ в плоскости $xy$
+  \begin{equation*}
+    ∮\limits_{S¹_r}(B_z\eZ + B_r\eR)dl =\frac{4π}c\intl{D²_r}{}jδ(x)δ(y)\eZ dS = \frac{4π}cj\eZ
+  \end{equation*}
+  откуда $B_r = 0$, $B_z = \frac{2j}{cr}$.  Т.е $\vecb = (0, 0,
+  \frac{2j}{cr})$.  Вычислим поток магнитного поля через круг
+  радиуса $r$ в плоскости $xy$.
+  \begin{equation*}
+    Φ ≡ \intl{D²_r}{}\vecb ·dS = \intl{S¹_r}{}\veca ·dl
+  \end{equation*}
+  Откуда заключаем, что $\veca = A(r)\eZ$. Вычислим интегралы.
+  \begin{eqnarray*}
+    \intl{D²_r}{}\frac{2j}{cr'}dS =\hc{\mat{ x = r'\sin φ\\y = r'\cos φ}} = \intl or\intl 0{2π} \frac{2j}c dr'dφ
+  \end{eqnarray*}
+  Бредово получается, что $\veca = \const$. \tbk
+\end{solution}

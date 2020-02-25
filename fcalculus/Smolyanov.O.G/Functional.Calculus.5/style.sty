@@ -1,0 +1,43 @@
+\RequirePackage{amsmath, amsthm, amsfonts, amssymb}%
+\RequirePackage{graphicx}%
+\RequirePackage[matrix,arrow,curve]{xy}
+
+\newcounter{lec}
+\renewcommand{\thelec}{\arabic{lec}}
+\newcommand*{\lecture}{\refstepcounter{lec}\vspace{20pt}
+\begin{center}{\rmfamily\textsc{Лекция \thelec.}}
+\end{center}}
+
+\newcounter{tema}
+\renewcommand{\thetema}{\arabic{tema}}
+\newcommand*{\tema}[1]{\vspace{10pt}
+\begin{center}{\textbf{\refstepcounter{tema}
+\textsc{\thetema. #1.}}}\vspace{7pt}
+\end{center}}
+
+\newcommand{\prim}{\vspace{5pt}\noindent\textbf{Примеры.}}
+\newcommand{\svoy}{\vspace{5pt}\noindent\textbf{Свойства.}}
+\newcommand{\diam}{\mathop{\mathrm{diam}}}
+
+\newtheorem{theorem}{Теорема}[tema]
+\renewcommand{\thetheorem}{\thetema.\arabic{theorem}}
+
+\newtheorem{sled}{Следствие}[tema]
+\renewcommand{\thesled}{\thetema.\arabic{sled}}
+
+\newtheorem{lemm}{Лемма}[tema]
+\renewcommand{\thelemm}{\thetema.\arabic{lemm}}
+
+\newtheorem{predl}{Предложение}[tema]
+\renewcommand{\thepredl}{\thetema.\arabic{predl}}
+
+\theoremstyle{definition}
+\newtheorem{defen}{Определение}[tema]
+\newtheorem*{zam}{Замечание}
+\newtheorem{upr}{Упражнение}
+
+\newcommand*{\p}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}}
+\newcommand*{\pr}[1]{\mathop{\mathrm{pr_{#1}}}}
+\newcommand*{\supp}{\mathop{\mathrm{supp}}}
+\renewcommand*{\Re}{\mathop{\mathrm{Re}}}
+\renewcommand*{\Im}{\mathop{\mathrm{Im}}}

@@ -1,0 +1,306 @@
+
+% пятая лекция по комплану. сказания о интеграле Лебега
+
+\begin{center}
+\textbf{Лекция 5.}
+\end{center}
+
+
+$(X, \EuScript(M), \mu)$
+
+$\mu$ --- $\delta$--конечна, если $X = \bigcup_{i = 1}^\infty X_i,
+\; \mu X_i < +\infty$
+
+$(L) \int\limits_{E} f d\mu = \sup\limits_{E = \bigcup_j E_j}
+\left( \sum\limits_j (\inf\limits_{x \in E_j} f(x)) \mu E_j
+\right)$, для меры и $f(x)$ разрешено принимать значение
+$+\infty$.
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 8.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+Если интеграл принимает значение $\infty$, мы не будем говорить,
+что функция интегрируема.
+
+\textbf{Определение.} \quad Суммируемая функция --- интегрируемая
+по Лебегу с конечным значением интеграла.
+
+\textbf{Утверждение} \quad Если $f(x)$ измерима и $f(x) \geqslant
+0$ (на измеримом множестве) и суммируема, то тогда $f(x)$ конечна
+и суммируема, то тогда $f(x)$ конечна~п.в.
+
+$\{ x \in E : f(x) = + \infty \} = E \: \backslash \: (\bigcup_{N
+= 1}^\infty \{ f(x) < N \}) \quad \Rightarrow$
+
+$\{ x \in E : f(x) = + \infty \}$ --- измеримо $\Rightarrow$
+
+$\mu \: \{ x \in E : f(x) = + \infty \} = 0$
+
+$E_1 \subset E, E_1$ --- измеримо, $f(x) \geqslant 0 \Rightarrow$
+
+$\int_{E_1} f d\mu \leqslant \int_E f d\mu$
+
+$f(x) \leqslant g(x) \Rightarrow \int_E f d\mu \leqslant \int_E g
+d\mu$
+
+$f(x) = a_j, \; x \in E_j \; (f(x) - \text{простая функция}) $
+
+Тогда $(L) \int_E f d\mu = \sum_{j = 1}^n a_j \mu E_j$
+
+Это можно считать определением интеграла для простой
+неотрицательной функции.
+
+$f, g$ --- простые функции
+
+$f(x) = a_j, \quad x \in E_j$
+
+$g(x) = b_i, \quad x \in E_i$
+
+Тогда:
+
+1. \quad $\int_E (f + g) d \mu = \sum_i \sum_j (a_j + b_i) \: \mu
+(E_j \bigcap E'_i) = \int_E f d\mu + \int_E g d\mu$
+
+2. \quad $\int_E (c  f) d\mu = c  \int_E f d\mu$
+
+3. \quad $E = E_1 \bigcup E_2 \quad \int_{E_1} f d\mu + \int_{E_2}
+f d\mu = \int_E f d\mu$
+
+
+\textbf{Теорема (о вычислении интеграла Лебега через простые
+функции)} \quad
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 9.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+$f(x) \geqslant \mbox{ на Е - измер., } f_k (x) \nearrow f(x),
+\{f_k(x)\}$ --- последовательность простых измеримых функций.
+
+Тогда $(L) \int_E f d\mu = lim_{k \rightarrow \infty} \int_E f_k d
+\mu$
+
+$\blacklozenge$
+
+$f_k(x) \leqslant f(x)$
+
+$(L) \int_E f_k d\mu \leqslant (L) \int_E f d\mu \; \Rightarrow \;
+\lim_{k \rightarrow \infty} (L) \int_E f_k d\mu \leqslant (L)
+\int_E f d\mu$
+
+Докажем неравенство в другую сторону
+
+$\inf\limits_{x \in E_j} f(x) = a_j, E = \bigcup_{j = 1}^n E_j$
+
+$\lim\limits_{k \rightarrow \infty} f_k(x) \geqslant a_j \quad
+\forall x \in E_j$
+
+Возьмем $\varepsilon > 0$
+
+$A_{jk} = \{ x \in E_j : f_k(x) > a_j - \varepsilon\}$
+
+$E_j = \bigcup\limits_k A_{jk} \quad (\text{так как } lim_{k
+\rightarrow \infty} f_k \geqslant a_j)$
+
+$A_{jk} \subset A_{j(k + 1)}$ (так как $f_k$ --- монотонная), то
+есть это монотонно растущая последовательность $\Rightarrow$ (по
+непрерывности меры) $\mu A_{jk} \xrightarrow[k \rightarrow
+\infty]{} \mu E_j$
+
+$\int_{E_j} f_k d\mu \geqslant \int_{A_{jk}} f_k d\mu > (a_j -
+\varepsilon) \mu A_{jk}$
+
+$\lim_{k \rightarrow \infty} \int_{E_j} f_k d\mu \geqslant a_j \mu
+E_j$
+
+Получаем $\lim_{k \rightarrow \infty} \int_E f_k d\mu \geqslant
+\sum_{j} a_j \mu E_j$, так как разбиение произвольно, то $\lim_{k
+\rightarrow \infty} \int_E f_k d\mu \geqslant
+\sup\limits_{\bigcup_{j = 1}^n E_j = E} \sum_j a_j \mu E_j = (L)
+\int_E f d\mu$
+
+$\lozenge$
+
+Предельным переходом получаем для $f, g \geqslant 0$
+
+$1. \int_E (f + g) d\mu = \int_E f d\mu + \int_E g d\mu$
+
+$2. \int_E c f d\mu = c \int_E f d \mu$
+
+$3. \int_{E_1} f d \mu + \int_{E_2}f d \mu = \int_{E_1 \bigcup
+E_2} f d \mu f d\mu, \quad E_1 \bigcap E_2 = \varnothing$
+
+Значение интеграла не зависит от значения $f(x)$ на множестве меры
+0.
+
+Определим интеграл Лебега для функций любого знака $f = f^+ + f^-$
+
+$f^+ = max \{f(x); 0\}, \quad f^- = max\{f(x); 0\}$
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 9.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+Если $f$ --- изм. $\Rightarrow f^+, f^-$ --- измер.
+
+$ (L) \int_E f d\mu =  (\text{по определению}) (L) \int_E f^+ d
+\mu - (L) \int_E f^- d\mu$
+
+Говорим, что интеграл существует, если хотя бы один из этих двух
+интегралов (от $f^+$ и $f^-$) конечен.
+
+$f$ называют интегрируемой, если оба интеграла, входящие в
+определение, конечны.
+
+
+\begin{center} \textbf{Свойства интеграла Лебега.} \end{center}
+
+$1. \quad \mu E = 0 \Leftrightarrow \int_E f d\mu = 0$
+
+$2. \quad f \thicksim g \; (f \text{ и } g \text{ совпадают п.в.})
+ \Rightarrow \text{ существует} (L) \int_E f d\mu$
+
+$ \Leftrightarrow \text{ существует } (L) \int_E g d \mu \text{ и
+} (L) \int_E f d \mu = (L) \int_{E} g d \mu$
+
+$3. \quad f(x) \leqslant g(x) \Rightarrow \int_E f d \mu \leqslant
+\int_E g d \mu$
+
+$4. \quad f(x) - \text{ интегрируемая } \Rightarrow f(x) \text{
+конечна п.в. } (f(x) \in L(E)))$
+
+$5. \quad E_1 \subset E, \int_E f d \mu \text{ существует}
+\Rightarrow \int_{E_1} f d \mu \text{ существует } (f \text{
+суммир. на } E \Rightarrow f \text{ суммир. на } E_1)$
+
+$6. \quad f \text{ измерима на } E, \; f \in L(X) \Leftrightarrow
+|f| \in L(E)$\\$|f| = f^+ + f^-$\\$|\int_E f d \mu| \leqslant
+\int_E f^+ + \int_E f^- d\mu = \int_E |f| d \mu$
+
+$7. \quad f, g - \text{ измеримы на } E \; |f(x)| \leqslant |g(x)|
+\text{ п.в. } \Rightarrow \int_E |f| d \mu \leqslant \int_E |g| d
+\mu $
+
+$8. \quad \int_E (cf) d\mu = c \int_E f d \mu$
+
+$9. \quad \int_{E_1} f d \mu + \int_{E_2} f d \mu = \int_{E_1
+\bigcup E2} f d \mu \; (E_1 \bigcap E_2 = \varnothing)$
+
+$10. \quad \int_E (f + g)d\mu = \int_E f d \mu + \int_E g d \mu$\\
+Если $f$ и $g$ суммир. $\Rightarrow f + g$ суммируемы \\ $|f + g|
+\leqslant |f| + |g|$
+
+$11. \quad f(x) \geqslant 0 \text{ на } E, \; m \leqslant g(x)
+\leqslant M \text{ п.в. на } E, \text{ тогда } m\int_E f d \mu
+\leqslant M \int_E f d \mu$
+
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 10.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+\begin{center} \textbf{Предельный переход под знаком интеграла} \end{center}
+
+$f(x) = \sum_{k = 1}^{\infty} f_k(x), \; f_k(x) \geqslant 0$
+
+Тогда $(L) \int_E f  \mu = \sum_{k = 1}^{\infty} (L) \int_E f_k d
+\mu$
+
+$\blacklozenge \sum_{k = 1}^N f_k(x) \leqslant f(x)$
+
+$\sum_{k=1}^N (L) \int f_k (x) d \mu \leqslant (L) \int_E f d \mu$
+
+$\sum_{k = 1}^{\infty} (L) \int f_k d \mu \leqslant (L) \int_E f d
+\mu$
+
+Докажем неравенство в другую сторону:
+
+$f_{k_j} \nearrow_{j \rightarrow \infty} f_k, \; f_{k_j}$ ---
+простые функции
+
+$(*) \; S_j = \sum_{k = 1}^j f_{k_j} \leqslant \sum_{k=1}^j f_k
+\leqslant \sum_{k=1}^{\infty} f_k = f$
+
+$lim_{j \rightarrow \infty} S_j(x) \leqslant f(x)$
+
+Фиксируем $n$. Пусть $j > n$
+
+$S_j \geqslant \sum_{k=1}^n f_{k_j}; lim_{j \rightarrow \infty}
+S_j (x) \geqslant \sum_{k=1}^n f_k(x) \; \forall$ фиксированных
+$n$
+
+$\lim_{j \rightarrow \infty} S_j (x) \geqslant \sum_{k=1}^{\infty}
+f_k(x) = f(x)$
+
+Значит, $\lim_{j \rightarrow \infty} S_j (x) = f(x)$
+
+Тогда $(L) \int f d\mu = \lim_{j \rightarrow \infty} \int_E S_j d
+\mu \leqslant \sum_{k=1}^{\infty} \int_E f_k d \mu$
+
+$\int_E S_j d \mu < \sum_{k=1}^j \int_E f_k d \mu $
+$\blacklozenge$
+
+\textbf{Следствие.} \quad  $f(x) = \sum_{k=1}^{\infty} f_k(x), \;
+f_k \geqslant 0$, и сходится $\sum_{k=1}^{\infty} \int_E f_k d \mu
+\Rightarrow \sum_{k=1}^{\infty} f_k(x)$ сходится п.в.
+
+Верно, т.к. если $\int_E f d \mu$ конечен, то  $f$ конечен п.в.
+
+\textbf{Задача.} \quad Пусть $\mathbf{R} = \{r_n\}$, доказать, что
+$\sum_{k=1}^{\infty} \frac{1}{k^2\sqrt{x - r_k}}$ сходится п.в.
+

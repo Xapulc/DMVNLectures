@@ -1,0 +1,183 @@
+\subsubsection{Числовые характеры}
+
+Числовой характер $\chi$ отображает $\Z$ в $\Cbb$. На $\Z_m^*$ он равен групповому характеру, вне $\Z_m^*$~— нулю. Можно дать определение без ссылки на групповые характеры.
+
+\begin{df}
+  $\chi \colon \Z \to \Cbb$  называется числовым характером, если
+  \begin{enumerate}
+    \item Если $x \equiv y \pmod m$, то $\chi(x) = \chi(y)$,
+    \item $\chi(xy) = \chi(x) \chi(y)$,
+    \item $\chi(x) \ne 0$ тогда и только тогда, когда $(x, m) = 1$.
+  \end{enumerate}
+\end{df}
+
+Главному групповому характеру соответствует
+$$
+\chi_0(x) = I\{(x, m) = 1\},
+$$
+который мы тоже будем называть главным.
+
+Переформулируем два свойства, доказанные на прошлой лекции, для числовых характеров.
+
+\begin{stm}
+  $$
+    \sum_{x = 1}^m \chi(x) = \begin{cases}
+      \ph(m),& \chi = \chi_0,\\
+      0,& \chi \ne \chi_0.
+    \end{cases}
+  $$
+\end{stm}
+
+\begin{stm}
+  $$
+    \sum_{\chi} \chi(a) = \begin{cases}
+      \ph(m),& a \equiv 1 \pmod m,\\
+      0,& a \not \equiv 1 \pmod m.
+    \end{cases}
+  $$
+\end{stm}
+
+Рассмотрим пример $m = 6$. $\Z_6^* = \{1, 5\}$, $5^2 \equiv 1 \pmod 6$, то есть $\Z_6^*$ изоморфна $\Z_2$. Значит, $\chi(1) = 1$, $\chi(5) \in \{-1, 1\}$. Другой пример: $m = 8$. $\Z_8^* = \{1, 3, 5, 7\}$, квадрат любого из этих чисел равен 1. Заметим, что $\Z_8^*$ изоморфна $\Z_2 \oplus \Z_2$ (образующие $3$ и $5$). Таким образом, получаем 4 характера ($\chi(3), \chi(5) \in \{-1, 1\}$). 
+
+\subsection{$L$-функция Дирихле}
+
+Задаем $m \in \N$, $m > 1$, $\chi$~— некоторый характер по модулю $m$.
+
+$$
+  L(s, \chi) = \sum_{n = 1}^{\infty} \frac{\chi(n)}{n^s}
+$$
+
+Введем обозначение $\sigma := \Re s$, $t := \Im s$.
+
+Некоторые свойства дзета-функции распространяются на $L$-функцию.
+
+\begin{stm}
+  \begin{itemize}
+    \item $L(s, \chi) \ne 0$ при $\sigma > 1$,
+    \item $$
+    -\frac{L'(s, \chi)}{L(s, \chi)} = \sum_{n=1}^{\infty} \frac{\chi(n) \Lambda(n)}{n^s},$$ где
+    $$
+      \Lambda(n) = \begin{cases}
+        \ln p,& n = p^k,\\
+        0,& \mbox{иначе}.
+      \end{cases}
+    $$
+  \end{itemize}
+\end{stm}
+
+Можно заметить, что $L(s, \chi)$ сходится абсолютно при $\sigma > 1$, равномерно при $\sigma > 1 + \delta$. Отсюда можно получить такое утверждение:
+\begin{stm}
+  Ряд для $L(s, \chi)$ можно почленно дифференциировать сколько угодно раз при $\sigma > 1$.
+\end{stm}
+
+\begin{stm}
+  $$
+    L^{(k)}(s, \chi) = \sum_{n = 1}^{\infty} \frac{(-1)^k(\ln n)^k\chi(n)}{n^s}
+  $$
+\end{stm}
+
+\begin{stm}
+  $$
+    L(s, \chi) = \prod_{p} \left( 1 - \frac{\chi(p)}{p^s}\right)^{-1}
+  $$
+  при $\sigma > 1$.
+\end{stm}
+
+Посмотрим на $L$-функцию при $\chi = \chi_0$.
+
+\begin{stm}
+  $$
+    L(s, \chi_0) = \prod_{p \ndivs m} \left( 1 - \frac{1}{p^s} \right)^{-1} = \zeta(s) \prod_{p \divs m} \left( 1 - \frac{1}{p^s}\right)
+  $$
+  при $\sigma > 1$.
+\end{stm}
+
+Эта формула позволяет аналитически продолжить $L(\,\cdot\,, \chi_0)$ на область $\sigma > 0$:
+$$
+  L(s, \chi_0) = \frac{a_m}{s - 1} + f_m(s),
+$$
+где $\displaystyle a_m = \prod_{p \divs m}\left(1 - \frac{1}{p}\right) = \frac{\ph(m)}{m}$, $f_m(\,\cdot\,)$~— аналитическая в $\sigma > 0$.
+
+Если же $\chi \ne \chi_0$, то $L(\,\cdot\,, \chi)$ уже аналитическая в $\sigma > 0$, и ничего специально продолжать не нужно. Для доказательства этого факта нам понадобятся ряды Дирихле:
+\begin{equation}
+\label{dirichlet_series}
+  \sum_{n=1}^{\infty} \frac{a_n}{n^s}.
+\end{equation}
+
+\begin{lemma}
+  Пусть $\left| \sum_{n=1}^N a_n\right| \leqslant C$. Рассмотрим область
+  $$
+    D(\delta, \theta) = \{s : \Re s = \sigma > \delta > 0, |\arg s| < \theta < \pi / 2 \}.
+  $$
+  \begin{enumerate}
+    \item В $D(\delta, \theta)$ ряд (\ref{dirichlet_series}) сходится равномерно.
+    \item При $\sigma > 0$ ряд можно почленно дифференциировать любое число раз.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  /* А почему нельзя сослаться на признак Дирихле для рядов и признак Вейштрасса? */
+  Будем доказывать равномерную сходимость непосредственно. Применим преобразование Абеля к хвосту ряда:
+  $$
+    R_{N}(s) = \sum_{k = 1}^{\infty} \frac{a_{N + k}}{(N + k)^s}.
+  $$
+  Частичные суммы $a_{N + k}$ не превосходят по модулю $2C$, поэтому $\lim_{x \to \infty} A(x) N^{-s} = 0$, где $A(x) = \sum_{k \leqslant x} a_{N + k}$. Значит, применение преобразования Абеля законно.
+  Итого:
+  $$
+    R_N(s) = s \int \limits_1^{+\infty} A(t) (t + N)^{-s-1} dt.
+  $$
+  Хотим доказать, что этот интеграл сходится равномерно в $D(\delta, \theta)$.
+  $$
+    \left|s \int \limits_1^{+\infty} A(t) (t + N)^{-s-1} dt \right| \leq
+    |s| \int \limits_1^{+\infty} 2C (t + N)^{-\sigma-1} dt \leq
+    2C \frac{|s|}{\sigma}(N + 1)^{-\sigma} \leqslant 2C \frac{1}{\cos \theta} (N + 1)^{-\delta} = o(1)  
+  $$
+  равномерно по $s$.
+  
+  Теперь нужно доказать, что при $\sigma > 0$ ряд аналитичен. Для любого $s$ с $\sigma > 0$ можно найти $D(\delta, \theta) \ni s$. А значит, ряд можно дифференциировать почленно сколько угодно раз.
+\end{proof}
+
+\begin{theorem}\label{42}
+  \begin{enumerate}
+    \item Если ряд сходится при $s = s_0$, то он сходится в $\{\Re s > \Re s_0\}$, 
+          и там его можно почленно дифференциировать сколько угодно раз.
+    \item Найдется $\sigma_0 \in [-\infty, \infty]$ такое, что при $\Re s > \sigma_0$
+       ряд сходится, а при $\Re s < \sigma_0$~— расходится.
+   \end{enumerate}
+\end{theorem}
+\begin{proof}
+  $$
+    \sum_{n=1}^{\infty}\frac{a_n}{n^s} = \sum_{n = 1}^{\infty} \frac{a_n / n^{s_0}}{n^{s - s_0}}.
+  $$
+  Частичные суммы $\sum_{n=1}^N a_n / n^{s_0}$ ограничены, а значит, можно применить предыдущую лемму.
+  
+  Второй пункт очевидно следует из первого.
+\end{proof}
+
+Теперь хотим применить только что доказаную лемму для случая, когда $a_n$~— характер. Ряд будет выглядеть так:
+$$
+  \sum_{n=1}^{\infty} \frac{\chi(n)}{n^s},
+$$
+где $\chi \ne \chi_0$.
+
+\begin{lemma}
+  При $\sigma > 0$ этот ряд является аналитической функцией, и его можно дифференциировать почленно сколько угодно раз.
+\end{lemma}
+\begin{proof}
+  Нужно лишь проверить ограниченность частичных сумм.
+  $$
+    \left| \sum_{n=1}^N \chi(n) \right| \leqslant m,
+  $$
+  так как $\sum_{n \in \Z_m} \chi(n) = 0$.
+\end{proof}
+
+Рассмотрим ряд
+$$
+  \sum_{n=1}^{\infty} \frac{\mu(n)}{n^s}
+$$
+в области $\sigma > 1$. Утверждается, что он равен $1 / \zeta(s)$.
+
+Действительно,
+$$
+  \zeta(s) \cdot \sum_{n=1}^{\infty} \frac{\mu(n)}{n^s} =
+  \sum_{m=1}^{\infty}\frac{1}{m^s} \cdot \sum_{d \divs m} \mu(d) = 1.
+$$

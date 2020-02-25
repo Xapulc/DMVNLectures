@@ -1,0 +1,157 @@
+\documentclass[a4paper]{article}
+\usepackage[utf,simple]{dmvn}
+
+\newcommand{\gd}{\dot{\ga}}
+\newcommand{\gdd}{\ddot{\ga}}
+\newcommand{\gddd}{\dddot{\ga}}
+
+\begin{document}
+
+\section*{Контрольная работа по дифференциальной геометрии}
+\subsection*{Преподаватель~--- А.\,А.\,Тужилин}
+
+\subsubsection*{Вариант 1 (Условия)}
+
+\begin{problem}
+Эквидистантой кривой $\ga$ называется множество точек, полученных из точек кривой $\ga$ смещением
+на одну и ту же величину $a$ в направлении поля $\nb$ единичных нормалей. Написать параметрическое
+уравнение эквидистанты для $\ga = (\cos t, 2\sin t)$, если $a = 2$ и в качестве $\nb$ выбрано поле главных нормалей.
+\end{problem}
+
+\begin{problem}
+Найти натуральную параметризацию следующей плоской кривой:
+$$\ga = \hr{ 2\sqrt{-1+t^2} + 2\arctg\hr{\frac{1}{\sqrt{-1+t^2}}}, \ln t^2}.$$
+\end{problem}
+
+\begin{problem}
+Найти репер Френе, кривизну и кручение следующей пространственной кривой:
+$$\ga = (1 + t, 1- t, t^2).$$
+\end{problem}
+
+\begin{problem}
+Найти первую и вторую фундаментальную форму, главные кривизны и главные направления,
+среднюю и гауссову кривизны следующей поверхности:
+$$\rb(u,v) = (2\cos u, 3\sin u, v).$$
+\end{problem}
+
+\setcounter{problem}{0}
+
+\subsubsection*{Вариант 2 (Условия и решения)}
+
+\begin{problem}
+Эквидистантой кривой $\ga$ называется множество точек, полученных из точек кривой $\ga$ смещением
+на одну и ту же величину $a$ в направлении поля $\nb$ единичных нормалей. Написать параметрическое
+уравнение эквидистанты для $\ga = (t, \ch t)$, если $a = 1$ и в качестве $\nb$ выбрано поле главных нормалей.
+\end{problem}
+\begin{solution}
+Найдём натуральную параметризацию данной кривой. Без ограничения общности можно рассматривать только $t > 0$,
+поскольку $\ga$ есть график чётной функции $\ch t$, значит, кривая симметрична относительно оси $OY$.
+Вычислим длину кривой: $s(t) = \intl{0}{t}|\gd|\,d  \tau = \intl{0}{t}\sqrt{1^2 + \sh^2\tau}\,d  \tau = \intl{0}{t}\ch\tau\,d  \tau = \sh t$.
+Таким образом, переход к натуральному параметру проводится по формуле $t = \arsh s = \ln\hr{s + \sqrt{s^2 + 1}}$.
+Из основного гиперболического тождества имеем $\ch\arsh s = \sqrt{s^2 + 1}$, поэтому $\ga = \hr{\ln\hr{s + \sqrt{s^2 + 1}}, \sqrt{s^2 + 1}}$.
+Продифференцируем два раза и найдём $|\gdd|$ и нормаль:
+$$\gd(s) = \hr{\frac{1}{\sqrt{s^2 + 1}}, \frac{s}{\sqrt{s^2 + 1}}},$$
+$$\gdd(s) = \hr{-\frac12\hr{s^2+1}^{-3/2}(2s), \hr{s^2 + 1}^{-1/2} - \frac s2\hr{s^2+1}^{-3/2}(2s)} = \hr{-\frac{s}{\sqrt{s^2 + 1}^3}, \frac{1}{\sqrt{s^2 + 1}^3}}.$$
+$$|\gdd(s)| = \sqrt{\frac{s^2}{(s^2+1)^3} + \frac{1}{(s^2 + 1)^3}} = \frac{1}{s^2 + 1},$$
+$$n = \frac{\gdd}{|\gdd|} = \hr{-\frac{s}{\sqrt{s^2 + 1}}, \frac{1}{\sqrt{s^2 + 1}}} = \hr{-\frac{\sh t}{\ch t}, \frac{1}{\ch t}},$$
+поэтому уравнение эквидистанты можно записать в виде
+$$\ga + a\cdot n = \hr{t-\frac{\sh t}{\ch t}, \ch t + \frac{1}{\ch t}}.$$
+То, что оно остаётся верным и для отрицательных $t$, очевидно.
+\end{solution}
+
+\begin{problem}
+Найти натуральную параметризацию следующей плоской кривой:
+$$\ga = \hr{\hr{1 - 2\sqrt{t}}^{3/2}\cdot\hr{1 + 3\sqrt{t}}, 6\sqrt{2}t^{5/4}}.$$
+\end{problem}
+\begin{solution}
+Отметим, что $t \in \hs{0, \frac{1}{4}}$, поэтому можно поместить начало отсчёта в точку $t = 0$.
+Вычислим длину кривой, а для этого сначала продифференцируем:
+$$\gd.x = \frac32\hr{1-2\sqrt{t}}^{1/2}\hr{-\frac1{\sqrt{t}}}\hr{1+3\sqrt{t}} + \hr{1 -2\sqrt{t}}^{3/2}\hr{\frac3{2\sqrt{t}}}=$$
+$$=\hr{\frac3{2\sqrt{t}}}\hr{1 -2\sqrt{t}}^{1/2}\hr{-\hr{1+3\sqrt{t}} + \hr{1-2\sqrt{t}}} = -\frac{15}2\hr{1 - 2\sqrt{t}}^{1/2},$$
+$$\gd.y = 6\sqrt{2}\cdot \frac54t^{1/4} = \frac{15}{\sqrt{2}}t^{1/4},$$
+$$|\gd| = \sqrt{\frac{15^2}4\hr{1-2\sqrt{t}} + \frac{15^2}2\sqrt{t}} = 15\sqrt{\frac14 -\frac{\sqrt{t}}{2} + \frac{\sqrt{t}}{2}} = \frac{15}2.$$
+Отсюда $s(t) = \intl{0}{t}|\gd|\,d  \tau = \frac{15}2t$. Подставив $t = \frac2{15}s$ в выражение для $\ga$, получим натуральную параметризацию.
+Выписывать некрасивый ответ с дробями не имеет смысла.
+\end{solution}
+
+\begin{problem}
+Найти репер Френе, кривизну и кручение следующей пространственной кривой:
+$$\ga = (\ch t, \sh t, t).$$
+\end{problem}
+\begin{solution}
+Начнём с вывода некоторых полезных формул. Мы их когда-то выводили, но не лишним будет сделать это ещё раз.
+Пусть дана кривая $\ga(t)$. Пусть $s$~--- её натуральный параметр. Тогда $s' = |\ga'| = \sqrt{x'^2 + y'^2 + z'^2}$,
+откуда $s'' = \frac{\hr{\ga', \ga''}}{|\ga'|}$. Дифференцируя $\ga$ как сложную функцию $\ga\br{s(t)}$, получаем
+$$\gd = \frac{\ga'}{s'} = \frac{\ga'}{|\ga'|}, \quad
+\gdd = \frac{\ga''s' - \ga's''}{s'^3} = \ga''\frac1{|\ga'|^2} - \ga'\frac{\hr{\ga', \ga''}}{|\ga'|^4}.$$
+
+Теперь воспользуемся этими формулами для нахождения репера Френе, кривизны и кручения. Имеем
+$$\ga' = \hr{\sh t, \ch t, 1}, \quad \ga'' = \hr{\ch t, \sh t, 0}, \quad \ga''' = \hr{\sh t, \ch t, 0}.$$
+Отсюда $$|\ga'| = \sqrt{\sh^2t + \ch^2 t + 1^2} = \sqrt{2}\ch t, \quad (\ga', \ga'') = 2 \sh t \ch t.$$
+Следовательно,
+$$\gd = \frac{1}{\sqrt2 \ch t}\hr{\sh t, \ch t, 1}, \quad \gdd = \frac{1}{2\ch^2 t}\hr{\ch t, \sh t, 0} -
+\frac{2\sh t\ch t}{4\ch^4 t} \hr{\sh t, \ch t, 1} =$$
+$$=\frac{1}{2\ch^2 t}\hr{\ch t - \frac{\sh^2t}{\ch t}, \sh t - \sh t, -\frac{\sh t}{\ch t}}=
+\frac{1}{2\ch^3 t}\hr{1, 0, -\sh t}.$$
+Отсюда $$|\gdd| = \frac{1}{2\ch^3 t} \sqrt{1^2 + \sh^2 t} = \frac1{2\ch^2 t}, \quad n = \frac{\gdd}{|\gdd|} = \frac{1}{\ch t}\hr{1, 0, - \sh t}.$$
+Найдём бинормаль:
+$$b = \gd \times n = \frac{1}{\sqrt2\ch^2 t}\mbmat{\eb_1 & \eb_2 & \eb_3\\ \sh t & \ch t & 1 \\ 1 & 0 & -\sh t}=
+\frac{1}{\sqrt2\ch^2 t}\hr{-\ch t\sh t, 1 + \sh^2 t, -\ch t} = \frac{1}{\sqrt2\ch t}\hr{-\sh t, \ch t, -1}.$$
+
+Векторы $\gd, n, b$ образуют репер Френе. Легко видеть, что он действительно ортонормированный.
+Осталось найти кривизну и кручение. Кривизна~--- это просто $|\gdd| = \frac{1}{2\ch ^2 t}$. Кручение можно найти,
+продифференцировав бинормаль, но мы воспользуемся другой формулой:
+$$\ka = \frac{\ha{\ga', \ga'', \ga'''}}{|\ga' \times \ga''|^2} =
+\frac{\mbmat{\sh t & \ch t & 1\\ \ch t & \sh t & 0 \\ \sh t & \ch t & 0}}{\mbmat{\det \rbmat{\eb_1 & \eb_2 & \eb_3\\ \sh t & \ch t & 1 \\ \ch t & \sh t & 0}}^2}=
+\frac{1}{2\ch^2 t}.$$
+
+К сожалению, ответы получились разбросанными по тексту решения, но собирать их воедино мы не будем для экономии места.
+\end{solution}
+
+\begin{note}
+Кривизна и кручение получились правдоподобными, поскольку при увеличении $t$ кривая становится всё более и более похожей на прямую.
+Удивительно только то, что $k = \ka$.
+\end{note}
+
+\begin{problem}
+Найти первую и вторую фундаментальную форму, главные кривизны и главные направления,
+среднюю и гауссову кривизны следующей поверхности:
+$$\rb(u,v) = \hr{\cos v\sin u, \sin u\sin v, \cos u + \ln \tg \frac u2}.$$
+\end{problem}
+\begin{solution}
+Для начала заметим, что $\tg \frac u2 = \frac{\sin u}{1 + \cos u}$, а поскольку аргумент $\ln$ должен быть больше $0$, получаем условие
+$\sin u > 0$. Далее, найдём базис касательного пространства:
+$$r_u = \hr{\cos u\cos v, \cos u\sin v, -\sin u + \frac{1 + \cos u}{\sin u}\cdot \frac{\cos u(1 + \cos u) + \sin^2 u}{(1 + \cos u)^2}} =
+\cos u \hr{\cos v, \sin v, \frac{\cos u}{\sin u}},$$
+$$r_v = \sin u \hr{-\sin v, \cos v, 0}.$$
+
+Теперь легко найти матрицу Грама:
+$$G = \rbmat{r_u\cdot r_u & r_u\cdot r_v\\r_v\cdot r_u & r_v\cdot r_v} = \rbmat{\cos^2 u \hr{\cos^2 v + \sin^2 v + \frac{\cos ^2 u}{\sin ^2 u}} & 0 \\
+0 & \sin^2 u \hr{\cos ^2 v + \sin^2 v}} = \rbmat{\frac{\cos^2 u}{\sin^2 u} & 0 \\ 0 & \sin^2 u}.$$
+Отсюда $$\det G = \cos^2u, \quad G^{-1} = \rbmat{\frac{\sin^2 u}{\cos^2 u} & 0 \\ 0 & \frac1{\sin^2 u}}.$$
+
+Займёмся вычислением нормали: имеем
+$$r_u \times r_v = \cos u \sin u \mbmat{\eb_1 & \eb_2 & \eb_3\\ \cos v & \sin v & \frac{\cos u}{\sin u} \\ -\sin v & \cos v & 0}=$$
+$$=\cos u\sin u \hr{-\frac{\cos u\cos v}{\sin u}, -\frac{\cos u\sin v}{\sin u}, 1} = \cos u\hr{-\cos u\cos v, -\cos u\sin v, \sin u}.$$
+Нормализуя полученный вектор, получаем
+$$n = \hr{-\cos u\cos v, -\cos u\sin v, \sin u}.$$
+
+Настала пора вычислить вторые частные производные:
+$$r_{uu} = \hr{-\sin u\cos v, -\sin u\sin v, -\frac{\cos u(1 + \sin^2 u)}{\sin^2 u}},$$
+$$r_{uv} = \hr{-\cos u \sin v, \cos u\cos v, 0} = \cos u\hr{-\sin v, \cos v, 0},$$
+$$r_{vv} = \hr{-\sin u \cos v, -\sin u\sin v, 0} = \sin u\hr{-\cos v, -\sin v, 0}.$$
+Легко видеть, что $r_{uv}\cdot n = 0$, вычислим диагональные элементы второй квадратичной формы:
+$$r_{uu}\cdot n = \sin u \cos u \cos^2 v + \sin u \cos u \sin^2 v - \frac{\cos u}{\sin u}(1 + \sin^2 u) =
+\sin u \cos u - \frac{\cos u}{\sin u}(1 + \sin^2 u) = -\frac{\cos u}{\sin u},$$
+$$r_{vv}\cdot n = \sin u \cos u \cos^2v + \sin u \cos u \sin^2 v = \sin u\cos u.$$
+Таким образом, вторая квадратичная форма имеет вид:
+$$Q = \rbmat{-\frac{\cos u}{\sin u}& 0\\0 & \sin u\cos u}\quad \Ra QG^{-1} = \rbmat{-\frac{\sin u}{\cos u} & 0\\0 & \frac{\cos u}{\sin u}}.$$
+
+Собственные значения последней матрицы~--- это $\la_1 = -\tg u$ и $\la_2 = \ctg u$. Это и будут главные кривизны.
+Теперь несложно найти гауссову кривизну $K = \la_1\la_2 = -1$ и среднюю кривизну $H = \la_1 + \la_2 = \ctg u - \tg u$.
+В качестве главных направлений нужно взять вектора $\hr{\tg u, 0}$ и $\hr{0, \frac1{\sin u}}$. Проверим, что они составляют ортонормированный базис:
+$$\rbmat{\tg u & 0}\rbmat{\frac{\cos^2 u}{\sin^2 u} & 0 \\ 0 & \sin^2 u}\rbmat{\tg u \\ 0} = 1, \quad
+\rbmat{0 & \frac1{\sin u}}\rbmat{\frac{\cos^2 u}{\sin^2 u} & 0 \\ 0 & \sin^2 u}\rbmat{0 \\ \frac1{\sin u}} = 1.$$
+\end{solution}
+
+\end{document}

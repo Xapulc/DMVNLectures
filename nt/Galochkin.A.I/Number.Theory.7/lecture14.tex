@@ -1,0 +1,103 @@
+\begin{theorem}[Линдеман]
+  Если $\alpha \in \A$, $\alpha \ne 0$, то $e^{\alpha}$ трансцендентно.
+\end{theorem}
+\begin{proof}
+  Докажем некоторые полезные леммы.
+  \begin{lemma}
+    Пусть $f(z) = \sum_{k=0}^{n-1} \sum_{l=0}^{n-1} a_{kl} z^k e^{l \cdot z}$.
+    Тогда существуют $a_{kl} \in \Z$ такие, что
+    \begin{itemize}
+      \item $0 < \max_{k,l} |a_{kl}| < n^{\gamma_1 n}$ ($\gamma_1$ не зависит от $n$).
+      \item Порядок нуля в нуле не меньше $\left[ n^{3/2} \right]$.
+    \end{itemize}
+  \end{lemma}
+  \begin{proof}
+    Воспользуемся леммой Зигеля.
+    $$
+      f^{(t)}(z) = \sum_{k, l} a_{kl} \sum_{s=0}^t C_t^s k(k-1) \ldots (k - s + 1) z^{k-s} l^{t-s} e^{lz}
+    $$
+    $$
+      f^{(t)}(0) = \sum_{k, l} \left(C_t^k \cdot k! \cdot l^{t-k}\right) a_{kl}
+    $$
+    Вот мы и получили систему уравнений относительно $a_{kl}$. Применяем лемму Зигеля: $p / (q - p) \sim n^{-1/2}$, $\left| C_t^k \cdot k! \cdot l^{t-k}\right| \leqslant 2^{n^{3/2}} \cdot n^n \cdot n^{n^{3/2}} \leqslant n^{2n^{3/2}}$ (при достаточно больших $n$). Получаем нужную оценку.
+  \end{proof}
+  \begin{lemma}
+    В условиях предыдущей леммы верна оценка $\left[ n^{3/2} \right] \leqslant \ord_{z=0} f(z) \leqslant n^2$.
+  \end{lemma}
+  \begin{proof}
+    $$
+      y_{kl} = z^k e^{lz}
+    $$
+    является решением уравнения $(D - l)^{k+1} y_{kl} = 0$, где $D$~--- оператор дифференциирования. Тогда $y = f$ является решением уравнения
+    $$
+      D^n (D - 1)^n \ldots (D - (n - 1))^n y = 0.
+    $$
+    Пусть $f(0) = f'(0) = \ldots = f^{(n^2 - 1)}(0) = 0$. Значит, по теореме о единственности решения ОДУ, $f \equiv 0$. Однако, $\lim_{z \to +\infty, z \in \R} f(z) = \infty$.
+  \end{proof}
+  Введем некоторые обозначения. $X \in \N$ не зависит от $n$.
+  $$
+    T = \min \ord_{z = x \alpha} f(x),
+  $$
+  где $x \in [0, X], x \in \Z$.
+  Заметим, что $T \leqslant n^2$. Существует $x_0 \in [0, X], x_0 \in \Z$ такое, что $f^{(T)}(x_0 \alpha) \ne 0$. Обозначим $r = X |\alpha| + 1$.
+  \begin{lemma}
+    При $|z| \leqslant r$ и достаточно большом $n$ верно\footnote{Возможно, на самом деле здесь должно стоять $|f(z)| \leqslant n^{-1/3 \cdot n^{3/2} - 1/3 \cdot X T}$} $|f(z)| \leqslant n^{-1/3 \cdot n^{3/2} - 1/2 \cdot X T}$.
+  \end{lemma}
+  \begin{proof}
+    Рассмотрим
+    $$
+      g(z) = \frac{f(z)}{z^{[n^{3/2}]} \prod_{x=1}^X (z - x\alpha)^T}.
+    $$
+    Видно, что $g$ целая (нули числителя компенсируют полюса знаменателя). Возьмем $u = \sqrt{n} > r$ (при больших $n$). По принципу максимума при $|z| \leqslant r$
+    $$
+      |g(z)| \leqslant \max_{|u| = \sqrt{n}} |g(u)|.
+    $$
+    Значит, при $|z| \leqslant r$
+    $$
+      |f(z)| \leqslant \max_{u = \sqrt{n}} |f(u)| \cdot \left| \frac{z}{u}\right|^{\left[ n^{3/2} \right]} \cdot \prod_{x=1}^{X} \left| \frac{z - x\alpha}{u - x\alpha} \right|.
+    $$
+    Будем постепенно все оценивать.
+    $$
+      |f(u)| \leqslant n^2 n^{\gamma_1 n} \sqrt{n}^n e^{n \sqrt{n}} < e^{2n^{3/2}}
+    $$
+    $$
+      \left| \frac{z - x\alpha}{u - x\alpha} \right| < n^{-0.4}
+    $$
+    (при достаточно больших $n$).
+    Итак,
+    $$
+      |f(x)| \leqslant e^{2n^{3/2}} n^{-0.4 [n^{3/2}]} n^{-0.4 X T}.
+    $$
+  \end{proof}
+  \begin{lemma}
+    При $0 \leqslant x \leqslant X$ выполняется
+    $$
+      |f^{(T)}(x \alpha)| \leqslant n^{-1/3 n^{3/2}-1/3(X-6)T}.
+    $$
+  \end{lemma}
+  \begin{proof}
+    $$
+      f^{(T)}(x \alpha) = \frac{T!}{2 \pi i} \int_{|z - x \alpha| = 1} \frac{f(z) dz}{(z - x \alpha)^{T+1}}
+    $$
+    $$
+      |f^{(T)}(x \alpha)| \leqslant n^{2T} n^{-1/3 n^{3/2} - 1/3 X T}.
+    $$
+  \end{proof}
+
+  Докажем теперь теорему. Найдется $0 \leqslant x_0 \leqslant X$ такое, что $f^{(T)}(x_0 \alpha) \ne 0$.
+  $$
+    0 \ne f^{(T)}(x_0 \alpha) = \sum_{k, l} a_{kl} \sum_{s=0}^{T}C_T^s k (k-1) \ldots (k-s+1) (x_0 \alpha)^{k-s} l^{T-s} e^{\alpha l x_0}
+  $$
+  Рассмотрим эту сумму как многочлен $P$ от $\alpha$ и $e^{\alpha}$. Он с целыми коэффициентами и не равен нулю. Воспользуемся обобщенной теоремой Лиувилля. Пусть $\alpha, e^{\alpha} \in \A$, $\alpha \ne 0$. Пусть $\kappa_1 = \deg \alpha$, $\kappa_2 = \deg e^{\alpha}$. $\deg P \leqslant n + nX$. $l(P) \leqslant n^2 n^{\gamma_1 n} n! X^n \sum_{s=0}^T C_T^s (n - 1)^{T - s} < n^{\gamma_2 n + T}$. Применяя теорему, получаем:
+  $$
+    |f^{(T)}(x_0 \alpha)| > C^{-n - nX}(n^{\gamma_2 n + T})^{1 - \kappa_1 \kappa_2} > n^{-\gamma_3 n - \kappa_1 \kappa_2 T}.
+  $$
+  С другой стороны, у нас есть верхняя оценка. Выберем $X = 3 \kappa_1 \kappa_2 + 6$. Видно, что верхняя оценка убывает гораздо быстрее, чем нижняя. Противоречие.
+\end{proof}
+
+\begin{theorem}[Гельфонда-Шнейдера, решение седьмой проблемы Гильберта]
+  Пусть $a, \beta \in \A$, $a \ne 0, a \ne 1$, $\beta \not \in \Q$. Тогда $a^{\beta}$ трансцендентно.
+\end{theorem}
+\begin{imp}
+  $e^{\pi}$, $2^{\sqrt{2}}$ трансцендентны.
+\end{imp}

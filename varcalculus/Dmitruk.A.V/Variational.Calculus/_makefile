@@ -1,0 +1,16 @@
+RarName = "variationalcalculus-dmitruk"
+
+t:
+ rem mp --tex=latex pictures
+ #latex --src $(DocName).tex
+ #dvips $(DocName).dvi
+a: t
+ #wt $(RarName).rar $(DocName).ps
+r: a c
+c:
+ del *.dvi *.mpx *.log *.aux *.toc
+p: t
+ #gswin32c -sDEVICE=pdfwrite -sOutputFile=$(DocName).pdf -r1200 -dNOPAUSE -dBATCH -g9912x14028 $(DocName).ps
+b: p
+ wr $(RarName)-pdf.rar *.pdf
+all: a b

@@ -1,0 +1,385 @@
+\documentclass[a4paper]{article}
+\usepackage[utf]{dmvn}
+
+\newcommand*{\p}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\title{Математический анализ\\
+Вопросы и задачи к коллоквиуму\\
+РЯДЫ И ИНТЕГРАЛЫ, ЗАВИСЯЩИЕ ОТ ПАРАМЕТРА}
+\author{Лектор Владимир Антонович Зорич}
+\date{3 семестр, 2006--2007 г.}
+
+\begin{document}
+\maketitle
+
+\section*{Программа коллоквиума}
+
+\begin{nums}{-2}
+  \item[0.] Ряд, примеры появления и использования.
+  (Позиционная система счисления; вопросы приближения
+  и ряд Тейлора; распространение экспоненты в комплексную
+  область и формула Эйлера; решение уравнений методом
+  неопределенных коэффициентов.) Операции с рядами,
+  возникающие вопросы и формулировки основных теорем,
+  дающих на них ответы.
+  \item Сходимость ряда. Критерий Коши сходимости ряда.
+  Теорема сравнения и основные достаточные признаки
+  сходимости (мажорантный, интегральный, признак
+  Абеля-Дирихле). Ряд $\zeta(s)=\sum\limits_{n=1}^{\infty}n^{-s}$.
+  \item Равномерная сходимость семейств и рядов функций. Критерий
+  Коши и основные достаточные признаки равномерной сходимости ряда
+  функций (мажорантный, Абеля Дирихле).
+  \item Достаточные условия коммутирования двух предельных
+  переходов. Непрерывность, интегрирование, дифференцирование и
+  предельный переход.
+  \item Область сходимости и характер сходимости степенного ряда.
+  Формула Коши Адамара. Теорема Абеля (вторая). Тейлоровские
+  разложения основных элементарных функций. Формула Эйлера.
+  Дифференцирование и интегрирование степенного ряда.
+  \item Несобственный интеграл. Критерий Коши и основные достаточные
+  признаки сходимости (мажорантный, Абеля Дирихле).
+  \item Равномерная сходимость несобственного интеграла, зависящего
+  от параметра. Критерий Коши и основные достаточные признаки
+  равномерной сходимости (мажорантный, Абеля Дирихле).
+  \item Непрерывность, дифференцирование и интегрирование
+  собственного интеграла, зависящего от параметра.
+  \item Непрерывность, дифференцирование и интегрирование
+  несобственного интеграла, зависящего от параметра. Интеграл
+  Дирихле.
+  \item Эйлеровы интегралы. Области определения, дифференциальные
+  свойства, формулы понижения, различные представления, взаимосвязь.
+  Интеграл Пуассона.
+  \item Дельтаобразные семейства функций. Теорема о сходимости
+  свертки. Классическая теорема Вейерштрасса о равномерном
+  приближении непрерывной функции алгебраическим многочленом.
+\end{nums}
+
+\medskip\dmvntrail
+
+\newpage
+
+\section*{Условия задач}
+
+\begin{enumerate}
+  \item[0.] Вы держите один конец резинового шнура длиной 1 \text{км}. От
+  второго его конца, который закреплен, к вам со скоростью 1 \text{см/c}
+  ползет букашка. Каждый раз, как только она проползает 1
+  \text{см/c}, вы растягиваете резинку на 1 \text{км}. Доползет
+  ли букашка до вашей руки? Если да, то приблизительно сколько ей на
+  это потребуется времени?
+
+  После некоторого размышления для ответа на предыдущий вопрос вам
+  может оказаться полезной сумма $S_n=1+\frac{1}{2}+\frac{1}{3}+\ldots+
+  \frac{1}{n}$. Вспомните интеграл и покажите, что $S_n-1<\int\limits_1^n
+  \frac{1}{x}\,dx<S_{n-1}$.
+  \item $P$~--- полином. Вычислите $(e^{t\frac{d}{dx}})P(x)$.
+  \item Проверьте, что вектор-функция $e^{tA}x_0$ решает задачу Коши
+  $\dot{x}=Ax$, $x(0)=x_0$ ($\dot{x}=Ax$~--- система уравнений, задаваемая матрицей
+  $A$).
+  \item Найдите с точностью до $o(1/n^3)$ асимптотику положительных
+  корней $\lambda_1<\lambda_2<\ldots<\lambda_n<\ldots$ уравнения $\sin x +
+  1/x=0$ при $n\rightarrow\infty$.
+  \item \begin{enumerate}
+          \item Покажите, что $\ln 2=1-1/2+1/3-\ldots$. Сколько
+          членов этого ряда надо взять, чтобы знать $\ln 2$ с
+          точностью до $10^{-3}$?
+          \item Проверьте, что $\frac{1}{2}\ln\frac{1+t}{1-t}=t+\frac{1}{3}t^3+
+          \frac{1}{5}t^5+\ldots$ Используя это разложение, удобно
+          вычислять $\ln x$ полагая $x=\frac{1+t}{1-t}$.
+          \item Полагая в (b) $t=1/3$, найдите, что
+          $$\frac{1}{2}\ln 2=\frac{1}{3}+\frac{1}{3}\left(\frac{1}{3}\right)^3
+          +\frac{1}{5}\left(\frac{1}{3}\right)^5+\ldots$$
+          Сколько членов этого ряда надо взять, чтобы знать $\ln 2$ с
+          точностью до $10^{-3}$? Сравните с тем, что было в (a).
+          Это один из приемов улучшения сходимости.
+        \end{enumerate}
+  \item Проверьте, что в смысле Абеля
+  \begin{enumerate}
+    \item $1-1+1-\ldots = \frac{1}{2}$.
+    \item $\sum\limits_{k=1}^\infty\sin k\varphi =
+    \frac{1}{2}\ctg\frac{\varphi}{2}$, $\varphi\neq 2\pi n$, $n\in
+    \mathbb{Z}$.
+    \item $\frac{1}{2}+\sum\limits_{k=1}^\infty\cos k\varphi=0$, $\varphi\neq 2\pi n$,
+     $n\in\mathbb{Z}$.
+  \end{enumerate}
+  \item Докажите лемму Адамара:
+  \begin{enumerate}
+    \item Если $f\in C^{(1)}(U(x_0))$, то
+    $f(x)=f(x_0)+\varphi(x)(x-x_0)$, где $\varphi\p\in C(U(x_0))$ и
+    $\varphi(x_0)=f'(x_0)$.
+    \item Если $f\in C^{(n)}(U(x_0))$, то
+    \begin{multline*}
+    f(x)=f(x_0)+\frac{1}{1!}f'(x_0)(x-x_0)+\ldots+\\
+    +\frac{1}{(n-1)!}f^{(n-1)}(x_0)(x-x_0)^{n-1}+\varphi(x)(x-x_0)^n,
+    \end{multline*}
+    где $\varphi\in C(U(x_0))$ и
+    $\varphi(x_0)=\frac{1}{n!}f^{(n)}(x_0)$.
+    \item Как выглядят эти соотношения в координатной записи, когда
+    $x=(x^1,\ldots,x^n)$, то-есть когда $f$~--- функция $n$
+    переменных?
+  \end{enumerate}
+  \item \begin{enumerate}
+          \item Проверьте, что функция $$J_0(x)=\frac{1}{\pi}\int
+          \limits_0^1\!\frac{\cos xt}{\sqrt{1-t^2}}\,dt$$
+          удовлетворяет уравнению Бесселя $y''+\frac{1}{x}y'+y=0$.
+          \item Попробуйте решить это уравнение, используя степенные
+          ряды.
+          \item Найдите степенные разложения функции $J_0(x)$.
+        \end{enumerate}
+  \item Проверьте справедливость асимптотических разложений
+  \begin{enumerate}
+    \item $\Gamma(\alpha,x):= \int\limits_x^{+\infty}\!
+    t^{\alpha-1}e^{-t}\,dt \simeq e^{-x}\sum\limits_{k=1}^\infty
+    \frac{\Gamma(\alpha)}{\Gamma(\alpha-k+1)}x^{\alpha-k}$,
+    \item $\mathrm{Erf}(x):= \int\limits_x^{+\infty}\! e^{-t^2}\,dt\simeq
+    \frac{1}{2}\sqrt{\pi}e^{-x^2}\sum\limits_{k=1}^\infty
+    \frac{1}{\Gamma(3/2-k)x^{2k-1}}$
+
+    при $x\rightarrow +\infty$.
+  \end{enumerate}
+  \item \begin{enumerate}
+          \item Вслед за Эйлером найдите, что ряд
+          $1-1!x+2!x^2-3!x^3+\ldots$ связан с функцией
+          $$S(x):=
+          \int\limits_0^{+\infty}\!\frac{e^{-t}}{1+xt}\,dt.$$
+          \item Сходится ли этот ряд?
+          \item Дает ли он асимптотическое разложение $S(x)$ при $x\rightarrow 0$?
+        \end{enumerate}
+  \item \begin{enumerate}
+          \item Линейный прибор $A$, характеристики которого
+          постоянны во времени, в ответ на входной сигнал
+          $\delta(t)$ в виде $\delta$-функции выдал сигнал (функцию)
+          $E(t)$. Каков будет ответ прибора на входной сигнал
+          $f(t)$, $-\infty<t<+\infty$?
+          \item Всегда ли по преобразованному сигналу
+          $\tilde{f}:=Af$ однозначно восстанавливается исходный
+          сигнал $f$?
+        \end{enumerate}
+\end{enumerate}
+
+\medskip\dmvntrail
+\newpage
+
+\section*{Решения задач}
+
+Будьте внимательны, в решениях могут содержаться ошибки.
+
+\begin{enumerate}
+  \item[0.] Поскольку ряд
+  $1+\frac{1}{2}+\frac{1}{3}+\ldots+\frac{1}{n}+\ldots$ расходится,
+  то букашка до вашей руки доползет.
+
+  Легко видеть, что $S_{n}-1$ и $S_{n-1}$ есть нижняя и верхняя
+  суммы Дарбу для интеграла
+  $\int\limits_1^n\!\frac{1}{x}\,dx$ на отрезке $[1;n]$,
+  откуда следует искомое неравенство $S_n-1<\int\limits_1^n\!\frac{1}{x}\,dx
+  <S_{n-1}$.
+
+  Время, за которое букашка доползет до вашей руки, оценивается так:
+  $$S_{n}\approx \int\limits_1^{n}\!\frac{1}{x}\,dx=\ln n=10^5\Rightarrow
+  T\approx e^{10^5} \mathrm{\text{c}}.$$
+  \item По определению $e^{t\frac{d}{dx}}$ имеем:
+  \begin{align*}
+  (e^{t\frac{d}{dx}})P(x)&=(1+\frac{t}{1!}\frac{d}{dx}+\frac{t^2}{2!}\frac{d^2}{dx^2}+\ldots+
+  \frac{t^n}{n!}\frac{d^n}{dx^n}+\ldots)P(x)=\\
+  &=P(x)+\frac{t}{1!}P'(x)+\frac{t^2}{2!}P''(x)+\ldots+\frac{t^k}{k!}P^{(k)}(x)=P(x+t).
+  \end{align*}
+  Это формула Тейлора для полинома $P(x)$ степени $k$.
+  \item Пусть $\dot{x}=Ax$, $x(0)=x_0$ и $x=e^{tA}x_0$. Тогда
+  формально
+  \begin{align*}
+  x&=(E+\frac{t}{1!}A+\frac{t^2}{2!}A^2+\ldots+\frac{t^n}{n!}A^n+\ldots)x_0\quad\Rightarrow\\
+  \dot{x}&=(A+\frac{t}{1!}A^2+\ldots+\frac{t^{n-1}}{(n-1)!}A^{n-1}+\ldots)x_0=\\
+  &=A(E+\frac{t}{1!}A+\ldots+\frac{t^{n-1}}{(n-1)!}A^{n-1}+\ldots)x_0=Ae^{tA}x_0=Ax.
+  \end{align*}
+  \item Легко видеть, что $\lambda_n\rightarrow \pi n$ при
+  $n\rightarrow\infty$. Поэтому, полагая $\lambda_n\p=\pi n+\frac{a}{n}+\frac{b}{n^2}+
+  \frac{c}{n^3}+o(1/n^3)$, имеем:
+  \begin{gather*}
+  \lambda_n \sin\lambda_n+1=0\quad\Leftrightarrow\\
+  \left(\pi n+\frac{a}{n}+\frac{b}{n^2}+\frac{c}{n^3}+o(1/n^3)\right)
+  (-1)^n\Bigg(\frac{a}{n}+\frac{b}{n^2}+\frac{c}{n^3}-\\
+  -\frac{1}{6}\left(\frac{a}{n}+\frac{b}{n^2}+\frac{c}{n^3}\right)^3+o(1/n^3)\Bigg)=-1\quad\Leftrightarrow\\
+  \left\{
+  \begin{aligned}
+  (-1)^n \pi a +1&= 0\\
+  (-1)^n \frac{\pi b}{n}&=0\\
+  (-1)^n \frac{\pi(6c-a^3)+6a^2}{6n^2}&=0
+  \end{aligned}\right.\quad\Leftrightarrow\quad
+  \left\{
+  \begin{aligned}
+  a&=\frac{(-1)^{n+1}}{\pi}\\
+  b&=0\\
+  c&=-\frac{6-(-1)^{n+1}}{6\pi^3}.
+  \end{aligned}\right.
+  \end{gather*}
+  \emph{Ответ}: $\lambda_n=\pi n+\frac{(-1)^{n+1}}{\pi n}-\frac{6-(-1)^{n+1}}{6\pi^3n^3}+o(1/n^3)$.
+  \item \begin{enumerate}
+          \item Рассмотрим ряд
+          $\sum\limits_{n=1}^\infty(-1)^{n+1}\frac{x^n}{n}$. Для
+          сходимости этого ряда необходимо, чтобы $|x|\leqslant1$,
+          т.к. радиус сходимости равен
+          $R\p=(\mathop{\overline{\lim}}\limits_{n\rightarrow+\infty}\sqrt[n]{1/n})^{-1}=1$.
+          Внутри круга сходимости ряд сходится абсолютно, и его
+          сумма равна $\ln (1+x)$. При $x=1$ получается ряд
+          $\sum\limits_{n=1}^\infty\frac{(-1)^{n+1}}{n}$. Этот ряд
+          сходится по признаку Лейбница, а значит, по теореме о
+          непрерывности суммы ряда получаем, что его сумма равна $\ln
+          2$.
+          \item \begin{align*}
+          \frac{1}{2}\ln\frac{1+t}{1-t}&=\frac{1}{2}(\ln(1+t)-\ln(1-t))=
+          \frac{1}{2}\sum\limits_{n=1}^\infty\left(\frac{t^n}{n}-(-1)^n\frac{t^n}{n}\right)=\\
+          &=\frac{1}{2}\sum\limits_{n=1}^\infty2\frac{t^{2n-1}}{2n-1}=\sum\limits_{n=1}^\infty
+          \frac{t^{2n-1}}{2n-1}.
+          \end{align*}
+          \item Подставляя $t=\frac{1}{3}$, находим, что $\frac{1}{2}\ln 2=\frac{1}{3}+
+          \frac{1}{3}\left(\frac{1}{3}\right)^3+\frac{1}{5}\left(\frac{1}{3}\right)^5+\ldots$
+          Пусть $R_n=|\ln 2-S_n|$~--- остаток ряда.
+
+          В случае (a) $R_n\leqslant\frac{1}{n+1}<10^{-3}\quad\Rightarrow\quad n\sim
+          10^3$.
+
+          В случае (b) $R_n=\sum\limits_{k=n+1}^\infty\frac{1}{2k-1}\frac{1}{3^{2k-1}}<
+          \sum\limits_{k=n+1}^\infty\frac{1}{3^{2k-1}}=\frac{3^{2-2n}}{2}\p<10^{-3}\quad\Rightarrow\quad
+          n\sim3$.
+        \end{enumerate}
+  \item \begin{enumerate}
+          \item Рассмотрим ряд
+          $\sum\limits_{n=1}^\infty(-1)^{n+1}x^n$. Его сума есть
+          функция $f(x)\p=\frac{1}{1+x}$. Тогда по Абелю $\sum\limits_{n=1}^\infty(-1)^{n+1}=
+          \lim\limits_{x\rightarrow1-0}f(x)=\frac{1}{2}$.
+          \item Необходимо вычислить сумму $\sum\limits_{k=1}^\infty\sin k\varphi\cdot
+          x^k$. Положим $z\p=x(\cos\varphi\p+i\sin\varphi)$, тогда $z^k\p=x^k(\cos k\varphi\p+
+          i\sin k\varphi)$ и $$\sum\limits_{k=1}^\infty\sin k\varphi\cdot x^k=
+          \mathrm{Im}\sum\limits_{k=1}^\infty z^k=\mathrm{Im}\frac{z}{1-z}
+          =\frac{x\sin\varphi}{1-2x\cos\varphi+x^2}.$$
+          Поэтому по Абелю $$\sum\limits_{k=1}^\infty\sin k\varphi=\lim\limits_{x\rightarrow1-0}
+          \frac{x\sin\varphi}{1-2x\cos\varphi+x^2}=\frac{\sin\varphi}{2(1-\cos\varphi)}=
+          \frac{1}{2}\ctg\frac{\varphi}{2}.$$
+          \item Аналогично (b), $\sum\limits_{k=1}^\infty\cos k\varphi\cdot x^k=
+          \mathrm{Re}\sum\limits_{k=1}^\infty z^k=\mathrm{Re}\frac{z}{1-z}
+          =\frac{x(\cos\varphi-x)}{1-2x\cos\varphi+x^2}$. Тогда по
+          Абелю $$\sum\limits_{k=1}^\infty\cos k\varphi=\lim\limits_{x\rightarrow1-0}
+          \frac{x(\cos\varphi-x)}{1-2x\cos\varphi+x^2}=\frac{\cos\varphi-1}{2(1-\cos\varphi)}=
+          -\frac{1}{2}.$$
+        \end{enumerate}
+  \item \begin{enumerate}
+          \item Пусть $f\in C^{(1)}(U(x_0))$, тогда искомая формула следует из
+                формулы Ньютона-Лейбница: $f(x_0+h)-f(x_0)=\int\limits_0^1\!f'(x_0+th)\,dt\cdot
+                h$. Полагая $F(h)=\int\limits_0^1\!f'(x_0+th)\,dt$, $h=x-x_0$ и
+                $\varphi(x)=F(h)$, по теореме о непрерывности собственного
+                интеграла $\varphi\p\in C(U(x_0))$. Кроме того,
+                $\varphi(x_0)=F(0)=f'(x_0)$.
+          \item Пусть $f\in C^{(n)}(U(x_0))$. Тогда искомая формула
+          получается по индукции: к функции $F(x-x_0)$ $n$ раз применяем
+          (a).
+          \item Когда $f$~--- функция $n$ переменных, для  (a)
+          получаем:
+          $$f(x^1,\ldots,x^n)-f(x_0^1,\ldots,x_0^n)=\sum\limits_{i=1}^n \int\limits_0^1
+          \!\frac{\partial f}{\partial x^i}(x_0^1+tx^1,\ldots,x_0^n+tx^n)\,dt\cdot
+          x^i,$$ и тогда следует взять
+          $$\varphi(x)=\sum\limits_{i=1}^n\varphi_i(x)x^i,\quad \text{где $\varphi_i(x)=
+          \int\limits_0^1\!\frac{\partial f}{\partial x^i}(x_0+tx)\,dt$}.$$
+          Для (b) нужно заменить производные на производные по
+          направлению $h$.
+        \end{enumerate}
+  \item \begin{enumerate}
+          \item Пусть $J_0(x)=\frac{1}{\pi}\int\limits_0^1\!\frac{\cos
+          xt}{\sqrt{1-t^2}}\,dt$. Подинтегральная функция вместе со
+          своей производной по $x$ непрерывна в области $\{(t,x)\mid 0\leqslant t<1,
+          x\in\mathbb{R}\}$, интеграл сходится, например, при $x=0$,
+          и $\int\limits_0^1\!\frac{t\sin xt}{\sqrt{1-t^2}}\,dt$
+          сходится равномерно при $x\in \mathbb{R}$, поэтому интеграл
+          можно интегрировать по параметру. Получаем:
+          \begin{align*}
+          J_0''(x)+\frac{1}{x}J_0'(x)+J_0(x)=\frac{1}{\pi}\int\limits_0^1\!\sqrt{1-t^2}\cos
+          xt\,dt - \\
+          -\frac{1}{\pi}\int\limits_0^1\!\frac{t\sin xt}{x\sqrt{1-t^2}}\,dt=
+          \left.\left(\frac{1}{\pi}\sin
+          xt\cdot\frac{\sqrt{1-t^2}}{x}\right)\right|_0^1=0.
+          \end{align*}
+          \item [(b),(c)] Решим уравнение $xy''+y'+xy=0$ с помощью
+          степенных рядов. Пусть $y=\sum\limits_{n=0}^\infty
+          a_nx^n$, тогда, дифференцируя и подставляя в уравнение,
+          получаем:
+          \begin{gather*}
+          a_1+\sum\limits_{n=2}^\infty(n^2a_n+a_{n-2})x^{n-1}=0\quad\Rightarrow\\
+          a_1=n^2a_n+a_{n-2}=0.
+          \end{gather*}
+          Отсюда легко получить, что
+          $$a_{2k-1}=0, \quad a_{2k}=(-1)^k\frac{a_0}{(k!)^22^{2k}}, \quad \text{где $k\in\mathbb{N}$}.$$
+          Поскольку $a_0=J_0(0)=\frac{1}{2}$, то искомый ряд
+          выглядит так:
+          $$J_0(x)=\frac{1}{2}\left(1+\sum\limits_{n=1}^\infty(-1)^n\frac{x^{2n}}{(n!)^22^{2n}}\right).$$
+        \end{enumerate}
+  \item \begin{enumerate}
+          \item \begin{align*}
+          \Gamma(\alpha,x)&=\int\limits_x^{+\infty}\!t^{\alpha-1}e^{-t}\,dt=\\
+          &=\left.\left(-e^{-t}t^{\alpha-1}\right)\right|_x^\infty+(\alpha-1)
+          \int\limits_x^{+\infty}\!t^{\alpha-2}e^{-t}\,dt=\\
+          &=e^{-x}x^{\alpha-1}+(\alpha-1)\left.\left(-e^{-t}t^{\alpha-2}\right)\right|_x^\infty+\\
+          &+(\alpha-1)(\alpha-2)\int\limits_x^{+\infty}\!t^{\alpha-3}e^{-t}\,dt=\ldots=\\
+          &=e^{-x}(x^{\alpha-1}+(\alpha-1)x^{\alpha-2}+(\alpha-1)(\alpha-2)x^{\alpha-3}+\ldots+\\
+          &+(\alpha-1)\ldots(\alpha-n))x^{\alpha-n-1}+(\alpha-1)\ldots(\alpha-n+1)
+          \int\limits_x^{+\infty}\!t^{\alpha-n}e^{-t}\,dt.
+          \end{align*}
+          Поскольку
+          $\int\limits_x^{+\infty}\!t^{\alpha-n+1}e^{-t}\,dt=o(t^{\alpha-n}e^{-x})$
+          при $x\rightarrow+\infty$ и формально $(\alpha-1)\ldots(\alpha-n+1)=
+          \frac{\Gamma(\alpha)}{\Gamma(\alpha-n+1)}$ согласно
+          формуле понижения, то имеет место асимптотическое
+          разложение: $$\Gamma(\alpha,x)\simeq e^{-x}\sum\limits_{n=1}^\infty
+          x^{\alpha-n}\frac{\Gamma(\alpha)}{\Gamma(\alpha-n+1)}.$$
+          \item Положим $u=t^2$, тогда получаем:
+          \begin{multline*}
+          \mathrm{Erf}(x)=\int\limits_x^{+\infty}\!e^{-t^2}\,dt=
+          \frac{1}{2}\int\limits_{x^2}^{+\infty}\!\sqrt{u}e^{-t}\,dt=
+          \frac{1}{2}\Gamma(1/2, x^2)\simeq\\
+          \simeq \frac{1}{2}e^{-x^2}\sum\limits_{n=1}^\infty
+          x^{2(1/2-n)}\frac{\Gamma(1/2)}{\Gamma(3/2-n)}=\frac{1}{2}\sqrt{\pi}
+          e^{-x^2}\sum\limits_{n=1}^\infty\frac{1}{\Gamma(3/2-n)x^{2n-1}}.
+          \end{multline*}
+        \end{enumerate}
+  \item \begin{enumerate}
+          \item Пусть
+          $S(x)=\int\limits_0^{+\infty}\!\frac{e^{-t}}{1+xt}\,dt$.
+          Почленным интегрированием получаем, что
+          \begin{align*}
+          S(x)&=\left.-\frac{e^{-t}}{1+xt}\right|_0^\infty -
+          1!x\int\limits_0^{+\infty}\!\frac{e^{-t}}{(1+xt)^2}\,dt=\\
+          &=1-x\left(\left.-\frac{e^{-t}}{(1+xt)^2}\right|_0^\infty
+          -2!x\int\limits_0^{+\infty}\!\frac{e^{-t}}{(1+xt)^3}\,dt\right)=\ldots=\\
+          &=1-1!x+2!x^2-\ldots+(-1)^nn!x^n\int\limits_0^{+\infty}\!\frac{e^{-t}}{(1+xt)^{n+1}}\,dt.
+          \end{align*}
+          \item Ряд $\sum\limits_{n=0}^\infty(-1)^nn!x^n$ сходится
+          только при $x=0$, т.к. иначе общий член ряда не стремится
+          к 0.
+          \item Ряд $\sum\limits_{n=0}^\infty(-1)^nn!x^n$ есть
+          асимптотическое разложение функции $S(x)$ при $x\rightarrow0$. Это следует из
+          того, что $$\left|x\int\limits_0^{+\infty}\!\frac{e^{-t}}{(1+xt)^n}\,dt\right|\leqslant
+          \left|x\int\limits_0^{+\infty}\!e^{-t}\,dt\right|=|x|=o(1)\quad \text{при $x\rightarrow 0$}.$$
+        \end{enumerate}
+  \item \begin{enumerate}
+          \item Пусть аппаратная функция линейного прибора $A$ есть
+          $E(t)$. Рассмотрим входной сигнал $f(t)$ и приблизим ее
+          ступенчатой функцией $l_h(t)=\sum\limits_i
+          f(\tau_i)\delta_h(t-\tau_i)h$. $l_h(t)\rightarrow f(t)$ при $h\rightarrow 0$, поэтому:
+          $$\widetilde{l}_h=Al_h\rightarrow Af=\widetilde{f} \quad \text{при $h\rightarrow 0$}.$$
+          Т.к. $A$ линеен и сохраняет сдвиги, то
+          $$\widetilde{l}_h(t)=\sum\limits_i f(\tau_i)E_h(t-\tau_i)h, \quad \text{где $E_h=A\delta_h$}.$$
+          Таким образом,
+          $$\widetilde{f}(x)=\int\limits_{\mathbb{R}}\!f(\tau)E(t-\tau)\,d\tau.$$
+          \item Приведем примеры, когда исходный сигнал $f$ не
+          восстанавливается однозначно.
+
+          Возьмем $A$, не зависящий от $f$.
+
+          Возьмем $A=\sum\limits_{i=1}^n a_i\frac{d^i}{dx^i}$, тогда
+          на функцию $f$ получается ОДУ степени $n$, а значит, для
+          функции $f$ есть $n$ параметров.
+        \end{enumerate}
+\end{enumerate}
+
+\medskip\dmvntrail
+
+\end{document}

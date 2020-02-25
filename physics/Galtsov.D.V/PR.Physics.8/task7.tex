@@ -1,0 +1,72 @@
+\begin{tproblem}
+  Полупространство $z > 0$ заполнено однородным магнитным полем,
+  направленным паралельно плоскост $z = 0$. Заряд падает из области $z
+  < 0$ под углом $α$ к плоскости. Найти траекторию дальнейшего движения.
+\end{tproblem}
+\unsafeIO{}
+\begin{solution}
+  \newcommand{\vecr}{{\vec r}}
+  Пусть положение частицы описывается её координатами $\vec r =
+  x\eX+y\eY+z\eZ$. Не ограничивая общности, полагаем, что $\vecr(0) =
+  0$, $\dot\vecr(0) = ξ\cos α\eX + ξ\sin α\eZ$, $ξ = \const$, $\vecb =
+  B\eX$ На частицу действует сила Лоренца $F$, вычисляемая по формуле
+  \begin{equation*}
+    \vec F = \frac ec\mbmat{\eX & \eY & \eZ \\ \dot x & \dot y & \dot z \\ B & 0 & 0} = B\frac ec(\dot z\eX - \dot y\eZ)
+  \end{equation*}
+  Записываем второй закон Ньютона
+  \begin{equation*}
+    m(\ddot x\eX +\ddot y\eY + \ddot z\eZ) = B\frac ec(\dot z\eY - \dot y\eZ)
+  \end{equation*}
+  Покоординатно приравниваем, вводя обозначение $ ω  ≝ B\frac{e}{cm}$
+  \begin{equation*}
+    \begin{array}{ccc}
+      \ddot x  = 0 & \ddot y = ω\dot z & \ddot z = -ω\dot y
+    \end{array}
+  \end{equation*}
+  Решим систему на $y$,$z$, введя замену $ u = \dot y$, $v = \dot z$.
+  Система переписывается как
+  \begin{equation*}
+    \bcase{\dot u = ωv\\\dot v = -ωu}
+  \end{equation*}
+  Продифференцировав первое уравнение и подставив второе, получаем уравнение на $u$:
+  \begin{equation*}
+    \ddot u + ω²u = 0
+  \end{equation*}
+  откуда, $u = a\cos ωt + b\sin ωt$, используя систему, $ v = -a\sin
+  ωt + b\cos ωt $.  Возвращаемся к исходным переменным $x$,$y$,$z$
+  (т.к $a$,$b$ -- произвольные констатны, то в них можно загнать $ω$
+  при интегрировании)
+  \begin{equation}
+    \begin{array}{l}
+      x = εt + β \\
+      y = a\sin ωt - b\cos ωt + c_1 \\
+      z = a\cos ωt + b\sin ωt +c_2
+    \end{array}
+  \end{equation}
+  Подставим начальные условия. Из $\vecr = 0$ следует,
+  что $β = 0$, $ c_1 = b$, $ c_2 = -a$. Тогда у нас остается три неизвестные:
+  \begin{equation*}
+    \begin{array}{l}
+       x = εt\\
+       y = a\sin ωt - b\cos ωt + b\\
+       z = a\cos ωt + b\sin ωt -a
+    \end{array}
+  \end{equation*}
+  Дифференцируем, подставляем $t = 0$ и используем начальную скорость
+  \begin{equation*}
+    \begin{array}{l}
+      \dot x = ε\\
+      \dot y = aω\cos ωt + bω\sin ωt\\
+      \dot z = -aω\sin ωt + bω\cos ωt
+    \end{array}
+  \end{equation*}
+  Откуда, $ε = ξ\cos α$, $aω = 0$, $bω = ξ\sin α$.
+  Записываем ответ
+  \begin{equation*}
+    \begin{array}{ccc}
+      x = ξ\cos α t & y = \frac{ξ\sin α}ω(1- \cos ωt)  & z = \frac{ξ\sin α}{ω}\cos ωt
+    \end{array}
+  \end{equation*}
+  Получается занятный эффект -- частица описывает некую дугу в области
+  $ z > 0$ и через время $ t= \frac{π}{2ω}$ вылетает из магнитного поля.
+\end{solution}

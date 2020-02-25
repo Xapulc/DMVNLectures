@@ -1,0 +1,5170 @@
+\documentclass[a4paper]{article}
+\usepackage[utf]{dmvn}
+\usepackage{amscd}
+%\usepackage[dvips]{graphicx}
+
+\DeclareMathOperator{\Span}{span}
+
+\newcommand{\dn}{\,d\nu}
+\newcommand{\nsb}{n\rightarrow \infty} %N Stremitsya k Beskone4nosti
+\newcommand{\fo}{f(\omega)}
+\newcommand{\dd} {\stackrel{\mathrm{def}}{=}}
+\newcommand{\io} {\int \limits_{\Omega}}
+\newcommand{\lin} {\lim \limits_{\nsb} }
+\newcommand{\asn} {a\rightarrow 0}
+\newcommand{\ii} {\io \fo \, d\nu}
+\newcommand{\iin} {\io f_n(\om) \, d\nu}
+\newcommand{\fn}{ f_n(\om) }
+\newcommand{\sus}{\sum \limits_{n=1}^{\infty} }
+\newcommand{\fd} { f(x)\, dx}
+\newcommand{\iz} { \int \limits_0^1 }
+\newcommand{\Th} {\As}
+\newcommand{\jkl}{ l_\infty}
+\newcommand{\ff} {\varphi}
+\newcommand{\owff}{\overline{\widehat{\varphi}}}
+\newcommand{\woff}{\widehat{\overline{\varphi}}}
+\newcommand{\coff}{\check{\widehat{\varphi}}}
+\newcommand{\cw}{\check{\widehat{\delta(x+a)}}}
+\newcommand{\mro} {\R^1}
+\newcommand{\ir} {\int \limits_{-\infty}^{\infty}}
+\newcommand{\inr} {\int \limits_{\mathbb R}}
+\newcommand{\il} {\int\limits_}
+\newcommand{\Llra} {\Longleftrightarrow}
+\newcommand{\lo}{l_p}
+\newcommand{\dw}{\delta^{\prime}}
+\newcommand{\w}{\widehat}
+\newcommand{\wphi}{\widehat{\varphi}}
+\newcommand{\fw}{\widehat{f}}
+\newcommand{\gn}{g_{*}}
+\newcommand{\gv}{g^{*}}
+\newcommand{\RR}{\R^1}
+\newcommand{\Rr}{\R}
+\newcommand{\uu}{ \upharpoonright}
+\newcommand{\pr}{\mathop{\mathrm{pr}}\nolimits}
+\newcommand{\rr}{\pr_{\mbox{$_{H_1}$}} x}
+\newcommand{\pp}{\pr_{\mbox{$_{H_1}$}} a}
+\newcommand{\ap}{\alpha_{\psi}}
+\newcommand{\asd}{\alpha\in \mathbb {\mathfrak a}}
+\newcommand{\qwe}{\sup\limits_{\|x\|\, \leqslant 1} \|Ax\|}
+\newcommand{\sxo}{\sup\limits_{\|x\|\, \leqslant 1}}
+\newcommand{\sxpo}{\sup\limits_{\|x\| = 1}}
+\newcommand{\spec}{\mathop{\mathrm{spec}}\nolimits}
+\newcommand{\ess}{\mathop{\mathrm{ess sup}}}
+
+\pagestyle{plain}
+\begin{document}
+\begin{titlepage}
+\topskip=6cm
+\begin{center}
+\Large \textbf{ЛЕКЦИИ ПО ФУНКЦИОНАЛЬНОМУ АНАЛИЗУ\\
+ОЛЕГА ГЕОРГИЕВИЧА СМОЛЯНОВА\\}\vspace{1cm}
+\large \textbf{ДЛЯ СТУДЕНТОВ 3 КУРСА 6 СЕМЕСТРА} \vspace{3cm}
+\end{center}
+\large \raggedleft \slshape \makebox[4.7cm][s]{Записано}\\
+\makebox[4.7cm][s]{Яхонтовой Валерией,}\\
+\makebox[4.7cm][s]{Грицук Светланой,}\\ \makebox[4.7cm][s]{Голяковой Алевтиной}\\
+\makebox[4.7cm][s]{ и Приходько Игорем} \vspace{7cm} \normalfont
+\begin{center}
+\large 2005 год
+\end{center}
+\end{titlepage}
+\makeatletter
+\renewcommand{\@oddhead}{\leftmark\hfil}
+\renewcommand{\@evenhead}{\leftmark\hfil}
+\renewcommand{\@oddfoot}{\hfil\thepage\hfil}
+\renewcommand{\textit}{\textsl}
+\makeatother
+\renewcommand{\sectionmark}[1]{\markboth{\sffamily \thesection\hspace{1em}#1}{}}
+
+\section{Лекция}
+%
+Пусть $\Om=\R^1$ и
+$$
+\Ps_0=\{[a,b),a\in \R^1, b\in \R^1,
+a\leqslant b\}\cup\{\varnothing\}, \mbox{ так что $\Ps_0$
+- полукольцо}.
+$$
+(здесь и далее $(a,a] = (a,a)= [a,a)= \varnothing$).
+
+Пусть еще
+$$
+\Ps_1=\{[a,b), [a,b], (a,b], (a,b), \{a\}, a\leqslant b
+\},
+$$
+так что $\Ps_1$ - также полукольцо, причем
+$\Ps_1 \supset \Ps_0.$
+
+Мера $\nu_{L}$ на $\Ps_1$ определяется так:
+$$
+\nu_L ([a, b)) = \nu_L ([a, b]) = \nu_L ((a, b)) = \nu_L ((a, b])
+= b - a.
+$$
+
+Сужение $\nu_L$ на $\Ps_0$ обозначается тем же символом.
+Непосредственно проверяется, что это определение корректно, то
+есть функция $\nu_L$ конечно аддитивна на $\Ps_1$ (а тем
+самым и на $\Ps_0$).
+
+\begin{theorem}
+$\nu_L$ является счетно-аддитивной мерой на полукольце
+$\Ps_0$.
+\end{theorem}
+\begin{proof}
+Нужно доказать, что, $$\mbox{если }\ [a, b)\  \subset \
+\bigcup\limits_{i=1}^\infty [a_i, b_i),\ \mbox{ то } \ \nu
+\bigl([a,b) \bigr) \leqslant\sum_{i=1}^\infty \,\bigl( [a_i,b_i)
+\bigr).
+$$
+
+$$\epsfbox{picture.1}$$
+$$\epsfbox{picture.2}$$
+
+Зададимся $\varepsilon>0$, тогда для фиксированного $\varepsilon$,
+выполнено следующее условие:
+$$
+\exists c \quad  a<c<b:\quad \varepsilon + \nu[a,c] > \nu[a,b)
+$$
+$$
+\forall \ i \in N \quad \exists \ d_i: d_i < a_i < b_i \quad
+\mbox{ и }\quad \nu \bigl((d_i, b_i)\bigr) - \nu \bigl([a_i,
+b_i)\bigr) < \frac{\varepsilon}{2^i}.
+$$
+
+Мы получили, что
+$$
+[a,c] \subset [a,b) \subset \bigcup_{i=1}^{\infty} \,(d_i, b_i)
+$$
+То есть компакт $[a, c]$ покрыт открытыми множествами, поэтому
+существует такое $n\in N,$ что $$[a, c]\  \subset \
+\bigcup_{i=1}^{n} (d_i, b_i).$$
+
+Так как $\nu_L$ конечно аддитивна на $\Ps_1,$ отсюда
+следует, что
+$$
+\nu ([a, c]) \leqslant \sum\limits_{i=1}^n \nu \bigl( (d_i, b_i)
+\bigr).
+$$
+Поэтому
+$$
+\nu ([a, b)) - \varepsilon \ < \ \sum\limits_{i=1}^n \Bigl( \nu
+\bigl([a_i, b_i)\bigr) + \frac{\varepsilon}{2^i}\Bigr)\ < \
+\sum\limits_{i=1}^\infty \Bigl( \nu \bigl([a_i, b_i)\bigr) +
+\frac{\varepsilon}{2^i}\Bigr) \ = \ \sum\limits_{i=1}^\infty \nu
+\bigl([a_i, b_i)\bigr) + \varepsilon.
+$$
+
+Так как $\varepsilon>0$ произвольно, это означает, что
+$$
+\nu  \bigl([a, b)\bigr)\ \leqslant\ \sum\limits_{i=1}^\infty
+\Bigl( \nu \bigl([a_i, b_i)\bigr).
+$$
+Теорема доказана.
+
+\end{proof}
+
+\begin{df}
+Мерой Лебега называется (единственное) счетно аддитивное
+продолжение $\nu_L$ на $\sigma$-алгебру $\As_L\ $
+$\nu_L$-измеримых подмножеств. Это продолжение будет обозначаться
+тем же символом $\nu_L$.
+\end{df}
+\bigskip
+
+\subsection{Измеримые функции на $\R^1$.}
+
+\begin{df} Функция $f: \R^1 \rightarrow \R^1$
+является измеримой, если она измерима, как отображение:
+$$f:
+\bigl(\R^1,\As_L) \rightarrow
+(\R^1,B(\R^1) \bigr),
+$$
+то есть $\forall a \in \R^1$ множество $\{x: f(x) < a \}
+\in \As_L,$ то есть измеримо по Лебегу.
+\end{df}
+\begin{problem}
+Показать, что всякая непрерывная функция измерима.
+\end{problem}
+
+
+Если функция $f$ - непрерывна, то множество $\{x : \ f(x)<a \}$ -
+открыто. Значит,
+$$
+\{ x : \ f(x)<a\} \in B(\R^1).
+$$
+Так как
+$B(\R) \subset \As_L$, то $\{x :f(x)<a \} \in \As_L.$\\
+
+\begin{problem}
+Доказать, что любая  функция $f$ на $\R^1,$ интегрируемая
+по Риману, измерима.
+\end{problem}
+
+Далее для каждого множества $A$ символ $\gamma_A$ обозначает его
+индикатор.
+
+Пусть $\Om$  - некоторое множество. Напомним, что функция на $\Om$
+называется простой, если множество ее значений конечно. Отсюда
+следует, что множество всех простых функций образует алгебру (то
+есть (конечная) линейная комбинация простых функций и произведение
+простых функций - снова простая функция).
+
+\begin{prop}
+Функция является простой тогда и только тогда, когда она является
+(конечной) линейной комбинацией индикаторов каких-то множеств.
+\end{prop}
+
+\begin{proof}
+
+Так как индикатор (всякого) множества - это простая функция, то и
+их конечная линейная комбинация - также простая функция.
+
+С другой стороны, если $f$ - простая функция и $\{a_1, a_2,
+\ldots, a_n\}$ - множество ее значений (так что $a_i \not = a_j,
+\mbox{ если } i \not = j$), то
+$$
+f(x)\ = \ \sum\limits_{j=1}^n a_j \ \gamma_{\{z\in \Om\colon f(z)\
+= \ a_i\}} (x).
+$$
+
+\end{proof}
+\begin{note}
+Если $i \not = j,$ то
+$$
+\{z\in \Om\colon \ f(z) = a_j\} \cap \{z\in \Om\colon\ f(z) =
+a_j\}\ = \ \varnothing;
+$$
+таким образом, из доказательства предложения 1 вытекает, что
+всякая простая функция является линейной комбинацией индикаторов
+попарно непересекающихся множеств.
+\end{note}
+
+\begin{prop}
+Произвольная функция $f: \Om\rightarrow \R^1$ является
+поточеченым пределом последовательности $f_n$ простых функций, то
+есть
+$$
+\forall f\colon \, \Om \rightarrow \R^1  \quad \exists
+\mbox{ последовательность } \{f_n\} \mbox{ такая, что } \forall n
+\ \ f_n \mbox{ - простая функция,}
+$$
+причем $\forall \om \in \Om \quad f_n(\om) \rightarrow \fo$. Если
+$f$ - измерима, то все $f_n$ могут быть выбраны измеримыми.
+\end{prop}
+
+$$\epsfbox{picture.3}$$
+
+\begin{proof}
+Для каждого натурального $n$  рассмотрим разбиение отрезка оси
+ординат от 0 до $n$ на полуинтервалы длины $\frac{1}{2^n}$.
+
+Таким образом, число отрезков разбиения равно $2 n \cdot 2^n$.
+Определим функцию $\ff_k$ равенством:
+$$
+\ff_k (\om) = k \cdot 2^{-n}  \cdot   \gamma_{\{w:\  k \cdot \
+2^{-n} \ \leqslant \  f(\om)\  <\  (k+1) \cdot \  2^{-n}\}}.
+$$
+Положим
+$$
+f_n(\om)=\sum_{k=-n \cdot \  2^n}^{n \cdot \ 2^n} \ff_k(\om) +
+(n+1) \cdot \  \gamma_{\{w:\  n \leqslant \ f(\om)\}} \  - \ n
+\cdot \ 2^{-n} \cdot  \gamma_{\{w:\ f(\om)< \ n\}}.
+$$
+
+В качестве упражнения предлагается проверить, что
+$$
+\forall \om \in \Om \quad f_n(\om)\rightarrow \fo.
+$$
+\end{proof}
+
+\begin{note}
+Если $\forall \om \in \Om \ \ \fo \geqslant 0, $ то построенная
+выше последовательность $f_n$ сходится к $\fo$ не убывая.
+Доказательство этого замечания проведите самостоятельно.
+\end{note}
+
+Пусть $(\Om, \As)$ - измеримое пространство.
+
+\begin{note}
+Напомним, что индикатор множества $A\subset \Om$ измерим в
+точности тогда, когда множество $A$ измеримо (то есть когда $A\in
+\As$).
+
+Действительно, если $A\subset \Om$ и функция $\gamma_A$ измерима,
+то множество $A$ измеримо, так как
+$$
+A\ = \ f^{-1} \bigl( \{ 1\}\bigr).
+$$
+
+С другой стороны, если множество $A$ измеримо, то функция
+$\gamma_A$ измерима, так как:
+$$
+\forall c\in \R^1, \quad \{\om \in \Om\colon \ f(w) < c\}\
+= \ \begin{cases}
+ \varnothing, & \text{если $c \leqslant 0$};\\
+ \Om\backslash A, & \text{если $0 < c \leqslant 1$};\\
+ \Om, & \text{если $c > 1$},\\
+\end{cases} \quad\quad
+$$
+причем множества $A$ и $\Om\backslash A$ измеримы или нет
+одновременно.
+\end{note}
+
+\begin{prop}
+Простая функция $f$ измерима в точности тогда, когда она является
+линейной комбинацией индикаторов попарно непересекающихся
+измеримых множеств.
+\end{prop}
+\begin{proof}
+Действительно, из последнего замечания следует, что индикаторы
+измеримых множеств, а следовательно, и их линейные комбинации
+измеримы.
+
+Обратное утверждение вытекает из первого замечания к предложению
+2, так как множества
+$$
+\{z\in \Om\colon \ f(z) = a_i\}\ = \ f^{-1} (\{a_i\}),
+$$
+о которых говорится в этом замечании, измеримы.
+
+\end{proof}
+
+\begin{note}
+Следующее утверждение НЕверно:
+
+если $\Om = \bigsqcup \limits_{n=1}^m \Om_n$ и функция $f,$
+определяемая равенством:
+$$
+\fo = \sum \limits_{j=1}^m \lambda_j \cdot \gamma_{\Om_j}(\om)
+\mbox{ - измерима,}
+$$
+то все $f_k(\om) \mbox{ - измеримы}.$
+\end{note}
+
+\begin{proof}
+Приведем такой контрпример:
+
+$$\epsfbox{picture.4}$$
+$$
+\mbox{ Пусть }\  \Om = \Om_1 \sqcup \Om_2,\  \mbox{ тогда } \fo
+\equiv 1 = \gamma_{\Om_1}(\om) + \gamma_{\Om_2}(\om),
+$$
+
+но функции $\gamma_{\Om_1}$ и $\gamma_{\Om_2}$ не будут измеримы,
+если одно из множеств $\Om_1, \, \Om_2$ (конечно, тогда и другое)
+неизмеримо.
+\end{proof}
+
+\subsection {Интеграл Лебега.}
+
+Всюду далее $(\Om, \As, \nu)$ - пространство с мерой.
+
+\begin{df}
+Пусть $f$ - простая неотрицательная измеримая функция, так что
+$$
+\fo=\sum_{i=1}^n  \lambda_i \cdot \gamma_{\Om_i} (\om), \quad
+\bigsqcup \limits_{j=1}^n \Om_j = \Om, \quad \lambda_j \geqslant
+0, \quad \Om_j \in \As.
+$$
+
+Интеграл Лебега от функции $f$ по множеству $\Om,$ обозначаемый
+одним из символов $\ \io f(\om) \nu (d\om), \ \io f(\om) \, d\nu,\
+$ определяется так:
+$$
+\int \limits_{\Om} \fo \nu( \, d\om)= \int \limits_{\Om} \fo
+\,d{\nu} \dd \sum \limits_{i=1}^{n} \lambda_i \cdot \nu \{ \om:
+\fo= \lambda_i\} = \sum_{i=1}^n \lambda_i \cdot \nu(\Om_i).
+$$
+\end{df}
+Проверим корректность определения, то есть независимость значения
+интеграла от выбора семейства (измеримых) множеств $\Om_j,$ для
+которого справедливо равенство:
+$$
+f(\om) = \sum\limits_{i=1}^{n} \la_i \gamma_{\Om_i} (\om).
+$$
+
+
+Пусть
+$$
+\fo \stackrel{(1)}= \sum \limits_{j=1}^n {a_j \gamma_{A_j} (\om)}
+\qquad \mbox{ и } \qquad \fo \stackrel{(2)}= \sum\limits_{k=1}^m
+{b_k \gamma_{B_k} (\om)};
+$$
+нам нужно показать, что
+$$
+\sum\limits_{i=1}^{n} a_j \, \nu (A_j)\ = \ \sum\limits_{k=1}^{m}
+b_k \, \nu (B_k).
+$$
+Положим $C_{jk}=A_j\bigcap B_k$, тогда
+$$
+\fo \stackrel{(3)}= \sum\limits_{j,k}{c_{jk} \cdot \gamma_{C_{jk}}
+(\om)}, \ \ \mbox{ где } c_{jk} = b_k = a_j,
+$$
+так как, если $\om \in \ A_j \cap B_k,$ то одновременно $f(\om) =
+b_k = a_j.$
+
+Поэтому, с одной стороны,
+$$
+\sum\limits_{j, k} c_{jk} \, \nu (A_j \cap B_k) \ = \
+\sum\limits_{i=1}^n \sum\limits_{k=1}^{m} c_{jk} \, \nu (A_j \cap
+B_k) \ = \ \sum\limits_{i=1}^n \sum\limits_{k=1}^{m} a_j \, \nu
+(A_j \cap B_k)\ = \ \sum\limits_{j=1}^n a_j \, \nu (A_j);
+$$
+
+С другой стороны,
+$$
+\sum\limits_{j, k} c_{jk} \, \nu (A_j \cap B_k) \ = \
+\sum\limits_{k=1}^{m} \sum\limits_{i=1}^n c_{jk} \, \nu (A_j \cap
+B_k) \ = \ \sum\limits_{k=1}^{m} \sum\limits_{i=1}^n b_k \, \nu
+(A_j \cap B_k)\ = \ \sum\limits_{k=1}^m b_k (B_k),
+$$
+так что $\sum\limits_{i=1}^{n} a_j \, \nu (A_j)\ = \
+\sum\limits_{k=1}^{m} b_k \, \nu (B_k).$
+
+\begin{df}
+Пусть $f$ - неотрицательная измеримая функция и $f_n$ -
+неубывающая последовательность неотрицательных простых функций,
+причем $\forall \om \quad \fo=\lim \limits_{n\rightarrow \infty}
+f_n(\om)$ (в этом случае мы пишем $f_n (\om) \nearrow f(\om)$).
+Тогда
+$$\int \limits_{\Om} \fo \nu( \, d\om) = \int
+\limits_{\Om} \fo \, d\nu \dd \lim \limits_{n\rightarrow \infty}
+\int \limits_{\Om} f_n(\om) \nu ( \, d\om).$$
+\end{df}
+\begin{df} Если
+$$
+\io f(\om) \, \nu (d\om)\ \Bigl(= \lim \limits_{\nsb} \int
+\limits_{\Om} f_n(\om) \nu( \, d\om)\Bigr) < \infty,
+$$
+ то функция $f_n$ называется
+интегрируемой  (суммируемой) по Лебегу на множестве $\Om$.
+\end{df}
+
+\begin{df} Любую функцию $\fo: \Om \rightarrow \R$ можно представить в виде разности
+двух неотрицательных функций:
+$$
+\forall \om \quad f(\om) =f^+(\om) - f^-(\om), \mbox{ где }$$
+$$f^+(\om) = \begin{cases}
+  \fo, &   \text{если $\fo > 0$} \\
+  0,   &   \text{если $\fo \leqslant 0 $}
+\end{cases}
+\quad \mbox{ и } \quad f^{-}(\om) = \begin{cases}
+  0,   &   \text{если $\fo \geqslant 0$} \\
+ -\fo, &   \text{если $\fo < 0$}
+\end{cases}
+$$
+\end{df}
+\begin{df} Говорим, что $f$ - интегрируема, если интегрируемы  $f^+$
+и $f^-$ и по определению  $$ \io \fo \dn \dd \io f^+ (\om) \, d\nu
+- \io f^- (\om) \, d\nu.$$
+\end{df}
+Если интегрируема только одна из функций $f^+,\  f^-,\ $ то $f$ -
+неинтегрируема, но $\io f(\om) \dn $ определен и равен $+\infty
+(-\infty)$ (такие функции называются квазиинтегрируемыми). Если
+обе функции $f^+, f^-$ неинтегрируемы, то $f$ - неинтегрируема.
+\begin{problem}
+Показать, что если $\fo$ - измерима, то $f^+(\om)$ и $f^-(\om)$ -
+измеримы.
+\end{problem}
+\begin{problem} Если функция интегрируема по Риману на отрезке [0,1] то она
+интегрируема по Лебегу и интегралы совпадают.
+\end{problem}
+\bigskip
+
+Следующее предложение показывает, что определение 4 корректно (то
+есть, что значение интеграла не зависит от выбора
+последовательности $(f_n)$).
+
+\begin{prop}
+Если $(f_n)$ и $(g_n)$ - последовательности неотрицательных
+простых функций, причем $f_n \nearrow f$ и $ g_n \nearrow f,$ то
+$$
+\lim \limits_{\nsb} \io  f_n \, d\nu = \lim \limits_{\nsb}
+\io g_n \, d\nu
+$$
+(доказательство будет приведено в следующей лекции).
+\end{prop}
+\begin{df} Если $f$ - неотрицательная простая функция и $\Om_1 \subset \Om$, $\Om \in
+\As$. Тогда
+$$\int \limits_{\Om_1} \fo \, d\nu \dd \io \gamma_{\Om_1} (\om) \fo \, d\nu.$$- интеграл Лебега по измеримому
+подмножеству.
+\end{df}
+\subsection*{Свойства интеграла Лебега от простых неотрицательных
+функций.}
+\begin{enumerate}
+\item $\io \bigl( f_1(\om) + f_2(\om) \bigr) \, d\nu =  \io
+f_1(\om) \, d\nu + \io f_2(\om) d\nu $.\\
+\item $ \io c \fo\, d\nu = c \io \fo \, d\nu ,  \  c
+\geqslant 0$.\\
+\item Если $f(u)=0$ почти всюду, то $\io \fo\, d\nu =0$ .\\
+\item Если $\Om =\bigsqcup \limits_{i=1}^n \Om_i$ и множества
+$\Om_i$ - измеримы,  то $\io \fo \,d\nu = \sum \limits_{i=1}^n \
+\int \limits_{\Om_i} \fo
+\, d\nu$.\\
+\item Если $f_1(\om)\geqslant f_2(\om) \geqslant 0 \quad \forall
+\om $, то $\io f_1(\om) \, d\nu \geqslant
+\io f_2(\om) \, d\nu. $ \\
+\begin{proof}(5) Рассмотрим представление
+$$ \underbrace{\bigl( f_1(\om) - f_2(\om) \bigr)}_{ \geqslant \  0}
++ \underbrace{f_2(\om)}_{ \geqslant \  0} = f_1(\om).$$
+
+Тогда можно записать так:
+$$
+\underbrace{\io \bigl(f_1(\om) - f_2(\om) \bigr)}_{\geqslant \  0
+\ \text{(из определения)}}  d\nu + \underbrace{\io f_2(\om)}_{
+\geqslant \  0}  d\nu = \io f_1(\om) d\nu \  \Rightarrow \  \io
+f_2(\om) \,d\nu \leqslant \io f_1(\om) \, d\nu.$$
+\end{proof}
+\end{enumerate}
+%
+
+\section {Лекция}
+Определим интеграл Лебега для произвольных неотрицательных
+измеримых функций.
+
+\begin{df}
+Пусть $\fo \geqslant 0 \quad \forall \om$, \  $f$ - измеримая
+функция на $(\Om,\As)$, тогда $\exists$
+последовательность $g_n(\om)$  простых функций:
+$$g_n(\om)
+\nearrow \fo \mbox{(существование докажем позже).}$$
+
+По определению интегралом Лебега называется следующий интеграл
+$$\io \fo \, d\nu \dd \lim \limits_{\nsb} \io g_n(\om) \,d\nu.$$
+$f$ - называется интегрируемой, если предел конечен.
+\end{df}
+Докажем, что это определение не зависит от выбора
+последовательности $g_n(\om)$.\\
+\begin{proof}
+Пусть имеются две последовательности $$g_n(\om):\forall \om \quad
+g_n(\om) \nearrow \fo,$$   $$\varphi_n(\om):\forall \om \quad
+\varphi_n(\om) \nearrow \fo.$$ Достаточно проверить, что
+$$\forall k  \ \ \lim \limits_{\nsb} \io g_n \dn \geqslant \io
+\varphi_k(\om) \dn.$$ Тогда отсюда будет следовать, что $$\lim
+\limits_{\nsb} \io g_n \dn \geqslant  \lim \limits_{k \rightarrow
+\infty} \io \varphi_k(\om) \dn.$$ Так как ситуация симметрична, то
+будет верно и обратное неравенство $$\lim \limits_{\nsb} \io g_n
+\dn \leqslant \lim \limits_{k \rightarrow \infty} \io
+\varphi_k(\om) \dn.$$
+Отсюда будет следовать корректность определения. \\
+Итак, нам известно, что \begin{equation*} \left.
+ \begin{aligned}
+  \forall \om, \quad g_n(\om) & \nearrow \fo \\
+  \forall \om, \quad \varphi_n(\om) & \nearrow \fo \\
+ \end{aligned}
+\right \} \text{$\Rightarrow \forall k, \ \forall \om \quad  \lim
+\limits_{\nsb} g_n(\om) \geqslant \varphi_k(\om), \ \
+\varphi_k(\om) = \sum \limits_{j=1}^{n_k} \la_j \cdot
+\gamma_{A_j}.$}
+\end{equation*}
+
+Пусть
+$$
+A_n^k\ =\ \{ \om: \  g_n(\om) + \varepsilon > \varphi_k(\om) \};
+$$
+$$
+C_n^k\ =\ \{ \om: \ g_n(\om) + \varepsilon \leqslant
+\varphi_k(\om)\};
+$$
+тогда $\forall \, k$
+$$
+\lim \limits_{\nsb} (g_n(\om) + \varepsilon) > \varphi_k(\om).
+$$
+При этом $\forall \, k \quad C_1^k \supset C_2^k \supset \ldots $
+и $\bigcap \limits_{n=1}^{\infty} C_n^k = \varnothing.$
+
+Действительно, если $\ \om \in C_{n+1}^k,\ $ то $ \ g_{n+1} (\om)
++ \varepsilon \leqslant \ff_k (\om),\ $ а так как $\ g_n (\om)
+\leqslant g_{n+1} (\om),\ $ то тем более
+$$
+g_{n} (\om) + \varepsilon \leqslant \ff_k (\om), \  \mbox{ так что
+} \ \om \in C_n^k.
+$$
+
+Далее $\ \forall \, \om \in \Om, \quad \exists \, n_0\in
+\mathbb{N},\ $ такое что
+$$
+\forall \, n > n_0 \qquad g_n (\om) + \varepsilon > \ff_k (\om);
+$$
+но это значит, что для таких $n \quad \om \not\in C_n^k;\ $ тем
+более $\om \not\in \bigcap \limits_{n=1}^{\infty} C_n^k.$ Так как
+это верно для каждого $\ \om \in \Om,\ $ то получается, что
+$$
+\bigcap \limits_{n=1}^{\infty} C_n^k = \varnothing.
+$$
+
+Вспомним критерий счетной аддитивности. Если имеет место
+последовательность измеримых множеств
+$$
+C_1 \supset C_2 \supset \ldots \  \mbox{ и }\  \bigcap
+\limits_{j=1}^{\infty} C_j = \varnothing,\  \mbox{ то }\  \nu
+(C_j) \longrightarrow 0,
+$$
+
+так что $\ \forall \, k \quad \nu C^k_n
+\stackrel{\nsb}{\longrightarrow} 0$
+
+Докажем теперь, что $\ \forall \, \varepsilon > 0, \ \forall k$
+$$
+\lim \limits_{\nsb} \io (g_n(\om) + \varepsilon) \dn \geqslant \io
+ \varphi_k(\om) \, \dn.
+$$
+
+Заметим, что $\ \forall k, \, n$
+\begin{eqnarray}
+ & \io \bigl(g_n(\om)+ \varepsilon \bigr) \dn + \int \limits_{C_n^k}
+ \varphi_k(\om) \dn = \int\limits_{A_n^k} \bigl(g_n(\om)+ \varepsilon
+ \bigr) \dn + \int\limits_{C_n^k} \bigl(g_n(\om)+ \varepsilon \bigr) \dn
+ + \int\limits_{C_n^k} \varphi_k(\om) \dn \geqslant \nonumber & \\
+ &  \geqslant \int \limits_{A_n^k} \varphi_k(\om) \dn + \int \limits_{C_n^k}
+ \varphi_k(\om) \dn + \int \limits_{C_n^k}\bigl(g_n(\om)+ \varepsilon
+ \bigr) \dn = \io \varphi_k(\om) \dn + \int \limits_{C_n^k} \bigl(g_n(\om)+ \varepsilon
+ \bigr) \dn.
+\end{eqnarray}
+
+Проверим, что $\forall \, k \quad \int\limits_{C_n^k} \ff_k(\om)
+\dn \rightarrow 0$ при $\nsb.$
+
+Пусть $\ M_k = \max\limits_{\om} \ff_k(\om);\ $ тогда
+$$
+\forall \, k,\ \forall \om \quad \ff_k(\om) \leqslant M_k\
+\Rightarrow\  \int \limits_{C_n^k} \ff_k(\om) \dn \leqslant \int
+\limits_{C_n^k} M_k \dn \leqslant M_k \nu(C_n^k) \longrightarrow
+0;
+$$
+так как
+$$
+\forall \, k, \, n \qquad \int\limits_{C_n^k} \ff_k(\om) \dn
+\geqslant \int \limits_{C_n^k} \bigl(g_n(\om)+\varepsilon \bigr)
+\dn, \  \mbox{ то } \ \forall \, k \quad \int\limits_{C_n^k} (g_n
+(\om) + \varepsilon) \, \dn \stackrel{\nsb}{\longrightarrow} 0.
+$$
+
+
+Переходя к пределу (по $n$) в неравенстве (1) получим:
+$$
+\forall \, k \qquad  \lim \limits_{\nsb} \ \io \bigl( g_n(\om)
++\varepsilon \bigr) \dn = \lim \limits_{\nsb} \io g_n(\om) \dn +
+\varepsilon \nu(\Om) \geqslant \io \ff_k(\om) \dn.
+$$
+
+Так как это верно для каждого $\varepsilon > 0,\ $ то
+$$
+\forall \, k \qquad \lim\limits_{\nsb} \io g_n (\om) \, \dn
+\geqslant \ff_k (\om) \, \dn.
+$$
+\end{proof}
+
+\section {Лекция}
+
+Свойства интеграла Лебега для произвольных $f: \Om \rightarrow
+\R$ такие же, как и для простых неотрицательных функций:\\
+\begin{enumerate}
+\item Если $\Om= A_1 \bigsqcup A_2 $, то  $\ii = \int
+\limits_{A_1} \fo \, d\nu + \int \limits_{A_2} \fo \, d\nu$. \item
+$\io c \fo \, d\nu = c \ii$ - верно $\forall c \in \R.$
+\item $\io (f_1(\om) + f_2(\om) ) \, d\nu = \io f_1(\om) \, d\nu +
+\io f_2(\om) \, d\nu.$
+\end{enumerate}
+\begin{proof}
+Докажем свойство (3) интеграла Лебега. Разобьем $\Om$ на 6
+множеств $$\Om=\bigsqcup \limits_{j=1}^{6} A_j, \mbox{ где }$$
+$\begin{aligned}
+  A_1 & = \{ \om \in \Om: \ f_1(\om) \geqslant 0, f_2(\om) \geqslant 0 \}\\
+  A_2 & = \{ \om \in \Om: \ f_1(\om) \geqslant 0, f_2(\om) < 0, f_1 (\om) + f_2(\om) \geqslant 0 \}\\
+  A_3 & = \{ \om \in \Om: \ f_1(\om) \geqslant 0, f_2(\om) < 0, f_1 (\om) + f_2(\om) < 0 \}\\
+  A_4 & = \{ \om \in \Om: \ f_1(\om) < 0, f_2(\om) \geqslant 0, f_1 (\om) + f_2(\om) \geqslant 0 \}\\
+  A_5 & = \{ \om \in \Om: \ f_1(\om) < 0, f_2(\om) \geqslant 0, f_1 (\om) + f_2(\om) < 0 \}\\
+  A_6 & = \{ \om \in \Om: \ f_1(\om) < 0, f_2(\om) < 0 \}\\
+ \end{aligned}$\\
+
+Из $(1)$ вытекает равенство $\io g \dn = \sum \limits_{j=1}^6 \
+\int \limits_{A_j} g \dn.$ Следовательно, для доказательства (3)
+достаточно доказать такое же равенство для
+каждого $A_j$.\\
+
+
+Для $A_1, A_6$ - очевидно. Рассмотрим теперь множество $A_2$.
+Нужно доказать, что
+$$
+\int \limits_{A_2} ( f_1+f_2)  \dn = \int \limits_{A_2} f_1 \dn +
+\int \limits_{A_2} f_2 \dn.
+$$
+Запишем тождество $\quad f_1(\om) = \underbrace{\bigl(f_1(\om) +
+f_2(\om) \bigr)}_{\geqslant 0} + \underbrace{\bigl( - f_2(\om)
+\bigr)}_{ >0} \  \Rightarrow$
+$$
+\int \limits_{A_2} f_1 \dn = \int \limits_{A_2} \bigl(f_1+f_2
+\bigr) \dn + \int \limits_{A_2} (- f_2) \dn.
+$$
+Из свойства (2) следует, что
+$$
+\int \limits_{A_2} (-f_2) \, d\nu = - \int \limits_{A_2} f_2 \,
+d\nu,$$ значит,
+$$\int \limits_{A_2} f_1 \dn + \int
+\limits_{A_2} f_2 \dn = \int \limits_{A_2} ( f_1+ f_2 ) \dn.$$
+
+Для множеств $A_3, A_4, A_5$ доказательство аналогично.
+
+\end{proof}
+
+Пусть  $\bar{L}_1 (\Om,\As, \nu)$ - (линейное)
+пространство всех измеримых и интегрируемых по мере $\nu$ функций.
+Из определения следует, что $f \in \bar{L}_1\  \Leftrightarrow\
+\mid f \mid \in \bar{L_1}.$
+
+Обозначим через $\bar{L}_0 (\Om, \As, \nu)$ множество
+всех измеримых функций. Говорят, что измеримые функции $f,g$
+совпадают почти всюду, если множество
+$$
+A=\{ \om: \fo \neq g(\om) \} \mbox{ - имеет меру нуль.}$$
+
+Проверим, что  $$\nu A = 0 \ \Rightarrow\  \int \limits_A f \dn
+=0.$$
+
+Для простых неотрицательных функции это следует прямо из
+определения; для неотрицательных измеримых получается с помощью
+перехода; для произвольных измеримых - из разложения  $f=f^+ -
+f^-.$
+\begin{stm} Пусть
+$f=g \ \  \nu$-почти всюду, тогда $\ii= \io g(\om) \dn.$
+\end{stm}
+\begin{proof}
+Пусть $A\ =\ \{\om \colon \ f (\om)  = g (\om)\}.$ Тогда
+$$\ii = \int \limits_{\Om\backslash A} f \dn + \int \limits_A f \dn
+= \int \limits_{\Om\backslash A} f \dn = \int
+\limits_{\Om\backslash A} g \dn =  \int \limits_{\Om\backslash A}
+g \dn + \int \limits_A g \dn = \int \limits_{\Om} g \dn.$$
+\end{proof}
+
+Рассмотрим подпространство $E_0 = \{ f \in \bar{L}_0 (\Om,
+\As, \nu); f=0 \ \nu$-почти всюду\} в $\bar{L}_0 (\Om,
+\As, \nu).$
+\begin{df}
+Две функции называются эквивалентными, если они совпадают почти
+всюду.
+\end{df}
+Удобно рассматривать фактор-пространства
+$$
+L_0(\Om, \As, \nu) = \bar{L}_0(\Om, \As, \nu) /
+E_0.$$ $$L_1(\Om, \As, \nu) = \bar{L}_1(\Om,
+\As, \nu) / E_0.
+$$
+Элемент этого фактор-пространства - это класс эквивалентности.
+Будем обозначать элементы пространства $\bar{L}_0$ так же, как и
+элементы пространства $L_0$, то есть писать $\ f_1(\cdot) \in
+L_0,\ $ имея ввиду, что $f_1(\cdot)$ - это представитель класса
+эквивалентности.
+
+\subsection{Неравенство Чебышева.}
+
+Пусть $f \in L_1(\Om, \As, \nu)$. Тогда
+$$
+\forall \, c >0\quad \nu \{ \om \in \Om: \ |\fo| \geqslant c\} \
+\leqslant\  \frac{1}{c} \io |\fo| \dn.
+$$
+\begin{proof}
+Введем два множества
+$$
+C_1 = \{\om: |\fo| \geqslant c \}
+$$
+$$
+C_2 = \{\om: |\fo| < c \}
+$$
+Тогда
+\begin{eqnarray*}
+&\io |\fo| \dn = \int  \limits_{C_1} |\fo| \dn  + \int
+\limits_{C_2} |\fo| \dn \geqslant \int  \limits_{C_1} |\fo| \dn \geqslant
+ \int \limits_{C_1} c \dn = c \int \limits_{C_1} \dn = c \ \nu \{
+ \om: |\fo| \geqslant c \}
+\end{eqnarray*}
+\end{proof}
+\begin{stm}
+Если $ \ f \in L_1(\Om, \As, \nu)\ $, то $\ |\fo| <
+\infty \quad \nu$ почти всюду.
+\end{stm}
+\begin{proof}
+$$
+\{ \om: |\fo| = \infty \}\  = \ \bigcap \limits_{n=1}^{\infty}
+\{\om : |\fo| > n \}.
+$$
+Оценим меру каждого из этих множеств $$ \nu \{\om:|\fo| > n \}\
+\leqslant\  \frac{1}{n} \io |\fo| \dn \longrightarrow 0 \  (n
+\rightarrow \infty ),$$ так как $\io |\fo| \, d\nu < \infty.$
+
+Ясно, что
+$$\{ \om: |\fo| \geqslant n \} \supset \{ \om: |\fo|
+\geqslant n+1 \}.$$ Далее пользуемся тем, что для
+последовательности вложенных множеств мера их пересечения равна
+пределу мер этих множеств.
+
+\end{proof}
+\begin{theorem}[Беппо-Леви]
+Пусть $f_n(\om)$ -  последовательность измеримых неотрицательных
+функций, такая что $f_n(\om)\nearrow \fo$ в каждой точке. Тогда
+$$
+\lim \limits_{\nsb} \io f_n(\om) \dn = \ii
+$$
+(в частности, если $f$ - интегрируема, то предел конечен). (Если в
+формулировке добавить слова почти всюду, то теорема все еще будет
+верна).
+\end{theorem}
+\begin{proof}
+Пусть $g_{ij}$ -  последовательности простых функций, такие что
+\[ \begin{array}{cc}
+ & 0 \leqslant g_{11} \leqslant g_{12} \ldots \rightarrow f_1 \\
+ & 0 \leqslant g_{21} \leqslant g_{22} \ldots \rightarrow f_2 \\
+ & \ldots \\
+ & 0 \leqslant g_{k1} \leqslant g_{k2} \ldots \rightarrow f_k \\
+ &\\
+ & f_1 \leqslant f_2 \leqslant \ldots \leqslant f_k \rightarrow f(\om)\\
+\end{array} \]
+Введем новые функции $g_n(\om)=\max \limits_{1\leqslant k
+\leqslant n} g_{kn}(\om)$.
+
+Заметим, что $\ \forall \, \om$
+$$
+g_1(\om) \leqslant g_2(\om) \leqslant \ldots \ \leqslant g_n(\om)
+\leqslant f_n(\om)\rightarrow \fo.$$
+
+Следовательно, в силу монотонности $\ \exists \ \lim
+\limits_{\nsb} g_n(\om) = g(\om)$ и  $g(\om) \leqslant f(\om).$
+Предположим, что доказано, что $\ \forall \, \om\colon \
+g(\om)=\fo$. Тогда по определению интеграла получим: $$ \io g_n
+\dn \rightarrow \ii$$ Так как
+$$\forall n \quad g_n(\om) \leqslant f_n(\om) \leqslant \fo, $$ то
+$$\forall n
+\ \io g_n(\om) \dn \leqslant \io f_n(\om) \dn \leqslant \ii.$$
+Переходя к пределу, получим $$\ii \leqslant \lim\io f_n(\om) \dn
+\leqslant \ii.$$
+
+Таким образом, $ \io f_n \dn \rightarrow \ii$.\\
+Тем самым заключение теоремы доказано. Осталось проверить, что
+$g(\om) = \fo$.
+
+Нам известно, что
+$$
+\forall k \leqslant n \quad g_{kn}(\om) \leqslant g_n(\om)
+\stackrel{\nsb}{\rightarrow}g(\om) \leqslant \fo. $$
+
+Значит,
+$$
+\forall k \leqslant n \ g_{kn} (\om) \leqslant g(\om) \leqslant
+\fo.$$
+
+Но
+$$
+\forall \, k \quad g_{kn}(\om)\stackrel{k \rightarrow
+\infty}{\rightarrow} f_k(\om) \leqslant g(\om).$$
+
+
+Значит,
+$$
+\lim \limits_{\nsb} f_k(\om)= \fo \leqslant g(\om) \leqslant \fo \
+\ \Longrightarrow \ \  \fo=g(\om).$$
+\end{proof}
+\begin{note}
+В теореме можно условие $0 \leqslant f_n$ заменить на условие $F
+\leqslant f_1$, где $F$ - интегрируемая функция. Чтобы свести это
+к предыдущему случаю, достаточно рассмотреть последовательность
+$$
+0 \leqslant f_1(\om) - F(\om) \leqslant f_2(\om) - F(\om)
+\leqslant \ldots
+$$
+\end{note}
+\begin{theorem}[Фату-Лебега]
+Пусть $(f_n)$ - последовательность измеримых функций. Тогда, если
+$$
+\forall \, n, \ \forall \, \om \qquad  f_n(\om) \geqslant F(\om),
+\text{ где } \ F \in L_1(\Om, \As, \nu).$$
+$$\io \liminf \limits_{\nsb} f_n(\om) \dn \leqslant \liminf \limits_{\nsb} \io f_n \dn;$$  если
+$$\forall n \ \forall \, \om \quad f_n(\om) \leqslant F(\om), \mbox{ то }$$
+$$ \io \overline{\lim
+\limits_{\nsb}} f_n(\om) \dn \geqslant \overline{\lim
+\limits_{\nsb}} \io f_n(\om) \dn.$$
+\end{theorem}
+\begin{proof}
+
+Напомним, что
+$$
+\varliminf \limits_{\nsb} f_n(\om)\ \equiv \  \liminf
+\limits_{\nsb} f_n(\om) \dd \lim \limits_{\nsb} \{ \inf \limits_{k
+\geqslant n} f_k(\om) \}. $$
+
+Введем  последовательность функций
+$$g_n(\om)= \{ \inf \limits_{k
+\geqslant n} f_k(\om) \}
+ \Rightarrow \forall k \geqslant n \ g_n(\om) \leq g_k(\om).$$
+
+ Мы знаем, что $$F(\om) \leq g_1(\om) \leq g_2(\om) \leq \ldots
+ \rightarrow \varliminf \limits_{\nsb} f_n(\om).$$
+
+ Следовательно по теореме
+ Беппо-Леви $\quad \lin \io g_n \dn = \io \varliminf \limits_{\nsb} f_n(\om)
+ \dn.$
+
+ $$\forall k \geqslant n \ \io g_n(\om) \dn \leqslant \io f_k(\om) \dn
+ \Rightarrow \forall n \ \io g_n(\om) \dn
+ \leqslant \varliminf \limits_{k \rightarrow \infty} \io f_k(\om) \dn \Rightarrow$$
+ $$\Rightarrow \lin \io g_n(\om) \dn \leqslant \varliminf \limits_{k \rightarrow \infty}  \io f_k(\om) \dn.$$
+$$\io \underset{\nsb}{\underline{\lim}} f_n(\om) \dn \leqslant
+\underset{\nsb}{\underline{\lim}} \io f_n(\om) \dn.$$
+
+Таким образом, доказана первая часть теоремы. Докажем теперь
+вторую часть.
+$$
+-F(\om) \leqslant - \fo,
+$$
+$$
+\varliminf \limits_{\nsb} \bigl( - f_n(\om) \bigr) = -
+\overline{\lin} f_n(\om),
+$$
+$$
+- \io \bigl( \overline{\lin} f_n(\om) \bigr) \dn\ = \ \io
+\varliminf \limits_{n \rightarrow \infty} \bigl(-f_n(\om)\bigr)
+\dn \ \leqslant \ \varliminf \limits_{k \rightarrow \infty} \bigl(
+- \io f_n(\om) \dn \bigr)\ = \ - \overline{\lin} \io f_n(\om) \dn,
+$$
+$$
+\mbox{ так что }\  \io \overline{ \lin} f_n(\om) \dn \geqslant
+\overline{\lin} \io f_n(\om) \dn.
+$$
+\end{proof}
+\begin{note}
+В теореме Фату-Лебега можно предполагать, что все ее условия
+выполнены лишь почти всюду.
+\end{note}
+
+\section{Лекция}
+
+\begin{theorem} [Лебега о мажорируемой сходимости или О предельном переходе под знаком
+интеграла] Пусть $F \in L_1(\Om, \As, \nu)$ и $(f_n)$ -
+последовательность измеримых функций, такая что $f_n(\om)
+\rightarrow f(\om) \ \nu$-почти всюду. Предположим, что
+$$\forall n \ | f_n(\om) | \leqslant F(\om) \quad \nu \mbox{ почти всюду.} $$
+
+Тогда $f \in L_1(\Om, \As, \nu)$ и
+$$\ii = \lin \io f_n(\om) \dn.$$
+\end{theorem}
+\begin{proof}
+В условии теоремы $-F(\om) \leq f_n(\om) \leq F(\om) \quad \nu
+\mbox{ почти всюду.} \  \Rightarrow\ $ можно применить теорему
+Фату-Лебега.
+  $$\overline{\lin} \io f_n(\om) \dn \leqslant \io \overline{\lin}
+  f_n(\om) \dn = \io \varliminf \limits_{\nsb} f_n(\om)
+  \dn \leqslant \varliminf \limits_{\nsb} \io f_n(\om) \dn $$
+Следовательно,
+$$\varliminf \limits_{n \rightarrow \infty}
+\iin \geqslant \overline{\lin} \iin, \ \mbox{ так что }$$
+$$\varliminf \limits_{\nsb} \iin = \overline{\lin}
+\iin\  \Rightarrow\  \exists \ \lin \iin \ \mbox{ и }$$
+$$\lin \iin = \io \lin f_n(\om) \dn.$$
+\end{proof}
+\begin{theorem}[Фату] Пусть $(f_n)$ - последовательность
+неотрицательных измеримых функций, причем
+$$
+0 \leqslant \fn \rightarrow \fo \  \nu \mbox{-почти всюду} \quad
+\mbox{ и } \quad  \exists C>0 :\  \forall \, n \  \io \fn
+\leqslant C.
+$$
+Тогда
+$$
+f \in L_1(\Om, \As, \nu) \mbox{ и } \ii \leqslant C.
+$$
+\end{theorem}
+\begin{proof}
+Последовательность $f_n(\cdot)$ удовлетворяет условиям теоремы
+Фату-Лебега
+$$
+\io \varliminf \limits_{\nsb} \fn \dn  \leqslant \varliminf
+\limits_{\nsb} \iin \leqslant C \ \ \text{и так как } f_n(\om)
+\rightarrow \fo,
+$$
+то $\ \ii \leqslant C.$
+
+\end{proof}
+В условиях теоремы Фату заключение теоремы Лебега не обязано
+выполняться.
+
+\begin{note}[1]
+Приведем пример.
+$$\epsfbox{picture.5}$$
+$$\epsfbox{picture.6}$$
+
+Пусть $\Om= [0,1], \ \As$ - сигма-алгебра измеримых по
+Лебегу множеств,$\ \nu$ - мера Лебега. Рассмотрим функции,
+изображенные на первом рисунке следующей страницы.
+
+Очевидно, что $f_n(\om) \stackrel{\nsb}{\rightarrow} 0 \quad
+\forall \om$.
+$$\forall \,n \quad \int\limits_0^1 \fn \dn \leqslant \frac{1}{2}.$$
+
+В этом случае $\lin \iin = \frac{1}{2} \neq \io \lin \fn \dn = 0.$
+\end{note}
+\begin{note}[2]
+Если в теореме Фату исключить условие $\fn \geqslant 0$, то
+теорема станет неверной.
+
+Рассмотрим последовательность функции, изображенную на втором
+рисунке. Считаем, что
+$$
+\forall \, n \quad f_n (\om)\ =
+\begin{cases}
+1, & \text{если $x \in [\frac{1}{n},1]\cup \{0\}$;}\\
+-(n-1), & \text{если $x\in (0, \frac{1}{n})$.}
+\end{cases}
+$$
+Тогда $\fn \stackrel{\nsb} \longrightarrow 1$
+$$\forall n \ \iin =0 \leq \frac{1}{2}=C \ \text{и} \ \io \lin \fn
+\dn =1 \nleqslant \frac{1}{2}.$$
+\end{note}
+
+\begin{df}
+Пусть $(\Om, \As, \nu)$ - пространство с мерой, $\ C \in
+\As , \ \nu C > 0$. $\As_C - \sigma$-алгебра
+подмножеств $C$, состоящая из всех множеств из $\As$,
+которые содержатся в $C$. Тогда пространство $(C,\As_C,
+\nu_C)$ называется измеримым подпространством пространства $(\Om,
+\As, \nu).$
+\end{df}
+\begin{prop}
+Пусть $f \in L_1(\Om, \As, \nu),$ тогда
+$$
+\forall A \in \As \quad f\in L_1 (A, \As_A,
+\nu_A).
+$$
+Следовательно, определена функция $\nu_f\colon \ \As \ni
+C \mapsto \int \limits_C \fo \dn.$ Эта функция является
+счетно-аддитивной.
+\end{prop}
+\begin{proof}
+Пусть $C=\bigsqcup \limits_{n=1}^{\infty} C_n.$ Нужно доказать,
+что $$\int \limits_C \fo \dn = \sum \limits_{n=1}^{\infty} \int
+\limits_{C_n} \fo \dn$$
+$$\left(\int
+\limits_C \fo \dn = \io \fo \gamma_c(\om) \dn\right).$$
+
+Так как $C=\bigsqcup \limits_{n=1}^{\infty} C_n, \ $ то
+$\gamma_c(\om)=\sum \limits_{n=1}^{\infty} \gamma_{C_n}(\om)\
+\Rightarrow$ $$\fo \gamma_c(\om)= \sum \limits_{n=1}^{\infty} \fo
+\gamma_{C_n}(\om).$$ Положим $g_k(\om)= \sum \limits_{n=1}^{k} \fo
+\gamma_{C_n}(\om).$
+
+Из того, что $f \in L_1 \text{ следует, что }$
+$$
+\fo\gamma_C(\om) \in L_1 \  \Rightarrow \  |\fo \gamma_c(\om)| \in
+L_1.$$
+Тогда
+$$
+\forall k \ |g_k(\om)| = | \sum \limits_{n=1}^{k} \fo
+\gamma_{C_n}(\om)| \leqslant |\fo|,$$
+
+то есть выполнено одно из условий теоремы Лебега.
+
+Кроме того,
+$$\fo \gamma_C(\om) = \sum \limits_{n=1}^{\infty} \fo \gamma_{C_n}(\om)
+= \lim \limits_{\nsb} g_n(\om).$$ Поэтому
+$$\int \limits_C \fo \dn = \io
+\fo \gamma_C(\om) \dn = \lim \limits_{k \rightarrow \infty} \io
+g_k(\om) \dn = \lim \limits_{k \rightarrow \infty} \sum
+\limits_{n=1}^{k} \io \fo \gamma_{C_n} \dn =$$$$=\lim \limits_{k
+\rightarrow \infty} \sum \limits_{n=1}^{k} \int \limits_{C_n} \fo
+\dn = \sum \limits_{n=1}^{\infty} \int \limits_{C_n} \fo \dn$$ по
+теореме Лебега.
+
+\end{proof}
+\begin{imp}[из теоремы Беппо-Леви]
+Пусть $\ \forall n \quad g_n(\om) \geqslant 0$ - почти всюду и
+\linebreak
+ $\ g(\om) = \sum \limits_{n=1}^{\infty} g_n(\om).$ Тогда
+$$\io g(\om)
+\nu (d\om)= \sus \io g_n(\om) \nu(d\om).$$ Если еще $\sus \io
+g_n(\om) \nu(d\om) <\infty$, то $\io g(\om) \nu(d\om) < \infty,$
+то есть $g(\cdot) \in L_1$ и, следовательно, $$g(\om)< \infty \
+\nu\mbox{-почти всюду.}$$
+\end{imp}
+\begin{problem}
+Доказать следствие.
+\end{problem}
+Согласно предложению 1 всякой функции $ f \in \bar{L_1} (\Om,
+\As, \nu)$ можно сопоставить функцию множества $\nu_f$ на
+$ \As:$
+$$\nu_f(A)= \int \limits_A f \dn.$$
+\begin{df} Пусть $\nu, \mu$ - неотрицательные меры на измеримом пространстве $(\Om,
+\As)$. Говорят, что мера $\nu$ абсолютно непрерывна $(\nu
+\ll \mu)$ относительно меры $\mu$, если $\forall C \in
+\As$ из того, что $\mu C = 0 $ следует, что $\nu C =0 .$
+\end{df}
+\begin{ex}
+$\nu_f \ll \nu\ (f\geqslant 0).$
+\end{ex}
+\begin{theorem}
+$\nu \ll \mu \Leftrightarrow\ \forall\,$ последовательность $\{C_n
+\in \As\colon\ n\in \mathbb{N}\}$, из того, что $\mu C
+\rightarrow 0$ следует, что $\nu C \rightarrow 0.$
+
+(Другими словами, $\forall \varepsilon >0 \ \exists \delta> 0 \
+\forall C \in \As$ если $\mu C < \delta,$ то $\nu C <
+\varepsilon$.)
+\end{theorem}
+\begin{proof}
+$\Leftarrow$ Если $\mu C =0 $, то $ \nu C=0$ (это очевидно).\\
+$\Rightarrow$ Будем доказывать от противного. Нам надо привести к
+противоречию следующее утверждение:
+$$\exists \, \varepsilon >0: \forall \delta >0 \ \exists C_{\delta} \in
+\As : \mu C_{\delta} <\delta \ \text{, но} \ \nu
+C_{\delta} > \varepsilon.$$ Будем брать в качестве $\delta$
+элементы $\delta_n$ сходящейся последовательности
+$$
+\sum \limits_{n=1}^{\infty} \delta_n < \infty, \quad \forall n \
+\delta_n >0 \  \Longrightarrow \ \forall \, n> 0 , \ \exists
+C_{\delta_n} \equiv C^n\colon \ \mu\,C^{n} < \delta_n, \ \  \nu
+C^n > \varepsilon.
+$$
+
+Положим $A_k= \bigcup \limits_{n=k}^{\infty} C^n.$ Ясно, что эти
+множества вложены друг в друга:
+$$
+A_1 \supset A_2\supset \ldots;$$
+
+Введем также следующее обозначение $A= \bigcap
+\limits_{k=1}^{\infty} A_k$.
+
+Теперь оценим меру множества $A_k$:
+$$
+\mu A_k \leqslant \sum \limits_{n=k}^{\infty} \delta_n \rightarrow
+0 \ ( k \rightarrow \infty).$$
+
+Следовательно,
+$$(\forall k \quad A \subset A_k) \  \Longrightarrow \ \mu A \leqslant \mu
+A_k \stackrel{k \rightarrow \infty} \rightarrow 0 \
+\Longrightarrow \ \mu A = \mu \bigcap \limits_{k=1}^{\infty}A_k =
+0.$$
+
+Отсюда следует, что $\nu A =0$. Из счетной аддитивности меры $\nu$
+вытекает, что $$\nu A_k \rightarrow \nu \bigcap
+\limits_{k=1}^{\infty} A_k = 0.$$
+
+С другой стороны, $A_k= \bigcup \limits_{n=k}^{\infty} C^n, $
+значит $A_k \supset C^n$, если $n \geqslant k$.
+
+Вспомним, что $\ \nu C^n > \varepsilon\  \Rightarrow\  \nu A_k
+\geqslant \nu C^n > \varepsilon \ \Rightarrow$ мы получили
+противоречие.
+
+\end{proof}
+
+Пусть снова $(\Om, \As, \mu)$ - пространство с мерой и $f
+\in L_1(\Om, \As, \mu);\ $ положим
+$$
+(f\mu)(A)=\mu_f(A) = \int \limits_A \fo\, d\mu.$$
+
+Говорят, что эта мера $f_\mu \equiv \mu_f$ - это произведение меры
+$\mu$ и $f$.\ При этом
+$$\mu_f \ll \mu \ (f \mu \ll \mu),$$
+так как, в силу одного из свойств интеграла,\  $\mu A = 0
+\Rightarrow \mu_f A =0.$
+
+
+\textbf{Свойство абсолютной непрерывности интеграла Лебега.}
+
+$$\forall \varepsilon > 0 \ \exists \delta > 0 \ \forall A \in
+\As, \ \mbox{ если }\  \mu A < \delta, \ \mbox{ то }\
+\left| \int \limits_A \fo \, d\mu \right| < \varepsilon.$$
+
+Для того, чтобы получить это свойство, нужно просто заметить, что
+$\mu_{|f|} \ll \mu$\ и воспользоваться неравенством:
+$$| \int \limits_A \fo \, d\mu| \leq
+\io |\fo| \,d\mu < \varepsilon.$$
+
+\section{Лекция}
+Пусть $S$ - кольцо подмножеств множества $\Om.$
+\begin{df}
+Мера $\nu$ на кольце $S$ подмножеств множества $\Om$ называется
+$\sigma$-конечной, если
+$$
+\Om = \bigcup \limits_{j=1}^{\infty} \Om_j, \quad \Om_j \in S,
+\quad \nu \Om_j <\infty \ \mbox{ для каждого } j.
+$$
+\end{df}
+Введем вместо множества $\Om_n$ множество $\Om'_n = \bigcup
+\limits_{j=1}^{n} \Om_j$, тогда
+$$\Om'_1 \subset \Om'_2 \subset \Om'_3 \subset
+\ldots$$
+
+В дальнейшем будем использовать множества $\Om'_n$, но штрих
+писать не будем для удобства записи.
+
+В этом случае для любого $j$ рассмотрим $(\Om_j, S_j, \nu_j)$, где
+$$S_j=\{A \in S | A \subset \Om_j\}$$
+и $\nu_j$ - сужение меры $\nu$ на совокупность множеств $S_j;\ $
+при этом $S_j$ - это алгебра множеств.
+
+Пусть теперь, для всякого $j,\ \overline{\nu}_j$ - продолжение
+$\nu_j$ на $\sigma$-алгебру $\overline{\sigma (S_j)}\
+\nu_j$-измеримых подмножеств множества $\Om_j.$
+
+Объявим, по определению, что $$A \in \overline{\sigma(S)} \
+\Longleftrightarrow \ \forall j \quad A \cap \Om_j \in
+\overline{\sigma(S_j)} \quad \bigl( \Om_j \in S_j \subset
+\sigma(S_j) \subset \overline{\sigma (S_j)} \bigr).$$
+$$\overline{\nu}A = \lim \overline{\nu}_j ( A \bigcap \Om_j) \quad
+-$$ - этот предел всегда существует, так как $\overline{\nu}$ не
+убывает.
+\begin{problem} Доказать, что
+$\overline{\nu}$ - счетно-аддитивная мера, принимающая, быть
+может, бесконечные значения.
+\end{problem}
+Пусть $\Om=\R$, $S$ - полукольцо конечных полуинтервалов
+$[\alpha,\beta)$ и $\nu \bigl( [\alpha, \beta) \bigr) = \beta -
+\alpha$. \\
+В качестве $\Om_n$ возьмем отрезок $[-n, n]$. Тогда
+получим $(\R, \overline{\sigma (S)}, \overline{\nu}).$
+
+\begin{df}
+$\overline{\sigma(S)} - \sigma$-алгебра подмножеств прямой,
+измеримых по Лебегу, а $\overline{\nu}$ - мера Лебега. Аналогично
+определяется и мера Лебега на $\R^n.$
+\end{df}
+Все предыдущие теоремы справедливы (иногда после небольших
+изменений) также и для меры, которая принимает бесконечные
+значения. Только в определении интеграла надо рассматривать
+простые неотрицательные функции, которые являются конечными
+линейными комбинациями индикаторов множеств, имеющих конечную
+меру.
+\begin{theorem}
+Если вещественная функция $f: [0,1] \rightarrow\R$
+интегрируема по Риману в собственном смысле, то она интегрируема
+по Лебегу и интегралы совпадают.
+\end{theorem}
+\begin{proof}
+Если $f$ - интегрируема по Риману, то для любого разбиения отрезка
+$[0,1]$ суммы Дарбу сходятся к интегралу Римана. Рассмотрим
+разбиение отрезка на $2^n$ одинаковых частей.
+
+$$\epsfbox{picture.7}$$
+
+Запишем суммы Дарбу. $\forall k \quad \overline{a}_k = \sup
+\limits_{x \in [\frac{k-1}{2^n}, \frac{k}{2^n})} f(x) \
+\Rightarrow \ \sum \limits_{k=1}^{2^n} \overline{a}_k
+\frac{1}{2^n} = \overline{S}_n(f)$ - верхняя сумма Дарбу.
+
+$\forall k \quad \underline{a}_k = \inf \limits_{x \in
+[\frac{k-1}{2^n} , \frac{k}{2^n})} f(x) \  \Rightarrow \  \sum
+\limits_{k=1}^{2^n}\underline{a}_k \frac{1}{2^n}
+=\underline{S}_n(f)$ - нижняя сумма Дарбу.
+
+Обе эти суммы имеют пределы, которые равны: $$(R) \int \limits_0^1
+f(x) \, dx = \lin \overline{S}_n(f) = \lin \underline{S}_n(f).$$
+
+Введем некоторые вспомогательные функции, для которых интеграл
+Лебега будет совпадать с суммами Дарбу.
+$$\overline{f}_n(x) = \sum
+\limits_{k=1}^{2^n} \overline{a}_k \gamma_{[\frac{k-1}{2^n},
+\frac{k}{2^n})}(x), \quad \underline{f_n}(x) =\sum
+\limits_{k=1}^{2^n} \underline{a_k} \gamma_{[\frac{k-1}{2^n} ,
+\frac{k}{2^n})}(x)$$ По определению $\forall n, x$ справедливо
+равенство $\underline{f_n}(x) \leqslant f(x) \leqslant
+\overline{f}_n(x).$
+
+Более того, $$\inf \limits_{x \in [0,1]} f(x) \leqslant
+\underline{f_1}(x) \leqslant \underline{f_2}(x) \leqslant \ldots
+\leqslant f(x) \leqslant \ldots \leqslant \overline{f}_2(x)
+\leqslant \overline{f}_1(x) \leqslant \sup \limits_{x \in [0,1]}
+f(x).$$
+
+Так как функция интегрируема по Риману, то $|\inf f(x)|, |\sup
+f(x)| < \infty$ и, в силу монотонности соответствующих
+последовательностей,
+$$\exists \lin \underline{f_n}(x) = \underline{f}(x) \leqslant
+f(x) \leqslant \overline{f}(x) =\lin \overline{f}_n(x)$$
+
+Заметим, что
+$$\forall n \quad (L) \int \limits_{[0,1]}
+\overline{f}_n(x) \, dx = \int \limits_{[0,1]} \sum
+\limits_{k=1}^{2^n}\overline{a}_k \gamma_{[\frac{k-1}{2^n} ,
+\frac{k}{2^n})}(x) \, dx =  \sum \limits_{k=1}^{2^n}\overline{a}_k
+\int \limits_{[0,1]} \gamma_{[\frac{k-1}{2^n} , \frac{k}{2^n})}(x)
+\, dx = \sum \limits_{k=1}^{2^n}\overline{a}_k \frac{1}{2^n}
+=\overline{S}_n(f)
+$$ Аналогично проверяется, что $\forall n \quad (L)\int \limits_{[0,1]}
+\underline{f_n}(x) \, dx = \underline{S}_n(f)$.
+
+Следовательно,
+
+$(L)\int \limits_{[0,1]} \overline{f}_n(x) \, dx=
+\overline{S}_n(f) \rightarrow (R) \int \limits_0^1 f(x) \,
+dx$\\$(L)\int \limits_{[0,1]} \underline{f_n}(x) \, dx =
+\underline{S}_n(f) \rightarrow (R) \int \limits_0^1 f(x) \, dx$
+
+К последовательностям $\underline{f_n} , \overline{f}_n$ применима
+теорема Лебега о предельном переходе под знаком интеграла. Значит,
+$$(L)\int \limits_{[0,1]} \overline{f}_n(x) \,dx \rightarrow \int \limits_{[0,1]} \overline{f}(x) \,
+dx = (R) \int \limits_0^1 f(x) \, dx$$
+$$(L)\int \limits_{[0,1]} \underline{f_n}(x) \,dx \rightarrow \int \limits_{[0,1]} \underline{f}(x) \,
+dx = (R) \int \limits_0^1 f(x) \, dx$$
+
+Получаем, что $$(L) \int \limits_{[0,1]} \bigl( \overline{f}(x) -
+\underline{f}(x) \bigr) \, dx = 0.$$
+
+Но
+$$\forall x \quad \underline{f}(x) \leqslant f(x)
+\leqslant \overline{f} (x) \quad (*)$$
+
+Значит, $\overline{f}(x)= \underline{f}(x)$ почти всюду и,
+следовательно,
+$$\underline{f}(x) = f(x) =\overline{f}(x)\mbox{ почти всюду.}$$
+
+А, значит, $f(x)$ - измерима (так как $\overline{f}(x)$ и
+$\underline{f}(x)$ - измеримы) - см. предложение 6 ниже, - и
+интеграл Лебега от нее совпадает с интегралом от
+$\overline{f}(x)$. Следовательно, получаем, что
+$$(L)\int \limits_{[0,1]} f(x) \, dx = \int \limits_{[0,1]}
+\overline{f}(x) \, dx = (R) \int \limits_0^1 f(x) \, dx.$$
+\end{proof}
+\begin{problem} Вывести из неравенства Чебышева, что если интеграл
+Лебега от неотрицательной функции равен 0, то сама функция равна
+нулю почти всюду.
+\end{problem}
+
+Будем говорить, что функции $f$ и $g$ на пространстве с мерой (не
+предполагаемые измеримыми) совпадают почти всюду, если множество
+$\{\om \colon \ f(\om)\not = g (\om)\}$ содержится в некотором
+множестве меры нуль.
+
+\begin{df}
+Рассмотрим пространство с мерой $(\Om, \As, \nu)$. Мера
+$\nu$ - называется полной, если  $\forall\, A \ \in \As
+:\  \nu A =0,\ \forall\, B\, \subset A \ \Rightarrow \ B \in
+\As, \ \nu B =0$.
+\end{df}
+\begin{prop}
+Пусть $f$ - измеримая функция на пространстве с полной мерой,
+тогда если $g(x)=f(x) \ \nu-$почти всюду, то $g(x)$ - измерима.
+\end{prop}
+
+\begin{proof}
+$\forall c \in\R$ рассмотрим множество $\{g(x)< c\}$ и
+сравним это множество с множеством $\{f(x)< c\} \in \As$. Из
+определения совпадения функций $f$ и $g$ $\nu$-почти всюду, можно
+вывести, что
+$$\{ g(x)<c\}\setminus \{ f(x)<c \} \subset D, \nu D =0,$$ $$\{
+f(x)<c\}\setminus \{ g(x)<c \} \subset D_1, \nu D_1 =0,$$
+$$\{ g(x)
+< c \} \ = \ \bigl( \{f(x) <c \}\setminus \bigl(\{f(x)
+<c\}\setminus \{g(x)<c\} \bigr)\bigr)\bigcup \bigl( \{ g(x) < c\}
+\setminus \{f(x) <c \} \bigr).$$
+
+Итак, мы доказали, что $g(x)$ измерима, если мера $\nu$ полна.
+
+\end{proof}
+\begin{ex}
+Мера, которая была построена в доказательстве теоремы Каратеодори,
+является полной. Поэтому полна и мера Лебега на $\mro$ (и на
+$\R^n$).
+\end{ex}
+
+\section{Лекция}
+
+\begin{df}
+Пусть $f\colon \ [0,1] \rightarrow \mro,\ $ причем
+$$\ \forall \,
+n\in \mathbb{N},\ \mbox{ функция $f$ интегрируема по Риману на
+отрезке } \left[\frac{1}{n}, 1\right].$$
+
+Функция $f$ - интегрируема в несобственном смысле но Риману на
+отрезке $[0, 1]$ (иногда в этом случае говорят о полуинтервале
+$(0, 1]$),
+$$\mbox{ если } \ \exists  \lin (R) \int \limits_{\frac{1}{n}}^1 \fd;$$
+этот предел называется несобственным интегралом Римана;\  мы
+обозначим его так:
+$$(R) \int \limits_0^1 \fd; $$
+этот интеграл сходится абсолютно, если $$\exists \  \lin \int
+\limits_{\frac{1}{n}}^1 |f(x)| \, dx = (R) \int \limits_0^1 |f(x)|
+\, dx$$
+\end{df}
+\begin{theorem}
+Пусть $f$ - вещественная функция на $[0, 1],\ $ непрерывная на
+$(0,1].$ Функция $f$ интегрируема по Лебегу тогда и только тогда,
+когда она интегрируема по Риману, быть может, в несобственном
+смысле, и интеграл сходится абсолютно.
+\end{theorem}
+\begin{proof}
+Далее мы не различаем отрезок $[0, 1]$ и полуинтервал $(0,1].$
+Рассмотрим вспомогательную функцию $g_n(x)$
+
+$$\epsfbox{picture.8}$$
+
+$$g_n(x) = \begin{cases}
+ f(x), & \text{если $x \geqslant \frac{1}{n}$}\\
+     0,  & \text{если $x < \frac{1}{n}$ } \end{cases}$$
+
+Заметим, что $\lin g_n(x) =f(x), \ x>0$. На основании предыдущей
+теоремы, можем записать
+$$
+(R) \int \limits_{\frac{1}{n}}^1 \fd = (R) \int \limits_0^1
+g_n(x) \, dx = (L) \int \limits_0^1 g_n(x) \, dx
+$$
+$$
+(R) \int \limits_{\frac{1}{n}}^1 |f(x)| \, dx = (R) \int \limits_0^1
+|g_n(x)| \, dx = (L) \int \limits_0^1 |g_n(x)| \, dx.
+$$
+$$
+(R) \int \limits_{\frac{1}{n}}^1
+|f(x)| \, dx \rightarrow (R) \int \limits_0^1 |f(x)| \, dx \
+\text{(по определению)}
+$$
+$$
+(L) \int \limits_0^1 |g_n(x)| \, dx \rightarrow (L) \int \limits
+|f(x)| \, dx \ \text{(по теореме Беппо-Леви, так как }
+|g_n(x)|\nearrow |f(x)|)
+$$
+Так как $(R) \iz |f(x)| \, dx < \infty,$ получаем, что
+$$
+(L) \iz |f(x)| \, dx < \infty\  \Rightarrow \ |f(\cdot)| \in
+\overline{L}_1 (0,1),
+$$
+
+а, значит, сама функция $f$ - интегрируема по Лебегу ($f(\cdot)
+\in \overline{L}_1(0,1)$).
+
+Осталось доказать, что $$(L) \iz \fd = (R) \iz \fd.$$
+
+По определению $\forall n$
+$$ \begin{aligned}
+   |g_n(x)| & \leqslant |f(x)| \\
+ g_n(x) & \rightarrow f(x).
+\end{aligned}$$
+
+Значит, мы находимся в условиях теоремы Лебега о предельном
+переходе под знаком интеграла.
+$$
+\begin{aligned}
+(R) \iz g_n(x) \, dx & = (L) \iz g_n(x) \, dx \rightarrow (L) \iz
+\fd \ \text{(по теореме Лебега)} \\
+(R) \iz g_n(x) \, dx & = (R) \int \limits_{\frac{1}{n}}^1 \fd
+\stackrel{def}{\rightarrow} (R) \iz \fd \in \R.
+\end{aligned}
+$$
+Мы доказали, что интегралы совпадают, если интеграл Римана
+существует.
+
+Если проделать те же выкладки в обратную сторону, можно получить и
+обратное утверждение (оставляем в качестве упражнения).
+\end{proof}
+
+\begin{ex}
+\begin{enumerate}
+\item $f(x)= \frac{1}{x^{\alpha}}, \ 0<\alpha<1$ интегрируема по
+Лебегу. \item $f(x) = \frac{1}{x}$ не интегрируема по Риману
+$\Rightarrow$ не интегрируема по Лебегу. \item Пусть $f(x) = a_1,\
+$ если $x\in \left( \frac12, \, 1 \right],\ $ далее $f(x) = a_2, \
+$ если $x\in \left( \frac14, \, \frac12 \right], \ \ldots \ f(x) =
+a_n,\ $ если $x\in \left( \frac {1}{2^n}, \, \frac{1}{2^{n-1}}
+\right].$ Тогда (собственно) $f$ интегрируема по Риману, а по
+Лебегу неинтегрируема.
+
+$$\epsfbox{picture.9}$$
+
+Выбираем $a_i$ так, чтобы $$a_1 \cdot \frac{1}{2}=1, \  a_2 \cdot
+\frac{1}{4}=\frac{1}{2},\  \ldots ,\  a_n \cdot \frac{1}{2^n}=
+\frac{1}{n}.$$
+
+ $$(R) \iz \fd = \sus \frac{
+(-1)^{n+1}}{n},$$ так что $f$ интегрируема по Риману (в
+несобственном смысле).
+
+Но ряд из модулей расходится $\Rightarrow $  по Лебегу $f$
+неинтегрируема.
+\end{enumerate}
+\end{ex}
+\begin{df}
+$\overline{L}_p (\Om, \As, \nu)$ - множество всех
+измеримых функций $f$ на $\Om$, таких что $$\io |f(x)|^p \nu
+(d\om) < \infty.$$
+\end{df}
+Докажем, что это пространство линейно и определим на нем норму. Из
+определения следует, что
+$$f(\cdot) \in \overline{L}_p \
+\Rightarrow \  \alpha f(\cdot) \in \overline{L}_p \quad \forall
+\alpha \in \R.$$
+
+Докажем, что сумма функций из $\overline{L}_p$ тоже принадлежит
+$\overline{L}_p$. Воспользуемся неравенством
+$$\forall a,b \geqslant 0  \quad (a+b)^p
+\leqslant C_p (a^p + b^p),$$
+
+предварительно доказав его.
+
+\begin{proof}
+Положим
+$$
+\psi (t) = \frac{(1 + t)^p}{1 + t^p}, \ t \geqslant 0
+$$
+
+Ясно, что $\psi (t)$ является непрерывной функцией, причем $\psi
+(0) = 1, \ \psi(t) \rightarrow 1 \ (t \rightarrow \infty).$
+Следовательно, $\psi (t) \leqslant C_p.$
+
+Теперь сделаем замену:
+$$t = \frac{a}{b},\mbox{ где } a \geqslant 0 \mbox{ и
+} b>0,$$ тогда
+$$
+(1 + t)^p \leqslant C_p(1 + t^p) \  \Longleftrightarrow \ (a +
+b)^p \leqslant C_p (a^p + b^p)
+$$
+\end{proof}
+
+Предположим, что $f(\cdot), g(\cdot) \in \overline{L}_p$, то есть
+$|f(\cdot)|^p, |g(\cdot)|^p \in \overline{L}_1 $ и положим
+$$a=|f(\om)|, b=|g(\om)|.$$
+
+Тогда имеет место следующая цепочка неравенств:
+$$|f(\om) + g(\om)|^p \leqslant \bigl( |f(\om)| + |g(\om)| \bigr)^
+p \leqslant C_p \bigl( |f(\om)|^p + |g(\om)|^p \bigr) \in
+\overline{L}_1.$$
+
+Для интегралов эти неравенства сохраняются, значит, $$f(\cdot)+
+g(\cdot) \in \overline{L}_p.$$
+
+Далее мы воспользуемся неравенством
+$$(1)\qquad ab \leqslant \frac{a^p}{p} +
+\frac{b^q}{q}, \quad  \mbox {где } 1 < p, \ q < \infty, \quad
+\frac{1}{p}+\frac{1}{q}=1, \quad \forall a,b \geqslant 0.$$
+
+Доказательство этого неравенства остается в качестве упражнения.
+
+Определим функционал на пространстве $\overline{L}_p$ таким
+образом:
+$$(2)\qquad ||f||_p= \bigl( \io |\fo|^p \,
+\nu \,(d\om)\bigr)^{\frac{1}{p}}.$$
+
+Докажем, что это полунорма. Имея $f(\cdot) \in \overline{L}_p,\
+g\in \overline{L}_q,$ положим
+$$a=\frac{|\fo|}{||f||_p}, \  b=\frac{|g(\om|}{||g||_q}.$$
+
+и подставим их в неравенство (1). Тогда получим:
+$$\frac{|\fo||g(\om)|}{||f||_p
+||g||_q} \  \leqslant \  \bigl(\frac{|\fo|}{||f||_p} \bigr)^p
+\frac{1}{p} \ +\ \bigl(\frac{|g(\om)|}{||g||_q} \bigr)^q
+\frac{1}{q}.$$
+
+Интегрируем это неравенство
+$$\io \frac{|\fo||g(\om)|}{||f||_p
+||g||_q} \nu(d\om) \  \leqslant \  \io \bigl( \frac{1}{p\,
+||f||_p^p} |\fo|^p + \frac{1}{q\, ||g||_q^q}|g(\om)|^q \bigr)\,
+\nu\,(d\om)\  \stackrel{\mbox{в силу (2)}} = $$
+$$=\ \frac{1}{p} + \frac{1}{q}=1 $$
+В итоге получим неравенство:
+$$\io \frac{|\fo||g(\om)|}{||f||_p ||g||_q} \nu(d\om) \leqslant 1,$$
+которое можно переписать так:
+$$\io |\fo||g(\om)|
+\nu(d\om) \leqslant ||f||_p \,||g||_q \  - $$
+ - Это неравенство
+носит название неравенства Гельдера.
+
+Неравенство Коши-Буняковского является частным случаем неравенства
+Гельдера (при $a = b = 2$).
+
+Также отсюда следует, что $\fo g(\om)$ - интегрируема. Надо
+проверить, что $||f||_p$  - полунорма.
+\begin{enumerate}
+\item $||f||_p \geqslant 0.$ \item $||\alpha f||_p = |\alpha|
+\cdot ||f||_p.$ \item $||f+g||_p \leqslant ||f||_p + ||g||_p$
+(неравенство Минковского).
+\end{enumerate}
+При доказательстве неравенства Гельдера мы пользовались тем, что
+$||f||_p, ||g||_q > 0$.
+
+Теперь предположим, что $$||f||_p = 0.$$ Тогда это будет
+эквивалентно следующему условию:
+
+$$\io |\fo|^p \nu(d\om) = 0.$$
+А, значит, $$|\fo|^p= 0 \text{ $\nu-$почти всюду} \ \Rightarrow\
+\fo = 0 \text{ $\nu-$почти всюду}\  \Rightarrow\ \fo g(\om) = 0
+\text{ $\nu-$почти всюду},$$ следовательно, неравенство Гельдера
+справедливо и при $||f||_p \geqslant 0, ||g||_p \geqslant 0.$
+Теперь докажем неравенство Минковского.
+
+\begin{proof}
+Справедливы соотношения $$\|f+g\|^p_p \ = \ \io |\fo + g(\om)|^p
+\nu(d\om) = \io |\fo +g(\om)|\, |\fo + g(\om)|^{p-1}
+\nu(d\om)\leqslant $$
+
+$$ \leqslant
+\io |\fo|\, |\fo + g(\om)|^{p-1}\, \nu\,(d\om)+ \io |g(\om)|\,
+|\fo + g(\om)|^{p-1}\, \nu\,(d\om) \ =
+$$
+$$\ = \ \left\{ \mbox{ пользуемся тем, что } (p-1) = \frac{p}{q} \right\}\ = \ $$
+$$
+= \ \io |\fo| \, |\fo + g(\om)|^{\frac{p}{q}} \, \nu \, (d\om) \
++\ \io |g(\om)| \, |\fo + g(\om)|^{\frac{p}{q}} \, \nu \, (d\om) \
+\leqslant
+$$
+$$\leqslant \  \|f\|_p \,\,
+\|(f +g)^{\frac{p}{q}}\|_q \ + \ \|g\|_p \,\, \|(f
++g)^{\frac{p}{q}}\|_q
+$$
+Но
+$$
+\|(f+g)^{\frac{p}{q}}\|_q  = \bigl( \io |\fo+ g(\om)|^p \nu(d\om)
+\bigr)^{\frac{1}{q}}  = \|f+g\|_p^{\frac{p}{q}},
+$$
+$$
+\mbox{ так как }\ \|f+g\|_p^p   = \io |\fo + g(\om)|^p \nu(d\om),
+$$
+поэтому
+$$
+\|f+g\|_p^p \  \leqslant \  \|f\|_p \,\, \|f+q\|_p^{\frac{p}{q}} \
++\  \|g\|_p \,\, \|f + g\|_p^{\frac{p}{q}}\  \Leftrightarrow \
+\|f+g\|^{p - \frac{p}{q}}_p \  \leqslant \  \|f\|_p \ +\  \|g\|_p
+\  \Leftrightarrow
+$$
+$$\Leftrightarrow\ ||f+g|| \leqslant ||f||_p + ||g||_p, \mbox{ так как } p-\frac{p}{q} = 1.$$
+\end{proof}
+
+Определим фактор-пространство
+$$\overline{L}_p (\Om,\As,
+\nu) / \{ f \in \overline{L}_p , \fo =0 \text{ $\nu-$почти всюду}
+\} = L_p (\Om, \As, \nu ).$$
+
+Получаем пространство классов эквивалентности функций $L_p$,
+модули которых интегрируемы в р-ой степени. Для $f \in L_p$
+определим норму
+$$||f||_p= \bigl( \io |\fo|^p \,\nu\, (d\om)
+\bigr)^{\frac{1}{p}}.$$
+
+Норма не зависит от выбора представителя класса эквивалентности.
+
+
+\begin{theorem}
+Пространство $L_p$ полно.
+\end{theorem}
+\begin{proof}
+Пусть $(f_n) \subset L_p$ - фундаментальная последовательность в
+$L_p$.
+
+Пусть $\{\varepsilon_n\}$ - числовая последовательность  с таким
+свойством:
+$$\sus \varepsilon_n < \infty, \varepsilon_i >0 \quad \forall \, i$$
+Тогда
+$$
+\exists n_1: \forall n, k > n_1 \ ||f_n - f_k||_p <
+\varepsilon_1
+$$
+$$
+\exists n_2: \forall n, k > n_2 \ ||f_n - f_k||_p < \varepsilon_2
+$$
+и так далее. Тогда ряд функций
+$$f_1 + (f_{n_1} - f_1) + (f_{n_2} - f_{n_1}) + \ldots$$
+(абсолютно) сходится почти всюду, так как ряд $|f_1| + |f_{n_1} -
+f_1| + |f_{n_2} - f_1| + \ldots $ - сходится почти всюду.
+
+Сходимость
+$$
+\io |f_{n_{j+1}} - f_{n_j}|\, \nu\,(d\om) \ \leqslant\
+\|f_{n_{j+1}} - f_{n_j}\|_p\,\, \|1\|_q
+$$
+$$
+\|1\|_q = \bigl( \io \nu(d\om) \bigr)^{\frac{1}{q}} = \bigl
+(\nu(\Om)\bigr)^{\frac{1}{q}} = c >0 \ \Rightarrow \
+$$
+$$
+\Rightarrow \ \io |f_{n_{j+1}}(\om) - f_{n_j}(\om)| \nu (d\om)
+\leqslant \|f_{n_{j+1}} - f_{n_j}\|_p \ c\ < \ \varepsilon_p \cdot
+c.
+$$
+Поэтому
+$$\io |f_1(\om)| \dn + \io
+|f_{n_1}(\om) - f_1(\om)| \dn + \ldots < \infty .$$ По теореме
+Беппо-Леви:
+$$|f_1(\om)| + |f_{n_1}(\om) - f_1(\om)| + \sum\limits_{j=1}^{\infty} |f_{n_{j+1}} - f_{n_j}|
+ < \infty \text{\ \ почти всюду}$$
+Следовательно, ряд $\ f_1(\om) + (f_{n_1}(\om) - f_1(\om)) +
+\ldots\ $ сходится почти всюду.
+
+\section{Лекция}
+Частичными суммами этого ряда являются:
+$$
+s_1 = f_1 (\om), s_2 = f_{n_1} (\om), \ldots, s_{k+1} = f_{n_k}
+(\om).
+$$
+Но сходимость ряда означает сходимость последовательности его
+частных сумм. Итак, мы получаем, что последовательность
+$f_{n_j}(\om) \rightarrow f (\om) \quad \nu-$почти всюду.
+ Докажем, что $f(\cdot) \in L_p$ и что $f_{n_j}(\om) \rightarrow \fo $ в
+ метрике $L_p$.
+
+Так как $f_n(\om)$ - фундаментальна в $L_p$, то фундаментальна и
+ее подпоследовательность $(f_{n_j})$ $\ \Rightarrow $
+
+$$\forall \, \varepsilon>0 \quad
+\exists m \in \mathbb{N}:\  \forall\, k,r > m \ \Rightarrow\
+\|f_{n_k} - f_{n_r}\|_{L_p} < \varepsilon$$ Это значит, что
+$$\io |f_{n_k}(\om) - f_{n_r}(\om)|^p \dn  <\varepsilon^p \ \mbox{ для таких } k,\, r$$
+
+Зафиксируем $k$ и устремим $r$ к бесконечности. Тогда получим, что
+последовательность
+$$|f_{n_k}(\om) - f_{n_r}(\om)| \  \stackrel{r \rightarrow \infty}{\longrightarrow} \
+|f_{n_k}(\om) - \fo|.$$
+
+Таким образом, мы можем применить теорему Фату. То есть получаем,
+что
+$$
+|f_{n_k}(\om) - \fo| \in L_p\ , \ \io |f_{n_k}(\om) -\fo|^p
+\dn < \varepsilon^p  \ \mbox{ для всех } k,\, r  \quad (*)
+$$
+
+Отсюда следует, что\\
+\\
+1. $f_{n_k}(\om) - \fo \in L_p \ $, а так как $L_p$ - линейное
+пространство и $f_{n_k} \in L_p$ по условию,
+то $f \in L_p$.\\
+\\
+2. Неравенство $(*)$ верно при $\forall \, k>n_0$ $$\io
+|f_{n_k}(\om) - \fo|^p < \varepsilon^p \ \Longleftrightarrow\
+||f_{n_k} -f||_p < \varepsilon \quad \forall k
+>n_0.$$
+
+Это и означает, что $f_{n_k} \rightarrow f$ в норме $L_p$.
+
+Используем теперь следующее предположение.
+
+\begin{prop}
+Пусть $E$ - метрическое пространство и $\{x_n\} \in E$ -
+фундаментальная последовательность. Пусть также $x_{n_k} \
+\rightarrow\  x \in E.\ $ Тогда $x_n \rightarrow x$ (доказать это
+в качестве упражнения).
+\end{prop}
+В нашем случае роль $E$ играет $L_p,\ $ а роль $x_n$ играет $f_n.\
+$ Следовательно, $f_n \rightarrow f$ в $L_p$. Таким образом, мы
+доказали, что $L_p -$ полно.
+
+\end{proof}
+
+\subsection{Формула замены переменной в интеграле Лебега.}
+
+\begin{df}
+Пусть $F$ - отображение $\ (\Om_1, \As_1)\ $ в $\ (\Om_2,
+\As_2), \ $ причем
+$$
+F - \mbox{ измеримо, то есть } \forall A \in \As_2 \quad
+F^{-1} (A) \in \As_1.
+$$
+
+Пусть $\nu_1$ - мера на $\As_1$. Определим (прямой) образ
+меры $\nu_1 : F_* \nu_1 $ следующим образом:
+$$
+(F_*\nu_1)(A) \equiv (\nu_1 F^{-1}) = \nu_1 (F^{-1} (A)).
+$$
+\end{df}
+
+Так как $F^{-1} (A) \in \As_1$ (то есть измеримо), то
+число $\nu_1 \, (F^{-1} (A))$ - определено, так что определение
+корректно.
+
+\begin{theorem}
+
+Пусть $F$ - определенное выше измеримое отображение:
+$$
+F: (\Om_1, \As_1)\ \rightarrow\  (\Om_2, \As_2)
+$$
+ и  $\ g \colon\  \Om_2 \rightarrow \mathbb R$ -
+измеримая функция. Тогда верна формула замены переменных:
+$$
+\int \limits_{\Om_2} g(\om_2) (F_* \nu) (d\om_2) = \int
+\limits_{\Om_1} g(F(\om_1)) \nu(d\om_1),
+$$
+причем интеграл слева существует $\ \Longleftrightarrow\ $
+существует интеграл справа.
+
+\end{theorem}
+\begin{proof}
+1. Проверим для $g= \gamma_{A_2}$, где $A_2 \in \As_2$
+
+$$\int \limits_{\Om_2} \gamma_{A_2} (\om_2) (F_* \nu) (d\om_2) =
+(F_*\nu) (A_2) = \nu (F^{-1} A_2)$$
+
+$$ \int \limits_{\Om_1}
+\gamma_{A_2} (F(\om_1)) \nu(d\om_1) = \int \limits_{\Om_1}
+\gamma_{F^{-1} A_2} (\om_1) \nu (d\om_1) = \nu (F^{-1} A_2).$$
+
+Справедливость первого равенства в последней строке вытекает из
+следующей цепочки эквивалентностей:
+$$ \gamma_{F^{-1} A_2}
+(\om_1) = 1 \ \Longleftrightarrow\  \om_1 \in F^{-1}(A_2) \
+\Longleftrightarrow\  F(\om_1) \in A_2 \ \Longleftrightarrow\
+\gamma_{A_2} (F(\om_1)) = 1 $$
+
+Таким образом, мы проверили, что формула замены переменных верна
+для индикаторов.
+
+2. Отсюда сразу же следует, что она выполняется для $g$ -
+неотрицательной, простой.
+
+3. Поэтому она верна и для неотрицательных измеримых функций
+(доказывается переходом к пределу, так как последовательность
+простых функций стремится к измеримой).
+
+4. Произвольную функцию представим как разность двух
+неотрицательных.
+
+\end{proof}
+
+\begin{ex}
+Пусть функция $\psi: [c,d] \rightarrow [a, b]$ непрерывно
+дифференцируема и обладает такой же обратной. Тогда по формуле
+замены переменных, известной из математического анализа, получим
+(если $g$ - непрерывная функция):
+$$(*) \qquad \int \limits_a^b g(x) \, dx = \int \limits_{\psi^{-1}a =
+c}^{\psi^{-1}b =d} g (\psi(z)) \psi^{\prime} (z) \, dz$$
+
+Сравним это равенство с нашей формулой.
+
+Пусть $\Om_1 = [c,d], \ \Om_2 = [a,b], F = \psi$ и $c \leqslant
+\alpha \leqslant \beta \leqslant d$. Определим меру на
+$\sigma$-алгебре борелевских подмножеств отрезка $[c, d]$ так:
+
+$$\nu[\alpha, \beta) = \int \limits_{\alpha}^{\beta} \psi'(z) \, dz
+= \psi(\beta) - \psi(\alpha).$$
+
+Интеграл по этой мере определяется так $$\int
+\limits_{\psi^{-1}a}^{\psi^{-1}b} g (\psi(z)) \psi'(z) \, dz =\int
+\limits_{\psi^{-1}a}^{\psi^{-1}b} g(\psi(z)) \nu(dz).$$
+
+Найдем образ меры:
+$$
+(\psi_{*} \nu) [\alpha_1, \beta_1) = \nu
+\psi^{-1} ([\alpha_1, \beta_1)) = \nu [\psi^{-1} \alpha_1,
+\psi^{-1} \beta_1) = \int \limits_{\psi^{-1} \alpha_1}^{\psi^{-1}
+\beta_1} \psi'(z) \, dz = \beta_1 - \alpha_1 = \int
+\limits_{\alpha_1}^{\beta_1} \, dx,
+$$
+то есть $\psi_{*} \nu$ - это мера Лебега на $[a, b]$ и
+$$
+\il{a}^b g(\om)\, (\psi_{*} \nu) \, (d\om)\ = \ \il{a}^b g(x)\,
+dx.
+$$
+
+То есть формула из математического анализа является частным
+случаем нашей формулы из теоремы 10.
+\end{ex}
+
+\begin{prop}
+Пусть $g$ - измеримая вещественная функция на $(\Om,
+\As),$ \linebreak  $f \in L_1(\Om,\As, \nu)$.
+
+Тогда $$g \in L_1(\Om,\As, f \nu)\ \Longleftrightarrow \
+gf \in L_1(\Om,\As, \nu).$$
+
+При этом верно равенство: $$\io g(\om) (f\nu)(d\om) = \io g(\om)
+\fo \nu(d\om).$$
+\end{prop}
+
+\begin{proof}
+Проверим для индикаторов $A \in \As$:
+$$\io \gamma_{A}
+(\om) (f \nu) (d\om) = (f\nu)(A) = \int \limits_A f \nu(d\om) =
+\io \gamma_A (\om) \fo
+\nu (d\om).$$
+
+Дальнейшие рассуждения провести самим аналогично предыдущему доказательству.\\
+\end{proof}
+
+Определим произведение измеримых пространств и пространств с
+мерой.
+\begin{df}
+Произведением измеримых пространств $(\Om_1, \As_1)$ и
+$(\Om_2, \As_2)$ называется измеримое пространство,
+обозначаемое символом:
+$$
+(\Om_1, \As_1) \times (\Om_2, \As_2) \ \mbox{
+или }\ (\Om_1 \times \Om_2, \As_1 \otimes
+\As_2), \mbox{ где }
+$$
+$\As_1  \otimes  \As_2$ - $\sigma$-алгебра,
+порожденная полукольцом $\Ps$ прямоугольников;\
+прямоугольником называется всякое множество вида $A_1 \times A_2,\
+A_j \in \As_j.$
+\end{df}
+\begin{problem}
+ Пусть $A_i\in \As_i$. Доказать, что $\Ps$ - полукольцо.
+\end{problem}
+
+Далее предполагается, что все рассматриваемые меры счетно
+аддитивны.
+\begin{df}
+Произведение пространств с мерой:
+$$ (\Om_1, \As_1,
+\nu_1) \times (\Om_2, \As_2, \nu_2) = (\Om_1 \times
+\Om_2, \As_1 \otimes \As_2, \nu_1 \otimes
+\nu_2).$$
+
+При этом (тензорное) произведение мер $\nu_1 \otimes \nu_2$
+определяется так: на полукольце $\Ps$ прямоугольников оно
+определяется равенством
+$$(\nu_1 \otimes \nu_2) (A_1
+\times A_2) = \nu_1(A_1)  \cdot  \nu_2(A_2).$$
+
+Затем проверяется, что эта мера счетно аддитивна, после чего она
+продолжается на порожденную полукольцом $\sigma$-алгебру.
+\end{df}
+
+Замечание о полных мерах.
+
+Напомним, что мера $\nu$ на измеримом пространстве $(\Om,
+\As)\ $  полна, если $\forall A \in \As$, из
+того, что $\nu A =0$, следует, что
+$$\forall B \subset A ,\  B \in \As\  \mbox{ и }\  \nu B
+=0.$$
+
+
+Если имеется неполная мера, то ее можно пополнить. Пополнение
+выглядит так:
+$$\overline{\As} = \{ A \in \Om; \ \exists B
+\in \As, \ \exists C \in \As : A\vartriangle B
+\subset C , \nu C = 0 \};\ \mbox{ если } A\in
+\overline{\As},$$
+
+ то полагаем, что $\overline{\nu} A = \nu B$.
+
+Только что определенное произведение не обязано быть полной мерой,
+но ее можно пополнить; \ тогда получится пополненное произведение
+мер.
+
+\section{Лекция}
+
+\begin{theorem}[Фубини]
+Пусть $f$ - числовая функция на $\Om_1  \times \Om_2.$
+
+\textbf{1.} Пусть $f \in \overline{L}_0(\Om_1 \times \Om_2,
+\As_1  \otimes \As_2, \nu_1\otimes\nu_2)$.
+
+Тогда $$\forall \om _1 \in \Om_1, \  \Om_2 \ni \om_2 \mapsto
+f(\om_1, \om_2) - \nu_2 \mbox{ - измерима и }$$
+$$\forall \om_2 \in
+\Om_2, \ \Om_1 \ni \om_1 \mapsto f(\om_1, \om_2) - \nu_1 \mbox{ -
+измерима.}$$
+
+\textbf{2.} Пусть $f \in \overline{L}_1(\Om_1  \times \Om_2,
+\As_1 \times \As_2, \nu_1\otimes\nu_2)$.
+
+Тогда для $\nu_2$-почти всех $\om_2 \in \Om_2$ функция
+$$\om_1
+\mapsto f(\om_1, \om_2) - \nu_1 \mbox{-интегрируема,}$$ причем
+функция
+$$\om_2 \mapsto \int \limits_{\Om_1} f(\om_1, \om_2)
+\nu_1(d\om_1)$$ (определенная $\nu_2$ - почти всюду) будет
+измерима и $\nu_2$-интегрируема и
+$$
+\int \limits_{\Om_1} \bigl( \int \limits_{\Om_2} f(\om_1, \om_2)
+\, \nu_2\,(d\om_2)\bigr)\, \nu_1\,(d\om_1) \ \stackrel{(1)}=
+$$
+$$= \ \int \limits_{\Om_2} \bigl(
+\int \limits_{\Om_1} f(\om_1, \om_2)\, \nu_1\,(d\om_1) \bigr) \,
+\nu_2\,(d\om_2) = \int \limits_{\Om_1  \times \Om_2} f(\om_1,
+\om_2) \, \nu_1 \otimes \nu_2 \, (d\om_1, d\om_2)$$ Если функция
+$f$ неотрицательна, то предполагать интегрируемость необязательно
+и равенство (1) выполнено автоматически.
+\end{theorem}
+
+Формулировка теоремы Фубини для функций на пополненном
+произведении мер отличается только в пункте 1; \ в случае
+пополненного произведения функция $\om_2 \mapsto f(\om_1, \om_2)$
+определена и $\ \nu_2$-измерима лишь для $\ \nu_1$-почти всех
+$\om_2,$ а функция $\om_1 \mapsto f(\om_1, \om_2)$ определена и $\
+\nu_1$-измерима лишь для $\ \nu_2$-почти всех $\om_1.$
+
+
+\begin{ex}
+Пусть $\Om=\mathbb{N}$, $\As_N$ - $\sigma$-алгебра всех
+подмножеств множества $\mathbb{N}$ и\\ $\nu(A)$ - число элементов
+$A, \ A\subset \mathbb N$. Надо показать, что для $f:
+\Om\rightarrow\R$ выполнено:
+
+$$f \in L_1(\Om, \As,
+\nu) \ \Longleftrightarrow \ \sum \limits_{n=1}^{\infty} |f(n)| <
+\infty$$
+
+$$\mbox{ и }\io \fo \nu(d\om) = \sum \limits_{n=1}^{\infty} f(n).$$
+
+Нас интересует, как будет выглядеть в этом случае теорема Фубини.
+Пусть
+$$f: \Om_1 \times \Om_2 \rightarrow\R \qquad (\Om_1 = \Om_2 = \mathbb N)$$
+
+$$
+f \in L_1(\Om_1 \times \Om_2, \As_1 \times
+\As_2, \nu_1 \otimes \nu_2) \ \Longleftrightarrow\  \sum
+\limits_{n,k=1}^{\infty}|f(n,k)| <\infty,$$
+
+$$\int \limits_{\Om_1
+\times \Om_2} \fo (\nu_1 \otimes \nu_2) (d\om) = \sum
+\limits_{n,k=1}^{\infty} f(n,k)$$
+
+$$\int \limits_{\Om_2} \bigl(
+\int \limits_{\Om_1} f(\om_1, \om_2) \, \nu_1 \, (d\om_1) \bigr)
+\nu_2(d\om_2) = \sum \limits_{n=1}^{\infty} \sum
+\limits_{k=1}^{\infty} f(n,k).$$
+
+Значит, теорема Фубини в этом случае утверждает, что если ряд
+сходится абсолютно, то суммы повторного и двойного рядов
+совпадают.
+\end{ex}
+\begin{ex} Пусть
+$ \bigl( f(n,k) \bigr) = \left(%
+\begin{array}{ccccc}
+   1 & -1 &  &  & 0 \\
+  -1 &\ \ 1 &  &  &  \\
+   &  & 1 & -1 & \vdots \\
+   &  & -1 & \ \ 1 &  \\
+  0 &  &  \ldots&  & \ddots \\
+\end{array}%
+\right)$ - элементы бесконечной матрицы - это значения,
+принимаемые функцией $f$ на соответствующих парах $(n,k)$.
+
+Тогда
+$$\sum \limits_{n,k} |f(n,k)| = \infty \ \mbox{ и }\ $$
+$$\int \limits_{\Om_2}\bigl( \int \limits_{\Om_1} f(n,k) \nu_1(dk)
+\bigr) \nu_2 (dn) = 0 = \int \limits_{\Om_1}\bigl( \int
+\limits_{\Om_2} f(n,k) \nu_2(dn) \bigr) \nu_1 (dk),$$ так что
+повторные интегралы существуют и равны, хотя двойной интеграл не
+существует.
+\end{ex}
+\begin{ex} Пусть
+$ \bigl( f(n,k) \bigr) = \left(%
+\begin{array}{ccccc}
+   1 & -1 &  &  & 0 \\
+   & \ \ 1 & -1 &  &  \\
+   &  & \ \ 1 & -1 & \vdots \\
+  0 &  &  \ldots&  & \ddots \\
+\end{array}%
+\right)$ - бесконечная матрица.
+
+Тогда
+$$\sum \limits_{n,k} |f(n,k)| = \infty , \quad \int
+\limits_{\Om_2}\bigl( \int \limits_{\Om_1} f(n,k) \nu_1(dk) \bigr)
+\nu_2 (dn) = 0,$$
+
+$$\mbox{ но } \int \limits_{\Om_1}\bigl( \int
+\limits_{\Om_2} f(n,k) \nu_2(dn) \bigr) \nu_1 (dk) = 1.$$
+
+Здесь двойные интегралы существуют, но не равны.
+\end{ex}
+Стандартное обозначение $$l_p = L_p (\Om, \As, \nu) \
+(\Om = \mathbb{N}).$$
+
+$l_p$ - множество всех последовательностей натуральных чисел.
+
+$$\sum
+\limits_{n=1}^{\infty} |x_n|^p < \infty, \mbox{ при этом норма
+равна } ||(x_n)||_{l_p} = \bigl(\sum \limits_{n=1}^{\infty}
+|x_n|^p \bigr)^{\frac{1}{p}}.$$
+
+\begin{proof}\textbf{теоремы Фубини}\ (в доказательстве предполагается, что меры
+конечны).
+
+1. Пусть $P$ - полукольцо всех прямоугольников
+
+$$
+A_1 \times A_2,\  \mbox{ тогда } \ (\nu_1 \otimes \nu_2 ) (A_1
+\times A_2) = \nu_1 A_1 \cdot \nu_2 A_2.
+$$
+
+Докажем, что мера $\nu_1 \otimes \nu_2$ счетно аддитивна на $P$.
+Пусть
+$$A_1 \times A_2 = \bigsqcup \limits_{n} (A_1^n
+\times A_2^n) \ \ (*).$$
+
+Мы должны доказать, что
+$$\nu_1 A_1 \cdot \nu_2 A_2 \  =\  (\nu_1 \otimes \nu_2)(A_1 \times A_2) \
+=\ \sum \limits_{n=1}^{\infty} (\nu_1 \otimes \nu_2) (A_1^n \times
+A_2^n) \  = \  \sum \limits_{n=1}^{\infty} \nu_1 A_1^n \cdot \nu_2
+A_2^n.$$
+
+Введем функцию $f(\om_1) = \nu_2 A_2 \cdot \gamma_{A_1} (\om_1)$ и
+для каждого $n$ также введем функцию $$f_n(\om_1) = \nu_2 \,
+A_2^n\,  \gamma_{A_1^n} (\om_1).$$
+
+Утверждается, что из (*) следует, что $\forall \om_1 \quad
+f(\om_1) = \sum \limits_{n=1}^\infty f_n(\om_1)$. Это утверждение
+является верным, потому что мера $\nu_2$ - счетно аддитивна.
+
+$$\epsfbox{picture.10}$$
+
+$\forall \, \om_1 \in A_1 \ f(\om_1)\  =\  \nu_2 \, A_2 \  = \
+\sum\limits_{n=1}^{\infty} \nu_2 \, A_{2}^{n} \ =\  \sum
+\limits_{n=1}^{\infty} f_n(\om_1).$
+
+Так как все функции неотрицательны, то по т. Беппо - Леви
+справедливо равенство
+
+$$\nu_2 A_2 \cdot \nu_1 A_1 = \int \limits_{\Om_1} f(\om_1) \nu_1
+(d\om_1) = \sum \limits_{n=1}^{\infty} \int \limits_{\Om_1}
+f_n(\om_1) \nu_1 (d\om_1) = \sum \limits_{n=1}^{\infty} \nu_2
+A_2^n \cdot \nu_1 A_1^n  = \sum \limits_{n=1}^{\infty} (\nu_1
+\otimes \nu_2) (A_1^n \times A_2^n)$$
+
+Таким образом, мы проверили счетную аддитивность меры $\nu_1
+\otimes \nu_2$ на $P$.
+
+2. Докажем теорему Фубини сначала для индикаторов измеримых
+множеств.
+
+$$\epsfbox{picture.11}$$
+
+Для индикаторов измеримых множеств, являющихся прямоугольниками,
+она верна:
+
+$$\int \limits_{\Om_1 \times \Om_2} \gamma_{A_1 \times A_2}(\om)
+(\nu_1 \otimes \nu_2) (d\om) = \nu_1 A_1 \cdot \nu_2 A_2\ =$$
+$$ =\  \int \limits_{\Om_1} \bigl( \int \limits_{\Om_2}
+f(\om_1, \om_2) \nu_2 (d\om_2) \bigr) \nu_1 (d\om_1)\ = $$ $=\
+\int \limits_{\Om_1} \nu_2 A_2 \ \nu_1 (d\om_1) = \nu_2 A_2\cdot
+\nu_1 A_1 \Rightarrow$ для индикаторов доказано.
+
+3. Значит, она верна для конечных линейных комбинаций индикаторов
+прямоугольников. В частности, для индикаторов множеств,
+принадлежащих кольцу $S(P),\ $ порожденному полукольцом $P.$
+
+Пусть $\Phi$ - совокупность всех измеримых множеств таких, что для
+их индикаторов теорема Фубини верна:
+$$\Phi = \{ A \in
+\As_1 \times \As_2, \text{для $\gamma_A$ теорема
+Фубини верна.} \}.$$
+$$\ A_1 \subset A_2 \subset A_3 \subset \ldots, \ A_j \in \Phi \
+\Rightarrow $$ $$\Rightarrow\  \bigcup\limits_{j} A_j \in \Phi
+\text{ (этот факт вытекает из теоремы Беппо-Леви).}$$
+
+Известно, что для $\gamma_{A_j}$ - теорема верна, так как $A_j$
+возрастает, то $$\gamma_{A_j} (\om_1, \om_2) \rightarrow
+\gamma_{\cup A_j} (\om_1, \om_2),$$ следовательно, по теореме
+Беппо-Леви:
+$$\int \limits_{\Om_1 \times \Om_2} \gamma_{A_j} (\om_1, \om_2)
+(\nu_1 \otimes \nu_2) (d\om) \rightarrow \int \limits_{\Om_1
+\times \Om_2} \gamma_{\cup A_j} (\om_1, \om_2) (\nu_1 \otimes
+\nu_2) (d\om),$$ покажем, что для таких объединений теорема Фубини
+верна.
+
+Далее, если $A, B \in \Phi,\ B \subset A,\ $ то
+$\gamma_{A\backslash B} = \gamma_{A} - \gamma_B$ и так как теорема
+Фубини верна для $\gamma_A$ и для $\gamma_B,\ $ то она верна и для
+их разности. Итак, совокупность $\wp$ обладает следующими
+свойствами:
+\begin{enumerate}
+\item $\Om \in \Phi;$
+
+\item $A_1, \, A_2 \in \Phi\ \Rightarrow\  A_1 \backslash A_2 \
+\in \Phi;$
+
+\item Если $\ \forall \, n \quad A_n \in \wp, \ A_1 \subset
+A_2\subset A_3\subset \ldots,\ $ то
+$$
+\bigcup\limits_{n} A_n \in \Phi;
+$$
+
+\item $S(P) \subset \Phi.$
+\end{enumerate}
+
+Пусть $\Phi_0$ - минимальная совокупность множеств со свойствами
+(1)-(4), так что $\Phi_0\subset \Phi.$
+
+Докажем, что, если $A_1,\,  A_2\ \in \wp,\ $ то $\ A_1 \cap A_2 \
+\in \Phi_0.$
+
+Пусть
+$$\Phi_1\ = \ \{A\in \Phi\colon \ \forall\, B\in S(P),\ A\cap
+B \ \in \Phi_0\}.\ $$ Тогда
+$$
+(A) \qquad S(P) \subset \Phi_1 \ (\mbox{ так как } \forall \, A\in
+S(P),\ \forall \, B\in S(P), \ A\cap B\  \in S(P) \subset \Phi_0;
+$$
+$$
+(B) \qquad \mbox{ если  $A_j \in \Phi_1$ и $A_1 \subset A_2
+\subset A_3 \subset \ldots,$ то } \ \cup A_j \ \in
+\Phi_1.\qquad\qquad\qquad\quad
+$$
+
+Действительно, раз $A_j \in \Phi_1,\ $ то
+$$
+\forall \, B\in S(P), \ \ A_j \cap B \ \in \Phi_0\quad
+\Longrightarrow \bigcup\limits_{j}\, A_j\cap B \ \in \Phi_0.
+$$
+$$
+(C) \qquad \mbox{ если  $A_1, \, A_2 \in \Phi_1$ и $A_1 \supset
+A_2,\ $ то } \ A_1\backslash A_2\ \in
+\Phi_1.\qquad\qquad\qquad\qquad\quad
+$$
+
+Действительно, раз $A_j \in \Phi_1,\ $ то
+$$
+\forall \, B\in S(P), \ \ A_j \cap B \ \in \Phi_0\quad (A_1 \cap
+B) \supset (A_2\cap B)
+$$
+и, значит, в силу свойства (2) системы $\Phi_0,$
+$$
+(A_1 \cap B) \backslash (A_2\cap B)\ = \ (A_1 \backslash A_2) \cap
+B \ \in \Phi_0,
+$$
+а это значит, что $A_1\backslash A_2\ \in \Phi_1.$ То, что $\Om
+\in \Phi_1,\ $ очевидно.
+
+Таким образом, система $\Phi_1$ обладает теми же свойствами
+(1)-(4) и содержится в $\Phi_0;\ $ так как $\Phi_0$ - минимальная
+система с такими свойствами, то $\Phi_1 = \Phi_0.$
+
+Пусть
+$$
+\Phi_2\ = \ \{A\in \Phi_0\colon \ \forall \, B \in \Phi_0, \ A
+\cap B \ \in \Phi_0\}.
+$$
+
+Тогда система $\Phi_2$ снова обладает свойствами (1)-(4).
+Действительно,
+$$
+S(P) \subset \Phi_2, \ \mbox{ так как } \ \forall \, B\in S(P)
+\quad \forall \, A \in \Phi_1, \ A\cap B \ \in \Phi_0,\ \mbox{ а
+}\  \Phi_1 = \Phi_0.
+$$
+Свойства (2), (3) доказываются аналогично.
+
+Таким образом, система $\Phi_2$ обладает свойствами (1)-(4) и
+содержится в минимальной системе $(\Phi_0)$ с такими свойствами.
+Значит, $\Phi_2 = \Phi_0.$\\
+
+Таким образом, система $\Phi_0$ обладает свойствами (1)-(4) и
+сверх того следующим свойством:
+$$
+\forall \, A,\, B \in \Phi_0,\ A\cap B \in \Phi_0.
+$$
+Но это значит, что $\Phi_0$ - это $\sigma$-алгебра, содержащая
+$S(P)$ и, значит, содержащая минимальную $\sigma$-алгебру,
+содержащую $S(P)$ (в действительности она с ней совпадает, так как
+минимальная $\sigma$-алгебра, содержащая $S(P),$ также обладает
+свойствами (1)-(4)).\\
+
+Итак, доказано, что для индикатора каждого множества из
+$\As_1 \otimes \As_2$ (то есть для каждого
+измеримого множества) теорема Фубини верна. Тогда она верна и для
+конечных линейных комбинаций таких индикаторов, то есть для
+простых функций, а значит, и для их монотонных пределов, то есть
+для произвольных неотрицательных измеримых функций;\ так как
+произвольная измеримая функция - это разность неотрицательных, то
+теорема Фубини доказана полностью.
+
+\end{proof}
+
+\section {Лекция}
+
+\begin{theorem}[Радона-Никодима]
+Пусть $(\Om, \As)$ - измеримое пространство, $\ \nu, \mu$
+- меры на сигма-алгебре $\As$ множеств подмножества $\Om$
+(неотрицательные конечные).
+
+Пусть также $\mu$ - абсолютна непрерывна относительно $\nu$ $(\mu
+<< \nu)$, то есть из того, что $\nu A =0$ следует, что $\mu A =0.$
+
+Тогда $$\exists f \in L_1(\Om, \As, \nu): \mu = f \nu,$$
+то есть $$\forall A \in \As \ \mu(A) = \int \limits_A \fo
+\nu (d\om) ).$$
+\end{theorem}
+\begin{proof}
+Рассмотрим новую меру $$\eta= \mu + \nu, \mbox{ то есть } \forall
+\, A \in \As \quad \eta(A) = \mu(A) + \nu(A).$$
+
+Рассмотрим новое пространство $L_2(\Om, \As, \eta)$ и
+функционал $F$ на нем: $$F(\varphi) = \io \varphi(\om)
+\mu(d\om).$$
+
+Докажем, что всякая функция $\ff\in L_2 (\Om, \As, \eta)$
+$\ \mu$-интегрируема.
+
+Действительно, если $\varphi \in L_2(\Om, \As, \eta),$ то
+$\varphi \in L_1(\Om, \As, \eta):$
+$$
+\bigl(\io |\varphi| \, d\eta \bigr)^2 \leqslant \io |\varphi|^2 \,
+d\nu \cdot \io 1 \, d\eta = \io |\varphi|^2 \, d\eta \cdot
+\eta(\Om);
+$$
+поэтому, если $\ff\in L_2 (\Om, \As, \eta),$ то
+$$
+\infty\ > \ \io |\varphi| \, d\eta = \io |\varphi| \, d\nu + \io
+|\varphi| \, d\mu \  \Longrightarrow\  \varphi \in L_1 (\Om,
+\As, \mu).
+$$
+При этом
+$$
+|F(\varphi)| = |\io \varphi \, d\mu| \leqslant \io |\varphi| \,
+d\mu \leqslant \io |\varphi|\, d\eta \leqslant ||\varphi||_{\eta}
+\cdot (\eta(\Om))^{\frac{1}{2}}$$
+Следовательно, функционал $F$ - непрерывен.\\
+\\
+\\
+В силу теоремы Рисса об общем виде линейного непрерывного
+функционала на гильбертовом пространстве можно утверждать, что
+$$\exists \,  g \in L_1(\Om, \As, \eta) \colon \, F(\varphi) =
+(g,\varphi) = \io g(\om) \varphi(\om) \eta (d\om).$$
+
+Рассмотрим множество $$A_0 = \{\om \in \Om: g(\om) \geqslant 1
+\}.$$
+
+Докажем, что это множество имеет нулевую меру $\eta$.
+$$F(\varphi) = \io
+\varphi(\om) \mu (d\om) = \io g(\om) \varphi(\om) \eta(d\om) = \io
+g(\om) \varphi(\om) \mu (d\om) + \io g(\om) \varphi(\om)
+\nu(d\om).$$
+
+Пусть $\varphi = \gamma_{A_0}. \ $ Тогда:
+
+$$F(\gamma_{A_0}) = \io \gamma_{A_0}(\om) \, d\mu = \mu(A_0) = \int
+\limits_{A_0} g(\om) \mu (d\om) + \int \limits_{A_0} g(\om)
+\nu(d\om) \ \geqslant \mu(A_0) + \nu(A_0) \ \Longrightarrow$$
+$$\Longrightarrow \ \nu(A_0) \leqslant 0 \ \Rightarrow \ \nu(A_0)
+=0\  \Rightarrow \  \mu (A_0) =0.$$
+
+В итоге,
+$$F(\varphi) = \int \limits_{\Om \setminus A_0} \varphi
+\, d\mu = \int \limits_{\Om \setminus A_0} g(\om) \varphi(\om)
+\eta( d\om) = \int \limits_{\Om \setminus A_0} g \varphi \, d\mu +
+\int \limits_{\Om \setminus A_0} g \varphi \, d\nu \
+\Rightarrow$$
+
+$$\int \limits_{\Om \setminus A_0} (1 - g) \varphi \, d\mu = \int
+\limits_{\Om \setminus A_0} g \varphi \, d\nu, \quad  \forall\,
+\varphi \geqslant 0, \ \varphi \in L_2.$$
+
+Используя предельный переход, получим, что это неравенство верно
+$\forall \, \varphi \geqslant 0.$
+
+Пусть
+$$\forall\, A \in \As \quad \varphi_A (\om) =
+\frac{\gamma_A(\om)}{1 - g(\om)}.$$
+
+Тогда
+$$\mu(A) = \io \gamma_A(\om) \, d\mu = \io \frac{g(\om)}{1-
+g(\om)} \gamma_A (\om) \, d\nu = \int \limits_A \frac{g(\om)}{1-
+g(\om)} \, d\nu.$$
+
+В частности, если $A = \Om$ и $f(\om) \ = \ \frac{g(\om)}{1 -
+g(\om)},\ $ то
+$$\mu(\Om) = \io \frac{g}{1-g} \,
+d\nu = \io \fo \dn;$$  следовательно, $f$ - интегрируема по мере
+$\nu$. Итак, мы получили, что $$\forall \, A \in \As,
+\quad \mu(A) = \int \limits_A \fo \dn.$$
+\end{proof}
+
+\subsection{Обобщенные функции. Теория обобщенных функций.}
+
+Пусть $D(\R)$ - пространство финитных, бесконечно
+дифференцируемых функций на $\R$.
+
+$$\epsfbox{picture.12}$$
+
+\begin{df}
+Говорят, что последовательность $\varphi_n \in D$ - сходится к
+нулю, если выполняются следующие условия:\\
+$\begin{aligned} (1) & \forall k \quad
+|\varphi_n^{(k)} (t)| \rightarrow 0 \text{ равномерно по } t; \\
+(2) & \exists \, a>0:  \ \forall n , \ \forall t: \ |t|>a\
+\Rightarrow\ \varphi_n(t) = 0.
+\end{aligned}$
+\end{df}
+\begin{problem}Показать, что на пространстве $D$ нельзя ввести метрику, сходимость
+относительно которой совпадает с только что определенной.
+\end{problem}
+\begin{df}Говорят, что последовательность $\ff_n \in D$ сходится к
+$\ff \in D$:
+$$\varphi_n \stackrel{\nsb}\rightarrow \varphi \in D(\R)\
+\Longleftrightarrow \  \varphi_n - \varphi \stackrel{n \rightarrow
+\infty}\rightarrow 0.$$
+\end{df}
+
+Пусть $D = \bigcup \limits_{n=1}^{\infty} D_{[-n,n]}, \  \mbox{
+где } D_{[-a,a]} = \{ \varphi \in D; \  \forall t \notin [-a,a];\
+\varphi(t) =0 \},$ \\
+тогда:
+
+$$D_{[-a,a]} \ni \varphi_n \rightarrow 0 \ \Longleftrightarrow\
+\forall k \ |\varphi_n^{(k)}(t)|\rightarrow 0 \ \mbox{ (при
+$\nsb$, равномерно по $t$).} $$\\
+
+Мы хотим ввести топологию на $D_{[-n,n]}$. Она задается с помощью
+семейства норм: $$k=0,1,... \ \ p_k(\varphi) = ||\varphi||_k =\max
+\limits_{t \in [-n,n]} |\varphi^{(k)}(t)|.$$
+\begin{problem}
+Показать, что сходимость последовательности функций в этой
+топологии совпадает с той, которую мы только что определили.
+\end{problem}
+
+
+
+Топология в $D_{[-n,n]}$ - это та топология, которая задается
+семейством норм $\{p_k \}$.\\
+Сходимость $\varphi_n \rightarrow 0$ в $D_{[-n,n]}$ эквивалентна
+тому, что $\forall\, k \ \ p_k(\varphi_n) \rightarrow 0 $. Это
+совпадает с нашим определением.
+
+Определим топологию в $D$.
+\begin{df}
+Выпуклое подмножество $V \in D$ называется открытым тогда и только
+тогда, когда:
+$$\forall n \ V\cap D_{[-n,n]} \mbox{ открыто в }
+D_{[-n,n]}.$$
+\end{df}
+
+Произвольное множество в $D$ называется открытым, если его можно
+представить в виде счетного объединения выпуклых открытых
+множеств.
+
+\begin{problem}
+Показать, что сходимость в $D$ относительно только  что
+определенной топологии - это та, которую мы определили вначале.
+\end{problem}
+
+\begin{ex}
+
+$$\epsfbox{picture.13}$$
+
+\[f(t) = \begin{cases}
+ \ 0 & \text{если $t \leqslant 0 $},\\
+ \ e^{-\frac{1}{t^2}}  & \text{иначе}.\\
+   \end{cases} \]
+
+Рассмотрим $\psi(t) = f(-t), \  \varphi_{ab}(t)
+   = \psi(t-b) f(t-a), \ a < b.$
+
+Значит, $\varphi_{ab}(t) \in D,\ $ так что пространство $D$
+нетривиально (состоит не только из нуля). Пусть $g(t) = \ff_{a-
+\varepsilon,\  a}(t) - \ff_{b, \ b +\varepsilon} (t), \ a < b$  и
+$$
+F_{a,b}^{\varepsilon}(t) = c \int \limits_{-\infty}^t g(x) \, dx,
+\quad c=\frac{1}{\int \limits_{- \infty}^{\infty} \varphi_{a -
+\varepsilon,\  a} (x) \, dx}.
+$$
+
+%$$\epsfbox{pictures.eps}$$
+\end{ex}
+
+\newpage
+Обобщенная функция $F$ над $D$ - это линейный непрерывный
+функционал на
+$D$, $F \in D'$.\\
+\\
+Пусть, как обычно, $L_1(\R^1)$ - пространство всех
+(классов эквивалентности) интегрируемых по Лебегу функций на
+прямой:
+$$
+L_1^{loc}(\R^1) - \mbox{ пространство всех локально
+интегрируемых по Лебегу функций,}
+$$
+то есть $f \in L_1^{loc}(\R^1) \ \Longleftrightarrow\
+\forall a>0 \ f \gamma_{[-a,a]} \in L_1(\R^1)$.\\
+\\
+Примером типичной функции из $L_1^{loc}(\RR)$ является любой
+многочлен.
+
+Теперь построим вложение $L_1^{loc}(\RR)\rightarrow D'$. Для любой
+функции $g\in L_1^{loc}(\RR) $ зададим соответствие
+$$g \mapsto F_g \in D'\text{, где } F_g(\varphi)= \int
+\limits_{-\infty}^{\infty} g(t) \varphi(t) \, dt.$$
+
+$$F_{\lambda_1 g_1 + \lambda_2 g_2} = \lambda_1 \cdot F_{g_1} +
+\lambda_2 \cdot F_{g_2}\  - $$ - то
+есть отображение линейно.\\
+Нужно доказать, что $F_g = 0$ в $D'$, то есть для любой функции
+$\varphi \in D\ $ $ F_g(\varphi) = 0 $ тогда и только тогда, когда
+$g(t) = 0$ почти всюду.
+\begin{ex}
+Пусть $\varphi \in D \mapsto \varphi'(0)$. Этот функционал не
+совпадает ни с одним функционалом $F_g$.
+\end{ex}
+Каждой мере $\nu$ можно сопоставить $F_{\nu} = \int \limits_{\RR}
+\varphi \, d\nu$ (но функционал $\ff\mapsto \ff^{\prime} (0)$ не
+будет образом никакой меры и тем более никакой функции из
+$L_1^{loc}(\RR)$).
+
+\section{Лекция}
+
+Ранее было введено пространство $D$: $$D= \bigcup
+\limits_{n=1}^{\infty} D_{[-n,n]}.$$
+\begin{df}
+Топология в $D$ задается семейством $\Ps$. $\Ps$
+состоит из всех полунорм $p$, то есть $$p \in \Ps
+\Leftrightarrow \forall n \ p \upharpoonright D_{[-n,n]} - \mbox{
+непрерывная полунорма на } D_{[-n,n]}.$$
+\end{df}
+\begin{problem}
+Доказать, что это определение топологии эквивалентно предыдущему.
+\end{problem}
+Напомним, что для любой $\psi \in L_1^{loc} (\RR)$ имеется
+отображение: $$\psi \mapsto F_{\psi} \in D',\  \mbox{ где }
+F_{\psi}(g) = \int \limits_{-\infty}^{\infty} \psi(x) g(x) \,
+dx.$$
+
+Надо доказать, что если $\forall g \ \ F_{\psi}(g) = 0,$ то
+$\psi(x) = 0$ почти всюду.
+
+Заметим, что $\forall [a,b] \subset \Rr$
+$$
+\gamma_{[a,b]}(x) = \lin g_n(x) \quad \forall n \ \  g_n \in D.
+$$
+
+%$$\epsfbox{picture.17}$$
+
+Для $\forall\, n$ функция $g_n$ определяется следующим образом.
+
+\[g_n(x) = \begin{cases}
+ 1, & \text{если } x \in [a,b]\\
+ 0, & \text{если } x \notin [a- \frac{1}{2n}, b+ \frac{1}{2n}]\\
+ & \text{иначе, промежуточное значения}
+\end{cases} \]
+
+Например, можно положить $g_n (x) = F_{a,\  b}^{1/2 n} (x).$
+
+Для любого $n \in \mathbb{N}$ выполняется следующее:
+$$F_{\psi}(g_n) = 0 = \int \limits_{\Rr} g_n(x) \psi(x) \, dx
+\ \longrightarrow\  \int \limits_{\Rr} \gamma_{[a,b]}(x) \psi(x)
+\, dx = \int \limits_{[a, b]} \psi(x) \, dx.$$
+
+По определению измеримого по Лебегу множества $A \subset \Rr,$
+$$
+\forall \varepsilon> 0 \quad \exists\, P_{\varepsilon} - \mbox{
+конечное объединение отрезков: }\  \nu (A\triangle
+P_{\varepsilon}) < \varepsilon.$$
+
+Отсюда и из предыдущего следует, что:
+$$
+\forall \varepsilon >0 \quad \int \limits_{P_{\varepsilon}}
+\psi(x) \, dx = 0 \ \Longrightarrow\  \int \limits_{A} \psi(x) \,
+dx =0;
+$$
+
+так как это верно для каждого $A,$ в частности, для $\ A_{+} =
+\{x\colon \ \psi (x) \geqslant 0\}$  и для $\ A_{-} = \{x \colon\
+\psi(x) \leqslant 0\}, \ \mbox{ то }$
+$$
+\psi(x) = 0 \ \mbox{ почти всюду.}$$
+
+Таким образом, мы доказали, что вложение $L_1^{loc} (\RR)$ в
+$D^{*}$ инъективно. Это вложение дает нам право называть $D^{*}$ -
+пространством обобщенных функций.
+$$
+L_1^{loc} (\RR) \subset D^*.
+$$
+
+Аналогично определяется и вложение в $D^{*}$ пространства
+$\mathfrak{M}(\RR) \in D^*$ мер на $\RR:$
+$$\mathfrak{M}(\RR) \ni \nu \mapsto F_{\nu} \in D^*; \quad
+F_{\nu}(g)  = \int \limits_{\RR} g(x) \, dx.$$
+
+Аналогично можно доказать, что, если для любой функции $g \in D \
+F_{\nu}(g) = 0,$
+$$
+\text{ то $\forall A $ - барелевское
+множество } A\subset \Rr, \ \nu(A) = 0.
+$$
+
+Подробнее. Вначале надо доказать, что $$\forall [a,b] \subset \Rr
+\ \ \nu([a,b]) = 0.$$ А потом перейти к множеству А (оно может
+быть аппроксимировано отрезками с любой степенью точности).
+
+Введем теперь операции над обобщенными функциями:
+\begin{enumerate}
+\item Умножение на число. Пусть $\Ec(\mro) =
+\Ec$ - векторное пространство бесконечно дифференцируемых
+функций на $\mro.$ Пусть $\ff \in \Ec, F \in D'$, тогда
+$\forall \, g\in D, \ \ff g \in D$ и произведение $\ff F$
+определяется так:
+$$
+(\varphi\cdot F, g) = (F, \varphi \cdot g),\quad  [F(g) \equiv
+(F,g)], \quad \forall\, g\in D.
+$$
+
+
+Проверим, что это определение согласуется с обычным:\\
+\\Рассмотрим $\psi \in L_1^{loc} (\Rr)$ и $\varphi \in
+\Ec.$ Тогда $\varphi \psi \in L_1^{loc}(\Rr).$
+
+Проверяем:
+$$
+F_{\varphi \psi}(g)  = (F_{\ff \psi}, g) = \int \limits_{\Rr}
+\varphi(x) \psi(x) g(x) \, dx = \int \limits_{\Rr} \psi(x) \cdot
+(\varphi \cdot g) \, dx = (F_{\psi}, \varphi \cdot g) = (\ff \cdot
+F_{\psi}, g).$$
+
+\item Дифференцирование. Если $F \in D', \ \varphi \in D$, то по
+определению считаем, что
+$$
+(F', \varphi) = - (F, \varphi'),
+\varphi' \in D.
+$$
+
+Проверим, что это определение согласуется с обычным.
+
+Пусть $$g \in C^1(\Rr) \subset L_1^{loc}(\Rr), \ \mbox{ тогда }$$
+$$\bigl( (F_g)',
+\varphi \bigr) = - (F_g, \varphi') = - \int \limits_{\Rr} g(x)
+\varphi'(x) \, dx = \int \limits_{\Rr} g'(x) \varphi(x) \, dx =
+(F_{g'}, \ff),$$ то есть $(F_y)^{\prime} = F_{y^{\prime}}.$
+
+\end{enumerate}
+Можно говорить вместо ``обобщенная функция сопоставленная
+обычной`` - ``рассмотрим обычную функцию как обобщенную`` \  и
+записывать
+$$(F_g, \varphi) = (g, \varphi).$$
+$$\Ec \subset C_1 (\Rr) \subset L_1^{loc} (\Rr) \subset
+D'$$
+
+Если ввести топологию на $D'$, то эти пространства будут плотны в
+$D'$. Определим $\delta$-функцию Дирака следующим образом:
+$$
+(\delta, \varphi) = \varphi(0) = \int \limits_{\Rr} \varphi(x)
+\nu_{\delta} (dx) = \varphi(0) \cdot \nu_{\delta}(\{0\})
+=\varphi(0),
+$$
+причем $\nu_{\delta} (A) = 1,$ если $A \ni 0,$ и $\nu_{\delta} (A)
+= 0,$ если $A \not\ni 0.$
+
+\begin{problem}
+Найти функцию $\Theta$, такую что $\Theta' = \delta$.
+\end{problem}
+
+Введем $S$ - пространство всех бесконечно дифференцируемых быстро
+убывающих функций, причем  $D \subset S \subset \Ec.$ То
+есть:
+$$
+\varphi \in S \ \Longrightarrow\  \varphi \in \Ec \mbox{ и }\  \forall\, n, k \in \mathbb{Z}_+ \quad \sup (1+x^2)^n
+|\varphi^{(k)} (x)| < \infty.$$
+
+В этом пространстве можно ввести семейство полунорм:
+$$\Ps \ni p \  \Longleftrightarrow\  \exists n,k: \ p_{nk} = \max
+\limits_{x \in \Rr} (1+ x^2)^n |\varphi^{(k)} (x)|, \ \ \varphi
+\in S .$$
+
+Заметим, что метрика:
+$$\rho (\varphi, \psi) = \sum \limits_{k,n}
+\frac{1}{2^{kn}} \frac{ p_{nk}(\varphi - \psi) } {1+
+p_{nk}(\varphi - \psi) }\ \  $$ - определяет такую же топологию в
+$S$, что и семейство этих норм. Отметим еще раз, что $D \subset
+S.$
+
+\begin{problem}
+Доказать, что $D$ - плотно в $S$.
+\end{problem}
+
+\begin{problem} Напомним, что
+$D = \bigcup \limits_{n=1}^{\infty} D_{[-n,n]}$. При этом:
+$$\forall n \quad  D_{[-n,n]} \subset S \subset \Ec.$$
+\end{problem}
+
+Топология в $D_{[-n,n]}$, порожденная топологией пространства $S$
+совпадает с той, которую ввели в $D_{[-n,n]}$ раньше, но для $D$
+это не так.
+
+\begin{note}
+ Пусть $F$ - линейный функционал на $D$. $F$ - непрерывен тогда и
+ только тогда, когда
+$\forall\, n $  сужение $F$ на $D_{[-n,n]}$ - непрерывно.
+
+Докажем $\Leftarrow$ ($\Rightarrow$ очевидно). Пусть
+$\Ps_D$ - семейство полунорм в $D$, которое задает
+топологию на $D$. Пусть полунорма определяется так:
+$$
+p_F(\varphi) = |F(\varphi)|.
+$$
+Сужение $p_F$ на каждое $D_{[-n,n]}$ непрерывно. Следовательно, по
+определению $\Ps_D, \ p_F \in  \Ps_D.$
+
+Функционал $F$ - непрерывен на $D$, если
+$$
+\exists\, p \in \Ps_D \ \ \exists\, c > 0 :\quad
+|F(\varphi)| \leqslant c p(\varphi).
+$$ (Это достаточное условие непрерывности
+функционала.) В качестве $p$ можно взять $p_F (\varphi)$.
+\end{note}
+
+Введем пространство $(D^*, \sigma(D^*, D)), \mbox{ где }
+\sigma(D^*, D)$ - слабая топология.
+
+Сходимость $F_n \rightarrow F$ в слабой топологии равносильна
+тому, что
+$$(F_n, \varphi) \rightarrow (F, \varphi) \quad \forall \, \ff \in D.$$
+
+То есть:
+$$\Bigl[D^*
+\ni F_n \rightarrow F \in D^* \mbox{ в слабой топологии }
+\sigma(D^*, D)\Bigr] \ \Longleftrightarrow$$
+$$\ \Longleftrightarrow\
+\Bigl[\mbox{ (по определению слабой топологии) } \ \forall\,
+\varphi \in D \quad (F_n, \varphi) \rightarrow (F,
+\varphi)\Bigr].$$
+
+\begin{theorem}
+Пусть $F$ - линейный функционал на $D$, причем
+$$
+(F_n, \varphi) \rightarrow (F, \varphi) \quad \forall\, \varphi
+\in D\ \mbox{ и }\  \forall\, n \ F_n \in D^*.$$
+
+Тогда функционал $F$ будет непрерывен.
+\end{theorem}
+
+\begin{proof}
+В силу теоремы Банаха-Штейнхауза, примененной к $D_{[-n,n]}, \ $
+$\forall k$ сужение $F$ на $D_{[-n,n]}$ - непрерывно,
+следовательно, $F \in D^*$.
+\end{proof}
+
+Про это свойство говорят, что $D^*$ - слабо секвенциально полно.
+
+
+\subsection{Преобразование Фурье.}
+
+Преобразование Фурье функции $f \in L_1 (\Rr),$ определяется так:
+$$f \mapsto \w{f}, \ \w{f}(z) = \int \limits_{\Rr} e^{-izx} f(x)
+\, dx$$
+
+и обратное преобразование Фурье
+$$f(x) = \frac{1}{2\pi} \int \limits_{\Rr} e^{izx} \w{f} (z) \, dz.$$
+
+\section{Лекция}
+
+\textbf{Свойство 1.} Пусть $$f \in C^1 (\Rr) \bigcap L_1(\Rr)\
+\mbox{ и }\ f' \in L_1 (\Rr).$$ Тогда преобразование Фурье
+производной функции $f:$
+$$
+\fw'(z) = iz \fw(z).
+$$
+
+
+\begin{proof}
+$$\fw'(z) =\lin \int \limits_{-n}^{n} e^{-izx} f'(x) \, dx = \lin
+f(x) e^{-izx}\mid_{-n}^{n} + \int \limits_{-n}^n iz f(x) e^{-ixz}
+\, dx.$$
+
+Так как $f(x) = f(0) + \int \limits_0^x f'(t) \, dt,\ \ $ то:
+$$
+f(x) \stackrel{x\rightarrow \infty}{\rightarrow} C_1 \ \mbox{ и }\
+f(x) \stackrel{x\rightarrow -\infty}{\rightarrow} C_2,
+$$
+
+так как $f(x) \in C^1(\Rr),\ \mbox{ то } C_i=0.$ Поэтому
+$$
+\fw'(z) = iz \int \limits_{-\infty}^{\infty} f(x) e^{-izx} \,
+dx.$$
+\end{proof}
+\textbf{Свойство 2.} Если $f \in L_1$ и $[x \mapsto x f(x)] \in
+L_1$, то $\fw$ - дифференцируема и
+$$
+\widehat{(-i x {f}(x))} (z) =
+(\fw)' (z).
+$$
+
+\begin{proof}
+Так как, каковы бы ни были $\alpha, \, \beta\in \mro,$
+$$
+|e^{i \beta} - e^{i \alpha}| \ \leqslant\  |\beta - \alpha|
+$$
+(это неравенство выражает тот факт, что длины дуги между точками
+$\alpha$ и $\beta$ на окружности больше расстояния между ними, то
+есть длины хорды; \ его можно получить с помощью теоремы Лагранжа
+о конечном приращении) и, следовательно,
+$$
+\left| \frac{e^{- ix(z + \Delta z)} - e^{- ixz}}{\Delta z} \right|
+\  \leqslant \ |x|,
+$$
+причем функция $x \mapsto x f(x)$ по условию интегрируема, то,
+применяя теорему Лебега о мажорированной сходимости, получим
+
+$$
+(\fw)'(z)\  =\  \lim \limits_{\triangle z \rightarrow 0} \ir
+\frac{e^{-ix(z + \triangle z)} - e^{-ixz}}{\triangle z} f(x) \,
+dx\ =
+$$
+
+$$\ = \ \ir (-ix) f(x) e^{-ixz}
+\, dx = \widehat{(-ix f(x))} (z).$$
+\end{proof}
+\textbf{Свойство 3.} Если
+$$
+f_n \in L_1 \mbox{ и } f_n \rightarrow f \mbox{ в }L_1, \ \mbox{
+то есть } \|f_n - f \|_{L_1} \rightarrow 0, \  \mbox{ то }$$
+$$
+\fw_n (z) \rightarrow \fw (z) \mbox{ равномерно по } z \in \RR.
+$$
+
+\begin{proof}
+$\forall z \in \Rr$ имеем:
+$$
+|\fw_n(z) - \fw(z)|\  =\  \left| \ir \bigl( f_n(x) - f(x) \bigr)
+e^{-ixz} \, dx\right|\  \leqslant \  \ir |f_n(x) - f(x)| \, dx\
+=\  ||f_n - f ||_{L_1} \ \stackrel{\nsb}\rightarrow\ 0.
+$$
+\end{proof}
+\textbf{Свойство 4.} Пусть $f \in L_1,\ $ тогда $\fw (z)
+\rightarrow 0,\ $ если $ |z| \rightarrow \infty$.\\
+\\
+\begin{proof}
+Докажем это сначала для случая, когда $f$ - индикатор отрезка.
+$$
+\w{\gamma_{[a,b]}}(z)\  =\  \ir \gamma_{[a,b]} (x) e^{-izx} \, dx\  =\  \int
+\limits_a^b e^{-ixz} \, dx\  = \ - \frac{1}{iz} (e^{-izb} -
+e^{-iza})\  \longrightarrow 0, \ \mbox{ при  } |z| \rightarrow \infty.
+$$
+
+Значит, это верно для функций, являющихся конечными линейными
+комбинациями индикаторов отрезков. Так как множество таких функций
+плотно в $L_1 (\mro)$, то для любой функции $f\in L_1$ существует
+последовательность $f_n$ конечных линейных комбинаций индикаторов
+отрезков, такая что
+$$
+f_n \rightarrow f \mbox{ в } L_1.
+$$
+
+Следовательно,
+$$
+|\fw_n(z) - \fw(z)| \rightarrow 0, \ \mbox{ при } \nsb,\ \mbox{
+равномерно по } z \in \Rr.
+$$
+
+Так как $\forall n \quad \fw_n \stackrel{|z| \rightarrow 0}
+\rightarrow 0,\  $ получим, что $\fw(z) \rightarrow 0.$
+
+\end{proof}
+
+Отметим, что преобразование Фурье функции из $L_1$ не обязательно
+принадлежит $L_1$ (таково, например, преобразование Фурье индикатора отрезка).\\
+\textbf{Свойство 5.} Пусть $f \in L_1$ и $a \in \RR, \  a \not =
+0.$ Тогда:
+$$
+\widehat{f\left(\frac{x}{a}\right)}(z) = \ir
+f\left(\frac{x}{a}\right) e^{-ixz} dx = \ir f(v) e^{-iavz} a \, dv
+= a \w{f}(az).
+$$
+(мы воспользовались заменой $\frac{x}{a} = v$).\\
+\textbf{Свойство 6.}
+$$
+\w{f(x+a)}(z) \ =\  \ir f(x+a) e^{-ixz} \, dx \ = \  \ir f(v)
+e^{-iz(v-a)} \, dv \ =\  e^{iza} \fw(z).
+$$
+(мы воспользовались заменой $x+a=v$).\\
+
+\begin{prop}
+Пусть $f \in L_1, \varphi \in L_1 $, тогда
+$$
+\ir \fw(z) \varphi(z) \, dz = \ir f(z) \widehat{\varphi}(z) \, dz\
+ \  \mbox{ \textbf{(равенство Парсеваля).}}
+$$
+\end{prop}
+
+\begin{proof}
+$$\ir \fw (z) \varphi(z) \, dz\  =\  \ir \left( \ir f(x) e^{-ixz} \, dx \right)
+\varphi(z) \, dz \ =
+$$
+$$
+=\  \ir \left( \ir \varphi (z) e^{-ixz} \, dz \right) f(x) \, dx \
+=\  \ir f(x) \widehat{\varphi(z)} \, dx.
+$$
+
+Равенства выполняются в силу теоремы Фубини, так как $(x,z)\mapsto
+f(x)\varphi(z)$ интегрируема на плоскости (снова по т. Фубини) и
+$$
+\int \limits_{\R^2}| f(x)\varphi(z)| \, dx \, dz = \ir
+|f(x)| \, dx \ir |\varphi(z)| \, dz.$$ Так интегралы в правой
+части конечны, то, произведение $f \cdot \ff$ интегрируемо как
+функция двух аргументов.
+
+\end{proof}
+
+\begin{ex}
+Найдем преобразование Фурье функции
+$$
+f(x) = \frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}}.
+$$
+\end{ex}
+
+Заметим, что  $f'(x) + f(x) x = 0.$ Отсюда следует, что $(\fw)'(z)
++ z \fw(z) = 0,$ так как
+$$
+(\fw)'(z)\  =\  \w{ ( -ixf(x))} (z) \  =\ \w{i f'} (z) \ =\  i
+\cdot i z \fw (z)\  =\  - z \fw(z).
+$$
+
+Общее решение уравнения $\w{f}^\prime (z) + z \fw(z) = 0$ имеет
+вид $$\fw(z) = C e^{-\frac{z^2}{2}};$$  постоянная $C$ вычисляется
+так:
+
+$$
+\fw (z)\  =\  \frac{1}{\sqrt{2 \pi}} \ir e^{-\frac{x^2}{2}} e^{-i
+x z} \, dx\  \Rightarrow
+$$
+$$
+\Rightarrow\  \fw(0)\  =\  C
+=\frac{1}{\sqrt{2 \pi}} \ir e^{-\frac{x^2}{2}} \, dx \  =\
+\frac{1}{\sqrt{2 \pi}} \sqrt{2 \pi}\  =\  1 \Rightarrow$$ $$\fw
+(z) \  =\ e^{-\frac{z^2}{2}}.
+$$
+
+\subsection{Свойства преобразования Фурье в $S$.}
+
+Пространство $S$ преобразуется преобразованием Фурье в $S$ и более
+того, $$\Phi : S \rightarrow S \mbox{ непрерывно (это будет
+доказано ниже).}$$
+
+Предположим, что $\varphi \in S$ и мы знаем, что $\wphi \in S$ и
+по $\wphi$ хотим
+восстановить $\varphi$.\\
+Пусть $\psi, \widehat{\psi} \in S;$ тогда
+$$
+\ir \varphi\left(\frac{z}{a} \right) \widehat{\psi} (z) \, dz =
+\ir a\  \varphi(x)\, \widehat{\psi} (ax) \, dx  = \ir \varphi(x)\,
+\widehat{\psi} \left(\frac{x}{a}\right) \, dx = \ir \wphi(x)\,
+\psi\left(\frac{x}{a}\right) \, dx
+$$
+(мы воспользовались заменой $z = ax,$ затем свойством 5 и
+равенством Парсеваля).
+
+Переходя к пределу при $a \rightarrow \infty,$ получим
+$$\varphi(0) \ir \w{\psi(z)} \, dz = \psi(0) \cdot \ir
+\wphi(z) \, dz.$$
+
+Пусть $\varphi(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} \
+\Rightarrow\  \wphi (z) = e^{-\frac{z^2}{2}}.$ Тогда
+$$
+\frac{1}{\sqrt{2 \pi}} \ir \widehat{\psi}(z) \, dz = \psi(0)
+\sqrt{2\pi} \ \Longrightarrow\  \psi(0) = \frac{1}{2\pi} \ir
+\widehat{\psi} (z) \, dz.
+$$
+
+Далее нужно воспользоваться формулой (свойство 6):
+$$
+\w{f(x+a)}(z) = e^{-iza} \fw(z).$$
+
+Пусть $\psi_1(x) = \psi (x+a); \quad$ тогда $\ \psi_1(0) =
+\frac{1}{2\pi} \ir \w{\psi}_1(z) \, dz$,
+$$
+\mbox{а так как, по свойству 6,}\quad \w{\psi}_1 (z) = \w{\psi
+(x+a)} (z) = e^{iza} \, \w{\psi} (z), \ \mbox{ то }
+$$
+$$
+\psi(a) = \frac{1}{2\pi} \ir e^{iza} \widehat{\psi}(z) \, dz.
+$$
+
+Таким образом, мы получили
+$$
+\psi(x) = \frac{1}{2\pi} \ir e^{ixz} \widehat{\psi}(z) \, dz;
+$$
+поэтому, определив обратное преобразование Фурье функции $f$
+равенством
+$$\check{f}(x) = \frac{1}{2\pi} \ir e^{ixz} f(z) \, dz,
+$$
+получим $\ \psi = \check{\w{\psi}}.$
+
+Из определения обратного преобразования Фурье следует, что его
+свойства аналогичны свойствам (прямого) преобразования Фурье. В
+частности, обратное преобразование Фурье тоже переводит $S$ в $S$.
+
+Докажем, что
+$$
+\forall \, g \in S \quad \exists \, \varphi \in S: \quad g =
+\wphi.
+$$
+
+Применим к $g$ обратное преобразование, получим функцию $\ff$ из
+$S$, к ней применим прямое преобразование Фурье, получим функцию
+$g:\ \varphi = \check{g}$ и $g = \w{\ff} = \w{\check{g}}$.
+$$
+\mbox{Иначе говоря, } \ \forall g \in S \quad \Phi \Phi^{-1} g = g
+\quad (\Phi\mbox{ - преобразование Фурье}).
+$$
+
+Аналогично можно доказать и равенство
+$$
+\forall\, \ff \in S \quad  \Phi^{-1} \Phi \,\varphi = \varphi.
+$$
+Следовательно, $\Phi$ - взаимно однозначное отображение $S$ на
+$S$.
+
+\begin{df}
+Преобразование Фурье обобщенной функции $F \in S^*$ определяется
+следующим образом:
+$$(\widehat{F}, \varphi) = (F, \wphi).$$
+\end{df}
+
+Пусть $g \in L_1$. Тогда утверждаем, что $\widehat{F}_g =
+F_{\widehat{g}}$ (согласованность определений преобразования Фурье в $S^{*}$  и в $L_1$).\\
+Проверим это:
+$$
+(\w{F}_g, \varphi)\  =\  (F_g, \wphi)\  =\  (g, \wphi)\  =\  \ir
+g(x) \wphi(x) \, dx \ =\  \ir \widehat{g}(x) \varphi(x) \, dx =
+(\w{g}, \varphi) = (F_{\widehat{g}}, \varphi).
+$$
+
+Проверим, что так определенный линейный функционал $\w{F}$ на $S$
+непрерывен, то есть действительно является элементом пространства
+$S^{*}.$ Так как функционал $\w{F}$ линеен, достаточно доказать
+его непрерывность в нуле.
+
+Итак, пусть $\ff_n \rightarrow 0$ в $S.$ Тогда
+$$
+(\w{F}, \ff_n)\ = \ (F, \w{\ff}_n) \ \longrightarrow\ 0,
+$$
+так как, в силу непрерывности преобразования Фурье в $S$ (она
+будет доказана позже), $\w{\ff}_n \rightarrow 0$ в $S.$
+
+
+\section{Лекция}
+
+Преобразование Фурье в $S^{*}$ будем обозначать тем же символом
+$\Phi;$ таким образом,
+$$\Phi : S^* \rightarrow S^*.$$
+
+\subsection{Свойства преобразования Фурье в $S^*$.}
+
+\begin{enumerate}
+\item Наделим $S^*$ слабой топологией $(S^*, \sigma(S^*, S))$.
+Тогда сходимость в слабой топологии определяется так:
+$$
+F_n \rightarrow F \ \Longleftrightarrow\  \forall\, \varphi \in
+S\quad (F_n, \varphi) \rightarrow (F, \varphi).$$ Покажем, что
+$\Phi$ непрерывно в $(S^{*}, \sigma(S^{*}, S)).$ Таким образом, мы
+должны проверить, что
+$$
+\mbox{ если }\ F_n \rightarrow F,\ \mbox{ то } \w{F}_n \rightarrow
+\w{F} \ \Longleftrightarrow\  \forall \,\psi \in S \quad (\w{F}_n,
+\psi) \rightarrow (\widehat{F}, \psi).
+$$
+
+Вот эта проверка: $(\widehat{F}_n, \psi) = (F_n, \widehat{\psi})
+\rightarrow (F, \widehat{\psi}) = (\widehat{F}, \psi)$.\\
+\\
+\emph{Докажем аналогии свойств 1, 2 для преобразования Фурье в $S^{*}.$}\\
+
+\item Было показано, что $\forall \, \ff\in S, \quad  \w{\ff'}(z)
+= iz \wphi (z)$. Пусть $f \in S^*, \forall \varphi \in S$:
+$$
+(\w{f'}, \ff) = (f^{\prime}, \w{\ff}) = - (f,
+\w{\varphi}^{\prime}) = - (f, - \w{ix \ff}) = - (\fw, -ix\ff) =
+(ix \fw, \ff)\ \Rightarrow
+$$
+$\Rightarrow\  \w{f'} = ix \fw.$\\
+
+\item Было показано, что $\forall \, \ff\in S, \quad
+(\w{\varphi})^{\prime}(z) = \Bigl(\w{-ix \varphi(x)}\Bigr)(z)$.
+Пусть $F \in S^*, \forall \varphi \in S:$
+$$
+(\w{F^{\prime}}, \ff) = - (\w{F}, \ff^{\prime}) = - (F, (\wphi)')
+= - (F, ix \wphi (x)) = - (ixF, \wphi) = - ( \w{ixF}, \ff) \
+\Rightarrow
+$$
+$\Rightarrow\  (\w{F})^{\prime} \ =\ - \w{ixF}. $
+\end{enumerate}
+
+Аналоги остальных свойств предлагается доказать в качестве
+упражнения.
+
+\begin{stm}
+Образ любой функции из $S$ при преобразовании Фурье лежит в $S$.
+Другими словами, $\Phi(S) \subset S$ (или $\varphi \in S\
+\Rightarrow\  \wphi \in S$).
+\end{stm}
+\begin{proof}
+Нужно проверить, что
+$$\forall n,k \quad |(1+x^2)^n \wphi^{(k)}(x)|
+\rightarrow 0, \mbox{ при } |x| \rightarrow \infty.
+$$
+Сделаем это:
+$$
+\left|(1+x^2)^n \cdot\wphi^{(k)}(x)\right| = \left| (1+ x^2)^n
+\cdot \w{(-ix)^k \varphi}\right| = \left| \frac{(1+
+x^2)^n}{x^{2n+2}} \cdot (ix)^{2n+2} \cdot \widehat{(-ix)^k
+\varphi}\right|\  =
+$$
+$$
+= \ \left|\frac{(1+x^2)^n}{x^{2n+2}} \w{\bigl( (-ix)^k
+\varphi\bigr)^{2n+2}}\right| \rightarrow 0 \text{ при } |x|
+\rightarrow \infty,
+$$
+так как
+$$
+\frac{(1+x^2)^n}{x^{2n+2}} \rightarrow 0 \text{ при } |x|
+\rightarrow \infty,
+$$
+а функция под знаком преобразования Фурье справа содержится в $S$
+и тем более в $L_1$ и, значит, ее преобразование Фурье ограничено.
+
+\end{proof}
+
+\begin{theorem}
+Преобразование Фурье $\Phi: S \rightarrow S$ - непрерывно.
+\end{theorem}
+
+\begin{proof}
+$$
+\mbox{Пусть }\ \varphi_n \rightarrow 0 \ \mbox{ в } S\
+\Longleftrightarrow \ \forall \,k,m \ \  x^k \varphi_n^{(m)}(x)
+\rightarrow 0 \ \mbox{ равномерно по $x$ при $\nsb$.}
+$$
+Нам надо доказать, что $\w{\ff}_n \rightarrow 0$ в $S,$ то есть,
+что $\forall k,m \quad z^k \wphi ^{(m)}_n (x) \rightarrow 0$
+равномерно по $x$ при $\nsb,$ то есть, что:
+$$
+(-i)^k \w{((-ix)^m \, \varphi (x))^{(k)}} \
+\stackrel{\nsb}{\rightarrow} \ 0
+$$
+равномерно по $x$. Последовательность функций под знаком
+преобразований Фурье сходится к нулю в $S$. Мы покажем, что она
+сходится к нулю в $L_1$; тогда последовательность ее
+преобразований Фурье будет сходиться к нулю равномерно, что и
+требуется.
+$$
+\mbox{Пусть }\ \forall \, m,k \quad g_{n}^{mk} = ((-ix)^m \,
+\varphi_n (x))^k
+$$
+Докажем, что
+$$ \ff_n \rightarrow 0 \mbox{ в } S \ \Longrightarrow \ \forall \, m,\,k \quad g_{n}^{mk}
+\rightarrow 0 \mbox{ в } L_1.$$
+
+Если $\ff_n \rightarrow 0 \mbox{ в } S,$ то
+$$\ff_n (x) \rightarrow 0 \ \mbox{ и }\ (1 + x^2) \, \ff_n (x)
+\stackrel{\nsb}{\rightarrow} 0 \mbox{ равномерно по } x \ (\mbox{и
+даже в } S).$$
+
+Кроме того,
+$$\|\ff_n\|_{L_1} \  =\  \int\limits_{\mathbb R} |\ff_n (x)| \, dx \ = \
+\int\limits_{\mathbb R} \left| \frac{(1 + x^2) \, \ff_n (x)}{(1 +
+x^2)} \right| dx \ =$$
+$$
+= \ \il{- \infty}^{-A} \frac{|(1 + x^2) \, \ff_n (x)|}{1 + x^2} dx
++ \il{A}^{\infty} \frac{|(1 + x^2) \, \ff_n (x)|}{1 + x^2} dx +
+\il{-A}^{A} |\ff_n (x)|\, dx
+$$
+Оцениваем получившиеся интегралы:
+$$
+\il{- \infty}^{-A} \frac{|(1 + x^2) \, \ff_n (x)|}{1 + x^2} dx
+\leqslant \max |(1 + x^2) \, \ff_n (x)| \cdot \il{-\infty}^{-A}
+\frac{1}{1 + x^2} dx;
+$$
+$$
+\il{A}^{\infty} \frac{|(1 + x^2) \, \ff_n (x)|}{1 + x^2} dx
+\leqslant \max |(1 + x^2) \, \ff_n (x)| \cdot \il{A}^{\infty}
+\frac{1}{1 + x^2} dx;
+$$
+$$
+\forall \, \varepsilon \quad \exists \, A>0\colon \il{A}^{\infty}
+\frac{1}{1 + x^2} dx < \varepsilon \ \mbox{ и }\ \il{-\infty}^{-A}
+\frac{1}{1 + x^2} dx < \varepsilon.
+$$
+Теперь выберем $n_0$ такое, что:
+$$
+\quad \forall \, n > n_0 \quad \il{-A}^{A} |\ff_n (x)| \, dx <
+\varepsilon;
+$$
+последнее возможно, так как $\ff_n (x) \rightarrow 0$ равномерно
+по $x.$ Следовательно, мы доказали, что $\|\ff_n\|_{\, L_1}
+\rightarrow 0,$ а, следовательно, их преобразования Фурье
+стремятся к нулю равномерно.
+\end{proof}
+\bigskip
+
+Определим преобразование Фурье в $L_2 (\Rr)$. Докажем сначала, что
+если $\ff, \, \psi \in S,$ то
+$$
+2\pi (\varphi,\psi)_{L_2} = (\wphi, \widehat{\psi})_{L_2} \qquad
+(*).
+$$
+Равенство означает, что преобразование Фурье сохраняет норму $L_2$
+(с точностью до умножения на $2 \pi$), а так как $S$ - плотно в
+$L_2$, то тогда можно продолжить $\Phi$ на $L_2$.
+
+Если $g \in L_2$ , то  (так как $S$ плотно в $L_2$):
+$$
+\exists \,\varphi_n \in S: \quad \varphi_n \rightarrow g \mbox{ в
+} L_2.
+$$
+
+Значит, последовательность $\varphi_n$ - фундаментальна в $L_2,$
+то есть
+$$
+\|\varphi_n - \varphi_{n+k}\|_{L_2} \rightarrow 0 \ \mbox{ при }
+\nsb \ \mbox{ равномерно по } k.
+$$
+
+Так как нормы сохраняются (с точностью до умножения на $2 \pi$),
+то
+$$
+\|\wphi_n - \wphi_{n+k}\|_{L_2} \rightarrow 0.
+$$
+Из условия полноты $L_2$ получим, что $\exists$ функция $\w{g}$ в
+$L_2,$ такая что \  $\wphi \rightarrow \w{g}$ в $L_2$.
+
+Эту функцию $\w{g}$ мы называем преобразованием Фурье функции $g
+\in L_2$.
+
+\begin{proof} (*)
+Из формул прямого и обратного преобразования Фурье:
+$$
+\wphi = \int \limits_{\R} e^{-ixz} \varphi(x) \, dx\
+\mbox{ и } \ \check{\ff} = \frac{1}{(2\pi)} \int
+\limits_{\R} e^{ixz} \w{\ff} (z) \, dz.
+$$
+следует, что $\overline{\w{\overline{\varphi}}} = (2\pi)
+\check{\varphi}.$ Итак,
+$$
+(\varphi, \psi)_{L_2} = \ir \varphi(x)
+\overline{\psi}(x) \, dx = (\varphi, \overline{\psi}) =
+(\widehat{\check{\varphi}}, \overline{\psi}) = (\check{\varphi},
+\widehat{\overline{\psi}}) = 2 \pi (\check{\varphi},
+\overline{\check{\psi}} )= 2\pi (\check{\varphi},
+\check{\psi})_{L_2}.
+$$
+
+Мы доказали, что
+$$
+\mbox{ если } \varphi, \psi \in S,\ \mbox{ то } (\varphi,
+\psi)_{L_2} = 2\pi (\check{\varphi}, \check{\psi})_{L_2}.
+$$
+
+Пусть $\varphi  = \wphi_1, \psi= \widehat{\psi}_1,$ тогда
+$$(\wphi_1, \widehat{\psi}_1)_{L_2} = 2\pi (\varphi_1,
+\psi_1)_{L_2}.$$
+\end{proof}
+
+\section{Лекция}
+
+\begin{problem}
+Пусть $g \in L_2 (\mro);$ тогда
+$$
+\forall \, \ff \in S \quad g \cdot \ff \in L_1 (\mro)
+$$
+и, более того, функционал $F_g (\ff) = \il{\mro} g \cdot \ff \,
+dx\ $ непрерывен на $S,$ то есть является элементом пространства
+$S^{*}.$ Поэтому определено его преобразование Фурье $\w{F_g}$,
+про которое мы говорим, что это преобразование Фурье функции $g$ в
+смысле теории обобщенных функций над $S.$  С другой стороны, мы
+только что определили преобразование Фурье для функции из $L_2$
+непосредственно. Покажем, что они совпадают , то есть что
+$$
+\w{F}_g = F_{\w{g}}.
+$$
+\end{problem}
+
+\begin{proof}
+Заметим, что в силу (непосредственного) определения преобразования
+Фурье функции $g\in L_2 \quad \forall \, \ff \in S (\subset L_2):$
+$$
+(\w{g}, \ \w{\ff})_{L_2}\ = \ 2 \pi (g, \ \ff)_{L_2}.
+$$
+Поэтому  $\forall \, \varphi \in S$
+$$
+(\w{F_g}, \, \ff)\ = \ (F_g, \w{\ff})\ = \ \il{\mro} g(t) \,
+\w{\ff} (t) \, dt\ = \ (g, \overline{\w{\ff}})_{L_2}\ =
+$$
+$$
+\ = \ \frac{1}{2 \pi} (\w{g}, \w{\overline{\w{\ff}}})_{L_2}\ = \
+(\w{g}, \overline{\ff})_{L_2}\ =\  (F_{\w{g}}, \ff).
+$$
+
+Следовательно $\w{F}_g = F_{\w{g}}.$ Что и требовалось доказать.
+\end{proof}
+\begin{note}
+Известно, что $\forall \, t > 0$
+$$
+\frac{1}{\sqrt{2 \pi t}} \inr e^{- \frac{x^2}{2t}} e^{-ixz} \, dx
+= e^{\frac{- tz^2}{2}}.
+$$
+Это значит, что
+$$
+\w{\frac{1}{\sqrt{2 \pi t}} e^{- \frac{x^2}{2t}}} (z) \ = \ e^{\frac{- tz^2}{2}}.
+$$
+Пусть теперь для каждого $\gamma = \rho\, e^{i \alpha} \colon\
+\rho > 0, \ \alpha \in \left[-\frac{\pi}{2}, \
+\frac{\pi}{2}\right],$
+$$
+g_{\gamma} (x) \ = \ \frac{1}{2 \pi \gamma} \  e^{-\frac{x^2}{2
+\gamma}} \quad \mbox{ и } \quad \psi_{\gamma} (z) \ = \
+e^{-\frac{\gamma z^2}{2}}.
+$$
+Тогда функции $\gamma \mapsto F_{g_\gamma} \ \in S^{*}\ $ и $\
+\gamma \mapsto F_{\psi_\gamma}\  \in S^{*}$ аналитичны на области
+$$
+\{\gamma\ = \ \rho \, e^{i \alpha} \colon\ \rho > 0, \ \alpha \in
+\left(-\frac{\pi}{2}, \ \frac{\pi}{2}\right)\}
+$$
+и непрерывны на множестве
+$$ \{\gamma\ = \ \rho \, e^{i \alpha}
+\colon\ \rho > 0, \ \alpha \in \left[-\frac{\pi}{2}, \
+\frac{\pi}{2}\right]\} $$
+
+Это значит, что $\forall \, \ff \in S,$ на этих областях
+аналитичны (соответственно, непрерывны) функции
+$$
+\gamma \mapsto (F_{\psi_\gamma}, \ff), \quad \gamma \mapsto
+(F_{g_\gamma}, \ff).
+$$
+При этом для $\gamma \in (0, \infty)\quad \w{F_{g_\gamma}} =
+F_{\psi_\gamma}.$ Поэтому, в силу теоремы единственности для
+аналитических функций, это равенство справедливо для всех
+допустимых $\gamma.$
+
+Для $\gamma \ = \ e^{i \frac{\pi}{2}}$ оно означает, что
+$$
+\w{\frac{e^{- \frac{i \pi}{4}} e^{\frac{i x^2}{2}}}{\sqrt{2 \pi}}
+}  (z) \ = \ e^{- \frac{i z^2}{2}}.
+$$
+
+Таким образом, с помощью теории обобщенных функций мы сосчитали
+преобразование Фурье неинтегрируемой функции на прямой.
+\end{note}
+\begin{note}
+Пусть $F\in S^{*}$ и $g\in \Ec(\mro).$ Для некоторых
+функций можно выбрать естественное продолжение функционала $F,$
+первоначально определенного на $S,$ на более широкую область,
+содержащую $g$.
+
+%\begin{figure}
+%\centering
+%\includegraphics{picture.17}
+%\end{figure}
+
+Пусть $\psi \in D,$
+
+\textbf{1.} \ $\psi (t) = 1,$ если $t \in [-1, 1].$
+
+\textbf{2.} \ $\psi (t) = 0,$ если $t \notin [-1 - \varepsilon, 1
++ \varepsilon].$
+
+Пусть еще для $a > 0 \quad \psi_a (t) = \psi (a\, t).\quad$ Ясно,
+что $\forall \, t \quad \psi_a (t) \stackrel{a\rightarrow 0}
+\rightarrow 1$ (кроме того, $\psi_{\alpha} \rightarrow 1$ и в
+$S^{*}$).
+
+Более того, $\forall \, \ff \in S,$
+$$
+\mbox{если}\ \  (\psi_a \cdot \ff) (t)\  =\ \psi_a (t) \cdot \ff
+(t),
+$$
+$$
+\mbox{ то }\quad \psi_a \cdot \ff \  \stackrel{a\rightarrow 0}
+\longrightarrow \ \ff \ \mbox{ в }\  S \qquad (*)
+$$
+$$
+\mbox{ и }\quad \ \psi_a (t) \cdot \ff (t) \ \longrightarrow \ \ff
+(t) \quad \forall \, t
+$$
+\end{note}
+
+\begin{problem}
+Доказать, что выполняется $(*).$
+\end{problem}
+\begin{proof}
+Из $(*)$ получаем, что
+$$\psi_a \cdot F \  \stackrel{a\rightarrow
+0} \longrightarrow \ F  \ \mbox{ в }\  S^{*} \qquad (**)$$
+
+Чтобы проверить $(**),$ нужно посмотреть, выполняется ли:
+
+$$\forall \, \ff \in
+S \quad (\psi_a \cdot F, \ \ff) \  \stackrel{a\rightarrow 0}
+\longrightarrow \ (F, \ \ff).$$
+
+
+Проверим это:
+$$
+(\psi_a \cdot F, \ \ff) \  = \ (F, \ \psi_a \cdot \ff) \
+\stackrel{a\rightarrow 0} \longrightarrow \ (F, \ \ff)
+$$
+Этим мы доказали, что $(*) \ \Rightarrow\ (**).$
+\end{proof}
+
+Теперь пусть $g\in \Ec, g\notin S$ и $F\in S^{*}$ обладают
+следующим свойством:
+$$
+\exists \, \lim\limits_{\asn} \ (F, \psi_a \cdot g).
+$$
+
+Тогда по определению полагаем, что:
+$$
+(F, g) \  \stackrel{def} = \ \lim \, (F, \psi_a \cdot g).
+$$
+
+\textsl{Типичный \textbf{пример} такого расширения области
+определения функционала  (обобщенной функции) $F$.}\\
+\\
+Пусть $F_1 = \delta, \  F_2 = \dw,$ тогда
+$$
+\forall \, g\in \Ec \quad (\delta, g) \ = \ g(0) \ \mbox{
+и } \ (\dw, g) \ = \ -g^{\prime} (0).
+$$
+Это и есть продолжение.\\
+\\
+Пусть $\ff \in S(\R^2)$ и $F\in S^{*} (\mro).$ Ясно, что
+$$
+\forall \, \ff\in \mro \qquad \left[z \ \mapsto \  \ff (x, z)
+\right] \in S
+$$
+Более того, мы можем проинтегрировать (сейчас - в обычном смысле)
+и получим, что
+$$
+\left[z \ \mapsto \ \il{\mro} \ff (x, z) \, dz\right] \in S
+$$
+Мы хотим посчитать: \ $(F, \ \il{\mro} \ff (x, z) \, dz).$ Для
+удобства записи введем традиционное обозначение действия:
+
+при $\Phi \in S^{*}$
+$$
+(\Phi, \psi) \ = \ \inr \Phi (t) \psi (t) \, dt \quad-
+$$
+- то есть мы вводим символ\label{simv}, который по определению
+равен левой части.
+
+Итак,
+$$
+(F, \ \il{\mro} \ff \,(\cdot, z) \, dz) \ = \ \inr F(x) \inr \ff
+(x, z) \, dz \ =
+$$
+$$
+\ \stackrel{(1)}{=} \inr \ \left( \ \inr F(x) \ff (x, z)
+\,dx\right) \,dz \quad \boxed{=}
+$$
+Далее без использования символа $\int$ напишем то же самое:
+$$
+\boxed{=} \quad \inr (F, \ff \,(\cdot, z))\, dz
+$$
+
+Мы хотим доказать (1). Сделаем это:
+
+Этот интеграл $\inr \ff \, (\cdot, z) \, dz$ мы будем понимать,
+как интеграл Римана, так что\\
+$\inr \ff \, (x, z)\, dz \ -$ \ это предел последовательности
+римановых сумм вида $\ \sum\limits_{j} \,\ff (x, z_j)\  \Delta
+z_j,\ $ каждая из которых будет зависеть от $ \ x,\ $ и как
+функция $x$ будет снова элементом пространства $S$. Полученная
+последовательность будет сходиться к $\ \inr \ff \, (\cdot, z)\,
+dz\ $ в пространстве $S.$
+
+Следовательно, применение $F$ к этому интегралу можно понимать как
+предел результатов применений $F$ к римановым суммам:
+$$
+\begin{CD}
+(F, \, \sum\limits_{j} \ff \, (\cdot, \ z_j)\  \Delta z_j)\ @>>> \
+(F, \ \int \ff \, (\cdot, \, z)\, dz )\\
+@| @|\\
+\sum\limits_{j} \left( (F, \, \ff\,(\cdot, \ z_j)) \ \Delta
+z_j\right) @>>> \inr (F, \, \ff \,(\cdot, z)) \, dz
+\end{CD}
+$$
+Учитывая, что $F\in S^{*}, \ \ff \in S,$ получаем:
+$$
+(\w{F}, \ff) = (F, \w{\ff}) = (F, \ \inr \ff (x) \cdot e^{-ixz} \,
+dx)\ =
+$$
+$$
+= \ \lim\limits_{\asn} \ (\psi_a \cdot F, \ \inr \ff(x) \cdot
+e^{-ixz} \, dx)\ = \ \lim\limits_{\asn} \ (F, \ \inr \psi_a
+(\cdot)\ \ff(x) e^{-ix \cdot}\, dx) \ =
+$$
+$$
+= \ \lim\limits_{\asn} \ \inr \ff(x) \bigl(F, \ \psi_a (\cdot) \,
+e^{-ix\cdot}\bigr)\, dx \quad \boxed{=}
+$$
+Предположим, что $\quad \exists \, \lim \limits_{\asn} \ (F, \
+\psi_a (\cdot) \ e^{-ix\cdot}) = (F, \ e^{-ix\cdot}).\quad$ Тогда
+
+$$
+\boxed{=} \quad \inr \ff(x) \ \lim\limits_{\asn} \ (F, \psi_a
+(\cdot) \ e^{-ix\cdot})\,dx \ = \ \left((F, \, e^{-ix\cdot}), \
+\ff \right)
+$$
+Следовательно, мы получаем, что: $\w{F}(z) = (F, \, e^{-ixz}).$
+
+Если $g\in L_1,$ то элемент $F_g \in S^{*}$ можно применить к
+функции $x \mapsto e^{- ixz}$ (не являющейся элементом $S$):
+$$
+\w{F}_g \, (z)\  = \ (F_g, \, e^{-ixz})\ = \ \inr g(x) \, e^{-ixz}
+\, dx.
+$$
+
+Таким образом, это определение преобразования Фурье действительно
+согласуется с обычным определением. Примеры:
+
+$$
+\w{\delta} (z) = (\delta, \, e^{-ixz}) = 1,
+$$
+$$
+\w{\dw} (z) = (\dw, \, e^{-ixz}) = iz,
+$$
+$$
+\w{F} (z)\  = \ (F, \, e^{-ixz})\ = \ \inr F(x)\, e^{-ixz} \, dz \
+- \ \mbox{ символ, который мы ввели ранее на стр. \pageref{simv}}
+$$
+Аналогично,
+$$
+\check{F} (z) = \frac{1}{2\pi} \, (F, \, e^{ixz}).
+$$
+
+\section{Лекция}
+
+\subsection{Прямые и обратные образы обобщенных функций.}
+
+\begin{df}
+Пусть $E_1 = \R^n, \ E_2 = \R^k$ и $g$ -
+отображение $E_1$ в $E_2,\ \ff$ - функция на $E_2$ и $\nu$ - мера
+на $\sigma$-алгебре борелевских подмножеств $E_1.$
+
+Тогда прямой образ $\gn \nu$ меры $\nu$ (если $g$ измеримо) и
+обратный образ $\gv \ff$ функции $\ff$ определяются так:
+
+$$
+\gv \ff\ - \ \mbox{ это функция на $E_2,$ определяемая
+равенством:}
+$$
+$$
+(\gv \ff) (x)\ = \ \ff (g (x)),
+$$
+
+а $\gn \nu$ - это мера на $E_2$ (мы ее определили в разделе,
+посвященном теории меры).
+\bigskip
+
+Пусть $F_1 \in S^{*} (E_1)\ $ и $\ F_2 \in S^{*} (E_2).$ Прямой
+образ $\gn F$ обобщенной функции $F$ при отображении $g$
+определяется так:
+$$\gn F\in S^{*} (E_2),$$
+$$
+(\gn F,\, \ff) \ = \ (F, \, \gv \ff), \qquad \gv\ff\in
+S(E_1),\quad\forall \,\ff \in S(E_2).
+$$
+Если $\ff\in S(E_2),$ то необязательно, что $\gv\ff \in S(E_1),$
+то есть прямой образ определен лишь для тех $F,$ которые можно
+продолжить на обратные образы функций $\gv \ff,\\  \ff\in S
+(E_1)$.
+\bigskip
+
+Обратный образ обобщенной функции $F\in S^{*}(E_2)$ при
+отображении $g$ определяется так:
+$$
+(\gv F,\ \ff)\ = \ (F, \ \gn\ff) \qquad \forall \, \ff\in S (E_1)
+$$
+(при определении прямого образа $\gn \ff$ функции $\quad \ff\in
+S(E_1)$; она рассматривается как элемент пространства $S^{*}
+(E_1)$)
+
+Если $\forall\, \ff\in S \quad \gn \ff \in S,$  то обратный образ
+определен для всех обобщенных функций.
+
+Обозначение: $(\gv F)(x)\ = \ F(g(x)).$
+\end{df}
+
+\begin{note}
+Если $\nu_\ff$ - это мера с плотностью $\ff$ и $\psi$ - плотность
+меры $\gn \nu_\ff,$ тогда $$\gn \ff\ = \ \psi.$$
+\end{note}
+
+\begin{problem}
+Доказать, что если $F$ - обычная функция, а $g$ - взаимно
+однозначное отображение, то
+$$
+(\gn F)(x)\ = \ F (g^{-1}(x)).
+$$
+\end{problem}
+
+\begin{ex}
+Пусть $g: \mathbb R \rightarrow \mathbb R,$
+$$g(x) = ax + b \mbox{
+и }F = \delta.$$  Тогда, что такое обратный образ $\delta$-функции
+$\gv \delta$ ?
+
+Найдем $\gv \delta \ (= \delta (ax + b))$ следующим образом:
+$$
+(\gv \delta, \ \ff) \equiv \inr \delta \underbrace{(ax + b)}_{z}
+\, \ff (x)\, dx \ = \ \inr \delta(z) \, \ff
+\left(\frac{z-b}{a}\right) \frac{dz}{a} \ =
+$$
+$$
+\ \frac{1}{a}\, \ff (- \frac{b}{a})\ = \ (\delta (ax + b) , \
+\ff)\ =\ \il{\mro} \delta (ax + b) \, \ff (x)\, dx;
+$$
+В частности, $ \int \delta (x+ b) \, \ff (x) \, dx\ = \ \ff (-b).$
+\end{ex}
+
+\begin{problem}
+Пусть есть аффинное отображение $g\colon \R^2 \rightarrow
+\mro$
+$$
+(x_1, x_2) \mapsto ax_1 + bx_2 + c
+$$
+Найти
+$$
+(\gv \delta)(x)\ = \ \delta (ax_1 + bx_2 + c).
+$$
+
+\end{problem}
+
+\begin{problem}
+Доказать, что следующее выражение верно и найти $C$:
+$$\w{e^{ixz}}
+= C\cdot e^{-ixz} \ (\mbox{ экспоненты считаются обобщенными
+функциями двух аргументов}).$$
+\end{problem}
+\begin{proof}
+Найдем преобразование Фурье функции $e^{i(x,z)}\colon$
+$$
+\w{e^{i (x, z)}} (x_1, z_1)\ = \ \il{\Rr} \il{\Rr} e^{i (x, z)} \,
+e^{-i (x, x_1)}\, e^{i (z, z_1)}\, dx \, dz\ = \
+$$
+$$
+\ = \ \il{\Rr} e^{- iz z_1} \left( \il{\Rr} e^{i x z} \, e^{-i x
+x_1} \, dx \right) \, dz\ = \ \il{\Rr} 2 \pi \cdot \delta (z -
+z_1) \cdot e^{- i z z_1} \, dz\ = \ 2 \pi \cdot e^{-i x_1 z_1}.
+$$
+\end{proof}
+
+\subsection{Свертка обобщенных функций.}
+\begin{df}
+Пусть $F_1, \ F_2 \in S^{*} (\mro).$ Тогда тензорное произведение
+обобщенных функций $F_1 \otimes F_2 \in S^{*} (\R^2)$
+определяется следующим образом:
+$$
+\left( F_1 \otimes F_2, \ \ff_1 (x) \cdot \ff_2 (z)\right)\ = \
+(F_1, \ff_1)\cdot (F_2, \ff_2)
+$$
+По линейности и непрерывности его можно продолжить на все $S.$
+Тензорное произведение можно определить и другим образом,
+например:
+$$
+(F_1 \otimes F_2, \ \ff(x_1, \, x_2))\ = \ (F_1, \ (F_2, \,
+\ff(x_1, \cdot))).
+$$
+\end{df}
+
+%\begin{note}
+%Можно взять два множества: $\{a_1,  a_2\}$ и $\{b_1, b_2, b_3\}$ с
+%такими свойствами:
+% \textbf{1.}$\quad\{a_1,  a_2\} \oplus \{b_1, b_2, b_3\}\ = \
+%\{a_1, a_2, b_1, b_2, b_3\};$
+% \textbf{2.}$\quad$ Декартово произведение: $\{a_1,  a_2\}\times
+%\{b_1, b_2, b_3\};$
+%\textbf{3.}$\quad$ Размерность пространства: $(\ff_1, \, \ff_2)
+%\mapsto \ff_1 \cdot \ff_2$ ($\ff_1$ зависит от $a_1,  a_2;$
+%$\ff_2$ - от $b_1, b_2, b_3$).
+%
+%\end{note}
+
+\begin{ex}
+Пусть, например:\\
+$$F_1 \ = \ g_1 (\cdot) \ \in\ L_1;$$
+$$F_2 \ = \ g_2 (\cdot) \ \in\ L_1.$$
+
+Тогда тензорным произведением  этих функций будет их простое
+произведение:
+$$
+(g_1 \otimes g_2) (x_1, x_2)\ = \ g_1 (x_1)\cdot g_2(x_2)
+$$
+\end{ex}
+
+\begin{df}
+Определим свертку двух обобщенных функций. Пусть
+$$
+\Phi\colon (x_1, \, x_2) \mapsto x_1 + x_2, \quad \R^2
+\rightarrow \mro.
+$$
+Тогда свертка обобщенных функций $F_1, F_2$ определяется так:
+$$
+(F_1 * F_2) \ = \ \Phi_{*} (F_1 \otimes F_2)
+$$
+(конечно, это значит, что свертка обобщенных функций $F_1$ и $F_2$
+определена не всегда).
+\end{df}
+
+Пусть $f_1$ и $f_2\in L_1 (\R^1),$ тогда
+$$
+(f_1 * f_2, \, \ff)\ = \ (\gn(f_1 \cdot f_2), \, \ff)\ = \ (f_1
+\cdot f_2, \, \gv\ff)\ = \ (f_1 \cdot f_2, \, \ff(x_1 + x_2))\ =
+$$
+$$
+\ = \ \il{\R^2} f_1 (x_1) \cdot f_2(x_2)\, \ff
+\overbrace{(x_1 + x_2)}^{V}\, dx_1 \, dx_2\ =
+$$
+$$
+\ = \ \il{\R^2} f_1(x_1)\, f_2(V-x_1)\, \ff(V)\,dV\,dx_1\
+=
+$$
+$$
+\ = \ \il{\mro} \left(\il{\mro} f_1(x_1)\, f_2(V-x_1)\,dx_1
+\right)\ff(V)\,dV \ = \ \left( \il{\mro} f_1(x_1)\,
+f_2(V-x_1)\,dx_1, \ \ff\right)
+$$
+Следовательно,
+$$
+(f_1 * f_2)(V) \ = \ \il{\mro} f_1(x)\, f_2(V-x)\,dx_1
+$$
+(отметим еще раз, что $\ \left[(x_1, x_2) \mapsto \ff(x_1 +
+x_2)\right]\notin S(\R^2),\ $ даже если $\ff \in S
+(\mro)$).
+
+Чтобы было все корректно, необходимо проверить, что $f_1 (x_1)
+\cdot f_2 (x_2) \in L_1 (\R^2).$
+
+Пользуясь теоремой Фубини, получим:
+$$
+\int \il{\R^2} |f_1 (x_1)\cdot f_2 (x_2)|\, dx_1\, dx_2 \
+=
+$$
+$$
+= \ \il{\mro} |f_1 (x_1)| \left( \il{\mro} |f_2 (x_2)|\, dx_2
+\right) \, dx_1 < \infty
+$$
+Следовательно, мы доказали, что $f_1 (x_1) \cdot f_2 (x_2) \in L_1
+(\R^2).$
+
+Теперь проверим, что $$f_1 (x_1) \cdot f_2 (V - x_1) \in L_1
+(\R^2),$$  пользуясь теоремой Фубини:
+$$ \int
+\il{\R^2} |f_1 (x_1) \cdot f_2 (V - x_1)|\, dx_1\, dV\ =
+$$
+$$
+\ = \ \il{\mro} |f_1 (x_1)| \left(\il{\mro} |f_2 (V - x_1)| \, dV
+\right)\, dx_1 < \infty.
+$$
+Заметим, что $\ \forall \, x_1$ функция $\left[ V \mapsto |f_2 (V
+- x_1)|\right] \in L_1,$ так как $f_2(x_1) \in L_1
+(\R^1),$ следовательно, интеграл $\il{\mro} |f_2 (V -
+x_1)| \, dV$ конечен.
+\bigskip
+
+Поэтому интеграл $\int f_1 (x_1) \cdot f_2 (V - x_1) dx_1$
+определен для почти всех $V$ и функция $$f_1 * f_2 \in L_1.$$
+
+То, что мы только что проверили, можно записать еще в такой форме:
+$$
+F_{f_1 * f_2}\ = \ F_{f_1} * F_{f_2}.
+$$
+
+Сделаем замену переменных: пусть $V - x_1 = z,$  тогда
+$$
+f_1 * f_2\ = \il{\mro} f_1 (x_1) \cdot f_2 (V - x_1) \, dx_1\ = \
+\il{\mro} f_1(V - z)\cdot f_2(z)\, dz
+$$
+Следовательно, мы можем сделать вывод, что свертка является
+коммутативной операцией.
+
+Определим преобразование Фурье свертки сначала для функций из
+пространства $L_1.$
+$$
+\w{f_1 * f_2} (z)\ = \ \il{\mro} \left( \il{\mro} f_1 (x_1) \cdot
+f_2 (V - x_1)\, dx_1 \right) \,e^{-iVz} \, dV \ \boxed{=}
+$$
+
+Опять здесь применима теорема Фубини. Пусть $$V - x_1 = x_2 \
+\mbox{ и }\ V = x_1 + x_2,$$  тогда
+
+$$
+\boxed{=} \ \il{\mro} \il{\mro} f_1 (x_1) \cdot f_2 (x_2) \,
+e^{-iz \,(x_1 + x_2)} \, dx_1 \, dx_2\ = \
+$$
+$$
+\ = \ \il{\mro} f_1 (x_1) \, e^{-iz x_1} \, dx_1 \cdot \il{\mro}
+f_2 (x_2) \, e^{-iz x_2} \, dx_2 \ = \ \w{f_1} (z) \cdot \w{f_2}
+(z)
+$$
+Пусть $F \in S^{*} (\mro)\quad$ и
+$$
+(\w{F},\, \ff)\ = \ ((F, \, e^{-ixz}), \, \ff)\ = \ \il{\mro}
+\left( \il{\mro} F(x) \, e^{-ixz} \, dx \right) \ff (z)\, dz.
+$$
+Тогда:
+$$
+(\w{F_1 * F_2}, \, e^{-iz \cdot})\ =
+$$
+$$
+= \ \il{\mro} \il{\mro} F_1 (x_1) \cdot F_2 (x_2) \, e^{-iz \,(x_1
++ x_2)} \, dx_1 \, dx_2 \ \stackrel{\mbox{по ``обобщенной
+т.Фубини``}}{=} \ \w{F_1}\cdot \w{F_2}
+$$
+Свертка обобщенных функций определена не всегда.\\
+\\
+$$
+\w{\delta} (z)\ = \ (\delta,\, e^{-ixz})\ = \ 1.
+$$
+
+Если $\ff\in S,$ то
+$$
+\w{\ff(x+a)}(z)\ = \ e^{iaz} \, \w{\ff} (z),
+$$
+тогда
+$$
+\w{\delta(x+a)}(z)\ = \ e^{iaz} \, \w{\delta}(z) = e^{iaz} \quad
+\mbox{ и } \quad \cw \ = \ \check{e^{iaz}}\ = \ \delta (x+a)
+$$
+
+$$\epsfbox{picture.19}$$
+
+$$\psi_a (x)\ = \ \psi (ax)$$
+$\psi(a)  \stackrel{\asn}{\rightarrow} 1 \mbox{ в }  S^{*}.$
+
+Мы можем написать для обратного преобразования Фурье равенство
+$$
+\check{\psi} (a) (x)\ = \ \frac{1}{2 \pi} \il{\mro} \psi_a (z) \,
+e^{ixz} \, dz
+$$
+$$
+\check{1}(x)\ = \ \lim\limits_{\asn} \frac{1}{2 \pi} \il{\mro}
+\psi_a (z) \, e^{ixz} \, dz\ = \ \frac{1}{2 \pi} \il{\mro} e^{ixz}
+\, dz
+$$
+$$
+\check{1}(x)\ = \ \frac{1}{2 \pi} \inr e^{ixz} \, dx\ = \ \lin
+\frac{1}{2 \pi} \int\limits^{n}_{-n} e^{ixz} \, dx
+$$
+$$
+\check{e^{iaz}}(x)\ = \ \delta (x+a)\ = \ \frac{1}{2 \pi}
+\il{\mro} e^{iz(x+a)} \, dx
+$$
+\begin{stm}
+Операция дифференцирования свертки выглядит так:
+$$
+(F_1 * F_2)^{\prime} \ = \ (F_1^{\prime} * F_2)\ = \ (F_1 *
+F_2^{\prime})
+$$
+\end{stm}
+
+\begin{proof}
+$$\w{(F_1 * F_2)^{\prime}} (z)\ = \ (iz) \w{F_1} (z) \cdot \w{F_2}(z)\ = \ $$
+$$
+\ = \ \bigl(iz \cdot \w{F_1}(z)\bigr) \cdot \w{F_2} (z)\ = \
+\w{F_1^{\prime}}(z) \cdot \w{F_2}(z)\ = \ \w{F_1^{\prime}
+* F_2}
+$$
+\end{proof}
+
+Пусть $D$ - дифференциальный оператор  в пространстве обобщенный
+функций:
+$$
+(D\ff)(x)\ = \ \sum\limits_{j=0}^{n} a_j \, \ff^{(j)}(x)
+$$
+Фундаментальная функция $F$ дифференциального оператора
+определяется равенством: $$DF = \delta.$$
+
+\begin{theorem} Пусть $F$ - фундаментальная функция
+дифференциального оператора $D,$ тогда решением уравнения $D \Phi
+= G \in S^{*}$ является:
+$$\Phi \ = \ F*G.$$
+\end{theorem}
+
+\begin{proof}
+$$D\Phi \ = \ D(F*G)\ = \ (DF * G) \ = \ \delta * G.$$
+Докажем, что $\delta * G = G:$
+$$
+\w{\delta * G}\ = \ \w{\delta} \cdot \w{G}\ = \ 1 \cdot \w{G}\  =
+\ \w{G}\ \Rightarrow \ \delta * G \ = \ G
+$$
+\end{proof}
+
+\begin{df}
+Рассмотрим задачу Коши:
+$$
+\left\{
+\begin{aligned}
+\frac{\partial F}{\partial t} \ &= \ D(F(t))\\
+F (t) &\stackrel{t \rightarrow 0}{\rightarrow} G \in S^{*}\\
+\end{aligned}
+\right.
+$$
+Где $F\colon (0, a) \rightarrow S^{*}, \ \forall\, t \  F(t)\in
+S^{*}, \ G\in S^{*}.$
+
+Тогда функция $F$ называется решением задачи Коши. Фундаментальным
+решением задачи Коши называется такое $F,$ что
+$$
+F(t) \ \stackrel{t\rightarrow 0}\longrightarrow \delta.
+$$
+\end{df}
+
+\begin{theorem}
+Рассмотрим  также задачу Коши:
+$$
+\left\{
+\begin{aligned}
+\frac{\partial \Phi}{\partial t} \ &= \ D(\Phi(t))\\
+\Phi (t) &\stackrel{t \rightarrow 0}{\rightarrow} G \in S^{*}\\
+\end{aligned}
+\right.
+$$
+Тогда ее решением является: $\Phi(t)\ = \ (F(t)*G).$
+\end{theorem}
+
+\begin{proof}
+$$
+\frac{\partial \Phi}{\partial t} \ = \ \frac{\partial (F(\cdot)
+* G)}{\partial t} (t) \ = \ \left( \frac{\partial F}{\partial t} * G
+\right)\ = \ (DF(t) * G)\ = \ D(F(t) * G)\ = D(\Phi(t)).
+$$
+
+Так как $F(t) \stackrel{t \rightarrow 0}{\rightarrow} \delta,$ то:
+$$
+\Phi(t) \stackrel{t \rightarrow 0}{\rightarrow} (\delta * G )\ = \
+G.
+$$
+\end{proof}
+
+\section{Лекция}
+
+\begin{note}
+Было $S\supset D$ и $S^{*} \supset D^{*}.$ Преобразование Фурье не
+переводит $D$ в себя. Пусть $\w{D}$ - множество преобразований
+Фурье и $\check{D}$ - множество обратных преобразований Фурье
+функций из $D$ с топологиями, заимствованными из $D.$
+$$
+\mbox{ Тогда }\ \check{D}\  =\  \w{D}\ \equiv \ Z\subset S,
+$$
+но топология в $Z$ - не та, которая порождается топологией
+пространства $S$ (а сильнее).
+
+Преобразование Фурье (обратное преобразование Фурье) элемента
+$F\in D^{*}$ - это функционал на $Z,$ определяемый так:
+
+$$\forall \, \ff \in Z, \ F\in D^{*}, \ff\in D: \quad
+(\w{F}, \ \ff)\ = \ (F, \ \w{\ff}); \quad (F, \  \check{\ff}).
+$$
+
+
+Предположим, что:
+$$
+f(x)\ = \ e^{bx}, \quad S^{*} \not\ni F_{f} \in D^{*};
+$$
+ранее было показано, что $\w{\delta (z+a)} (x) \ = \ e^{-
+iax}(z).$
+
+Аналогично,
+$$
+\w{\delta (z + ib)} (x) \ = \ e^{bx};
+$$
+$$
+(\delta (z - ib), \ \psi)\ = \ \psi(ib), \quad \forall \, \psi\in
+Z = \w{D}
+$$
+\end{note}
+
+\subsection{Теория линейных операторов в гильбертовом пространстве.}
+
+В этом разделе рассматриваются гильбертовы пространства над полем
+комплексных чисел. Скалярное произведение $(\cdot, \cdot)$ в
+комплексном гильбертовом пространстве $H$ обладает свойствами:
+\begin{enumerate}
+\item $\forall \, x\in H \quad (x, x) \geqslant 0, \qquad (x, x) =
+0 \ \Leftrightarrow\  x = 0; $
+
+\item $\forall \, x_1,\, x_2,\, z\in H, \quad \forall \, \alpha,
+\beta \in \mathbb{C}\qquad (\alpha x_1 + \beta x_2, \ z)\ = \
+\alpha (x_1, \ z) + \beta (x_2, \ z);$
+
+\item $\forall \, x_1, \, x_2 \in H \qquad (x_1, x_2) \ = \
+\overline{(x_1, x_2)}.$
+
+\end{enumerate}
+
+Из (2) и (3) следует, что $\forall \, x_1, \, x_2, \, z \in H,
+\quad \forall \, \alpha, \, \beta \in \mathbb{C}:$
+$$
+(z, \ \alpha x_1 + \beta x_2)\ = \ \overline{\alpha} \cdot (z,\
+x_1) + \overline{\beta} \cdot (z, \ x_2).
+$$
+
+Действительно,
+$$
+(z, \ \alpha x_1 + \beta x_2 )\ = \ \overline{(\alpha x_1 + \beta
+x_2, \ z)}\ = \ \overline{\alpha} \cdot \overline{(x_1, \ z)} +
+\overline{\beta} \cdot \overline{(x_2, \ z)}\ = \
+\overline{\alpha} \cdot (z,\ x_1) + \overline{\beta} \cdot (z, \
+x_2).
+$$
+
+Примером комплексного гильбертова пространства является
+комплексное пространство $L_2 (\mro),$  состоящее из всех (классов
+эквивалентности) - комплекснозначных функций  $f,$ для которых:
+$$
+\il{\mro} |f|^2 \, dx < \infty,
+$$
+со скалярным произведением $(\cdot, \cdot),\ $ определяемым так:
+$$
+(f_1, \ f_2)\ = \ \il{\mro} f_1 (x) \, f_2 (x) \, dx.
+$$
+
+Корректность определения проверяется аналогично тому, как это было
+сделано для вещественного случая. Аналогично определяется для
+каждого пространства с мерой $(\Om, \As, \nu)$
+комплексное пространство  $L_2 (\Om, \As, \nu)$ и, в
+частности, комплексное $l_2.$
+
+
+Напомним определение сопряженного оператора:
+$$
+(A^{*}x, \ z)\ = \ (x, \ Az) \qquad \forall\, x, z\in H
+$$
+
+\begin{df}
+Пусть $H$ - гильбертово пространство. Оператор $A\in L(H)$
+называется нормальным, если выполняется следующее условие:
+$$
+A^{*} \cdot A\ = \ A \cdot A^{*}
+$$
+
+
+\end{df}
+
+\begin{df}
+Оператор $V$ называется унитарным, если:
+$$
+V^{*} \cdot V \ = \ V \cdot V^{*} = I \qquad \forall \, x \quad I
+\cdot x = x
+$$
+\end{df}
+
+\begin{df}
+Оператор $A$ называется самосопряженным, если:
+$$
+\quad A^{*}\ = \ A.$$
+\end{df}
+\emph{Унитарные и самосопряженные операторы являются нормальными.}
+
+\begin{problem}
+Привести пример не единичного оператора, являющегося одновременно
+самосопряженным и унитарным.
+\end{problem}
+
+\subsection{Спектр операторов в гильбертовом пространстве.}
+
+Пусть $A\in L(H).$ Говорят, что $\la\in \mathbb{C}$ не принадлежит
+спектру $A$ $\Bigl(\la\notin \spec A\Bigr),$ если оператор
+$A_{\la} \ = \ A - \la I$ обладает обратным, который всюду
+определен, то есть тогда и только тогда, когда
+$$\exists \, A_{\la}^{-1} (\in L(H)).$$
+
+\begin{ex}
+Пусть $H = L_2(\mro)$ и
+$$
+(Af)(x)\ = \ g_{A} (x) \cdot f(x),
+$$
+где $g_A$ является непрерывной комплекснозначной функцией. Для
+того, чтобы оператор был линейным и непрерывным необходимо и
+достаточно, чтобы функция $g$ была ограниченной.
+\end{ex}
+
+\begin{problem}
+Показать, что
+$$
+\|A\|\ = \ \sup\limits_{x} |g_A (x)|.
+$$
+\end{problem}
+
+\begin{problem}
+Доказать, что:
+$$
+(A^{*} f)(x)\ = \ \overline{g}_{A} (x) \cdot f(x).
+$$
+\end{problem}
+
+Следовательно, $A^{*} \cdot A\ = \ A \cdot A^{*},$ а, значит,
+каждый такой оператор нормален.
+
+\begin{problem}
+Оператор $A$ является унитарным $\Longleftrightarrow \ |g_A (x)|\
+= \ 1 \quad \forall \, x.$
+\end{problem}
+
+\begin{problem}
+Оператор $A$ является самосопряженным $\Longleftrightarrow \ g_A
+(x)\in \mro \quad \forall \, x.$
+\end{problem}
+
+Аналогично определяется в $L_2 (\Om, \Bs, \nu)$ оператор
+умножения на (комплексную) существенно ограниченную функцию.
+
+\begin{problem}
+Доказать, что:
+$$
+\|A\|\ = \ess\limits_{\om \in \Om} |f(\om)| \ = \ (\mbox{то есть
+сущеcтвенная верхняя грань})\ =
+$$
+$$
+\ = \inf_{\substack{N\in \Bs\\ \nu N = 0}} \sup
+\{|f(\om)|: \ \om\in \Om \backslash N\}.
+$$
+\end{problem}
+
+\begin{theorem}
+Если $A$ - нормальный линейный непрерывный оператор  в
+гильбертовом пространстве $H,$ то существуют пространство $(\Om,
+\As, \nu)$ со счетно-аддитивной $\sigma$-конечной мерой
+$\nu$ и такой изоморфизм из $H$ в $L_2(\Om, \As, \nu),$
+что при нем оператор $A$ переходит в
+$$
+(A f)(x) \ = \ g_A (x) \cdot f(x),
+$$
+то есть в оператор умножения на какую-то комплекснозначную функцию
+$g_A (x).$
+\end{theorem}
+
+\subsection{Классификация точек спектра.}
+
+Пусть $\la\in \spec A$:\\
+
+\textbf{1.} $\quad$ Если $\Ker A_{\la} \not = \{0\},$ то говорят,
+что элемент $\la$ принадлежит точечному спектру; таким образом,
+$\la$ принадлежит точечному спектру тогда и только тогда, когда
+$$\exists \, x \in H, \quad x \not = 0: \quad
+A_{\la} x \ = \ 0 \quad (x\in \Ker A_{\la}), \ \mbox{ так что }
+$$
+все векторы из $A_{\la}$ являются собственными векторами.\\
+
+\textbf{2.} $\quad$ Если $\Ker A_{\la} \ = \ \{0\}$ и
+$\overline{\Im A_{\la}}\ = \ H,$ то говорят, что $\la$
+принадлежит непрерывному спектру (черта обозначает замыкание).\\
+
+\textbf{3.} $\quad$ Если $\Ker A_{\la} \ = \ \{0\}$ и
+$\overline{\Im A_{\la}}\ \not = \ H,$ то $\la$ принадлежит
+остаточному спектру.\\
+
+\begin{prop}
+Нормальный оператор не имеет остаточного спектра.
+\end{prop}
+
+\begin{proof}
+Будем доказывать от противного, то есть предположим, что $\la \in$
+остаточному спектру $A$. Тогда по определению:
+$$
+\overline{\Im (A - \la I)} \not = H;
+$$
+$$
+\overline{\Im (A - \la I)}^{\bot} \ = \ (\Im (A - \la I))^{\bot}\
+= \ \Ker A^{*}_{\la}\ = \ \Ker (A^{*}\ - \ \overline{\la} I), \
+\mbox{ так как }
+$$
+$$
+\qquad (\la I)^{*} \ = \ \overline{\la} I \ \  \mbox{(здесь черта
+- это знак комплексного сопряжения)};
+$$
+следовательно, $\Ker A^{*}_{\la} \not = \{0\}.$ Это значит, что
+$$
+\exists \, x\in H, \quad x\not = 0\colon \quad (A^{*}\ - \
+\overline{\la} I)x \ = \ 0.
+$$
+Исходя из этого, получаем, что:
+$$
+0 \ = \ (A - \la I) (A^{*}\ - \ \overline{\la} I)x \ = \ (A^{*}\ -
+\ \overline{\la} I)(A - \la I)x
+$$
+
+$$
+\left.
+\begin{aligned}
+\Im (A - \la I)\  \ni \ (A - \la I)x &\in \Ker (A^{*}\ - \
+\overline{\la} I)\\
+\Im (A - \la I)  \subset \overline{\Im  (A - \la I)} &= (\Ker
+(A^{*}\ - \ \overline{\la} I))^{\bot}\\
+\end{aligned}
+\right\} \quad \Longrightarrow
+$$
+
+$$\Rightarrow \quad (A - \la I)x = 0 \ \Rightarrow \quad x \in \Ker
+A_{\la} \ \Rightarrow\quad \Ker A_{\la} \not = \{0\}.$$
+
+Следовательно, мы получили противоречие.
+\end{proof}
+
+\begin{theorem}
+Пусть $A$ - нормальный линейный непрерывный оператор. Тогда:
+$$
+\bigl[\la \in \spec A\bigr] \ \Longleftrightarrow \ \bigl[ \exists
+\, \mbox{ последовательность } \{x_n\} \subset H\colon \quad x_n
+\nrightarrow 0, \quad A_{\la} x_n \rightarrow 0\bigr].
+$$
+\end{theorem}
+
+\begin{proof}\\
+$\Leftarrow\quad$ Пусть существует последовательность $\{x_n\}
+\subset H\colon \quad x_n \nrightarrow 0, \quad A_{\la} x_n
+\rightarrow 0.$ Тогда возможны два варианта:
+
+\textbf{1.} $\quad \Ker A_{\la} \not = \{0\} \ (\mbox{значит, все
+доказано});$
+
+\textbf{2.} $\quad \Ker A_{\la} \  = \ \{0\}.$
+
+Предположим, что $z_n = A_{\la} x_n \quad \forall \, n,$ тогда
+$z_n \rightarrow 0,$ но
+$$
+A_{\la}^{-1} z_n\ = \ A_{\la}^{-1} A_{\la} x_n \ = \ x_n
+\nrightarrow 0
+$$
+Следовательно, $A_{\la}^{-1}$ не непрерывен, а это значит, что
+$\la \ \in \spec A$ (в этой части доказательства нормальность не
+используется).
+
+$\Rightarrow \quad$ Пусть $\la \in \spec A.$ Тогда мы снова
+сталкиваемся с двумя случаями:
+
+\textbf{(1.)} $\quad \Ker A_{\la} \not = \{0\} \ \Longrightarrow\
+\exists\, x \in \Ker A_{\la},\  x \not = 0.$
+
+Пусть $x_n = x \quad \forall \, n:$
+$$
+\forall \, n \qquad A_n x_n = A_{\la} x = 0 \ \Longrightarrow \
+\mbox{ нужная последовательность существует.}
+$$
+
+\textbf{(2.)} $\quad \Ker A_{\la} = \{0\}.$ Тогда $\la \in$
+непрерывному спектру, так как $A$ нормален. Значит,
+$$
+A_{\la}^{-1}\colon \Im A_{\la} \rightarrow H, \ \mbox{ причем }
+\overline{\Im A_{\la}}\ = \ H.
+$$
+
+$$
+\left.
+\begin{aligned}
+\forall x \in \Im A_{\la}\quad &A_{\la} A_{\la}^{-1} x \ = \ x\\
+\forall z \in H \quad &A_{\la}^{-1} A_{\la} z \ = \ z
+\end{aligned}
+\right\} \ \Longrightarrow \ A_{\la}^{-1} \mbox{ не непрерывен на
+непрерывном спектре,}
+$$
+так как, если бы он был непрерывным, то его можно было бы
+продолжить по непрерывности до оператора $B,$ определенного на
+замыкании $\Im A_\la,$ то есть на всем $H;$ этот оператор $B$
+обладал бы свойствами:
+$$
+\forall \, x\in H \quad A_\la B x \ = \ x, \quad B A_\la x = x,
+$$
+что противоречит тому, что $\la \in \spec A.$
+
+Таким образом,
+$$
+\exists \, z_n \rightarrow 0 \qquad \forall\, n \ \  z_n\in \Im
+A_{\la};
+$$
+$$
+x_n\ = \ A_{\la}^{-1} z_n \nrightarrow 0;
+$$
+$$
+A_{\la} x_n = z_n \rightarrow 0.
+$$
+\end{proof}
+
+\begin{imp}
+Пусть $A$ - самосопряженный оператор, тогда $\spec A\subset \mro.$
+\end{imp}
+
+\begin{proof}
+Пусть $\quad\la = \alpha + i \beta;\ \mbox{ где }\beta \not = 0.$
+Докажем, что тогда $\la\notin \spec A.$
+$$
+A_{\la}\ = \ A  - \la I \quad \mbox{ и } \quad A_{\la}\  =\
+A_{\alpha} - i\beta I
+$$
+На основании этого, получаем:
+$$
+(A_{\la} x, \, A_{\la} x)\ = \ ((\ A  - \la I)x, \, (\ A  - \la
+I)x)\ =
+$$
+$$
+= \ ((A_{\alpha} - i\beta I)x, \, (A_{\alpha} - i\beta I)x)\ = \
+\|A_{\alpha} x\|^2 + \beta^2 \|x\|^2 \geqslant \beta^2 \|x\|^2
+$$
+
+$\la$ принадлежит такому спектру в точности тогда, когда:
+$$
+x_n \nrightarrow 0 \ \mbox{ на } \ A_{\la} x_n \rightarrow 0.
+$$
+Поэтому
+$$
+\|A_{\la} x_n\|^2 \geqslant \beta^2 \|x\|^2\ \Longrightarrow\
+\beta = 0
+$$
+\end{proof}
+
+\begin{problem}
+Показать, что спектр унитарного оператора находится на единичной
+окружности комплексной плоскости.
+\end{problem}
+
+\section{Лекция}
+
+\begin{theorem}
+Если $A = A^{*}$, тогда
+$$
+\|A\|\ = \ \sxo |(Ax, x)| = \sxpo |(Ax, x)|.
+$$
+\end{theorem}
+
+\begin{proof}
+\textbf{1.} $\quad \forall\, x \qquad |(Ax, x)| \leqslant \|Ax\|
+\cdot \|x\| \leqslant \|A\|\cdot  \|x\|^2$
+
+$$\|x\| = 1 \ \Longrightarrow \ |(Ax, x)| \leqslant \|A\|\
+\Longrightarrow\ C = \sxpo |(Ax, x)| \leqslant \|A\|.
+$$
+
+\textbf{2.} $\quad$ Докажем, что $\|A\| \leqslant \sxpo |(Ax,
+x)|.$
+
+Введем следующее обозначение: $Q_{A} (x) = (Ax, x),$ тогда
+$$
+(1)\qquad\qquad\quad\  Q_{A} (x+z) - Q_{A} (x-z)\ = \ (Ax, z) +
+(Az, x) + (Ax, z) + (Az, x)\ =
+$$
+$$
+= \ 2(Ax, z) + 2(Az, x)\ = \ 2 \Bigl((Ax, z) + (Az, x)\Bigr)\ = \
+$$
+$$
+= \ 2 \Bigl((Ax, z) + \overline{(Ax, z)}\Bigr) = 4 \Re (Ax, z).
+$$
+$$
+(2)\qquad |Q_{A} (x+z) - Q_{A} (x-z)| \ = \ |4 \Re (Ax, z)| \
+\leqslant \ |Q_{A} (x+z)| + |Q_{A} (x-z)|\ \leqslant
+$$
+$$
+\leqslant\ C(\|x+z\|^2 + \|x-z\|^2)\ = \ C(2 \|x\|^2 + 2 \|z\|^2).
+$$
+
+Предпоследнее неравенство вытекает из того, что
+$$
+|Q_A (x)| \ = \ |(Ax, x)| \  \leqslant \  C \|x\|^2;
+$$
+в свою очередь, неравенство $|(Ax, x)| \leqslant C \|x\|^2$
+доказывается так.
+
+Если $\|x\| = 1,$ то $|(Ax, x)|\leqslant C;$ поэтому, если
+$$
+x = \frac{x_1}{\|x_1\|}, \ \mbox{ то } \ \frac{|(Ax_1,
+x_1)|}{\|x_1\|^2} \leqslant C \quad \Rightarrow \ |(Ax_1, x_1)|
+\leqslant C \|x\|^2
+$$
+Из (1) и (2) следует, что
+$$
+|4 \Re (Ax, z)| \ \leqslant \ 2C(\|x\|^2 + \|z\|^2).
+$$
+$$
+\mbox{Пусть }\ z = \frac{\|x\| \cdot Ax}{\|Ax\|}; \quad \mbox{
+тогда }\ \  4 \|x\| \cdot \|Ax\| \leqslant 4\cdot C \|x\|^2\quad
+\Longrightarrow
+$$
+$$
+\Longrightarrow\quad \|Ax\| \leqslant C \|x\| \quad \forall\,
+x\quad \Longrightarrow \quad \|A\|\leqslant C.
+$$
+\end{proof}
+
+\begin{df}
+Оператор $A\in L(H)$ - компактен, если он переводит всякое
+ограниченное множество в относительно компактное.
+\end{df}
+
+\subsection{Свойства компактного оператора.}
+
+\textbf{1.} $\quad$ Множество всех компактных операторов в
+гильбертовом пространстве образует идеал в алгебре всех
+операторов, то есть:
+
+$\quad$ \textbf{a.} Это множество - линейное подпространство;
+
+$\quad$ \textbf{б.} $\forall \, B \in L(H), \  \forall K\in L_0
+(K)\ \Longrightarrow\ K B \in L_0 (H), B K\in L_0 (K).$\\
+\\
+\textbf{2.} $\quad$ Этот идеал является замкнутым.
+
+\begin{ex}
+Пусть задано $L_2 (\Om, \Bs, \nu),$ где $\Om =
+\mathbb{N},\ $ а $\nu$ приписывает множеству значение, равное
+числу элементов в нем.
+
+Тогда $(K, f) (n)\ = \ \alpha(n) \cdot f(n).$
+\end{ex}
+
+\begin{problem}
+Этот оператор $K$ является компактным в точности тогда, когда \\
+$\alpha(n) \rightarrow 0$  и самосопряженным, если $\forall \, n
+\quad \alpha(n) \in \R.$
+\end{problem}
+
+\begin{theorem}[Гильберта-Шмидта]
+
+Пусть $K$ - компактный самосопряженный оператор в сепарабельном
+гильбертовом пространстве $H.$ Тогда в $H$ существует
+ортонормированный базис $\{e_{n}\}$  с таким свойством:
+
+$\quad$ все $e_{n}$ - собственные векторы этого оператора, и
+оператор $K$ действует следующим образом:
+$$
+\forall\, x\in H \qquad Kx = \ \sus \la_n (x, e_n)\, e_n,
+$$
+где $\la_n$ - собственное значение для собственного вектора
+$e_{n}$; при этом $\la_n \rightarrow 0.$
+\end{theorem}
+
+\begin{proof}
+Покажем сначала, что то, что $\la_n \rightarrow 0,$ вытекает из
+всего остального.
+
+Пусть $\la_n \nrightarrow 0 \ \Longrightarrow$
+$$
+\exists\, \la_{n_1}, \la_{n_2}, \ldots : \quad |\la_{n_j}| >
+\varepsilon > 0;
+$$
+тогда $\forall\, j \quad K e_{n_j} = \la_{n_j} e_{n_j}$
+$$
+\|\la_{n_j} e_{n_j} - \la_{n_k} e_{n_k}\| \geqslant \varepsilon
+\|e_n\| = \varepsilon.
+$$
+Следовательно, мы можем сделать вывод, что из $\{e_{n_j}\}$ нельзя
+выбрать фундаментальной последовательности, а это значит, что мы
+получили противоречие с компактностью оператора.
+
+
+Докажем остальные утверждения. \\
+
+\textbf{1.} $\quad$ \texttt{Применение} \textbf{леммы
+Куратовского-Цорна.}
+
+Пусть $S$ - множество всевозможных ортонормированных семейств
+собственных векторов $K$ (каждое такое семейство не более чем
+счетно, так как $H$ сепарабельно). Это множество является частично
+упорядоченным по включению.
+
+При этом каждое его линейно упорядоченное подмножество имеет
+мажоранту. Действительно, пусть $A \subset S$ и $A$ линейно
+упорядочено, то есть
+$$
+\mbox{если  }s_1,\, s_2 \in A, \ \mbox{ то } s_1 \subset s_2 \
+\mbox{ или }\ s_2 \subset s_1 \mbox{ (включения не обязательно
+строгие).}
+$$
+
+Тогда множество $\bigcup\limits_{s\in A} s \ \in S$ - это
+мажоранта множества $A.$ Поэтому в силу теоремы Куратовского-Цорна
+в $S$ существуют максимальные элементы. Пусть $s_{\max} \ \in S$ -
+один из них.\\
+
+\textbf{2.} $\quad$ Мы утверждаем, что $s_{max}$ - тот
+ортонормированный базис, существование которого утверждается в
+теореме. Пусть это не так, то есть
+$$
+s_m = \{e_n \in H\} \ \mbox{ не образует базиса;}
+$$
+тогда, если $\Span s_{m}$ - наименьшее замкнутое линейное
+пространство, содержащее $s_m$, то $\Span s_{m} \not = H.$
+$$
+\Longrightarrow \quad (\Span s_m)^{\bot} \ = \ (\overline{\Span
+s_{m}})^{\bot}\ = \ H_1 \not = \{0\}.
+$$
+
+Покажем, что $H_1$ - инвариантное подпространство нашего
+оператора, то есть
+$$
+\forall\, x\in H_1, \ Kx\in H_1.
+$$
+
+Это - частный случай следующего общего факта:
+$$
+\mbox{ если }\ H = H_0 \oplus H_1 \quad \mbox{ и }
+$$
+$H_0$ инвариантно относительно действия самосопряженного оператора
+$A\in L (H)$, то $H_1$ инвариантно. Этот факт доказывается так:
+$$
+[x \in H_0 \ \Leftrightarrow\ \forall \, z\in H_1, \quad (z, x) =
+0] \quad \Longrightarrow \quad \forall \, z \in H_1 \quad (Ax, z)
+= (x, Az) = 0,
+$$
+так как $Az \in H_1 \ \Rightarrow \ Ax\in H_0.$
+
+Остается положить $H_0 = \overline{\Span s_m}.$\\
+
+\textbf{3.} $\quad$ Осталось доказать, что каждый компактный
+оператор имеет хотя бы один собственный вектор. Это вытекает из
+следующих двух утверждений:
+
+$\quad$ \textbf{a.} Если $\sup|(Ax, x)|$ достигается на векторе,
+то этот вектор является собственным для оператора. \label{predloj}
+
+$\quad$ \textbf{b.} если оператор компактен и самосопряжен, то
+этот $\sup|(Ax, x)|$ достигается обязательно.
+
+Предположим, что это уже доказано. Так как сужение $A$ на $H_1$ -
+это компактный самосопряженный оператор в $H_1,$ то, если $H_1
+\not = \{0\},$ то $A$ обладает (ненулевым) собственным вектором в
+$H_1,$  а противоречие с максимальностью $s_m.$
+
+Таким образом, $s_m = \{e_n\}$ - это ортонормированный базис в $H$
+и
+$$
+\forall \, n \quad \exists \, \la_n \in \mro, \quad K e_n = \la_n
+e_n.
+$$
+Поэтому $\forall\, x \in H$
+$$
+x \ = \ \sus (x, \ e_n)\  e_n \quad \mbox{ и}
+$$
+$$
+Kx = \sus \la_n \ (x, \ e_n)\ e_n.
+$$
+\end{proof}
+
+\section{Лекция}
+
+В доказательстве того, что, если $A$ компактен и самосопряжен, то
+$\sxo |(Ax, x)|$ достигается на некотором векторе, используется
+следующая теорема, имеющая и самостоятельное значение.
+
+\begin{theorem}
+Всякий замкнутый шар $S$ в сепарабельном гильбертовом пространстве
+секвенциально компактен в слабой топологии, то есть
+$$
+\forall \, (x_n)\subset S\subset H \ \exists\, \mbox{
+подпоследовательность } (x_{n_k}) \ \mbox{ и } \ \exists\, z\in
+S\colon \ x_{n_k} \stackrel{\mbox{слабо}}\longrightarrow z \mbox{
+при } k\rightarrow\infty.
+$$
+\end{theorem}
+\begin{proof}
+Достаточно доказать теорему для замкнутого единичного шара с
+центром в нуле. Итак, пусть $S$ - такой шар. Пусть $(a_n)$ -
+счетное всюду плотное подмножество гильбертова пространства
+($(a_n) \subset H, \ \overline{(a_n)} = H$).
+
+Так как $\ \forall \, j$
+$$
+|(a_j, x_n)| \leqslant \|a_j\| \, \|x_n\| \leqslant \|a_j\|,
+$$
+то каждая из последовательностей $\ \{(a_1, x_n)\}\ $ скалярных
+произведений ограничено. Следовательно, из последовательности
+скалярных произведений $\ \{(a_j, x_n)\}$ можно извлечь сходящуюся
+подпоследовательность, то есть\\
+
+$\quad\exists \,$ возрастающая последовательность  $\, \{n_1
+(k)\}$ натуральных чисел, для которой последовательность скалярных
+произведений $\{(a_1, x_{n_1 (k)})\}$ сходится.\\
+
+Применяя к последовательности $\{(a_2, x_{n_1 (k)})\}$ аналогичное
+рассуждение, получим, что существует (возрастающая)
+последовательность $\{n_2 (k)\}$ натуральных чисел, являющаяся
+подпоследовательностью последовательности $\{n_1 (k)\},$ такая что
+последовательность скалярных произведений $\{(a_2, x_{n_2 (k)})\}$
+сходится.
+
+
+Продолжая это рассуждение, получим, что существует
+последовательность \linebreak
+$\Bigl\{ \{ n_j (k)\colon \ k\in
+\mathbb{N}\}\colon \ j= 1, 2, \ldots \Bigr\}$ (возрастающих)
+последовательностей натуральных чисел, каждая из которых является
+подпоследовательностью предыдущей, причем все числовые
+последовательности $\{ (a_j, x_{n_j (k)})\colon \ k = 1, 2,
+\ldots\}$ сходятся. Тогда диагональная последовательность индексов
+$\{n_k (k)\colon \ k=1,2,\ldots\}$ обладает следующим свойством:\\
+
+$\forall \, j \ $ последовательность $\{ (a_j, x_{n_j (k)})\colon
+\ k \in \mathbb{N}\}$ сходится (так как при $k > j$ она является
+подпоследовательностью сходящейся последовательности $\{(a_j,
+x_{n_j (k)})\}$).\\
+
+Положим, для каждого $k, \quad m(k) = n_k (k);\ $ тогда, в силу
+предыдущего, $\forall \, i\ \quad  (a_i, x_{m(j)})$ - сходится.
+
+Докажем, что $ \forall a\in H$ последовательность $\{ (a,
+x_{m(j)}) \}$ также сходится. Для этого достаточно, чтобы
+последовательность $(a, x_{m(j)})$ была фундаментальной, то есть,
+чтобы
+$$
+\forall \, \varepsilon \quad  \exists \, j_0\colon\ \forall\,
+j>j_0, \ \forall \, k\in \mathbb{N}\qquad \left| (a, x_{m(j)})\ -
+\ (a, x_{m(j+k)})\right| \, < \, \varepsilon
+$$
+
+Проверим, что такое $j_0$ существует. Так как множество $\{a_j\}$
+всюду плотно в $H,\ $ то
+$$
+\exists \, a_r\colon \ \|a_r - a\| < \frac{\varepsilon}{3}.
+$$
+Последовательность $\{(a_r, x_{m(j)})\colon \ j\in \mathbb{N}\}$
+сходится, следовательно, она фундаментальна, то есть
+$$
+\exists \, j_0\colon \ \forall \, j>j_0, \ \forall k\in \mathbb{N}
+\qquad \left| (a_r, x_{m(j)})\ - \ (a_r, x_{m(j+k)})\right|\ < \
+\frac{\varepsilon}{3}.
+$$
+Поэтому для таких $j$ и $k$
+$$
+\left| (a, x_{m(j)})\ - \ (a, x_{m(j+k)})\right| \ \leqslant \ |
+(a, x_{m(j)})\ - \ (a_r, x_{m(j)}) \ +
+$$
+$$
++ \ (a_r, x_{m(j)})\ - \ (a, x_{m(j+k)}) \ + \ (a_r, x_{m(j+k)})\
+- \ (a_r, x_{m(j+k)})| \ \leqslant
+$$
+$$
+\leqslant\  \left| (a, x_{m(j)})\ - \ (a_r, x_{m(j)})\right| \ + \
+\left| (a_r, x_{m(j + k)})\ - \ (a, x_{m(j+k)})\right| \ +
+$$
+$$
++ \ \left| (a_r, x_{m(j+k)})\ - \ (a_r, x_{m(j)})\right| \
+\leqslant \ \varepsilon,
+$$
+так как
+$$
+\left| (a_r, x_{m(j)}) - (a_r, x_{m(j+k)}) \right| <
+\frac{\varepsilon}{3} \quad \mbox{в силу выбора $j$ и $k,$}
+$$
+$$
+\left| (a, x_{m(j)})\ - \ (a_r, x_{m(j)})\right| \ \leqslant \
+\|a_r - a\| \, \underbrace{\|x_{m(j)}\|}_{1} \ <
+\frac{\varepsilon}{3} \quad \mbox{ и }
+$$
+$$
+\mbox{ аналогично, } \ \left| (a, x_{m(j + k)})\ - \ (a_r,
+x_{m(j+k)})\right| < \frac{\varepsilon}{3} \quad \mbox{в силу
+выбора $a_r.$}
+$$
+
+Так как $\ \forall \, a\in H$ последовательность  $\{(a,
+x_{m(j)})\}$ сходится, то по теореме Рисса
+$$
+\forall f\in H^{*} \quad \{(f, x_{m(j)})\} \mbox{ сходится, }
+\Rightarrow \ \mbox{ так как гильбертово пространство рефлексивно}
+$$
+(по той же теореме Рисса), то
+$$
+\exists \, z\in H \quad \forall \, f\in H^{*} \qquad (f, x_{m(j)})
+\rightarrow (f, z).
+$$
+
+Это и означает, что $x_{m(j)}
+\stackrel{\mbox{слабо}}{\longrightarrow} z;\ $  при этом,
+поскольку замкнутый шар замкнут и в слабой топологии, $\ z\in S;\
+$ теорема доказана.
+
+\end{proof}
+
+\begin{prop}
+Пусть $A$ - компактный оператор. Тогда он переводит слабо
+сходящуюся последовательность в последовательность, сходящуюся по
+норме.
+\end{prop}
+\begin{proof}
+Проведем доказательство в два шага.\\
+\\
+\textbf{1.} $\quad$ Если $A$ - произвольный линейный непрерывный
+оператор и $\ (x_n)$ - слабо сходящаяся последовательность, $\
+(x_n) \stackrel{\mbox{слабо}}{\longrightarrow} x_0, \ $ то $\ Ax_n
+\stackrel{\mbox{слабо}}{\longrightarrow} Ax_0.$  Надо проверить,
+что
+$$
+\forall \, z\in H \quad (Ax_n, z) \rightarrow (Ax_0, z).
+$$
+Это делается так:
+$$
+(Ax_n, z) = (x_n, A^{*}z)\  \rightarrow\  (x_0, A^{*}z) = (Ax_0,
+z)
+$$
+\textbf{2.} $\quad$ Проверим, что,
+$$
+\mbox{если }\  A  \mbox{ - компактен и $(x_n)$ - слабо сходящаяся
+к $x_0 \in H$ последовательность,}
+$$
+то $Ax_n \rightarrow Ax_0 \mbox{ по норме}.$
+\bigskip
+
+Предположим, что это не так. Тогда $\ \exists \, \varepsilon > 0\
+$ и бесконечная подпоследовательность $(x_{n_k}),$ такая что
+$$
+\forall \, k \qquad \|Ax_0 - Ax_{n_k}\| > \varepsilon \qquad\qquad
+(*)
+$$
+
+Так как $A$ компактен, а слабо сходящаяся последовательность
+$(x_n)$ ограничена по норме (в силу теоремы Банаха-Штейнхауза), то
+из последовательности $(Ax_{n_k})$ можно выбрать
+подпоследовательность $(Ax_{n_{k(j)}}),$ сходящуюся по норме к
+некоторому элементу $z\in H; \ $
+$$\mbox{ тем более, }\  Ax_{n_{k(j)}}
+\stackrel{\mbox{слабо}}{\longrightarrow} z.\
+$$
+Но $Ax_{n_{k(j)}} \stackrel{\mbox{слабо}}{\longrightarrow} Ax_0,\
+$ так как $Ax_n \stackrel{\mbox{слабо}}{\longrightarrow} Ax_0;\ $
+поэтому $z = Ax_0,\ $ то есть $Ax_{n_{k(j)}} \longrightarrow Ax_0$
+по норме, что противоречит $(*).$
+
+\end{proof}
+\begin{stm}
+Если $A$ - самосопряженный компактный оператор, то функция $\ x
+\mapsto |(Ax, x)|\ $ достигает верхней грани на замкнутом
+единичном шаре.
+\end{stm}
+\begin{proof}
+Выберем подпоследовательность $(x_n),$ такую что $\ \forall \, n
+\quad \|x\| = 1\ $ и
+$$
+\Bigl| (Ax_n, x_n)\Bigr| \longrightarrow \|A\| = \sup \Bigl| (Ax,
+x)\Bigr|, \  \mbox{ причем } \|x_n\| = 1 \ \ \forall n
+$$
+
+Выберем слабо сходящуюся подпоследовательность последовательности
+$(x_n)$ и обозначим ее элементы также $x_n.$ Так как
+$$
+x_n \stackrel{\mbox{слабо}}{\longrightarrow} x_0, \ \mbox{ то, по
+предыдущему, }\  Ax_n \stackrel{\mbox{сильно}}{\longrightarrow}
+Ax_0.
+$$
+Мы хотим доказать, что $(Ax_n, x_n) \longrightarrow (Ax_0, x_0) =
+\|A\|.$ Итак,
+$$
+\Bigl| (Ax_n, x_n) - (Ax_0, x_0)\Bigr| \ \leqslant \ \Bigl|
+\underbrace{(Ax_n, x_n) - (Ax_0, x_n)}_{\substack{\downarrow\\
+0\\ (\mbox{ так как } \| Ax_n - Ax_0\| \rightarrow 0)}} \Bigr| +
+\Bigl|
+\underbrace{(Ax_n, x_0) - (Ax_0, x_0)}_{\substack{\downarrow\\
+0\\ (\mbox{ так как } Ax_n \stackrel{\mbox{слабо}}{\rightarrow}
+Ax_0)}}\Bigr| \ \longrightarrow 0
+$$
+\end{proof}
+Таким образом, доказано, что
+$$
+\exists \, x_0\colon \ \ |(Ax_0, x_0)| = \sxo |(Ax, x)| = \|A\|,
+$$
+а, следовательно, в силу предложения \textbf{a} (на странице
+\pageref{predloj}, конец предыдущей лекции)\linebreak $x_0$ -
+(нормированный) собственный вектор оператора $A,$ то есть
+$$
+\exists \, \la\in \R^1\colon \ \  Ax_0 = \la x_0.
+$$
+При этом
+$$
+\bigl| (Ax_0, x_0)\bigr| \ = \ \bigl| (\la x_0, x_0)\bigr| = |\la|
+= \|A\|,
+$$
+то есть $\la = \pm \|A\|.$
+
+Итак, для полного доказательства теоремы Гильберта-Шмидта, нам
+осталось доказать предложение \textbf{a} из предыдущей лекции.
+
+\begin{df}
+Отображение $f\colon \ B_1 \rightarrow B_2,$ где $B_1$ и $B_2$ -
+банаховы пространства, называется дифференцируемым в точке $x,$
+если $\exists \, f^{\prime} (x) \in L(B_1, B_2):$
+$$
+\forall h \quad f(x+h) - f(x)\ = \ f^{\prime} (x) h + r_x (h),\
+\mbox{ где }\  \frac{r_x (th)}{t} \rightarrow 0 \qquad (*)
+$$
+Причем:
+
+Если $(*) \rightarrow 0 \ \ \forall \, h,$ то это
+дифференцируемость по Гато.
+
+Если $(*) \rightarrow 0$ равномерно по $h$ из каждого
+ограниченного множества, то это дифференцируемость по Фреше.
+
+Если $(*) \rightarrow 0$ равномерно по $h$ из каждого компактного
+множества, то это дифференцируемость по Адамару.\\
+
+Отметим, что дифференцируемость по Фреше влечет дифференцируемость
+по Адамару, а дифференцируемость по Адамару влечет
+дифференцируемость по Гато.
+\end{df}
+
+\begin{stm}
+Пусть имеется цепочка отображений:
+$$
+B_1 \stackrel{f}{\longrightarrow} B_2
+\stackrel{g}{\longrightarrow} B_3,
+$$
+дифференцируемых всюду по Фреше (по Адамару); тогда их композиция
+$\ g \circ f\ $ дифференцируема по Фреше (по Адамару), и
+$$
+(g \circ f)^{\prime} (x) \ = \ g^{\prime} (f(x)) \circ f^{\prime}
+(x)
+$$
+(для дифференцируемости по Гато это не так).
+\end{stm}
+\begin{ex}
+Пусть $H \rightarrow \mro, \ \  f\colon \ x \mapsto (Ax, x),$
+тогда $f$ - дифференцируема по Фреше.
+\end{ex}
+\begin{problem}
+Доказать, что при $x \in H, \ h\in H$ справедливо равенство:
+$$
+f^{\prime} (x) h\ = \ 2 \Re (Ah, x)
+$$
+\end{problem}
+
+Докажем теперь, что, если существует вектор $x_0,\ $ для которого
+$$
+(Ax_0, x_0) = \sup (Ax, x), \ \mbox{ то } \ \exists \, \la: Ax_0 =
+\la x_0.
+$$
+(напомним, что здесь предполагается лишь, что $A$ -
+самосопряженный оператор, но не предполагается, что он компактен).
+
+Возьмем элемент $z_0\colon \ z_0 \bot Ax_0\ $ и рассмотрим кривую
+в гильбертовом пространстве:
+$$
+\psi (t)\ = \ x_0 \cos t + z_0 \sin t
+$$
+$$
+f\circ \psi \colon \ t \mapsto (A \psi (t), \psi (t))
+$$
+$$
+\mro \stackrel{\psi}{\longrightarrow} H \stackrel{x \mapsto (Ax,
+x)}{\longrightarrow} \mro
+$$
+Причем эта композиция достигает своего максимума при $t = 0,$
+значит, ее производная в нуле равна 0: \ $(f \circ \psi)^\prime
+(0) = 0.$
+
+Но
+$$
+(f \circ \psi)^{\prime} (0)\ = \ f^{\prime} \underbrace{(\psi
+(0))}_{\substack{\|\\ x_0}} \circ \ \underbrace{\psi^{\prime}
+(0)}_{\substack{\|\\ z_0}} \ = \
+$$
+$$
+= \ f^{\prime} (x_0)\  z_0 = 2 \Re (Az_0, x_0)\ = \ 2 \Re (Ax_0,
+z_0) = 0
+$$
+
+Так как, если $\ z_0 \bot Ax_0,\ $ то и $i z_0 \bot Ax_0, \ $ и $\
+2 \Re (Ax_0, i z_0) = 0;\ $
+$$\mbox{ но } \quad \Re(Ax_0, i z_0) = \Re (-i \,
+(Ax_0, z_0))\ = \ \Im (Ax_0, z_0), \ $$
+$$
+\mbox{ так что } \Im (Ax_0, z_0) = 0;\ \mbox{ поэтому } (Ax_0,
+z_0) = 0.
+$$
+
+Отсюда следует, что элемент
+$$
+Ax_0\in (x_0^{\bot})^{\bot} \ = \ \{\la x_0 \colon \ \la \in
+\mathbb{C}\}^{\bot\bot}\ = \ \{\la x_0\colon \ \la\in
+\mathbb{C}\}.
+$$
+Это значит, что $\ \ \exists \, \la_0\colon \ Ax_0 = \la_0 x_0$
+
+\subsection{Теоремы Фредгольма.}
+
+Пусть $K$ - компактный оператор в гильбертовом пространстве $H, \
+\la \not = 0,\ \la \in \mathbb{C},$
+$$
+K_\la = K - \la I.
+$$
+$I$ - тождественное  отображение $H$ в $H.$
+
+В теоремах Фредгольма рассматриваются уравнения
+$$
+\begin{aligned}
+K_\la \, \ff &= f,\\
+K_\la \, \ff &= 0
+\end{aligned}
+$$
+и сопряженные уравнения
+$$
+\begin{aligned}
+K_\la^{*} \psi &= g,\\
+K_\la^{*} \psi &= 0.
+\end{aligned}
+$$
+
+При этом уравнения $\ K_\la \, \ff = 0,\ K_\la^{*} \psi = 0\ $
+называются однородными, а уравнения $\ K_\la \, \ff = f, \
+K_\la^{*} \psi = g\ $ - неоднородными ($K_\la^{*} = K^{*} -
+\overline{\la} I$).
+
+Далее мы будем использовать следующую теорему Шаудера.
+
+\begin{theorem}[Теорема Шаудера]
+Операторы $K$ и $K^{*}$ компактны или нет одновременно.
+\end{theorem}
+
+\emph{Доказательство ее можно прочитать в $\S$ 6 главы 4 книги
+Колмогорова-Фомина.}
+
+\begin{theorem}[1]
+$$
+\Im K_\la = (\Ker K^{*}_\la )^{\bot},
+$$
+то есть неоднородное уравнение $K_\la \, \ff = f$ разрешимо тогда
+и только тогда, когда $$f \in (\Ker K^{*}_\la )^{\bot}.$$
+\end{theorem}
+
+\begin{proof}
+Ранее для произвольного линейного непрерывного оператора $A$ в $H$
+было доказано равенство
+$$
+\overline{\Im A}\ = \ (\Ker A^{*})^{\bot};
+$$
+поэтому чтобы доказать, что $\Im K_\la = (\Ker K^{*}_\la)^{\bot},$
+достаточно проверить, что подпространство $\Im K_\la$ замкнуто, то
+есть надо доказать, что,
+$$
+\mbox{ если } z_n  \in \Im K_\la\ \mbox{ и } \ z_n \rightarrow z
+\mbox{ в } H,\ \mbox{ то } z\in \Im K_\la.
+$$
+
+Так как $\ \forall \, n \quad z_n \in \Im K_\la,\ $ то $\ z_n =
+K_\la  x_n\ $ для некоторого $x_n \in H.$
+
+Если $\ \sup\limits_{n} \|x_n\| < \infty,\ $ то из компактности
+$K$ следует, что для некоторой подпоследовательности $(x_{n_k})$
+последовательности $(x_n)$ последовательность $(Kx_{n_k})$
+сходится;\\
+тогда сходится и сама последовательность $(x_{n_k}),\ $ так как
+$$
+x_{n_k}\ = \ \frac{1}{\la} \, (Kx_{n_k} - K_\la x_{n_k}) \ = \
+\frac{1}{\la} \, (Kx_{n_k} - z_{n_k}),
+$$
+а последовательность $(z_{n_k})$ сходится как
+подпоследовательность сходящейся последовательности $(z_n).$ Если
+$\ x = \lim x_{n_k},\ $ то
+$$
+K_\la x\ =\ \lim K_\la x_{n_k}\ = \  \lim z_{n_k}\ = \ z,
+$$
+так что $z\in \Im K_\la,\ $ что и требовалось.\\
+
+Покажем теперь, что всегда можно добиться, чтобы предположение
+$\sup \|x\| < \infty$ было выполнено.
+
+Итак, пусть $\ \forall n \quad z = K_\la x_n.\ $ Положим
+$\overline{x_n} = x_n - \pr_{\Ker K_\la} x_n, \ $ где символ
+$\pr_{\Ker K_\la} x_n$ обозначает проекцию вектора $x_n$ на
+подпространство $\Ker K_\la$ (так что $x_n \in (\Ker
+K_\la)^{\bot}$);\ тогда
+$$
+z_n = K_\la \, \overline{x_n}, \ \mbox{ причем } \sup\limits_{n}
+\|\overline{x_n}\| < \infty.
+$$
+Действительно, если это не так, то существует
+подпоследовательность $\overline{x}_{n_r},\ $ такая что
+$\|\overline{x}_{n_r}\| \rightarrow \infty.\ $ Тогда
+$$
+\frac{z_n}{\|\overline{x}_{n_r}\|} \longrightarrow 0, \ \mbox{ так
+как }\ z_n = K_\la \overline{x_n},
+$$
+это означает, что
+$$
+\frac{K_\la \overline{x}_{n_r}}{\|\overline{x}_{n_r}\|}\ = \ K \,
+\frac{\overline{x}_{n_r}}{\|\overline{x}_{n_r}\|} -  \la\,
+\frac{\overline{x}_{n_r}}{\|\overline{x}_{n_r}\|}\ \longrightarrow
+\ 0.
+$$
+
+Положим, для каждого $r,$ $$y_r =
+\frac{\overline{x}_{n_r}}{\|\overline{x}_{n_r}\|}.\ $$ Тогда $K
+y_r - \la y_r \ \rightarrow 0,\ $ причем $\ \forall \, r \quad
+\|y_r\| = 1.$ Поэтому, в силу компактности $K,\ $ некоторая
+подпоследовательность $(K y_{r(j)})$ последовательности $(Ky_r)$
+сходится; \ из сходимости последовательности $(K y_r - \la y_r)\ $
+следует, что сходится и последовательность $(y_{r(j)}).$\\
+
+Пусть $a = \lim y_{r(j)}.$ Так как $\ \forall \, j \quad
+\|y_{r(j)}\| = 1,\ $ то $\ \|a\| = 1;\ $ кроме того,
+$$\mbox{ так как } \ K
+y_r - \la y_r \ \rightarrow 0,\ \mbox{ то } \ Ka - \la a = K_\la =
+0,\
+$$
+то есть $a\in \Ker K_\la.$
+
+Но этого не может быть, так как $\ \forall r\quad y_r \in (\Ker
+K_\la)^{\bot},\ $ а множество $(\Ker K_\la)^{\bot}$ замкнуто. Тем
+самым доказано, что $\sup\limits_{n} \|\overline{x_n}\| < \infty.$
+
+\end{proof}
+
+\begin{theorem}[2]\textbf{``Альтернатива Фредгольма.``}
+
+Всякий ненулевой элемент спектра компактного оператора является
+его собственным значением
+
+(название ``альтернатива Фредгольма`` объясняется тем, что теорему
+(2) можно переформулировать так:
+
+При $\ \la \not = 0\quad$ либо $\ \Ker K_\la \not = 0,\ $ либо $\
+\la \not\in \spec K$).
+\end{theorem}
+
+\begin{proof}
+Пусть, для каждого $n \in \mathbb{N}, \ \ H^{n} = \Im K_\la^n.\ $
+Тогда, в силу теоремы (1), все подпространства $H^n$ замкнуты,
+причем
+$$
+H^1 \supset H^2 \supset H^3 \ldots;
+$$
+конечно, $\ \forall \, n \quad K_\la (H^n) = H^{n+1}.$
+
+При этом из компактности $K$ вытекает, что
+$$
+\exists \, j, \ \mbox{ такое что }\ H^j = H^{j+1}= H^{j+2} =
+\ldots
+$$
+Действительно, пусть все $H^n$ различны и пусть, для каждого $n,\
+$
+$$
+x_n \in H^n, \quad x_n \bot H^{n+1} \ \mbox{ и }\ \|x_n\| = 1.
+$$
+
+Но тогда:
+$$
+K x_n - K x_{n+r}\ = \ (K - \la I + \la I) x_n - (K - \la I + \la
+I) x_{n+r}\ = \
+$$
+$$
+(K_\la + \la I) x_n - (K_\la + \la I) x_{n+r}\ = \ K_\la x_n -
+K_\la x_{n+r} + \la (x_n - x_{n+r});
+$$
+при этом
+$$
+K_\la x_n \in H^{n+1},\quad K_\la x_{n+r} \in H^{n+r+1} \subset
+H^{n+1}, \quad \la x_{n+r}\in H^{n+1},
+$$
+но $\la x_n \in H^n, \ x_n \bot H^{n+1}.\ $ Поэтому
+$$
+\|K x_n - K x_{n+r}\| \geqslant \|\la x_n\| = \|\la\| \ \mbox{ для
+всех } n\in \mathbb{N}, \ r\in \mathbb{N};
+$$
+но это означает, что из последовательности $(K x_n)$ нельзя
+выбрать сходящейся подпоследовательности, вопреки компактности
+оператора $K.$\\
+
+Вернемся к доказательству теоремы (2).
+
+Заметим, что
+$$
+\Ker K_\la = \{0\}\ \Rightarrow\ \Im K_\la = H.
+$$
+Пусть $\ \Ker K_\la = \{0\}\ $ и $\ H^1 = K_\la H \not = H;\ $
+тогда, в силу взаимной однозначности $K_\la,$
+$$
+H^2 = K_\la H^1 = K_\la^2 H \ \not = \ K_\la H = H^1,
+$$
+$$
+H^3 = K_\la^2 H^1 \ \not =\  K_\la^2 H = H^2
+$$
+и так далее, то есть цепочка состоит из попарно различных
+подпространств, что противоречит доказанному выше. Поэтому $\Im
+K_\la = H.$
+
+
+Так как, по теореме Шаудера, оператор $K^{*}$ также компактен, то
+$$
+\Ker K_\la^{*}\ = \  \{0\}\ \Rightarrow\ \Im K_\la^{*} = H.
+$$
+
+Докажем теперь, что $\ \Im K_\la = H\ \Rightarrow\ \Ker K_\la =
+\{0\}.$ Если $\Im K_\la = H, \ $ то $\ \Ker K_\la^{*}\ = \  \{0\}\
+$ и, следовательно, $\Im K_\la^{*} = H,\ $ откуда следует, что
+$\Ker K_\la = \{0\}.$\\
+
+Таким образом, $\Im K_\la = H\ \Longleftrightarrow\ \Ker K_\la =
+\{0\};\ $ но это и означает, что, если $\la \in \spec K,\ $ то
+$\la$ - собственное значение ($\la \not = 0$).
+
+\end{proof}
+
+\begin{theorem}[3]
+$$
+\dim \Ker K_\la \ = \ \dim \Ker K_\la^{*} \ < \infty.
+$$
+\end{theorem}
+
+\begin{proof}
+Если $\dim \Ker K_\la  = \infty, \ $ то в $K_\la$ содержится
+бесконечное множество попарно ортогональных нормированных векторов
+$\{e_n\}.$ При этом $\ \forall n$
+$$
+(K - \la I) \, e_n = 0,
+$$
+так что при $n \not = m$
+$$
+\|K e_n - K e_m\| = |\la| \|e_n - e_m\| = |\la| \sqrt{2},
+$$
+так что из последовательности $\{K e_n\}$ нельзя выбрать
+сходящейся подпоследовательности.\\
+
+Таким образом, доказано, что $\dim \Ker K_\la < \infty;\ $ так
+как, по теореме Шаудера, $\ K^{*} \in L_0 (H), \ $ то
+$$
+\dim \Ker K_\la^{*} \ ( = \dim \Ker (K^{*})_{\overline{\la}})\ <\
+\infty.
+$$
+
+Осталось доказать, что $\ \dim \Ker K_\la \ = \ \dim \Ker
+K_\la^{*}.$ Пусть
+$$
+\alpha\ = \ \dim \Ker K_\la \ <\ \dim \Ker K_\la^{*} = \beta
+$$
+и пусть $e_1, \ldots, e_\alpha$ - ортонормированный базис в $\Ker
+K_\la\ $ и $\ e_1^{*}, \ldots, e^{*}_\beta$ - ортонормированный
+базис в $\Ker K^{*}_\la.$ Положим
+$$
+\overline{K}x = Kx + \sum\limits_{j=1}^{\alpha} (x, e_j) e_j^{*},
+$$
+оператор $\overline{K}$ компактен как сумма двух компактных
+операторов:\ \ оператора $K$ и оператора $x \mapsto
+\sum\limits_{j=1}^{\alpha} (x, e_j) e_j^{*}\ $ (последний
+компактен, так как непрерывен и обладает конечномерным образом).
+
+Покажем, что $\ \Ker \overline{K}_\la \ = \ \{0\}.\ $ Пусть $x\in
+\overline{K}_\la;\ $ это значит, что
+$$
+K_\la x + \sum\limits_{j=1}^{\alpha} (x, e_j) e_j^{*} = 0.
+$$
+Так как $\ e_j^{*}\in \Ker K_\la^{*},\ $ то $\ e_j^{*}\in (\Im
+K_\la)^{\bot},\ $ так что
+$$
+K_\la x\ \bot\ \sum\limits_{j=1}^{\alpha} (x, e_j) e_j^{*}.
+$$
+
+Так как сумма этих двух ортогональных векторов равна нулю, то оба
+они также равны нулю:
+$$
+K_\la x = 0, \quad \sum\limits_{j=1}^{\alpha} (x, e_j) e_j^{*} =
+0.
+$$
+
+Следовательно, $\ \forall\, j = 1,2, \ldots, \alpha, \quad (x,
+e_j) \equiv 0,\ $ так как векторы $e_1, \ldots, e_\alpha$ образуют
+базис в $\Ker K_\la,\ $ то это значит, что
+$$
+x \in (\Ker K_\la)^{\bot};
+$$
+но так как $K_\la x = 0, \ $ то $ x \in \Ker K_\la;\ $ это
+возможно только, если $x = 0.$
+
+Таким образом, мы доказали, что $\Ker \overline{K}_\la = \{0\}.$
+Тогда по теореме (2) $\ \exists \, z:$
+$$
+\overline{K}_\la z\ = \ e_{\alpha + 1}, \ \mbox{ то есть }
+$$
+$$
+(*)\qquad K_\la z + \sum\limits_{j=1}^{\alpha} (z, e_j) e_j^{*}\ =
+\ e^{*}_{\alpha + 1}.\quad
+$$
+
+Но $\ \forall\, j = 1,2, \ldots, \alpha, \quad e_j^{*} \,\bot\,
+e_{\alpha+1}^{*}\ $ и $\ K_\la z\, \bot \, e_{\alpha+1}^{*}, \ $
+так как
+$$
+(\Im K_\la)\ = \ (\Ker K^{*}_\la)^{\bot}, \ \mbox{ а } \
+e_j^{*}\in \Ker K_\la^{*}.
+$$
+
+Таким образом, векторы в левой и правой частях равенства $(*)$
+ортогональны друг другу, что возможно лишь, если они равны нулю,
+тогда как $\|e^{*}_{\alpha +1}\| = 1.$\\
+
+Таким образом, предположение, что $\beta > \alpha$ привело к
+противоречию, так что $\alpha \geqslant \beta.$ Аналогично
+доказывается и что $\alpha \leqslant \beta.$
+\end{proof}
+
+\begin{imp}
+Всякий ненулевой элемент спектра компактного оператора является
+его собственным значением конечной кратности.
+
+\end{imp}
+
+\end{document}

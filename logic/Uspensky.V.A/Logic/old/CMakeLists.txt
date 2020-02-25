@@ -1,0 +1,9 @@
+mm_pack(
+    INCLUDE
+        Logic1.pdf
+        Logic2.pdf
+        Logic3.pdf
+        Logic4.pdf
+    ARCHIVE
+        logic-uspensky
+)

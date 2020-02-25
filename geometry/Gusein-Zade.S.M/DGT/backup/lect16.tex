@@ -1,0 +1,125 @@
+%% Lust updated:
+
+%% \documentstyle[12pt]{article}
+\documentstyle[12pt]{article}
+
+\input amssym.def
+\input amssym.tex
+
+%% \marginparwidth 40pt
+\textwidth=167mm
+%% \textwidth=140mm
+\textheight=245mm
+%% \textheight=205mm
+\addtolength{\topmargin}{-70pt}
+\addtolength{\oddsidemargin}{-1.5cm}
+
+\def\R{\Bbb R}
+\def\N{\Bbb N}
+\def\Z{\Bbb Z}
+\def\Q{\Bbb Q}
+\def\C{\Bbb C}
+\def\CP{\Bbb C\Bbb P}
+\def\RP{\Bbb R\Bbb P}
+\font\sf=cmss10
+
+% Theorem environments for normal usage
+% arabic numbering:
+%% \newtheorem{theorem}{Теорема}
+%% \newtheorem{corollary}{Следствие}
+%% \newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+
+% Non-italic
+% \theorembodyfont{\rmfamily}
+
+\newenvironment{definition}
+{\smallskip\noindent{\bf Определение\/}:}{\smallskip\par}
+\newenvironment{def-equiv}
+{\smallskip\noindent{\bf Определение${}'$\/}:}{\smallskip\par}
+\newenvironment{theorem}
+{\smallskip\noindent{\bf Теорема\/}.}{\smallskip\par}
+\newenvironment{theorem*}
+{\smallskip\noindent{\bf Теорема}}{\smallskip\par}
+\newenvironment{lemma}
+{\smallskip\noindent{\bf Лемма\/}.}{\smallskip\par}
+%% \newenvironment{proposition}
+%% {\smallskip\noindent{\bf Proposition\/}.}{\smallskip\par}
+\newenvironment{statement}
+{\smallskip\noindent{\bf Утверждение\/}.}{\smallskip\par}
+\newenvironment{example}
+{\smallskip\noindent{\bf Пример\/}.}{\smallskip\par}
+\newenvironment{examples}
+{\smallskip\noindent{\bf Примеры\/}:}{\smallskip\par}
+\newenvironment{remark}
+{\smallskip\noindent{\bf Замечание\/}.}{\smallskip\par}
+\newenvironment{remarks}
+{\smallskip\noindent{\bf Замечания\/}.}{\smallskip\par}
+\newenvironment{proof}
+{\noindent{\bf Доказательство\/}.}{{ $\Box$}\smallskip\par}
+\newenvironment{Proof}
+{\noindent{\bf Доказательство\/}}{{ $\Box$}\smallskip\par}
+\newenvironment{problem}
+{\noindent{\bf Задача\/}.}{\smallskip\par}
+\newenvironment{problem^*}
+{\noindent{\bf Задача${}^*$}.}{\smallskip\par}
+\newenvironment{problem^**}
+{\noindent{\bf Задача${}^{**}$}.}{\smallskip\par}
+\newenvironment{problem_*}
+{\noindent{\bf Задача${}_{*}$}.}{\smallskip\par}
+\newenvironment{problem_**}
+{\noindent{\bf Задача${}_{**}$}.}{\smallskip\par}
+\newenvironment{corollary}
+{\noindent{\bf Следствие}.}{\smallskip\par}
+\newenvironment{Corollary}
+{\noindent{\bf {Следствие }}}{\smallskip\par}
+
+\title{Дифференциальная геометрия, лекции для студентов III курса,
+осенний семестр 2001--2002 уч.г.}
+\author{С.М.Гусейн-Заде}
+\date{}
+% Not to forget to restore the \date command finally.
+\begin{document}
+\sloppy
+
+\def\Aut{{\operatorname{Aut}}}
+\def\eps{\varepsilon}
+
+
+\begin{remarks}
+1. В действительности свойства 1 и 3 выполняются и без предположения о
+симметричности связности. Однако тензор кривизны несимметричной связности
+мы здесь не обсуждаем.
+
+\noindent 2. Из описанных свойств вытекает, в частности, что для двумерного
+риманова многообразия (поверхности) все ненулевые компоненты тензора
+$R_{ijk\ell}$ отличаются друг от друга только знаком. Таким образом
+все они определяются одной, например, $R_{1212}$.
+\end{remarks}
+
+\begin{proof}
+Свойство 1 очевидно (см. формулу для $R^i_{p;kl}$). Свойство 2 также
+проверяется непосредственно. Для доказательства свойства 3 достаточно
+проверить, что для любого векторного поля $\xi$ имеет место равенство
+$([\nabla_{;k},\nabla_{;\ell}]\xi,\xi)=0$. Имеем (вследствие согласованности
+связности с метрикой)
+${{\partial}\over{\partial x^\ell}}(\xi,\xi)=\nabla_{;\ell}(\xi, \xi)=
+2(\nabla_{;\ell}\xi, \xi)$. Поэтому
+$$
+{{1}\over{2}}{{\partial^2}\over{\partial x^k\partial x^\ell}}(\xi,\xi)=
+(\nabla_{;k}\nabla_{;\ell}\xi, \xi)+(\nabla_{;\ell}\xi, \nabla_{;k}\xi).
+\eqno(1)
+$$
+Меняя местами $k$ и $\ell$, получаем
+$${{1}\over{2}}
+{{\partial^2}\over{\partial x^\ell\partial x^k}}(\xi,\xi)=
+(\nabla_{;\ell}\nabla_{;k}\xi, \xi)+(\nabla_{;k}\xi, \nabla_{;\ell}\xi).
+\eqno(2)
+$$
+Вычитая из формулы (1) формулу (2), получаем требуемое равенство
+Свойство 4 является формальным следствием свойств 1--3 (докажите
+самостоятельно или посмотрите в любом учебнике).
+\end{proof}
+
+
+\end{document}

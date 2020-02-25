@@ -1,0 +1,82 @@
+\section{Cтатсумма с граничными условиями.}
+\newcommand{\oarg}{(ω,\bar ω)}
+\begin{denotes}
+  $\bar ω ∈ Ω_{T\backslash V} = Ω_{\bar V}$, $(ω, \bar ω) ∈ Ω$,
+  $(ω,\bar ω)\evn{V} = ω$, $(ω, \bar ω)\evn{Τ\backslash V} = \bar ω$
+\end{denotes}
+\begin{denote}
+  $\Fg(V,\bar V) = \hc{V' ∈ \Fc\,| V'∩V≠∅, V'∩\bar V ≠∅}$
+\end{denote}
+\begin{df}
+  \begin{align}
+    Z_V^Φ(\bar ω) ≝ \sumo e^{-E_V(ω,\bar ω)}\\
+    E_V\oarg ≝ E_V(ω) + E_V(ω|\bar ω) \\
+    E_V(ω|\bar ω) ≝ \suml{V'∈\Fg(V,V')}{} Φ_V'(\oarg\evn{V'})
+  \end{align}
+\end{df}
+\begin{theorem}
+  Если $\ns Φ < ∞$, то равномерно по $\bar ω$ $\liml{a→∞}\frac{\ln
+    Z_{V(a)}(\bar ω)}{\hm{V(a)}} = P^Φ$.
+\end{theorem}
+\begin{proof}
+  Оценим $\ln Z_V(\bar ω) - \ln Z_V$. Покажем, что если $V$ -- элемент
+  последовательности Фельмера, то эта разность растет медленнее объема.
+
+  \begin{denote}
+    $\Fc_r = \hc{V'|∃t∈T\cln V'+t∈B(0,r)}$
+  \end{denote}
+  Для фиксированного $r$ запишем, что
+  \begin{equation*}
+    \newcommand{\farg}{Φ_{V'}(\oarg\evn{V'})}
+    E_V(ω|\bar ω) = \suml{V'∈\Fg(V,V')}{}\farg
+    =\suml{V'∈\Fg{V,\bar V}∩\Fc_r}{}\farg + \suml{V'∈\Fg(V,\bar V)\backslash\Fc_r}{}
+    ≝ Ε^{ ≤r} + Ε^{>r}
+  \end{equation*}
+
+  Оценим суммы отдельно. Зафиксируем $t∈V$. Если есть $V'∋t$,
+  то ($t+B(0,2r) ∩\bar V ≠∅$).
+  \begin{equation*}
+    Ε^{≤r} ≤ \suml{t∈V, B(t,2r) ∩\bar V ≠∅}{}\suml{V'∋t}{}…
+    ≤ \suml{t∈V, B(t,2r) ∩\bar V ≠∅}{} \ns Φ =\hm{\hc{t∈V, B(t,2r) ∩\bar V ≠∅}} \ns Φ
+  \end{equation*}
+  \begin{equation*}
+    \hm{E^{>r}} ≤ \suml{t∈V}{} \ns{Φ}^{>r} = \hm V \ns{Φ}^{>r}
+  \end{equation*}
+  где $\ns{Φ}^{>r} = \suml{0∈V'∉\Fc_r}{}\maxl{ω∈Ω_{V'}}…$
+  Получаем в итоге оценку
+  \begin{denote}
+    $\hm{V}_{2r} = \hm{\hc{t∈V, B(t,2r) ∩\bar V ≠∅}}$
+  \end{denote}
+  \begin{equation*}
+    \hm{E_V\oarg} ≤ \hm V\ns Φ^{>r} + \hm{V}_{2r}\ns Φ
+  \end{equation*}
+  Потенцируя, получаем, что
+  \begin{denote}
+    $C(V,r) = \hm V\ns Φ^{>r} + \hm{V}_{2r}\ns Φ$
+  \end{denote}
+  \begin{equation*}
+    \frac{e^{-E_V\oarg}}{e^{-E_V(ω)}} = e^{-E_V(ω|\bar ω)}
+    ≤ e^{C(V,r)}
+  \end{equation*}
+  Аналогично, с другой стороны,
+  \begin{equation*}
+    \frac{e^{-E_V\oarg}}{e^{-E_V(ω)}} = e^{-E_V(ω|\bar ω)}
+    ≥ e^{-C(V,r)}
+  \end{equation*}
+  Просуммировав неравенства получаем
+  \begin{align*}
+    e^{-E_V(ω)}e^{-C(V,r)} ≤  e^{-E_v\oarg} ≤ e^{-E_V(ω)}e^{C(V,r)}\\
+    e^{-C(V,r)} ≤ \frac{Z_V(\bar ω)}{Z_V} ≤ e^{C(V,r)}\\
+    e^{-C(V,r)}Z_V≤Z_V(\bar ω) ≤ Z_V e^{C(V,r)}\\
+    \ln Z_V - C(V,r) ≤ \ln Z_V(\bar ω) ≤ \ln Z_V + C(V,r)
+  \end{align*}
+  Разделим последнее равенство на $\hm V$ и положим, что $V = V_n$ --
+  последовательность Фельмера. Выбрав большое $r$ можно сделать $\ns
+  Φ^{≥r} < ε/2$.  А за счет Фельмеровости при фиксированном $r$ начиная
+  с некоторого $N$ получить $\frac{\hm{V}_{2r}}{\hm{V}} < \frac{ε}{2\ns Φ}$.
+  Отсюда, $\ln Z_V(\bar ω) - \ln Z_V = \bar{\bar o}(\hm{V})$.
+\end{proof}
+
+%% Local Variables:
+%% compile-command: "xelatex -halt-on-error -file-line-error main.tex"
+%% End:

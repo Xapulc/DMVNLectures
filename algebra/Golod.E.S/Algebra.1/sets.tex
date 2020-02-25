@@ -1,0 +1,243 @@
+\section{Множества и отображения}
+\label{sets}
+\epigraph{A person who never made a mistake never tried anything new.}{Albert Einstein }
+
+\subsection{Множества}
+
+\begin{df}
+	Под \emph{множеством}\index{множество} принято понимать совокупность объектов
+	некоторой природы (\emph{множество}~--- неопределяемое понятие). Сами объекты
+	называются \emph{элемен\-та\-ми множества}.
+\end{df}
+
+\begin{wrapfigure}{r}{3.25cm}
+	\includegraphics{graph/x-subset-y}
+\end{wrapfigure}
+
+Над множествами определено несколько операций:
+
+\begin{description}
+	\item[Пересечение]
+		\begin{tabular}{ll}
+			\multirow{2}{*}{\includegraphics{graph/set-op-intersection}}
+				& Обозначается <<$\bigcap$>>. \\
+				& $A\bigcap B\eqdef\left\{x\vert x\in A \land x\in B\right\}$
+		\end{tabular}
+	\item[Объединение]
+		\begin{tabular}{ll}
+			\multirow{2}{*}{\includegraphics{graph/set-op-union}}
+				& Обозначается <<$\bigcup$>>. \\
+				& $A\bigcup B\eqdef\left\{x\vert x\in A \lor  x\in B\right\}$
+		\end{tabular}
+	\item[Разность]
+		\begin{tabular}{ll}
+			\multirow{2}{*}{\includegraphics{graph/set-op-difference}}
+				& Обозначается <<$\setminus$>>. \\
+				& $A\setminus B\eqdef\left\{x\vert x\in A \land x\notin B\right\}$
+		\end{tabular}
+	\item[Симметрическая разность]
+		\begin{tabular}{ll}
+			\multirow{2}{*}{\includegraphics{graph/set-op-simmdifference}}
+				& Обозначается <<$\Delta$>>. \\
+				& $A\Delta B\eqdef(A\setminus B)\cup(B\setminus A)$.
+		\end{tabular}
+\end{description}
+
+Эти операции обладают следующими свойствами:
+
+\begin{itemize}
+	\item Коммутативность пересечения и объединения:
+		\begin{align*}
+			A\cap B&=B\cap A \\
+			A\cup B&=B\cup A
+		\end{align*}
+	\item Ассоциативность пересечения и объединения:
+		\begin{align*}
+			(A\cap B)\cap C&=A\cap(B\cap C) \\
+			(A\cup B)\cup C&=A\cup(B\cup C)
+		\end{align*}
+	\item Дистрибутивность пересечения относительно объединения и наоборот.
+		\begin{align*}
+			(A\cup B)\cap C&=(A\cap C)\cup(B\cap C) \\
+			(A\cap B)\cup C&=(A\cup C)\cap(B\cup C)
+		\end{align*}
+	\item Относительно разности выполняются следующие соотношения:
+		\begin{align*}
+			M\setminus(A\cap B)&=(M\setminus A)\cup(M\setminus B) \\
+			M\setminus(A\cup B)&=(M\setminus A)\cap(M\setminus B)
+		\end{align*}
+	\item Относительно симметрической разности:
+          \begin{align*}
+            A\Delta B = (A\cup B)\setminus (A\cap B)
+          \end{align*}
+    \begin{proof}
+    \begin{enumerate}
+      \item Докажем включение $A\Delta B \subset (A\cup B)\setminus (A\cap B)$.
+        Для этого возьмём произвольный элемент $a\in A\Delta B$,
+        который по определению содержится в множестве $(A\setminus B)\cup(B\setminus A)$.
+        Возможно две ситуации:
+        \begin{enumerate}
+          \item $a\in A\setminus B$
+          \item $a\in B\setminus A$
+        \end{enumerate}
+        Пусть имеет место пункт (a).
+        Тогда $A\in A,\, a\not\in B\ra a \in A\cup B$ и $a\not\in A\cap B$, откуда явно следует,
+        что $a\in(A\cup B)\setminus (A\cap B)$. При предположении, что имеет место быть
+        пункт (b) рассуждения абсолютно аналогичны.
+
+      \item Докажем включение $A\Delta B \supset (A\cup B)\setminus (A\cap B)$.
+        Возьмём произвольный элемент $a\in (A\cup B)\setminus (A\cap B)$, т.е.
+        $$
+        \left\{
+        \begin{array}{l}
+          a\in A\cup B\\
+          a\not\in A\cap B
+        \end{array}
+        \right.
+        $$
+    Возможно две ситуации:
+    \begin{enumerate}
+      \item $a\in A$
+      \item $a\in B$
+    \end{enumerate}
+
+    Пусть имеет место пункт (a) (для пункта (b) рассуждения проводятся абсолютно аналогично).
+    Так как $a\in A$ и $a\not\in A\cap B$, то $a\not\in B\ra a\in A\setminus B$.
+    Включение доказано.
+    \end{enumerate}
+
+    Утверждение доказано.
+    \end{proof}
+\end{itemize}
+
+\subsection{Отображения}
+
+\begin{df}
+Множество $\mathbf D=\mathbf A\times\mathbf B$\index{множество!декартово произведение} называется декартовым (или прямым) произве\-де\-ни\-ем множеств, если оно состоит из всех возможнных пар $(a,b)\colon a\in A,b\in B$ и только из них.
+\end{df}
+
+\begin{df}
+ Подмножество $\mathbf F$ декартова произведения $\mathbf D =\mathbf A \times\mathbf B$ называется \emph{отобра\-же\-нием}\index{отображение}, если $\forall x\in\mathbf A\cln\exists!(x,y)\in\mathbf F,\cln y\in B$. Тем самым отображение $\mathbf F$ определено на множестве $\mathbf A$. Обозначается следующим образом: $f\colon \Ab\to \Bb$ или $\Ab\stackrel{f}{\to}\Bb$. При этом
+пишут, что $y=f(x)$, $x\in \Ab$, $y\in \Bb$, а $y$ называют \emph{образом} $x$\index{образ} (соответственно,
+$x$~--- \emph{прообразом} $y$)\index{прообраз}. Множество всех элементов в $\Bb$, у которых есть прообраз в $\Ab$ назывют \emph{полным проообразом}\index{прообраз!полный}. Отображения $f_1$ и $f_2$ из $\Ab$ в $\Bb$ называют равными,
+если: $\forall x\in \Ab\cln f_1(x)=f_2(x)$.
+
+ %Обозначается $A\xrightarrow{f}B$ или $y = F(x),\cln x\in\mathbf A,y\in\mathbf B$.
+\end{df}
+
+Возможно и другое, менее строгое, определение функции. Пусть $\mathbf F$~--- правило, согласно которому каждому $x\in\mathbf A$ ставится в соответствие не более одного элемента $y\in\mathbf B$. В таком случае правило $\mathbf F$ называется функцией. Если у $x$ нет ни одного образа, то говорят, что функция $\mathbf F$ не определена в точке $x$.\index{функция}
+
+\begin{wrapfigure}[4]{r}{3.25cm}
+	\vspace{-.33cm}
+	\includegraphics{graph/mapping-def}
+\end{wrapfigure}
+
+Существует классификация отображений, которая выделяет три типа:
+
+\begin{itemize}
+	\item\index{отображение!сюрьективное}
+		Отображение <<на>>, или \emph{сюръективное отображение}, или
+		\emph{сюръекция},~--- это такое отображение, при котором каждый элемент из $Y$
+		является образом хотя бы одного элемента из\newline $X$ (см.~рис.~\ref{fig:func:s}).
+	\item\index{отображение!инъективное}
+		Отображение <<в>>, или \emph{инъективное отображение}, или \emph{инъекция}~--
+		это такое отображение, при котором двум разным элементам из $X$ соответствуют
+		разные элементы из $Y$: $x_1\ne x_2 \ra f(x_1)\ne f(x_2)$ (см.~рис.~\ref{fig:func:i}).
+	\item\index{отображение!биективное}
+		Отображение <<между>>, или \emph{биективное отображение}, или \emph{биекция}~---
+		это такое отображение, которое является одновременно и сюръекцией, и инъекцией. То
+		есть каждому элементу из $X$ соответствует единственный элемент из $Y$ и наоборот.
+		Такое отображение также называется взаимнооднозначным (см.~рис.~\ref{fig:func:b}).
+\end{itemize}
+
+\begin{figure}[ht]
+	\subfloat[Сюръекция]{\label{fig:func:s}\includegraphics{graph/mapping-3}}
+	\hfill
+	\subfloat[Биекция]  {\label{fig:func:b}\includegraphics{graph/mapping-2}}
+	\hfill
+	\subfloat[Инъекция] {\label{fig:func:i}\includegraphics{graph/mapping-1}}
+	\caption{Классификация отображений}
+\end{figure}
+
+\subsubsection{Обратное отображение}
+
+\begin{wrapfigure}[8]{r}{3.25cm}
+	\includegraphics{graph/mapping-rev}
+\end{wrapfigure}
+
+Если задано биективное отображение $f\colon X\to Y$, то имеет смысл говорить об
+\emph{обратном отображении}\index{отображение!обратное}:
+$$\forall y\in Y\existz x\in X\colon y=f(x)$$
+$$\exists g\colon Y\to X=f^{-1}\colon f^{-1}(y)=x$$
+
+Очевидно, что $\left(f^{-1}\right)^{-1}\equiv f$.
+
+\subsubsection{Композиция отображений}\index{композиция!отображений}
+
+\begin{df}
+	Пусть заданы отображения $f\colon X\to Y$ и $g\colon Y\to Z$. Тогда композицией
+	отображений $f$ и $g$ называют отображение $(g\circ f)$, которое действует по правилу:
+
+	$$(g\circ f)(x)\eqdef g(f(x))$$
+
+	\begin{center}
+		\includegraphics{graph/mapping-composition}
+	\end{center}
+\end{df}
+
+Докажем два важных свойства композиций:
+
+\begin{enumerate}
+	\item Композиция биекций является биекцией.\index{отображение!биективное}
+%		\begin{proof}
+%			\emph{Стырить у кого-нибудь в лекции}
+%		\end{proof}
+	\item Ассоциативность композиций: $(g\circ f)\circ h=g\circ(f\circ h)$.
+		\begin{proof}
+			Рассмотрим левую часть:
+			$$((g\circ f)\circ h)(x)\eqdef(g\circ f)(h(x))\eqdef g(f(h(x)))$$
+			Рассмотрим правую часть:
+			$$(g\circ(f\circ h))(x)\eqdef g((f\circ h)(x))\eqdef g(f(h(x)))$$
+			Очевидно, что они равны.
+		\end{proof}
+\end{enumerate}
+
+\subsubsection{Бином Ньютона}
+
+\label{newton_binom}
+\index{бином Ньютона}
+\begin{equation*} (a+b)^n = \underbrace{(a+b)\times\dots\times(a+b)}_{\text{$n$ раз}} = \underbrace{a^n+na^{n-1}b+\dots+\Cb_n^ka^{n-k}b^k+\dots+nab^{n-1}+b^n}_{\text{$2^n$ неприведённых слагаемых}}
+\end{equation*}
+
+Таким образом,
+$$ (a+b)^n = \sum_{k=0}^{n} \Cb_n^k \times a^{n-k} \times b^k $$
+$$ T_{k+1} = \Cb_n^k \times a^{n-k} \times b^{k} $$
+
+\subsubsection{Полиномиальная формула}
+\label{polynomial}
+\index{полиномиальная формула}
+Полиномиальная формула является обобщением бинома Ньютона.
+\begin{multline*}
+ \left(a_1 + \dots + a_k\right)^n = \sum_{i_1+\dots+i_k=n} \frac{n!}{i_1! \times \dots \times i_k!} \times (a_1^{i_1} \times \dots \times a_k^{i_k}) \\\text{или}\\
+ \left(\sum_{j=1}^{k} a_j \right)^n = \sum_{ (\sum_{j=1}^{k} i_j) = n }\left( \frac{n!}{ \prod_{j=1}^{k} i_j! } \times \prod_{j=1}^{k} a_{j}^{i_j} \right)\end{multline*}
+Число неподобных членов в разложении равно $\tilde{\Cb_k^n}=\Cb_{n+k-1}^k$ (получается, если представить $n$ ячеек, в которые необходимо расставить с повторениями цифры от $1$ до~$k$).
+
+\paragraph{Подсчёт числа отображений и подмножеств.}
+
+Используя принципы комбинаторики можно выяснить, что если $|X|=n, |Y|=m$, то:
+
+\begin{enumerate}
+  \item $|P(X)|$ -- количество всех подмножеств множества -- равно $2^n$.
+  \item Число всех $m$-элементных подмножеств в $X$ равно $\Cb^m_n$.
+  \item Число всех отображений из $X$ в $Y$ равно $m^n$
+  \item Число всех сюръективных отображений из $X$ в $Y$ называется числом Стирлинга 2-го рода и вычисляется по формуле
+  $$S(n,m) = \frac{\sum\limits_{k=0}^m (-1)^k \Cb_m^k (m-k)^n}{m!}$$
+
+    Прочитать об этом можно здесь:
+    \begin{enumerate}
+      \item \href{http://mathworld.wolfram.com/StirlingNumberoftheSecondKind.html}{http://mathworld.wolfram.com/StirlingNumberoftheSecondKind.html}
+      \item \href{http://ndp.jct.ac.il/tutorials/Discrete/node81.html}{http://ndp.jct.ac.il/tutorials/Discrete/node81.html}
+    \end{enumerate}
+  \item Число всех инъективных отображений из $X$ в $Y$ равно $m(m-1)\dots(m-n+1)\bw=\Cb^m_n\cdot m!\bw=\Ab^m_n$
+  \item Число всех биективных отображений из $X$ в $X$ равно $n!$
+\end{enumerate}

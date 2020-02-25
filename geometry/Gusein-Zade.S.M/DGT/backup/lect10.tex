@@ -1,0 +1,383 @@
+%% Lust updated:
+
+%% \documentstyle[12pt]{article}
+\documentstyle[cyralt]{article}
+
+\input amssym.def
+\input amssym.tex
+
+%% \marginparwidth 40pt
+\textwidth=168mm
+%% \textwidth=140mm
+\textheight=250mm
+%% \textheight=205mm
+\addtolength{\topmargin}{-70pt}
+\addtolength{\oddsidemargin}{-1.5cm}
+
+\def\R{\Bbb R}
+\def\N{\Bbb N}
+\def\Z{\Bbb Z}
+\def\Q{\Bbb Q}
+\def\C{\Bbb C}
+\def\CP{\Bbb C\Bbb P}
+\def\RP{\Bbb R\Bbb P}
+\font\sf=cmss10
+
+% Theorem environments for normal usage
+% arabic numbering:
+%% \newtheorem{theorem}{Теорема}
+%% \newtheorem{corollary}{Следствие}
+%% \newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+
+% Non-italic
+% \theorembodyfont{\rmfamily}
+
+\newenvironment{definition}
+{\smallskip\noindent{\bf Определение\/}:}{\smallskip\par}
+\newenvironment{def-equiv}
+{\smallskip\noindent{\bf Определение${}'$\/}:}{\smallskip\par}
+\newenvironment{theorem}
+{\smallskip\noindent{\bf Теорема\/}.}{\smallskip\par}
+\newenvironment{theorem*}
+{\smallskip\noindent{\bf Теорема}}{\smallskip\par}
+\newenvironment{lemma}
+{\smallskip\noindent{\bf Лемма\/}.}{\smallskip\par}
+%% \newenvironment{proposition}
+%% {\smallskip\noindent{\bf Proposition\/}.}{\smallskip\par}
+\newenvironment{statement}
+{\smallskip\noindent{\bf Утверждение\/}.}{\smallskip\par}
+\newenvironment{example}
+{\smallskip\noindent{\bf Пример\/}.}{\smallskip\par}
+\newenvironment{examples}
+{\smallskip\noindent{\bf Примеры\/}:}{\smallskip\par}
+\newenvironment{remark}
+{\smallskip\noindent{\bf Замечание\/}.}{\smallskip\par}
+\newenvironment{remarks}
+{\smallskip\noindent{\bf Замечания\/}.}{\smallskip\par}
+\newenvironment{proof}
+{\noindent{\bf Доказательство\/}.}{{ $\Box$}\smallskip\par}
+\newenvironment{Proof}
+{\noindent{\bf Доказательство\/}}{{ $\Box$}\smallskip\par}
+\newenvironment{problem}
+{\noindent{\bf Задача\/}.}{\smallskip\par}
+\newenvironment{problem^*}
+{\noindent{\bf Задача${}^*$}.}{\smallskip\par}
+\newenvironment{problem^**}
+{\noindent{\bf Задача${}^{**}$}.}{\smallskip\par}
+\newenvironment{problem_*}
+{\noindent{\bf Задача${}_{*}$}.}{\smallskip\par}
+\newenvironment{problem_**}
+{\noindent{\bf Задача${}_{**}$}.}{\smallskip\par}
+\newenvironment{corollary}
+{\noindent{\bf Следствие}.}{\smallskip\par}
+\newenvironment{Corollary}
+{\noindent{\bf {Следствие }}}{\smallskip\par}
+
+\title{Дифференциальная геометрия, лекции для студентов III курса,
+осенний семестр 1999--2000 уч.г.}
+\author{С.М.Гусейн--Заде}
+\date{}
+% Not to forget to restore the \date command finally.
+\begin{document}
+\sloppy
+
+\def\Aut{{\operatorname{Aut}}}
+\def\eps{\varepsilon}
+
+%% Лекция N ?? 5 ноября 2001 г.
+
+{\bf Интеграл формы по многообразию.}
+
+\smallskip
+Существование разбиения единицы в общей ситуации (для некомпактного
+многообразия) используется для доказательства ряда утверждений, таких
+как продолжимость функции или дифференциальной формы с подмножества на
+многообразие, вложимость многообразия в аффинное пространство,
+аппроксимируемость непрерывного отображения гладким, ... Для наших
+ближайших целей потребуется только существование разбиения единицы
+для компактного многообразия. Такое разбиение единицы конечно, т.е.
+в него входит конечное число функций, отличных от нуля.
+
+Пусть $M^n$~--- гладкое $n$--мерное ориентированное многообразие (с
+краем или без), $\omega$~--- дифференциальная $n$--форма на $M^n$.
+Мы хотим определить интеграл формы $\omega$ по многообразию $M^n$.
+Если подмногообразие $M^n$ некомпактно (например, если $M^n$~---
+аффинное пространство $\R^n$), возникают трудности, связанные со
+сходимостью интеграла. Методы преодоления подобных трудностей
+обсуждаются в математическом анализе и мы не будем здесь на них
+останавливаться. Поэтому мы будем предполагать, что многообразие
+$M^n$ компактно. (Без каких-либо изменений можно предполагать, что
+многообразие $M^n$ произвольно, но форма $\omega$ имеет компактный
+носитель.)
+
+Предположим, сначала, что форма $\omega$ имеет "небольшой" носитель
+в том смысле, что этот носитель целиком помещается в пределах одной
+координатной карты $(U, \Psi)$ (из ориентирующего ({\bf !}) атласа)
+($\Psi:U\to V$, $V$~--- открытое подмножество пространства $\R^n$ или
+полупространства $\R^n_-$, $supp\,\omega\subset U$). В этом случае мы
+можем дать следующее "определение": интегралом $\int_{M^n}\omega$ формы
+$\omega$ по многообразию $M^n$ называется "ее интеграл в соответствующей
+карте", т.е. интеграл $\int_{V}(\Psi^{-1})^*\omega$. Если
+$(\Psi^{-1})^*\omega=f\cdot dx^1\wedge \ldots\wedge dx^n$, то последний
+интеграл~--- это $\int_V f\cdot dx^1\cdot \ldots\cdot dx^n$. Независимость
+этого "определения" от выбора координатной карты, в которой помещается
+носитель $supp\,\omega$ формы $\omega$, обсуждалась ранее.
+
+Теперь пусть $\omega$~--- произвольная $n$--форма на многообразии $M^n$
+и пусть $\{(U_i, \Psi_i)\}$ ($i=1, \ldots, N$)~--- ориентирующий атлас
+на $M^n$.
+
+\begin{definition}
+Интегралом $\int_{M^n}\omega$ формы $\omega$ по многообразию $M^n$
+называется $\sum\limits_{i=1}^N\int_{M^n}\varphi_i\omega$, где
+$\{\varphi_i\}$~--- разбиение единицы, вписанное в покрытие $\{U_i\}$.
+\end{definition}
+
+\begin{remark}
+В этом определении каждая из дифференциальных форм $\varphi_i\omega$
+имеет носитель, содержащийся в одной из координатных карт, и поэтому
+ее интеграл дается предыдущим "определением". Очевидно, что такой интеграл
+линеен как функция от формы. В частности, если $\omega=\omega_1+\omega_2$,
+где носители форм $\omega_1$ и $\omega_2$ лежат в одной координатной
+окрестности, то $\int_{M^n}\omega=\int_{M^n}\omega_1+\int_{M^n}\omega_2$.
+\end{remark}
+
+\begin{statement}
+Определение интеграла формы $\omega$ по многообразию $M^n$ корректно,
+т.е. не зависит от выбора атласа $\{(U_i, \Psi_i)\}$ и разбиения единицы
+$\{\varphi_i\}$.
+\end{statement}
+
+\begin{proof}
+Пусть $\{(U_j^\prime, \Psi_j^\prime)\}$ ($j=1,\ldots, M$)~--- другой
+(ориентирующий) атлас на многообразии $M^n$, $\{\varphi_j^\prime\}$~---
+разбиение единицы, вписанное в покрытие $\{U_j^\prime\}$. Имеем
+$$
+\sum\limits_{j=1}^M\int_{M^n}\varphi_j^\prime\omega=
+\sum\limits_{j=1}^M\int_{M^n}\varphi_j^\prime
+\left(\sum_{i=1}^N\varphi_i\right)\omega=
+\sum\limits_{j=1}^M\sum_{i=1}^N\int_{M^n}\varphi_j^\prime
+\varphi_i\omega=
+$$
+$$
+=\sum_{i=1}^N\int_{M^n}\varphi_i
+\left(\sum_{j=1}^M\varphi_j^\prime\right)\omega=
+\sum\limits_{i=1}^N\int_{M^n}\varphi_i\omega.
+$$
+(Мы воспользовались линейностью интеграла в описанной выше формулировке.)
+\end{proof}
+
+Укажем на некоторые (очевидные) свойства интеграла.
+
+\noindent 1. {\bf Линейность}: $\int_{M^n}(\omega_1+\omega_2)=
+\int_{M^n}\omega_1+\int_{M^n}\omega_2$, $\int_{M^n}(\lambda\omega)=
+\lambda\int_{M^n}\omega$ ($\lambda\in\R$).
+
+\noindent 2. {\bf Аддитивность} по отношению к разбиениям области
+интегрирования. Конечно, такая аддитивность имеет место по отношению к
+широкому классу разбиений области интегрирования. Например, область
+интегрирования может быть разбита на симплексы или на кубы. Однако, ни
+симплексы, ни кубы многообразиями с краем не являются и поэтому, формально
+говоря, интеграл по симплексу или по кубу нами не был определен. Конечно,
+нетрудно было бы перефомулировать (или, доформулировать) понятие интеграла
+так, чтобы оно включало интегралы по подобным областям. Однако, мы этого
+делать не будем и поэтому сформулируем свойство аддитивности в самой
+простой форме. Пусть замкнутое (компактное без края) ориентированное
+многообразие $M^n$ представлено в виде объединения двух многообразий с краем
+$W_1^n$ и $W_2^n$, пересекающихся по их общему краю: $M^n=W_1^n\cup W_2^n$,
+$W_1^n\cap W_2^n=\partial W_1^n=\partial W_2^n$. Тогда
+$$
+\int_{M^n}\omega=\int_{W_1^n}\omega+\int_{W_2^n}\omega.
+$$
+(Здесь подразумевается, что многообразия $W_1^n$ и $W_2^n$ рассматриваются с
+ориентацией, наследуемой из ориентации многообразия $M^n$. Кстати, в этом
+случае ориентации многообразия $\partial W_1^n=\partial W_2^n$,
+рассматриваемого как край многообразий $W_1^n$ и $W_2^n$ соответственно,
+противоположны.)
+
+\medskip
+{\bf Формула Стокса.}
+
+\smallskip
+В анализе известны формулы, связывающие интеграл по области с (некоторым)
+интегралом по ее краю: формулы Грина, Стокса, Гаусса--Остроградского.
+Все они являются частными случаями следующего общего утверждения.
+
+\begin{theorem*} {\bf Стокса.} Пусть $M^n$~--- компактное ориентированное
+многообразие с краем $\partial M^n$. $\partial M^n$ является замкнутым
+(т.е. компактным без края) ориентированным многообразием. Пусть $\omega$~---
+$(n-1)$--форма на многообразии $M^n$. Тогда
+$$
+\int_{M^n}d\omega=
+\int_{\partial M^n}\omega.
+$$
+\end{theorem*}
+
+\begin{problem}
+Проверить (или, правильнее, проинтерпретировать), что формулы Грина,
+Стокса и Гаусса--Остроградского являются частными случаями (общей)
+теоремы Стокса.
+\end{problem}
+
+\begin{proof}
+Как это часто бывает, доказательство общей теоремы Стокса в определенном
+смысле проще доказательств ее частных случаев. Основную роль в этом
+играет доказанная нами инвариантность дифференциала формы, позволяющая
+производить вычисления в удобных локальных координатах.
+
+Используя разбиение единицы и линейность интеграла, мы можем свести
+доказательство к случаю, когда носитель дифференциальной формы $\omega$
+находится в пределах одной координатной карты $(U, \Psi)$:
+$supp\,\omega\subset U$. Более того, не
+теряя общности мы можем предполагать, что эта координатная карта является
+является параллелепипедом (в своих координатах, т.е. параллелепипедом
+является соответствующая область $V=\Psi(U)$ в пространстве $\R^n$).
+Кроме того, можно
+считать, что (в рассматриваемых координатах) форма $\omega$ имеет вид
+$f\cdot dx^1\wedge\ldots\wedge dx^{i-1}\widehat{\wedge dx^i}\wedge
+dx^{i+1}\ldots\wedge x^n$, где $supp\,f\subset V$ (здесь, как принято
+записывать, знак $\widehat{\ \ \ }$ означает отсутствие
+соответствующего сомножителя.) Рассмотрим различные случаи.
+
+{\bf 1.} $\Psi: U\to V\subset\R^n$, $V=\{(x^1, \ldots, x^n)\in\R^n:
+A_j<x^j<B_j, j=1, \ldots, n\}$. В этом случае $\int_{\partial M^n}\omega=0$ (просто
+потому, что носитель формы $\omega$ не пересекается с краем $\partial M^n$
+многообразия $M^n$).
+Имеем $d\omega=\pm{\partial f\over \partial x^i}\cdot
+dx^1\wedge\ldots\wedge dx^n$ (здесь $\pm 1=(-1)^{i-1}$, однако точное
+значение этого знака для нас неважно). Поэтому
+$$
+\int\limits_{M^n}d\omega=\pm\int\limits_V {\partial f\over \partial x^i}
+\cdot dx^1\wedge\ldots\wedge dx^n=
+$$
+$$
+=\pm\int\limits_{A_n}^{B_n}\cdots
+\widehat{\int\limits_{A_i}^{B_i}}\cdots \int\limits_{A_1}^{B_1}
+\left(\int\limits_{A_i}^{B_i}{\partial f\over \partial x^i}dx^i\right)
+dx^1\ldots \widehat{dx^i}\ldots dx^n=0,
+$$
+поскольку (в соответствии с формулой Ньютона--Лейбница) обыкновенный
+интеграл в круглых скобках равен нулю.
+
+{\bf 2.} $\Psi: U\to V\subset\R^n_-$, $V=\{(x^1, \ldots, x^n)\in\R^n:
+A_1<x^1\le 0, A_j<x^j<B_j \mbox{ при } j\ne 1\}$. Рассмотрение зависит
+от того, равен ли индекс $i$ единице или нет ($i$ определяется тем, что
+$\omega=f\cdot dx^1\wedge\ldots\widehat{\wedge dx^i}\wedge\ldots\wedge x^n$).
+Пусть сначала $i\ne 1$. Тогда $\omega_{\vert\partial M^n}=0$ (т.к. $dx^1=0$
+на $\partial \R^n_-$) и значит $\int_{\partial M^n}\omega=0$.
+Имеем $d\omega=\pm{\partial f\over \partial x^i}\cdot
+dx^1\wedge\ldots\wedge dx^n$,
+$$
+\int\limits_{M^n}d\omega=\pm\int\limits_V {\partial f\over \partial x^i}
+\cdot dx^1\wedge\ldots\wedge dx^n=
+$$
+$$
+=\pm\int\limits_{A_n}^{B_n}\cdots\widehat{\int\limits_{A_i}^{B_i}}\cdots
+\int\limits_{A_2}^{B_2}\int\limits_{A_1}^{0}
+\left(\int\limits_{A_i}^{B_i}{\partial f\over \partial x^i}dx^i\right)
+dx^1\,dx^2\ldots \widehat{dx^i}\ldots dx^n=0.
+$$
+
+{\bf 3.} $\Psi: U\to V\subset\R^n_-$, $V=\{(x^1, \ldots, x^n)\in\R^n:
+A_1<x^1\le 0, A_j<x^j<B_j \mbox{ при } j\ne 1\}$,
+$\omega=f\cdot dx^2\wedge\ldots\wedge x^n$, $supp\,f\subset V$. Имеем
+$(\Psi^{-1})^*\omega_{\vert\partial\R^n_-}=
+f(0, x^2, \ldots, x^n)\cdot dx^2\wedge\ldots\wedge x^n$.
+Поэтому $$\int_{\partial M^n}\omega=
+\int\limits_{A_n}^{B_n}\cdots\int\limits_{A_2}^{B_2}
+f(0, x^2, \ldots, x^n)dx^2\ldots dx^n.
+$$
+(Обратите внимание на то, что система координат $x^2$, \dots, $x^n$
+на краю $\partial M^n$ многообразия $M^n$ является ориентирующей.)
+Далее имеем $d\omega={\partial f\over \partial x^1}\cdot
+dx^1\wedge\ldots\wedge dx^n$ (здесь важно то, что в выражении
+для $\omega$ отсутствует дифференциал именно первой переменной и поэтому в
+выражении для $d\omega$ не появляется никакого знака). Поэтому
+$$
+\int\limits_{M^n}d\omega=\int\limits_V {\partial f\over \partial x^1}
+\cdot dx^1\wedge\ldots\wedge dx^n=\int\limits_{A_n}^{B_n}\cdots
+\int\limits_{A_2}^{B_2} \left(\int\limits_{A_1}^{0}
+{\partial f\over \partial x^1}dx^1\right)dx^2\ldots dx^n=
+$$
+$$
+=
+\int\limits_{A_n}^{B_n}\cdots
+\int\limits_{A_2}^{B_2} f(0, x^2, \ldots, x^n)dx^2\ldots dx^n=
+\int_{\partial M^n}\omega.
+$$
+
+\end{proof}
+
+\medskip
+\begin{problem}
+Проверить (или, правильнее, проинтерпретировать), что формулы Грина,
+Стокса и Гаусса--Остроградского являются частными случаями (общей)
+теоремы Стокса.
+\end{problem}
+
+\begin{problem}
+Вывести из теоремы Стокса теорему Коши: если $f$~--- голоморфная
+функция в области комплексной прямой, ограниченной кривой $\gamma$, то
+$\oint_\gamma f dz=0$.
+\end{problem}
+
+\medskip
+{\bf Когомологии де Рама.}
+
+\smallskip
+Пусть $M^n$~--- произвольное гладкое многообразие~--- компактное или нет,
+с краем или без. Обозначим через $\Omega^k(M^n)$ (линейное) пространство
+дифференциальных $k$--форм на многообразии $M^n$. Дифференциал формы
+является (линейным) отображением $d_k=d:\Omega^k(M^n)\to\Omega^{k-1}(M^n)$.
+Таким образом, операторы внешнего дифференцирования $d$ связывают
+пространства $\Omega^k(M^n)$ в последовательность
+$$0\to\Omega^0(M^n)\stackrel{d}{\longrightarrow}\Omega^1(M^n)
+\stackrel{d}{\longrightarrow}
+\ldots
+\stackrel{d}{\longrightarrow}
+\Omega^k(M^n)
+\stackrel{d}{\longrightarrow}
+\Omega^{k+1}(M^n)
+\stackrel{d}{\longrightarrow}
+\ldots
+$$
+$$
+\ldots
+\stackrel{d}{\longrightarrow}
+\Omega^{n-1}(M^n)
+\stackrel{d}{\longrightarrow}
+\Omega^n(M^n)
+\to 0.
+$$
+При этом суперпозиция $d_{k+1}\circ d_k=d\circ d$ двух последовательных операторов
+равна нулю. Последовательность гомоморфизмов с таким свойством называется
+(коцепным) комплексом. Такая ситуация часто встречается в топологии и в
+алгебре и в таком случае полезно бывает рассматривать, так называемые,
+группы (ко)гомологий комплекса.
+
+\begin{definition}
+Группой когомологий де Рама ($k$--ой или $k$--мерной) многообразия $M^n$
+называется группа $$H^k_{dR}(M^n):=
+{{Ker\,d:\Omega^k(M^n)\to\Omega^{k+1}(M^n)}
+\over
+{Im\,d:\Omega^{k-1}(M^n)\to\Omega^k(M^n)}}
+\left(=
+{{Ker\,d_k}\over{Im\,d_{k-1}}}\right).$$
+\end{definition}
+
+\begin{remark}
+Мы рассматриваем группу когомологий $H^k_{dR}(M^n)$ просто как линейное
+пространство, без какой-либо дополнительной структуры, например, без
+топологии. В действительности, часто группа когомологий $H^k_{dR}(M^n)$
+является конечномерным линейным пространством (см. задачу ниже). В таком
+случае топология на этом пространстве определена однозначно.
+\end{remark}
+
+Формы, дифференциал которых равен нулю, называются замкнутыми. Те, которые
+являются дифференциалами других форм, называются точными. Свойство
+$d\circ d=0$ означает, что точные формы замкнуты. Определение можно
+переформулировать следующим образом: группа $H^k_{dR}(M^n)$ когомологий
+де Рама~--- это факторпространство замкнутых $k$--форм по точным.
+
+\end{document}

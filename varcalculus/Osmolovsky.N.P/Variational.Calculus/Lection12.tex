@@ -1,0 +1,429 @@
+\chapter*{Лекция 12}
+\section*{Тема: Доказательство принципа мак\-симума за\-да\-чи $B$.}
+\subparagraph{1. Задача $B^{\theta}$ индекса $\theta$ и ее
+оптимальное решение.} Итак, для оптимальной траектории
+$\hat{\cal{T}}=\{\hat x(t),\hat u(t)\ |\ t\in[\hat t_0 ,\hat
+t_1]\}$ задачи $B$ и индекса
+$\theta=\{t^1,\ldots,t^N,u^1,\ldots,u^N\}$ мы определим отрезок
+$[\tau_0,\tau_1]$ и функции $v^\theta,t^\theta,u^\theta,x^\theta$
+на этом отрезке. Вместе они определяют траекто\-рию
+\setcounter{equation}{0}
+\begin{equation}\label{12m1}
+{\cal{T}}^\theta=\{t^\theta(\tau), x^\theta(\tau),
+u^\theta(\tau),v^\theta(\tau)\ |\ \tau\in[ \tau_0,\tau_1]\}
+\end{equation}
+в задаче $\tilde{B}$. Последняя была определена в лекции 10 и
+имела вид:
+$$
+F_0(p)\rightarrow min,\ F(p)\leqslant 0\ , K(p)=0,
+$$
+$$
+\frac{dx}{d\tau}=vf(x,u), \ \ \ \frac{dt}{d\tau}=v,
+$$
+$$
+u\in U, \ \ \ \ v\geqslant 0,
+$$
+где
+$p=(x_0,x_1)=(x(\tau_0),x(\tau_1))$,
+
+$t(\tau),x(\tau) $~--- абсолютно непрерывны,
+
+$u(\tau)$~--- ограничена и измерима, а $v(\tau)$~--- кусочно
+постоянна, $\tau_0$ и $\tau_1$~--- свободны.
+\setcounter{theorema}{0}
+\begin{theorema}
+Для любого индекса $\theta$ траектория ${\cal{T}}^\theta$
+оптимальна в задаче $\tilde{B}.$
+\end{theorema}
+\begin{proof}
+Согласно предложению 1, пункт $(b)$ прошлой лек\-ции
+$$
+\frac{dx^\theta}{d\tau}=v^{\theta}f(x^ \theta,u^\theta) \
+\hbox{п.в.}.
+$$
+
+Кроме того,$$ \frac{dt^\theta}{d\tau}=v^\theta, \ \
+v^\theta\geqslant 0 ,\ \ u^\theta\in U \ \hbox{п.в.}
+$$
+~--- согласно определениям функций
+$v^\theta$,$t^\theta$,$u^\theta$. Наконец, в силу пункта $(a)$
+предложения 1 прошлой лекции $x^\theta(\tau_0)=\hat{x}(t_0)$,
+$x^\theta(\tau_1)=\hat{x}({\hat{t}_1})$. Отсюда и из
+оптимальности траектории $\hat{{\cal{T}}}$ в задаче $B$ вытекает,
+согласно теореме 1 лекции 10 (о связи задач $B$ и $\tilde{B}$)
+оптимальность траектории ${\cal{T}}^\theta$ в задаче $\tilde{B}$.
+\end{proof}
+
+Для индекса $\theta$ мы определили разбиение отрезка
+$[\tau_0,\tau_1]$ на отрезки $\sigma_1,\ldots,\sigma_r$ (это
+отрезки $\Delta^k$ множества ${\cal{M}}_0$ и смежные с ними
+интервалы или полуинтервалы, принадлежащие ${\cal{M}}_+$).
+Рассмотрим оператор
+$$
+P:(x_0,z) \mapsto p=(x_0,x(\tau_1)),
+$$
+где \ $x(\tau):[\tau_0,\tau_1]\rightarrow \mathbb{R}^n$ \
+определяется как решение задачи Коши
+\begin{equation}\label{12m2}
+\frac{dx}{d\tau}=f(x,u^\theta(\tau))\sum z_k\chi_k(\tau)
+\end{equation}
+$$
+x(\tau_0)=x_0
+$$ (через $\chi_k$ мы обозначили характеристические
+функции множеств $\sigma_k$)
+
+Поскольку
+$$
+v^\theta(\tau):=\sum \hat{z}_k\chi_k(\tau)
+$$
+$$
+\frac{dx^\theta}{d\tau}={v^\theta}f(x^\theta,u^\theta)
+$$
+$$
+\hat{x}_0:=\hat{x}(\hat{t}_0)=x^\theta(\tau_0),
+$$
+то при $x=\hat{x}_0, z=\hat{z}$ задача Коши (1) имеет решение
+$x^\theta(\tau)$, определенное на $[\tau_0,\tau_1]$, тогда по
+теореме 2 прошлой лекции оператор $P$ определен в некоторой
+окрестности $\cal U$ точки $(\hat{x}_0,\hat{z})$ в пространстве
+$\mathbb{R}^n \times \mathbb{R}^r$.
+
+Теперь мы можем поставить конечномерную задачу $B^\theta$. Она
+рассма\-тривается в пространстве переменных
+$$
+(x_0,z,p)\in\mathbb{R}^n\times \mathbb{R}^r\times \mathbb{R}^{2n}.
+$$
+
+\subparagraph{Задача $B^\theta$.}
+$$
+F_0(p)\rightarrow min, \ \ F(p)\leqslant 0 \ \ , K(p)=0
+$$
+$$
+-z\leqslant0 ,\ \  p-P(x_0,z)=0, \ \ (x_0,z)\in U,
+$$
+где $P(x_0,z)=(x_0,x(\tau_1))$, а функция
+$x(\cdot)=\varphi(x_0,z)$ определяется как решение задачи Коши
+(\ref{12m2}).
+
+Положим $\hat{x}_1=\hat{x}(\hat{t}_1)$,
+$\hat{p}=(\hat{x}_0,\hat{x}_1)$. Напомним, что $\hat{z}$
+определяется индексом $\theta$, т.е. $\hat{z}=\hat{z}(\theta)$.
+
+\begin{theorema}
+Для любого индекса $\theta$ точка $(\hat{x}_0,\hat{z},\hat{p})$
+есть решение задачи $B^\theta$.
+\end{theorema}
+\begin{proof}
+Предположим противное: пусть для некоторого ин\-декса $\theta$ в
+задаче $B^\theta$ имеется допустимая точка $(x_0,t,p)$ такая, что
+\begin{equation}\label{12m3}
+F_0(p)<F_0(\hat{p})
+\end{equation}
+
+Пусть $x(\cdot)=\varphi(x_0,z)$, \ $v(\cdot)=\sum
+z_k\chi_k(\cdot)$, а $t(\cdot)$ найдена из условий
+$$\frac{dt}{d\tau}=v , t(\tau_0)=t_0,$$
+$t_0$ выбрано произвольно. Тогда из определений следует, что
+$$
+\tilde{{\cal{T}}}=\{t(\tau), x(\tau), u^\theta(\tau),v(\tau)\ |\
+\tau\in[ \tau_0,\tau_1]\}
+$$
+~--- допустимая траектория задачи
+$\tilde{B}$ такая, что $$
+(x(\tau_0),x(\tau_1))=p.
+$$
+Согласно теореме 1 траектория ${\cal{T}}^\theta$ (\ref{12m2})
+оптимальна в задаче $\tilde{B}$. Однако в силу (\ref{12m3})
+$\tilde{\cal{T}}$ доставляет меньшее значение целевой функции
+$F_0$, чем траек\-тория ${\cal{T}}^\theta$. Противоречие
+доказывает теорему.
+\end{proof}
+
+\subparagraph{2. Условие стационарности в задаче $B^\theta$.}
+
+Фиксируем индекс $\theta$. Согласно теореме 1
+$(\hat{x}_0,\hat{z},\hat{p})$~--- точка минимума в задаче
+$B^\theta$. Следова\-тельно она стационарная точка в той же
+задаче. Выпишем условие стацио\-нарности в этой точке.
+
+Функция Лагранжа задачи $B^\theta$ имеет вид
+$$
+L=\alpha_0F_0(p)+\alpha F(p)+\beta K(p)-\mu z+\nu(p-P(x_0,z)),
+$$
+где $\mu\in(\mathbb{R}^r)^*,\ \nu\in(\mathbb{R}^{2n})^*$~---
+вектор-строки. Пусть $l=\alpha_0F_0+\alpha F+\beta K$. Тогда
+$$
+l=l(p,\alpha_0,\alpha,\beta),
+$$
+$$
+L=l-\mu z+\nu(p-P(x_0,z)),
+$$
+$$
+L=L(x_0,z,p,\alpha_0,\alpha,\beta,\mu,\nu).
+$$
+Производные функции Лагранжа по переменым $x_0$,$z$ и $p$ в точке
+$(\hat{x}_0,\hat{z},\hat{p})$ имеют вид
+$$
+L_{x_0}=-\nu P_{x_0}(\hat{x}_0,\hat{z}),
+$$
+$$
+L_z=-\mu-\nu P_z(\hat{x}_0,\hat{z}),
+$$
+$$
+L_p=l_p(\hat{p},\alpha_0,\alpha,\beta)+\nu.
+$$
+Следовательно условия стационарности в точке
+$(\hat{x}_0,\hat{z},\hat{p})$ имеют вид:
+\begin{equation}\label{12m4}
+\alpha_0\geqslant0 , \alpha\geqslant0, \mu\geqslant0,
+\end{equation}
+\begin{equation}\label{12m5}
+\alpha_0+|\alpha|+|\beta|+|\mu|+|\nu|>0,
+\end{equation}
+\begin{equation}\label{12m6}
+\alpha F(\hat{p})=0, \ \ \mu\hat{z}=0,
+\end{equation}
+\begin{equation}\label{12m7}
+\nu P_{x_0}(\hat{x}_0,\hat{z})=0,
+\end{equation}
+\begin{equation}\label{12m8}
+\nu P_z(\hat{x}_0,\hat{z})+\mu=0,
+\end{equation}
+\begin{equation}\label{12m9}
+l_p(\hat{p},\alpha_0,\alpha,\beta)+\nu=0.
+\end{equation}
+Если $\alpha_0+|\alpha|+|\beta|=0$ , то
+$l_p(\hat{p},\alpha_0,\alpha,\beta)=0$, а тогда в силу
+(\ref{12m9}) $\nu=0$ и в силу (\ref{12m8}) $\mu=0$. Следовательно,
+условие нетривиальности (\ref{12m5}) эквивалентно условию
+$\alpha_0+|\alpha|+|\beta|>0$. Не ограничивая общности, можно
+считать, что $\alpha_0+|\alpha|+|\beta|=1$. Окончательно получаем
+следующую систему условий стационарности:
+\begin{equation}\label{12m10}
+\begin{cases}
+&\alpha_0\geqslant0 , \alpha\geqslant0, \mu\geqslant0,  \\
+&\alpha_0+|\alpha|+|\beta|=1, \\
+&\alpha F(\hat{p})=0, \ \ \mu\hat{z}=0, \\
+&\nu \hat{P}_{x_0}=0, \ \nu \hat{P}_z+\mu=0,  \ \nu=-\hat{l}_p,\\
+\end{cases}
+\end{equation}
+где $\hat{P}_{x_0}=P_{x_0}(\hat{x}_0,\hat{z}), \
+\hat{P}_z=P_z(\hat{x}_0,\hat{z}), \ \hat{l}_p=l(\hat{p},\alpha_0,
+\alpha, \beta).$
+
+Найдем частные производные $\hat{P}_{x_0}, \hat{P}_z$ оператора
+$P$ по переменым $x_0$ и $z$ в точке $(\hat{x}_0,\hat{z})$.
+
+Напомним, что согласно Теореме 2 прошлой лекции производная
+опе\-ратора $P$ в точке $(\hat{x}_0,\hat{z})$ есть линейный
+оператор
+$$
+\hat{P}':(\bar{x}_0,\bar{z})\mapsto(\bar{x}_0,\bar{x}(\tau_1)),
+$$
+где $\bar{x}(\cdot)$ есть решение задачи Коши для уравнениях в
+вариациях
+\begin{equation}\label{12m11}
+\frac{d\bar{x}}{d\tau}=v^\theta f_x^\theta \bar{x}+\sum
+\bar{z}_k\chi_kf^\theta , \ \ \bar{x}(\tau_0)=\bar{x}_0.
+\end{equation}
+
+Мы обозначили здесь
+\begin{equation}\label{12m12}
+f^\theta_x=f_x(x^\theta,u^\theta) ,\ \
+f^\theta=f(x^\theta,u^\theta).
+\end{equation}
+Следовательно,
+$$\hat{P}_{x_0} : \bar{x}_0 \mapsto(\bar{x}_0,\bar{x}(\tau_1)),$$
+где $\bar{x}(\cdot)$  определяется как решение задачи Коши
+\begin{equation}\label{12m13}
+\frac{d\bar{x}}{d\tau}=v^\theta f_x^\theta \bar{x},  \ \ \
+\bar{x}(\tau_0)=\bar{x}_0
+\end{equation}
+(В условиях (\ref{12m11}) мы положили $\bar{z}=0$). Аналогично
+$$\hat{P}_z : \bar{z} \mapsto(0 ,\bar{x}(\tau_1))\in \mathbb{R}^{2n},$$
+где $\bar{x}(\cdot)$ есть решение задачи Коши
+\begin{equation}\label{12m14}
+\frac{d\bar{x}}{d\tau}=v^\theta f_x^\theta \bar{x}+\sum
+\bar{z}_k\chi_kf^\theta, \ \ \ \bar{x}(\tau_0)=0.
+\end{equation}
+(В условиях (\ref{12m11}) мы положили $\bar{x}_0=0$)
+
+\subparagraph{3. Сопряженное уравнение и условия
+трансверсальности.}
+
+В условиях стационарности (\ref{12m10}) проанализируем условие $\
+\nu \hat{P}_{x_0}=0$. Оно эквивалентно условию
+$$\nu\hat{P}_{x_0} \bar{x}_0=0  \ \ \ \ \forall\bar{x}_0\in \mathbb{R}^n  $$
+Последнее можно представить в виде:
+\begin{equation}\label{12m15}
+\nu_0\bar{x}_0+\nu_1\bar{x}_1=0
+\end{equation}
+для любых $\bar{x}_0\in \mathbb{R}^n, \ \bar{x}_1\in \mathbb{R}^n
+$ таких, что
+\begin{equation}\label{12m16}
+\bar{x}_0=\bar{x}(\tau_0), \ \ \bar{x}_1=\bar{x}(\tau_1),
+\end{equation}
+а $\bar{x}(\tau)$ удовлетворяет условию
+\begin{equation}\label{12m17}
+\frac{d\bar{x}}{d\tau}=v^\theta f_x^\theta \bar{x}.
+\end{equation}
+Здесь $\nu=(\nu_0,\nu_1)$, $\nu_0\in \mathbb{R}^n$ , $\nu_1\in
+\mathbb{R}^n$. Итак (\ref{12m17}),(\ref{12m16})$\Rightarrow$
+(\ref{12m15}). Проанализи\-руем это условие.
+
+Пусть $A=A(\tau)$ - квадратная матрица порядка $n$ с ограничеными
+измеримыми коэффициентами, определенными на $[\tau_0,\tau_1]$.
+Рассмотрим линейную систему
+\begin{equation}\label{12m18}
+\frac{d\bar{x}}{d\tau}=A(\tau)\bar{x}.
+\end{equation}
+Систему
+\begin{equation}\label{12m19}
+-\frac{d\psi}{d\tau}=\psi A(\tau)
+\end{equation}
+называют сопряженной к системе (\ref{12m18}). Здесь
+$\psi=(\psi_1,\ldots,\psi_n)$~--- вектор-строка, в то время как
+$x$~--- вектор-столбец.
+
+Пусть заданы $\nu_0$ и $\nu_1$ - $n$-мерные вектор-строки.
+
+\begin{lemma1}
+Пусть для любой $\bar{x}(\cdot)\in
+W^1_\infty([\tau_0,\tau_1],\mathbb{R}^n)$  , являющейся решением
+на $[\tau_0,\tau_1]$ системы (\ref{12m18}), выполнено условие
+\begin{equation}\label{12m20}
+\nu_0\bar{x}(\tau_0)+\nu_1\bar{x}(\tau_1)=0.
+\end{equation}
+Тогда на отрезке $[\tau_0,\tau_1]$ существует липшицева функция
+$\psi(\tau)$, являющая\-ся решением (на этом отрезке) сопряженой
+системы (\ref{12m19}) и такая, что
+\begin{equation}\label{12m21}
+\psi(\tau_0)=-\nu_0, \ \ \psi(\tau_1)=\nu_1.
+\end{equation}
+\end{lemma1}
+\begin{proof}
+Определим $\psi$ из условий
+$$-\dot{\psi}=\psi A, \ \ \ \psi(\tau_1)=\nu_1.$$
+Покажем, что $\psi(\tau_0)=-\nu_0$ . Пусть
+$\bar{x}_0\in\mathbb{R}^n$ - произвольный вектор, а
+$\bar{x}(\cdot)$ найдена из условий
+$$
+\dot{\bar{x}}=A\bar{x}, \ \ \bar{x}(\tau_0)=\bar{x}_0.
+$$
+Тогда
+$$
+\frac{d}{d\tau}(\psi\bar{x})=\frac{d\psi}{d\tau}\bar{x}+
+\psi\frac{d\bar{x}}{d\tau}=-\psi A\bar{x}+\psi A\bar{x}=0.
+$$
+Следовательно,
+$$
+\int_{\tau_0}^{\tau_1}\frac{d}{d\tau}(\psi\bar{x})d\tau=
+(\psi\bar{x})\Big{|}_{\tau_0}^{\tau_1}=\nu_1\bar{x}(\tau_1)-\psi(\tau_0)\bar{x}_0
+\overset{(\ref{12m20})}= -\nu_0\bar{x}_0-\psi(\tau_0)\bar{x}_0.
+$$
+Итак, $(\nu_0+\psi(\tau_0))\bar{x}_0=0  \ \
+\forall\bar{x}_0\in\mathbb{R}^n,$ следовательно,
+$\psi(\tau_0)=-\nu_0$.
+\end{proof}
+
+Вернемся к условиям (\ref{12m15}), (\ref{12m16}), (\ref{12m17}).
+Согласно Лемме 1 на $[\tau_0,\tau_1]$ су\-ществует липшицева
+функция $\psi^\theta(\tau)$ такая, что
+\begin{equation}\label{12m22}
+-\frac{d\psi^\theta}{d\tau}=\psi^\theta v^\theta f_x^\theta,
+\end{equation}
+\begin{equation}\label{12m23}
+\psi^\theta(\tau_0)=-\nu_0, \ \ \psi^\theta(\tau_1)=\nu_1.
+\end{equation}
+Но из условия $\nu=-\hat{l}_p$ вытекает, что
+$$\nu_0=-\hat{l}_{x_0}, \ \ \nu_1=-\hat{l}_{x_1}, $$
+Следовательно
+\begin{equation}\label{12m24}
+\psi^\theta(\tau_0)=\hat{l}_{x_0}, \ \
+\psi^\theta(\tau_1)=-\hat{l}_{x_1}.
+\end{equation}
+Мы получили для  сопряженое уравнение (\ref{12m22}) и условие
+трансверсаль\-нос\-ти (\ref{12m24}).
+
+\subparagraph{4. Анализ условия $\nu\hat{P}_z+\mu=0$.} Обратимся
+теперь к условию $\nu\hat{P}_z+\mu=0$. Оно эквивалентно условию
+\begin{equation}\label{12m25}
+\nu\hat{P}_z\bar{z}+\mu\bar{z}=0  \ \ \
+\forall\bar{z}\in\mathbb{R}^r.
+\end{equation}
+Поскольку $\hat{P}_z \bar{z}=(0,\bar{x}(\tau_1))$, где
+$\bar{x}(\cdot)$~--- решение задачи Коши
+\begin{equation}\label{12m26}
+\frac{d\bar{x}}{d\tau}=\bar{v}f^\theta+v^\theta f_x^\theta \bar{x}
+, \ \ \bar{v}=\sum \bar{z}_k\chi_k, \ \ \ \bar{x}(\tau_0)=0,
+\end{equation}
+то
+$$
+\nu\hat{P}_z\bar{z}=\nu_1\bar{x}(\tau_1)\overset{(\ref{12m23})}=\psi^\theta(\tau_1)
+\bar{x}(\tau_1)=\psi^\theta\bar{x}\Big{|}_{\tau_0}^{\tau_1}=
+\int_{\tau_0}^{\tau_1}\frac{d}{d\tau} (\psi^\theta\bar{x})d\tau=$$
+$$=\int_{\tau_0}^{\tau_1}\big(\frac{d\psi^\theta}{d\tau}\bar{x}+
+\psi^\theta\frac{d\bar{x}}{d\tau}\big)d\tau\overset{(\ref{12m22}),(\ref{12m26})}=
+\int_{\tau_0}^{\tau_1}(-\psi^\theta v^\theta f^\theta_x\bar{x}+
+\psi^\theta(\bar{v}f^\theta+v^\theta f_x\bar{x}))d\tau=$$
+$$=\int_{\tau_0}^{\tau_1}\psi^\theta
+f^\theta\bar{v}d\tau\overset{(\ref{12m26})}=
+\int_{\tau_0}^{\tau_1}\psi^\theta f^\theta \sum \bar{z}_k\chi_k
+d\tau.
+$$
+Итак, условие \eqref{12m25} равносильно условию
+$$
+\int_{\tau_0}^{\tau_1}\psi^\theta f^\theta \sum \bar{z}_k\chi_k
+d\tau+\sum\mu_k\bar{z}_k=0, \ \ \ \forall\bar{z}\in\mathbb{R}^r.
+$$
+Отсюда вытекает, что
+$$
+\int_{\tau_0}^{\tau_1}\psi^\theta f^\theta \chi_k d\tau+\mu_k=0,
+\ \ \ \ k=1,\ldots,r.
+$$
+~--- в силу произвольности $\bar{z}_k$, или
+$$
+\int_{\sigma_k}\psi^\theta f^\theta d\tau=-\mu_k, \ \ \ \
+k=1,\ldots,r.
+$$
+Что отсюда следует? Вспомним, что $\mu\geqslant 0$ и
+$\mu\hat{z}=0$, т.е. $\mu_k\geqslant0$, причем $\mu_k=0$ при
+$\hat{z}_k>0 \ \ \forall k$. Поскольку $\sum
+\hat{z}_k\chi_k=v^\theta$, то условие $\hat{z}_k>0$ означает, что
+$\sigma_k\subset {\cal{M}}_+$. Итак, мы получили, что
+\begin{equation}
+(a) \ \ \int_{\sigma_k}\psi^\theta f^\theta d\tau=0, \ \
+\text{если } \sigma_k\subset {\cal{M}}_+,
+\end{equation}
+\begin{equation}
+(b) \ \ \int_{\sigma_k}\psi^\theta f^\theta d\tau\leqslant0, \ \
+\text{если }\sigma_k\subset {\cal{M}}_0,
+\end{equation}
+$$
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ k=1,\ldots,r.
+$$
+Итог сказанному подводит следующая
+\begin{theorema}
+Для любого индекса $\theta$ существует набор
+$\lambda^\theta=(\alpha_0,\alpha,\beta,\psi^\theta)$ такой, что
+выполнены условия
+\begin{equation}\label{12m29}
+\begin{cases}
+&\alpha_0\geqslant0 , \alpha\geqslant0, \alpha F(\hat{p})=0,  \\
+&\alpha_0+\sum\alpha_i+|\beta|=1, \\
+&-\frac{\psi^\theta}{d\tau}=v^\theta\psi^\theta f_x^\theta, \\
+&\psi(\tau_0)=\hat{l}_0, \psi(\tau_1)=-\hat{l}_1, \\
+&\int_{\sigma_k}\psi^\theta f^\theta d\tau=0, \ \text{при }\
+\sigma_k\subset
+{\cal{M}}_+,\\
+&\int_{\sigma_k}\psi^\theta f^\theta d\tau\leqslant0, \ \text{при
+}\
+\sigma_k\subset {\cal{M}}_0,\\
+& \ \ \ \ \ \ \ \ k=1,\ldots,r \\
+\end{cases}
+\end{equation}
+
+Здесь $\psi^\theta(\tau):[\tau_0,\tau_1]\rightarrow \mathbb{R}^n$
+- липшицева функция.
+\end{theorema}
+\endinput

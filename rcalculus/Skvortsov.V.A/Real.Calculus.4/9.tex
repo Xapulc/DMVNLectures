@@ -1,0 +1,243 @@
+
+% девятая лекция по действлану.
+
+\begin{center} \textbf{Лекция 9.} \end{center}
+
+Теорема верна и в случае, когда $\mu (E) \quad \delta$ конечна
+
+$E = \bigcup_i E_i, \; \mu E_i < \infty$
+
+Применим первую часть теоремы к $E_i$.
+
+$A \subset E, \varphi(A) = \sum_i \varphi(A \bigcap E_i) = \sum_i
+\int_{A \bigcap E_i} f_i d \mu + \varphi(Z \bigcap A), \; Z =
+\bigcup_i Z_i, \; f_i$ --- суммируема, $\varphi$ ---
+неотрицательная.
+
+Если $\varphi$ --- любого знака $\Rightarrow$ пользуемся
+разложением Жордана и применяем предыдущую часть теоремы
+
+$\varphi =$ \={V} $-$ \b{V}
+
+$\varphi(A) = \alpha(A) + \sigma(A)$
+
+$\sigma(A \bigcap Z) = \varphi(A \bigcap Z) \Rightarrow \sigma(A)
+= \varphi(A \bigcap Z)$
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 16.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+$f$ опр. однозначно
+
+$\int_A f_1 d \mu = \int_A f_2 d \mu \Rightarrow \int_A (f_1 - f2)
+d \mu = 0 \Rightarrow$
+
+
+$( A^+ = \{x: \; f_1 - f_2 \geqslant 0\}$,\quad $A^- = \{x: \; f_1
+- f_2 \leqslant 0\} $ + используем неравенство Чебышева)
+
+\textbf{Теорема Радона-Никодима.} \quad
+
+Каждый заряд $\varphi$ представим однозначным образом как $\int_A
+f d\mu = \varphi(A), \; f$ --- суммируемая функция.
+
+Заряд --- абсолютно непрерывная $\delta$--аддитивная функция. На
+прямой  $f$ --- производная $\varphi$. В общем случае $f$ называют
+производной Радона-Никодима от  $\varphi: \; f d \mu = d \varphi$
+
+
+Абсолютная непрерывность $\forall \varepsilon > 0 \;\exists \delta
+> 0 \; \mu A < \delta \Rightarrow |\int_A f d \mu| < \varepsilon$
+
+\textbf{Задача.} \quad Построить $\varphi (A)^A = \int_A f d \mu$
+и доказать непрерывность построения $\delta$ по $\varepsilon$ и
+$f$.
+
+
+Рассмотрим случай прямой и меры Лебега:
+
+ \textbf{Определение.} \quad $F \in VB$ (ограниченной вариации), если конечна $V_a^b F = sup_p \sum_{i=1}^n |F(x_i) - F(x_{i-1})|
+\quad P: \; a = x_0 < x_1 < \ldots < x_n = b$
+
+$F = V_a^x(F) - (V_a^x (F) - F(x))$
+
+$V_a^x(F)$   $|\triangle F(I)| \leqslant V_I(F)$
+
+$\phantom{a}$
+
+$\dfrac{\text{(\={V} + \b{V} + (\={V} - \b{V}))} }{2}$
+
+$F = \dfrac{V_a^x(F) + F(x)}{2} - \dfrac{V_A^x(F) - F(x)}{2}$
+
+Абсолютно - непр. функция точки $(AC)$
+
+$F \in AC(E)$, если $\forall \varepsilon \; \exists \delta > 0: \;
+\forall \{(\alpha_i, \beta_i)\}, \alpha_i, \beta_i \in E,\;
+(\alpha_i, \beta_i)\bigcap(\alpha_j, \beta_j) = \varnothing, i
+\neq j $
+
+$\sum_i (\beta_i - \alpha_i) < \delta \Rightarrow \sum_i
+|F(\beta_i) - F(\alpha_i)| < \varepsilon$
+
+Опр. для конечного набора интервалов и для счетного равносим.
+(если 1 интервал $\Rightarrow$ равномерн. непрерывность)
+
+$F \in AC \Rightarrow F$ равномерно непрерывна на $E \;
+\Rightarrow$ непрерывна в каждой точке $E$ (по множеству)
+
+\textbf{Задача.} \quad  $f$ непрерывна на  $[a,b], \; E \subset
+[a,b]$ $f \in AC(E) \Rightarrow f \in AC(\overline{E})$
+
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 17.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+$AC \subset VB$
+
+$\varepsilon = 1$. Нашли $\delta_1$ из определения $AC$. Разбили
+на конечное число отрезков длины  $< \delta$.
+
+На каждом отрезке функция ограниченной вариации, значит,
+ограниченной вариации и на $[a,b]$.
+
+\textbf{Теорема} \quad $F \in AC([a,b]) \Rightarrow V_a^x(F) \in
+AC([a,b]) \quad \{\alpha_i, \beta_i\}_i \quad \sum_i |F(\beta_i) -
+F(\alpha_i)| < \delta \quad V_{\alpha_i}^{\beta_i}(F) <
+\frac{\varepsilon}{2^i}$
+
+Находим разбиение $p_i$ внутри $(\alpha_i, \beta_i)$.
+
+$V_{\alpha_i}^{\beta_i} (F) - \frac{\varepsilon}{2^i} < \sum p_i$
+
+$\sum_i V_{\alpha_i}^{\beta_i} - \varepsilon < \sum_i \sum p_i <
+\varepsilon$
+
+$\sum_i V_{\alpha_i}^{\beta_i} < 2\varepsilon \Rightarrow V_a^x
+\in AC([a,b])$
+
+\textbf{Следствие.} \quad $F \in AC \Rightarrow \varphi_F$
+абсолютно непрерывна
+
+\textbf{Задача} \quad Линейная комбинация функций из $AC$ ---
+функция из $AC$
+
+$F$ --- разность монотонных функций из $AC$. Значит, док. для
+монотонн. $F$
+
+$\mu E = 0$, $E$ покр. $(\alpha_i, \beta_i) \quad \sum(\beta_i -
+\alpha_i) < \delta$
+
+$\varphi(E) \leqslant \varphi(\bigcup_i(\alpha_i, \beta_i))
+\leqslant \sum_i \varphi([\alpha_i, \beta_i]) = \sum_i F(\beta_i)
+- F(\alpha_i) < \varepsilon \Rightarrow \varphi(E) = 0$
+
+\textbf{Теорема.} \quad $F(x) = \int_a^x f d \mu \Leftrightarrow
+F(x) \in AC$
+
+Необходимость.  $F'(x) = f(x)$ п.в., если есть предст.  $F(x) =
+\int_a^x f d \mu$ (в обратную сторону докажем позднее)
+
+$F(x) - F(a) = \int_a^x f d \mu \Rightarrow F(x) \in AC$
+
+Достаточность. $F \rightarrow \varphi_F \quad \varphi$ абсолютно
+непрерывна $\Rightarrow \varphi([0, x]) = F(x) - F(a) = \int_a^x f
+d \mu$
+
+\textbf{Определение.} \quad $F \in ACG[a, b]$, если $[a, b] =
+\bigcup_{i=1}^\infty$ и $F \in AC(E_i)$ и $F$ непрерывна на
+$[a,b]$
+
+\textbf{Задача.} \quad $F'(x)$ существует на $[a, b] \Rightarrow F
+\in ACG[a,b]$
+
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 17.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+Задача. $F'(x)$ существует на $[a,b]$ $\not \Rightarrow F \in AC,
+F \in VB$ (привести соответствующие примеры)
+
+$f \in L[a,b] \Leftrightarrow \exists F \in AC: \quad F'(x) =
+f(x)$
+
+$f$ на $[a,b]$ --- интегрируемая в смысле
+Дантуа--Хинчина.$\Leftrightarrow \exists F \in ACG[a,b] : F'(x) =
+f(x)$ п.в.
+
+Задача (*)
+
+1. \quad $f \in \EuScript{H} [a,b] \Rightarrow f$ интегрируема по
+ Дантуа--Хинчину
+
+2. \quad Показать, что этот класс шире класса интегрируемых по К
+-х функций.
+
+ \textbf{Определение.} \quad Интеграл Дантуа--Хинчина $(D) \int_a^b f d \mu =
+\phantom{x}^{\!\!\!\!\!\!\!\!\!\!\!\! def} F(b) - F(a)$
+
+Надо доказать корректность определения, т.е. если  $F'(x) = 0$
+п.в.  $\Rightarrow F(x) \equiv C$
+
+\textbf{N--свойство Лузина.} \quad $F$ (действ.) опр. на $E$--изм
+обладает  $N$--свойством, если $\mu E = 0 \Rightarrow \mu(F (E_1))
+= 0, E_1 \subset E$
+
+\textbf{Теорема} \quad $F \in AC(E) \Rightarrow F$ обладает
+$N$--свойством, $E \subset [a,b]$
+
+Достаточно доказать теорему для замкнутого множества $\mu A = 0$
+
+$A \subset \bigcup_i (\alpha_i, \beta_i) \quad \sum_i[\beta_i -
+\alpha_i] < \delta$
+
+$F([\alpha_i, \beta_i] \bigcap A) \subset [\inf\limits_{x \in
+[\alpha_i, \beta_i] \bigcap E} F(x), \sup\limits_{x \in [\alpha_i,
+\beta_i] \bigcap E} F(x)] = |F(x_i) - F(y_i)|, \\ \quad x_i, y_i
+\in [\alpha_i, \beta_i]$
+
+$\mu (F(A)) \subset \sum_i |F(x_i) - F(y_i)| < \varepsilon
+\Rightarrow \mu(F(A)) = 0$

@@ -1,0 +1,538 @@
+
+\documentclass[10pt]{article}
+\usepackage[russian]{babel}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{graphicx}
+
+
+\sloppy \textwidth18cm \textheight25cm \hoffset-2.5cm \voffset-3cm
+\parindent=0cm
+\parskip=2.5mm
+\unitlength=1cm
+
+
+
+
+\def\R{{\bf R}}
+\def\ve{{\varepsilon}}
+\def\pa{{\partial}}
+\def\{{\protect\lbrace}
+\def\}{\protect\rbrace}
+\let\no\operatorname
+\let\cal\mathcal
+\let\lm\limits
+\let\<\langle
+\let\>\rangle
+\let\ds\displaystyle
+\def\S{$\mathchar"278$}
+
+\def\va{{\varphi}}
+\def\ve{{\varepsilon}}
+\def\pa{{\partial}}
+\def\t{{\tau}}
+
+\def\cK{{\cal K}}
+\def\ot{{\overline{\theta}}}
+\def\oA{{\overline{A}}}
+\def\od{{\stackrel{\rm def} {=} }}
+\def\bS{{\bf S}}
+\def\ch{{\no{ch}}}
+
+\def\Const{{\rm Const}}\def\l{\left}
+\def\r{\right}
+\def\div{{\rm div}}
+\def\eq{{\no{eq}}}
+\def\lin{{\no{lin}}}
+\def\ext{{\no{ext}}}
+\def\var{{\no{var}}}
+
+\def\bG{{\bf G}}
+\def\pa{\partial}
+\def\cO{{\cal O}}
+
+
+
+\newcommand{\dist}{\mathop{\rm dist}\nolimits}
+\newcommand{\const}{\mathop{\rm const}\nolimits}
+\newcommand{\str}{\mathop{\rm str}\nolimits}
+\newcommand{\as}{\mathop{\rm as}\nolimits}
+\newcommand{\an}{\mathop{\rm an}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\renewcommand{\div}{\mathop{\rm div}\nolimits}
+\renewcommand{\Im}{\mathop{\rm Im}\nolimits}
+\renewcommand{\Re}{\mathop{\rm Re}\nolimits}
+\newcommand{\proof}{{\bf Доказательство.\quad}}
+\newtheorem{defi}{Определение}[section]
+\newtheorem{theo}{Теорема}[section]
+\newtheorem{lem}{Лемма}[section]
+\newtheorem{cond}{Условие}[section]
+\newtheorem{app}{Аррендикс}[section]
+\newtheorem{conc}{Заключение}[section]
+\newtheorem{comm}{Комментарий}
+\newtheorem{prop}{Предложение}[section]
+\newtheorem{cor}{Следствие}[section]
+\newtheorem{rem}{Замечание}[section]
+\newtheorem{exm}{Пример}[section]
+\newtheorem{prob}{Задача}[section]
+\newtheorem{design}{Обозначение}[section]
+
+\begin{document}
+
+{\large\bf Лекция 4,~~~I семестр,~~~ лектор профессор Е.В.
+Радкевич }
+\bigskip
+
+{\large\bf Симметризуемые системы. Условие Годунова} Большинство
+базовых систем уравнений математических физики может быть записано
+в виде так называемых систем законов сохранения вида
+\begin{equation}
+\pa_tu^j+\sum_{k=1}^n\pa_{x_k}f^{j,k}=0,~~~~j=1,\dots,m,~~~x\in\,R^n.
+\label{conserv}
+\end{equation}
+Здесь $f^{j,k}$ функции величин $u=(u^1,\dots,u^m)$. Из
+(\ref{conserv}) следует, что для гладких решений,
+стабилизирующихся на бесконечности ($u\to0$ если $|x|\to \infty)$,
+средние
+$$
+\int\,u^j(t,x)\,dx=\const,
+$$
+т.е. $u^j$ сохраняют при эволюции свои пространственные средние (
+являются консервативными величинами).
+
+В этом параграфе мы приведем необходимые и достаточные условия
+симметризуемости системы закон сохранения (\ref{conserv}).
+Покажем, что эта задача связана с существованием так называемого
+выпуклого ( по Годунову [2,5]) расширения системы (\ref{conserv}),
+т.е. дополнительного закона сохранения
+\begin{equation}
+\pa_t\Phi(u)+\sum_{k+1}^n\pa_{x_k}\Psi^k(u)=0, \label{entropy}
+\end{equation}
+который является следствием системы (\ref{conserv}) (это уравнение
+справедливо для всех гладких решений (\ref{conserv})). Гладкие
+функции $(\Phi(u)$, $(\Psi^1,\dots,\Psi^n(u))$ называются
+энтропией и потоком энтропии соответственно. Энтропия называется
+строго выпуклой, если матрица вторых производных
+\begin{equation}
+\Big(\pa_{u_k}\pa_{u_j}\Phi(u)\Big)>0.\label{nonchar}
+\end{equation}
+положительно определена.
+
+\begin{lem}
+Система (\ref{conserv}) --симметризуема, если существует ее строго
+выпуклое расширение.
+\end{lem}
+
+{\bf Достаточность} Пусть существует дополнительный закон
+сохранения с любыми гладкими функциями $(\Phi(u)$,
+$(\Psi^1,\dots,\Psi^n(u))$. Следуя [6] положим
+$\Phi_j=\pa_{u_j}\Phi,\,f^{j,k}_l=\pa_{u_l}f^{j,k},$
+$F_l=\pa_{u_l}\Psi$. Очевидно, (\ref{entropy}) является следствием
+(\ref{conserv}) тогда и только тогда, когда
+\begin{equation}
+\Phi_jf^{j,k}_l=\Psi^k_l,~~~j,l=1,\dots,m,~~k=1,\dots,n.\label{symm}
+\end{equation}
+Дифференцируя (\ref{symm}) по $u^s$, получим
+\begin{equation}
+\Phi_{j,s}f^{j,k}_l=\Psi^k_{l,s}-\Phi^k_jf^{j,k}_{l,s}.
+\label{d_symm}
+\end{equation}
+Из симметричности правой части (\ref{d_symm}) следует
+симметричность её левой части. Отсюда, умножая уравнения системы
+(\ref{conserv}) на $\Phi_{j,h}$ и суммируя по $j$, получим систему
+уравнений
+\begin{equation}
+\Phi_{jh}\pa_tu^j+\Phi_{j,h}f^{j,k}_l\pa_{x_k}u^l=0,~~~h=1,\dots,m,\label{n_priv}
+\end{equation}
+с симметричными, в силу (\ref{d_symm}), матрицами
+$\pa^2\Phi=(\Phi_{j,h}),~ {\cal F}^k_{hl}=(\Phi_{j,h}f^{j,k}_l)$.
+Таким образом, существование расширения (\ref{entropy}) является
+достаточным условием симметризуемости системы законов сохранения
+(\ref{conserv}). Остался открытым вопрос о приводимости системы
+(\ref{n_privod}) к нормальному виду с единичной матрицей при
+производной $\pa_t$ (см. [2] инварианты Римана). В простейшем
+случае системы (\ref{conserv}) с линейным потоком (матрица
+$(f^{j,k}_l)-$ матрица с постоянными коэффициентами, энтропия
+$\Phi(u)=\sum\,a_{jk}u^ju^k$ --квадратичная функция) достаточно
+потребовать строгую выпуклость энтропии. Тогда существует замена
+переменных $u={\cal O}v$ приводящая систему (\ref{n_priv}) к
+нормальному виду
+\begin{equation}
+\pa_tv_j+\lambda_j^{-1}G^{j,k}_l\pa_{x_k}v_l=0,\quad(G^{j,k}_l)={\cal
+O}^{-1}{\cal F}^k{\cal O},\label{canon_view}
+\end{equation}
+$\lambda_j>0-$ собственные значения матрицы $\pa^2\Phi$.
+
+{\bf Необходимость} Заметим, что если система (\ref{conserv})
+симметрична
+\begin{equation}
+f^{j,k}_l=f^{l,k}_j \label{symm}
+\end{equation}
+функции
+\begin{gather}
+\Phi=\frac12\sum_{j=1}^m(u^j)^2,~~~\Psi^k=u^jf^{j,k}-g^k,\nonumber\\
+\nabla_{x_j}g^k=f^{j,k}.\label{gf}
+\end{gather}
+определяют строго выпуклое расширение при условии разрешимости
+системы уравнений (\ref{gf}). Условия симметричности (\ref{symm})
+гарантирует существование гладкого решения системы
+$$
+\nabla_{x_j}g^k=f^{j,k}.
+$$
+
+{\large\bf Пример.} Приведем примеры симметризуемых систем:
+
+1. Исследуем на предмет симметризуемости систему, рассмотренную
+нами выше
+\begin{gather}
+\pa_tv(x,t)+v(x,t)\,\pa_xv(x,t)+\pa_x\Pi(x,t)=0,\quad(x,t)\in
+R^2_+\label{1.2}\\
+\pa_t\Pi+\mu\,\pa_xv(x,t)+\frac1\tau\,\Pi=0,\quad(x,t)\in
+R^2_+\nonumber
+\end{gather}
+Нетрудно видеть, что энтропийная пара в этом случае
+$$
+\Phi(v,\Pi)=\frac\mu2\,v^2+\frac12\,\Pi^2,~~~~\Psi(v,\Pi)=
+\frac\mu3\,v^3+\mu\,v\Pi.
+$$
+Тогда выпуклое диссипативное расширение:
+$$
+\pa_t\Big(\frac\mu2\,v^2+\frac12\,\Pi^2\Big)+\pa_x\Big(\frac\mu3\,v^3+\mu\,v\Pi\Big)+\frac1\tau\,\Pi^2=0
+$$
+Матрица вторых производных
+$$
+\pa^2\Phi=\left(\begin{array}{cc} \mu&0\\
+0&1
+\end{array}\right)\quad~F=\left(\begin{array}{cc} v&1\\
+\mu&0
+\end{array}\right)~~~\Rightarrow~~~\pa^2\Phi\cdot\,F=\left(\begin{array}{cc} \mu\,v&\mu\\
+\mu&0
+\end{array}\right)
+$$
+Отсюда следует симметризуемость системы (\ref{1.2})
+$$
+\left(\begin{array}{cc} \mu&0\\
+0&1
+\end{array}\right)\,\pa_t\left(
+\begin{array}{c}
+v\\
+\Pi\end{array}\right)~+~\left(\begin{array}{cc} \mu\,v&\mu\\
+\mu&0
+\end{array}\right)\,\pa_x\left(
+\begin{array}{c}
+v\\
+\Pi\end{array}\right)\,+\,\frac1\tau\,\left(
+\begin{array}{c}
+0\\
+\Pi\end{array}\right)=0.
+$$
+Теперь можно получить априорную оценку в
+$C((0,\infty);L_2(R^2_+))$.  Получим
+\begin{gather}
+\int_{R^1}\bigg(\left(\begin{array}{cc} \mu&0\\
+0&1
+\end{array}\right)\,\pa_t\left(
+\begin{array}{c}
+v\\
+\sigma\end{array}\right),\left(
+\begin{array}{c}
+v\\
+\Pi\end{array}\right)\bigg)dx+\int_{R^1}\bigg(\left(\begin{array}{cc} \mu\,v&\mu\\
+\mu&0
+\end{array}\right)\,\pa_x\left(
+\begin{array}{c}
+v\\
+\Pi\end{array}\right),\left(
+\begin{array}{c}
+v\\
+\sigma\end{array}\right)\bigg)dx=\nonumber\\
+=\frac12\frac{d}{dt}\int_{R^1}\left(
+\begin{array}{c}
+\mu\,v^2\\
+\Pi^2\end{array}\right)dx=-\frac1\tau\int_{R^1}\left(
+\begin{array}{c}
+0\\
+\Pi^2\end{array}\right)dx\nonumber
+\end{gather}
+Таким образом, имеем:
+$$
+\mu\frac{d}{dt}\int_{R^1}v^2dx=0,\quad\frac{d}{dt}\int_{R^1}\Pi^2dx+\frac2\tau\int_{R^1}\Pi^2dx=0,
+$$
+т.е. величина $v$ консервативна
+$$
+\int_{R^1}v^2dx(t)\,\equiv\,\int_{R^1}v|_{t=0}^2dx,
+$$
+неравновесная переменная $\Pi\to0$:
+$$
+\int_{R^1}\Pi^2dx(t)=e^{-t/\tau}\int_{R^1}\Pi|_{t=0}^2dx~\to\,0\quad\mbox{если}~~~t\to\infty.
+$$
+\bigskip
+
+2. Рассмотрим одномерную систему первого порядка
+\begin{gather}
+\pa_tu+\pa_xv=0,\label{ex1}\\
+\pa_tv-\pa_xu-\pa_x\sigma=0,\nonumber\\
+\pa_t\sigma-3\pa_xv=0.\nonumber
+\end{gather}
+Нетрудно проверить, что эта система имеет строго выпуклое
+расширение
+$$
+\pa_t\big[u^2+v^2+(\sigma+2u)^2\Big]-2\pa_x\Big[v\sigma+uv\Big]=0,
+$$
+для энтропийной пары
+$$
+\Phi=u^2+v^2+(\sigma+2u)^2,~~\Psi=-2\Big[v\sigma+uv\Big].
+$$
+Здесь матрица вторых производных
+$$
+\pa^2\Phi=\left(\begin{array}{ccc} 10&0&4\\
+0&2&0\\
+4&0&2
+\end{array}\right);\qquad\det\Big(\pa^2\Phi\Big)\ne0.
+$$
+Применяя эту матрицу к системе (\ref{ex1}), получим
+симметризованную систему
+$$
+\left(\begin{array}{ccc} 0&-2&0\\
+-2&0&-2\\
+0&-2&0
+\end{array}\right)~\pa_tU+\left(\begin{array}{ccc} 10&0&4\\
+0&2&0\\
+4&0&2
+\end{array}\right)~\pa_xU=0,\quad U=(u,v,\sigma)^\intercal,
+$$
+которую можно (см. (\ref{canon_view})) привести к симметричному
+нормальному виду системы типа Ковалевской
+$$
+\pa_tU+A~\pa_xU=0.
+$$
+
+
+
+{\large\bf Решение задачи Коши для симметричной системы} В этом
+параграфе мы продолжим исследование задачи Коши для систем первого
+порядка, но для простоты ограничимся линейным случаем. Пусть в
+полосе $Q_T=\left\{ 0\leq t\leq T,x\in\R^n\right\}$ задана система
+$N$ уравнений
+$$
+{\cal L}(u)=u_t+\sum_{j=1}^n A^j(t,x)u_{x_j}+Bu=f(t,x), \eqno(3.1)
+$$
+где $u(t,x)=\left( u_1(t,x),\dots ,u_N(t,x)\right) $,
+$f(t,x)=\left(f_1(t,x),\dots ,f_N(t,x)\right) $. Матрицы $A^j$
+($j=1,\dots,n$) предполагаются симметрическими: $A^j=(A^j)^{*}$.
+Приведём ряд определений:
+\begin{defi}
+Система (3.1) называется {\em гиперболической} по направлению оси
+$t$, если уравнение $\det\left\|\sum_{j=1}^{n} A^j\xi_j+\lambda
+E\right\|=0$ относительно $\lambda$ при всех действительных
+$\xi\ne 0$ имеет ровно $N$ действительных корней
+$\lambda_1,\dots,\lambda_N$, возможно кратных.
+\end{defi}
+
+\begin{defi}
+Система (3.1) называется {\em строго гиперболической}, если эти
+корни действительны и различны для любого
+$\xi=(\xi_1,\dots,\xi_n)\ne 0$.
+\end{defi}
+Если $A^j$ --- симметрические матрицы, $A^j=(A^j)^{*}$, тогда
+система автоматически гиперболична.
+
+\begin{defi}
+Матрица $B$ называется {\em положительно определенной}, если
+$(Bu,u)>0$ для любого $u\ne 0$.
+\end{defi}
+
+\begin{defi}
+Вектор $\xi =(\xi_0,\dots ,\xi_n)$ называется {\em
+характеристическим}, если
+$$
+\det\Big\|\xi_0 E+\sum_{j=1}^n\xi_jA^j\Big\| =0.
+$$
+\end{defi}
+
+\begin{defi}
+Поверхность $S\subset\R^{n+1}$ называется {\em поверхностью
+пространственного типа}, если для любого вектора $\nu
+=(\nu_0,\dots,\nu_n)$ внешней нормали к $S$ матрица
+
+$$
+\nu_0E+\sum_{j=1}^n\nu_jA^j
+$$
+является положительно определенной.
+\end{defi}
+Очевидно, поверхность $t=\const$ является поверхностью
+пространственного типа.  Значит, такие поверхности существуют.
+
+
+В дальнейшем будем называть задачу Коши для (\ref{conserv})
+корректной, если для любых гладких начальных данных существует
+единственное гладкое решение, по крайней мере в достаточно малой
+окрестности гиперплоскости $t=\const$ или нехарактеристической
+гиперповерхности для которого справедлива априорная оценка
+(например в $L_2$). Целью этого параграфа является исследование
+условий корректности задачи Коши для системы (3.1).
+\bigskip
+
+{\large\bf Теорема единственности} Рассмотрим на плоскости $t=0$
+область $G$ и пусть $\Omega $ --- область в $\R^{n+1}$,
+ограниченная областью $G\subset\R^n$ и поверхностью $S$
+пространственного типа по отношению к своей внешней нормали. Пусть
+для решения системы (3.1) заданы начальные условия в области $G$:
+$$
+u\Big|_{t=0}=\psi (x), \eqno(3.2)
+$$
+то есть поставлена задача Коши.
+
+\begin{theo}
+$C^1-$ решение системы (3.1) в $G$ однозначно определяется
+заданными начальными данными (3.2) в любой точке области $\Omega$.
+\end{theo}
+
+{\bf Доказательство} Рассмотрим сечение области $\Omega $
+гиперплоскостью $t=\tau$:
+$$
+G_\tau =\Omega\cap\{t=\tau\}.
+$$
+Введем обозначения
+$$
+Q_\tau =\{0\leq t\leq\tau ,\ x\in\R^n\},\qquad \Omega_\tau
+=\Omega\cap Q_\tau ,\qquad S_\tau =S\cap Q_\tau .
+$$
+Умножим векторное равенство (3.1) скалярно на вектор $2u$. Получим
+$$
+\left( 2u,u_t\right) +2\sum_{j=1}^n\left( A^ju_{x_j},u\right)
++2\left( Bu,u\right) =\left( 2u,f\right) . \eqno(3.3)
+$$
+Преобразуем отдельные члены
+$$
+\left( 2u,u_t\right) =\left( u,u\right)_t,\qquad \left(
+A^ju,u\right)_{x_j} =\left( A^ju,u_{x_j}\right)
++\left(A^ju_{x_j},u\right) +\left( A_{x_j}^ju,u\right) ,
+$$
+откуда в силу симметричности матриц $A^j$
+$$
+2\left( A^ju_{x_j},u\right) =\left(
+A^ju,u\right)_{x_j}-\left(A_{x_j}^ju,u\right) .
+$$
+Подставим полученное выражение в равенство (3.3). Получим
+$$
+\left( u,u\right)_t+\sum_{j=1}^n\left( A^ju,u\right)_{x_j}
++\left(\widetilde{B} u,u\right) =2\left( u,f\right) , \eqno(3.4)
+$$
+где $\widetilde{B}=2B-\sum_{j=1}^nA_{x_j}^j$. Будем считать, что
+матрица $\widetilde{B}$ удовлетворяет условию
+$$
+\left(\widetilde{B}u,u\right)\geq (u,u).
+$$
+Ниже мы покажем, что на конечном временном интервале $(0,T)$
+существования решения это дополнительное условие не ограничивает
+общности.
+
+Проинтегрируем (3.4) по $\Omega_\tau $ и воспользуемся теоремой
+Гаусса--Остроградского для преобразования объемного интеграла в
+поверхностный. ($\vec n$ везде обозначает единичный вектор внешней
+нормали к поверхности, ограничивающей $\Omega_\tau $). Получим:
+$$
+\int_{\Omega_\tau
+}\Big\{(u,u)_t+\sum_{j=1}^n\left(A^ju,u\right)_{x_j}
++\left(\widetilde{B}u,u\right)\Big\} dxdt =2\int_{\Omega_\tau }(
+u,f) dxdt
+$$
+или
+$$
+\int_{\partial\Omega_\tau =G\cup G_\tau\cup S_\tau }
+\Big\{(u,u)\cos (\vec n,t) +\sum_{j=1}^n\left( A^ju,u\right)\cos
+(\vec n,x_j)\Big\} d\sigma+
+$$
+$$
++\int_{\Omega_\tau }\left(\widetilde{B}u,u\right)dxdt
+=2\int_{\Omega_\tau }(u,f) dxdt.
+$$
+На $G_\tau $ имеем $\cos (\vec n,t)=1$, $\cos (\vec n,x_j)=0$, в
+тоже время на $G$ --- $\cos (\vec n,t)=-1$, $\cos (\vec n,x_j)=0$.
+Отсюда
+\begin{eqnarray*}
+\int_{G_\tau }(u,u) dx &-&\int_G(u,u)dx +\int_{S_\tau }\Big(\Big[
+E\cos (\vec n,t)
++\sum_{j=1}^nA^j\cos(\vec n,x_j)\Big] u,u\Big) d\sigma\\
+&+&\int_{\Omega_\tau }\left(\widetilde{B}u,u\right) dx dt
+=2\int_{\Omega_\tau}\left( u,f\right) dx dt.
+\end{eqnarray*}
+Так как $S$ --поверхность пространственного типа, нормаль
+
+$\vec n=(\cos (\vec n,t),\cos (\vec n,x_1),\dots ,\cos (\vec
+n,x_n))$, то
+$$
+\int_{S_\tau }\Big(\Big[ E\cos (\vec n,t)
++\sum_{j=1}^nA^j\cos(\vec n,x_j)\Big] u,u\Big)\geq 0.
+$$
+Учитывая, что $\left(\widetilde{B}u,u\right)\geq (u,u)$, получим
+неравенство
+$$
+\int_{G_\tau }\left( u,u\right) dx+\int_{\Omega_\tau
+}(u,u)dxdt\leq \int_G\left( u,u\right) dx+2\int_{\Omega_\tau
+}\left( u,f\right) dxdt. \eqno(3.5)
+$$
+Для любых векторов $v,w$ справедливо $2(v,w)\leq (v,v)+(w,w)$,
+откуда
+$$
+2\int_{\Omega_\tau }\left( u,f\right) dxdt\leq\int_{\Omega_\tau }
+\left(u,u\right) dxdt+\int_{\Omega_\tau }\left( f,f\right) dxdt.
+$$
+С учетом начальных условий неравенство (3.5) запишется в виде
+$$
+\int_{G_\tau }\left( u,u\right) dx\leq\int_G\left(\psi
+,\psi\right)dx +\int_{\Omega_\tau }\left( f,f\right) dxdt.
+\eqno(3.6)
+$$
+Это неравенство носит название {\em энергетического неравенства}
+или {\em априорной оценки} $C^1-$ решения задачи Коши.
+
+Пусть теперь $u'(t,x)$ и $u''(t,x)$ ---два решения системы (3.1),
+удовлетворяющие начальному условию (3.2). Тогда $v=u'-u''$ есть
+решение однородной системы, соответствующей системе (3.1), т.е.
+при $f(t,x)=0$, с начальным условием $v\big|_{t=0}=0$.  Из
+энергетического неравенства для $v$ следует, что $v(t,x)\equiv 0$,
+т.е.  $u'\equiv u''$.
+
+Из априорной оценки (3.6) следует также теорема о непрерывной
+зависимости решения (3.1) от начальных данных и правой части $f$.
+В самом деле, если $f$ мало в норме пространства $L_2(\Omega)$ и
+$\psi $ мало в норме $L_2(G)$, то и $u$ мало в норме
+$L_2(\Omega)$.
+
+
+
+Покажем теперь, что условие $\left(\widetilde{B}u,u\right)\geq
+(u,u)$ не ограничивает общности наших рассмотрений.
+
+Пусть оно не выполнено. Сделаем замену искомой функции $v=ue^{-\mu
+t}$, где $\mu $ --- некоторая константа, которую и выберем ниже.
+Новый вектор $v$ удовлетворяет системе
+$$
+v_t+\sum_{j=1}^nA^jv_{x_j}+Bv+\mu Ev=fe^{-\mu t}.
+$$
+Константу $\mu >0$ выберем достаточно большой, чтобы для новой
+системы матрица
+$$
+\widetilde{B}=2B+2\mu E-\sum_{j=1}^nA_{x_j}^j
+$$
+удовлетворяла условию $\left(\widetilde{B}u,u\right)\geq (u,u)$.
+
+Так как $v\big|_{t=0}=u\big|_{t=0}=\psi (x)$, то энергетическое
+неравенство для $v$ примет вид
+$$
+\int_{G_\tau }\left( ue^{-\mu t},ue^{-\mu t}\right) dx\leq
+\int_G\left(\psi,\psi\right) dx +\int_{\Omega_\tau }\left(
+fe^{-\mu t},fe^{-\mu t}\right)dxdt
+$$
+или
+$$
+\int_{G_\tau }(u,u) dx \leq e^{-\mu T}\bigg[\int_G(\psi,\psi) dx
++\int_{\Omega_\tau }(f,f) dxdt\bigg] .
+$$
+Так как $\mu $, при фиксированном $T$, зависит только от
+коэффициентов системы (3.1) и не зависит от правой части, то из
+этого неравенства сразу следуют теоремы о единственности и
+непрерывной зависимости решения задачи Коши от начальных данных и
+правой части.
+\end{document}

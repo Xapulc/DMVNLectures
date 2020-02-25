@@ -1,0 +1,166 @@
+\ProvidesPackage{dmvnphil}[2006/09/19 v1.02 DMVN Philosophy LaTeX Package]
+\RequirePackage{rotate}
+
+\newif\if@pda
+\DeclareOption{pda}{\@pdatrue}
+\DeclareOption{nopda}{\@pdafalse}
+
+\ExecuteOptions{nopda}
+\ProcessOptions
+
+\def\dmvnhistinitialize{%
+\newdimen\mytextwidth%
+\mytextwidth=\textwidth}
+
+\pagestyle{headings}
+
+% Left lines in header
+% ====================
+\def\llines{%
+\hbox{%
+\vbox{\hsize=.48\mytextwidth%
+\hbox to \hsize{\hfil\vrule width 0.9\hsize height .4pt} \vskip1pt
+\hbox to \hsize{\vrule width .995\hsize height .4pt\hfil} \vskip1pt
+\hbox to \hsize{\hfil\vrule width 0.9\hsize height .4pt}
+}%
+}%
+}%
+
+% Right lines in header
+% ====================
+\def\rlines{%
+\hbox{%
+\vbox{\hsize=.48\mytextwidth%
+\hbox to \hsize{\vrule width 0.9\hsize height .4pt\hfil}%
+\vskip1pt
+\hbox to \hsize{\hfil\vrule width .995\hsize height .4pt}%
+\vskip1pt
+\hbox to \hsize{\vrule width 0.9\hsize height .4pt\hfil}%
+}%
+}%
+}%
+
+\if@pda
+  % Header and Footer modifications
+  % ===============================
+  \renewcommand{\headheight}{7mm}
+  \renewcommand{\headsep}{2mm}
+
+  \renewcommand{\@oddhead}{\vbox to 0pt{\vss%
+  \hbox to \textwidth{\footnotesize\tt Н.О. <<ФИЛОСОФИЯ МЕХМАТА>>\hss Вып.\;\сегодня~г.\strut}
+  \hbox to \textwidth{\vrule width \textwidth height .4pt}}}
+  \renewcommand{\@oddfoot}{\footnotesize\tt\hfil\thepage\hfil}
+  
+  \textwidth=85mm
+  \textheight=110mm
+  \footskip=4mm
+%  \paperwidth=110mm
+%  \paperheight=140mm
+%  \special{papersize=110mm,140mm}
+\else
+  % Header and Footer modifications
+  % ===============================
+  \renewcommand{\headheight}{11mm}
+  \renewcommand{\headsep}{2mm}
+
+  \renewcommand{\@oddhead}{\vbox to 0pt{\vss%
+  \hbox to \textwidth{\footnotesize\tt НЕЗАВИСИМЫЙ ОБЗОР <<ФИЛОСОФИЯ МЕХМАТА>>\hfil Вып.\;\сегодня~г.\strut}
+  \hbox to \textwidth{\llines\hfil\lower2pt\hbox{\kern1pt$\blacklozenge$}\hfil\rlines}}}
+  \renewcommand{\@oddfoot}{\hfil\thepage\hfil}
+\fi
+
+\def\tbk{\par\bigskip
+{\huge$$\mathfrak{To\;be\;continued\ldots}$$\par}}
+
+\renewcommand{\dmvntrail}{%
+\par{\footnotesize\rightline{Последняя компиляция: \texttt{\сегодня~г}.}%
+\rightline{Обновления\т на сайте \dmvnwebsite.}%
+\rightline{Об опечатках, неточностях пишите на \dmvnmail.}\par}}
+
+\def\marklec#1#2{\par
+\bigskip
+\hrule width \mytextwidth
+\vskip1pt
+\hrule width \mytextwidth
+\vskip1pt
+\centerline{\strut\texttt{Лекция #1} --- \texttt{#2}}
+\vskip1pt
+\hrule width \mytextwidth
+\vskip1pt
+\hrule width \mytextwidth\par\medskip}
+
+
+\def\dmvnhisttitlepage{%
+\if@pda%
+\thispagestyle{empty}%
+\vbox to \textheight{\hsize=\textwidth\relax%
+\centerline{МОСКОВСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ}
+\vskip1mm
+\centerline{Механико\д математический факультет}
+\vskip0pt plus 1fil
+\centerline{\epsfbox{mmlogo.3}}
+\vskip0pt plus 1fil
+\centerline{\LARGE$\mathfrak{Lectures\;on\;Philosophy}$}
+\vskip2mm
+\centerline{\LARGE\textbf{Лекции по философии}}
+\vskip5mm
+\centerline{\textsf{9 семестр, поток математиков}}
+\vskip3mm
+\centerline{Лектор:}
+\vskip1mm
+\centerline{Василий Яковлевич Перминов}
+\vskip0pt plus 2fil
+\centerline{Москва, 2006 г.}}
+\else%
+\thispagestyle{empty}%
+\vbox to \textheight{\hsize=\textwidth\relax%
+\centerline{\large МОСКОВСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ}
+\vskip2mm
+\centerline{\large Механико\д математический факультет}
+\vskip0pt plus 1fil
+\centerline{\epsfbox{mmlogo.2}}
+\vskip0pt plus 1fil
+\centerline{\Huge$\mathfrak{Lectures\;on\;Philosophy}$}
+\vskip5mm
+\centerline{\Huge\textbf{Лекции по философии}}
+\vskip10mm
+\centerline{\large 9 семестр, поток математиков}
+\vskip5mm
+\centerline{\large\textsf{\textbf{Лектор}}}
+\vskip3mm
+\centerline{\large\textsf{Василий Яковлевич Перминов}}
+\vskip0pt plus 2fil
+\centerline{\large Москва, 2006 г.}}
+\fi}
+
+
+\def\auth#1{\index{#1}\textsc{#1}}
+\def\sauth#1#2{\index{#2}\textsc{#1}}
+\def\rauth#1#2#3{\index{#3, #1. #2.}\textsc{#1.\,#2.\,#3}}
+\def\eauth#1#2{\index{#2, #1.}\textsc{#1.\,#2}}
+\def\term#1{\index{#1}\emph{#1}}
+\def\sterm#1#2{\index{#2}\emph{#1}}
+\long\def\mycomment#1{$[$#1$]$}
+\def\pe#1#2{${#1}\ldots{#2}$}
+\def\cpic#1{$$\epsfbox{pictures.#1}$$}
+\def\authcite#1{<<\textsf{#1}>>}
+\def\select#1{\textbf{#1}}
+
+\def\?{\textbf{Q: }}
+\def\@{\textbf{A: }}
+\def\*{\textbf{C: }}
+
+\def\vr{\vrule height 11pt depth 6pt width 0pt}
+
+\newbox\psibox
+\setbox\psibox\hbox{$\Psi$}
+\def\isp{\rotu\psibox}
+
+\def\fns{\footnotesize}
+\def\phz{\phantom{0}}
+\def\dx{\,dx}
+\def\dy{\,dy}
+
+\long\def\hwbox#1#2{\hbox to #1{\hfil\hbox{\vtop{\hsize=#1\advance\hsize by-10pt\relax\noindent#2\vskip8pt}}\hfil}}
+
+\endinput

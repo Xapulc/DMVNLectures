@@ -1,0 +1,53 @@
+\documentclass[a4paper]{article}
+\usepackage[simple]{dmvn}
+
+\title{Контрольная работа по математической логике}
+\author{Преподаватель\т Александр Борисович Угольников}
+\date{2 семестр, 2005 г.}
+
+\begin{document}
+\maketitle
+\centerline{\small Набрано П. Рахмоновым, отредактировано и свёрстано DMVN Corporation.}
+
+\medskip
+\dmvntrail
+
+\begin{problem}
+Построить СДНФ, СКНФ и полином Жегалкина для функции
+\eqn{(x \vee \bar{x}yz)\ra yz.}
+\end{problem}
+
+\begin{problem}
+Найти минимальную полную подсистему (базис) функций
+$\hc{f_1, f_2, f_3, f_4}$, где
+
+\eqn{
+\begin{aligned}
+f_1&=\bar{x}\bar{y}\bar{z}+x\bar{y}z+\bar xy\bar z+xy\bar z,\\
+f_2&=\bar{x}\bar{y}\bar{z}+\bar{x}yz+x\bar{y}z+xy\bar{z},\\
+f_3&=x(y\vee zw)\vee\bar{x}(y(z\vee w)),\\
+f_4&=(xy\vee \bar{x}\bar{y})+(zw\vee \bar{z}\bar{w}).
+\end{aligned}
+}
+\end{problem}
+
+\begin{problem}
+Найти количество функций от трёх переменных, существенно зависящих от всех
+своих переменных в $(T_0\cup S)\wo L$.
+\end{problem}
+
+\begin{problem}
+При каких $n\ge 2$ функция
+\eqn{f_n(x_1, \ldots,x_n)=1+\sums{1\le i\le j\le n}x_ix_j}
+образует полную систему?
+\end{problem}
+
+\begin{problem}
+Доказать, что из функции $f(x_1,\ldots,x_n)\notin L$, $n\ge 3$:
+
+\pt{1} Подстановкой 0 и отождествлением переменных можно получить функцию $g(x, y)\notin L$.
+
+\pt{2} Отождествлением переменных можно получить либо $g(x,y)\notin L$, либо $g(x, y, z)\notin L$.
+\end{problem}
+
+\end{document}

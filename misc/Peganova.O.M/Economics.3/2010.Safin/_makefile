@@ -1,0 +1,5 @@
+DocName = "Economics Answers - O.M. Peganova.pdf"
+RarName = "economics-answers-peganova"
+all:
+	wr $(RarName).rar $(DocName)
+	cp $(DocName) $(RarName).pdf 

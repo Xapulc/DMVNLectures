@@ -1,0 +1,48 @@
+\documentclass[10pt]{article}
+\usepackage[xe]{dmvn}
+\usepackage{polyglossia}
+\usepackage{unicode-math}
+\usepackage{fontspec}
+\usepackage{makeidx}
+\defaultfontfeatures{Scale=MatchLowercase, Mapping=tex-text}
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+\setmathfont{xits-math.otf}
+\newcommand{\type}[2]{\ensuremath{\colon\!#1→#2}}
+\begin{document}
+\dmvntitle{Курс механики}
+{ сплошной среды}
+{Лектор -- Арафайлов С.И}
+{IV(V) курс, 9 семестр, поток математиков, ЕНС}
+{Москва, 2012г}
+\section{Введение}
+\begin{petit}
+	Увы, обстоятельства не позволяют ходить на эту замечательную лекцию.
+	Господа, подхватите знамя!
+\end{petit}
+\begin{df}
+  Скорость звука -- скорость распространения малых деформаций.
+\end{df}
+\begin{df}[Критерия сплошности среды]
+  Пусть $λ$ -- длина свободного пробега, $l$ -- характерная длина
+  задачи.  Среду можно считать сплошной, если число Кнутся $K_n=\frac
+  λl \ll 1$.  Также требуем, что бы $τ \ll T$, где $τ$ -- время выхода
+  на равновесие, $T$ -- характерный период возмущений.
+\end{df}
+\section{Деформация, напряжение}
+
+Рассмотрим две системы координат (картинок пока нет). Одна,
+пространственная, также называемую Эйлеровой, обозначается
+$x_1x_2x_3$. Другая, жестко связанная с телом, обозначается
+$ξ_1ξ_2ξ_3$, называется Лагранжевой(материальной).
+
+\begin{denote}
+  Пусть есть некоторая величина $T(\bar x,t) = T(\bar x(\bar ξ, t), t)$.
+  Тогда будем обозначать $\pf Tt\evn{ξ=\const}$ как $\frac{dT}{dt}$.
+  Заметим, что имеет место равенство
+  \begin{equation*}
+    \frac{dT}{dt} = \pf Tt
+  \end{equation*}
+\end{denote}
+\end{document}

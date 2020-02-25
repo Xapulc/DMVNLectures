@@ -1,0 +1,40 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{dmvn}
+
+\begin{document}
+\begin{center} {\LARGE Economy and finance: mathematical methods in economics} \end{center}
+
+I would like to speak of some mathematical methods that are involved in economics.
+I've chosen this aspect because it's closer to me than others. Now almost all branches of science are connected with mathematics to some extent,
+and economics is not an exception.
+
+There are a lot of problems in economics that are related to the theory of probability, differential equations and the theory of optimization and
+approximation.
+The first one is used to predict changes of the costs of currencies and stocks. Differential calculus helps to formulate and prove
+economic some laws (for example, relation between demand and supply, etc.) And the third mentioned branch of mathematics is connected with very old
+problem which was not solved by economists of the past, is the classical transporting problem. It's usually formulated in following way:
+we have some mining factories situated in different points of the country; this factories produce some kind of resources. The question of the problem is:
+where should we build a manufacturing plant that utilizes all types of our resources, to reduce transporting costs to minimums?
+
+If we try to formalize all this conditions, we'll get a system of equations and inequalities. Of course, it depends on quantity of factories and other
+parameters that we are taking into account. For example, we can add some conditions that are dictated by quality of the transport routes between plant and
+factories. Or, we can take into consideration costs of transporting of each type of resource. Anyway, the result will be a some set of equations.
+
+Our main goal is not only to translate our task into mathematical language. Actually the real task is to solve it. But there is no method in mathematics
+which can be used to solve any system of equations, and in most cases it's not necessary. Instead of this we can approximate our system using equations
+of simpler type. These ideas were used by russian mathematician Leonid Cantorovich, who was first to apply linear algebra methods in economics.
+By the way, he got a Nobel prize in the field of economics for his investigations. He proved that the most of the tasks described above could be approximated
+by linear equations, and the difference between approximate and exact solutions won't be very large. This makes a way to solution: as we know,
+a system of linear inequalities defines a polyhedron in affine space, and we have a special method to find a minimum of a function, if it's domain is a
+polyhedron. This is called \textit{linear programming}.
+
+The main theorem in this theory states that the minimal value of our function can be found only in vertices of the polyhedron, not on the edges.
+So the algorithm of searching for minimal vertex will be following: To begin with, we take any vertex on the polyhedron. Then shift it along that edge,
+which corresponds to decreasing value of the function. Minimal vertex is found if and only if we come to vertex $A$, where values on neighbor edges are
+greater than in $A$.
+
+So, I've observed one of the application of maths in economics. Of course, it's not the only one, but it seemed to me as most understandable and easiest
+to describe without any complicated formulas, terms, etc.  Now we can make one but very important conclusion: there is a bit of mathematics in all of the
+sciences.
+
+\end{document}

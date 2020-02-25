@@ -1,0 +1,246 @@
+
+\begin{center}
+\textbf{Лекция 4.}
+\end{center}
+
+$f$ --- измерима, если $\{ x \in X: f(x) < C\}$ --- измеримо. В
+качестве эквивалентного определения можно принять $\leqslant, \:
+>, \: \geqslant$, но нельзя принять~$=\:$.
+
+$(X, \EuScript(M))$
+
+\textbf{Лемма.} \quad $f, g$ --- измеримы $\Rightarrow \{f(x) <
+g(x)\}$ --- измеримo.
+
+\textbf{Доказательство.} \quad
+
+$Q = {r_k}, \quad \{f(x)<g(x)\} = \bigcup_{k=1}^{\infty}\{f(x) <
+r_k < g(x)\}$
+
+$\{ f(x) < r_k < g(x)\}$ --- измеримо $\Rightarrow \;
+\bigcup_{k=1}^{\infty}\{f(x) < r_k < g(x)\}$ --- измеримо.
+
+\textbf{Лемма.} \quad $f$ --- измерима $\Rightarrow \; f+a, \;af$
+--- измерима.
+
+\textbf{Теорема.} \quad $g, f$ --- измеримы $\Rightarrow g + f,\;
+gf,\; f/g$ --- измеримы.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%     стр 7.0  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textbf{Доказательство.} \quad $\{ f + g < C\} = \{ f(x) < - g(x)
++ C\}$ --- измеримо
+
+$\{ f^2(x) < C \} = \{ - \sqrt{C} < f(x) < \sqrt{C} \}$ ---
+измеримо
+
+$fg = \frac{(f + g)^2 - (f - g)^2}{4} \Rightarrow fg$ --- измеримо
+
+$\frac{f}{g} = f\cdot \frac{1}{g}$  (считаем,что $g \neq 0$)
+
+Надо доказать, что  $\{ \frac{1}{g(x)} < C \}$ --- измеримо. Для
+этого необходимо рассмотреть множества $\{ g(x) > 0\}$ и $g(x) < 0
+$ и случаи знака $C$. $\diamond$
+
+
+Пусть есть последовательность $\{ f_n\}$.
+
+$\{ \sup\limits_n f_n(x) > C\} = \bigcup\limits_n\: \{f_n (x) >
+C\} , \; \mbox{т.е } \sup\limits_n f_n(x)$ измерим.
+
+$\{ \inf\limits_n f_n(x) < C\} = \bigcup\limits_n\: \{f_n (x) <C\}
+, \; \mbox{т.е } \inf\limits_n f_n(x)$ измерим.
+
+$\varlimsup\limits_{n \rightarrow \infty} f_n(x) = \inf\limits_m
+(\sup\limits_{n \geqslant m} f_n(x)) \Rightarrow
+\varlimsup\limits_{n \rightarrow \infty} f_n(x)$ --- измерим.
+
+$\varliminf\limits_{n \rightarrow \infty} f_n(x) = \sup\limits_m
+(\inf\limits_{n \geqslant m} f_n(x)) \Rightarrow
+\varliminf\limits_{n \rightarrow \infty} f_n(x)$ --- измерим.
+
+А тогда и $\lim\limits_{n \rightarrow \infty} f_n(x) = f(x)$ ---
+измерим.
+
+Множество, где $f_n(x)$ сходится, измеримо (т.к. на нем выполнено
+равенство верхнего и нижнего предела).
+
+$(X, \EuScript{M}, \mu) , \; \mu$ --- полная $\delta$--аддитивная
+мера. Если $\mu A = 0, \; E$ --- измеримо, то $E \bigcup A$ и $E
+\setminus A$ --- измеримы. Это верно и в другую сторону. Во всех
+утверждениях можно считать функцию п.в.
+
+
+\textbf{Определение.} \quad $f$ --- простая функция, если $f$
+принимает конечное число значений, т.е. $f(x) = a_k, \; x \in E_k,
+\; \bigsqcup_{k=1}^n E_k = E$.
+
+Будут иметься в виду измеримые простые функции. Для простых
+функций в определении достаточно $\{ x \in X : f(x) = C \} \in
+\EuScript{M}, \quad f(x) = \sum_{k=1}^n a_k \chi_{E_k} (x)$
+
+\textbf{Теорема.} \quad $\forall f  \mbox{ --- измеримой } \;
+\exists \; \{f_k(x)\}, \mbox{ т.ч. } f(x) = \lim\limits_{k
+\rightarrow \infty} f_k(x) \; \forall x \in~E. \\ \mbox{ Причем,
+если } f(x) \geqslant 0
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 7.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+\mbox{, то } \{f_k(x)\} $ можно выбрать монотонно неубывающей.
+
+$$
+f_k(x) =
+\begin {cases}
+\dfrac{l - 1}{2^k}, &\text {$\dfrac{l -1}{2^k}
+\leqslant f(x) < \dfrac{l}{2^k}$}  \\
+k, &\text { $f(x) \geqslant k$}
+\end {cases} $$
+
+Эта последовательность поточечно сходится к $f$, т.к. $\mid f(x) -
+f_k(x) \mid~<~1/2^k \\ \exists \; \EuScript{K} > f(x) : \forall x
+> \EuScript{K}_n$
+
+$f_k(x) \leqslant f_{k+1}(x)$
+
+Если $f(x)$ --- произвольного знака, $f(x) = f^{+}(x) - f^{-}(x),$
+ где \\ $f^{+}(x) = max\{f(x), 0\}$ --- измерима, если $f$
+--- измерима.
+
+Для $f^+$ и $f^-$ применяем предыдущую часть теоремы, и берем
+затем разность этих последовательностей.
+
+\textbf{Определение.} \quad $ f_k \xrightarrow{  \mu   } f, \;
+\mbox{если } \forall \varepsilon > 0 \quad \mu \: \{ | f_k(x) -
+f(x) | \geqslant \varepsilon \}   \xrightarrow[k \rightarrow
+\infty]{}   0$
+
+\textbf{Теорема.} \quad $\lim_{k \rightarrow \infty} f_k(x)
+\stackrel{\text{п.в.}}{=} f(x) \; \Rightarrow \; f_k \xrightarrow{
+\mu   } f $
+
+\textbf{Доказательство.} \quad
+
+$B_n(\varepsilon) = \bigcup_{k = n}^{\infty} A_k(\varepsilon), \;
+A_k(\varepsilon) = \{ x: |f_k - f | \geqslant \varepsilon\} $
+
+$B (\varepsilon) = \bigcap_{n = 1}^\infty B_n(\varepsilon)
+\Rightarrow \text{ если } x \in B(\varepsilon), \text{то получ.
+расход.} \Rightarrow \mu(B(\varepsilon)) = 0 $
+
+$B_n$ убывает с ростом $n \Rightarrow$ монотонная
+последовательность.
+
+По свойству непрерывности меры $\mu (B_n(\varepsilon))
+\xrightarrow[n \rightarrow \infty]{} \mu(B(\varepsilon)) = 0$
+
+$\mu (A_n(\varepsilon)) \leqslant \mu(B_n(\varepsilon))
+\xrightarrow[n \rightarrow \infty]{} 0$
+
+\textbf{Задача.} \quad Построить пример последовательности,
+сходящейся по мере, но не сходящейся п.в.
+
+\textbf{Задача. (теорема Риса)} \quad $f_k \xrightarrow{\mu} f
+\Rightarrow $ можно выделить сходящуюся п.в.
+подпоследовательность.
+
+
+\textbf{Теорема. (Егорова) } \quad
+
+$f_n(x) \rightarrow f(x) \text{ п.в. на } E$
+
+$\forall \delta > 0 \quad \; E_\delta \; : \; \mu(E_\delta) <
+\delta \quad f_n (x) \rightrightarrows f(x) \text{ на } E \:
+\backslash \: E_\delta \:(\text{при условии } \mu E < \infty)$
+
+\textbf{Доказательство.} \quad Рассмотрим множества $B
+(\varepsilon)$, построенные в предыдущей теореме, только в этот
+раз $\varepsilon_{k} \rightarrow 0$
+
+$\mu (B_n(\varepsilon_k)) \xrightarrow[n \rightarrow \infty]{} 0;
+\quad \mu (B_n(\varepsilon_k)) < \dfrac{\delta}{2^k}; \quad \mu
+E_\delta \leqslant \sum\limits_k \dfrac{\delta}{2^k} = \delta$
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 8.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+$E_\delta = \bigcup_{k = 1}^\infty B_{n_k} (\varepsilon_k)$
+
+$| f_n(x) - f(x) | < \varepsilon_k, \; n > n_k$
+
+\textbf{Теорема. (Лузина о С-свойстве) } \quad
+ $\text{Если функция измерима на отрезке } E \Rightarrow \forall
+ \delta > 0 \; \exists \text{ замкнут. }
+ F_\delta : f \:|\phantom:_{F_\delta} - \text{непрерывна, }
+ \mu (E \: \backslash F_\delta) < \delta$
+
+$( \mu\{ g(x) \neq f(x)\} < \delta, g(x) - \text{непрерывна}  )$
+
+\textbf{Доказательство.} \quad Следует из теоремы Егорова и
+теоремы о приближении $f_k(x) \rightarrow f, \{f_k(x)\}$ ---
+последовательность простых функций.
+
+ $\forall \: f_k \; \exists \:
+F_k$ --- измерим., откр., $\; \mu (E \backslash F_\delta) < \delta
+/ 2^{k+1}$ и $f_k$ непрерывна на $F_k$ относительно $F_k$.
+
+$\mu (E \backslash \bigcup_{k = 1}^\infty F_k) < \delta / 2$.
+
+Выбросив множество меры $\delta / 2$, получим на оставшемся
+замкнутом множестве $f_k(x) \rightrightarrows f(x), \; \text{ и }
+f(x)$ получится непрерывной на замкнутом множестве.
+
+\textbf{Задача.} \quad Доказать в обратную сторону.
+
+\begin{center}
+\textbf{Интеграл Лебега}
+\end{center}
+
+$(X, \EuScript(M), \mu), \; \mu $ полагаем полной.
+
+Определяем интеграл Лебега на измеримом множестве $E$ для $f(x)
+\geqslant 0$
+
+\textbf{Определение.} \quad $$(L) \int\limits_{E} f d\mu =
+\sup\limits_{E = \bigcup_{k = 1}^n E_k} \left( \sum\limits_{k =
+1}^n \inf\limits_{x \in E_k} f(x) \mu E_k \right)$$
+
+\textbf{Задача.} \quad Если $f$ --- простая, принимающая значения
+$a_k$ на $E_k$, тогда $(L) \int\limits_E f d\mu = \sum\limits_k
+a_k \mu E_k$
+

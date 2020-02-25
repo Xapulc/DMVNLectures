@@ -1,0 +1,307 @@
+%% Lust updated:
+
+%% \documentstyle[12pt]{article}
+\documentstyle[cyralt]{article}
+
+\input amssym.def
+\input amssym.tex
+
+%% \marginparwidth 40pt
+\textwidth=165mm
+%% \textwidth=140mm
+\textheight=238mm
+%% \textheight=205mm
+\addtolength{\topmargin}{-70pt}
+\addtolength{\oddsidemargin}{-1.5cm}
+
+\def\R{\Bbb R}
+\def\N{\Bbb N}
+\def\Z{\Bbb Z}
+\def\Q{\Bbb Q}
+\def\C{\Bbb C}
+\def\CP{\Bbb C\Bbb P}
+\def\RP{\Bbb R\Bbb P}
+\font\sf=cmss10
+
+% Theorem environments for normal usage
+% arabic numbering:
+%% \newtheorem{theorem}{Теорема}
+%% \newtheorem{corollary}{Следствие}
+%% \newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+
+% Non-italic
+% \theorembodyfont{\rmfamily}
+
+\newenvironment{definition}
+{\smallskip\noindent{\bf Определение\/}:}{\smallskip\par}
+\newenvironment{def-equiv}
+{\smallskip\noindent{\bf Определение${}'$\/}:}{\smallskip\par}
+\newenvironment{theorem}
+{\smallskip\noindent{\bf Теорема\/}.}{\smallskip\par}
+\newenvironment{theorem*}
+{\smallskip\noindent{\bf Теорема}}{\smallskip\par}
+\newenvironment{lemma}
+{\smallskip\noindent{\bf Лемма\/}.}{\smallskip\par}
+%% \newenvironment{proposition}
+%% {\smallskip\noindent{\bf Proposition\/}.}{\smallskip\par}
+\newenvironment{statement}
+{\smallskip\noindent{\bf Утверждение\/}.}{\smallskip\par}
+\newenvironment{example}
+{\smallskip\noindent{\bf Пример\/}.}{\smallskip\par}
+\newenvironment{examples}
+{\smallskip\noindent{\bf Примеры\/}:}{\smallskip\par}
+\newenvironment{remark}
+{\smallskip\noindent{\bf Замечание\/}.}{\smallskip\par}
+\newenvironment{remarks}
+{\smallskip\noindent{\bf Замечания\/}.}{\smallskip\par}
+\newenvironment{proof}
+{\noindent{\bf Доказательство\/}.}{{ $\Box$}\smallskip\par}
+\newenvironment{Proof}
+{\noindent{\bf Доказательство\/}}{{ $\Box$}\smallskip\par}
+\newenvironment{problem}
+{\noindent{\bf Задача\/}.}{\smallskip\par}
+\newenvironment{problem^*}
+{\noindent{\bf Задача${}^*$}.}{\smallskip\par}
+\newenvironment{problem^**}
+{\noindent{\bf Задача${}^{**}$}.}{\smallskip\par}
+\newenvironment{problem_*}
+{\noindent{\bf Задача${}_{*}$}.}{\smallskip\par}
+\newenvironment{problem_**}
+{\noindent{\bf Задача${}_{**}$}.}{\smallskip\par}
+\newenvironment{corollary}
+{\noindent{\bf Следствие}.}{\smallskip\par}
+\newenvironment{Corollary}
+{\noindent{\bf {Следствие }}}{\smallskip\par}
+
+\title{Дифференциальная геометрия, лекции для студентов III курса,
+осенний семестр 2001--2002 уч.г.}
+\author{С.М.Гусейн-Заде}
+\date{}
+% Not to forget to restore the \date command finally.
+\begin{document}
+\sloppy
+
+\def\Aut{{\operatorname{Aut}}}
+\def\eps{\varepsilon}
+
+{\bf Лекция 13.}
+%%
+%% 15.11.2001
+
+\begin{remark}
+Можно показать, что величины $\Gamma^i_{pq}$ выражаются через компоненты
+$g_{ij}=({{\partial}\over{\partial x^i}},{{\partial}\over{\partial x^j}})
+=\sum\limits_{s=1}^n{{\partial y^s}\over{\partial x^i}}{{\partial y^s}\over
+{\partial x^j}}$ метрического тензора на многообразии $M^k$ (индуцированного
+из стандартного скалярного произведения в пространстве $\R^n$). Мы получим
+этот факт позже как следствие более общего утверждения.
+\end{remark}
+
+Прежде, чем перейти к описанию соответствующего обобщения на произвольные
+многообразия (не обязательно подмногообразия аффинного пространства),
+сделаем несколько замечаний (некоторые из которых будут использованы
+немедленно, а некоторые~--- чуть позже). \newline
+1) При фиксированном $w\in T_{x_0}M^k$ ковариантная производная $\nabla_wv$
+является касательным вектором в точке $x_0$. \newline
+2) При фиксированном векторном поле $v=v(x)$ ковариантная производная
+$\nabla_wv$ линейна по $w\in T_{x_0}M^k$.
+
+Свойства 1) и 2) означают, что $v^i_{;q}$~--- тензор типа $(1,1)$.
+
+\noindent 3) Поскольку ${{\partial^2 y^j}\over{\partial x^p\partial x^q}}
+={{\partial^2 y^j}\over{\partial x^q\partial x^p}}$, имеем $\Gamma^i_{pq}=
+\Gamma^i_{qp}$. \newline
+4) При описанном выше переносе вектора из точки $\gamma(t)$ в точку
+$\gamma(0)$ ($t$ мало) вектор меняется на {\bf ортогональный ему} вектор,
+величина которого является бесконечно малой по $t$ порядка не выше $1$.
+Отсюда следует, что при таком переносе скалярное произведение двух векторов
+меняется (если вообще меняется) только на величину порядка $t^2$.
+Этим свойством мы воспользуемся когда будем обсуждать соотношение
+между (ковариантным) дифференцированием векторов (и тензоров вообще)
+с римановой метрикой.
+
+Теперь мы можем сформулировать обобщение описанной конструкции на
+произвольные гладкие многообразия.
+
+\begin{definition}
+Аффинной связностью (или операцией ковариантного дифференцирования) на
+многообразии $M^k$ называется способ дифференцирования векторных полей
+$v=v(x)$ вдоль касательных векторов $w\in T_{x_0}M^k$, результатом
+которого является касательный вектор $\nabla_wv$ в точке $x_0$ и который
+в локальных координатах $x^1$, \ldots, $x^k$ записывается формулой
+$$
+\nabla_wv^i=
+w^q\left({{\partial v^i}\over{\partial x^q}}+\Gamma^i_{pq}v^p\right),
+$$
+где $\Gamma^i_{pq}$~--- функции от $x^1$, \ldots, $x^k$ ($v^i$ и $w^i$~---
+компоненты векторов $v$ и $w$ в координатах $x^1$, \ldots, $x^k$).
+\end{definition}
+
+Поскольку $\nabla_wv^i$~--- вектор, линейно зависящий от $w$, $v^i_{;q}=
+\nabla_{\partial/\partial x^q}v^i={{\partial v^i}\over{\partial x^q}}
++\Gamma^i_{pq}v^p$ является тензором типа $(1, 1)$.
+
+Выясним, как меняются величины $\Gamma^i_{pq}$ при замене (локальных)
+координат. Заодно мы сможем понять, является ли $\Gamma^i_{pq}$ тензором.
+Пусть $\widetilde x^1$, \ldots, $\widetilde x^k$~--- другая система
+локальных координат, $\widetilde\Gamma^{{}\,\widetilde\imath}_{\widetilde p\,
+\widetilde q}$~--- величины, описывающие
+операцию ковариантного дифференцирования в этих координатах.
+
+\begin{theorem}
+$$
+\widetilde\Gamma^{{}\,\widetilde\imath}
+_{\widetilde p\,\widetilde q}
+={{\partial\widetilde x^{\widetilde\imath}}\over{\partial x^i}}
+\left(
+\Gamma^i_{pq}
+{{\partial x^p}\over{\partial\widetilde x^{\widetilde p}}}
+{{\partial x^q}\over{\partial\widetilde x^{\widetilde q}}}+
+{{\partial^2 x^i}\over{\partial\widetilde x^{\widetilde p}
+\partial\widetilde x^{\widetilde q}}}
+\right).
+$$
+\end{theorem}
+
+\begin{proof}
+В новых координатах имеем:
+$$
+\widetilde v^{\widetilde\imath}_{;{\widetilde q}}=
+{{\partial v^{\widetilde\imath}}\over{\partial\widetilde x^{\widetilde q}}}+
+\widetilde\Gamma^{{}\,\widetilde\imath}_{\widetilde p\,\widetilde q}
+\widetilde v^{\widetilde p}.\eqno(1)
+$$
+С другой стороны, пользуясь тем, что $v^i_{;q}$~--- тензор типа $(0, 1)$,
+получаем:
+$$
+\widetilde v^{\widetilde\imath}_{;\widetilde q}=v^i_{;q}
+{{\partial\widetilde x^{\widetilde\imath}}\over{\partial x^i}}
+{{\partial x^q}\over{\partial\widetilde x^{\widetilde q}}}=
+\left({{\partial v^i}\over{\partial x^q}}+\Gamma^i_{pq}v^p\right)
+{{\partial\widetilde x^{\widetilde\imath}}\over{\partial x^i}}
+{{\partial x^q}\over{\partial\widetilde x^{\widetilde q}}}=
+$$
+$$
+={{\partial v^i}\over{\partial\widetilde x^{\widetilde q}}}
+{{\partial\widetilde x^{\widetilde\imath}}\over{\partial x^i}}+
+\Gamma^i_{pq}v^p
+{{\partial\widetilde x^{\widetilde\imath}}\over{\partial x^i}}
+{{\partial x^q}\over{\partial\widetilde x^{\widetilde q}}}=
+{{\partial}\over{\partial\widetilde x^{\widetilde q}}}\left(
+\widetilde v^{\widetilde p}
+{{\partial x^i}\over{\partial\widetilde x^{\widetilde p}}}\right)
+{{\partial\widetilde x^{\widetilde\imath}}\over{\partial x^i}}+
+\Gamma^i_{pq}\left(\widetilde v^{\widetilde p}
+{{\partial x^p}\over{\partial\widetilde x^{\widetilde p}}}\right)
+{{\partial\widetilde x^{\widetilde\imath}}\over{\partial x^i}}
+{{\partial x^q}\over{\partial\widetilde x^{\widetilde q}}}=
+$$
+$$
+={{\partial\widetilde v^{\widetilde p}}\over
+{\partial\widetilde x^{\widetilde q}}}
+{{\partial\widetilde x^{\widetilde\imath}}\over
+{\partial\widetilde x^{\widetilde p}}}+\widetilde v^{\widetilde p}\left[
+{{\partial^2 x^i}\over{\partial\widetilde x^{\widetilde p}
+\partial\widetilde x^{\widetilde q}}}
+{{\partial\widetilde x^{\widetilde\imath}}\over{\partial x^i}}+
+\Gamma^i_{pq}
+{{\partial x^p}\over{\partial\widetilde x^{\widetilde p}}}
+{{\partial x^q}\over{\partial\widetilde x^{\widetilde q}}}
+{{\partial\widetilde x^{\widetilde\imath}}\over{\partial x^i}}
+\right]=
+$$
+$$
+={{\partial\widetilde v^{\widetilde\imath}}\over
+{\partial\widetilde x^{\widetilde q}}}+\left[
+{{\partial\widetilde x^{\widetilde\imath}}\over{\partial x^i}}\left(
+\Gamma^i_{pq}
+{{\partial x^p}\over{\partial\widetilde x^{\widetilde p}}}
+{{\partial x^q}\over{\partial\widetilde x^{\widetilde q}}}+
+{{\partial^2 x^i}\over{\partial\widetilde x^{\widetilde p}
+\partial\widetilde x^{\widetilde q}}}
+\right)\right]\widetilde v^{\widetilde p}.\eqno(2)
+$$
+Сравнивая формулы (1) и (2), получаем требуемый результат.
+\end{proof}
+
+\begin{corollary}
+Коэффициенты связности $\Gamma^i_{pq}$ преобразуются как компоненты
+тензора при аффинных заменах координат.
+\end{corollary}
+
+\begin{corollary}
+Разность $\Gamma^i_{pq}-\Gamma^i_{qp}$ является тензором.
+\end{corollary}
+
+Тензор $\Gamma^i_{pq}-\Gamma^i_{qp}$ называется тензором кручения
+аффинной связности. Связность называется симметричной, если ее
+тензор кручения равен нулю.
+
+Перейдем к (ковариантному) дифференцированию тензоров произвольного
+порядка. Для того, чтобы выяснить, как дифференцируются тензоры
+различных типов, сформулируем некоторые требования к ковариантному
+дифференцированию тензоров. Все эти требования можно рассматривать как
+следствия некоторых (естественных) требований к операции переноса
+тензоров из точки в (близкую) точку (например, результат переноса
+тензорного произведения двух тензоров равен тензорному произведению
+результатов их переноса и, вообще, перенос тензоров согласован с
+тензорными операциями). Из--за недостатка времени мы на
+не будем обсуждать требования к операции переноса, а сразу сформулируем
+свойства ковариантного дифференцирования, которыми мы будем пользоваться.
+Эти свойства (или требования)~--- следующие. \newline
+1) Операция ковариантного дифференцирования линейна. \newline
+2) Ковариантная производная функции (т.е. тензора типа $(0, 0)$)~---
+это обычная производная (по направлению вектора). \newline
+3) Ковариантная производная векторного поля $v$ в локальных координатах
+определяется формулой $v^i_{;q}={{\partial v^i}\over{\partial x^q}}
++\Gamma^i_{pq}v^p$. \newline
+4) Ковариантная производная удовлетворяет правилу Лейбница дифференцирования
+произведения: ковариантная производная тензорного произведения $U\otimes V$
+тензоров $U$ и $V$ (произвольного типа) дается формулой
+$$
+(U\otimes V)_{;q}=U_{;q}\otimes V+U\otimes V_{;q}.
+$$ \newline
+5) (Ковариантная) производная свертки тензора (по двум его индексам) равна
+свертки производной (по соответствующим индексам).
+
+Из этих свойств вытекают формулы для ковариантных производных произвольных
+тензоров.
+
+\begin{theorem}
+Пусть $\xi_i=\xi_i(x)$~--- ковекторное поле. Тогда
+$$
+\xi_{i;q}\,(=\nabla_{;q}\xi_i)\,={{\partial\xi_i}\over{\partial x^q}}-
+\Gamma_{iq}^p\xi_p.
+$$
+\end{theorem}
+
+\begin{proof}
+Пусть $v^i=v^i(x)$~--- векторное поле. Величина $\xi_iv^i$ (значение
+ковектора $\xi$ на векторе $v$) является скаляром и поэтому дифференцируется
+"обычным образом":
+$$
+(\xi_iv^i)_{;q}={{\partial(\xi_iv^i)}\over{\partial x^q}}=
+{{\partial\xi_i}\over{\partial x^q}}v^i+\xi_i
+{{\partial v^i}\over{\partial x^q}}.\eqno(1)
+$$
+С другой стороны, в соответствии с перечисленными свойствами имеем:
+$$
+(\xi_iv^i)_{;q}=\xi_{i;q}v^i+\xi_iv^i_{;q}=\xi_{i;q}v^i+
+\xi_i\left({{\partial v^i}\over{\partial x^q}}+\Gamma^i_{pq}v^p\right)=
+\xi_{i;q}v^i+\xi_i{{\partial v^i}\over{\partial x^q}}+
+\xi_p\Gamma^p_{iq}v^i\eqno(2)
+$$
+(в последней части равенства мы поменяли местами индексы $i$ и $p$,
+по которым производится суммирование).
+Сравнивая (1) и (2), получаем
+$$
+\xi_{i;q}v^i=
+\left({{\partial\xi_i}\over{\partial x^q}}-
+\Gamma^p_{iq}\xi_p\right)v^i.
+$$
+Покольку это равенство имеет место для любого векторного поля $v$,
+получаем требуемую формулу.
+\end{proof}
+
+\end{document}

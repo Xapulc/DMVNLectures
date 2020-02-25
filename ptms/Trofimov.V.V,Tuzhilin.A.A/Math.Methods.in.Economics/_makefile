@@ -1,0 +1,6 @@
+RarName="math-models-in-economics-trofimov-tuzhilin"
+
+all:
+	wr $(RarName).rar *.rar "*].pdf"
+	copy /B "*1].pdf" $(RarName)-pt1.pdf
+	copy /B "*2].pdf" $(RarName)-pt2.pdf

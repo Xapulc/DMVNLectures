@@ -1,0 +1,53 @@
+\documentclass[unicode,10pt]{article}
+\usepackage{dmvn}
+\usepackage{polyglossia}
+\usepackage{unicode-math}
+\usepackage{fontspec}
+\usepackage{epsfig}
+\usepackage{ulem}
+\usepackage{wrapfig}
+\defaultfontfeatures{Scale=MatchLowercase, Mapping=tex-text}
+\setmainfont{CMU Serif}
+\setsansfont{CMU Sans Serif}
+\setmonofont{CMU Typewriter Text}
+\setmathfont{xits-math.otf}
+\newcommand{\questionably}[1]{{
+    \setmainfont{URW Chancery L}
+    #1}}
+\newcommand{\contrib}[1]{
+  {
+  \setmainfont{URW Chancery L}
+  \uwave{#1}
+  }}
+\newcommand{\veca}{\vec A}
+\newcommand{\vecb}{\vec B}
+\newcommand{\vece}{\vec E}
+\newcommand{\eX}{\vec e_x}
+\newcommand{\eY}{\vec e_y}
+\newcommand{\eZ}{\vec e_z}
+\newcommand{\eR}{\vec e_r}
+\newcommand{\unsafeIO}{
+  \begin{petit}
+    {\Large \bf\#!} Творчество верстальщика.
+  \end{petit}
+}
+\begin{document}
+\input{task1.tex}
+\input{task2.tex}
+\input{task3.tex}
+\input{task4.tex}
+\input{task5.tex}
+\input{task6.tex}
+\input{task7.tex}
+\input{task8.tex}
+\input{task9.tex}
+\input{task10.tex}
+\input{task11.tex}
+\input{task13.tex}
+\input{task14.tex}
+\input{task16.tex}
+\input{task17.tex}
+\input{task20.tex}
+\input{task21.tex}
+\input{task22.tex}
+\end{document}

@@ -1,0 +1,406 @@
+\part*{КИНЕМАТИКА СПЛОШНОЙ СРЕДЫ}
+\begin{question}
+Лагранжево и Эйлерово описания движения сплошной среды. Их
+эквивалентность.
+\end{question}
+Для каждой точки среды зададим два набора координат: эйлеровы и
+Лагранжевы координаты. Лагранжевы координаты обозначаются $\xi_i$ и
+представляют собой евклидовы координаты той точки пространства, в
+которой данная точка среды находилась в момент $t=0$. Лагранжевы
+координаты являются постоянными для данной точки среды. Они в общем
+случае криволинейны, так как со временем среда могла как угодно
+деформироваться.
+
+Эйлеровы координаты~--- координаты той точки, в которой данная
+точка среды находится в данный момент. Они зависят от лагранжевых
+координат и времени $x_i=x_i(\xi_1,\xi_2,\xi_3,t)$. Вектор,
+соединяющий начальное и конечное положение точки среды,
+называется вектором перемещения и обозначается $\vec u$.
+
+\underline{Лагранжево описание} состоит в задании закона движения
+$\vec x=\vec x(\vec \xi,t).$ На функцию $\vec x$ накладывают
+следующие условия:
+
+1) $$\left|\frac{\partial x_i}{\partial\xi_j}\right|(\vec
+\xi,t)\neq 0
+$$~--- условие непрерывности среды.
+
+2) $\vec \xi\hm=\vec x(\vec \xi,0)$~--- вытекает из определения
+Эйлеровых и Лагранжевых координат.
+
+\underline{Эйлерово описание} состоит в задании поля скоростей
+$\vec v(x_1,x_2,x_3,t)$.
+
+Для перехода от Лагранжева описания к Эйлерову необходимо найти
+производные $\frac{dx_i}{dt}$ и обратить закон движения, чтобы
+поле скоростей зависело не от $\vec \xi$, а от $\vec x$.
+
+Для перехода от Эйлерова описания к Лагранжеву необходимо решить
+систему дифференциальных уравнений: $\frac{dx_i}{dt}=v_i(\vec x,t)$.
+Граничными условия будут условия $x_i(0)=\xi_i$
+
+Так как и тот, и другой переход осуществляется единственным
+способом, Лагранжев и Эйлеров подходы эквивалентны.
+
+\begin{question}
+Полная, частная и конвективная производные по времени.
+Уста\-но\-вив\-шееся и не\-устано\-вив\-шееся движение. Запись
+ускорения в форме Громеки-Лэмба.
+\end{question}
+
+Движение называется установившимся, если поле скоростей $\vec
+v=\vec v(x)$, то есть не зависит явным образом от времени.
+
+\underline{Ускорение}
+$$\vec w=\frac{d\vec v}{dt}=\frac{d^2u}{dt^2}$$
+
+$$w_i(\vec x,t)=\frac{d}{dt}v_i(\vec x,t)\hm
+=\frac{\partial v_i}{\partial t}\hm+\frac{\partial v_i}{\partial
+x_1}\frac{dx_1}{dt}\hm +\frac{\partial v_i}{\partial
+x_2}\frac{dx_2}{dt}\hm+\frac{\partial v_i}{\partial
+x_3}\frac{dx_3}{dt} $$
+
+$\frac{\partial}{\partial t}v_i(\vec x,t)$ называется частной производной по
+времени, $\frac{\partial v_i}{\partial x_1}\frac{dx_1}{dt}\hm
++\frac{\partial v_i}{\partial
+x_2}\frac{dx_2}{dt}\hm+\frac{\partial v_i}{\partial
+x_3}\frac{dx_3}{dt}$~--- конвективной производной, все вместе~---
+полной производной.
+
+\underline{Представление ускорения в форме Громеки-Лэмба} $$ u_i
+= \frac{dv_i}{dt}=\frac{\partial v_i}{\partial
+t}+v_{i,j}v_j-v_{j,i}v_j+v_{j,i}v_j,
+$$
+ $$ v_{i,j}v_j-v_{j,i}v_j=\rot{\vec v}\times\vec v$$ $$v_{j,i}v_j=\frac{1}{2}\grad|\vec v|^2 $$
+ Таким образом, получаем следующее представление:
+ $$\vec w=\frac{\partial\vec v}{\partial t}+\rot\vec v\times\vec v+\frac{1}{2}\grad|\vec v|^2 $$
+
+ \begin{question}
+Меры деформации. Лагранжев и эйлеров тензор конечных деформаций.
+\end{question}
+
+$$ |d\vec x|^2-|d\vec\xi|^2=\frac{\partial x_i}{\partial \xi_k}d\xi_k\frac{\partial x_i}{\partial \xi_l}d\xi_l\hm-d\xi_id\xi_i\hm=
+\left(\frac{\partial x_i}{\partial \xi_k}\frac{\partial x_i}{\partial
+\xi_l}\hm-\delta_{kl}\right)d\xi_kd\xi_l\hm=2L_{kl}(\vec\xi,t)d\xi_kd\xi_l$$
+
+$L_{kl}(\vec\xi,t)$~--- лагранжев тензор конечных деформаций.
+
+$$|d\vec x|^2-|d\vec\xi|^2=dx_idx_i\hm-\frac{\partial \xi_i}{\partial x_k}\frac{\partial \xi_i}{\partial x_l}dx_k dx_l=
+\left(\delta_{kl}\hm-\frac{\partial \xi_i}{\partial
+x_k}\frac{\partial \xi_i}{\partial x_l}\right)dx_kdx_l=2E_{kl}(\vec
+x,t)dx_kdx_l
+$$
+
+$E_{kl}(\vec x,t)$~--- эйлеров тензор конечных деформаций (тензор
+Альманзи).
+
+Лагранжев и эйлеров тензоры конечных деформаций связаны следующим
+соотношением:
+$$
+L_{ij}d\xi_id\xi_j=E_{kl}dx_kdx_l.
+$$
+
+Если представить $x_i$ как $u_i+\xi_i$ и раскрыть все скобки,
+тензор Лагранжа примет следующий вид:
+$$L_{kl}\hm=\frac{1}{2}\left(\frac{\partial u_i}{\partial \xi_k}\frac{\partial u_i}{\partial \xi_l}\hm+
+\frac{\partial u_k}{\partial \xi_l}\hm+\frac{\partial
+u_l}{\partial \xi_k}\right) $$
+
+Если проделать аналогичную операцию с эйлеровым тензором, считая
+$\xi_i=x_i-u_i$, получим
+$$E_{kl}\hm=\frac{1}{2}\left(\frac{\partial u_l}{\partial x_k}\hm+\frac{\partial u_k}{\partial
+x_l}\hm-\frac{\partial u_i}{\partial x_k}\frac{\partial
+u_i}{\partial x_l}\right) $$
+
+\begin{question}
+Тензоры Коши и Альманзи. Их связь с тензором дисторсии.
+\end{question}
+
+Тензор Альманзи~--- это то же, что эйлеров тензор конечных
+деформации. Представим его так:
+$$E_{kl}\hm=\frac{1}{2}\left(\frac{\partial u_l}{\partial x_k}\hm+\frac{\partial u_k}{\partial
+x_l}\hm-\frac{\partial u_i}{\partial x_k}\frac{\partial
+u_i}{\partial x_l}\right)$$
+
+Пусть деформации малы настолько, что можно пренебречь слагаемым
+$\frac{\partial u_i}{\partial x_k}\frac{\partial u_i}{\partial
+x_l}$. Получаем тензор конечных деформаций Коши
+$$\varepsilon_{kl}=\frac{1}{2}(u_{k,l}+u_{l,k}).$$
+
+Тензором дисторсии называется следующее выражение:
+$$\underItilde{u}=u_{ij}\vec e_i\otimes\vec e_j;~u_{ij}=u_{i,j}$$
+
+Тензор Коши является симметричной частью тензора дисторсии.
+
+\begin{question}
+Бесконечно малые деформации. Геометрическая линейность.
+Соотношения Коши.
+\end{question}
+
+Не поняла, о чем здесь нужно рассказывать.
+
+\begin{question}
+Тензор поворотов. Вектор поворотов. Формулы Чезаро.
+\end{question}
+
+Тензором поворотов называется антисимметричная часть  тензора
+дисторсии. Он обозначается $w_{ij}$ $$
+u_{ij}=\varepsilon_{ij}+w_{ij}$$ $$
+w_{ij}=\frac{1}{2}(u_{i,j}-u_{j,i})$$
+
+Тензор поворотов антисимметричен, потому у него только три
+независимые компоненты. Ему можно поставить в соответствие вектор
+поворотов $\vec w=\frac{1}{2}\epsilon_{ijk}w_{kj}\vec e_i$.
+
+\underline{Формулы Чезаро}
+
+Пусть имеются две точки $p_1$ и $p_2$ среды, в точке $p_1$ известно
+значение перемещения $u_i^{(1)}$ и тензора поворотов $w_{ij}^{(1)}$,
+задан тензор малых деформаций Коши. Требуется найти $u_i^{(2)}$~---
+значение перемещения в точке $p_2$.
+
+Соединим точки кривой, полностью лежащей внутри среды. Верно
+следующее соотношение: $$
+u_i^{(2)}\hm=u_i^{(1)}+\int_{p_1}^{p_2}u_{i,k}dx_k\hm=u_i^{(1)}\hm+\int_{p_1}^{p_2}
+\varepsilon_{ik}dx_k\hm+\int_{p_1}^{p_2}w_{ik}dx_k$$
+
+Из трех слагаемых неизвестным является только последнее.
+
+Выпишем следующее соотношение:
+$$\left(\int_{p_1}^{p_2}w_{ik}x_kdx_l \right)_{,l}=\int_{p_1}^{p_2}w_{ik}\delta_{kl}dx_l+\int_{p_1}^{p_2}w_{ik,l}x_kdx_l=
+\int_{p_1}^{p_2}w_{ik}dx_k+\int_{p_1}^{p_2}w_{ik,l}x_kdx_l
+$$
+
+C другой стороны,
+$$\left(\int_{p_1}^{p_2}w_{ik}x_kdx_l\right)_{,l}=w_{ik}^{(2)}x_k^{(2)}-w_{ik}^{(1)}x_k^{(1)}.
+$$
+
+Отсюда получаем следующее:
+\begin{equation*}
+\begin{split}
+&\int_{p_1}^{p_2}w_{ik}dx_k=w_{ik}^{(2)}x_k^{(2)}-w_{ik}^{(1)}x_k^{(1)}\hm-\int_{p_1}^{p_2}w_{ik,l}x_kdx_l=\\
+&=w_{ik}^{(2)}x_k^{(2)}-w_{ik}^{(1)}x_k^{(2)}+w_{ik}^{(1)}x_k^{(2)}\hm-w_{ik}^{(1)}x_k^{(1)}\hm-\int_{p_1}^{p_2}w_{ik,l}x_kdx_l\hm=\\
+&=w_{ik}^{(1)}(x_k^{(2)}\hm-x_k^{(1)})\hm+\int_{p_1}^{p_2}x_k^{(2)}w_{ik,l}dx_l\hm-\int_{p_1}^{p_2}x_kw_{ik,l}dx_l\hm=\\
+&=w_{ik}^{(1)}(x_k^{(2)}\hm-x_k^{(1)})\hm-\int_{p_1}^{p_2}(x_k-x_k^{(2)})w_{ik,l}dx_l.
+\end{split}
+\end{equation*}
+
+$$w_{ik,l}=\frac{1}{2}(u_{i,kl}-u_{k,il})=\varepsilon_{il,k}-\varepsilon_{kl,i}$$
+
+Объединяя результаты, получаем:
+
+ $$u_i^{(2)}=u_i^{(1)}+w_{ik}^{(1)}(x_k^{(2)}\hm-x_k^{(1)})-\int_{p_1}^{p_2}[(x_k-x_k^{(2)})\cdot(\varepsilon_{il,k}
+ -\varepsilon_{kl,i})-\varepsilon_{il}]dx_l. $$
+ Эти формулы носят название формул Чезаро.
+
+\begin{question}
+Условия совместности деформаций в интегральной и дифференциальной
+формах. Тож\-дес\-тва Сен-Венана
+\end{question}
+
+Введем новое обозначение:
+$A_{il}=(x_k-x_k^{(2)})\cdot(\varepsilon_{il,k}
+ -\varepsilon_{kl,i})-\varepsilon_{il}.$
+
+Рассмотрим некий замкнутый контур $\Gamma$, полностью лежащий в
+среде, и применим к нему формулы Чезаро. Так как начало пути
+совпадает с концом, ясно, что $u_i^{(2)}=u_i^{(1)}$. Отсюда получаем
+$\oint_{\Gamma}A_{il}dx_l=0$.
+
+По теореме Стокса
+$$\oint_{\Gamma}\vec a\overrightarrow{dl}=\int_{\Sigma}\rot{\vec a}\cdot\vec n d\Sigma=\int_{\Sigma}\epsilon_{ijk}a_{k,j}\cdot n_id\Sigma,$$
+а значит,
+\begin{equation*}
+\begin{split}
+0=\oint_{\Gamma}A_{il}dx_l&=\int_{\Sigma}\epsilon_{njl}A_{il,j}\cdot\vec n_n d\Sigma\hm=\\
+=\int_{\Sigma}\epsilon_{njl}[(x_k-x_k^{(2)})&\cdot(\varepsilon_{il,k}
+ \hm-\varepsilon_{kl,i})\hm-\varepsilon_{il}]_{,j}\cdot\vec n_n d\Sigma\hm=\\
+=\int_{\Sigma}\epsilon_{njl}[\delta_{jk}(\varepsilon_{il,k}
+ \hm-\varepsilon_{kl,i})+(x_k&-x_k^{(2)})\cdot(\varepsilon_{il,kj}
+ \hm-\varepsilon_{kl,ij})-\varepsilon_{il,j}]n_nd\Sigma
+\end{split}
+\end{equation*}
+
+ Отсюда получаем интегральную форму условия совместности
+ деформаций (куда Георгиевский дел $\varepsilon_{jl,i}$, я поняла c трудом:
+ $\epsilon_{njl}\varepsilon_{jl,i}=0$ в силу симметричности $\varepsilon$):
+ $$\int_{\Sigma}\epsilon_{njl}(x_k-x_k^{(2)})\cdot(\varepsilon_{il,kj}
+ \hm-\varepsilon_{kl,ij})n_nd\Sigma =0 $$
+
+Дифференциальная форма  условия выглядит так:
+$\epsilon_{njl}(\varepsilon_{il,kj}
+ \hm-\varepsilon_{kl,ij})\hm=0$. Такое условие является достаточным.
+
+ Положим $n=1$. Получим $\epsilon_{1jl}(\varepsilon_{il,kj}
+ \hm-\varepsilon_{kl,ij})=0$. Индексы $j l$ равны либо $23$, либо
+ $32$. Получим $\varepsilon_{i3,k2}
+ \hm-\varepsilon_{k3,i2}\hm-\varepsilon_{i2,k3}
+ \hm+\varepsilon_{k2,i3}=0$.
+
+ Для индексов $i$ и $k$ только два варианта их значений имеют
+ принципиальное различие.
+
+\begin{itemize}
+\item[1)] $i=2$, $k=3$. Получаем $$\varepsilon_{23,32}\hm-\varepsilon_{33,22}\hm-\varepsilon_{22,33}\hm
+ +\varepsilon_{32,23}=0;$$ $$\varepsilon_{22,33}\hm+\varepsilon_{33,22}=2\varepsilon_{23,32}.$$
+
+\item[2)] $i=1$, $k=2$. Получаем $$\varepsilon_{13,22}\hm-\varepsilon_{23,12}\hm-\varepsilon_{12,23}\hm
+ +\varepsilon_{22,13}=0;$$ $$\varepsilon_{13,22}\hm+\varepsilon_{22,13}\hm=\varepsilon_{12,23}\hm+\varepsilon_{23,12}.$$
+\end{itemize}
+
+ Обобщим на случай произвольных индексов. Получим два условия
+ $$\varepsilon_{\alpha\alpha,\beta\beta}+\varepsilon_{\beta\beta,\alpha\alpha}=2\varepsilon_{\alpha\beta,\alpha\beta};$$
+ $$\varepsilon_{\alpha\alpha,\beta\gamma}+\varepsilon_{\beta\gamma,\alpha\alpha}
+ =\varepsilon_{\beta\alpha,\alpha\gamma}+\varepsilon_{\gamma\alpha,\alpha\beta}$$
+ Эти условия называются условиями Сен-Венана.
+
+\begin{question}
+Физический смысл компонент тензора деформации. Главные деформации.
+\end{question}
+
+Введем обозначение $l_i\hm=\frac{d\xi_i}{|d\xi|}$. В таком случае
+верны следующие равенства:
+$$\frac{|d\vec x|^2}{|d\vec \xi|^2}=1+2\varepsilon_{ij}l_il_j$$
+$$|d\vec x|=\sqrt{1+2\varepsilon_{ij}l_il_j}|d\vec \xi|$$
+
+Рассмотрим различные случаи:
+
+1) Деформации происходили только в направлении $x_1$, то есть
+$l_i=\delta_{1i}$. В таком случае
+$$|d\vec x|=\sqrt{1+2\varepsilon_{ij}l_il_j}|d\vec \xi|\approx(1+\varepsilon_{11})|d\vec \xi|,$$
+
+$$\varepsilon_{11}=\frac{|d\vec x|-|d\vec \xi|}{|d\vec \xi|}$$.
+
+Таким образом, $\varepsilon_{11}$~--- относительное изменение длины
+волокна, которое до деформации лежало в направлении $x_1$.
+
+2) Рассмотрим изменение объема среды.
+$$dV_0=d\xi_1d\xi_2d\xi_3;$$ $$dV=dx_1dx_2dx_3;$$ $$dV=(1+\varepsilon_{11})d\xi_1(1+\varepsilon_{22})d\xi_2(1+\varepsilon_{33})d\xi_
+3\approx(1+\varepsilon_{11}+\varepsilon_{22}+\varepsilon_{33})dV_0.$$
+
+Таким образом,
+$$tr\underItilde{\varepsilon}=\varepsilon_{ii}=\divergent{\vec u}=\frac{dV-dV_0}{dV_0}-$$
+относительное изменение объема.
+
+3) Рассмотрим волокна $d\vec \xi^{\{2\}}$, $d\vec \xi^{\{3\}}$,
+лежащие вдоль осей $\xi_2$ и $\xi_3$ соответственно. При
+деформации они перешли в волокна $d\vec x^{\{2\}}$, $d\vec
+x^{\{3\}}$. Найдем косинус угла между ними:
+$$\cos(\widehat{dx^{\{2\}},dx^{\{3\}}})=\frac{dx^{\{2\}}\cdot dx^{\{3\}}}{|dx^{\{2\}}||dx^{\{3\}}|}
+=\frac{(d\xi_i^{\{2\}}+du_i^{\{2\}})(d\xi_i^{\{3\}}+du_i^{\{3\}})}
+{(1+\varepsilon_{22})|d\xi^{\{2\}}|(1+\varepsilon_{33})|d\xi^{\{3\}}|}\approx$$
+$$\approx\frac{u_{i,j}d\xi_j^{\{2\}}d\xi_i^{\{3\}}+u_{i,j}d\xi_j^{\{3\}}d\xi_i^{\{2\}}}
+{|d\xi^{\{2\}}||d\xi^{\{3\}}|}=u_{i,j}\delta_{j2}\delta_{i3}+u_{i,j}\delta_{j3}\delta_{i2}=2\varepsilon_{23}.
+$$
+Таким образом, $\varepsilon_{23}$~--- половина косинуса угла между
+волокнами, лежащими в направлениях $\xi_2$ и $\xi_3$.
+
+\begin{question}
+Линии уровня. Векторные линии. Линии тока и траектории  частиц.
+\end{question}
+
+Изолиниями, или линиями уровня данной функции называются кривые,
+на которых данная функция постоянна. Векторными линиями данного
+векторного поля называются линии, которых векторное поле касается
+в каждой точке.
+
+Пусть имеется поле скоростей $\vec v\hm=v_i\vec e_i$. Линиями
+тока называются векторные линии этого поля. Уравнения линий тока:
+$$\frac{dx_1}{v_1(\vec x,t_0)}=\frac{dx_2}{v_2(\vec x,t_0)}=\frac{dx_3}{v_3(\vec x,t_0)}$$
+
+
+Траекторией частицы называется ГМТ, заметаемых радиус-вектором
+частицы. Уравнения траекторий:
+$$\frac{dx_1}{v_1(\vec x,t)}=\frac{dx_2}{v_2(\vec x,t)}=\frac{dx_3}{v_3(\vec x,t)}=dt$$
+
+Линии тока совпадают с траекториями частиц только тогда, когда
+$\frac{\vec v}{|\vec v|}$ не меняется со временем.
+\begin{question}
+Трубки тока и струи. Элементарные трубки тока. Тензор скоростей
+деформации. Тензор вихря. Вектор вихря.
+\end{question}
+Трубка тока~--- это объединение линий тока, проходящих через все
+точки данного контура. Струя~--- то же самое, только с
+траекториями.
+
+Элементарная трубка тока~--- это, вроде, когда маленький отрезок
+контура взяли. Но я не уверена.
+
+Рассмотрим дифференциал $dv_i=v_{i,j}dx_j$. Получился тензор.
+Разложим его на симметричную и антисимметричную часть:
+$v_{i,j}=v_{ij}+\Omega_{ij}$.
+
+$v_{ij}=\frac{1}{2}(v_{i,j}+v_{j,i})$~--- тензор скоростей
+деформаций;
+
+$\Omega_{ij}\hm=\frac{1}{2}(v_{i,j}\hm-v_{j,i})$~--- тензор
+вихря. Он имеет три различных ненулевых компоненты, и потому ему
+можно поставить в соответствие вектор: $\vec
+\Omega\hm=\Omega_i\vec e_i;$
+$\Omega_i\hm=\frac{1}{2}\epsilon_{ijk}\Omega_{kj}$
+
+\begin{question}
+Первая теорема Гельмгольца.
+\end{question}
+
+Заметим некоторые связи между тензорами $\underItilde{v}$,
+$\underItilde{\Omega}$, $\underItilde{\varepsilon}$,
+$\underItilde{w}$. Запишем производную перемещения: $du_i=v_idt$.
+Разлагая обе части на симметричную и антисимметричную часть,
+получим: $d\varepsilon_{ij}=v_{ij}dt;$ $dw_{ij}=\Omega_{ij}dt.$
+
+Выразим тензор вихря через вектор вихря:
+$\epsilon_{imn}\Omega_i=\frac{1}{2}\epsilon_{imn}\epsilon_{ijk}\Omega_{kj}\hm=
+\frac{1}{2}(\delta_{mj}\delta_{nk}\hm-\delta_{mk}\delta_{nj})\Omega_{kj}\hm=\frac{1}{2}(\Omega_{nm}\hm-\Omega_{mn})\hm=\Omega_{nm}$
+
+Теперь подставим все это в выражение для $dv_i$:
+
+$$dv_i=v_{ij}dx_j+\Omega_{ij}dx_j=\epsilon_{kji}\Omega_kdx_j+v_{ij}dx_j. $$
+
+Получим равенство:
+$$d\vec v=[\vec \Omega\times d\vec x]+\underItilde{v}d\vec x.$$
+
+Мы доказали первую теорему Гельмгольца.
+\begin{question}
+Вихревые линии. Вихревые трубки. Интенсивность вихревой трубки.
+Вторая теорема Гельмгольца.
+\end{question}
+
+Рассмотрим векторное поле $\vec \Omega$. Векторные линии этого
+поля называются вихревыми линиями, векторные трубки~--- вихревыми
+трубками.
+
+Выразим вектор $\vec \Omega$ через $\vec v$:
+$$\Omega_i=\frac{1}{2}\epsilon_{ijk}\Omega_{kj}=\frac{1}{2}\frac{1}{2}\epsilon_{ijk}(v_{k,j}-v_{j,k})=
+\frac{1}{4}(\epsilon_{ijk}v_{k,j}+\epsilon_{ikj}v_{j,k})=\frac{1}{2}\epsilon_{ijk}v_{k,j}=\frac{1}{2}\rot{\vec
+v}
+$$
+
+Получается, поле $\vec \Omega$ соленоидально, значит, его
+дивергенция рана нулю.
+
+Рассмотрим объем, заключенный между двумя сечениями $\Sigma_1$ и
+$\Sigma_2$ некой вихревой трубки, и запишем для него теорему
+Гаусса-Остроградского:
+$$0=\int_{V}\divergent\vec \Omega dV=\int_{S_{\delta
+ok}}\vec \Omega\cdot\vec n d\Sigma+\int_{\Sigma_1}\vec \Omega
+\cdot\vec n d\Sigma-\int_{\Sigma_2}\vec \Omega\cdot\vec n d\Sigma
+$$
+
+Первое слагаемое равно нулю, так как поток через боковую поверхность
+отсутствует. Отсюда получаем вторую теорему Гельмгольца: поток
+вектора вихря через любое сечение вихревой трубки равен одной и той
+же величине, называемой интенсивностью вихревой трубки.
+$$i=\int_{\Sigma}\vec \Omega\cdot\vec n d\Sigma $$
+\begin{question}
+Кинематическая теорема Кельвина
+\end{question}
+Пусть $\gamma$~--- некий путь, соединяющий точки $A$ и $B$. Имеет
+место следующее:
+$$\frac{d}{dt}\int_{\gamma}\vec v d\vec
+x\hm=\int_{\gamma}\frac{d\vec v}{dt}d\vec x\hm +\int_{\gamma}\vec
+v\frac{d}{dt}(d\vec x)=
+\int_{\gamma}\vec w d\vec
+x\hm+\int_{\gamma}\vec v d\vec v\hm= \int_{\gamma}\vec w d\vec
+x\hm+\frac{1}{2}(|v_B|^2-|v_A|^2)
+$$

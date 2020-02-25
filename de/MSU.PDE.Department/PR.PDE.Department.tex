@@ -1,0 +1,1441 @@
+\documentclass[a4paper]{article}
+\usepackage[xe]{dmvn}
+\usepackage{dmvnadd}
+
+\def\labelenumi{\bf \theenumi.}  % чтобы после полужирного номера шла точка;
+\def\theenumii{\ralph{enumii}}   % чтобы на втором уровне шли русские,
+\def\labelenumii{(\theenumii)}   % а не латинские буквы
+\def\p@enumii{\theenumi}         % а это для \ref
+\def\labelenumiii{{\bf--}}       % а на третьем уровне пусть будут лишь тире,
+\let\theenumiii\relax            % и отдельных ссылок на него не будет
+\def\p@enumiii{\theenumi\theenumii}
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\G{\Gamma}
+\def\d{\delta}
+\def\D{\Delta}
+\def\l{\lambda}
+\def\r{\rho}
+\def\fy{\varphi}
+\def\i#1#2{\int\limits_{#1}^{#2}}
+\def\s#1#2{\sum\limits_{#1}^{#2}}
+\def\cL{{\cal L}}
+
+\def\loc{\mathop{\rm loc}}
+
+\title{Экзаменационные задачи по УрЧП}
+\author{Кафедра дифференциальных уравнений}
+\date{Варианты прошлых лет}
+
+\begin{document}
+\maketitle
+
+\section*{Предисловие}
+
+Ниже приводятся некоторые задачи, предлагавшиеся студентам механико\д математического факультета МГУ на
+письменных экзаменах по уравнениям с частными производными и уравнениям математической физики в
+1994\ч 1998 годах. При подготовке данного списка было уменьшено количество стандартных задач, которые
+можно найти в существующих учебниках и учебных пособиях. Кроме того, при наличии нескольких близких по
+формулировкам задач в список, как правило, включалась лишь одна из них.
+
+В составлении экзаменационных заданий участвовали:
+Т.\,Д.\,Вентцель, А.\,С.\,Калашников, В.\,А.\,Кондратьев, С.\,Н.\,Кружков, Е.\,М.\,Ландис,
+Е.\,В.\,Радкевич. Отбор задач для настоящего текста и их редактирование
+выполнены А.\,С.\,Калашниковым.
+
+В качестве примеров опишем содержание трёх письменных экзаменационных
+работ. Номера задач указаны по приводимому ниже списку.
+
+$\qquad$ 30 мая 1994 г.: NN {\bf 5}(a),{\bf 14}, {\bf 24}, {\bf 51},
+{\bf 77}, {\bf 99}, {\bf 111}.
+
+$\qquad$ 17 июня 1995 г.: NN {\bf 15}, {\bf 26}, {\bf 35}, {\bf 60},
+{\bf 100}, {\bf 115}(а,б).
+
+$\qquad$ 5 июня 1998 г.: NN {\bf 13}, {\bf 36}, {\bf 46}, {\bf 53}, {\bf 78},
+{\bf 107}.
+
+\noindent
+На выполнение каждой из этих работ давалось 3 часа.
+
+\section*{Некоторые используемые обозначения}
+
+$\N$ -- множество всех натуральных чисел.
+
+\noindent
+$\Z$ -- множество всех целых чисел.
+
+\noindent
+$\Z_+=\N\cup\{0\}$ -- множество всех неотрицательных целых чисел.
+
+\noindent
+$\R$ -- множество всех действительных чисел.
+
+\noindent
+$\R_+$ -- множество всех положительных действительных чисел.
+
+\noindent
+$\R_-$ -- множество всех отрицательных действительных чисел.
+
+\noindent
+$\R^n$ -- $n$-мерное действительное линейное пространство.
+
+\noindent
+$(x_1,\dots,x_n)$ -- декартовы координаты в $\R^n$.
+
+\noindent
+$(\rho, \theta)$ -- полярные координаты в $\R^2$.
+
+\noindent
+$\Om$ -- область в $\R^n$, ограниченная, если не оговорено противное.
+
+\noindent
+$\partial \Om$ -- граница области $\Om$.
+
+\noindent
+$\nu$ -- единичная внешняя нормаль к $\partial\Om$.
+
+\noindent
+$B_a^n(x^0)=\{x\in\R^n\, \Big|\, |x-x^0|<a\}$ -- $n$-мерный шар
+радиуса $a$ с
+
+\noindent
+центром $x^0$.
+
+\noindent
+$S_a^n(x^0)=\partial B_a^n(x^0)=\{x\in\R^n\, \Big|\, |x-x^0|=a\}$.
+
+\noindent
+$Q_\Om^T=\Om\times(0,T]=\{(x,t)\in\R^{n+1}\, \Big|\, x\in \Om, 0<t\le T\}$
+($\Om$ может быть неограниченной).
+
+\noindent
+$Q_\Om^\infty=\Om\times\R_+=\{(x,t)\in\R^{n+1}\, \Big|\, x\in \Om, 0<
+t<+\infty\}$ ($\Om$ может быть неограниченной).
+
+\noindent
+$\D u= u_{x_1x_1}+u_{x_2x_2}+\dots+u_{x_nx_n}$ -- оператор Лапласа.
+
+\noindent
+$L_p(\Om)$ -- пространство функций, суммируемых с $p$-й степенью в $\Om$.
+
+\noindent
+$L_\infty(\Om)$ -- пространство функций, ограниченных и измеримых в $\Om$.
+
+\noindent
+$L_{p,\, \loc}(\R^n)$ -- пространство функций, принадлежащих
+$L_p(B_a(0))$
+при любом $a>0$.
+
+\noindent
+$H^1(\Om)$ -- пространство функций, принадлежащих $L_2(\Om)$ вместе со своими
+обобщенными производными в смысле Соболева первого порядка.
+
+\noindent
+$\stackrel{\circ}{H^1}(\Om)$ -- пополнение множества бесконечно
+дифференцируемых в $\Om$ функций, равных нулю в окрестности $\partial\Om$,
+по норме $H^1(\Om)$.
+
+\noindent
+$\Dc(\R^n)$ -- пространство бесконечно дифференцируемых финитных функций в
+$\R^n$.
+
+\noindent
+$\Dc'(\R^n)$ -- пространство линейных непрерывных функционалов
+
+\noindent
+на $\Dc(\R^n)$.
+
+\noindent
+$\d\in \Dc'(\R^n)$ -- "дельта-функция", т.е. функционал, определяемый
+формулой $<\d, \fy> = \fy(0)\ \ \forall \fy\in \Dc(\R^n)$.
+
+\noindent
+$\d_{x^0}\in\Dc'(\R^n)$, где $x^0\in\R^n,$ - "сдвинутая дельта-функция":
+$<\d_{x^0}, \fy> = \fy(x^0)\ \ \forall \fy\in \Dc(\R^n)$.
+
+\noindent
+$\Theta(x)$ -- функция Хевисайда: $\Theta(x)=1$ для $x\ge0$, $\Theta(x)=0$
+для $x<0$.
+
+\noindent
+$x_+=\hbox{max}\, \{x,0\}; \qquad x_-=\hbox{max}\, \{-x,0\}.$
+
+\section{Вспомогательные сведения из функционального анализа}
+
+\begin{enumerate}
+\item
+Пусть $u(x,y)$ -- характеристическая функция квадрата $(-1,1)\times(-1,1).$
+Найти $\frac{\partial^2 u}{\partial x\, \partial y}$ в смысле теории
+обобщённых функций.
+
+\item
+Найти все фундаментальные решения оператора
+$$
+\cL u(x)=\frac{d^2 u(x)}{dx^2} +\frac{d u(x)}{dx}.
+$$
+
+\item
+Найти фундаментальное решение оператора
+$$
+\cL u(x,y)= u_{xx}(x,y) - u_{yy}(x,y),
+$$
+обращающееся в нуль при $y<0$.
+
+\item
+Пусть $f\in H^1(B_1^n(0))$. Возможно ли, что $f\notin L_\infty (B_1^n(0))$
+
+\begin{enumerate}
+\item
+при $n=3;$
+\item
+при $n=2;$
+\item
+при $n=1?$
+\end{enumerate}
+
+\item
+При каких $\a$ функция $u(x,y) = \left|\hbox{ln}\, (x^2+y^2)\right|^\a$
+принадлежит пространству $H^1(\Om)$, если
+\begin{enumerate}
+\item
+$\Om=B_{\frac{1}{2}}^2(0);$
+\item
+$\Om=B_2^2(0)\backslash \overline{B^2_{\frac{1}{2}}(0)}?$
+\end{enumerate}
+
+\item
+При каких $\a$ функция $u(x,y) = \left|\hbox{ln}\, (x^2+xy+2y^2)\right|^\a$
+принадлежит пространству $H^1(\Om)$, где
+$\Om=\left(-\frac{1}{4},\frac{1}{4}\right)\times
+\left(-\frac{1}{4},\frac{1}{4}\right)?$
+
+\item
+При каких $\a,\b$ функция $f(x) = |x|^\a\ \hbox{cos}\, \b x$
+принадлежит пространству $\stackrel{\circ}{H^1}((-1,1))$?
+
+\item
+При каких $\a,\b$ функция $f(x) = \left|\hbox{ln}\,|x|\right|^\a\
+\hbox{cos}\,( \b |x|)$, где $x=(x_1,\dots,x_n)$,
+принадлежит пространству $\stackrel{\circ}{H^1}(B^n_{\frac{1}{2}}(0))$?
+
+\item
+Пусть $D=\{x=(x_1,\dots,x_n)\in \R^n\, \Big|\, x_1^2+\dots+x_{n-1}^2<
+ax_n^2,\, 0<x_n<+\infty\}.$ Доказать, что для любой постоянной $C>0$ найдутся
+такая ограниченная область $\Om\subset D$ и такая функция $f\in \stackrel
+{\circ}{H^1}(\Om),$ что
+$$
+\int\limits_{\Om} f^2(x)\ dx > C\ \int\limits_{\Om}|\hbox{grad}\, f(x)|^2\,
+dx.
+$$
+
+
+\section{Общие понятия теории уравнений с частными производными}
+
+\item\label{10}
+Существует ли уравнение вида
+\begin{equation}\label{*}
+\s{i,j=1}{n} a_{ij}(x_1,\dots,x_n)\,u_{x_ix_j}=0, \qquad a_{ij}\in
+C(\R^n),
+\end{equation}
+являющееся
+эллиптическим на непустом множестве $D\subset \R^n,$
+$D\neq \R^n,$ и гиперболическим
+на его дополнении $\R^n\backslash D$?
+
+\item
+Верны ли следующие утверждения:
+если уравнение~(\ref{*}) (см. задачу~\ref{10}) - гиперболическое
+(эллиптическое, параболическое) в точке
+$(x_1,\dots,x_n)$, то оно является гиперболическим
+(соответственно эллиптическим, параболическим) также в некоторой
+окрестности этой точки?
+
+\item
+При каких $(x, y,z)\in\R^3$ уравнение
+$$
+u_{xy}+(3x+y-z) u_{xz} + (3x-y+z)u_{yz} =0
+$$
+является гиперболическим?
+
+\item
+\begin{enumerate}
+
+  \item
+  Сформулировать определение характеристики уравнения~(\ref{*}) (см. задачу
+  \ref{10}).
+
+  \item
+  Найти характеристики уравнения $u_{xx}-y^2u_{yy}=0$, проходящие через:
+  \begin{enumerate}
+
+     \item
+     точку $(1,2)$;
+
+     \item
+     точку $(1,0)$.
+
+  \end{enumerate}
+
+\end{enumerate}
+
+\item
+\begin{enumerate}
+
+  \item
+  Определить тип уравнения $2 u_{xx}+u_{xy} =1.$
+
+  \item
+  Найти его характеристики.
+
+  \item
+  Найти его общее решение.
+
+\end{enumerate}
+
+\item
+\begin{enumerate}
+
+  \item
+  Найти все характеристики уравнения
+  $$u_{xy}-u_{yy}-u_{x}+u_y =0.$$
+
+  \item
+  Найти его общее решение.
+
+\end{enumerate}
+
+\item
+Найти характеристики уравнения $u_{tt}=u_{xx}+u_{yy}$, проходящие через
+прямую $t=0, y=x$.
+
+\item
+Найти все характеристики уравнения
+$$u_{xx}+2u_{yy}+2\a u_{yz}+\a^2 u_{zz} +u_z+ u=1$$
+при каждом $\a\in\R.$
+
+\item
+Найти общее решение уравнения
+$$u_{xx}+2u_{xy}+2 u_{xz}+u_{yy} +2u_{yz} +u_{zz} - u=0.$$
+
+\item
+\begin{enumerate}
+
+\item
+Привести уравнение
+$$u_{xx}+u_{xy}-2u_{yy}+3(x+y)u_x+6(x+y)u_y+9u=0$$
+к виду, не содержащему несмешанных производных второго порядка.
+
+\item
+Найти общее решение исходного уравнения.
+\end{enumerate}
+
+\item
+\begin{enumerate}
+
+\item
+Сформулировать теорему о существовании и един\-ствен\-нос\-ти аналитического
+решения не\-ха\-рак\-те\-рис\-ти\-чес\-кой об\-об\-щ\"ен\-ной за\-да\-чи Коши.
+
+\item
+При каких вещественных $\a$ и $\b$ эта теорема применима к следующей задаче:
+$$u_{xy}+3u_{yy}+u=xy,\quad u\Big|_S=u_x\Big|_S=u_y\Big|_S=0,$$
+где $S$ задаётся уравнением $\a x+\b y=1$?
+\end{enumerate}
+
+\item
+\begin{enumerate}
+
+  \item\label{7c}
+  Найти все $\a,$ для которых существует функция $u(x,y)$,
+  принадлежащая
+  $$C^1(\R^2)\cap C^2(\{x\ge0\})\cap C^2(\{x\le0\}),$$
+  удовлетворяющая уравнению $\a u_{xx}+u_{xy}+u_{yy}=0$ при $x\neq0$ и
+  условиям $u(0,y)=1,$ $u_x(0, y)=0,$ но не принадлежащая
+  $C^2(B_a^2(0,y_0))$ ни при каких $y_0\in\R$ и $a>0$.
+
+  \item
+  Найти все $\a,$ для которых при любой $f\in L_{1, \loc}(\R)$
+  функция $u(x,y)=f(x+y)$ удовлетворяет в $\Dc'(\R^2)$ уравнению из пункта
+  (а).
+\end{enumerate}
+
+%\item                  Бывшая 8)
+%Пусть $Lu:=a\frac{\partial^2u}{\partial x_1\,\partial x_2}, a\in\R$.
+%При каком $\lambda\in \R$ функция $E(x_1,x_2)=\lambda\theta(x_1)
+%\theta(x_2)$ (где $\theta(s)=1$ для $s>0,$ $\theta(s)=0$ для $s<0$)
+%является фундаментальным решением оператора $L$?
+
+%\item                  Бывшая 9)
+%\begin{enumerate}
+%
+%\item
+%Найти все плоскости, являющиеся характеристиками уравнения
+%$$u_{tt}=16u_{xx}+4u_{yy}.$$
+%
+%\item
+%Найти те из них, которые содержат прямую $t=0,$ $y=\frac{1}{3}(1-2x).$
+%\end{enumerate}
+
+%\item                   Бывшая 10) а)
+%Сформулировать определение корректной краевой задачи.
+
+%\item                   Бывшая 10) б)
+%Рассматривается задача
+%$$u_{tt}-u_{xx}=0,\quad (x,t)\in\overline{\Om}:=[0,1]\times[0,1];
+%\qquad u\Big|_{\partial\Om}=f.$$
+%Корректна ли она в паре пространств $(E_0,E_1),$ где
+%$$E_0=\{u(x,t)\, |\, u\in C^2(\overline\Om)\}, \|u\|_{E_0}=
+%\max\limits_{\overline\Om} |u(x,t)|,$$
+%$$E_1=\{f(x,t)\, |\, f\in
+%C^2(\partial\Om)\}, \|f\|_{E_1}=\max\limits_{\partial\Om}|f(x,t)|?$$
+
+\item
+Рассматривается задача
+$$u_{tt}=u_{xx},\ (x,t)\in\overline{\Om}:=\{(x,t)\, |\, 0\le t\le 2x,
+0\le x<+\infty\};$$
+$$u(x,0)=0, u(x,2x)=\fy(x), 0\le x<+\infty;$$
+$$\qquad\qquad\qquad\quad\fy\in C^2(\overline{\R}_+)\cap
+L_\infty(\overline{\R}_+),\quad\qquad\qquad\qquad (*)$$
+$$\qquad\qquad\qquad\ \ \fy(0)=\fy'(0)=\fy''(0)=0.
+\qquad\qquad\qquad\ (**)$$
+Корректна ли она в паре пространств $(E_0,E_1)$, где
+$$E_0=C^2(\overline\Om)
+\cap L_\infty(\overline\Om), \ \|u\|_{E_0}=
+\sup\limits_{\overline\Om} |u(x,t)|,$$
+$$E_1=\{\fy(x)\, |\, \fy\, \hbox{удовлетворяет}\, (*), (**)\},
+\ \|\fy\|_{E_1}=\supl{\ol \R_+}|\fy(x)|?$$
+
+\item
+Корректна ли краевая задача:
+$$u_{t}=u_{xx},\quad (x,t)\in Q:=(0,1)\times(0,2];$$
+$$u(x,0)=\fy(x), \ 0\le x\le 1; \qquad u(0,t)=u(1,t)=0, \
+0\le t\le 2, -$$
+в паре пространств $(E_0,E_1),$ где
+$$E_0=\{u(x,t)\, |\, u\in C^{2,1}_{x,t}(Q)\cap C(\overline Q)\}, \
+\|u\|_{E_0}=\max\limits_{\overline Q} |u(x,t)|,$$
+$$E_1=\{\fy(x)\, |\, \fy\in C^1([0,1]), \fy(0)=\fy(1)=0\}, \
+\|\fy\|_{E_1}=\max\limits_{[0,1]}|\fy(x)|?$$
+
+\item
+Корректна ли задача Коши для уравнения $u_{tt}=u_{xx}$ в полосе
+$\ol Q :=\ol{Q^T_\R}$\ $(0<T<+\infty)$
+с условиями $u(x,0)=\fy_1(x)$, $u_t(x,0)=\fy_2(x),$\ $x\in \R,$
+в паре пространств $(E_0,E_1),$ где
+$$E_0=\{u(x,t)\, |\, u\in C^2(\overline Q),\, \sup\limits_{\overline Q}
+|u(x,t)|<+\infty\}, \ \|u\|_{E_0}=\sup\limits_{\overline Q} |u(x,t)|,$$
+$$E_1=\bigg\{\Phi(x)=(\fy_1(x),\fy_2(x))\,\bigg|\,\fy_1\in C^2(\R),
+\fy_2\in C^1(\R),$$
+$$\supl{\R} |\fy_j(x)|<+\infty\quad( j=1,2)\bigg\},$$
+$$\|\Phi\|_{E_1}=\supl\R\left|\fy_1(x)\right| + \supl{\R}
+\left|\fy_2(x)\right|?$$
+
+\item
+Корректна ли задача Коши для уравнения $u_{t}=-u_{xx}$\ в полосе
+$Q:=Q_\R^T \, (0<T<+\infty)$\ с условием
+$u(x,0)=\fy(x), \ x \in \R,$
+в паре пространств $(E_0,E_1),$ где
+$$E_0=\{u(x,t)\, |\, u\in C^{2,1}_{x,t}(Q)\cap C(\overline Q)\cap
+L_\infty(\overline{Q})\}, \ \|u\|_{E_0}=\sup\limits_{\overline Q}|u(x,t)|,$$
+$$E_1=\{\fy(x)\, \bigg|\, \frac{d^j\fy}{dx^j}\in
+C(\R)\cap L_\infty(\R) \quad(j=0,1,\dots,p)\},$$
+$$\|\fy\|_{E_1}=\s{j=0}{p} \supl{\R}\left|\frac{d^j\fy(x)}
+{dx^j}\right|, p\in \N\, \hbox{фиксировано}?$$
+
+\item
+Рассматривается задача Коши для уравнения
+$u_{tt}=u_x$ с условиями
+$u(x,0)=\fy_1(x), u_{t}(x,0)=\fy_2(x).$
+\begin{enumerate}
+
+  \item
+  Применима ли к ней теорема Коши - Ковалевской в случае аналитических
+  $\fy_1$ и $\fy_2$?
+
+  \item
+  Корректна ли эта задача в паре пространств $(E_0,E_1)$, где
+  $$E_0=\{u(x,t)\ |\ u\in C^{1,2}_{x,t}(\overline Q)
+  \cap L_\infty(\overline Q)\}, \ Q:=Q^1_\R, \ \|u\|_{E_0}=\sup
+  \limits_{\overline Q} |u(x,t)|,$$
+  $$E_1=\left\{\Phi=(\fy_1,\fy_2) \ \bigg| \ \frac{d^j\fy_i}{dx^j}\in
+  C(\R)\cap L_\infty(\R) \ (i=1,2; j=0,1,2)\right\},$$
+  $$\|\Phi\|_{E_1}=\s{i=1}{2}\s{j=0}{2} \supl{\R}
+  \left|\frac{d^j\fy_i(x_1)}{dx^j}\right|?$$
+\end{enumerate}
+
+\item
+Рассматривается краевая задача
+$$u_{t}+\a u_x=0,\quad (x,t)\in \overline Q:=\overline{\R}_+\times
+\overline{\R_+};
+$$
+$$u(x,0)=g_1(x), \ x\in \overline{\R}_+;$$
+$$u(0,t)=g_2(t), \ t\in \overline{\R}_+.$$
+Найти все $\a,$ при которых эта задача корректна в паре пространств
+$(E_0,E_1)$, где
+$$E_0=C^1(\overline Q)\cap L_\infty(\overline{Q})\}, \ \|u\|_{E_0}=\sup
+\limits_{\overline Q}|u(x,t)|,$$
+$$E_1=\bigg\{\Phi=(0,g_1,g_2)\, |\, g_j\in C^1(\overline{\R}_+)\cap L_\infty
+(\overline{\R}_+) \quad(j=1,2),$$
+$$g_1(0)=g_2(0),\, g_2'(0)+\a g_1'(0)=0\bigg\},$$
+$$\|\Phi\|_{E_1}=\supl{\ol \R_+}\left|g_1(x)\right| +
+\supl{\ol \R_+}\left|g_2(x)\right|.$$
+
+
+
+%----------------------------------------------
+\section{Уравнения гиперболического типа.}
+%----------------------------------------------
+
+
+\item
+Существует ли неограниченная в $\overline{B_1^2(0)}\backslash\{0\}$
+функция $u\in C^2(\overline{B_1^2(0)}\backslash\{0\})$, удовлетворяющая в
+$\overline{B_1^2(0)}\backslash\{0\}$ уравнению $u_{x_1x_1}=u_{x_2x_2}$?
+
+\item
+Пусть $u\in C^2(\R^2), \ u_{x_1x_1}=u_{x_2x_2}$ в $\R^2$,
+$u(x)=0\ \forall x \in \overline{B_1^2(0)}$. Найти наибольшее множество
+в $\R^2$, на котором необходимо $u(x)=0.$
+
+\item
+Пусть $u(x,t)$ -- решение задачи Коши для уравнения $u_{tt}=u_{xx}$ в
+$\R\times\R_+$ с начальными условиями $u(x,0)=0,$ $u_t(x,0)=(1+x^2)^\a
+e^{\b x^2}.$ Найти все $\a,\b,$ при которых $\supl{\R \times \R_+}
+|u(x,t)|<+\infty.$
+
+\item
+Пусть $u(x,t)$ -- решение задачи Коши для уравнения $u_{tt}=u_{xx}$ в
+$\R\times\R_+$ с начальными условиями $u(x,0)=0,$ $u_t(x,0)=(x^3+\a^2x^4)
+(1+x^2)^\b.$ Найти все $\a,\b,$ при которых существует конечный
+$\liml{t\ra+\infty} u(0,t).$
+
+\item
+Пусть $u(x,t;a)$ -- решение задачи Коши для уравнения $u_{tt}=a^2u_{xx}$
+$(a>0)$ в $\R\times\R_+$ с начальными условиями $u(x,0)=\displaystyle
+{\frac{1}{1+x^2}},$ $u_t(x,0)=0.$ Доказать, что $u(x,t;a)$
+убывает по $a.$
+
+\item
+Пусть $u(x,t)$ -- решение задачи Коши для уравнения $u_{tt}=a^2u_{xx}$
+$(a>0)$ в $\R\times\R_+$ с начальными условиями $u(x,0)=\fy(x),$
+$u_t(x,0)=\psi(x),$ причём $\fy(x)=\psi(x)=0$ для $|x|\ge1.$ Доказать,
+что для любого $x_0$ существуют такие числа $t_0$ и $c$, что $u(x_0,t)=c$
+при всех $t\ge t_0.$ Найти эти числа.
+
+\item
+Пусть $u(x,t)$ -- решение задачи Коши для уравнения $u_{tt}=a^2u_{xx}$
+$(a>0)$ в $\R\times\R_+$ с начальными условиями $u(x,0)=\fy(x),$
+$u_t(x,0)=0,$ прич\"ем $|\fy(x)|\le 1$ для всех $x\in\R,$ $\fy(x)=0$
+для $|x|\ge1$. Найти нижнюю грань множества таких значений $\tau$, что
+при всех $t\ge\tau, x\in\R$ и любых $\fy$ с указанными свойствами
+выполняется неравенство $|u(x,t)|\le \displaystyle{\frac{1}{2}}$
+
+\item
+Пусть $u(x,t)$ -- решение задачи:
+$$u_{tt}=u_{xx},\ x\in \overline{\R}_+,\ t\in\overline{\R}_+;$$
+$$u(x,0)=- \sin^3x,\ \pi<x<2\pi;\ \ u(x,0)=0,\ x\notin(\pi,2\pi);$$
+$$u_t(x,0)=0,\ x\in\overline{\R}_+;\ \ u_x(0,t)=0,
+t\in\overline{\R}_+.$$
+\begin{enumerate}
+\item
+Найти множество $\{(x,t)\in\overline{\R}_+\times\overline{\R}_+ \ |\
+u(x,t)\neq0\}.$
+\item
+Нарисовать это множество.
+\item
+Нарисовать графики $u(x,\frac{3\pi}{2}), \ u(x,\frac{5\pi}{2}).$
+\end{enumerate}
+
+\item
+Пусть $u(x,t)$ -- решение задачи:
+$$u_{tt}=4u_{xx},\ x\in \overline{\R}_+,\ t\in\overline{\R}_+;$$
+$$u(x,0)=\sin^3x,\ \pi<x<2\pi;\ \ u(x,0)=0,\ x\notin(\pi,2\pi);$$
+$$u_t(x,0)=0,\ x\in\overline{\R}_+;\ \ u(0,t)=0,t\in\overline{\R}_+.$$
+\begin{enumerate}
+  \item
+  Нарисовать график $u(x,2\pi).$
+  \item
+  Тот же вопрос для случая, когда уравнение рассматривается для
+  $x\in [0,2\pi]$, $t\in\overline{\R}_+$ и ставится дополнительное условие
+  $u(2\pi,t)=0, t\in\overline{\R}_+.$
+  \item
+  Тот же вопрос для случая, когда последнее условие заменяется условием
+  $u_x(2\pi,t)=0, t\in\overline{\R}_+.$
+\end{enumerate}
+
+\item
+При каких $\lambda=\hbox{const}$ и $\fy(x)$ существует функция $u(x,t)$
+со следующими свойствами: $u\in C^2(\overline{\R}_+\times
+\overline{\R}_+);$ $u_{tt}=u_{xx},\ (x,t)\in
+\overline{\R}_+\times\overline{\R}_+;$
+$u(x,0)=\fy(x)$, $x\in \overline{\R }_+$; $u_t(x,0)=0$,
+$x\in \overline{\R}_+;$ $(u_t+\lambda u_x)(0,t)=0$, $t\in
+\overline{\R}_+$? Найти эту функцию.
+
+\item
+Ищется решение $u(x,t)$ уравнения $u_{tt}=u_{xx}$ с условиями
+$u(x,x)=\fy(x), 0\le x\le 1;$ $u(x,2x)=\psi(x), 0\le x\le \frac{1}{2}.$
+Здесь $\fy\in C^2([0,1]),$ $\psi\in C^2([0,\frac{1}{2}]);$ $\fy^{(k)}(0)=
+\psi^{(k)}(0)=0$ для $k=0,1,2.$
+\begin{enumerate}
+\item
+Описать с помощью неравенств множество всех значений $(x,t)\in\R^2,$
+для которых однозначно определено решение $u(x,t)$ этой задачи.
+\item
+Нарисовать это множество.
+\item
+Найти решение $u(x,t)$ рассматриваемой задачи.
+\end{enumerate}
+
+\item
+При каких $k, \a$ и $\b$ существует решение $u(x,t)$
+следующей задачи:
+$$u_{tt}=u_{xx}\  \hbox{в}\  \overline D=\{(x,t)\ |\ kt\le x<+\infty,\,
+0\le t< +\infty\};\quad u\in C^2(\overline D);$$
+$$u(x,0)=u_t(x,0)=0,\ x\in \overline{\R}_+;
+\ u(kt, t)=\a t^\b,\ t\in \overline{\R}_+?$$
+Единственно ли оно?
+
+\item
+При каких $\fy\in C^2(\R)$ и $\psi\in C^2(\R)$
+существует решение $u\in C^2(\R^2)$ задачи:
+$$u_{tt}=u_{xx}, (x,t)\in \R^2;$$
+$$u(x,x)=\fy(x), x\in\R;\quad u_t(x,x)=\psi(x), x\in\R?$$
+
+\item
+При каких $A$ и $\om$ существует решение $u\in C^2\left(\left(
+\overline{\R}_+\right)^2\right)$ краевой задачи:
+$u_{tt}=u_{xx}$  в $\left(\overline{\R}_+\right)^2$;\ $u(x,0)=
+A\,e^{-x^2},$ $x\in \overline{\R}_+$; $u_t(x,0)=0, x\in
+\overline{\R}_+;$ $u(0,t)=\cos \om t, t\in
+\overline{\R}_+$? Найти это решение.
+
+\item
+Найти решение задачи:
+$$u_{tt}=u_{xx}+u_{yy},\   (x,y,t)\in\R^2\times\R_+;$$
+$$u(x,y,0)= e^{-x^2}+\arctg \, y,\ u_t(x,y,0)=\cos x+\sin y, (x,y)\in
+\R^2.$$
+
+\item
+Найти решение задачи:
+$$u_{tt} = \Delta_xu,\ x=(x_1,x_2,x_3)\in \R^3, t\ge 0;$$
+$$u(x,0)=0, \quad u_t(x,0)=|x|^7,\ x \in\R^3.$$
+
+\item
+Найти решение задачи:
+$$u_{tt} = \Delta_xu,\ x=(x_1,x_2,x_3)\in \R^3, t\ge 0;$$
+$$u(x,0)=0, \quad u_t(x,0)=\frac{1}{1+(x_1+x_2+x_3)^2},\ x \in\R^3.$$
+
+\item
+Пусть $u(x_1,x_2,t)$\т решение задачи Коши:
+$$u_{tt}=u_{x_1x_1} + u_{x_2x_2},\ (x_1,x_2,t)\in \R^2\times
+\overline{\R}_+;$$
+$$u(x_1,x_2,0)=0\ \ \forall\ (x_1,x_2)\in \R^2;\quad
+u_t(x_1,x_2,0)=\psi(x_1,x_2),$$
+$\psi\in C^2(\R^2),$ $\psi(x_1,x_2)=0$ при $(x_1,x_2)\in
+[0,1]\times[0,2],$ $\psi(x_1,x_2)>0$ при остальных $(x_1,x_2).$
+\begin{enumerate}
+\item
+Описать с помощью неравенств множество всех значений $(x_1,x_2,t)\in
+\R^2\times\overline{\R}_+,$ для которых $u(x_1,x_2,t)=0.$
+\item
+Нарисовать это множество.
+\end{enumerate}
+
+\item
+Пусть $u(x_1,x_2,t)$ -- решение задачи Коши:
+$$u_{tt}=u_{x_1x_1} + u_{x_2x_2},\ (x_1,x_2,t)\in \R^2\times
+\overline{\R}_+;$$
+$$u(x_1,x_2,0)=0\ \ \forall\ (x_1,x_2)\in \R^2;\quad
+u_t(x_1,x_2,0)=\psi(x_1,x_2),$$
+$\psi\in C^2(\R^2),$ $\psi(x_1,x_2)>0$ в $B_1^2(0),$
+$\psi(x_1,x_2)=0$ в $\R^2\backslash B_1^2(0).$
+\begin{enumerate}
+\item
+При каких $(x_1, x_2,t)$ функция $u(x_1,x_2,t)$ равна нулю?
+\item
+В случае, когда $\psi(x_1,x_2)=(1-x_1^2-x_2^2)^3_+,$ найти
+$\liml{t\ra+\infty} t u(x_1,x_2,t).$
+\end{enumerate}
+
+\item
+Пусть $u(x,t)$ -- решение задачи Коши:
+$$
+u_{tt}=\D_x u, \ (x,t)\in \R^3\times\overline{\R}_+;$$
+$$
+u(x,0)=0, \ u_t(x,0)=(1+4|x|^2)^{-1/2}, \ x\in \R^3.$$
+Найти $\liml{t\ra+\infty} u(0,t).$
+
+\item
+Пусть $u(x,t)$ -- решение задачи Коши:
+$$
+u_{tt}=\D_x u, \ (x,t)\in \R^3\times\overline{\R}_+;$$
+$$
+u(x,0)=0, \ u_t(x,0)=\psi(x), \ x\in \R^3,$$
+где $\psi(x)=0$ при $0.9\le|x|\le1,$ $\psi(x)>0$ для остальных $x.$
+При каких $(x,t)$ функция $u(x,t)$ равна нулю?
+
+\item
+Пусть $\{u_k(x,t)\}$ $(k=1,2,\dots)$ -- последовательность функций класса
+$C^2$, удовлетворяющих соотношениям
+$$
+\frac{\partial^2 u_k}{\partial t^2} =k^\a \frac{\partial^2 u_k}{\partial x^2},
+\ x\in\R, 0\le t\le k;$$
+$$u_k(x,0)>0, k^\b<x<+\infty;\quad
+u_k(x,0)=0, -\infty<x\le k^\b;$$
+$$\pf{u_k}{t}(x,0)=0, \ x\in\R.$$
+При каких $\a>0,\ \b>0$ найд\"ется такое $x_0,$ не зависящее от $k$,
+что $u_k(x,t)=0$ для $(x,t)\in (-\infty, x_0]\times[0,k]$ $(k=1,2,\dots)$?
+
+\item
+Пусть $\{u_\ep(x,y,t)\} (0<\ep\le\frac{1}{2})$ -- семейство функций класса
+$C^2$, удовлетворяющих соотношениям
+$$
+\ep\frac{\partial^2 u_\ep}{\partial t^2} = \frac{\partial^2 u_\ep}
+{\partial x^2}+ \frac{\partial^2 u_\ep}{\partial y^2},
+\ (x,y)\in\R^2, 0\le t\le \ep^{-m};$$
+$$u_\ep(x,y,0)=0, \ (x,y)\in\R^2;$$
+$$\pf{u_\ep}{t}(x,y,0)=0, \ x^2+y^2\le \ep^{-q};\qquad
+\pf{u_\ep}{t}(x,y,0)>0, \ x^2+y^2> \ep^{-q}.$$
+При каких $m>0,\ q>0$ найд\"ется такое $\rho>0,$ не зависящее от $\ep$,
+что $u_\ep(x,y,t)=0$ для $x^2+y^2\le\rho^2, \ 0\le t\le \ep^{-m}
+(0<\ep\le\frac{1}{2})$?
+
+\item
+Сформулировать теорему об обосновании метода Фурье для уравнения колебаний
+струны и доказать необходимость условий согласования, содержащихся в
+формулировке этой теоремы.
+
+\item
+Указать все значения постоянных $\a, \b$ и $\g$,\, при которых существует
+решение $u\in C^2(\overline Q)$ смешанной задачи для уравнения
+$u_{tt}=u_{xx}$ в квадрате $\overline Q=\{(x,t)\,|\,0\le x\le\pi,
+0\le t\le\pi\} $ с условиями $u(x,0)=\a x^4+\b x^3+
+\sin x,$ $u_t(x,0)=\g \cos x,$\,$0\le x\le\pi$;\
+$u(0,t)=u(\pi,t)=0,$\,$0\le t\le\pi$.  Найти это
+решение.
+
+\item
+Пусть $u(x,t)$ -- решение смешанной задачи
+$$
+u_{tt}=4u_{xx},\ 0\le x\le 1, t\in \overline{\R}_+;$$
+$$
+u(x,0)= 4 \sin^3 \pi x, \ u_t(x,0)=30 x(1-x), \ 0\le x\le 1;$$
+$$u(0,t)=u(1,t)=0, \ t\in\overline{\R}_+.$$
+\begin{enumerate}
+
+   \item
+   Найти $f(\frac{1}{3})$, где $f(t)=\displaystyle{\int\limits_{0}^{1}
+   \left[u_t^2(x,t)+4u_x^2(x,t)\right]\ dx}.$
+
+   \item
+   Найти $u(x,2).$
+
+\end{enumerate}
+
+\item
+Пусть $u(x,t)$ -- решение смешанной задачи
+$$u_{tt}=u_{xx},\ 0\le x\le\pi,\, t\in\overline{\R}_+;$$
+$$u(x,0)=\sin^{100}x,\ u_t(x,0)=0,\ 0\le x\le \pi;$$
+$$u(0,t)=u(\pi, t)=0,\ t\in\overline{\R}_+.$$
+Верно ли, что $|u_t(x,\frac{\pi}{2})|>100$ на множестве, мера которого
+больше 1?
+
+\item
+Пусть $u(x,t)$ -- решение смешанной задачи
+$$u_{tt}=u_{xx},\ 0\le x\le1,\, t\in\overline{\R}_+;$$
+$$u(x,0)=0,\ u_t(x,0)=x^2(1-x),\ 0\le x\le 1;$$
+$$u(0,t)=u(1, t)=0,\ t\in\overline{\R}_+.$$
+Найти $\liml{t\ra+\infty}\displaystyle{\int\limits_{0}^{1}
+\left[u_t^2(x,t)+u_x^2(x,t)\right]\ dx}.$
+
+\item
+Пусть $u(x,t)$ -- решение смешанной задачи
+$$u_{tt}=u_{xx},\ 0\le x\le1,\, t\in\overline{\R}_+;$$
+$$u(x,0)=0,\ u_t(x,0)=x^2(1-x)^2,\ 0\le x\le 1;$$
+$$u(0,t)=u(1, t)=0, \ t\in\overline{\R}_+.$$
+Найти $\liml{t\ra+\infty}\displaystyle{\int\limits_{0}^{1/2}
+\left[u_t^2(x,t)+u_x^2(x,t)\right]\ dx}.$
+
+\item
+Пусть $u(x,t)$ -- решение смешанной задачи
+$$u_{tt}=u_{xx}+\sin x\, \cos 5x\, \sin\om t,\ (x,t)\in \overline Q:=
+[0,\pi]\times\overline{\R}_+;$$
+$$u(x,0)=u_t(x,0)=0,\ 0\le x\le \pi; \ \ u(0,t)=u(\pi, t)=0,
+t\in\overline{\R}_+.$$
+Найти все $\om$, для которых $\sup\limits_{\overline Q}
+|u(x,t)|<+\infty.$
+
+%\item             Бывшая 13)
+%Пусть в предыдущей задаче начальные условия заменяются следующими:
+%$$u(x,0)=(x-x^2)^{10}e^{-x^3},\ u_t(x,0)=\sin^5 x.$$
+%Найти $u(x,4\pi).$
+
+\item
+Пусть $u(x,t)$ -- решение смешанной задачи
+$$u_{tt}=u_{xx},\  (x,t)\in \overline{Q}:= [0,1]\times\overline{\R}_+;$$
+$$u(x,0)=0,\ u_t(x,0)=\a x,\ 0\le x\le 1;$$
+$$u(0,t)=0,\ u(1, t)=\sin\a t, t\in \overline{\R}_+.$$
+Найти все $\a,$ для которых $\sup\limits_{\overline Q}
+|u(x,t)|<+\infty.$
+
+\item
+Пусть $\overline{Q}=[0,1]\times[0,1], \ f\in C^2(\partial Q).$ Единственно ли
+решение $u(x,t)$ следующей задачи: $u\in C^2(\overline{Q});$
+$u_{tt}=u_{xx},$
+
+\noindent
+$(x,t)\in \overline{Q}; \ u\Big|_{\partial Q} = f?$
+
+
+
+%----------------------------------------------
+\section{Уравнения параболического типа.}
+%----------------------------------------------
+
+\item
+\begin{enumerate}
+  \item
+  Сформулировать постановку первой краевой задачи для уравнения
+  теплопроводности.
+
+  \item
+  Может ли отличное от постоянной решение этой задачи принимать
+  наименьшее значение во внутренней точке?
+\end{enumerate}
+
+\item
+Пусть $\overline Q:=[0,1]\times[0,1]$, $u\in C^{2,1}_{x,t}(\overline Q)$;
+$u_t=u_{xx}$,\  $(x,t)\in \overline Q$;\ $u(x,0)>0$,\ $0<x<1$;\
+$u(0,t)=u(1,t)=0$,\ $0\le t\le1.$ Может ли функция
+$$f(t):=\i{0}{1} u^2(x, t) dx$$
+иметь максимум внутри интервала $(0,1)$?
+
+\item
+Пусть $Q:=(-1,1)\times(0,1],$ $\G:=\overline Q\backslash Q;$ $u\in
+C^{2,1}_{x,t}(Q)\cap C(\overline Q);$ $q\in C(\overline Q);$\
+$u_t=u_{xx} + q(x, t) u$,\  $(x,t)\in Q$;\ $M:=\max\limits_{\overline Q} u;$
+$m:=\max\limits_\G u$. Возможно ли, что $M>m$, если:
+\begin{enumerate}
+  \item
+  $q(x,t)\equiv 0;$
+  \item
+  $q(x,t)> 0;$
+  \item
+  $q(x,t)< 0,\ M>0?$
+\end{enumerate}
+
+\item
+Пусть $Q:=(0,1)\times(0,1].$ Существует ли функция $u(x,t)$ со следующими
+свойствами: $u\in C^{2,1}_{x,t}(Q)\cap C(\overline Q)$;\
+$u_t=u_{xx}$,\ $(x,t)\in Q$;\ $u(x,0) = 2\sin\pi x,\ $ $0\le x\le1$;\
+$u(x,1) = 3\sin \pi x,$\ $0\le x\le1$;\ $u(0,t) = \sin\pi t$,\
+$0\le t\le1$;\ $u(1,t) = \sin\pi t + 2\sin \pi t$,\ $0\le t\le1$?
+
+\item
+Пусть $\overline Q=\{(x,t)\in\R^2\, |\, x^2+t^2\le 1\}.$
+Существует ли функция $u\in C^2(\overline Q)$, удовлетворяющая
+уравнению $u_t=u_{xx}+1$ в $\overline Q$ и условию $x u_x = t u$ на
+$\partial Q$?
+
+\item
+Пусть $Q:=(0,3)\times(0,1];\ $ $u\in C^{2,1}_{x,t}(\overline Q)\cap
+C^3(Q)$;\ $u_{t}=u_{xx}$,\ $(x,t)\in Q;$\ $u(x,0)=\sqrt{x+1}$,\
+$0\le x\le 3;$\ $u(0,t)=e^{-t/4}$,\ $0\le t\le 1;$\ $u(3,t)=2e^{-t/64},$
+\ $0\le t\le 1.$ Верно ли, что $u(x, t)$ в $\overline Q$ убывает по $t$?
+
+\item
+Пусть $Q_k:=Q^T_{(-k,k)};\ $ $u_k\in C^{2,1}_{x,t}(Q_k)\cap
+C(\overline Q_k)$;\ $(u_k)_{t}=(u_k)_{xx}$,\ $(x,t)\in Q_k;$\
+$u_k(\pm k,t)=0$,\ $0\le t\le T;$\ $u_k(x,0)=\fy(x)$,\
+$|x|\le k$ $(k=1,2)$.
+Здесь $\fy\in C^1([-2,2]);$ $\fy(x)\ge 0,$ $|x|\le1$;\
+$\fy(x)= 0,$ $1\le|x|\le2$;\ $\fy$ не равна нулю тождественно. Доказать,
+что $u_1(x,t)<u_2(x,t)\ \forall (x,t)\in[-1,1]\times(0,T].$
+
+\item
+Пусть $Q:=Q^\infty_{(-\pi,\pi)};$ $u\in C^{2,1}_{x,t}(Q)\cap
+C(\overline Q);$ $u_t=u_{xx},\ (x,t)\in Q;$
+$u(x,0) = \sin^2x,\ 0\le x\le\pi;$ $u(\pm\pi,t)=0,\ 0\le t<+\infty.$
+Найти \ $\liml{t\ra+\infty}\int\limits_{0}^{\pi}
+u(x,t)\, dx.$
+
+\item
+Пусть $Q:=Q^\infty_{(0,1)};$ $u\in C^{2,1}_{x,t}(Q)\cap
+C(\overline Q);$ $$u_t=u_{xx}+\a u\ \hbox{в}\ Q;$$
+$$u\Big|_{t=0} = \fy(x);\
+u\Big|_{x=0} = u\Big|_{x=1} = 0.$$
+Найти все такие $\a\in \R$, что \ $\liml{t\ra+\infty}
+u(x,t)=0$\ $\forall x \in [0,1],\ $ $\forall \fy\in C([0,1]),\ $
+$\fy(0)=\fy(1)=0.$
+
+\item
+Пусть $u(x,t) -$ решение краевой задачи для уравнения
+$u_{t}=u_{xx}$ в полуполосе $Q^\infty_{(0,\pi)}$ с условиями
+$u(x,0)=\fy(x),\ u(0,t)=u(\pi, t)=0,$ где $\fy\in C^1([0,\pi]),\ $ $\fy(0)=
+\fy(\pi)=0.$ Указать класс всех таких функций $\fy(x),$
+для которых \ $\liml{t\ra+\infty} e^t
+u(x,t)=0$\ $\forall x \in [0,\pi].$
+
+\item
+Пусть $u(x,t) -$ решение краевой задачи для уравнения
+$u_{t}=u_{xx}$ в полуполосе $Q^\infty_{(0,3\pi)}$ с условиями
+$u(x,0)=\fy(x),\ u(0,t)=u(3\pi, t)=0,\ $ где $\fy\in C^1([0,3\pi])$,
+$\fy(0)=\fy(3\pi)=0.$ Указать класс всех таких функций $\fy(x),$ для
+которых
+\begin{enumerate}
+  \item
+  существует конечный $\liml{t\ra+\infty} e^{\sqrt t}u(x,t);$
+  \item
+  существует конечный $\liml{t\ra+\infty} e^t u(x,t);$
+  \item
+  существует конечный $\liml{t\ra+\infty} e^{t^2} u(x,t).$
+\end{enumerate}
+
+\item
+Найти \ $\liml{t\ra+\infty}u(x,t)$,\ где $u(x,t) -$ решение задачи
+$$u_t=u_{xx},\ 0 <x<\frac{\pi}{2},\ t > 0;$$
+$$u(x,0)=\cos^4 x+ 4 \sin^5x;\quad u(0,t)=1; \quad u(\frac{\pi}{2}, t)=4.$$
+
+\item
+Пусть $\Om=(0,1)\times(0,1);$ $Q:=Q_\Om^\infty;$ $u\in C^{2,1}_{x,t}(Q)
+\cap C(\overline Q);$
+$$u_t=u_{x_1x_1}+u_{x_2x_2}\ \hbox{в}\ Q_\infty;$$
+$$u\Big|_{x_1=0} = 0,\  u\Big|_{x_2=0} = 0,\
+u\Big|_{x_1=1} = x_2,\  u\Big|_{x_2=1} = x_1.$$
+Найти \ $\liml{t\ra+\infty} u(x_1,x_2,t).$
+
+\item
+Пусть $u_t=u_{xx}, \ 0<x<l,\ 0<t<+\infty;$
+$u(0,t)=u(l,t) = t,\ 0\le t<+\infty;$\ $u(x,0) = \fy(x),\ 0\le x\le l;$
+$\fy\in C^1([0,l]);\ \fy(0)=\fy(l)=0.$
+Найти \ $\liml{t\ra+\infty} t^{-1}\,u(x,t).$
+
+\item
+Пусть функции $u_1(x,t)$ и $u_2(x,t)$ удовлетворяют соотношениям
+$(u_k)_{t}=(u_k)_{xx}$,\ $0\le x\le\pi,\, 0\le t<+\infty;\ $
+$u_k(x,0)=\sin^2 x-\a\sin^4 x$ $(k=1,2)$;
+$u_1(0,t)= u_1(\pi,t)=0$,\ $(u_2)_x(0,t)=(u_2)_x(\pi,t)=0,$ $0\le t<
++\infty.$ При каких $\a$ справедливо неравенство
+$\liml{t\ra+\infty} u_1(x,t)<\liml{t\ra+\infty} u_2(x,t)
+\ \forall x\in [0,\pi]?$
+
+\item
+Пусть функция $u(x,t)$ удовлетворяет соотношениям
+$u_{t}=u_{xx}$,\ $0\le x\le2,\, 0\le t<+\infty;\ $
+$u_x(0,t)= u_x(2,t)=3$,\ $0\le t<+\infty;$
+$u(x,0)=x^3-3x^2+3x$,\ $0\le x\le 2.$
+Найти $\liml{t\ra+\infty} u(x,t).$
+
+\item
+Пусть функция $u(x,t)$ удовлетворяет соотношениям
+$u_{t}=u_{xx}$,\ $0\le x\le2,\, 0\le t<+\infty;\ $
+$u_x(0,t)= 1$,\ $u_x(2,t)=13$,\ $0\le t<+\infty;$
+$u(x,0)=x^3+x$,\ $0\le x\le 2.$
+Найти $\liml{t\ra+\infty} u(x,t).$
+
+\item
+\begin{enumerate}
+  \item
+  Сформулировать принцип максимума для уравнения теплопроводности в слое.
+  \item
+  Справедлив ли такой же принцип максимума для уравнения $u_t+\D_xu=0?$
+\end{enumerate}
+
+\item
+\begin{enumerate}
+  \item
+  Как ставится задача Коши для уравнения $u_t=u_{xx}?$
+  \item
+  Доказать, что если начальная функция $u(x,0)$ в этой задаче нечётная,
+  то и её решение $u(x,t)$ нечётно по $x$.
+\end{enumerate}
+
+\item
+Единственна ли функция $u(x,t)$ со следующими свойствами:
+
+\noindent
+$u\in C^{2,1}_{x,t}(\R\times(0,h]);$ $u_t=u_{xx},\ $
+$(x,t)\in\R\times(0,h];$ $\liml{t\ra 0}u(x,t) = 0$ $\forall x\in
+\R;$ $\supl{x\in\R}|u(x, t)|<+\infty$
+$\forall t\in (0,h]$?
+
+\item
+Пусть $\overline G=\{(x,t)\ |\ x\in\R, t\in \overline
+{\R}_-\}.$ Найти все функции $u(x,t)$, принадлежащие
+$C^{2,1}_{x,t}(\overline G),$ ограниченные в $\overline G$ и удовлетворяющие
+в $\overline G$ уравнению $u_t=u_{xx}.$
+
+\item
+Пусть $u_{t}=4u_{xx}$,\ $(x,t)\in \R\times\R_+;\ $
+$u(x,0)=\displaystyle{\frac{x^2+\sin x}{1+2x^2}}$,\ $x\in\R.$
+Найти $\liml{t\ra+\infty} u(x,t).$
+
+\item
+Пусть $u_{t}=u_{xx}$,\ $(x,t)\in \R\times\R_+;\ $
+$u(x,0)=\hbox{arcctg}\,x$,\ $x\in\R.$
+Найти $\liml{t\ra+\infty} u(x,t).$
+
+\item
+Пусть $u(x,t) -$ ограниченное решение задачи Коши для уравнения
+$u_{t}=u_{xx}$ в $\R\times\R_+$ с начальным условием
+$u(x,0)=\fy(x),$
+
+\noindent
+$x\in\R$, где $\fy\in C(\R)\cap L_\infty(\R)$
+и
+$$\liml{l\ra+\infty}\displaystyle{\frac{1}{l}\i{-l}{l}\fy(x)}\,
+dx =A.$$
+Найти $\liml{t\ra+\infty}u(0,t).$
+
+\item
+При каких $t>0$ существует интеграл, входящий в формулу, которая да\"ет
+решение задачи Коши для уравнения $u_t=u_{xx}$  с начальным условием
+$u(x,0)=\fy(x),$ если требование ограниченности $\fy(x)$ заменяется
+предположением $|\fy(x)|\le M e^{Kx^2},$ $M>0,$ $K>0$?
+
+%----------------------------------------------
+\section{Уравнения эллиптического типа.}
+%----------------------------------------------
+
+
+\item
+Найти все гармонические в $\R^2$ функции $u(x,y),$ для которых
+$u_y(x,y)=3xy^2-x^3.$
+
+\item
+Найти все гармонические в $\R^n$ функции, принадлежащие $L_2(
+\R^n).$
+
+\item
+Найти все гармонические в $\R^2$ функции $u(x,y),$ для которых
+$u_x(x,y)<u_y(x,y)\ \forall\ (x,y)\in \R^2.$
+
+\item
+Пусть $\Om =\{(x,y)\in \R^2\ |\ 0<x<1, 0<y<1\},$ $u\in
+C^2(\overline \Om),$ $\D u=0$ в $\overline \Om$, $u(x, 0) = u(x, 1) = 0$ при
+$0\le x \le 1$. Может ли функция $f(x):=\displaystyle{\i{0}{1} u^2(x, y)\,
+dy}$ иметь
+точку перегиба внутри интервала $(0,1)$?
+
+\item
+Пусть $u(x)$ -- гармоническая в $B_a^n(0)$ и непрерывная в
+$\overline {B_a^n(0)}$ функция, $u(0)=0$. Найти связь между числами
+$\displaystyle{\i{B^+}{} u(x)\, dx}$ и $\displaystyle{\i{B^-}{} u(x)\, dx}$,
+где
+$B^+ :=\{x\in B_a^n(0)\ |\ u(x)>0\},$
+
+\noindent
+$B^- :=\{x\in B_a^n(0)\ |\ u(x)<0\}.$
+
+\item
+Пусть $u$ -- гармоническая в $\overline{B_1^2(0)}$ функция.
+Найти $\displaystyle{\i{0}{2\pi} u_{\rho\rho}(1, \theta)\, d\theta}$.
+
+\item
+Пусть $u(x)\in C^2(B_1^2(0))\cap C(\overline{B_1^2(0)})$; \
+$\D u(x)=0,\ x:=(x_1,x_2)\in B_1^2(0);$ $u(x)=x_2^2,\ x\in S_1^2(0),\
+x_2\ge0;$ $u(x)=x_2,\ x\in S_1^2(0),$
+
+\noindent
+$x_2<0.$ Найти $\displaystyle{\i{B_{1/2}^2(0)}{} u(x)\, dx}$.
+
+\item
+Пусть $\D u(x)=1,\ x\in \overline{B_2^2(0)}\backslash B_1^2(0).$
+Что больше:
+$\displaystyle{\i{S_1^2(0)}{} \pf{u}{\rho}(\rho,\theta)\, ds}$ или
+$\displaystyle{\i{S_2^2(0)}{} \pf{u}{\rho}(\rho,\theta)\, ds}$?
+
+\item
+Пусть $\overline{\Om}_1\subset\Om_2$;\ $u_k\in C^2(\Om_k)\cap C(\overline
+{\Om_k})$; \ $\D u_k(x)=0,\ x\in \Om_k;$ $u_k(x)=f_k(x),\ x\in \partial
+\Om_k$ $(k=1,2)$; $f_1(x^1)<f_2(x^2)\ \forall x^1\in\partial\Om_1,$
+$\forall x^2\in\partial\Om_2;$\ $x^0\in\Om_1$ -- произвольная точка.
+Что больше: $u_1(x^0)$ или $u_2(x^0)$?
+
+\item
+Пусть $u\in C^2(B_1^2(0))\cap C(\overline{B_1^2(0)})$; \
+$u_{x_1x_1}+u_{x_1x_2}+u_{x_2x_2}=1,$
+
+\noindent
+$x:=(x_1,x_2)\in B_1^2(0).$
+Может ли $u(x)$ иметь внутри $B_1^2(0)$
+\begin{enumerate}
+  \item
+  максимум;
+  \item
+  минимум?
+\end{enumerate}
+
+\item
+Пусть $u\in C^2(\Om)\cap C(\overline{\Om});$ $q\in C(\overline \Om);$ $\D u(x) +
+q(x) u(x) =0$,\ $x\in\Om$; $M:=\max\limits_{\overline \Om} u(x);$
+$m:=\max\limits_{\partial \Om} u(x).$ Возможно ли, что $M>m$, если
+\begin{enumerate}
+  \item
+  $q(x)\equiv 0$;
+  \item
+  $q(x) > 0$;
+  \item
+  $q(x) < 0, M > 0$;
+  \item
+  $q(x) < 0, M < 0$?
+\end{enumerate}
+
+\item
+Пусть $\overline{\Om}=\{(x,y)\in \R^2\, |\, 1\le x^2+2y^2\le 2\};\ $
+$u\in C^2(\overline{\Om});$
+
+\noindent
+$\D u(x,y)=0,\ (x,y)\in \overline{\Om};$\
+$u(x,y)=x+y,\ x^2+2y^2=2;$
+
+\noindent
+$\pf{u(x,y)}{\nu}+(1-x) u(x,y)=0,$\
+$x^2+2y^2=1.$ Найти $\max\limits_{\overline{\Om}} |u(x,y)|.$
+
+\item
+Пусть $\Om_\infty:=\R^3\backslash\overline{B_1^3(0)};$\
+$u_k\in C^2(\Om_\infty)\cap C(\overline{\Om_\infty});$\
+$\D u_k(x)=0,$
+
+\noindent
+$x\in\Om_\infty$ $(k=1,2);$ $u_1(x)<u_2(x)\
+\forall x\in\partial \Om_\infty.$ Следует ли отсюда, что $u_1(x)<u_2(x)\
+\forall x\in\Om_\infty?$
+
+\item
+Пусть $u\in C^2(\Om)\cap C^1(\overline{\Om});$\ $\D u(x)=0,\ x\in\Om;$\
+$\pf{u(x)}{\nu}=\psi(x),\ x\in\partial\Om.$ Доказать, что $\psi(x)$
+обращается в нуль не менее чем в двух точках на $\partial\Om.$
+
+\item
+Написать формулу, дающую решение задачи Дирихле для уравнения Лапласа в
+$\overline{B_a^n(0)}$, и доказать, что функция, определяемая этой формулой,
+непрерывна на $S_a^n(0).$
+
+\item
+Пусть $B_+:=\{x=(x_1,x_2,x_3)\in B_1^3(0)\ |\ x_3>0\},$
+функция $u(x)$ определена и непрерывна в $\overline B_+$, равна нулю при $x_3=0$
+и является гармонической в $B_+$. Верно ли, что $u(x)$ можно продолжить до
+функции, гармонической всюду в $B_1^3(0)$?
+
+\item
+Существует ли функция $G(x; x^0)$, определение которой отличается
+от определения функции Грина задачи Дирихле для области $\Om\subset\R^3$
+заменой условия $G(x;x^0) = 0$ при $x\in\partial\Om$ условием
+$\displaystyle{\pf{G(x;x^0)}{\nu} = 0}$ при $x\in\partial\Om$?
+
+\item
+При каких $\a$ существует решение $u(\rho,\theta)$ задачи Неймана для
+уравнения Лапласа в круге $B_1^2(0)$ с граничным условием
+$\displaystyle{\pf{u}{\rho}}(1,\theta)=\a\cos^4\theta +\a^2\cos^2\theta$?
+
+\item
+При каких $\a,\b$ существует решение краевой задачи для уравнения
+Лапласа в кольце $B_2^2(0)\backslash \overline{B_1^2(0)}$ с граничными
+условиями
+$\displaystyle{\pf{u}{\rho}}(1,\theta)=1,\ $
+$\displaystyle{\left(\pf{u}{\rho}+\a u\right)}(2,\theta)=\b$?
+Найти решение во всех случаях, когда оно существует.
+
+\item
+Существует ли гармоническая в $B_1^2(0)\backslash\{0\}$ функция $u(x,y)$,
+удовлетворяющая условию $\displaystyle{\pf{u}{\rho}}\Big|_{\rho=1}=x-y^2?$
+
+\item
+Найти решение $u(x,y)$ следующей задачи: $\D u=0,$\ $\rho>1;$\
+$\displaystyle{\pf{u}{\rho}}\Big|_{\rho=1}=x(1-y);$\ $\inf\limits_{\rho>1}
+u(x,y)=0.$
+
+\item
+\begin{enumerate}
+  \item
+  Единственно ли решение следующей задачи: $u\in C^2(\overline\Om)$, где
+  $\overline\Om=\overline{B_2^3(0)} \backslash B_1^3(0);$\
+  $\D u(x)=0,\ x\in \overline\Om;$
+
+  \noindent
+  $\displaystyle{\pf{u(x)}{\rho}}-\a_1 u(x)=f_1(x),\ x\in S_1^3(0);$\
+
+  \noindent
+  $\displaystyle{\pf{u(x)}{\rho}}
+  +\a_2 u(x)=f_2(x),\ x\in S_2^3(0);$
+
+  \noindent
+  $\a_k=\hbox{const}>0 (k=1,2)?$
+  \item
+  Тот же вопрос при $\a_k=\hbox{const}<0 (k=1,2).$
+\end{enumerate}
+
+\item
+\begin{enumerate}
+  \item
+  Сформулировать теорему об устранимой особенности для гармонических функций.
+  \item
+  Пусть $\Om\subset\R^2;$\ $\Om_\infty=\R^2\backslash\overline\Om;$\
+  $u\in C^2(\Om_\infty)\cap C(\overline{\Om_\infty})\cap
+  L_\infty(\Om_\infty)$;\ $\D u(x)=0,\ x=(x_1,x_2)\in\Om_\infty.$
+  Доказать, что существует $\liml{|x|\ra\infty} u(x).$
+  \item
+  Найти этот предел в случае, когда $\Om=B_1^2(0)$ и $\displaystyle
+  {\int\limits_{0}^{2\pi} u(\cos \theta, \sin\theta)\, d\theta}=0.$
+\end{enumerate}
+
+\item
+Пусть $Q:=\{x=(x_1,x_2,x_3)\in\R^3\, |\, x_1^2+x_2^2<1,\, |x_3|<1\};$
+
+\noindent
+$L:=\{(0,0,x_3)\, |\, |x_3|<\displaystyle{\frac{1}{2}}\}$;\
+функция $u(x)$ является гармонической и ограниченной в $Q\backslash L.$\
+Доказать, что функция $u(x)$
+может быть продолжена до функции, гармонической всюду в $Q.$
+
+\item
+Найти все такие $\a>0$, что решение $u(x,y)$ задачи Дирихле для уравнения
+Лапласа в полуплоскости $\R_+\times\R,$ удовлетворяющее
+неравенству $|u(x, y)| \le M(1 + x + |y|)^\a$, где $M = \hbox {const} > 0$,
+единственно.
+
+\item
+Найти все такие \ $\a>0$,\  что решение\  $u(x,y)$ \ задачи Дирихле для
+уравнения Лапласа в области \quad $\{(x,y)\in\R^2\ |\ |y|<\displaystyle
+{\frac{x}{\sqrt 3}}\},$ \quad удовлетворяющее неравенству \quad
+$|u(x, y)| \le M (1 + x^2 + y^2)^\a$, где $M = \hbox {const} > 0$,
+единственно.
+
+\item
+Найти значения в точках отрицательной полуоси $0y$ логарифмического
+потенциала простого слоя $u(x,y),$ распределённого на отрезке
+$x=0, 0\le y\le 2$ с плотностью, равной единице.
+
+\item
+Найти $\displaystyle{\liml{x^2+y^2\ra\infty}\int
+\limits_{\xi^2+\eta^2=1}(\xi^2-2\eta^2)\ \hbox{ln}\,
+[(x-\xi)^2+(y-\eta)^2]\ ds.}$
+
+\item
+Пусть $u\in C\left(\overline{B_1^2(0)}\right);$\ $u(x,y)\ge0,$\
+$x^2+y^2=1;$\ в $B_1^2(0)$ существуют обобщённые производные в смысле
+Соболева $u_{xx}$ и $u_{yy}$, причём $u_{xx}+u_{yy}\le 0$ почти всюду
+в $B_1^2(0).$ Доказать, что $u(x,y)\ge 0 \ \forall (x,y)\in B_1^2(0).$
+
+\item
+Пусть $u\in C\left(\overline{B_1^2(0)}\right);$\ в $B_1^2(0)$ существуют
+обобщённые производные в смысле Соболева $u_{xx}$ и $u_{yy}$, причём
+$u_{xx}+u_{yy}= 0$ почти всюду в $B_1^2(0).$ Доказать, что
+$|u(x,y)|\le \max\limits_{S_1^2(0)}|u|\ \forall (x,y)\in B_1^2(0).$
+
+\item
+\begin{enumerate}
+  \item
+  Сформулировать определение обобщённого решения задачи Дирихле для
+  уравнения $\D u=h$ в $\Om$ с условием $u=f$
+
+  \noindent
+  на $\partial \Om.$
+  \item
+  Найти обобщённое решение этой задачи в случае, когда $h(x)\equiv0,$\
+  $f(x) = |x|^2,$\ $\Om=B_1^n(0),$\ $n\ge 3.$
+  \item
+  Тот же вопрос в случае, когда $\Om=B_1^n(0)\backslash\{0\}.$
+\end{enumerate}
+
+\item
+\begin{enumerate}
+  \item
+  Найти решение $u(\rho,\theta)$ задачи Дирихле для уравнения Лапласа в
+  $B_1^2(0)$ с граничным условием $u(1, \theta) = \s{k =1}{\infty} k^{-p-1}
+  \sin (k^q\theta),$ где $p$ и $q$ -- заданные натуральные числа.
+  \item
+  При каких $p$, $q$ это решение принадлежит пространству $H^1(B_1^2(0))$?
+\end{enumerate}
+
+\item
+Найти $$\inf \displaystyle{\i{B_1^2(0)}{}}| \hbox{grad}\, w(x)|^2\,dx$$
+на множестве $\bigg\{w\in H^1(B_1^2(0))\,\Big|
+\,w-f\in\stackrel{\circ}{H^1}(B_1^2(0))\bigg\}$, где $f(x_1, x_2) = x_2^2.$
+
+\end{enumerate}
+
+\newpage
+
+%----------------------------------------------------
+\section*{Ответы}
+%--------------------------------------------------
+
+
+{\bf 1.} $\d_{(1,1)}+\d_{(-1,-1)}-\d_{(1,-1)}-\d_{(-1,1)}.$
+{\bf 2.} $\Theta(x) (1-e^{-x})+C_1+C_2e^{-x}.$
+{\bf 3.} $\displaystyle{-\frac{1}{2}}\Theta(y-|x|).$
+{\bf 4. (a)} да; {\bf (б)} да; {\bf (в)} нет.
+{\bf 5. (a)} $\a<\displaystyle{\frac{1}{2}};$
+   {\bf (b)} $\a>\displaystyle{\frac{1}{2}},$\ $\a=0.$
+{\bf 6.} $\a<\displaystyle{\frac{1}{2}}$.
+{\bf 7.} $\a>\displaystyle{\frac{1}{2}},$ $\a=0;$\ $\b=\displaystyle
+{\frac{(2k-1)\pi}{2}}, k\in \Z.$
+{\bf 8.} $\b=(2k-1)\pi, k\in \Z;$\ $\a$ любое, если $n\ge3;$
+$\a<\displaystyle{\frac{1}{2}},$ если $n=2;$\ $\a=0,$ если $n=1.$
+{\bf 10.} Нет.
+{\bf 11.}
+Да -- для гиперболического и эллиптического; нет -- для параболического.
+{\bf 12.} $z\neq y\pm3x.$
+{\bf 13. (б) I} $y=2 e^{\pm(x-1)};$
+    {\bf II} $y=0.$
+{\bf 14. (a)} Гиперболический;
+    {\bf (б)} $x-2y=C_1,\ y=C_2;$
+    {\bf (в)} $u=xy+f(x-2y)+g(y).$
+{\bf 15. (a)} $x=C_1,\ x+y=C_2;$
+    {\bf (б)} $u=e^yf(x)+g(x+y).$
+{\bf 16.} $x-y\pm t\sqrt{2}=0.$
+{\bf 17.} При $\a\neq0$ нет действительных характеристик; при $\a=0:\ z=C.$
+{\bf 18.} $u=e^x f(x-y, x-z)+e^{-x} g(x-y,x-z).$
+{\bf 19. (a)} $\xi=x+y, \eta=2x-y;$\ $u_{\xi\eta}+\xi u_\xi+u=0;$
+    {\bf (б)} $u=e^{(x+y)(y-2x)}\left[f(x+y)+\displaystyle
+    {\int\limits_{0}^{2x-y} g(s) e^{-(x+y)s}ds}\right].$
+{\bf 20. (б)} $\a\b+3\b^2\neq0.$
+{\bf 21. (a)} $\a=0;$
+    {\bf (б)} $\a=-2.$
+{\bf 22.} Нет.
+{\bf 23.} Да.
+{\bf 24.} Да.
+{\bf 25.} Нет.
+{\bf 26. (a)} Да;
+  {\bf (б)} Нет.
+{\bf 27.} $\a>0$.
+{\bf 28.} Нет.
+{\bf 29.} $|x_1\pm x_2|\le \sqrt{2}.$
+{\bf 30.} $(\a,\b)\in (\R\times\R_-)\cup\left((-\infty, -
+\displaystyle{\frac{1}{2}})\times\{0\}\right)$.
+{\bf 31.} $(\a,\b)\in (\{0\}\times\R)\cup\left((\R\backslash\{0\})\times
+(-\infty, -\displaystyle{\frac{5}{2}})\right)$.
+{\bf 33.} $t_0=\displaystyle{\frac{1+|x_0|}{a}},\ c=\displaystyle
+{\frac{1}{2a}\int\limits_{-1}^{1}\psi(x)\, dx.}$
+{\bf 34.} $\displaystyle{\frac{1}{a}.}$
+{\bf 35. (a)} $t\in(\pi-x,2\pi+x),\,0\le x\le\displaystyle{\frac{\pi}{2};}$
+$t\in\left((\pi-x)_+,2\pi-x\right)\cup(\pi+x,2\pi+x),\,
+\displaystyle{\frac{\pi}{2}}<x<\displaystyle{\frac{3\pi}{2};}$
+$t\in\left((x-2\pi)_+,x-\pi\right)\cup(\pi+x,2\pi+x),\,x\ge\displaystyle
+{\frac{3\pi}{2}.}$
+{\bf 37. I)} $\l\neq1,\ \fy\in C^2(\overline{\R}_+),\ \fy'(0)=0,\
+\l\fy''(0)=0;$\ $u(x,t)=\displaystyle{\frac{1}{2}}\left[
+\fy(x+t)+\fy(x-t)\right],\ x\ge t;$\
+$u(x,t)=\displaystyle{\frac{1}{2}}\left[\fy(x+t)+\frac{1+\l}{1-\l}
+\fy(t-x)-\frac{2\l}{1-\l}\fy(0)\right],\ x< t;$
+{\bf II)} $\l=1,\ $ $\fy(x)\equiv K=\hbox{const};$\
+$u(x,t)=K,\ x\ge t;$\ $u(x,t)=K+f(t-x),\ x< t,$\
+где $f\in C^2(\overline{\R}_+),$\ $f(0)=f'(0)=f''(0)=0.$
+{\bf 38. (a)} $0\le t+x\le 2,\ 0\le t-x\le\displaystyle{\frac{1}{2}};$\
+    {\bf (в)} $\displaystyle{u(x,t)=\fy(\frac{1}{2}(t+x))-\fy(\frac{3}{2}
+    (t-x))+\psi(t-x)}.$
+{\bf 39. I)} $k\ge 1,\,\a=0,\,\forall \b;$\
+   {\bf II)} $k<1,\,(\a,\b)\in(\{0\}\times\R)
+\cup\left((\R\backslash\{0\})\times(2,+\infty)\right).$ Решение
+единственно при $k\ge -1$ и неединственно при $k<-1$.
+
+\noindent
+{\bf 40.} $\fy'(x)-2\psi(x)=C.$
+{\bf 41.} $A=1,$\ $\om=\pm\sqrt{2};\ $
+$u(x,t)=\displaystyle{\frac{1}{2}}\left[
+e^{-(x+t)^2}+e^{-(x-t)^2}\right],$\ $x\ge t;$\
+$u(x,t)=\displaystyle{\frac{1}{2}}\left[e^{-(x+t)^2}-e^{-(x-t)^2}\right] +
+\cos\sqrt{2}(x-t),\ x< t.$
+{\bf 42.} $u(x,y,t)=\displaystyle{\frac{1}{2}}\bigg[
+e^{-(x+t)^2}+e^{-(x-t)^2}+\arctg \,(y+t)+\arctg \,
+(y-t)+ (\cos x+\sin y)\sin t\bigg].$
+{\bf 43.} $u(x,t)=\displaystyle{\frac{1}{18|x|}}\left[
+(t+|x|)^9-\left|t-|x|\right|^9\right],$\ $|x|\neq0;$\ $u(0,t)=0.$
+{\bf 44.}
+$$u(x,t)=\frac{1}{2\sqrt3}\left[\arctg \,(x_1+x_2+x_3+t\sqrt3)-\arctg \,(x_1+x_2+x_3-t\sqrt3)\right].$$
+{\bf 45. (a)} $0\le t \le \min\{x_1,x_2,1-x_1, 2-x_2\}.$
+{\bf 46. (a)} $x_1^2+x_2^2\ge (t+1)^2;$
+    {\bf (б)} $\displaystyle{\frac{1}{8}}.$
+{\bf 47.} $\displaystyle{\frac{\pi}{4}}.$
+{\bf 48.} $0\le t\le 0.05$, $0.9+t\le |x|\le 1-t$;
+$0.9\le t\le 1$, $|x|\le\min(1-t,t-0.9)$.
+%$0.9\le|x|\le1,\,0\le t\le \min\{|x|-0.9, 1-|x|\};$\
+%    $|x|=0, 0.9\le t\le1.$
+{\bf 49.} $\b\ge \displaystyle{\frac{\a}{2}}+1.$
+{\bf 50.} $q>\displaystyle{\frac{1}{2}}+m.$
+{\bf 52.} $\a=\b=\g=0;$\ $u(x,t)=\sin x\ \cos t.$
+{\bf 53. (a)} $30+36\pi^2;$\
+    {\bf (б)} $4\sin^3\pi x.$
+{\bf 54.} Нет.
+{\bf 55.} $\displaystyle{\frac{1}{105}}.$
+{\bf 56.} $\displaystyle{\frac{1}{1260}}.$
+{\bf 57.} $\om\notin\{\pm4;\pm6\}.$
+{\bf 58.} $\a\neq\pm k\pi,\ k\in\N.$
+{\bf 59.} Нет.
+{\bf 60. (б)} Да.
+{\bf 61.} Нет.
+{\bf 62. (a)} Нет;
+    {\bf (б)} да;
+    {\bf (в)} нет.
+{\bf 63.} Нет.
+{\bf 64.} Нет.
+{\bf 65.} Да.
+{\bf 67.} $0$.
+{\bf 68.} $\a<\pi^2$.
+{\bf 69.} $\displaystyle{\int\limits_{0}^{\pi}\fy(x)\sin x\, dx}=0.$
+{\bf 70. (a)} $\forall \fy.$
+    {\bf (б)} $\displaystyle{\int\limits_{0}^{3\pi}\fy(x)\sin \frac{kx}{3}}
+    \, dx=0$ при $k=1,2;$\
+    {\bf (в)} $\fy(x)\equiv 0$
+{\bf 71.} $1+\displaystyle{\frac{6x}{\pi}}.$
+{\bf 72.} $x_1x_2$.
+{\bf 73.} $1$.
+{\bf 74.} $\a<\displaystyle{\frac{4}{3}}.$
+{\bf 75.} $3x-2$.
+{\bf 76.} $+\infty$.
+{\bf 77. (б)} Нет.
+{\bf 79.} Нет.
+{\bf 80.} $u(x,t)=C$.
+{\bf 81.} $\displaystyle{\frac{1}{2}}.$
+{\bf 82.} $\displaystyle{\frac{\pi}{2}}.$
+{\bf 83.} $\displaystyle{\frac{A}{2}}.$
+{\bf 84.} $t<\displaystyle{\frac{1}{4K}}.$
+{\bf 85.} $u(x,y)=xy^3-x^3y+C_1x+C_2$.
+{\bf 86.} $u(x)\equiv0$.
+{\bf 87.} $u(x,y)=C_1x+C_2y+C_3,$ где $C_1<C_2$.
+{\bf 88.} Нет.
+{\bf 89.} Сумма равна нулю.
+{\bf 90.} $0$.
+{\bf 91.} $\displaystyle{\frac{\pi}{16}-\frac{1}{4}}.$
+{\bf 92.} Второй интеграл.
+{\bf 93.} $u_2(x^0)$.
+{\bf 94. (a)} Нет;
+    {\bf (б)} да;
+{\bf 95. (a)} Нет;
+    {\bf (б)} да;
+    {\bf (в)} нет;
+    {\bf (г)} да.
+{\bf 96.} $\sqrt{3}$.
+{\bf 97.} Нет.
+{\bf 100.} Да.
+{\bf 101.} Нет.
+{\bf 102.} $\a\in\{-\displaystyle{\frac{3}{4}};0\}.$
+{\bf 103. I)} $\a\neq 0,\, \forall \b;\ u=\displaystyle{\frac{2\b-1}{2\a}}
++\hbox{ln}\displaystyle{\frac{\rho}{2}};$\
+    {\bf II)} $\a=0,\, \b=\displaystyle{\frac{1}{2}};\
+    u=\hbox{ln}\,\rho+C.$
+{\bf 104.} Да.
+{\bf 105.} $u=\displaystyle{\frac{\cos\theta}{\rho}}-
+\displaystyle{\frac{\sin2\theta}{2\rho^2}}.$\
+{\bf 106. (a)} Да;
+    {\bf (б)} нет.
+{\bf 107. (в)} $0.$
+{\bf 109.} $\a<1$.
+{\bf 110.} $\a<\displaystyle{\frac{3}{2}}.$
+{\bf 111.} $u(0,y)=2+(y-2)\ln(2-y) -y\ln(-y)$.
+{\bf 112.} $-\infty$.
+{\bf 115. (б)} $u(x)\equiv1$;
+     {\bf (в)} $u(x)\equiv1$.
+{\bf 116. (a)} $u(\rho,\theta)=\sum\limits_{k=1}^{\infty}k^{-p-1}
+\rho^{k^q}\sin(k^q\theta);$\
+     {\bf (б)} $q<2p+1.$
+{\bf 117.} $\displaystyle{\frac{\pi}{2}}.$
+
+
+\end{document}

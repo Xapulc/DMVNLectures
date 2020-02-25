@@ -1,0 +1,593 @@
+
+\documentclass[10pt]{article}
+\usepackage[russian]{babel}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{graphicx}
+
+
+\sloppy \textwidth18cm \textheight25cm \hoffset-2.5cm \voffset-3cm
+\parindent=0cm
+\parskip=2.5mm
+\unitlength=1cm
+
+
+
+
+\def\R{{\bf R}}
+\def\ve{{\varepsilon}}
+\def\pa{{\partial}}
+\def\{{\protect\lbrace}
+\def\}{\protect\rbrace}
+\let\no\operatorname
+\let\cal\mathcal
+\let\lm\limits
+\let\<\langle
+\let\>\rangle
+\let\ds\displaystyle
+\def\S{$\mathchar"278$}
+
+\def\va{{\varphi}}
+\def\ve{{\varepsilon}}
+\def\pa{{\partial}}
+\def\t{{\tau}}
+
+\def\cK{{\cal K}}
+\def\ot{{\overline{\theta}}}
+\def\oA{{\overline{A}}}
+\def\od{{\stackrel{\rm def} {=} }}
+\def\bS{{\bf S}}
+\def\ch{{\no{ch}}}
+
+\def\Const{{\rm Const}}\def\l{\left}
+\def\r{\right}
+\def\div{{\rm div}}
+\def\eq{{\no{eq}}}
+\def\lin{{\no{lin}}}
+\def\ext{{\no{ext}}}
+\def\var{{\no{var}}}
+
+\def\bG{{\bf G}}
+\def\pa{\partial}
+\def\cO{{\cal O}}
+
+
+
+\newcommand{\dist}{\mathop{\rm dist}\nolimits}
+\newcommand{\const}{\mathop{\rm const}\nolimits}
+\newcommand{\str}{\mathop{\rm str}\nolimits}
+\newcommand{\as}{\mathop{\rm as}\nolimits}
+\newcommand{\an}{\mathop{\rm an}\nolimits}
+\newcommand{\sign}{\mathop{\rm sign}\nolimits}
+\renewcommand{\div}{\mathop{\rm div}\nolimits}
+\renewcommand{\Im}{\mathop{\rm Im}\nolimits}
+\renewcommand{\Re}{\mathop{\rm Re}\nolimits}
+\newcommand{\proof}{{\bf Доказательство.\quad}}
+\newtheorem{defi}{Определение}[section]
+\newtheorem{theo}{Теорема}[section]
+\newtheorem{lem}{Лемма}[section]
+\newtheorem{cond}{Условие}[section]
+\newtheorem{app}{Аррендикс}[section]
+\newtheorem{conc}{Заключение}[section]
+\newtheorem{comm}{Комментарий}
+\newtheorem{prop}{Предложение}[section]
+\newtheorem{cor}{Следствие}[section]
+\newtheorem{rem}{Замечание}[section]
+\newtheorem{exm}{Пример}[section]
+\newtheorem{prob}{Задача}[section]
+\newtheorem{design}{Обозначение}[section]
+
+\begin{document}
+
+{\large\bf Лекция 5,~~~I семестр,~~~ лектор профессор Е.В.
+Радкевич }
+\bigskip
+
+{\large\bf Теоремы вложения} Теперь ослабим условия гладкости
+решений (3.1). Для этого сформулируем необходимые в дальнейшем
+понятия и утверждения. Пусть $C^\infty (\R^n)$
+--- пространство бесконечно дифференцируемых в $\R^n$ функций.
+Определим класс $S$ функций Шварца: функция $u(x)$ принадлежит
+$S$, если выполнены условия:
+\begin{enumerate}
+\item  $u(x)\in C^\infty (\R^n)$;
+\item  для любых мультииндексов $\alpha ,\beta $ существует константа
+$M_{\alpha ,\beta }$ такая, что
+$$
+\left| x^\beta D^\alpha u\right|\leq M_{\alpha ,\beta }.
+$$
+\end{enumerate}
+В классе $S$ определено преобразование Фурье, переводящее $S$ в
+$S$ по формуле:
+$$
+\widehat{u}(\xi)=\int_{\R^n}e^{-i(x,\xi)}u(x)dx.
+$$
+Норму в $S$ можно ввести следующим образом:
+$$
+\left\|u\right\|_s^2=\int_{\R^n}\sum_{|\alpha |\leq s} \left|
+D^\alpha u\right|^2dx,\qquad s=0,1,2,\dots
+$$
+(для функций $u(x)\in S$ такие интегралы абсолютно сходится).
+
+\begin{defi}
+Пространством $H_s$ называется пространство, полученное замыканием
+$S$ по норме $\left\| u\right\|_s$.
+\end{defi}
+При $s=0$ получим $H_0=L_2(\R^n)$. Как задачу можно предложить
+следующие утверждения
+\begin{prop}
+Пусть последовательность $\{u_m(x)\}$, $u_m(x)\in S$,
+фундаментальна в норме $\|u\|_s$. Тогда из ограниченности
+$\|u_m\|_s$ следует существование у предельной функции обобщенных
+производных до порядка $s$ включительно, суммируемых в квадрате.
+\end{prop}
+
+
+\begin{prop}
+Пространство $H_s$ содержит все функции, у которых существуют
+обобщенные производные до порядка $s$, суммируемые в квадрате.
+\end{prop}
+
+Теперь введем в $H_s$ эквивалентную норму. Пусть $u,v\in S$, тогда
+из равенства Парсеваля
+$$
+(2\pi)^n\int_{\R^n}u\overline{v}dx=\int_{\R^n}\widehat{u}(\xi)
+\overline{\widehat{v}}(\xi)d\xi .
+$$
+Если положить $u=\overline{u}$, получим
+$$
+(2\pi)^n\int_{\R^n}|u|^2dx=\int_{\R^n}|\widehat{u}(\xi)|^2d\xi
+$$
+где $\overline{v}-$ функцию, комплексно сопряженную к $u$. Для
+преобразования Фурье функции $u(x)$ справедлива формула
+$\widehat{D^\alpha u}=(i\xi)^\alpha\widehat{u}(\xi)$. Поэтому
+$\|u\|_s$ можно записать в виде
+$$
+\|u\|_s^2=(2\pi)^{-n}\int_{\R^n}\sum_{|\alpha |\leq s}
+\left|\widehat{D^\alpha u}\right|^2d\xi
+=(2\pi)^{-n}\int_{\R^n}\sum_{|\alpha|\leq s}\xi^{2\alpha }
+\left|\widehat{u}(\xi)\right|^2d\xi .
+$$
+т.е. $\|u\|_s$ эквивалентна норме, задаваемой формулой:
+$$
+\|u\|_s^2=(2\pi)^{-n}\int_{\R^n}\left( 1+|\xi |^2\right)
+^s\left|\widehat{u}(\xi)\right|^2d\xi .
+$$
+
+\begin{theo}[Соболев]
+Пусть $u\in H_{l+k}$ $(l,k\geq 0$ --- целые$)$. Тогда, если
+$2l>n$, то функция $u(x)$ имеет непрерывные производные во всем
+пространстве $\R^n$ до порядка $k$ включительно. Другими словами
+$H_{l+k}\subset C^k(\R^n)$ при $n<2l$.
+
+Более того если последовательность $\{u_m\}$, $u_m\in H_{l+k}$,
+сходится в норме пространства $H_{l+k}$, то она сходится и в норме
+пространства $C^k(\R^n)$.
+\end{theo}
+Здесь
+$$ \|u\|_{C^k}=\sup_{x\in\R^n}
+\Big(\sum_{|\alpha |\leq k}\left|D^\alpha u\right|\Big) .
+$$
+{\bf Доказательство} Для $u(x)\in S$ имеем
+$$
+D^\alpha u=(2\pi)^{-n}\int_{\R^n}e^{i(x,\xi)}\widehat{D^\alpha
+u}d\xi =(2\pi)^{-n}\int_{\R^n}(i\xi)^\alpha\widehat{u}(\xi)d\xi .
+$$
+Отсюда
+$$
+\sum_{|\alpha |\leq k}\left| D^\alpha u\right| =\sum_{|\alpha
+|\leq k}(2\pi)^{-n}
+\left|\int_{\R^n}(i\xi)^\alpha\widehat{u}(\xi)d\xi\right| \leq
+(2\pi)^{-n}\int_{\R^n}\sum_{|\alpha |\leq k}|\xi |^\alpha
+|\widehat{u}(\xi)|d\xi
+$$
+$$
+\leq\, C_1\int_{\R^n}\left( 1+|\xi |^2\right)^{k/2}
+\left|\widehat{u}(\xi)\right| d\xi =C_1\int_{\R^n}\left( 1+|\xi
+|^2\right)^{(k+l)/2} \left(
+1+|\xi|^2\right)^{-l/2}\left|\widehat{u}(\xi)\right| d\xi .
+$$
+Здесь константа $C_1$ зависит только от $k$. Применяя неравенство
+Коши--Буняковского, получим
+$$
+\sum_{|\alpha |\leq k}\left| D^\alpha u\right| \leq
+C_1\sqrt{\int_{\R^n}\left( 1+|\xi |^2\right)^{k+l}
+\left|\widehat{u}(\xi)\right| d\xi } \cdot\sqrt{\int_{\R^n}\left(
+1+|\xi |^2\right)^{-l}d\xi }.
+$$
+Так как $2l>n$, то
+$$
+\int_{\R^n}\left( 1+|\xi |^2\right)^{-l}d\xi <\infty .
+$$
+C учетом эквивалентности введенных в $H_{l+k}$ норм имеем
+$$
+\sum_{|\alpha|\leq k}\left|D^\alpha u(x)\right|\leq C\|u\|_{l+k}.
+$$
+Эта оценка равномерна по $x\in\R^n$, поэтому для всех $u\in S$
+$$
+\left\| u\right\|_{C^k}\leq  C\left\| u\right\|_{l+k}. \eqno(3.7)
+$$
+
+Теперь пусть $u_m\in S$, $m=1,2,\dots $, и $u_m\to u\in H_{l+k}$ в
+норме пространства $H_{l+k}$. Если мы докажем, что
+последовательность $\{u_m\}$ фундаментальна в норме $C^k(\R^n)$,
+то в силу полноты последнего пространства теорема будет полностью
+доказана. Из неравенства (3.7) следует, что
+$$
+\left\| u_{m_1}-u_{m_2}\right\|_{C^k}\leq
+ C\left\|u_{m_1}-u_{m_2}\right\|_{l+k}.
+$$
+Последовательность $\{u_m\}$ фундаментальна в $H_{l+k}$, то есть
+$\left\|u_{m_1}-u_{m_2}\right\|_{l+k}\to 0$ при
+$m_1,m_2\to\infty$. Поэтому
+$\left\|u_{m_1}-u_{m_2}\right\|_{C^k}\to0$ при $m_1,m_2\to\infty$.
+Значит, $\{u_m\}$ фундаментальна в $C^k(\R^n)$. Теорема доказана.
+\bigskip
+
+{\large\bf Априорная оценка} Как приложение результатов
+предыдущего параграфа получим априорную оценку $H^k-$ решений
+(3.1), $k\ge1$. Рассмотрим систему (3.1) $R^{n+1}$. Пусть $f(t,x)$
+финитна в $\R^{n+1}$, а $\psi (x)$ --- финитна в $\R^n$.  Пусть
+далее $f(t,x)$ имеет в $Q_T$ производные с суммируемым квадратом
+до порядка $k$ включительно, элементы матрицы $B$ имеют
+ограниченные в $Q_T$ производные до порядка $k$ включительно, а
+элементы $A^j$ имеют имеют ограниченные в $Q_T$ производные до
+порядка $k+1$ включительно. Тогда справедлива оценка
+$$
+\int_{G_\tau }\sum_{|\alpha |\leq k}\left( D^\alpha u,D^\alpha
+u\right)dx \leq C\bigg[\int_G\sum_{|\alpha |\leq k}\left(D^\alpha
+u,D^\alpha u\right)dx
+$$
+$$
++\int_{\Omega_\tau }\sum_{|\alpha |\leq k}\left(D^\alpha
+f,D^\alpha f\right) dxdt\bigg], \eqno(3.8)
+$$
+где $C$ зависит только от матриц $A^j,B$ и их производных.
+
+Докажем это для постоянных $A^j,B$. Применим $D^\alpha $ к системе
+(3.1) и обозначим ${w=D^\alpha u}$. Тогда
+$$
+w_t+\sum_{j=1}^nA^jw_{x_j}+Bw=D^\alpha f
+$$
+и из энергетического неравенства (3.6) для $w$ получаем
+$$
+\int_{G_\tau }\left( D^\alpha u,D^\alpha u\right) dx \leq
+C_1\bigg[\int_G\left( D^\alpha u,D^\alpha u\right) dx
++\int_{\Omega_\tau }\left(D^\alpha f,D^\alpha f\right) dxdt\bigg]
+.
+$$
+Суммируем по $|\alpha |$ от $0$ до $k$, получаем искомую оценку.
+\bigskip
+
+{\large\bf Существование решения задачи Коши системы с постоянными
+коэффициентами} Теперь рассмотрим в полосе $Q_T=\left\{0\leq t\leq
+T,x\in\R^n\right\}$ систему (3.1) с постоянными коэффициентами
+\begin{equation}
+u_t+\sum_{j=1}^nA^ju_{x_j}+Bu=f(t,x),
+\end{equation}
+где $A^j,B$ --- матрицы с постоянными элементами, $A^j$ ---
+симметрические, а $B$ удовлетворяет условию $\left(
+Bu,u\right)\geq (u,u)$. Ищем решение задачи Коши с начальным
+условием
+$$
+u\Big|_{t=0}=\varphi (x),~~~~\varphi\in S_x. \eqno(3.9)
+$$
+В дальнейшем мы исследуем две задачи:
+\begin{itemize}
+\item[I)]  $\qquad\displaystyle
+{\cal L}(u)=0,\qquad u\Big|_{t=0}=\varphi_0(x)$.
+\item[II)] $\qquad\displaystyle
+{\cal L}(u)=f,\qquad u\Big|_{t=0}=0$.
+\end{itemize}
+Сумма их решений дает решение общей задачи~(3.1),~(3.9).
+Рассмотрим сначала случай $f\equiv 0$. Предположим существование
+решения $u(t,x)\in S_x$ для всех $t$. Применим к обеим частям
+равенства (3.1) в этом случае преобразование Фурье по $x$:
+$$
+\widehat{u}(t,\xi)=\int_{\R^n}e^{-i(x,\xi)}u(t,x)dx.
+$$
+Тогда задача Коши (3.1), (3.2) примет вид:
+$$
+\widehat{u}_t+\sum_{j=1}^niA^j\xi_j\widehat{u}+B\widehat{u}=0,
+\eqno(3.10)
+$$
+$$
+\widehat{u}(0,\xi)=\widehat{\varphi }(\xi). \eqno(3.11)
+$$
+Мы получили систему обыкновенных линейных дифференциальных
+уравнений первого порядка с параметрами $\xi_1,\dots ,\xi_n$. Для
+такой системы задача Коши имеет решение.  Таким образом в $Q_T$
+существует $\widehat{u}(t,\xi)$ --- решение системы (3.10) с
+начальным условием (3.11). Рассмотрим интеграл
+$$
+u(t,x)=(2\pi)^{-n}\int_{\R^n}e^{i(x,\xi)}\widehat{u}(t,\xi)d\xi .
+\eqno(3.12)
+$$
+\begin{prop}
+Интеграл (3.12) дает решение задачи Коши I) для системы (3.1) с постоянными коэффициентами, с начальным
+условием (3.9).
+\end{prop}
+
+Выведем оценку для $\left|\widehat{u}(t,\xi)\right|$. Для этого
+запишем систему комплексно сопряженную к~(3.1):
+$$
+\overline{\widehat{u}}_t-\sum_{j=1}^niA^j\xi_j\overline{\widehat{u}}
++B\overline{\widehat{u}}=0. \eqno(3.13)
+$$
+Умножим систему~(3.10) на вектор $\overline{\widehat{u}}$,
+а~(3.13) на $\widehat{u}$ и сложим их с учетом того, что
+$$
+\widehat{u}_t\overline{\widehat{u}}+\overline{\widehat{u}}_t\widehat{u}
+=\left|\widehat{u}\right|_t^2,\qquad\left( iA^j\xi_j\widehat{u},
+\overline{\widehat{u}}\right) =\left(\widehat{u},iA^j\xi_j
+\overline{\widehat{u}}\right) .
+$$
+Получим
+$$
+\left|\widehat{u}\right|_t^2+\left(
+B\widehat{u},\overline{\widehat{u}} \right) +\left(
+B\overline{\widehat{u}},\widehat{u}\right) =0. \eqno(3.14)
+$$
+Здесь выражения $\left(
+B\widehat{u},\overline{\widehat{u}}\right)$ и $\left(
+B\overline{\widehat{u}},\widehat{u}\right) $ представляют собой
+билинейные формы относительно $\widehat{u}$ и
+$\overline{\widehat{u}}$. Поэтому из~(3.14) следует оценка
+$|\widehat{u}|_t^2\leq M\cdot|\widehat{u}|^2$. Обозначим
+$v=\left|\widehat{u}\right|^2$. Тогда $v_t\leq Mv$. Умножим
+последнее неравенство на $e^{-Mt}$. Получим
+$$
+\frac d{dt}\left( e^{-Mt}v\right)\leq 0.
+$$
+Интегрируя это неравенство по $t$ от нуля до $t$, получаем
+$e^{-Mt}v(t)-v(0)\leq 0$. Отсюда $v(t)\leq e^{Mt}v(0)$. Это
+означает, что
+$$
+\left|\widehat{u}(t,\xi)\right|^2\leq  e^{MT}
+\left(|\widehat{\varphi }(\xi)|^2\right),~~~ \forall\,t\in [0,T].
+\eqno(3.15)
+$$
+
+Теперь оценим старшие производные функции (3.12). Покажем, что
+$$
+{\widehat{u}(t,\xi)\in S}~~~\forall\,t\in[0,T],
+$$
+т.е. для любого полинома $P(\xi)$ и любого $\alpha $
+$$
+\left| P(\xi)D^\alpha\widehat{u}\right|\leq M_{P,\alpha }=\const.
+\eqno(3.17)
+$$
+Умножая~(3.15) на любой полином и, учитывая, что
+$\widehat{\varphi}_0\in S$ получим оценку~(3.17) при $\alpha=0$.
+Теперь заметим, что систему обыкновенных дифференциальных
+уравнений можно дифференцировать по параметру $\xi $ (т.к. решение
+гладко зависит от параметра). Получим аналогичную систему для
+совокупности $D^\alpha\widehat{u}=v_\alpha$, $|\alpha |\leq M$
+(изменится только~$B$) и $v_\alpha
+(0,\xi)=D^\alpha\widehat{\varphi }_0(\xi)$. Поэтому
+$$
+\sum_{|\alpha |\leq M}\left| v_\alpha\right| <C_M \sum_{|\alpha
+|\leq M}\left| D^\alpha\widehat{\varphi }_0(\xi)\right| ,
+$$
+откуда и следует (3.17) для $|\alpha|>0.$
+
+Таким образом, интеграл
+$$
+u(t,x)=(2\pi)^{-n}\int_{\R^n}e^{i(x,\xi)}\widehat{u}(t,\xi)d\xi
+$$
+сходится и определяет некоторую функцию $u(t,x)\in S. $ Проверим,
+что $u(t,x)$ дает решение задачи I). Заметим, что
+$$
+D^\alpha u(t,x)=(2\pi)^{-n}\int_{\R^n}e^{i(x,\xi)}(i\xi)^\alpha
+\widehat{u}(t,\xi)d\xi
+$$
+в силу равномерной сходимости интеграла. Функцию $u(t,x)$ можно
+тоже дифференцировать по $t $ под знаком интеграла, так как
+$\widehat{u}_t(t,\xi)$ из (3.13) линейно выражается через
+$\widehat{u}$ с коэффициентами, зависящими от $\xi_j$. Подставим
+$u(t,x)$ в систему I), получим, что $u(t,x)$ есть решение I).
+
+Чтобы построить решение $u\in\,H^k$ из пространств Соболева,
+сначала получим равномерные оценки решений $u(t,x)\in\,S$,
+построенных выше. Из равенства Парсеваля, в силу неравенства
+(3.16), следует
+$$
+\int_{\R^n}\left| u(t,x)\right|^2dx\leq
+C\int_{\R^n}|\varphi_0|^2dx.
+$$
+Далее,  из $\widehat{D^\alpha u}=(i\xi)^\alpha\widehat{u}(\xi)$ и
+~(3.15) получаем, что
+$$
+\left| (i\xi)^\alpha\right|^2\left|\widehat{u}(\xi)\right|^2\leq
+\left| (i\xi)^\alpha\right|^2|\widehat{\varphi }(\xi)|^2,
+$$
+откуда из равенства Парсеваля также получаем, что
+$$
+\int_{\R^n}\sum_{|\alpha |\leq M}\left| D_x^\alpha
+u\right|^2dx\leq C\int_{\R^n}\sum_{|\alpha |\leq M}\left|
+D_x^\alpha\varphi\right|^2dx \eqno(3.17)
+$$
+
+Решим теперь задачу I) если $\varphi_0\in H_m$. В пространстве
+$H_m$ введена норма
+$$
+\| u\|_m^2=\int_{\R^n}\sum_{|\alpha |\leq M}\left| D^\alpha
+u\right|^2dx.
+$$
+Если $\varphi_0\in H_m$, то это означает, что существует
+последовательность $\varphi_0^k\stackrel{k\to +\infty
+}{\longrightarrow }\varphi_0$ в норме $H_m$ и $\varphi_0^k\in S$
+для любых $k=1,2,\dots$ Для начальных условий
+$u\big|_{t=0}=\varphi_0^k,\,k=1,2,\dots,$ мы уже построили решение
+$u^k(t,x)$ задачи Коши (3.1), (3.9). Покажем, что
+\begin{lem}
+Решения $u^k\to u$ задачи Коши (3.1), (3.9) (
+$u^k(0,x)=\varphi_0^k$) при $k\to\infty $ в норме $H_m$ равномерно
+по $t$. Предельная функция $u$ является решением задачи I) с
+начальной функцией $\varphi_0$.
+\end{lem}
+
+Последовательность $\varphi_0^k$ фундаментальна в $H_m$.
+Следовательно,
+$$
+\int_{\R^n}\sum_{|\alpha |\leq M}\left| D^\alpha\varphi_0^k
+-D^\alpha\varphi_0^l\right| dx
+=\left\|\varphi_0^k-\varphi_0^l\right\|_m^2\to 0,
+\qquad\text{при}\quad k,l\to\infty .
+$$
+Из неравенства~(3.17) следует, что
+$$
+\int_{\R^n}\sum_{|\alpha|\leq M}\left| D^\alpha u^k-D^\alpha
+u^l\right|dx \leq C\int_{\R^n}\sum_{|\alpha |\leq M}\left|
+D^\alpha\varphi_0^k -D^\alpha\varphi_0^l\right| dx,
+$$
+или
+$$
+\left\|u^k-u^l\right\|_m\leq
+C\left\|\varphi_0^k-\varphi_0^l\right\|_m
+$$
+для любого $t$. значит, последовательность $u^k$ фундаментальна в
+$H_m$, причем сходимость равномерна по $t$. Воспользуемся теоремой
+вложения: если $u\in H_{s+r}$ и $2r>n$, то ${u\in C^s(\R^n)}$.
+Кроме того, если последовательность $u_m$ сходится в $H_{s+r}$, то
+она сходится в~$C^s(\R^n)$. Было доказано, что
+$$
+\left\| u\right\|_{C^s}\leq M\left\| u\right\|_{H_{s+r}}.
+$$
+Представим $m=s+r$ и предположим, что $s\geq 0$ и $2r>n$. Тогда
+$$
+\left\| u^k-u^l\right\|_{C^s}\leq\widetilde{C}\left\|
+u^k-u^l\right\|_m \leq C\left\|\varphi_0^k-\varphi_0^l\right\|_m.
+$$
+это означает, что $u^k\to u$ равномерно по $t,x$ вместе со всеми
+производными по $x$ до $s$-того порядка включительно. Функции
+$u^k(t,x)$ и производные по~$x$ до порядка~$s$ включительно от
+$u^k(t,x)$ сходятся равномерно по~$t$ и~$x$, но производные по $t$
+от $u^k(t,x)$ выражаются через производные по~$x$ из системы~I) и
+систем, полученных из нее дифференцированием по~$t$ и~$x$.
+Поэтому, любые производные по~$t,x$ до порядка~$s$ включительно от
+$u^k(t,x)$ сходятся равномерно в $\R^{n+1}$ при $k\to\infty $.
+Переходя к пределу при $k\to\infty$ в системе~I), получим, что
+предельная функция $u\in C^s$, $s\geq 1$, есть решение системы~I)
+с начальным условием $u\big|_{t=0}=\varphi_0$, $\varphi_0\in H_m$.
+Для того чтобы $s\geq 1$, нужно брать $m\geq\left[\frac n2\right]
++2$.
+
+{\large\bf Пример} Рассмотрим волновое уравнение
+$$
+u_{tt}-\Delta u=0,\qquad\Delta u=\sum_{j=1}^nu_{x_jx_j}.
+$$
+Задача Коши:
+$$
+u_{tt}-\Delta u =0, \eqno(3.18)
+$$
+$$
+u\Big|_{t=0}=\varphi_0,\quad u_t\Big|_{t=0}=\varphi_1.
+$$
+сводится к задаче Коши для симметрической системы первого порядка
+с постоянными коэффициентами. Рассмотрим вектор-функцию
+$\left(u,u_t,u_{x_1},\dots ,u_{x_n}\right)$, число компонент
+$N=n+2$. Переобозначим их следующим образом $\left(
+u,u^0,u^1,\dots,u^n\right)$. Решение задачи Коши~(3.18) очевидно
+удовлетворяет системе
+$$
+\left\{
+\begin{array}{l}
+u_t-u^0=0\\
+u_t^0-\sum_{j=1}^nu_{x_j}^j=0\\
+u_t^j-u_{x_j}^0=0,\quad j=1,\dots ,n
+\end{array}
+\right.\eqno(3.19)
+$$
+с начальными условиями
+\begin{equation}
+\left\{
+\begin{array}{l}
+u\Big|_{t=0}=\varphi_0\\[6pt]
+u^0\Big|_{t=0}=\varphi_1\\[6pt]
+u^j\Big|_{t=0}=\frac{\partial\varphi_0}{\partial x_j}.
+\end{array}
+\right.
+\end{equation}
+Итак, решение задачи Коши для волнового уравнения является
+решением задачи Коши для симметричной системы. Обратно, пусть
+имеется решение задачи Коши~(3.19). Покажем, что $u$ есть решение
+волнового уравнения с условиями~(3.18). Для этого нужно доказать,
+что
+$$
+u^j=u_{x_j},~~~j=1,\dots,N.
+$$
+Последние $n$ уравнений системы можно записать в виде
+$$
+\frac\partial {\partial t}\left( u^j-u_{x_j}\right) =0,\quad
+j=1,\dots ,n.
+$$
+Следовательно, $u^j-u_{x_j}$ не зависит от $t$. Но при $t=0$ имеем
+$u^j=u_{x_j}$. Значит, это верно и для любого $t$.
+\bigskip
+
+{\large\bf Принцип Дюамеля} Рассмотрим теперь задачу II)
+$$
+\left\{
+\begin{array}{c}
+u_t+\sum_{j=1}^nA^ju_{x_j}+Bu=f(t,x),\\
+u\Big|_{t=0}=0.
+\end{array}
+\right.,
+$$
+для системы с постоянными коэффициентами. Решение этой задачи
+получим с помощью интеграла Дюамеля. Для этого рассмотрим решение
+$v(t,x,\tau)$ задачи I) вида
+$$
+\left\{
+\begin{array}{l}
+u_t+\sum_{j=1}^nA^ju_{x_j}+Bu=0\\
+u\Big|_{t=\tau }=f(\tau ,x).
+\end{array}
+\right.
+$$
+Будем предполагать, что
+\begin{enumerate}
+\item $f\in C^\infty (Q)$,
+\item $f\in S_x$ для любого $t$, причем постоянные не зависят от $t$.
+\end{enumerate}
+Здесь $Q=\{0\leq t\leq T;x\in\R^n\}$. Мы показали, что
+$v(t,x,\tau)$ --- бесконечно дифференцируемая функция $t$ и $x$.
+Рассмотрим интеграл Дюамеля
+$$
+u(t,x)=\int_0^tv(t,x,\tau)d\tau .
+$$
+Докажем, что этот интеграл дает решение задачи II.
+
+Легко видеть, что $u\big|_{t=0}=0$. Далее, из представления
+$v(t,x,\tau)$ с помощью интеграла Фурье, учитывая свойства функции
+$f(t,x)$ выводим, что $v(t,x,\tau)$, $v_t(t,x,\tau)$ и
+$v_{x_j}(t,x,\tau)$ непрерывно зависят от $\tau$. Далее имеем
+$$
+u_t(t,x)=\int_0^t\frac{\partial v}{\partial t}d\tau +v(t,x,t).
+$$
+Так как $v(\tau ,x,\tau)=f(\tau ,x)$, то
+$$
+u_t(t,x)=\int_0^t\frac{\partial v}{\partial t}d\tau +f(t,x),\qquad
+u_{x_j}(t,x)=\int_0^t\frac{\partial v}{\partial x_j}d\tau .
+$$
+Следовательно,
+$$
+u_t+\sum_{j=1}^nA^ju_{x_j}+Bu
+=\int_0^t\Big(v_t+\sum_{j=1}^nA^jv_{x_j}+Bv\Big)d\tau+f(t,x)=f(t,x),
+$$
+так как
+$$
+v_t+\sum_{j=1}^nA^jv_{x_j}+Bv=0.
+$$
+
+{\large\bf Задачи}
+
+1. Докажите, что полученное решение задачи II является бесконечно
+дифференцируемой функцией от $x$ и $t$. Какую гладкость имеет
+решение задачи II, если $f(t,x)$ имеет лишь конечное число
+производных по $t$?
+
+2. Доказать, что для любого гиперболического уравнения второго
+порядка с постоянными коэффициентами задача Коши сводится к задаче
+Коши для симметрической системы первого порядка.
+\end{document}

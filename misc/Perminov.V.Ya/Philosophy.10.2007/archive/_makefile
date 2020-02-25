@@ -1,0 +1,2 @@
+c:
+ del *.aux *.log *.dvi

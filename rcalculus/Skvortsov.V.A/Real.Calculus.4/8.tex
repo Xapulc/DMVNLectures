@@ -1,0 +1,310 @@
+
+% восьмая лекция по действлану.
+
+\begin{center} \textbf{Лекция 8.} \end{center}
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 14.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+
+$(X, \EuScript{A}, \EuScript{M})$
+
+$\varphi: A \rightarrow \mathbb{R}$ --- аддитивная функция.
+
+$\varphi$ абсолютно непрерывна относительно $\mu$, если $\forall E
+\in \EuScript{A} \; \mu E = 0 $ имеем $\varphi(E) = 0$
+
+\textbf{Определение.} \quad $\varphi$ сингулярна относительно
+$\mu$, если $\exists z \in \EuScript{A}, \; \mu z = 0$, т. что
+$\varphi(A) = 0$, если $A \bigcap z = \varnothing$ (или $\forall A
+\varphi(A) = \varphi(A \bigcap z)$ )
+
+\textbf{Задача.} \quad
+
+1. \quad $\varphi$ абсолютно непрерывна и сингулярна $\Rightarrow
+\varphi \equiv 0$
+
+2. \quad линейная комбинация абсолютно непрерывных (сингулярных)
+функций абсолютно непрерывна (сингулярна)
+
+3. \quad $\varphi$ --- абсолютно непрерывна (сингулярна)
+$\Leftrightarrow$ $V$, \={V}, \b{V} --- абсолютно непрерывны
+(сингулярны)
+
+4. \quad $\varphi_k$ --- последовательность абсолютно непрерывных
+(сингулярных) аддитивных функций, $\varphi$ --- её предел (т.е.
+$\varphi (A) = \lim_{k \rightarrow \infty} \varphi_k (A) \;
+\forall A \in \EuScript{A}) \Rightarrow \varphi $ --- абсолютно
+непрерывна (сингулярна)
+
+$\varphi(E) = \int_E f d \mu$ --- абсолютно непрерывная функция
+
+Далее рассматриваем все на $E, \; \mu E < \infty$
+
+\textbf{Утверждение.} \quad $\varphi$ --- абсолютно непрерывна
+относительно $\mu \Leftrightarrow \forall \varepsilon~>~0
+\\ \exists \delta
+> 0 \; \forall A: \: \mu A < \delta \Rightarrow \Rightarrow
+|\varphi(A)| < \varepsilon$
+
+Необходимость. $\mu A = 0, \mu A < \delta \; \forall \delta > 0$,
+ тогда $\varphi(A) < \varepsilon \; \forall \varepsilon > 0$
+
+Достаточность. Предположим $\varphi$ --- абсолютно непрерывна и
+утверждение не выполнено. Сначала докажем для $\varphi \geqslant
+0$.
+
+ $\exists \varepsilon: \; \delta_k = \frac{1}{2^k}, \mu A_k <
+ \frac{1}{2^k}$, $\varphi(A_k) \geqslant \varepsilon$
+
+ $\varlimsup(A_k) = \bigcap_{m=1}^\infty \bigcup_{k \geqslant m} A_k$
+
+ $\mu \varlimsup A_k = \mu (\bigcap_{m=1}^\infty \bigcup_{k \geqslant m} A_k) \leqslant \mu(\bigcup_{k \geqslant m} A_k)
+ \leqslant \sum_{k \geqslant m} \mu A_k < \sum_{k \geqslant m} \frac{1}{2^k} = \frac{1}{2^{m-1}} \Rightarrow 0$
+
+ То есть $\mu A = 0$ (так как не зависит от $m$)
+
+ $\varphi(\varlimsup (A_k)) \geqslant \varlimsup_{k \rightarrow \infty} \varphi (A_k) \geqslant \varepsilon$
+(было доказано для $\varphi \geqslant 0$)
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 15.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+То есть получаем противоречие ($\mu A = 0$ $\varphi(A) \geqslant
+\varepsilon$)
+
+Теперь докажем для $\varphi$ произвольной.
+
+Если $\varphi$ абсолютно непрерывна $\Rightarrow V$ абсолютно
+непрерывна.
+
+$|\varphi(A)| \leqslant V(A) < \varepsilon \Rightarrow $ выполнено
+утверждение
+
+\textbf{Задача.} \quad $\varphi$ сингулярна относительно $\mu$ на
+$E \Leftrightarrow \forall \varepsilon > 0 \; \exists A \subset F:
+\: \mu A < \varepsilon$
+
+$V (E \setminus A, \varphi) < \varepsilon $
+
+\textbf{Теорема Хана.} \quad $\mu E < \infty, \; \varphi$ ---
+аддитивная мера. Тогда $\exists P \subset E \; \forall \\ A
+\subset P \; \varphi(A) \geqslant 0, \; \forall A \subset E
+\setminus P \varphi(A) \leqslant 0$
+
+\textbf{Доказательство.} \quad
+
+\b{V}$(P) = 0$ равносильно первой части утверждения
+
+\={V}$(E \setminus P) = 0 \Leftrightarrow \exists P \subset E \:
+\forall A \subset E \setminus P \; \varphi(A) \leqslant 0$
+
+Докажем утверждение для вариации
+
+Замечание: если \b{V}$(P) = 0$, \={V}$(E \setminus P) = 0$, то
+\={V}$(E) = $ \={V}$(P)$
+
+$E \supset A_k : \varphi(A_k) >$ \={V}$(E) - 1/2^k \Rightarrow$
+($\exists$ такое $A_k$  по определению \={V})
+
+\={V}$(A_k)$ > \={V}$(E) - 1/2^k \Rightarrow $ \={V}$(E \setminus
+A_k) < 1/2^k$
+
+$\varphi(A_k)$ \={V}$(A_k) -$ \b{V}$(E) - 1/2^k$
+
+\={V}$(A_k)$ - \b{V}$(A_k)$ > \={V}$(E) - 1/2^k$
+
+\={V}$(A_k)$ < \={V}$(E)$ - \b{V}$(A_k)$
+
+\b{V}$(A_k)$ < $1/2^k$
+
+$p = \varliminf A_k = \bigcup_{m=1}^\infty \bigcap_{k \geqslant m}
+A_k$
+
+\b{V}$(P) \geqslant \varliminf_{k \rightarrow \infty}$ \b{V}$(A_k
+= 0)$
+
+\={V} $(E \setminus \varliminf A_k) = $ \={V}
+$(\bigcap_{m=1}^\infty \bigcup_{k \geqslant m} (E \setminus A_k))
+\leqslant$
+ \={V}
+$(\bigcup_{k \geqslant m} (E \setminus A_k))
+\\ \leqslant \sum_{k = m}^\infty$
+\={V}
+$(E \setminus A_k) < \sum_{k=1}^\infty
+\dfrac{1}{2^k} = \dfrac{1}{2^{m-1}} \rightarrow 0$
+
+$V(E \setminus A_k) < 1/2^k$
+
+\={V}$(E \setminus P) = 0$
+
+
+\textbf{Теорема. (об обобщенном разложении Хана)} \quad
+
+$\varphi(A) \geqslant 0, \mu $ --- мера, тогда $\forall a > 0 \; E
+= Z \bigcup (\bigcup_{k = 1}^\infty E_k), \mu Z = 0, E_k: \;
+\forall \: A \in E_k$ выполнено
+
+$a(k - 1) \mu A \leqslant \varphi(A) \leqslant a k \mu A$
+
+
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 15.1    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+
+Достаточно доказать при $a = 1$ (иначе от $\varphi$ переходим к
+$\varphi/a$)
+
+Рассмотрим $\varphi$ --- $\mu$ -- функция множества.
+
+
+ $\exists P = E^+ : \; \forall A \; \subset E^+ :
+\varphi(A) \geqslant \mu(A)$ Пусть $E \setminus P = E^-: \;
+\forall A \; \subset E^-: \varphi(A) \leqslant \mu(A)$
+
+Пусть $E^- = E_1$
+
+$\varphi - 2\mu$. Применяем к ней предыдущую теорему.
+
+$E^+ \rightarrow E^{++} \quad \varphi(A) \geqslant 2 \mu(A)$
+
+$\phantom{E^+.}^\searrow E^{+-}  \quad \mu A \leqslant \varphi(A)
+\leqslant 2 \mu A$
+
+$\phantom{xxx}$
+
+$E^{\underbrace{+ + \ldots +}_{k-1}} \rightarrow E^{\underbrace{+
++ \ldots +}_{k}} \quad \quad \varphi(A) \geqslant k \mu (A)$
+
+
+$\phantom{E^{\underbrace{+ + \ldots +}_{k-1}}} ^\searrow
+E^{\underbrace{+ + \ldots + -}_{k}} \quad \quad (k-1) \mu A
+\leqslant \varphi(A) \leqslant k \mu (A)$
+
+
+$\phantom{xxxx} $
+
+$Z = \bigcap_{k=1}^{\infty} E^{\underbrace{++ \ldots +}_k}$
+
+$\phantom{xxxx} $
+
+$\mu(z) \leqslant \dfrac{\varphi(Z)}{k} \xrightarrow[k \rightarrow
+\infty]{} 0 \Rightarrow \mu Z = 0$
+
+\textbf{Теорема. (о разложении Лебега)} \quad  $\varphi$ ---
+аддитивная функция на $E$, $\mu - \delta$--конечна. Тогда
+существует однозначное представление $\varphi: \; \lambda +
+\delta$, где $\alpha$ --- абсолютно непрерывна,
+$\delta$--сингулярна. Причем $\alpha(A) = \int_A f d \mu, \:
+f$~определено однозначно $\delta (A) = \varphi(A \bigcap Z)$, где
+$Z$
+--- фиксирована, $\mu Z$. Если $\varphi \geqslant 0$, то $f~\geqslant 0$
+
+$\lozenge$ Сначала рассмотрим случай $\mu < \infty$
+
+Применим обобщенную теорему Хана для последовательности
+$a_m~=~1/2^m$
+
+$E = Z^m \bigcup (\bigcup_{k=1}^\infty E_k^m)$
+
+$\dfrac{k-1}{2^m} \mu A \leqslant \varphi (A) \leqslant
+\dfrac{k}{2^m} \mu A, \; A \subset E_k^m$
+
+$[a,b] \quad b<c \quad [c,d]$
+
+$a \mu A \leqslant \varphi(A) \leqslant b \mu A, c \mu A \leqslant
+\varphi(A) \leqslant d \mu A \Rightarrow \mu A = 0$
+%
+%
+%
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%          стр 16.0    %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%
+%
+Имеем $E_k^m \subset E_{2k - 2}^{m+1} \bigcup E_{2k-1}^{m+1}
+\bigcup E_{2k}^{m+1} \bigcup E_{2k + 1}^{m+1} \bigcup Y^m$
+
+$Z = (\bigcup Z^m) \bigcup (\bigcup Y^m), \mu Z = 0$
+
+
+$f_m(x) =
+\begin {cases}
+(k-1)/2^m, &\text x \in E_k^m \setminus Z  \\
+z, &\text x \in Z
+\end {cases} $
+
+$| f_{m+1} (x) - f_m(x) | \leqslant 1/2^m, \quad f_m
+\rightrightarrows f$
+
+$A \subset E, \; A$ --- произвольное
+
+$A \bigcap E_k^m$
+
+$\varphi(A) = \varphi (A \bigcap Z) + \sum_k \varphi (A \bigcap \:
+(E_k^m \setminus Z))$ \fbox{ $\leqslant$}
+
+$\varphi(A \bigcap Z) + \sum \varphi (A \bigcap E_k^m) \geqslant
+\int_A f_m d \mu + \varphi(A \bigcap Z)$
+
+\fbox{ $\leqslant$} $\int_A f_m d \mu + 1/2^m \mu (A)$
+
+$\varphi(A) = \varphi(A \bigcap Z) + \int_A f d \mu, \; \int_A f_m
+d \mu = \sigma, \int_A f d \mu = \alpha$
+
+$\varphi = \sigma_1 + \alpha_1 = \sigma_2 + \alpha_2 \Rightarrow
+\alpha_1 - \alpha_2 = \sigma_2 - \sigma_1 \equiv 0$
+
+(функция одновременно абсолютно непрерывна и сингулярна)

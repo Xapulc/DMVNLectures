@@ -1,0 +1,1304 @@
+\documentclass[a4paper]{article}
+\usepackage[simple]{dmvn}
+
+\title{Конспекты семинаров по математической статистике}
+\author{Ирина Аркадьевна Кожевникова}
+\date{5 семестр 2004 г.}
+
+\begin{document}
+\maketitle
+
+{\footnotesize Все эти задачи были записаны на семинарах и впоследствии набраны в \TeX'е Сашей Пановой.
+Посему не критикуйте слишком строго: это \emph{первый} документ, набранный ею в оной системе.
+Об ошибках и опечатках сообщайте на \dmvnmail{} или автору документа, а обновления всегда есть на сайте \dmvnwebsite.\par}
+
+\tableofcontents
+
+\section{Обозначения и определения}
+
+Пусть $X_i$\т некоторая выборка. Тогда:
+
+\eqn{S_n:=\suml{1}{n}X_i, \quad \ol X :=\dfrac{1}{n}S_n.}
+\eqn{X_{(1)}:=\min X_i, \quad X_{(n)}:=\max X_i}
+\eqn{S_n^2 :=\dfrac{1}{n}\suml{1}{n}(\ol{X} - X_i)^2.}
+
+\section{Функции распределения}
+
+\begin{items}{0}
+\item Нормальное распределение $\Nc(a, b)$:
+\eqn{p(x):=\dfrac{1}{\sqrt{2\pi}\sigma}e^{-\tfrac{(x-a)^2}{2\sigma^2}}}
+
+\item Экспоненциальное распределение
+\eqn{p(x)=\begin{cases} e^{-(x-\ta)}, x\geq\ta \\ 0, x<\ta\end{cases}}
+
+\item Гамма-распределение $\Ga(p, a)$
+\eqn{p(x)=\begin{cases} \dfrac{x^{p-1}e^{-\tfrac{x}{a}}}{a^p \Ga(p)} , x> 0 \\ 0, x\le\ta\end{cases}}
+
+\item Распределение Вейбулла $W(\ta, \al, \beta)$, где $\al ,\beta >0$,
+$F(x)\begin{cases}1-exp\left(-\left(\dfrac{x-\ta}{\beta}\right)^{\al}\right), x>\ta \\
+0, x\le\ta\end{cases}$
+
+\item Распределение Рееля $W(0, 2, \sqrt{\ta})$
+
+\item Распределение $\chi_n^2$ с $n$ степенями свободы $\Ga(\frac{n}{2}, 2)$
+$p_{\chi_n^2}=\begin{cases}\dfrac{x^{\tfrac{n}{2}-1}e^{-\tfrac{x}{2}}}{2^{\tfrac{n}{2}}\Ga(\tfrac{n}{2})}, x>0\\
+0, x\le 0\end{cases}$
+
+\item Распределение Коши $p_{\xi}=\dfrac{1}{\pi (x^2+1)}$
+
+\item Распределение Стюарта ХЗ!
+
+\item Распределение Фишера $p_{\xi}(x)=p{a,b}(x)=
+\begin{cases}\dfrac{1}{B\left(\frac{a}{2}, \frac{b}{2}\right)}\left(\dfrac{a}{b}\right)^{\tfrac{a}{2}}
+x^{\tfrac{b}{2}-1}\left(1+\dfrac{a}{b}x\right)^{-\tfrac{a+b}{2}}, x>0 \\
+0, x\le0\end{cases}$
+$\\$
+
+\item Логистическое распределение $p(x)=\dfrac{e^{-x+\ta}}{(1+e^{-x+\ta})^2}, \,x\in\R $
+
+\item Распределение Пуассона $P(\xi=k, \ta)=\dfrac{e^{-\ta}\ta^k}{k!}$
+
+\item Распределение Пуассона, урезанное в нуле
+$P(\xi=x, \ta)=\dfrac{e^{-\ta}\ta^x}{x!(\lambda-e^{-\ta})}, \, \ta >0$
+$\\$
+
+\item Биномиальное распределение $\xi_i=\begin{cases} 0, q>0 \\ 1, p>0\end{cases}, \, p+q=1$
+
+$P(x, \ta)=C_n^x\ta^x(1-\ta)^{n-x}$
+\end{items}
+
+\section{Математическое ожидание и дисперсия оценок.\\Совместное распределение.}
+
+\begin{problem}
+Пусть $X_1\dots X_n$\т выборка из генеральной совокупности НОР величин $\Rc(0,\ta]$.
+Найти математическое ожидание и дисперсию оценок параметра $\ta$:
+
+\eqn{T_1(x)=2, \quad \dfrac{S_n}{n}=2\ol{X}, \text{ где } S_n=\suml{i=0}{n}x_i.}
+\eqn{T_2(x)=\max{X_i}=X_{(n)}.}
+\end{problem}
+\begin{solution}
+
+\pt{1} $EX_i=\dfrac{1}{\ta}\intl{0}{\ta}x\,dx=\left.\dfrac{x^2}{2\ta}\right|_0^{\ta}=\dfrac{\ta}{2}$\, ,
+
+$ET_1(X)=\frac{2}{n}E(\suml{1}{n}X_i)=\frac{2}{n}\suml{1}{n}EX_i=\frac{2}{n}n\frac{\ta}{2}=\ta$
+Таким образом, оценка несмещенная.
+
+$DX_i=\dfrac{1}{\ta}\intl{0}{\ta}(x-\dfrac{\ta}{2})^2\, dx=\dfrac{\ta^2}{12}$,
+
+$DT_1(x)=D\left(\dfrac{2}{n}\suml{1}{n}X_i\right)=\dfrac{4}{n^2}\suml{1}{n}DX_i=\dfrac{\ta^2}{3n}$,
+
+$DT_1(x)\rightarrow 0$, при $n\rightarrow\infty$.
+
+Значит, $T_1$ состоятельная оценка.
+
+\pt{2} Найдем распределение $X_{(n)}$
+
+$F(x)=P\left(X_{(n)}\le X\right)=P\left(X_1\le x,\dots X_n\le x\right)=
+P\left(X_1\le x\right)\dots P\left(X_n\le x\right)= \\
+=\left(P\left(X_1\le x\right)\right)^n=\dfrac{x^n}{\ta^n}$,
+т.к. $P\left(X\le x\right)=\dfrac{x}{\ta}$
+
+Значит, $p_{X_{(n)}}(x)=\begin{cases}\dfrac{nx^{n-1}}{\ta^n}, \, x\in [0, \ta) \\
+0, \mbox{иначе}\end{cases}$
+
+$EX_{(n)}=\dfrac{n}{\ta^2}\intl{0}{\ta}x^n=\dfrac{n}{n+1}\ta= \ta - \dfrac{\ta}{n+1}$
+
+Таким образом, оценка $T_2=X{(n)}$ асимптотически несмещенная.
+
+$DX{(n)}=E^2X_{(n)} - EX_{(n)}^2$ Найдем $E^2X_{(n)}$
+
+$E^2X_{(n)}=\dfrac{n}{\ta^n}\intl{0}{\ta}x^{n+1}\, dx=\dfrac{n}{n+2}\ta^2$
+
+Тогда $DX{(n)}=\dfrac{n}{n+2}\ta^2 - \dfrac{n^2}{(n+1)^2}\ta^2=\dots=\dfrac{n}{(n+1)(n+2)}\ta^2\rightarrow 0$
+при $n\rightarrow\infty$
+
+Значит, $T_2=X{(n)}$ состоятельная оценка.
+\end{solution}
+
+\begin{problem}
+$X_1\dots X_{n}$ выборка из генеральной совокупности НОР величин $\Rc[\ta,1)$.
+Найти математическое ожидание и дисперсию оценок параметра $\ta$:
+
+\centerline{1)$X_{(1)}=\min{X_i}$}
+
+\centerline{2) $\widehat{\ta}_n(x)=2\ol{X} - 1$}
+\end{problem}
+\begin{solution}
+\pt{1}
+Найдем распределение $X_{(1)}$.
+
+$P\left(X_{(1)}\le x\right)=1 - P\left(X_{(1)}> x\right)=1- \prod\limits_1^n P\left(X_i> x\right)=
+1- \prod\limits_1^n \left(1-P\left(X_i\le x\right)\right)= \\
+=1- \prod\limits_1^n\left(1- \dfrac{x-\ta}{1-\ta}\right)=
+1- \prod\limits_1^n\left(\dfrac{1-x}{1-\ta}\right)=1- \left(\dfrac{1-x}{1-\ta}\right)^n $
+
+Значит, $p_{X_{(1)}}(x)=\begin{cases}\dfrac{n(1-x)^{n-1}}{(1-\ta)^n}, \, x\in [\ta, 1) \\
+0, \mbox{иначе}\end{cases}$
+
+$EX_{(1)}=\dfrac{n}{(1-\ta)^n}\intl{\ta}{1}x(1-x)^{n-1}\, dx=
+\dfrac{n}{(1-\ta)^n}\left(\left.\dfrac{-x(1-x)^n}{n}\right|_{\ta}^1 + \dfrac{1}{n}\intl{\ta}{1}(1-x)^n\, dx\right)=
+\ta + \dfrac{1-\ta}{n+1}=EX_{(1)}$
+
+$EX{(1)}^2=\mbox{(путем сложных вычислений как то, интегрирования по частям, дважды.)}\\ =
+\ta^2 + \dfrac{2\ta(1-\ta)}{n+1} + \dfrac{2(1-\ta)^2}{(n+1)(n+2)}$
+
+Таким образом,
+$DX{(1)}=EX{(1)}^2 - E^2X{(1)}=\dots=\dfrac{-(1-\ta)^2}{(n+1)^2(n+2)}\rightarrow 0\, \mbox{при}\, n\rightarrow\infty$
+$\\$
+
+2)$EX_i=\dfrac{1}{1-\ta}\intl{\ta}{1}x\,dx=\dfrac{1+\ta}{2}$
+
+$EX_i^2=\dfrac{1}{1-\ta}\intl{\ta}{1}x^2\,dx=\dfrac{\ta^2 + \ta +1}{3}$
+
+$DX_i=EX{(1)}^2 - E^2X{(1)}=\dots=\dfrac{2\ta^2-\ta-1}{6}$
+
+Таким образом,
+$E\widehat{\ta}_n=2E\ol{X} -1=\dfrac{2}{n}\suml{1}{n}EX_i -1=2EX_i -1=1+\ta -1=\ta$
+
+$D\widehat{\ta}_n=D\dfrac{2}{n}\suml{1}{n}X_i=\dfrac{4}{n^2}\suml{1}{n}DX_i=\dfrac{4}{n}DX_i=
+\dfrac{4}{n}\dfrac{2\ta^2-\ta-1}{6}=\dfrac{2}{n}\dfrac{2\ta^2-\ta-1}{3}\rightarrow 0$
+при $n\rightarrow\infty$
+\end{solution}
+
+\textit{Задача 3}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин с экспоненциальным распределением
+Найти математическое ожидание и дисперсию оценок параметра $\ta$
+
+
+\centerline{1)$X_{(1)}=\min{X_i}$}
+
+\centerline{2) $T_1=\ol{X} -1$}
+
+
+\textit{Решение}
+1)$P\left(X_1\le x\right)=\intl{\ta}{x}e^{-(t-\ta)}\, dt=\left.-e^{-(t-\ta)}\right|_{\ta}^x=
+1-e^{-(x-\ta)}$
+
+Найдем распределение $X_{(1)}$
+
+$P\left(X_{(1)}\le x\right)=1 - P\left(X_{(1)}> x\right)=1- \prod\limits_1^n P\left(X_i> x\right)=
+1- \prod\limits_1^n \left(1-P\left(X_i\le x\right)\right)= 1-\left(1-\left(1-e^{-(x-\ta)}\right)\right)^n\\=
+1-e^{-n(x-\ta)}=P\left(X_{(1)}\le x\right)$
+
+Значит, $p_{X{(1)}}(x)=\begin{cases}ne^{-n(x-\ta)}, \, x\geq \ta \\
+0, x<\ta\end{cases}$
+
+$EX_{(1)}=\intl{\ta}{\infty}nxe^{-n(x-\ta)}\,dx=\mbox{(путем сложных вычислений)}=\ta +\dfrac{1}{n}$
+
+$EX_{(1)}^2=\intl{\ta}{\infty}nx^2e^{-n(x-\ta)}\, dx\mbox{(путем сложных вычислений)}
+=\ta^2+\dfrac{2}{n}\ta+\dfrac{2}{n^2}$
+
+$DX_{(1)}=EX_{(1)}^2 - E^2X_{(1)}=\dfrac{1}{n^2}\rightarrow 0$ при $n\rightarrow\infty$
+$\\$
+
+2)
+$EX_i=\intl{\ta}{\infty}xe^{-x+\ta}\, dx=e^{\ta}\intl{\ta}{\infty}xe^{-x}\,dx=
+-e^{\ta}\left(\left.xe^{-x}\right|_{\ta}^{\infty} - \intl{\ta}{\infty}e^{-x}\, dx\right)=
+-e^{\ta}\left(\ta e^{-\ta} + \left.e^{-x}\right|_{\ta}^{\infty}\right)=\ta +1$
+
+$EX_i^2=\intl{\ta}{\infty}x^2e^{-x+\ta}\, dx=\dots=\ta^2 + 2\ta +2$
+
+$DX_i=EX_i^2 - E^2X_i=1$
+
+$ET_1=E\left(\dfrac{1}{n}\suml{1}{n}X_i -1\right)=\dfrac{1}{n}\suml{1}{n}EX_i -1=EX_i -1=\ta$
+
+$DT_1=D\left(\dfrac{1}{n}\suml{1}{n}X_i -1\right)=\dfrac{1}{n^2}\suml{1}{n}DX_i=\dfrac{1}{n}DX_i=\dfrac{1}{n}$
+$\\$
+
+\textit{Задача 4}
+$\xi_1$, $\xi_2$ независимы.
+$\xi_1\sim \Ga(p_1, 1)$,
+$\xi_2\sim \Ga(p_2, 1)$.
+Найти $p_{\xi_1 + \xi_2}$ - плотность распределения случайной величины
+$\xi_1 + \xi_2$
+$\\$
+
+\textit{Решение}
+
+$p_{\xi_1 +\xi_2}(x)=\intl{0}{x}p_{\xi_1}(t)p_{\xi_2}(x-t)\, dt
+=\dfrac{1}{\Ga(p_1)\Ga(p_2)}\intl{0}{x}t^{p_1 -1}e^{-t}(x-t)^{p_2-1}e^{-x+t}\, dt= \\
+=\dfrac{e^{-x}}{\Ga(p_1)\Ga(p_2)}\intl{0}{x}t^{p_1 -1}(x-t)^{p_2-1}\, dt
+=(t=xs)=\dfrac{e^{-x}}{\Ga(p_1)\Ga(p_2)}\intl{0}{1}x^{p_1 + p_2 -1}s^{p_1 -1}(1-s)^{p_2 -1}\, ds=\\
+=\dfrac{e^{-x}x^{p_1 + p_2 -1}}{\Ga(p_1)\Ga(p_2)}B(p_1, p_2)
+=\dfrac{e^{-x}x^{p_1 + p_2 -1}}{\Ga(p_1+p_2)}$
+$\\$
+
+
+Таким образом, $\xi_1 + \xi_2\sim\Ga(p_1 +p_2, 1)$
+$\\$
+
+\textit{Задача 5}
+$\xi_1$, $\xi_2$ независимы.
+$\xi_1\sim \Ga(p_1, a)$,
+$\xi_2\sim \Ga(p_2, a)$.
+Найти $p_{\xi_1 + \xi_2}$ - плотность распределения случайной величины
+$\xi_1 + \xi_2$
+$\\$
+
+\textit{Решение}
+Имеем
+\mln{p_{\xi_1 +\xi_2}(x)=\intl{0}{x}p_{\xi_1}(x-y)p_{\xi_2}(y)\,dy =\dfrac{1}{\Ga(p_1)\Ga(p_2)a^{p_1 +p_2}}
+\intl{0}{x}(x-y)^{p_1 -1}e^{-\tfrac{(x-y)}{a}}y^{p_2-1}e^{-\tfrac{y}{a}}\,dy=\\
+=\dfrac{e^{-\tfrac{x}{a}}}{\Ga(p_1)\Ga(p_2)a^{p_1 +p_2}}\intl{0}{x}(x-y)^{p_1 -1}y^{p_2-1}\, dy
+=\quad \hc{y=tx}\quad =\\
+=\dfrac{e^{-\tfrac{x}{a}}}{\Ga(p_1)\Ga(p_2)a^{p_1 +p_2}}(x)^{p_1 + p_2 -1}
+\intl{0}{1}(1-t)^{p_1 -1}t^{p_2 -1}\, dt
+=\dfrac{e^{-\tfrac{x}{a}}x^{p_1 + p_2 -1}}{\Ga(p_1)\Ga(p_2)a^{p_1 +p_2}}B(p_1, p_2)
+=\dfrac{e^{-\tfrac{x}{a}}x^{p_1 + p_2 -1}}{\Ga(p_1+p_2)a^{p_1 +p_2}}.}
+
+Таким образом, $\xi_1 + \xi_2\sim\Ga(p_1 +p_2, a)$
+
+\textit{Задача 6}
+В модели $N(\ta_1, \ta_2^2)$ по выборке $X_1$\dots$X_{n}$ вычислить смещение и дисперсию статистики
+$\widehat{\ta}_2=|X_1 - X_2|$ как оценки $\ta_2$
+\textit{Определение} $(E\widehat{\ta}_n - \ta)$ - это смещение
+$\\$
+
+\textit{Решение}
+
+$X_1\sim N(\ta_1, \ta_2^2)$,
+$X_2\sim N(\ta_1, \ta_2^2)$, значит
+$\xi=X_1 -X_2\sim N(0, 2\ta_2^2)$
+
+\eqn{p_{\xi}=\dfrac{1}{2\ta_2\sqrt{\pi}}e^{-\tfrac{x^2}{4\ta_2^2}}}
+
+\mln{E|\xi|=\intl{-\infty}{\infty}|x|p_{\xi}\, dx=2\intl{0}{\infty}xp_{\xi}\, dx
+=2\intl{0}{\infty}\dfrac{xe^{-\tfrac{x^2}{4\ta_2^2}}}{2\ta_2\sqrt{\pi}}\, dx
+=\dfrac{2\ta_2}{\sqrt{\pi}}\intl{0}{\infty}e^{-\tfrac{x^2}{4\ta_2^2}}\, d(\dfrac{x^2}{4\ta_2^2})=\\
+=\dfrac{2\ta_2}{\sqrt{\pi}}\intl{0}{\infty}e^{-t}\, dt=\dfrac{2\ta_2}{\sqrt{\pi}}\left.-e^{-t}\right|_0^{\infty}
+=\dfrac{2\ta_2}{\sqrt{\pi}}=E|\xi|}
+
+\eqn{E\widehat{\ta}_n - \ta_2=\ta_2\hr{\dfrac{2}{\sqrt{\pi}} -1}}
+
+\section{Распределение $\dfrac {\xi}{\eta}$}
+
+\textit{Задача 7}
+p(y,z) совместная плотность случайных величин $\eta$ и $\zeta$ .
+Пусть $\eta$ и $\zeta$ независимы с плотностями $p_1$, $p_2$ соответственно.
+Тогда $p(y,z)=p_1(y) p_2(z)$
+
+Найти плотность распределения случайной величины
+$\xi=\dfrac{\eta}{\zeta}$.
+$\\$
+
+\textit{Решение}
+
+\mln{F_{\xi}(x)=\intl{0}{\infty}\intl{-\infty}{zx}p(y,z)\,dy\,dz + \intl{-\infty}{0}\intl{zx}{\infty}p(y,z)\,dy\,dz=\\
+=\intl{0}{\infty}\intl{-\infty}{zx}p_1(y)p_2(z)\, dy\,dz + \intl{-\infty}{0}\intl{zx}{\infty}p_1(y)p_2(z)\, dy\,dz
+=\intl{0}{\infty}F_1(zx)p_2(z)\,dz + \intl{-\infty}{0}\left(1-F_1(zx)\right)p_2(z)\, dz=F_{\xi}}
+
+Тогда
+\eqn{p_{\xi}=\intl{0}{\infty}zp_1(zx)p_2(z)\,dz - \intl{-\infty}{0}zp_1(zx)p_2(z)\, dz= 2\intl{0}{\infty}zp_1(zx)p_2(z)\, dz=p_{\xi}.}
+
+\textit{Задача 8}(\textbf {Вывод плотности для распределения Коши})
+Пусть
+$\zeta,\eta$ независимы и
+$\zeta,\eta\sim N(0, \sigma^{2})$
+Найти плотность распределения случайной величины
+$\xi=\dfrac{\eta}{\zeta}$.
+$\\$
+
+\textit{Решение}
+\mln{p_{\xi}=\dfrac{2}{2\pi\sigma^2}\intl{0}{\infty}ze^{-\tfrac{z^2x^2}{2\sigma^2} - \tfrac{z^2}{2\sigma^2}}\, dz
+=\dfrac{1}{\pi\sigma^2}\intl{0}{\infty}e^{-\tfrac{z^2}{2}\left(\tfrac{x^2 +1}{\sigma^2}\right)}\, d(\dfrac{z^2}{2})
+=\dfrac{1}{\pi\sigma^2}\intl{0}{\infty}e^{-u\left(\tfrac{x^2+1}{\sigma^2}\right)}\, du= \\
+=\dfrac{1}{\pi\sigma^2}\left(-\dfrac{\sigma^2}{x^2 +1}\right)
+\left.e^{-u\left(\tfrac{x^2+1}{\sigma^2}\right)}\right|_0^{\infty}=\dfrac{1}{\pi (x^2+1)}=p_{\xi}}
+
+\textit{Задача 9}(\textbf {Вывод плотности для распределения Стюарта})
+$\zeta,\eta$ независимы и
+$\zeta\sim N(0, 1)$
+$\eta\sim\sqrt{\dfrac{\chi_{n-1}^2}{n-1}}$
+Найти плотность распределения случайной величины
+$\xi=\dfrac{\eta}{\zeta}$.
+
+\textit{Задача 10}(\textbf {Вывод плотности для распределения Фишера})
+$\zeta,\eta$ независимы и
+$\zeta\sim\dfrac{\chi_n^2}{n}$
+$\eta\sim\dfrac{\chi_m^2}{m}$
+Найти плотность распределения случайной величины
+$\xi=\dfrac{\eta}{\zeta}$.
+
+\textit{Задача 11}
+$X_1\dots X_{l}$ ,
+$X_{l+1}\dots X_{l+m}$ выборка из генеральной совокупности НОР величин с плотностью
+\eqn{p(x)=\case{\dfrac{e^{-x / a}}{a}, x>0 \\ 0, x\le 0}}
+Найти распределение вероятностей случайной величины
+$y=\dfrac {m}{l}\cdot\dfrac {\suml{i=0}{l}x_i}{\suml{i=l+1}{l+m}x_i}$
+
+
+\section{Несмещенность и состоятельность оценок}
+
+
+\textit{Задача 12}
+$X_1\dots X_{n}$ НОР, $X_i\sim N(\mu, \ta^2)$
+Доказать, что
+$T_n=\sqrt {\dfrac {\pi}{2}}\dfrac {1}{n}\suml{1}{n}{|X_i - \mu|}$
+является несмещенной и состоятельнй (в средне квадратичкском смысле, т.е. D$T_n\rightarrow 0$) оценкой
+параметра $\ta$ .
+
+\textit{Задача 13}
+$X_1\dots X_{n}$ НОР, $X_i\sim \Ga(\lambda, \ta)$
+$T=\suml {1}{n}X_i$
+Доказать, что
+$\tau_{\al}^{*}=\dfrac {\Ga (\lambda n)}{\Ga (\lambda n -\al)}$
+$T^{-\al}$
+является несмещенной оценкой функции
+$\tau(\ta)=\ta^{-\al}$
+при $\al\le \lambda_n$
+$\al\geq 0$
+$\\$
+
+\textit{Решение}
+$X_i\sim \Ga(\lambda, \ta)$, тогда $T=\suml{1}{n}X_i\sim \Ga(n\lambda, \ta)$, т.е.
+
+$p_T(x)=\begin{cases}\dfrac{e^{-\tfrac{x}{a}}x^{\lambda n -1}}{\Ga(\lambda n)\ta^{\lambda n}}, \, x>0 \\
+0,\, x\le 0\end{cases}$
+
+Надо вычислить $ET^{\al}$
+
+$ET^{-\al}=\dfrac{1}{\Ga(\lambda n)\ta^{\lambda n}}
+\intl{0}{\infty}x^{-\al}e^{-\tfrac{x}{\ta}}x^{\lambda n -1} \, dx=(u=\dfrac{x}{\ta})=
+\dfrac{\ta^{-\al + \lambda n}}{\Ga(\lambda n)\ta^{\lambda n}}
+\intl{0}{\infty}u^{\lambda n -\al- 1}e^u \, du=\dfrac{\ta^{-\al}\Ga(\lambda n -\al)}{\Ga(\lambda n)}$.
+
+$E\tau_{\al}^{*}=E\left(\dfrac{\Ga(\lambda n)}{\Ga(\lambda n- \lambda)}T^{-\al}\right)=\ta^{-\al}$.
+
+Т.о. $\tau_{\al}^{*}$ является несмещенной оценкой функции
+$\tau(\ta)=\ta^{-\al}$.
+$\\$
+
+
+\textit{Задача 14}
+$X_1\dots X_{n}$ НОР, $X_i\sim N(\mu, \ta^2)$
+$T^2=\suml{1}{n}(X_i - \mu)^2$
+Доказать, что несмещенной оценкой для функции
+$\tau _k(\ta)= \ta ^k$
+является оценка
+$\tau_{k}^{*}=\dfrac {\Ga(\frac{n}{2})}{2^{\tfrac{k}{2}}\Ga(\frac {n+k}{2})}$
+$T^k$
+
+\textit{Решение}
+\eqn{\dfrac{T^2}{\ta^2}=\suml{1}{n}\left(\dfrac{X_i- \mu}{\ta}\right)^2\sim\chi_n^2.}
+
+\eqn{ET^k=\dfrac{\ta^k}{2^{\tfrac{k}{2}}\Ga(\frac{n}{2})}
+\intl{0}{\infty}x^{\tfrac{k}{2} +\tfrac{n}{2} -1}e^{-\tfrac{x}{2}}\, dx=(t=\dfrac{x}{2})=
+\dfrac{2^{\tfrac{k+n}{2}}\ta^k}{2^{\tfrac{k}{2}}\Ga(\frac{n}{2})}
+\intl{0}{\infty}t^{\tfrac{k+n}{2} -1}e^{-t}\, dt=
+\dfrac{2^{\tfrac{k}{2}\ta^k\Ga(\frac{k+n}{2})}}{\Ga(\frac{n}{2})}.}
+
+\eqn{E\tau_{k}^{*}=E\left(\dfrac{\Ga(\frac{n}{2})}{2^{\tfrac{k}{2}}\Ga(\frac{n+k}{2})}T^k\right)
+=\ta^k.}
+
+Т.о. $\tau_k^{*}$ является несмещенной оценкой функции
+$\tau_k(\ta)=\ta^k$.
+$\\$
+
+\textit{Задача 15}
+Доказать, что для логистического распределения несмещенной и состоятельнй оценкой параметра $\ta$ \
+является $\ol{X}$
+
+\textit{Решение}
+$f(u)=\dfrac{e^{-u}}{(1-e^{-u})^2}$ - четная функция. Тогда функция $uf(u)$ - нечетная.
+
+\eqn{\intl{-\infty}{\infty}\dfrac{ue^{-u}}{(1- e^{-u})^2}\, du=0=
+\intl{-\infty}{\infty}\dfrac{(x-\ta)e^{-x+\ta}}{1+e^{-x+\ta}}\, dx=0.}
+
+$\intl{-\infty}{\infty}\dfrac{xe^{-x+\ta}}{(1+e^{-x+\ta})^2}=\ta$.
+
+$E\ol{X}=\dfrac{1}{n}\suml{1}{n}EX_i=\ta$.Оценка несмещенная.
+
+\eqn{DX_1=\intl{-\infty}{\infty}\dfrac{(x-\ta)^2e^{-x+\ta}}{(1+e^{-x+\ta})^2}\, dx
+=\intl{-\infty}{\infty}\dfrac{u^2e^{-u}}{(1+e^{-u})}\, du
+=2\intl{0}{\infty}\dfrac{u^2e^{-u}}{(1+e^{-u})}\, du \le 2\intl{0}{\infty}u^2e^{-u}\, du
+=2\Ga(3)=4}
+
+$D\ol{X}=D\left(\dfrac{1}{n}\suml{1}{n}DX_i\right)=\dfrac{1}{n^2}\suml{1}{n}DX_i
+=\dfrac{1}{n}DX_i\le \dfrac{4}{n}\rightarrow 0$ при $n \rightarrow\infty $.Оценка состоятельная.
+$\\$
+
+\textit{Задача 16}
+Доказать, что
+$T^{*}={(\ol{X})^2 - \dfrac{\sigma^2}{n}}$
+является несмещенной оценкой функции
+$\tau (\ta)=\ta^2$
+в модели $N(\ta, \sigma^2)$
+
+\textit{Решение}
+$E\ol{X}=\dfrac{1}{n}\suml{1}{n}EX_i=\ta$,
+$D\ol{X}=D\left(\dfrac{1}{n}\suml{1}{n}X_i\right)=\dfrac{1}{n^2}\suml{1}{n}DX_i=\dfrac{\sigma^2}{n}$.
+
+$E\ol{X}^2=D\ol{x}+E^2\ol{X}=\ta^2 +\dfrac{\sigma^2}{n}$.
+
+$ET^{*}=E\ol{X}^2- E\dfrac{\sigma^2}{n}=\ta^2$
+
+Т.о. $T^{*}$ является несмещенной оценкой функции
+$\tau(\ta)=\ta^2$.
+$\\$
+
+\textit{Задача 17}
+$X_{1}\dots X_{n}$ выборка из генеральной совокупности НОР величин с распределением Вейбула
+$W(a, \al,b)$.
+Доказать, что $X_{(1)}=\min{X_i}$ оценка параметра $\ta$.
+Найти математическое ожидание, дисперсию и распределение вероятностей оценки $X_{(1)}$
+
+\textit{Решение}
+$P\left(X_{(1)}\le x\right)=1 - P\left(X_{(1)}> x\right)=1- \prod\limits_1^n P\left(X_i> x\right)=
+1- \prod\limits_1^n \left(1-P\left(X_i\le x\right)\right)$.
+
+Т.о. $F_{X_{(1)}}(x)=\begin{cases}1-e^{-n\left(\tfrac{x-a}{b}\right)^{\al}}, \, x>a \\
+0, \, x\le a\end{cases}$
+
+$p_{X_{(1)}}(x)=\begin{cases}ne^{-n\left(\tfrac{x-a}{b}\right)^{\al}}, \, x>a \\
+0, \, x\le a\end{cases}$
+
+$EX_{(1)}=\dfrac{n\al}{b^{\al}}\intl{a}{\infty}x(x-a)^{\al-1}e^{-n\left(\tfrac{x-a}{b}\right)^{\al}} \,dx
+=\dots=a+ \dfrac{b}{n^{\tfrac{1}{\al}}}\Ga(1 +\dfrac{1}{\al})$ асимптотически несмещенная оценка.
+
+$EX_{(1)}^2=\dots=a^2 +\dfrac{2ab}{n^{\tfrac{1}{\al}}}\Ga(1+\dfrac{1}{\al})
+ +\dfrac{b^2}{n^{\tfrac{2}{\al}}}\Ga(1+\dfrac{2}{\al})$.
+
+$DX_{(1)}=EX_{(1)}^2-E^2X_{(1)}=\dfrac{b^2}{n^{\tfrac{2}{\al}}}
+\left(\Ga(1 +\dfrac{2}{\al}) -\Ga^2(1 +\dfrac{1}{\al})\right)\rightarrow 0$.Оценка состоятельная.
+
+распределение вероятностей оценки $X_{(1)}$ ХЗ!!!
+$\\$
+
+
+\textit{Задача 18}
+Рассмотрим модель $N(\ta_1, \ta_{2}^2)$
+Доказать, что несмещенной оценкой функции $\tau_k=\ta_{2}^k$
+при $k\geq2$
+является статистика
+$\tau_{k}^{*}=\dfrac{(\dfrac{n}{2})^{(\tfrac{k}{2})}\Ga(\frac{n-1}{2})}{\Ga(\frac{n+k-1}{2})}S^k$
+где $S^2=\dfrac{1}{n}\suml{1}{n}(\ol{X}-X_i)^2$
+
+\textit{Решение}
+$\dfrac{nS^2}{\ta_2^2}\sim\chi_{n-1}^2\sim\Ga\left(\frac{n-1}{2}, 2\right)$
+
+\mln{E\tau_{k}^{*}=(\dfrac{n}{2})^{\tfrac{k}{2}}\dfrac{\Ga(\frac{n-1}{2})}{\Ga(\frac{n+k-1}{2})}ES^k
+=(\dfrac{n}{2})^{\tfrac{k}{2}}\dfrac{\Ga(\frac{n-1}{2})(\ta_2^2)^{\tfrac{k}{2}}}
+{\Ga(\frac{n+k-1}{2})n^{\tfrac{k}{2}}}
+\intl{0}{\infty}\dfrac{x^{\tfrac{k}{2}+\tfrac{n-1}{2}-1}e^{-\tfrac{x}{2}}}{2^{\tfrac{n-1}{2}}\Ga({\dfrac{n-1}{2}})}\,dx= \\
+=\dfrac{(\ta_2^2)^{\tfrac{k}{2}}}{\Ga(\frac{n+k-1}{2})2^{\tfrac{k}{2}}}
+\intl{0}{\infty}\dfrac{x^{\tfrac{n+k-1}{2}-1}e^{-\tfrac{x}{2}}}{2^{\tfrac{n-1}{2}}}\, dx=
+\ta_2^k\dfrac{\Ga(\frac{n+k-1}{2})2^{\tfrac{n+k-1}{2}}}{\Ga(\frac{n+k-1}{2})2^{\tfrac{n+k-1}{2}}}=\ta_2^k.}
+
+\textit{Задача 19}
+$\xi$ дискретная случайная величина с распределением Пуассона,урезанным в нуле. Оценить функцию
+$\tau(\ta)=1-e^{-\ta}$.
+Убедиться, что имеется единственная несмещенная оценка и она бесполезна.
+
+\textit{Решение}
+Пусть имеется несмещенная оценка T(x). Тогда, в силу несмещенности
+
+$ET(x)=\tau(\ta)\Leftrightarrow\dfrac{e^{-\ta}}{1-e^{-\ta}}\suml{1}{\infty}T(x)\dfrac{\ta^x}{x!}=1-e^{-\ta}$
+
+$\suml{1}{\infty}T(x)\dfrac{\ta^x}{x!}=e^{\ta}(1-e^{-\ta})^2=
+e^{\ta}-2 +e^{-\ta}=2(ch\ta -1)=2\suml{0}{\infty}\dfrac{\ta^{2k}}{2k!}
+=\suml{0}{\infty}T(x)\dfrac{\ta^x}{x!}$. Т.к. разложение единственно, то
+$T(x)=\begin{cases}2, \, k-\mbox{четно} \\ 0, \, k-\mbox{нечетно}\end{cases}$
+
+
+\section{Информация Фишера}
+
+\textit{Определение}
+Информация Фишера:
+$$i(\ta)=E_{\ta}\left(\dfrac {\partial \ln p(x_i,\ta)}{\partial \ta}\right)^2
+=-E_{\ta}\left(\dfrac{\partial^{2}\ln p(x_i,\ta)}{\partial \ta^2}\right)$$
+где $p(x_i, \ta)$ плотность распределения.
+
+
+\textit{Задача 20}
+Вычислить информацию Фишера в модели $N(\ta, \sigma^2)$.
+
+\textit{Решение}
+$p(x, \ta)=\dfrac{1}{\sqrt{2\pi}\sigma}e^{-\tfrac{(x-\ta)^2}{2\sigma^2}}$,
+
+$\dfrac{\partial \ln {p(x,\ta)}}{\partial\ta}=\dfrac{x-\ta}{\sigma^2}$,
+$\dfrac{\partial^2 \ln p(x,\ta)}{\partial\ta^2}=-\dfrac{1}{\sigma^2} $
+
+$i(\ta)=\dfrac{1}{\sigma^2}$
+
+\textit{Задача 21}
+Вычислить информацию Фишера в модели $N(\mu, \ta^2)$.
+
+\textit{Решение}
+$p(x, \ta)=\dfrac{1}{\sqrt{2\pi}\ta}e^{-\tfrac{(x-\mu)^2}{2\ta^2}}$,
+
+$\ln p(x, \ta)=-\dfrac{1}{2}\ln 2\pi - \ln{\ta} -\dfrac{(x-\mu)^2}{2\ta^2}$,
+
+\eqn{\dfrac{\partial \ln {p(x,\ta)}}{\partial\ta}=-\dfrac{1}{\ta} + \dfrac{(x-\mu)^2}{\ta^3},\quad
+\dfrac{\partial^2 \ln p(x,\ta)}{\partial\ta^2}=-\dfrac{1}{\ta^2}- \dfrac{3(x-\mu)^2}{\ta^4}.}
+
+\eqn{i(\ta)=-\dfrac{1}{\ta^2}- \dfrac{3}{\ta^4}\cdot\underbrace{\dfrac{1}{\sqrt{2\pi}\ta}
+\intl{-\infty}{\infty}(x-\mu)^2e^{-\tfrac{(x-\mu)^2}{2\ta^2}}\, dx}_{\mbox{Дисперсия}=\ta^2}
+=\dfrac{1}{\ta^2}+ \dfrac{3}{\ta^2}=\dfrac{2}{\ta^2}.}
+
+\textit{Задача 22}
+Вычислить информацию Фишера в модели $\Ga(\lambda ,\ta)$ для параметра $\ta$.
+
+\textit{Решение}
+$p(x)=\begin{cases} \dfrac{x^{\lambda-1}e^{-\tfrac{x}{\ta}}}{\ta^{\lambda} \Ga(\lambda)} , x> 0 \\
+ 0, x\le\ta\end{cases}$
+
+$\ln p(x, \ta)=\ln\dfrac{x^{\lambda -1}e^{-\tfrac{x}{\ta}}}{\ta^{\lambda}\Ga(\lambda)}=
+-\dfrac{x}{\ta} +\ln\dfrac{x^{\lambda-1}}{\Ga(\lambda)}-\lambda\ln\ta=
+(\lambda -1)\ln x -\dfrac{x}{\ta} -\lambda\ln\ta -\ln\Ga(\lambda)$
+
+$\dfrac{\partial \ln {p(x,\ta)}}{\partial\ta}=\dfrac{x}{\ta^2}-\dfrac{\lambda}{\ta}$,
+
+$\dfrac{\partial^2 \ln p(x,\ta)}{\partial\ta^2}=-\dfrac{2x}{\ta^3}+\dfrac{\lambda}{\ta^2}$
+
+\eqn{i(\ta)=-\dfrac{\lambda}{\ta^2} +\dfrac{2}{\ta^3}
+\intl{0}{\infty}\dfrac{x^{\lambda}e^{-\tfrac{x}{\ta}}}{\ta^{\lambda}\Ga(\lambda)}\,dx=
+-\dfrac{\lambda}{\ta^2} +\dfrac{2}{\ta^2\Ga(\lambda)}\intl{0}{\infty}t^{\lambda}e^{-t}\, dt=
+-\dfrac{\lambda}{\ta^2} +\dfrac{2}{\ta^2}\dfrac{\Ga(\lambda +1)}{\Ga(\lambda)}=\dfrac{\lambda}{\ta^2}
+=i(\ta).}
+
+
+\textit{Задача 23}
+Вычислить информацию Фишера в биномиальной модели.
+
+\textit{Решение}
+$\xi_i=\begin{cases} 0, q>0 \\ 1, p>0\end{cases}, \, p+q=1$, $S_n=\suml{0}{n}\xi_i$
+
+$ p(x, \ta)=C_n^x\ta^x(1-\ta)^{n-x}$
+
+$\ln p(x,\ta)=\ln C_n^x +x\ln\ta +(n-x)\ln(1-\ta)$
+
+$\dfrac{\partial \ln {p(x,\ta)}}{\partial\ta}=\dfrac{x}{\ta}-\dfrac{n-x}{1-\ta}$
+
+$\dfrac{\partial^2 \ln p(x,\ta)}{\partial\ta^2}=-\dfrac{x}{\ta^2} -\dfrac{n-x}{(1-\ta)^2}$
+
+$i(\ta)=ni_n(\ta)=\dfrac{n}{\ta} -\dfrac{n(\ta-1)}{(1-\ta)^2}=\dfrac{n}{\ta}+\dfrac{n}{\ta-1}$
+
+
+
+\textit{Задача 24}
+Вычислить информацию Фишера для распределения Пуассона.
+
+\textit{Задача 25}
+Вычислить информацию Фишера в модели $\Ga(\frac{n}{2} ,\ta)$ для параметра $\ta$.
+
+\textit{Решение}
+
+$p(x,\ta)=\begin{cases} \dfrac{x^{\tfrac{n}{2}-1}e^{-\tfrac{x}{\ta}}}{\ta^{\tfrac{n}{2}}\Ga(\frac{n}{2})},
+ \, x>0 \\ 0, \, x\le 0\end{cases}$
+
+$\ln p(x, \ta)=(\dfrac{n}{2}-1)\ln x -\dfrac{x}{\ta} -\dfrac{n}{2}\ln\ta -\ln\Ga(\lambda)$
+
+$\dfrac{\partial \ln {p(x,\ta)}}{\partial\ta}=\dfrac{x}{\ta^2}-\dfrac{n}{2\ta}$
+
+$\dfrac{\partial^2 \ln p(x,\ta)}{\partial\ta^2}=-\dfrac{2x}{\ta^3} +\dfrac{n}{2\ta^2}$
+
+\mln{i(\ta)=-\intl{0}{\infty}\left(\dfrac{n}{2\ta^2}-\dfrac{2x}{\ta^3}\right)
+\dfrac{x^{\tfrac{n}{2}}e^{-\tfrac{x}{\ta}}}{\ta^{\tfrac{n}{2}}\Ga(\frac{n}{2})}\, dx=
+\intl{0}{\infty}\dfrac{1}{\ta^{\tfrac{n}{2}+3}\Ga(\frac{n}{2})}x^{\tfrac{n}{2}}e^{-\tfrac{x}{\ta}}\, dx-
+\dfrac{n}{2\ta^2}\intl{0}{\infty}p(x, \ta)\,dx=\\
+=\dfrac{2}{\ta^{\tfrac{n}{2}+3}\Ga(\frac{n}{2})}\intl{0}{\infty}x^{\tfrac{n}{2}}e^{-\tfrac{x}{\ta}}\,dx
+-\dfrac{n}{2\ta^2}=\dfrac{2}{\ta^{\tfrac{n}{2}+3}\Ga(\frac{n}{2})}
+\intl{0}{\infty}e^{-t}t^{\tfrac{n}{2}}\ta^{\tfrac{n}{2}}\ta\,dt -\dfrac{n}{2\ta^2}=
+\dfrac{2\ta^{\tfrac{n}{2}+1}\Ga(\frac{n}{2}+1)}{\ta^{\tfrac{n}{2}+3}\Ga(\frac{n}{2})}-\dfrac{n}{2\ta^2}=\\
+=\dfrac{2}{\ta^2}\dfrac{n}{2}-\dfrac{n}{2\ta^2}=\dfrac{n}{\ta^2}-\dfrac{n}{2\ta^2}=\dfrac{n}{2\ta^2}=
+i(\ta).}
+
+
+\section{Достаточность статистики}
+
+\textit{Определение}
+Статистика T(x) является достаточной для параметра $\ta$ в том, и только в том случае, когда функция правдоподобия
+$L(x, \ta)$ представляется в виде
+$L(x, \ta)=g(T(x), \ta)h(x)$, где $g(T(x), \ta)$ - функция оценки параметра, h(x) - функция выборки
+
+\textit{Задача 26}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин $N(\ta, \sigma^2)$
+Доказать, что статистика $\ol{X}=\dfrac{1}{n}\suml{1}{n}X_i$ является достаточной.
+
+\textit{Решение}
+\mln{L(x, \ta)=\dfrac{1}{(2\pi)^{\tfrac{n}{2}}\sigma^n}e^{-\tfrac{1}{2\sigma^2}\suml{0}{n}(x_i-\ta)^2}=
+\dfrac{1}{(2\pi)^{\tfrac{n}{2}}\sigma^n}e^{-\tfrac{1}{2\sigma^2}\suml{0}{n}(x_i^2 -2x_i\sigma +\sigma^2)}=\\=
+\dfrac{1}{(2\pi\sigma^2)^{\tfrac{n}{2}}}e^{-\tfrac{1}{2\sigma^2}}\suml{0}{n}x_i^2\cdot
+e^{\tfrac{\ta}{\sigma^2}\suml{0}{n}x_i -\tfrac{n\ta^2}{2\sigma^2}}=\underbrace{\dfrac{1}{(2\pi\sigma^2)^{\tfrac{n}{2}}}e^{-\tfrac{1}{2\sigma^2}\suml{0}{n}x_i^2}}_{=h(x)}\cdot
+\underbrace{e^{\tfrac{\ta n}{\sigma^2}\ol{X}-\tfrac{n\ta^2}{2\sigma^2}}}_{=g(\ol{x}, \ta)}.}
+
+\textit{Задача 27}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин $N(\mu, \ta^2)$
+Доказать, что
+$S_{n}^2=\dfrac{1}{n}\suml{1}{n}(X_{i} - \ol{X})^2$ является достаточной статистикой
+
+\textit{Задача 28}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин $W(0, \lambda, \ta)$,
+где $\ta$ неизвестно.
+Доказать, что
+$T(x)=\suml{1}{n}X_i^{\lambda}$ является достаточной статистикой для параметра $\ta$.
+
+
+\section{Оценки максимального правдоподобия (ОМП)}
+
+\textit{Определение} ОМП\т это решение системы
+\eqn{\case{\partial \ln L(x_1,\ta_1)=0 \\ \dots \\ \partial \ln L(x_n,\ta_n)=0}, \quad \ta = (\ta_1 \dots\ta_n).}
+
+{\medskip
+\hrule
+\medskip
+\small При решении следующих задач надо проверять условия регулярности. Однако мы этого не делаем,
+\тк во\д первых, Кожевникова их не проверяла (а этот текст является конспектом семинаров), а во\д вторых,
+модели регулярны.\par
+\medskip
+\hrule\par\medskip}
+
+\textit{Задача 29}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин $N(\ta_1, \ta_2^2)$.
+Найти ОМП
+
+\textit {Решение}
+$L(x,\ta)=\dfrac{1}{(2\pi)^{\tfrac{n}{2}}(\ta_2^2)^{\tfrac{n}{2}}}
+e^{-\tfrac{1}{2\ta_2^2}\suml{1}{n}(X_i - \ta_1)^2}$
+
+ОМП- это решение системы
+$\begin{cases}\dfrac{\partial\ln L(x, \ta)}{\partial\ta_1}=0 \\
+\dfrac{\partial\ln L(x, \ta)}{\partial\ta_2}=0\end{cases} \Leftrightarrow$
+
+$\Leftrightarrow\begin{cases}\dfrac{1}{\ta_2^2}\suml{1}{n}(X_i -\ta_1)=0 \\
+-\dfrac{n}{2\ta_2^2}+\dfrac{1}{2\ta_2^2}\suml{1}{n}(X_i -\ta_1)^2=0\end{cases}\Leftrightarrow$
+$\begin{cases}\ta_1=\dfrac{1}{n}\suml{1}{n}X_i \\
+\ta_2^2=\dfrac{1}{n}\suml{1}{n}(X_i-\ta_1)^2\end{cases}$ Это и есть ОМП.
+
+
+\textit{Задача 30}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин $\Ga(\lambda, \ta)$.
+Найти ОМП для $\ta$, математическое ожидание, дисперсию и закон распределения для каждого n
+
+\textit {Решение}
+$L(x, \ta)=\dfrac{1}{\ta^{\lambda n}\Ga^n(\lambda)}\prod\limits_1^n X_i^{\lambda-1}
+e^{-\tfrac{1}{\ta}\suml{1}{n}X_i}$
+
+$\ln L(x, \ta)= -\lambda n\ln\ta -n\ln\Ga(\lambda) +(\lambda -1)\suml{1}{n}\ln X_i
+ -\dfrac{1}{\ta}\suml{1}{n}X_i$
+
+$\dfrac{\partial\ln L(x, \ta)}{\partial\ta}=-\dfrac{\lambda n}{\ta} +\dfrac{1}{\ta^2}\suml{1}{n}X_i=0$
+
+Т.о. $\ta=\dfrac{1}{\lambda n }\suml{1}{n}X_i=\widehat{\ta}_n$ это ОМП.
+
+Найдем $E\widehat{\ta}_n, D\widehat{\ta}_n$.
+
+$X_i\sim\Ga(\lambda, \ta)$, тогда $\suml{1}{n}X_i=\xi\sim\Ga(\lambda n, \ta)$
+
+$E\widehat{\ta}_n=\dfrac{1}{\lambda n}E\suml{1}{n}X_i=\dfrac{1}{\lambda n}\ta\lambda n=\ta$
+
+$EX_i^2=\dfrac{1}{\ta^{\lambda}\Ga(\lambda)}\intl{0}{\infty}x^{\lambda+1}e^{-\tfrac{\ta}{x}}\, dx=
+\ta^2(\lambda+1)\lambda$ Т.о.
+
+$D\widehat{\ta}_n=\dfrac{1}{\lambda^2 n}DX_i=\dfrac{1}{\lambda^2 n}\left(EX_i^2 -E^2X_i\right)=
+\dfrac{1}{\lambda^2 n}\left(\lambda(\lambda +1)\ta^2 -\lambda^2\ta^2\right)=\dfrac{\ta^2}{\lambda n}$
+
+Найдем распределение вероятностей
+
+$P\left(\widehat{\ta}_n \le x\right)=P\left(\dfrac{\xi}{\lambda n}\le x\right)=P\left(\xi\le\lambda nx\right)=
+\dfrac{1}{\ta^{\lambda n}\Ga(\lambda n)}\intl{0}{\lambda nx}t^{\lambda n -1}e^{-\tfrac{\ta}{t}}$
+
+$p=\begin{cases}\dfrac{\lambda n}{\ta^{\lambda n}\Ga(\lambda n)}(x\lambda n)^{\lambda n -1}
+e^{-\tfrac{\lambda x}{\ta}}, \, x>0 \\
+0,\, x\le 0\end{cases}$- плотность распределение вероятностей для $\widehat{\ta}_n $
+
+\textit{Задача 31}
+В модели $W(0, 2, \sqrt\ta)$ построить ОМП для $\ta$
+
+\textit {Решение}
+$L(x, \ta)=\dfrac{2^n}{\ta^n}\prod\limits_1^n X_ie^{-\tfrac{1}{\ta}\suml{1}{n}X_i^2}$
+
+$\dfrac{\partial\ln L(x, \ta)}{\partial\ta}=-\dfrac{n}{\ta} +\dfrac{1}{\ta^2}\suml{1}{n}X_i^2=0$
+
+значит, $\ta=\dfrac{1}{n}\suml{1}{n}X_i^2$
+
+\textit{Условия регулярности}
+
+1) $f(x, \ta)>0$ и дифференцируема по $\ta$
+
+2) $i(\ta)= \intl{-\infty}{\infty}(\dfrac{\partial\ln p(x, \ta)}{\partial\ta})^2p(x, \ta)\,dx$,
+$0<i(\ta)<\infty$
+
+3) Для любой статистики T(x) выполняется равенство:
+$$\dfrac{\partial}{\partial\ta}\ints{\R}T(x)p(x, \ta)\,dx
+=\ints{\R}T(x)\dfrac{\partial}{\partial\ta}p(x, \ta)\,dx$$
+
+\textit{Задача 32}
+$X_1\dots X_{n}$ выборка из генеральной совокупности НОР величин $\Ga(\lambda, \ta)$.
+Оценить функцию $\tau(\ta)=\dfrac{1}{\ta}$. Показать, что ОМП имеет вид $\widehat{\ta}=\lambda\div\ol{X}$.
+Убедиться в состоятельности этой оценки и найти закон распределения.
+
+\textit{Задача 33}
+По выборке $(X_1, Y_1)\dots (X_n, Y_n)$ из двумерного нормального распределения
+
+$N\left((0,0), \begin{pmatrix}\sigma^2 & \rho^2\sigma^2 \\ \rho^2\sigma^2 & \sigma^2 \end{pmatrix}\right)$
+с неизвестными $\sigma^2>0$ и $|\beta|<1$ построить ОМП
+
+\textit {Решение} Пусть $(\sigma^2, \rho)=\ta$,
+$p(x,y, \ta)=\dfrac{1}{2\pi\sigma^2\sqrt{1-\rho^2}}\exp\left(-\dfrac{x^2- 2\rho xy +y^2}{2\sigma^2(1-\rho^2)}\right)$
+
+$L(x,y,\ta)=\dfrac{1}{(2\pi\sigma^2)^n(1-\rho^2)^{\tfrac{n}{2}}}
+\exp\left(-\dfrac{\suml{1}{n}(x_i^2- 2\rho x_iy_i +y_i^2)}{2\sigma^2(1-\rho^2)}\right)$
+
+$\begin{cases}\dfrac{\partial\ln L(x,y,\ta)}{\partial\sigma^2}=-\dfrac{n}{\sigma^2}+\dfrac{1}{2\sigma^4(1-\rho^2)}
+\suml{1}{n}(x_i^2 +y_i^2)-\dfrac{\rho}{\sigma^4(1-\rho^2)}\suml{1}{n}x_iy_i=0 \\
+\dfrac{\partial\ln L(x,y,\ta)}{\partial\rho}=\dfrac{n\rho}{1-\rho^2}- \dfrac{\rho}{\sigma^2(1-\rho^2)^2}
+\suml{1}{n}(x_i^2 +y_i^2) +\dfrac{1+\rho^2}{\sigma^2(1-\rho^2)^2}\suml{1}{n}x_iy_i=0\end{cases}\Leftrightarrow$
+
+$\Leftrightarrow$ (при условии, что $1-\rho^2 \neq 0$)
+
+$\begin{cases}\sigma^2(1-\rho^2)=\dfrac{1}{2n}\suml{1}{n}(x_i^2 +y_i^2) -\dfrac{\rho}{n}\suml{1}{n}x_iy_i \\
+\sigma^2(1-\rho^2)=\dfrac{1}{n}\suml{1}{n}(x_i^2 +y_i^2) -\dfrac{1-\rho^2}{n\rho}\suml{1}{n}x_iy_i\end{cases}
+\Leftrightarrow$
+
+$\Leftrightarrow\begin{cases}\rho=\dfrac{2\suml{1}{n}x_iy_i}{\suml{1}{n}(x_i^2 +y_i^2)} \\
+\sigma^2=\dfrac{1}{2n}\suml{1}{n}(x_i^2 +y_i^2)\end{cases}$
+
+\textit{Задача 34}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин R(0,$\ta$].
+Показать, что ОМП $\widehat{\ta}_n=X_{(n)}$.
+Убедиться в ее состоятельности и найти предельный закон распределения.
+
+\textit {Решение} Проверим условия регулярности. Возьмем $T(x)=1$. $p(x, \ta)$- плотность R(0,$\ta$].
+
+$\dfrac{\partial}{\partial\ta}\intl{0}{\ta}p(x, \ta)\, dx\neq
+\intl{0}{\ta}\dfrac{\partial}{\partial\ta}p(x, \ta)\, dx$ Значит модель не регулярна.
+
+$L(x, \ta)=\begin{cases} \dfrac{1}{\ta^n}, 0<x\le\ta \\ 0, \mbox{иначе}\end{cases}$
+
+Ненулевой $min L(x, \ta)$ достигается при $X_{(n)}\le\ta$, значит это ОМП.
+
+Найдем $E\widehat{\ta}, D\widehat{\ta}$
+
+$P(X_{(n)}\le x)=P(X_1\le x, \dots X_n\le x)=\dfrac{x^n}{\ta^n}$,
+
+$p(x,\ta)= \begin{cases}\dfrac{nx^n}{\ta^n}, \, 0\le x\le\ta \\ 0, \mbox{иначе}\end{cases}$
+
+$EX_{(n)}=\dfrac{n}{\ta^n}\intl{0}{\ta}xx^{n-1}\, dx=\dfrac{n\ta}{n+1}$
+
+$EX^2_{(n)}=\dfrac{n}{\ta^n}\intl{0}{\ta}x^{n+1}\, dx=\dfrac{n\ta^2}{n+2}$
+
+$DX_{(n)}=\dfrac{n\ta^2}{n+2} -\dfrac{n^2\ta^2}{(n+1)^2}=\dfrac{n\ta^2}{(n+2)(n+1)^2}=O(\dfrac{1}{n^2})$
+
+Т.о. $DX_{(n)}\sim\dfrac{\ta^2}{n^2}$
+
+Найдем предельный закон распределения
+
+$P\left(\dfrac{\ta - X_{(n)}}{\ta\diagup\sqrt{n}}\le t\right)
+=P\left(\widehat{\ta}_n\geq\ta\left(1- \dfrac{t}{\sqrt{n}}\right)\right)= \\
+=1-P\left(X_{(n)}<\ta\left(1- \dfrac{t}{\sqrt{n}}\right)\right)
+=1-P\left(X_1<\ta\left(1- \dfrac{t}{\sqrt{n}}\right)\right)^n= \\
+=1-\dfrac{\ta^n\left(1- \dfrac{t}{\sqrt{n}}\right)^n}{\ta^n}=
+1-\left(1- \dfrac{t}{\sqrt{n}}\right)^n\sim 1-e^{-t}$
+
+
+
+\textit{Задача 35}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин с экспоненциальным распределением.
+Найти ОМП. Показать, что она является асимптотически несмещенной и состоятельной.
+Найти закон распределения и проверить условия регулярности.
+
+\textit {Решение} 1) Проверим условия регулярности: они не выполняются.
+
+$L(x, \ta)=\begin{cases} e^{-\suml{1}{n}(x_i -\ta)}, \, \min x_i\geq\ta \\ 0, \, \mbox{иначе}\end{cases}$
+
+$L(x, \ta)$ достигает своего максимума при $\ta =\min x_i$, значит $\widehat{\ta}_n=X_{(1)}=\min X_i$ -ОМП
+
+2) Найдем предельный закон распределения:
+
+$P\left(X_{(1)}\le x\right)=1 - P\left(X_{(1)}> x\right)=1- \prod\limits_1^n P\left(X_i> x\right)=
+1- \prod\limits_1^n \left(1-P\left(X_i\le x\right)\right)= 1-\left(1-\left(1-e^{-(x-\ta)}\right)\right)^n\\=
+1-e^{-n(x-\ta)}=P\left(X_{(1)}\le x\right)$
+
+Значит, $p_{X{(1)}}(x)=\begin{cases}ne^{-n(x-\ta)}, \, x\geq \ta \\
+0, x<\ta\end{cases}$
+
+$EX_{(1)}=\intl{\ta}{\infty}nxe^{-n(x-\ta)}\,dx=\mbox{(путем сложных вычислений)}=\ta +\dfrac{1}{n}$
+Оценка является асимптотически несмещенной
+
+$EX_{(1)}^2=\intl{\ta}{\infty}nx^2e^{-n(x-\ta)}\, dx\mbox{(путем сложных вычислений)}
+=\ta^2+\dfrac{2}{n}\ta+\dfrac{2}{n^2}$
+
+$DX_{(1)}=EX_{(1)}^2 - E^2X_{(1)}=\dfrac{1}{n^2}\rightarrow 0$ при $n\rightarrow\infty$
+Оценка является состоятельной
+
+
+\textit{Задача 36}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин R[$\ta$,1).
+Показать, что ОМП для $\ta$ является $X_{(1)}$.
+Убедиться в состоятельности этой оценки и найти закон распределения. Проверить условия регулярности.
+
+\section{Метод моментов}
+
+\textit{Задача 37}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин $\Ga(\ta_2, \ta_1)$.
+Построить оценки для $\ta_1$ и $\ta_2$.
+
+\textit{Задача 38}
+$X_{1}\dots X_{n}$ выборка из генеральной совокупности НОР величин с плотностью
+
+$p(x)=\begin{cases}\dfrac{e^{-x\backslash \ta}}{\ta}, x>\ta \\ 0, x\le\ta\end{cases}$.
+Оценить $\ta$.
+
+\textit{Задача 39}
+$X_{1}\dots X_{n}$ выборка из генеральной совокупности НОР величин с плотностью
+
+$p(x)=\begin{cases}\al x^{\al -1}e^{-(\tfrac{x}{\sigma})^{\al}}, x>0 \\ 0, x\le0\end{cases}$
+Оценить $\al$, $\sigma$.
+
+\section{Построение доверительных интервалов}
+
+\textit{Задача 40}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин $N(\ta, \sigma^2)$.
+Убедиться,что интервал вида
+$\left(\ol{X}-\dfrac{\sigma}{\sqrt{n}}g_2 , \ol{X}-\dfrac{\sigma}{\sqrt{n}}g_1\right)
+=\Delta_{\ga}(\ol{X})$, где $g_1<g_2 $ любые числа,
+
+и $\Phi(g_1)-\Phi(g_2)=\ga $,
+является $\ga$-доверительным интервалом для $\ta$.
+
+\textit {Решение}
+$\dfrac{\ol{X} -\ta}{\sigma\diagup\sqrt{n}}\sim N(0, 1)$
+
+$P(g_1<\dfrac{\ol{X} -\ta}{\sigma\diagup\sqrt{n}}<g_2)=\ga$
+
+$P(\ol{X}-\dfrac{g_2\sigma}{\sqrt{n}}<\ta<\ol{X}-\dfrac{g_1\sigma}{\sqrt{n}})=\ga$
+
+$l=(g_2 -g_1)\dfrac{\sigma}{\sqrt{n}}$- длина интервала.
+Сделаем ее как можно меньше. Т.е. минимизируем $(g_2 -g_1)$, при условии $\Phi(g_1)-\Phi(g_2)=\ga $:
+
+$H(g_1, g_2, \lambda)=g_1 -g_2 +\lambda(\Phi(g_1)-\Phi(g_2)-\ga)$
+
+$\dfrac{\partial H}{\partial g_1}=-1 -\lambda\Phi'(g_1)=0$
+
+$\dfrac{\partial H}{\partial g_2}=1 +\lambda\Phi'(g_2)=0$
+
+Значит $\Phi'(g_1)=\Phi'(g_2)$, тогда $g_1=-g_2=c_{\ga}$, т.к. $\Phi'(x)=\dfrac{1}{\sqrt{2\pi}}e^{-\tfrac{x^2}{2}}$
+
+$\min l=\dfrac{2c_{\ga}\sigma}{\sqrt{n}}$. ЧТД.
+
+
+
+\textit{Задача 41}
+Найти $\ga$-доверительный интервал для параметра $\ta$ в модели
+$N(\ta, \ta^2)$ по выборке $X_{1}\dots X_{n}$.
+
+\textit {Решение}
+В этой задаче надо рассмотреть 2 случая: 1) $\ta>0$ 2)$\ta<0$
+
+1) $\ta>0$, $\dfrac{\ol{X}-\ta}{\ta\diagup\sqrt{n}}\sim N(0,1)$
+
+$P\left(-c_{\ga}<\dfrac{\ol{X}-\ta}{\ta\diagup\sqrt{n}}<c_{\ga}\right)=\ga$
+
+$P\left(\dfrac{-c_{\ga}}{\sqrt{n}}< \dfrac{\ol{X}}{\ta} -1<\dfrac{c_{\ga}}{\sqrt{n}}\right)=\ga$
+
+$P\left(\dfrac{-c_{\ga}}{\sqrt{n}}+1<\dfrac{\ol{X}}{\ta}<\dfrac{c_{\ga}}{\sqrt{n}}+1\right)=\ga$
+
+$P\left(\dfrac{1- c_{\ga}\diagup\sqrt{n}}{\ol{X}}<\dfrac{1}{\ta}<
+\dfrac{1+ c_{\ga}\diagup\sqrt{n}}{\ol{X}}\right)=\ga$
+
+$P\left(\dfrac{\ol{X}}{1+ c_{\ga}\diagup\sqrt{n}}<\ta<
+\dfrac{\ol{X}}{1- c_{\ga}\diagup\sqrt{n}}\right)=\ga$
+
+Т.о. интервал
+$\left(\dfrac{\ol{X}}{1+ c_{\ga}\diagup\sqrt{n}}, \, \dfrac{\ol{X}}{1- c_{\ga}\diagup\sqrt{n}}\right)$
+
+является $\ga$-доверительным интервалом для параметра $\ta$ при $\ta>0$
+
+2) $\ta<0$. Тогда $\dfrac{\ol{X}-\ta}{|\ta|\diagup\sqrt{n}}=(\mbox{т.к.}\ta<0)=
+\dfrac{\ol{X}-\ta}{-\ta\diagup\sqrt{n}}\sim N(0,1)$
+
+$P\left(-c_{\ga}<\dfrac{\ol{X}-\ta}{-\ta\diagup\sqrt{n}}<c_{\ga}\right)=\ga$
+
+$P\left(\dfrac{-c_{\ga}}{\sqrt{n}}< \dfrac{\ol{X}}{-\ta} +1<\dfrac{c_{\ga}}{\sqrt{n}}\right)=\ga$
+
+$P\left(\dfrac{-c_{\ga}}{\sqrt{n}}- 1<- \dfrac{\ol{X}}{\ta}<\dfrac{c_{\ga}}{\sqrt{n}}-1\right)=\ga$
+
+$P\left(\dfrac{-1- c_{\ga}\diagup\sqrt{n}}{\ol{X}}<-\dfrac{1}{\ta}<
+\dfrac{-1+ c_{\ga}\diagup\sqrt{n}}{\ol{X}}\right)=\ga$
+
+$P\left(\dfrac{1- c_{\ga}\diagup\sqrt{n}}{\ol{X}}<\dfrac{1}{\ta}<
+\dfrac{1+ c_{\ga}\diagup\sqrt{n}}{\ol{X}}\right)=\ga$
+
+$P\left(\dfrac{\ol{X}}{1+ c_{\ga}\diagup\sqrt{n}}<\ta<
+\dfrac{\ol{X}}{1- c_{\ga}\diagup\sqrt{n}}\right)=\ga$
+
+Т.о. интервал
+$\left(\dfrac{\ol{X}}{1+ c_{\ga}\diagup\sqrt{n}}, \, \dfrac{\ol{X}}{1- c_{\ga}\diagup\sqrt{n}}\right)$
+
+является $\ga$-доверительным интервалом для параметра $\ta$ при $\ta<0$.
+
+\textit{Определение}
+$\xi\sim\chi_n^2$. $F_n$- функция распределения $\chi_n^2$.
+$P\left(F_n^{-1}\left(\dfrac{1-\ga}{2}\right)\le\xi\le F_n^{-1}\left(\dfrac{1+\ga}{2}\right)\right)=\ga$
+тогда, $\left(F_n^{-1}\left(\dfrac{1-\ga}{2}\right)\le\xi\le F_n^{-1}\left(\dfrac{1+\ga}{2}\right)\right)$
+центральный $\ga$-доверительный интервал.
+
+\textit{Задача 42}
+Построить центральный $\ga$-доверительный интервал для стандартного отклонения $\ta$ по выборке
+$X_{1}\dots X_{n}$ в модели $N(\mu, \ta^2)$.
+
+\textit {Решение}
+
+$S(x)=\dfrac{1}{n}\suml{1}{n}(X_i-\mu)^2$-оценка дисперсии.
+
+$\dfrac{nS(x)}{\ta^2}=\suml{1}{n}\dfrac{(X_i-\mu)^2}{\ta^2}\sim\chi^2_n$
+
+Тогда
+$P\left(F_n^{-1}\left(\dfrac{1-\ga}{2}\right)\le\dfrac{nS(x)}{\ta^2}
+\le F_n^{-1}\left(\dfrac{1+\ga}{2}\right)\right)=\ga$
+
+Значит
+$P\left(\sqrt{\dfrac{nS(x)}{F^{-1}_n\left(\dfrac{1+\ga}{2}\right)}}\le\ta
+\le\sqrt{\dfrac{nS(x)}{F^{-1}_n\left(\dfrac{1-\ga}{2}\right)}}\right)=\ga$
+
+Т.о. интервал
+$\left(\sqrt{\dfrac{nS(x)}{F^{-1}_n\left(\dfrac{1+\ga}{2}\right)}}, \,
+\sqrt{\dfrac{nS(x)}{F^{-1}_n\left(\dfrac{1-\ga}{2}\right)}}\right)$
+
+является $\ga$-доверительным интервалом для параметра $\ta$
+
+\textit{Задача 43}
+$X=X_{1}\dots X_{n}$
+и $Y=Y_{1}\dots Y_{m}$ две независимые выборки.
+$X_i\sim N(\ta^{(1)}, \sigma_1^2)$ и
+$Y_i\sim N(\ta^{(2)}, \sigma_2^2)$
+Построить $\ga$-доверительный интервал для $\tau=\ta^{(1)}-\ta^{(2)}$.
+
+\textit {Решение}
+Рассмотрим $\xi=\dfrac{(\ol{X} -\ol{Y})-\tau}{\sqrt{\dfrac{\sigma_1^2}{n} +\dfrac{\sigma_2^2}{m}}}$:
+$\xi\sim N(0,1) \\$,
+
+т.к. $E(\ol{X} -\ol{Y})-\tau)=0$, $D(\ol{X} -\ol{Y})-\tau)=
+D((\ol{X}-\ta^{(1)}) -(\ol{Y}-\ta^{(2)}))=D(\ol{X}-\ta^{(1)}) +D(\ol{Y}-\ta^{(2)})$
+
+Строим доверительный интервал:
+$P\left(-c_{\ga}\le\dfrac{(\ol{X} -\ol{Y})-\tau}{\sqrt{\dfrac{\sigma_1^2}{n} +\dfrac{\sigma_2^2}{m}}}
+\le c_{\ga}\right)=\ga\dots \\$
+$=P\left(-c_{\ga}\sqrt{\dfrac{\sigma_1^2}{n} +\dfrac{\sigma_2^2}{m}}+ (\ol{X} -\ol{Y})\le
+\tau\le c_{\ga}\sqrt{\dfrac{\sigma_1^2}{n} +\dfrac{\sigma_2^2}{m}}+ (\ol{X} -\ol{Y}) \right)=\ga$
+
+Т.о. интервал
+$\left(-c_{\ga}\sqrt{\dfrac{\sigma_1^2}{n} +\dfrac{\sigma_2^2}{m}}+ (\ol{X} -\ol{Y}), \,
+ c_{\ga}\sqrt{\dfrac{\sigma_1^2}{n} +\dfrac{\sigma_2^2}{m}}+ (\ol{X} -\ol{Y}) \right)$
+
+является $\ga$-доверительным интервалом для параметра $\tau$
+
+\textit{Задача 44}
+$X=X_{1}\dots X_{n}$
+и $Y=Y_{1}\dots Y_{n}$ две независимые выборки.
+$X_i\sim N(\ta^{(1)}, \ta_2^2)$ и
+$Y_i\sim N(\ta^{(2)}, \ta_2^2)$
+Построить $\ga$-доверительный интервал для $\tau=\ta^{(1)}-\ta^{(2)}$.
+
+\textit {Решение}
+Рассмотрим $\xi=\dfrac{(\ol{X} -\ol{Y})-\tau}{\ta_2}$: $E\xi=0, D\xi=
+D\dfrac{(\ol{X} -\ol{Y})-\tau}{\ta_2}=\dfrac{1}{\ta^2_2}(DX+DY)
+=\dfrac{1}{\ta^2_2}\left(\dfrac{\ta^2_2}{n}\dfrac{\ta^2_2}{m}\right)=\dfrac{m+n}{mn}$.
+
+Т.о. $\xi\sim N(0, \dfrac{m+n}{mn})$ и $\zeta=\dfrac{\xi}{\dfrac{m+n}{mn}}\sim N(0,1)$.
+
+$\dfrac{nS_x^2}{\ta^2_2}=\suml{1}{n}\left(\dfrac{X_i-\ta^{(1)}}{\ta_2}\right)^2\sim\chi^2_{n-1}$
+
+$\dfrac{mS_y^2}{\ta^2_2}=\suml{1}{m}\left(\dfrac{Y_i-\ta^{(2)}}{\ta_2}\right)^2\sim\chi^2_{m-1}$
+
+в силу независимости выборок
+$\dfrac{nS_x^2 +mS_y^2}{\ta^2_2}=\eta\sim\chi^2_{m+n-2}$
+
+Тогда $\dfrac{\zeta}{\sqrt{\dfrac{\eta}{m+n-2}}}$- распределение Стюарта.
+
+Строим доверительный  интервал:
+
+$P\left(-t_{\ga}<\dfrac{\zeta}{\sqrt{\dfrac{\eta}{m+n-2}}}<t_{\ga}\right)-\ga$
+
+$\dfrac{\zeta}{\sqrt{\dfrac{\eta}{m+n-2}}}
+=\dfrac{\ol{X}-\ol{Y}-\tau}{\ta_2\sqrt{\dfrac{m+n}{mn}}\sqrt{\dfrac{nS_x^2 +mS_y^2}{\ta^2_2(m+n-2)}}}
+=\dfrac{\ol{X}-\ol{Y}-\tau}{\sqrt{\dfrac{(m+n)(nS_x^2 +mS_y^2)}{mn(m+n-2)}}}$
+
+Т.о.
+$P\left(-t_{\ga}<\dfrac{\ol{X}-\ol{Y}-\tau}{\sqrt{\dfrac{(m+n)(nS_x^2 +mS_y^2)}{mn(m+n-2)}}}
+<t_{\ga}\right)=\ga$
+
+$P\left(-t_{\ga}\sqrt{\dfrac{(m+n)(nS_x^2 +mS_y^2)}{mn(m+n-2)}}<\ol{X}-\ol{Y}-\tau<
+t_{\ga}\sqrt{\dfrac{(m+n)(nS_x^2 +mS_y^2)}{mn(m+n-2)}}\right)=\ga$
+
+
+$P\left(-t_{\ga}\sqrt{\dfrac{(m+n)(nS_x^2 +mS_y^2)}{mn(m+n-2)}}+\ol{X}-\ol{Y}<\tau<
+t_{\ga}\sqrt{\dfrac{(m+n)(nS_x^2 +mS_y^2)}{mn(m+n-2)}}+\ol{X}-\ol{Y}\right)=\ga$
+
+Т.о. интервал
+$\left(-t_{\ga}\sqrt{\dfrac{(m+n)(nS_x^2 +mS_y^2)}{mn(m+n-2)}}+\ol{X}-\ol{Y}, \,
+t_{\ga}\sqrt{\dfrac{(m+n)(nS_x^2 +mS_y^2)}{mn(m+n-2)}}+\ol{X}-\ol{Y}\right)$
+
+является $\ga$-доверительным интервалом для параметра $\tau$
+
+
+\textit{Задача 45}
+Построить $\ga$-доверительный интервал для параметра $\ta$ в модели с экспоненциальным распределением, если
+1) $\widehat{\ta}_n=X_{(1)}$ 2) $\widehat{\ta}_n=\ol{X}-1$.
+
+\textit {Решение}
+
+1) Не трудно в очередной раз показать, что
+$P(X_{(1)}\le x)=\begin{cases} 1-e^{-n(x-\ta)}, \, x>\ta \\ 0, \, x\le\ta\end{cases}$.
+
+Рассматриваем $\ta\le X_{(1)}$.
+
+Строим $\ga$-доверительный интервал: надо найти такое z, выраженное через $\ga$, что
+
+$P(\ta\le X_{(1)}\le\ta +z)=\ga$.
+
+Найдем это z:
+$P(\ta\le X_{(1)}\le\ta +z)=n\intl{\ta}{\ta+z}e^{-n(x-\ta)}\,dx=1-e^{-nz}=\ga\Rightarrow$,
+
+$\Rightarrow e^{-nz}=1-\ga\Rightarrow z=\dfrac{1}{n}\ln(1-z)$.
+
+Значит, $P(\ta\le X_{(1)}\le\ta +z)=P(\ta\le X_{(1)}\le\ta +\dfrac{1}{n}\ln(1-z))=
+P(X_{(1)}-\dfrac{1}{n}\ln(1-\ga)\le\ta\le X_{(1)})=\ga$.
+
+Т.о. интервал
+$(X_{(1)}-\dfrac{1}{n}\ln(1-\ga)\le\ta\le X_{(1)})$
+
+является $\ga$-доверительным интервалом для параметра $\ta$
+
+
+2) Пусть $\xi$ случайная величина с экспоненциальным распределением. Найдем $E\xi$ и $D\xi$:
+
+$E\xi=\intl{\ta}{\infty}xe^{-(x-\ta)}\,dx=\dots=\Ga(2) +\ta=1+\ta$
+
+$D\xi=\intl{\ta}{\infty}(x-\ta -1)^2e^{-(x-\ta)}\,dx=\dots=\Ga(3)-\Ga(2)+1=1$
+
+Значит, $E\ol{X}=\dfrac{1}{n}nE\xi=\ta +1$,
+$D\ol{X}=\dfrac{1}{n}$.
+
+Т.о. по ЦПТ $\ol{X}\sim N(\ta+1, \dfrac{1}{n})$.
+Тогда $\dfrac{\ol{X}-1-\ta}{1\diagup\sqrt{n}}\sim N(0,1)$
+
+Строим $\ga$-доверительный интервал:
+
+$P\left(-c_{\ga}\le\dfrac{\ol{X}-1-\ta}{1\diagup\sqrt{n}}\le c_{\ga} \right)=\ga$
+
+\begin{center}$\dots $\end{center}
+
+$P\left(-1+\ol{X}-\dfrac{c_{\ga}}{\sqrt{n}}\le\ta\le -1+\ol{X}+\dfrac{c_{\ga}}{\sqrt{n}}\right)
+=\ga$
+
+Т.о. интервал
+$\left(-1+\ol{X}-\dfrac{c_{\ga}}{\sqrt{n}}\le\ta\le -1+\ol{X}+\dfrac{c_{\ga}}{\sqrt{n}}\right)$
+
+является $\ga$-доверительным интервалом для параметра $\ta$
+
+
+\textit{Задача 46}
+Построить $\ga$-доверительный интервал для параметра $\ta$ в модели $R(0, \ta]$, если
+
+1) $\widehat{\ta}_n=X_{(n)}$ 2) $\ta_n=2\ol{X}$.
+
+\textit {Решение}
+
+1) $\xi=X_{(n)}$,тогда $p_{\xi}(x)=\dfrac{nx^{n-1}}{\ta^n}$ при $0\le x \le\ta$.
+
+Строим $\ga$-доверительный интервал: надо найти такое z, выраженное через $\ga$, что
+
+$P(\ta-z\le X_{(n)}\le\ta)=\ga$.
+
+Найдем это z:
+
+$P(\ta-z\le X_{(n)}\le\ta)=\dfrac{n}{\ta^n}\intl{\ta-z}{\ta}x^{n-1}\,dx=
+\left.\dfrac{x^n}{\ta^n}\right|_{\ta-z}^{\ta}=1-\left(\dfrac{\ta-z}{\ta}\right)^n=
+1-\left(1-\dfrac{z}{\ta}\right)^n=\ga$
+
+Т.о. $1-\dfrac{z}{\ta}=(1-\ga)^{\tfrac{1}{n}}\Rightarrow z=\ta-\ta(1-\ga)^{\tfrac{1}{n}}$
+
+Значит,
+\mln{P\left(\ta-\ta+\ta(1-\ga)^{\tfrac{1}{n}}\le X_{(n)}\le\ta\right)=
+P\left(\ta(1-\ga)^{\tfrac{1}{n}}\le X_{(n)}\le\ta\right)=\\=
+P\left((1-\ga)^{\tfrac{1}{n}}\le \dfrac{X_{(n)}}{\ta}\le 1\right)=
+P\left(X_{(n)}\le\ta\le\dfrac{X_{(n)}}{(1-\ga)^{\tfrac{1}{n}}}\right)=\ga.}
+
+Т.о. интервал
+$\left(X_{(n)}\le\ta\le\dfrac{X_{(n)}}{(1-\ga)^{\tfrac{1}{n}}}\right)$
+
+является $\ga$-доверительным интервалом для параметра $\ta$
+
+2) $\ta_n=2\ol{X}$
+
+$E\ol{X}=\dfrac{\ta}{2}$
+
+$D\ol{X}=\dots=\dfrac{\ta^2}{12n}$, значит $\ol{X}\sim N(\dfrac{\ta}{2}, \dfrac{\ta^2}{12n})$
+
+Тогда $P\left(-c_{\ga}\le\dfrac{\ol{X}-\ta\diagup 2}{\ta\diagup 2\sqrt{3n}}\le c_{\ga}\right)
+=\ga=P\left(\dfrac{2\ol{X}}{1+c_{\ga}\sqrt{3n}}<\ta<\dfrac{2\ol{X}}{1-c_{\ga}\sqrt{3n}}\right)
+=\ga$.
+
+Т.о. интервал
+$\left(\dfrac{2\ol{X}}{1+c_{\ga}\sqrt{3n}}<\ta<\dfrac{2\ol{X}}{1-c_{\ga}\sqrt{3n}}\right)$
+
+является $\ga$-доверительным интервалом для параметра $\ta$.
+
+\textit{Задача 47}
+$\xi\sim\chi_n^2$. n неизвестно. Рассчитать асимптоты $\ga$-доверительный интервала
+для параметра n по выборке $\xi=157,4$.
+
+\textit {Решение}
+
+$\ga=P\left(\dfrac{|\xi-n|}{\sqrt{2n}}\le c_{\ga}\right)=P((\xi-n)^2\le c^2_{\ga}2n)=
+P(\xi^2-2\xi n +n^2\le c^2_{\ga}2n)=
+\\ =P(\xi^2 -2n(\xi +c_{\ga})+n^2\le 0)$
+
+Найдем корни $n_1, n_2$ уравнения $\xi^2 -2n(\xi +c_{\ga})+n^2=0$
+
+Тогда $P(n_1\le n\le n_2)=\ga$......
+
+\textit{Задача 48}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин $N(\ta_1, \ta_2^2)$.
+Даны $n, \ol{X}$ и $S_n^2$, причем, $\ol{X}$ и $S_n^2$  независимы.
+Построить $\ga$-доверительный интервал для $X_{n+1}$.
+
+\textit {Решение}
+
+Для нормального распределения $\ol{X}$ и $S_n^2$ независимы. Тогда $\ol{X}-X_{n+1}$ и $S_n^2$ независимы.
+
+$E(\ol{X}-X_{n+1})=0, \, D(\ol{X}-X_{n+1})= \dfrac{\ta^2_2}{n}+\ta^2_2=\dfrac{n+1}{n}\ta^2_2
+\Rightarrow (\ol{X}-X_{n+1})\sim N\left(0, \dfrac{n+1}{n}\ta_2^2\right)$
+
+Тогда $\dfrac{\ol{X}-X_{n+1}}{\ta_2\sqrt{\dfrac{n+1}{n}}}\sim N(0, 1)$
+
+Рассмотрим $S_n^2=\dfrac{1}{n}\suml{1}{n}(X_i-\ol{X})^2$.
+
+$\dfrac{nS_n^2}{\ta_2^2}\sim\chi^2_{n-1}$.
+
+$\dfrac{\ol{X}-X_{n+1}}{\ta_2\sqrt{\dfrac{n+1}{n}\dfrac{nS_n^2}{\ta_2^2(n-1)}}}=
+\dfrac{\ol{X}-X_{n+1}}{\sqrt{S_n^2\dfrac{n+1}{n-1}}}\sim t_{n-1}$ распределение Стьюдента.
+
+Строим $\ga$-доверительный интервал
+$P\left( -t_{\ga}\le\dfrac{\ol{X}-X_{n+1}}{\sqrt{S_n^2\dfrac{n+1}{n-1}}}\le t_{\ga}\right)=
+\ga\Rightarrow$
+
+$\Rightarrow P\left(\ol{X}-t_{\ga}\sqrt{S_n^2\dfrac{n+1}{n-1}}\le X_{n+1}\le
+\ol{X}+t_{\ga}\sqrt{S_n^2\dfrac{n+1}{n-1}}\right)=\ga$.
+
+
+\textit{Задача 49}
+$X=X_{1}\dots X_{n}$
+и $Y=Y_{1}\dots Y_{n}$ две независимые выборки.
+$X_i\sim \Ga(1, \ta_1)$ и
+$Y_i\sim \Ga(1, \ta_2)$.
+Построить $\ga$-доверительный интервал для
+$\tau=\dfrac{\ta_2}{\ta_1}$
+
+\textit {Решение}
+
+\textit{Задача 50}
+Построить центральный $\ga$-доверительный интервал для $\tau=\ta^{-2}$ по выборке
+$X_{1}\dots X_{n}$ в модели $N(\mu, \ta^2)$.
+
+\textit {Решение}
+
+\section{Проверка гипотез}
+\textit{Определение}
+$\hc{\ka}$\т множество критических точек, т.е. множество, где не верна основная гипотеза $H_0$.
+
+\textit{Задача 51}
+Рассмотрим модель $N(\ta_1, \ta_2^2)$
+
+1) Проверить гипотезы \begin{center} $H_0: \ta_1=\ta_{10}$\\
+$H_1: \ta_1\neq \ta_{01}$
+\end{center}
+2) Проверить гипотезы \begin{center} $H_0: \ta_2=\ta_{20}$\\
+$H_1: \ta_2\neq \ta_{02}$
+\end{center}
+
+\textit {Решение}
+
+1) Рассмотрим $\dfrac{\ol{X}-\ta_{10}}{\sqrt{\S_n^2\diagup (n-1)}}\sim t_{n-1}$
+
+$P\left(-t_{\ga}\le \dfrac{\ol{X}-\ta_{10}}{\sqrt{\S_n^2\diagup (n-1)}}\le t_{\ga}\right)=\ga$
+
+Значит $\ka=\left\{ x: \ol{X}> \ta_{10}+t_{\ga}\sqrt{(...)} ; \,
+\ol{x}<\ta_{10}-t_{\ga}\sqrt{(...)}\right\} $
+
+2) Рассмотрим $S_n^2=\dfrac{1}{n}\suml{1}{n}(X_i-\ol{X})^2$
+
+$\dfrac{nS_n^2}{\ta^2_2}\sim\chi^2_{n-1}$
+
+$P\left(\chi_{\tfrac{1-\ga}{2}}\le\dfrac{nS_n^2}{\ta^2_{20}}\le\chi_{\tfrac{1+\ga}{2}}\right)=\ga \Rightarrow$
+
+$\ka=\left\{ x: S_n^2>\dfrac{1}{n}\ta_{20}^2\chi_{\tfrac{1+\ga}{2}};
+ \, S_n^2<\dfrac{1}{n}\ta_{20}^2\chi_{\tfrac{1-\ga}{2}}\right\}$.
+
+\textit{Задача 52}
+$X=X_{1}\dots X_{n}$
+и $Y=Y_{1}\dots Y_{n}$ две независимые выборки
+$X_i\sim N(\ta_1, \sigma_1^2)$ и
+$Y_i\sim N(\ta_2, \sigma_2^2)$.
+$\ga$ заданно.
+Проверить гипотезы \begin{center} $H_0: \tau=\ta_1-\ta_{2}=0$\\
+$H_1: \tau=\ta_1- \ta_{2}\neq 0$\end{center}
+
+\textit {Решение}
+
+Возьмем $\xi=\dfrac{\ol{X}-\ol{Y}-\tau}{\sqrt{\dfrac{\sigma_1^2}{n}+\dfrac{\sigma_2^2}{m}}}\sim N(0,1)$
+
+$P\left(-c_{\ga}\le\dfrac{\ol{X}-\ol{Y}-\tau}{\sqrt{\dfrac{\sigma_1^2}{n}+\dfrac{\sigma_2^2}{m}}}
+\le c_{\ga}\right)=\ga$
+
+$\tau=0,\, \ka=\left\{x,y : \ol{X}-\ol{Y}>c_{\ga}\sqrt{(...)};
+ \, \ol{X}-\ol{Y}<-c_{\ga}\sqrt{(...)}\right\}$
+
+\textit{Задача 53}
+$X=X_{1}\dots X_{n}$
+и $Y=Y_{1}\dots Y_{n}$ две независимые выборки.
+$X_i\sim N(\ta^{(1)}, \ta_2^2)$ и
+$Y_i\sim N(\ta^{(2)}, \ta_2^2)$.
+$\ga$ заданно.
+Проверить гипотезы \begin{center} $H_0: \tau=\ta^{(1)}-\ta^{(2)}=0$\\
+$H_1: \tau=\ta^{(1)}-\ta^{(2)}\neq 0$\end{center}
+
+\textit {Решение}
+
+Рассмотрим $\xi=\dfrac{\ol{X}-\ol{Y}-\tau}{\ta_2}, \, \xi\sim N\left(0, \dfrac{1}{n}+\dfrac{1}{m}\right)$
+
+$\dfrac{nS_x^2}{\ta_2^2}\sim\chi_{n-1}^2, \, \dfrac{mS_y^2}{\ta_2^2}\sim\chi_{m-1}^2$
+
+Тогда $\dfrac{nS_x^2+mS_y^2}{\ta^2_2}\sim\chi^2_{m+n-2}$
+
+$\dfrac{\ta_2(\ol{X}-\ol{Y}-\tau)}{\ta_2\sqrt{\dfrac{m+n}{mn}\dfrac{nS_x^2+mS_y^2}{m+n-2}}}=
+\dfrac{\ol{X}-\ol{Y}-\tau}{nS_x^2+mS_y^2}\sqrt{\dfrac{(m+n-2)mn}{(m+n)}}\sim t$
+
+$P\left(-t_{\ga}\le\dfrac{\ol{X}-\ol{Y}-\tau}{nS_x^2+mS_y^2}\sqrt{\dfrac{(m+n-2)mn}{(m+n)}}
+\le t_{\ga}\right)=\ga$
+
+$\tau=0, \, \ka=\left\{ x,y : \ol{X}-\ol{Y}>t_{\ga}\sqrt{(...)}\sqrt{(...)}; \,
+\ol{X}-\ol{Y}<-t_{\ga}\sqrt{(...)}\sqrt{(...)}\right\}$
+
+
+\textit{Задача 54}
+$X=X_{1}\dots X_{n}$ выборка из генеральной совокупности НОР величин $R(0, \ta]$.
+$\ga$ заданно.
+Проверить гипотезы \begin{center} $H_0: \ta=\ta_0$\\
+$H_1: \ta\neq \ta_0$
+\end{center}
+
+\textit {Решение}
+
+\textit{Задача 55}
+$X_1$\dots$X_{n}$ выборка из генеральной совокупности НОР величин с экспоненциальным распределением.
+$\ga$ заданно.
+Проверить гипотезы \begin{center} $H_0: \ta=\ta_0$\\
+$H_1: \ta\neq \ta_0$
+\end{center}
+
+\textit {Решение}
+
+\textit{Задача 56}
+$X=X_{1}\dots X_{n}$
+и $Y=Y_{1}\dots Y_{n}$ две независимые выборки.
+$X_i\sim \Ga(1, \ta_1)$ и
+$Y_i\sim \Ga(1, \ta_2)$.
+Число $\ga$ задано.
+Проверить гипотезы \begin{center} $H_0: \tau=\dfrac{\ta_2}{\ta_1}=1$\\
+$H_1: \tau=\dfrac{\ta_2}{\ta_1}\neq 1$\end{center}
+
+\hfill {\small \it На этом рукопись обрывается.}
+\end{document}

@@ -1,0 +1,80 @@
+\section{Распределение Гиббса на конечном множестве.}
+\newcommand{\sumx}{\ensuremath{\suml{x∈X}{}}}
+Рассмотрим систему с конечным множеством состояний $X=\hc{x_i}$. Для
+произвольного состояния $x∈X$ полагаем определенными следующие функции
+\begin{nums}{-2}
+\item $E(x)$ -- энергия системы в состоянии $x$. $E\type X\R$
+\item $P(x)$  -- вероятность состояния, $\sumx P(x) = 1$
+\end{nums}
+\begin{df}
+  Постулатом Гиббса называется следующее соотношение
+  \begin{equation}
+    \label{dist:gibs}
+    \begin{array}{cc}
+      P(x) = ce^{-βE(x)} & c = \frac 1{\sumx e^{-βE(x)}}
+    \end{array}
+  \end{equation}
+  \indent  Константа $c$ называется \emph{статистической суммой}. В англоязычной
+  литературе -- `partition function'.
+\end{df}
+\newcommand{\intX}{\intl{X}{}}
+Приведем некое обоснование постулата Гиббса. Рассмотрим следующую функцию от распределения
+\begin{denote}
+$    φ(\vec P) ≝ -\sumx P(x)\ln P\,(x) - \sumx P(x)E(x) = -\intX \ln P\, dP -\intX EdP $
+\end{denote}
+\begin{denotes}
+  Выражение $(-\intX \ln P dP)$ называется энтропией, $(\intX EdP\, )$ -- средней энергией.
+\end{denotes}
+\begin{lemma}
+  Распределение Гиббса~(\ref{dist:gibs}) является стационарной точкой функции $φ(\vec P)$.
+\end{lemma}
+\begin{proof}
+ Введем обозначения $P(x_i) = p_i$, $E(x_i) = u_i$. Множество всех
+ допустимых значений $p_i$ образует симплекс
+ \begin{equation*}
+   \hc{(p_1,…,p_n) : p_i≥0, \sumiun p_i = 1}
+ \end{equation*}
+Найдем стационарные точки функции
+
+$φ(p_1,…,p_n) = -\sumiun p_i\ln p_i - \sumiun p_iu_i$,
+
+где $u_i$ полагаем фиксированными. В соответствии с теорией
+вариационного исчисления, вводим функцию
+\begin{equation*}
+  \begin{array}{lr}
+    Φ = φ + λs &\text{где } s(p_1,…,p_n) = \sumiun p_i
+  \end{array}
+\end{equation*}
+Тогда $\pf Φ{p_i} = -\ln p_i -1 -u_i +λ$, откуда $p_i = ce^{-u_i}$,
+\begin{equation*}
+  c = \frac 1{\sumiun e^{u_i}} = \frac 1{\sumiun e^{-βu_i^0}}
+\end{equation*}
+где параметр $β$ вводится заменой $u_i = βu_i^0$.
+\end{proof}
+
+Таким образом, мы показали, что распределение Гиббса является
+стационарной точкой функции $φ(\bar p)$. Для того, что бы доказать,
+что это будет максимум, покажем, что $φ$ -- выпуклая вниз(вогнутая).
+
+\begin{wrapfigure}{l}{0.15\textwidth}
+    \includegraphics[width=0.15\textwidth]{image1.eps}
+\end{wrapfigure}
+Действительно, рассмотрим функцию $f(y) =-y\ln y$, $y∈[0,1]$,
+доопределенную в нуле по непрерывности (график слева).
+
+\begin{df}
+  Линейная комбинация $ap+bp'$, где $a,b≥0$, $a+b = 1$ называется
+  выпуклой комбинацией.
+\end{df}
+
+\begin{df}
+  Функция $g$ -- выпуклая, если $ g(ap+bp') ≤ag(p)+bg(p') $
+\end{df}
+
+Отсюда получаем, что распределение Гиббса действительно доставляет
+максимум функции $φ$, выпуклой как линейной комбинации выпуклых
+функций и с линейным ограничением на $\bar p$.
+
+%% Local Variables:
+%% compile-command: "xelatex -halt-on-error -file-line-error main.tex"
+%% End:

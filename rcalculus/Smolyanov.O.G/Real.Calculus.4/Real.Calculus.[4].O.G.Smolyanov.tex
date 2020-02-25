@@ -1,0 +1,2614 @@
+\documentclass[12pt,titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{epsf}
+
+\newcounter{lec}
+\renewcommand{\thelec}{\arabic{lec}}
+\newcommand*{\lecture}{\refstepcounter{lec}\vspace{20pt}
+\begin{center}{\rmfamily\textsc{Лекция \thelec.}}
+\end{center}}
+
+\newcounter{tema}
+\renewcommand{\thetema}{\arabic{tema}}
+\newcommand*{\tema}[1]{\vspace{10pt}
+\begin{center}{\textbf{\refstepcounter{tema}
+\textsc{\thetema. #1.}}}\vspace{7pt}
+\end{center}}
+
+\newcommand{\prim}{\vspace{5pt}\noindent\textbf{Примеры.}}
+\newcommand{\svoy}{\vspace{5pt}\noindent\textbf{Свойства.}}
+
+\newtheorem{theorem}{Теорема}[tema]
+\renewcommand{\thetheorem}{\thetema.\arabic{theorem}}
+
+\newtheorem{sled}{Следствие}[tema]
+\renewcommand{\thesled}{\thetema.\arabic{sled}}
+
+\newtheorem{lemm}{Лемма}[tema]
+\renewcommand{\thelemm}{\thetema.\arabic{lemm}}
+
+\newtheorem{predl}{Предложение}[tema]
+\renewcommand{\thepredl}{\thetema.\arabic{predl}}
+
+\theoremstyle{definition}
+\newtheorem{defen}{Определение}[tema]
+\newtheorem*{zam}{Замечание}
+
+\newcommand*{\p}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}}
+
+\begin{document}
+\begin{titlepage}
+\begin{center}
+\vspace*{-20pt}
+\textsf{%
+{\Large МОСКОВСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ \\%
+\vspace{5pt}%
+имени М.В.ЛОМОНОСОВА}\\%
+\vspace{25pt} %
+{\Large Механико--математический факультет}\\%
+\vspace{15pt} %
+{\large Кафедра Теории функций и функционального анализа\\}%
+\vspace{40pt}%
+\epsfbox{mmlogo.2}\\ %
+\vspace{40pt}%
+{\LARGE\textbf{Курс лекций по действительному анализу\\} }%
+\vspace{25pt} %
+Лектор --- Олег Георгиевич Смолянов\\ %
+\vspace{20pt}%
+Летописец --- Бибиков Павел Витальевич (группа 212)\\
+телефон: 137-45-97\\
+e-mail: {\normalfont \verb"tsdtp4u@proc.ru"}\\
+\vspace{40pt}}%
+II курс, 3 семестр, 2 поток (2006 -- 2007 гг.)
+\end{center}
+\end{titlepage}
+%---------------------------Lecture 1-----------------------------------------------%
+\lecture
+
+\vspace{-25pt}
+
+\tema{Кольца и полукольца}
+
+\begin{defen}
+Пусть $\Omega$ --- фиксированное множество, тогда \emph{кольцом $S$
+подмножеств $\Omega$} называется всякая непустая совокупность
+подмножеств $\Omega$ со следующими свойствами:
+
+(1) $A, B\in S\Rightarrow A\cap B\in S$,
+
+(2) $A, B\in S\Rightarrow A\bigtriangleup B\in S$.
+\end{defen}
+
+Если положить $A\bigtriangleup B=A+B$, $A\cap B=A\cdot B$, то будут
+выполнены все аксиомы кольца. Такие кольца называются
+\emph{булевыми}.
+
+Есть другие эквивалентные условия:
+
+(3) $A, B\in S\Rightarrow A\cup B\in S$,
+
+(4) $A, B\in S\Rightarrow A\setminus B\in S$.
+
+\begin{predl}
+$\{(1), (2)\}\Leftrightarrow \{(3), (4)\}$.
+\end{predl}
+
+\begin{proof}
+$\{(1), (2)\}\Rightarrow \{(3), (4)\}$:
+\begin{align*}
+A\cup B&=(A\bigtriangleup B)\bigtriangleup(A\cap B),\\
+A\setminus B&=(A\cup B)\bigtriangleup B.
+\end{align*}
+
+$\{(3), (4)\}\Rightarrow \{(1), (2)\}$:
+\begin{align*}
+A\bigtriangleup B&=(A\setminus B)\cup (B\setminus A), \\
+A\cap B&=(A\cup B)\bigtriangleup (A\bigtriangleup B).
+\end{align*}
+\end{proof}
+
+Можно ослабить условие $(3)$:
+
+$(3')$ $A, B\in S, A\cap B=\varnothing \Rightarrow A\cup B\in S$.
+
+\begin{predl}
+$\{(3), (4)\}\Leftrightarrow \{(3'), (4)\}$.
+\end{predl}
+
+\begin{proof}
+$\{(3), (4)\}\Rightarrow \{(3'), (4)\}$ --- очевидно.
+
+$\{(3'), (4)\}\Rightarrow \{(3), (4)\}$: $A\cup B=(A\setminus B)\cup
+B$.
+\end{proof}
+
+\begin{defen}
+\emph{Полукольцо $\mathcal{P}$ в $\Omega$} --- это совокупность
+подмножеств $\Omega$ со следующими свойствами:
+
+(1) $\varnothing\in \mathcal{P}$,
+
+(2) $A,B\in \mathcal{P}\Rightarrow A\cap B\in\mathcal{P}$,
+
+(3) $A,B\in\mathcal{P}, B\subset A\Rightarrow \exists\,
+n\in\mathbb{N}, \; A_1,\ldots,A_n\in\mathcal{P}: A\setminus
+B=\bigsqcup\limits_{j=1}^n A_j$.
+\end{defen}
+
+1. Если $S$ --- кольцо, то $S$ --- полукольцо.
+
+2. Пусть $S$ --- кольцо, тогда $\varnothing\in S$: $\exists\, A\in
+S\Rightarrow \varnothing=A\setminus A\in S$.
+
+Если $\Omega\in S$, то $\Omega$ играет роль 1 в том смысле, что
+$\forall\, A\in S\; A\cap \Omega=A$.
+
+\begin{defen}
+Полукольцо с единицей называется \emph{полуалгеброй по\-дмножеств},
+а кольцо с единицей --- \emph{алгеброй}.
+
+\emph{$\sigma$-кольцо} --- это кольцо $S$, обладающее свойством:
+$A_1,A_2,\ldots\in S\p\Rightarrow \bigcup\limits_{j=1} A_j\in S$.
+
+Алгебра, которая является $\sigma$-кольцом, называется
+\emph{$\sigma$-алгеброй подмножеств}.
+
+\emph{$\delta$-кольцо} --- это кольцо $S$, обладающее свойством:
+$A_1,A_2,\ldots\in S\p\Rightarrow \bigcap\limits_{j=1} A_j\in S$.
+\end{defen}
+
+\prim
+
+1. $\Omega=\mathbb{R}^1$, $\mathcal{P}=\{(a;b), [a;b), (a;b],
+[a;b]\mid a\leqslant b\in\mathbb{R}^1\}$ --- полукольцо, но не
+кольцо и не полуалгебра.
+
+2. $\Omega=\mathbb{R}^1$, $S$ --- множество конечных объединений
+элементов из $\mathcal{P}$, где $\mathcal{P}$ --- полукольцо.
+
+3. Если $\mathfrak{a}$ --- алгебра, являющаяся $\sigma$-кольцом, то
+$\mathfrak{a}$ --- $\sigma$-алгебра.
+
+4. Всякое $\sigma$-кольцо является $\delta$-кольцом. Обратное
+неверно: пусть $\Omega\p=\mathbb{R}^1$, $S$ --- множество всех
+ограниченных подмножеств из $\Omega$. Тогда $S$ --- $\delta$-кольцо,
+но не $\sigma$-кольцо.
+
+5. Не всякое $\sigma$-кольцо является алгеброй: пусть $S$ ---
+множество всех не более чем счетных подмножеств из $\Omega$. Тогда
+$S$ --- $\sigma$-кольцо, но не алгебра.
+
+\tema{Мера и ее счетно аддитивность}
+
+\begin{defen}
+\emph{Мерой $\nu$} называется функция, область определения которой
+является полукольцом $\mathcal{P}$ подмножеств некоторого множества,
+принимающая числовые значения и обладающая свойством: $\forall\,
+A_j\p\in\mathcal{P}, j=1,\ldots,n$, если $A_i\cap A_k=\varnothing$
+при $i\neq k$ и $\bigsqcup\limits_{j=1}^n A_j\in\mathcal{P}$, то
+$$\nu\Big(\bigsqcup\limits_{j=1}^n A_j\Big)=\sum\limits_{j=1}^n \nu
+A_j.$$ Это свойство меры называется \emph{аддитивным}.
+\end{defen}
+
+\begin{zam}
+1. $n$ --- произвольное число (его нельзя заменить на 2).
+
+2. Если $\mathcal{P}$ --- кольцо, то достаточно потребовать, чтобы
+$\forall\, A_1, A_2\in\mathcal{P}: A_1\cap A_2=\varnothing$ имеем
+$\nu(A_1\sqcup A_2)=\nu A_1+\nu A_2$.
+\end{zam}
+
+\begin{defen}
+Мера $\nu$ называется \emph{счетно аддитивной}, если $$\forall\,
+A_1,A_2,\ldots\in\mathcal{P} : \bigsqcup\limits_{j=1}^\infty
+A_j\in\mathcal{P} \Rightarrow \nu\Big(\bigsqcup\limits_{j=1}^\infty
+A_j\Big)=\sum\limits_{j=1}^\infty\nu A_j.$$
+
+Мера \emph{неотрицательна}, если ее значения неотрицательны.
+\end{defen}
+
+\prim
+
+1. Пусть $\mathcal{P}$ --- полукольцо подмножеств $\mathbb{R}^1$
+(см. выше) и $\nu((a;b))\p=\nu([a;b))=\nu((a;b])=\nu([a;b])=b-a$,
+если $b\geqslant a$. Такая мера называется \emph{мерой Лебега}.
+
+2. \emph{Мера Лебега-Стильтьеса}: пусть $f$ --- неубывающая на
+$\mathbb{R}^1$ функция, тогда
+\begin{align*}
+\nu_{LS}^f([a;b))&=f(b-0)-f(a-0),\\
+\nu_{LS}^f((a;b])&=f(b+0)-f(a+0),\\
+\nu_{LS}^f([a;b])&=f(b+0)-f(a-0),\\
+\nu_{LS}^f((a;b))&=f(b-0)-f(a+0).
+\end{align*}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 2-----------------------------------------------%
+\lecture
+
+\begin{defen}
+\emph{Кольцо, порожденное полукольцом $\mathcal{P}$} --- это
+минимальное кольцо, содержащее $\mathcal{P}$:
+$S(\mathcal{P})=\bigcap\limits_{S\supset\mathcal{P}}S$.
+\end{defen}
+
+\begin{predl}
+Пусть $\mathcal{P}$ --- полукольцо. Тогда порожденное им кольцо
+$S(\mathcal{P})$ --- это множество всевозможных множеств вида
+$\bigsqcup\limits_{j=1}^n A_j$, где $n\in\mathbb{N}$,
+$A_j\in\mathcal{P}$.
+\end{predl}
+
+\begin{proof}
+1. Докажем, что семейство множеств $\Big\{\bigsqcup\limits_{j=1}^n
+A_j\mid n\p\in\mathbb{N}, j=1,\ldots,n \Big\}$ --- это кольцо.
+Имеем:
+\begin{align*}
+\Big(\bigsqcup\limits_{j=1}^n
+A_j\Big)\sqcup\Big(\bigsqcup\limits_{k=1}^r
+B_k\Big)&=\bigsqcup\limits_{l=1}^m C_l,\\
+\Big(\bigsqcup\limits_{j=1}^n A_j\Big)\setminus
+\Big(\bigsqcup\limits_{k=1}^r B_k\Big)&=
+\bigsqcup\limits_{j=1}^n\Big(A_j\setminus\bigsqcup\limits_{k=1}^r
+B_k\Big)=\\
+&=\bigsqcup\limits_{j=1}^n (((A_j\setminus B_1)\setminus
+B_2)\setminus\ldots\setminus
+B_r)=\\
+&=\bigsqcup\limits_{j=1}^n\Big(\bigsqcup\limits_{p=1}^s
+E_p\Big),\quad E_s\in\mathcal{P}.
+\end{align*}
+
+2. Докажем минимальность: пусть $S_0\supset \mathcal{P}$, тогда
+$\forall\, n, \forall \,A_j\in\mathcal{P}, j\p=1,\ldots,n$ \;
+$\bigcup\limits_{j=1}^n A_j\in S_0\Rightarrow S_0\supset
+S(\mathcal{P})$.
+\end{proof}
+
+\begin{predl}
+Пусть $\nu\colon \mathcal{P}\to\mathbb{R}^+$ --- мера на
+$\mathcal{P}$. Тогда $\exists !\, \bar{\nu}\colon
+S(\mathcal{P})\p\to\mathbb{R}^+$ --- мера на $S(\mathcal{P})$,
+такая, что $\bar{\nu}\mid_\mathcal{P}=\nu$.
+\end{predl}
+
+\begin{proof}
+Вначале докажем, что существует не более чем одно продолжение. Пусть
+$A\in S(\mathcal{P})$, тогда $A=\bigsqcup\limits_{j=1}^n P_j$,
+$P_j\in\mathcal{P}$. Отсюда
+$\bar{\nu}A\p=\sum\limits_{j=1}^n\bar{\nu}P_j=\sum\limits_{j=1}^n
+\nu P_j$.
+
+Теперь проверим, что введенная выше функция $\bar{\nu}$ является
+мерой. Во-первых, докажем, что значение $\bar{\nu}A$ не зависит от
+множеств, на которые раскладывается $A$. Пусть
+$A=\bigsqcup\limits_{j=1}^n P_j=\bigsqcup\limits_{k=1}^m B_k$, тогда
+$A=\bigsqcup\limits_{j,k}^{n,m}P_j\cap B_k$ и поскольку
+$P_j=\bigsqcup\limits_{k=1}^n (P_j\cap B_k)$, то
+$\sum\limits_{j=1}^n \nu
+P_j=\sum\limits_{j=1}^n\sum\limits_{k=1}^m\nu(P_j\cap B_k)$.
+Аналогично, $\sum\limits_{k=1}^m \nu
+B_k=\sum\limits_{j=1}^n\sum\limits_{k=1}^m\nu(P_j\cap B_k)$. Поэтому
+$\sum\limits_{j=1}^n\nu P_j=\sum\limits_{k=1}^m\nu B_k$.
+
+Во-вторых, докажем аддитивность. По определению,
+\begin{align*}
+\bar{\nu}\Big(\Big(\bigsqcup\limits_{j=1}^n A_j\Big)\sqcup
+\Big(\bigsqcup\limits_{k=1}^r B_k\Big)\Big)&=\sum\limits_{j=1}^n\nu
+A_j+\sum\limits_{k=1}^r \nu
+B_k=\\
+&=\sum\limits_{j=1}^n\bar{\nu}A_j+\sum\limits_{k=1}^r\bar{\nu}B_k=
+\bar{\nu}\Big(\bigsqcup\limits_{j=1}^n
+A_j\Big)+\bar{\nu}\Big(\bigsqcup\limits_{k=1}^r B_k\Big).
+\end{align*}
+\end{proof}
+
+\begin{theorem}
+Если исходная мера счетно аддитивна, то ее продолжение тоже счетно
+аддитивно.
+\end{theorem}
+
+\begin{proof}
+Пусть $A\in S(\mathcal{P})$, $A=\bigsqcup\limits_{j=1}^\infty A_j$,
+$A_j\in S(\mathcal{P})$. Тогда $\forall\, j$
+$A_j=\bigsqcup\limits_{k=1}^{k(j)}A_{jk}$, $A_{jk}\in\mathcal{P}$.
+Значит,
+$\bar{\nu}A=\bar{\nu}\Big(\bigsqcup\limits_{j,k}A_{jk}\Big)$,
+поэтому $$\bar{\nu}A=\sum\limits_{j,k}\nu
+A_{jk}=\sum\limits_{j=1}^\infty \sum\limits_{k=1}^{k(j)}\nu
+A_{jk}=\sum\limits_{j=1}^\infty\bar{\nu}A_j.$$
+\end{proof}
+
+\begin{predl}
+Пусть $\nu$ --- мера на кольце $S$. Тогда $\nu$ счетно аддитивна
+$\Leftrightarrow$ для всех $A, A_j\in S$ выполняется следующее
+свойство: если $\bigcup\limits_{j=1}^\infty A_j\supset A$, то
+$\sum\limits_{j=1}^\infty \nu A_j\geqslant \nu A$.
+\end{predl}
+
+\begin{proof}
+Пусть $\nu$ счетно аддитивна и $\bigcup\limits_{j=1}^\infty
+A_j\supset A$, где $A, A_j\in S$. Тогда $$A=(A\cap
+A_1)\sqcup(A\cap(A_2\setminus A_1))\sqcup(A\cap(A_3\setminus(A_1\cup
+A_2)))\sqcup\ldots,$$ поэтому
+\begin{multline*}
+\nu A=\nu(A\cap A_1)+\nu(A\cap(A_2\setminus
+A_1))+\nu(A\cap(A_3\setminus(A_1\cup
+A_2)))+\ldots\leqslant\\
+\leqslant \nu A_1+\nu A_2+\nu A_3+\ldots=\sum\limits_{j=1}^\infty
+\nu A_j.
+\end{multline*}
+
+Обратно, пусть $B=\bigsqcup\limits_{k=1}^\infty B_k$, где $B, B_k\in
+S$. Докажем, что $\nu B\p=\sum\limits_{k=1}^\infty \nu B_k$.
+Заметим, что для любого $n$ выполняется равенство
+$$B=\Big(\bigsqcup\limits_{k=1}^n
+B_k\Big)\sqcup\Big(B\setminus\Big(\bigsqcup\limits_{k=1}^n
+B_k\Big)\Big),$$ поэтому в силу аддитивности меры $$\nu
+B=\sum\limits_{k=1}^n \nu
+B_k+\nu\Big(B\setminus\Big(\bigsqcup\limits_{k=1}^n
+B_k\Big)\Big)\geqslant \sum\limits_{k=1}^\infty \nu B_k.$$ В то же
+время $\nu B\leqslant\sum\limits_{k=1}^\infty \nu B_k$. Отсюда
+получаем, что $\nu B=\sum\limits_{k=1}^\infty \nu B_k$ и мера $\nu$
+счетно аддитивна.
+\end{proof}
+
+Рассмотрим полукольцо $\mathcal{P}$ подмножеств $\mathbb{R}^1$ с
+мерой Лебега $\nu$. Тогда верна следующая
+
+\begin{theorem}
+Мера Лебега счетно аддитивна.
+\end{theorem}
+
+\begin{proof}
+Вначале заметим, что если $(a;b)=(a;c]\cup(c;b)$, то
+$\nu((a;b))=b-a=(c-a)+(b-c)=\nu((a;c])+\nu((c;b))$. Аналогичное
+равенство можно записать и для произвольного конечного количества
+интервалов разбиения отрезка $(a;b)$.
+
+Пусть теперь $\mathcal{P}\ni A=\bigsqcup\limits_{j=1}^\infty A_j$,
+где $A_j\in\mathcal{P}$. Зафиксируем произвольное число
+$\varepsilon>0$. Будем считать, что $A=(a;b]$ --- полуинтервал. В
+таком случае $\exists\, [\alpha;\beta]\subset A:
+\nu([\alpha;\beta])>\nu A-\varepsilon$ и $\exists\,
+(\alpha_j;\beta_j)\supset A_j: \nu((\alpha_j;\beta_j))\p<\nu
+A_j+\frac{\varepsilon}{2^j}$. Отсюда $[\alpha;\beta]\subset A\subset
+\bigcup\limits_{j=1}^\infty(\alpha_j;\beta_j)$. Значит, $\exists\,
+n: [\alpha;\beta]\subset\bigcup\limits_{j=1}^n (\alpha_j;\beta_j)$,
+поэтому $\nu([\alpha;\beta])\leqslant \sum\limits_{j=1}^n
+\nu((\alpha_j;\beta_j))<\sum\limits_{j=1}^n\big(\nu
+A_j+\frac{\varepsilon}{2^j}\big)<\sum\limits_{j=1}^\infty \nu A_j +
+2\varepsilon$ и $\nu A\leqslant \sum\limits_{j=1}^\infty \nu A_j$.
+\end{proof}
+
+\begin{defen}
+Рассмотрим алгебру $S$ со счетно аддитивной мерой $\nu$. $T(\Omega)$
+--- это множество всех подмножеств $\Omega$. Легко видеть, что
+$T(\Omega)$ является $\sigma$-алгеброй. Определим \emph{внешнюю меру
+$\nu^*\colon T(\Omega)\to \mathbb{R}^1$}, $\nu^*
+A\p=\inf\limits_{A\subset\bigcup\limits_j
+A_j}\sum\limits_{j=1}^\infty \nu A_j$, где $A\in T(\Omega)$.
+
+Множество $A\subset \Omega$ называется \emph{$\nu$-измеримым}, если
+$\forall\, \varepsilon>0 \quad\exists\, B\in S:
+\nu^*(A\bigtriangleup B)<\varepsilon$.
+\end{defen}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 3-----------------------------------------------%
+\lecture
+
+\vspace{-30pt}
+
+\tema{Теорема Каратеодори}
+
+\begin{theorem}[Каратеодори]
+Пусть $\nu$ --- счетно аддитивная неотрицательная мера на алгебре
+$S$ подмножеств $\Omega$, $\sigma(S)$ --- $\sigma$-алгебра,
+порожденная $S$. Тогда $\exists !\,
+\bar{\nu}\colon\sigma(S)\to\mathbb{R}^1$
+--- счетно аддитивная мера на $\sigma(S)$, такая, что
+$\bar{\nu}\mid_S=\nu$.
+\end{theorem}
+
+\begin{proof}
+Пусть $\mathfrak{a}$ --- множество $\nu$-измеримых подмножеств
+$\Omega$. Докажем, что на самом деле $\bar{\nu}=\nu^*$, где $\nu^*$
+--- внешняя мера. Для этого мы докажем следующие утверждения:
+
+\begin{itemize}
+  \item $S\subset\mathfrak{a}$;
+  \item $\mathfrak{a}$ --- $\sigma$-алгебра;
+  \item сужение $\nu^*$ на $\mathfrak{a}$ счетно аддитивно;
+  \item $\nu^*\mid_S=\nu$;
+  \item $\nu^*$ --- единственное продолжение, удовлетворяющее
+  условиям теоремы.
+\end{itemize}
+
+Введем на множестве $T(\Omega)$ \emph{полуметрику}:
+$\rho(A,B)=\nu^*(A\bigtriangleup B)$. Функция $\rho$ удовлетворяет
+следующим свойствам:
+
+1) $\rho(A,B)=\rho(B,A)$ (очевидно).
+
+2) $\rho(A, B)\geqslant 0$, причем $\rho(A,B)=0\nLeftrightarrow
+A=B$.
+
+3) $\rho(A,C)\leqslant\rho(A,B)+\rho(B,C)$ (неравенство
+треугольника): действительно, из определения внешней меры следует,
+что если $A\subset\bigcup\limits_{j=1}^\infty A_j$, то
+$\nu^*A\leqslant\sum\limits_{j=1}^\infty \nu^*A_j$, а т.к.
+$A\bigtriangleup C\subset(A\bigtriangleup B)\cup(B\bigtriangleup
+C)$, то $$\rho(A,C)=\nu^*(A\bigtriangleup
+C)\leqslant\nu^*(A\bigtriangleup B)+\nu^*(B\bigtriangleup
+C)=\rho(A,B)+\rho(B,C).$$
+
+Заметим, что из свойства 3) следует, что
+$$|\rho(A,C)-\rho(A,B)|\leqslant\rho(C,B).$$ В самом деле, положим
+$A=\varnothing$, тогда $$|\rho(\varnothing,C)-\rho(\varnothing,
+B)|\leqslant\rho(C,B)\Leftrightarrow
+|\nu^*C-\nu^*B|\leqslant\nu^*(C\bigtriangleup B).$$
+
+1. Докажем, что $S\subset\mathfrak{a}$. Действительно,
+$A\in\mathfrak{a}\Leftrightarrow\forall\,\varepsilon>0\quad\exists\,
+C\in S:\rho(A,C)<\varepsilon$. Если $A\in S$, то положим $C=A$,
+тогда $\rho(A,C)=0<\varepsilon$ и $S\subset\mathfrak{a}$.
+
+2. Докажем, что $\mathfrak{a}$ --- алгебра. Понятно, что
+$\Omega\in\mathfrak{a}$, т.к. $\Omega\in S$. Необходимо проверить,
+что если $A,B\in\mathfrak{a}$, то $A\setminus B\in\mathfrak{a}$ и
+$A\cup B\in\mathfrak{a}$. Проверим только первую импликацию (вторая
+проверятся аналогично). Т.к. $A,B\in\mathfrak{a}$, то
+$\forall\,\varepsilon>0\quad\exists\, A_S,B_S\in S:
+\nu^*(A\bigtriangleup A_S)<\varepsilon/2$ и $\nu^*(B\bigtriangleup
+B_S)<\varepsilon/2$. Поскольку $(A\setminus
+B)\bigtriangleup(A_S\setminus B_S)\subset(A\bigtriangleup
+A_S)\cup(B\bigtriangleup B_S)$, то $$\nu^*((A\setminus
+B)\bigtriangleup(A_S\setminus B_S))\leqslant\nu^*(A\bigtriangleup
+A_S)+\nu^*(B\bigtriangleup B_S)<\varepsilon.$$
+
+3. Докажем\footnote{Счетно аддитивность меры $\nu$ используется
+только в этом пункте.}, что $\nu^*\mid_S=\nu$. Очевидно, что если
+$A\in S$, то $\nu^*A\p\leqslant\nu A$. Докажем обратное неравенство.
+Если $A\subset\bigcup\limits_{j=1}^\infty C_j$, то $\nu
+A\leqslant\sum\limits_{j=1}^\infty\nu C_j$, поэтому $\nu
+A\leqslant\inf\limits_{A\subset\bigcup\limits_{j=1}^\infty
+C_j}\sum\limits_{j=1}^\infty\nu C_j=\nu^*A$. Отсюда получаем, что
+$\nu A=\nu^*A$.
+
+Прежде чем двигаться дальше, докажем следующую лемму.
+
+\begin{lemm}
+Функция $\mu\colon S\to\mathbb{R}^+$ является мерой тогда и только
+тогда, когда $\forall\,A_1,A_2\in S\quad \mu(A_1\cup
+A_2)+\mu(A_1\cap A_2)=\mu A_1+\mu A_2$ и $\mu(\varnothing)=0$.
+\end{lemm}
+
+\begin{proof}
+Сначала установим, что функция $\mu$, удовлетворяющая условию леммы,
+будет мерой. Действительно, если $A_1\cap A_2=\varnothing$, то
+$\mu(A_1\p\cup A_2)=\mu A_1+\mu A_2$.
+
+Обратно, поскольку $\mu(A_1\cup A_2)=\mu(A_1\setminus A_2)+\mu A_2$,
+то $$\mu(A_1\cup A_2)+\mu(A_1\cap A_2)=\mu(A_1\setminus A_2)+\mu
+A_2+\mu(A_1\cap A_2)=\mu A_1+\mu A_2.$$
+\end{proof}
+
+4. Докажем, что $\nu^*$ является мерой на $\mathfrak{a}$. Согласно
+лемме 3.1, достаточно доказать, что
+$\forall\,A,C\in\mathfrak{a}\quad \nu^*(A\cup C)+\nu^*(A\cap
+C)=\nu^* A+\nu^* C$. По определению, $\forall\,
+\varepsilon>0\quad\exists\,A_S,C_S\in S: \nu^*(A\bigtriangleup
+A_S)<\varepsilon$ и $\nu^*(C\bigtriangleup C_S)<\varepsilon$. Т.к.
+$(A\cup C)\bigtriangleup(A_S\cup C_S)\subset (A\bigtriangleup
+A_S)\cup(C\bigtriangleup C_S)$, то $$\nu^*((A\cup
+C)\bigtriangleup(A_S\cup C_S))\leqslant\nu^*(A\bigtriangleup
+A_S)+\nu^*(C\bigtriangleup C_S)<2\varepsilon.$$ Аналогично,
+$$\nu^*((A\cap C)\bigtriangleup(A_S\cap
+C_S))\leqslant\nu^*(A\bigtriangleup A_S)+\nu^*(C\bigtriangleup
+C_S)<2\varepsilon.$$ По неравенству треугольника
+$$\text{$|\nu^*(A\cup C)-\nu^*(A_S\cup C_S)|<2\varepsilon$ и $|\nu^*
+(A\cap C)-\nu^*(A_S\cap C_S)|<2\varepsilon$},$$
+$$\text{$|\nu^*A-\nu^*A_S|<\varepsilon$ и
+$|\nu^*C-\nu^*C_S|<\varepsilon$}.$$ Кроме того, поскольку
+$\nu^*A_S=\nu A_S$ и $\nu^*C_S=\nu C_S$, а также $$\nu(A_S\cup
+C_S)+\nu(A_S\cap C_S)=\nu A_S+\nu C_S,$$ то $$|\nu^*(A\cup
+C)+\nu^*(A\cap C)-\nu^*A-\nu^*C|<6\varepsilon,$$ откуда $\nu^*(A\cup
+C)+\nu^*(A\cap C)=\nu^*A+\nu^*C$.
+
+Теперь докажем счетно аддитивность. Очевидно, что если $\mu$ ---
+мера на кольце $S$ и при $A,A_j\in S$ из того, что
+$A\subset\bigcup\limits_{j=1}^\infty A_j$ следует, что $\mu
+A\p\leqslant\sum\limits_{j=1}^\infty\mu A_j$, то мера $\mu$ счетно
+аддитивна. При $\mu=\nu^*$ получаем требуемое.
+
+5. Докажем, что $\mathfrak{a}$ --- $\sigma$-алгебра. Для этого
+достаточно проверить, что если $A_j\in\mathfrak{a}$, то
+$\bigsqcup\limits_{j=1}^\infty A_j\in\mathfrak{a}$. Поскольку
+$\forall\, j\quad A_j\subset\Omega\in S\subset\mathfrak{a}$ и
+$$\forall\, n\quad\Omega=\Big(\bigsqcup\limits_{j=1}^n
+A_j\Big)\sqcup\Big(\Omega\setminus\bigsqcup\limits_{j=1}^n
+A_j\Big),$$ то в силу аддитивности получаем, что
+$$\nu^*\Omega=\nu^*\Big(\bigsqcup\limits_{j=1}^n A_j\Big)+\nu^*\Big
+(\Omega\setminus\bigsqcup\limits_{j=1}^n
+A_j\Big)\geqslant\sum\limits_{j=1}^n\nu^* A_j,$$ откуда
+$\sum\limits_{j=1}^\infty \nu^*A_j<\infty$.
+
+Зафиксируем произвольное $\varepsilon>0$. Тогда $$\exists\,
+n:\nu^*\Big(\bigsqcup\limits_{j=n}^\infty
+A_j\Big)\leqslant\sum\limits_{j=n}^\infty\nu^*A_j<\varepsilon.$$
+Т.к. $\bigsqcup\limits_{j=1}^n A_j\in\mathfrak{a}$, то $\exists\,
+C\in S:\nu^*\Big(\Big(\bigsqcup\limits_{j=1}^n
+A_j\Big)\bigtriangleup C\Big)<\varepsilon$. По неравенству
+треугольника получаем, что
+$$\rho\Big(\bigsqcup\limits_{j=1}^\infty A_j,C\Big)\leqslant
+\rho\Big(\bigsqcup\limits_{j=1}^\infty A_j,\bigsqcup\limits_{j=1}^n
+A_j\Big)+\rho\Big(\bigsqcup\limits_{j=1}^n A_j,
+C\Big)<2\varepsilon,$$ поэтому $\bigsqcup\limits_{j=1}^\infty
+A_j\in\mathfrak{a}$.
+
+6. Докажем единственность. Пусть $\mu$ --- другое продолжение меры
+$\nu$ с $S$ на $\mathfrak{a}$, удовлетворяющее условиям теоремы.
+Введем <<расстояние>>\footnote{На самом деле, это никакое не
+расстояние.} на $\mathfrak{a}$: $\rho_\mu(A,B)=\mu(A\bigtriangleup
+B)$. Тогда $|\mu A-\mu B|<\mu(A\bigtriangleup B)$.
+
+Пусть $A\in\mathfrak{a}$, тогда
+$\forall\,\varepsilon>0\quad\exists\, C\in S:
+|\nu^*A-\nu^*C|<\rho(A,C)<\varepsilon$. Поскольку
+$\rho_\mu(A,C)\leqslant\rho(A,C)$, то $$|\mu A-\mu
+C|<\rho_\mu(A,C)\leqslant\rho(A,C)<\varepsilon.$$ Т.к. $\mu C=\nu
+C$, то по неравенству треугольника $|\nu^* A-\mu A|<2\varepsilon$,
+поэтому $\mu A=\nu^*A$.
+
+Осталось доказать неравенство
+$\rho_\mu(A_1,A_2)\leqslant\rho_\nu(A_1,A_2)$. В самом деле,
+$$\rho_\nu(A_1,A_2)=\inf\limits_{\bigcup\limits_j C_j\supset A_1
+\bigtriangleup A_2} \sum\nu C_j,$$ но
+$\rho_\nu(A_1,A_2)=\sum\limits_{j=1}^\infty \nu C_j$, поэтому
+$\mu(A_1\bigtriangleup A_2)\leqslant\sum\limits_{j=1}^\infty \mu
+C_j$ и $$\rho_\mu(A_1,A_2)=\mu(A_1\bigtriangleup
+A_2)\leqslant\inf\sum\limits_j \nu C_j=\nu^*(A_1\bigtriangleup
+A_2)=\rho_\nu(A_1,A_2).$$
+\end{proof}
+
+\clearpage
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 4-----------------------------------------------%
+\lecture
+
+\vspace{-30pt}
+
+\tema{Измеримые пространства и пространства с мерой}
+
+\begin{defen}
+Пара $(\Omega,\mathfrak{a})$ называется \emph{измеримым
+пространством}, если $\mathfrak{a}$ --- это $\sigma$-алгебра
+подмножеств $\Omega$. Элементы $\mathfrak{a}$ называются
+\emph{измеримыми множествами}.
+
+Тройка $(\Omega,\mathfrak{a},\nu)$ называется \emph{пространством с
+мерой}, если $\nu$ --- это счетно аддитивная мера на
+$\sigma$-алгебре $\mathfrak{a}$.
+\end{defen}
+
+\begin{zam}
+Далее \emph{все} меры мы будем считать счетно аддитивными и
+неотрицательными.
+\end{zam}
+
+\begin{defen}
+Пусть $(\Omega,\mathfrak{a},\nu)$ --- пространство с мерой. Мера
+$\nu$ называется \emph{$\sigma$-конечной}, если $\exists\, \Omega_j:
+\Omega=\bigcup\limits_{j=1}^n \Omega_j$, причем
+$\Omega_j\in\mathfrak{a}$ и $\nu\Omega_j<\infty$.
+\end{defen}
+
+\begin{defen}
+Мера $\nu$  на $\sigma$-алгебре $\mathfrak{a}$ называется
+\emph{полной}, если выполнено следующее условие: $\forall\,
+A\in\mathfrak{a}$ если $\nu A=0$, то всякое подмножество $A$ само
+измеримо (и тогда его мера также равна 0).
+\end{defen}
+
+\begin{predl}
+Продолженная мера $\bar{\nu}$ в теореме Каратеодори полна.
+\end{predl}
+
+\begin{proof}
+Пусть $A\in\mathfrak{a}$ и $\bar{\nu}A=0$, тогда
+$\forall\,\varepsilon>0\quad\exists\, B\in S:
+\rho_\nu(A,B)<\varepsilon$ и $\nu^*A=0$. Проверим, что если
+$C\subset A$, то $C\in\mathfrak{a}$ и $\nu^*C=0$. Заметим, что если
+$C$ измеримо, то $\nu^*C=\bar{\nu}C=0$, т.к.
+$$\forall\,\varepsilon>0\quad \nu^*C=\nu^*(C\bigtriangleup\varnothing)
+=\rho(C,\varnothing)<\varepsilon.$$
+\end{proof}
+
+\begin{predl}
+Если $(\Omega,\mathfrak{a},\nu)$ --- пространство с мерой, то
+существует такое пространство с мерой
+$(\Omega,\bar{\mathfrak{a}},\bar{\nu})$, что
+$\mathfrak{a}\subset\bar{\mathfrak{a}}$ и $\bar{\nu}$ ---
+продолжение $\nu$ на $\bar{\mathfrak{a}}$, причем $\bar{\nu}$ ---
+полная мера.
+\end{predl}
+
+\begin{proof}
+В самом деле, $$A\in\bar{\mathfrak{a}}\Leftrightarrow \exists\,
+C\in\mathfrak{a}: \nu^*(A\bigtriangleup C)=0,\quad \nu
+C=\bar{\nu}A.$$
+\end{proof}
+
+\begin{defen}
+В таком случае $\bar{\nu}$ называется \emph{пополнением} $\nu$.
+\end{defen}
+
+Пусть $(\Omega,\mathfrak{b},\mu)$ --- пространство с полной мерой,
+причем $\mathfrak{b}\supset\mathfrak{a}$, $\mu$ --- продолжение
+$\nu$ на $\mathfrak{b}$, тогда
+$\mathfrak{b}\supset\bar{\mathfrak{a}}$ и $\mu$ --- это продолжение
+меры $\bar{\nu}$. Т.е. пополнение меры является \emph{минимальным}
+продолжением.
+
+Пусть $\Omega$ --- метрическое пространство.
+
+\begin{defen}
+\emph{$\sigma$-алгеброй $\mathfrak{B}$ борелевских подмножеств
+метрического пространства} называется $\sigma$-алгебра, порожденная
+всеми открытыми множествами (или, что то же самое, $\sigma$-алгебра,
+порожденная замкнутыми множествами).
+\end{defen}
+
+\begin{predl}
+$\sigma$-алгебра борелевских подмножеств $\mathbb{R}^1$
+
+1) совпадает с $\sigma$-алгеброй, порожденной всеми интервалами
+$(\alpha;\beta)$;
+
+2) совпадает с $\sigma$-алгеброй, порожденной всеми отрезками
+$[\alpha;\beta]$;
+
+3) совпадает с $\sigma$-алгеброй, порожденной всеми полуинтервалами
+вида $(\alpha;\beta]$ или $[\alpha;\beta)$;
+
+4) совпадает с $\sigma$-алгеброй, порожденной всеми лучами
+$(-\infty;\alpha)$ или $(\alpha;+\infty)$;
+
+5) совпадает с $\sigma$-алгеброй, порожденной всеми лучами
+$(-\infty;\alpha]$ или $[\alpha;+\infty)$.
+\end{predl}
+
+\begin{proof}
+Достаточно доказать, что $\sigma$-алгебра, порожденная одним из
+указанных пяти способов, содержит все открытые интервалы.
+
+1) $(\alpha;+\infty)=\bigcup\limits_{n=1}^\infty\left[\alpha+\frac 1
+n;+\infty\right)$;
+
+2) $(-\infty;\beta)=\mathbb{R}^1\setminus[\beta;+\infty)$;
+
+3) $(\alpha;\beta)=(-\infty;\beta)\cap(\alpha;+\infty)$;
+
+4) $V\subset\mathbb{R}^1$, $V$ открыто.
+
+$\forall\, x\in V\quad\exists\, (\alpha;\beta)\subset V,
+x\in(\alpha;\beta)$. Немного уменьшив этот интервал, можно считать,
+что $\alpha,\beta\in\mathbb{Q}$, поэтому $V$ есть объединение
+(счетных) интервалов, т.е. $\sigma$-алгебра, порожденная множествами
+вида $[\beta;+\infty)$, совпадает с $\sigma$-алгеброй борелевский
+подмножеств.
+\end{proof}
+
+Пусть мера $\nu$ задана на кольце $S$. Пусть $\mathfrak{a}$ --- это
+совокупность $\nu^*$-измеримых подмножеств. Можно проверить, что
+$\mathfrak{a}$ --- это $\delta$-кольцо. Построим
+$\bar{\mathfrak{a}}$: $A\in\bar{\mathfrak{a}}\Leftrightarrow
+\forall\, C\in\mathfrak{a}\quad C\cap A\in\mathfrak{a}$.
+
+\begin{defen}
+Введем следующую функцию:
+$\bar{\bar{\nu}}A=\sup\limits_{C\in\mathfrak{a}}\bar{\nu}(A\cap C)$.
+Правда, $\bar{\bar{\nu}}\colon S\to [0;+\infty]$, т.е.
+$\bar{\bar{\nu}}$ может равняться бесконечности.
+\end{defen}
+
+\prim
+
+$\Omega=\mathbb{R}^1$, $\mathcal{P}$ --- полукольцо промежутков.
+Тогда
+$\bar{\bar{\nu}}\mathbb{R}^1=\bar{\bar{\nu}}(\alpha;+\infty)=+\infty$.
+
+\vspace{5pt}
+
+Введем следующие обозначения: $\mathfrak{a}_L$ --- это
+$\sigma$-алгебра измеримых по Лебегу множеств, $\nu_L$ --- мера
+Лебега.
+
+\begin{predl}
+$\forall\, A\in\mathfrak{a}_L$ $\nu_L A>0$. $\exists\, B\subset A:
+B\not \in \mathfrak{a}_L$.
+\end{predl}
+
+\begin{predl}
+$\forall\, A\in\mathfrak{a}_L, \nu_L>0$ $\exists\, B\subset
+A:\nu^*B=\nu_L A$ и $\nu^*(A\setminus B)\p=\nu_L A$.
+\end{predl}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 5-----------------------------------------------%
+\lecture
+
+Рассмотрим пространство с мерой $(\mathbb{R}^1, \mathfrak{a}, \nu)$.
+
+\begin{lemm}
+\label{rashional.points}$\forall\, A\in\mathfrak{a}$, $\nu A>0\quad
+\exists\, a\neq b\in A: |a-b|\in\mathbb{Q}$.
+\end{lemm}
+
+\begin{proof}
+Поскольку $\mathbb{R}^1=\bigcup\limits_{n=1}^\infty [-n;n]$, то
+$A=\bigcup\limits_{n=1}^\infty A\cap[-n;n]$ и $$0<\nu
+A\leqslant\sum\limits_{n=1}^\infty \nu(A\cap[-n;n]).$$ Значит,
+найдется такое $n\in\mathbb{N}$, что $\nu(A\cap[-n;n])>0$. Положим
+$A_n\p=A\cap[-n;n]$.
+
+Допустим, что в $A_n$ нет точек с рациональным расстоянием. Тогда
+верно следующее утверждение: $\forall\, a\neq b\in \mathbb{Q}\quad
+(A_n+a)\cap(A_n+b)=\varnothing$. В самом деле, если $\exists\,
+c\in(A_n+a)\cap(A_n+b)$, то $\exists\, r_1,r_2\in A_n: r_1=c-a$ и
+$r_2=c-b$, откуда $r_1-r_2=b-a\in\mathbb{Q}$ --- противоречие.
+
+Поскольку $\bigsqcup\limits_{r\in\mathbb{Q}\cap[0;n]}(A_n+r)\subset
+[-n;2n]$, то $$\infty=\sum\nu
+A_n=\sum\limits_{r\in\mathbb{Q}\cap[0;n]}\nu(A_n+r)\leqslant
+\nu([-n;2n])=3n$$ --- противоречие.
+\end{proof}
+
+\begin{predl}
+$\forall\, C\in\mathfrak{a}$, $\nu C>0\quad \exists\, D\subset
+C:D\not \in \mathfrak{a}$.
+\end{predl}
+
+\begin{proof}
+Введем на множестве $C$ отношение эквивалентности: $a_1\sim
+a_2\Leftrightarrow |a_1-a_2|\in\mathbb{Q}$. Тогда множество $C$
+разбивается на классы эквивалентности: $C=\bigcup\limits_\alpha
+C_\alpha$. Выберем в каждом $C_\alpha$ по одной точке и обозначим
+это множество точек через $D$, т.е. $\forall\,\alpha\quad D\cap
+C_\alpha=\{a_\alpha\}$.
+
+Докажем, что множество $D$ неизмеримо. Предположим противное: пусть
+$D\in\mathfrak{a}$. Ясно, что расстояние между любыми его точками
+иррационально, поэтому по лемме~\ref{rashional.points} $\nu D=0$.
+
+Поскольку $\forall\, a\neq b\in \mathbb{Q}\quad
+(D+a)\cap(D+b)=\varnothing$, то $C\subset
+\bigsqcup\limits_{r\in\mathbb{Q}}(D+r)$, поэтому $\nu C\leqslant
+\sum\limits_{r\in\mathbb{Q}}\nu(D+r)=0$, т.к. $\forall\,
+r\in\mathbb{Q}\quad \nu(D+r)=\nu D=0$. Но $\nu C>0$ по условию ---
+противоречие.
+\end{proof}
+
+\tema{Измеримые функции}
+
+%\vspace{10pt}
+
+%\begin{center}
+%\textsc{Измеримые функции}
+%\end{center}
+
+%\vspace{7pt}
+
+\begin{defen}
+Пусть $(\Omega_1, \mathfrak{a}_1)$ и $(\Omega_2, \mathfrak{a}_2)$
+--- измеримые пространства. Функция $f\colon \Omega_1\to\Omega_2$
+называется \emph{измеримой}, если $\forall\,A\in\mathfrak{a}_2\quad
+f^{-1}A\in\mathfrak{a}_1$.
+
+Возьмем в качестве $(\Omega_2,\mathfrak{a}_2)$ пару
+$(\mathbb{R}^1,\mathfrak{B})$. Функция $f\colon
+\Omega\to\mathbb{R}^1$ называется \emph{измеримой}, если $\forall\,
+B\in\mathfrak{B}\quad f^{-1}B\in\mathfrak{a}$.
+\end{defen}
+
+\begin{zam}
+В последнем определении множество $\mathfrak{B}$ нельзя заменить на
+$\mathfrak{a}_L$.
+\end{zam}
+
+\begin{predl}[Критерий измеримости]
+Функция $f\colon \Omega\to\mathbb{R}^1$ измерима $\Leftrightarrow$
+$\forall\, a\in\mathbb{R}^1\quad
+\{x:f(x)<a\}\in\mathfrak{a}$.\footnote{В условии этой теоремы можно
+заменить знак <<$<$>> на знаки <<$\leqslant$>>, <<$>$>>,
+<<$\geqslant$>>, но НЕ на знак <<$=$>>.}
+\end{predl}
+
+\begin{proof}
+Пусть функция $f$ измерима. Тогда $\{x:
+f(x)<a\}\p=f^{-1}((-\infty;a))$. Поскольку $\forall\, a\quad
+(-\infty;a)\in\mathfrak{B}$, то $\{x:f(x)<a\}\in\mathfrak{a}$.
+
+Обратно, рассмотрим множество
+$\sigma=\{B\subset\mathbb{R}^1:f^{-1}B\in\mathfrak{a}\}$. Легко
+видеть, что $\sigma$ --- это $\sigma$-алгебра: если
+$B_1,B_2\in\sigma\Rightarrow f^{-1}(B_1\cup B_2)=f^{-1}B_1\p\cup
+f^{-1}B_2\in\mathfrak{a}\Rightarrow B_1\cup B_2\in\sigma$;
+$f^{-1}(\mathbb{R}^1)=\Omega\in\mathfrak{a}\Rightarrow
+\mathbb{R}^1\in\sigma$.
+
+$\forall\, a\quad f^{-1}((-\infty;a))\in\mathfrak{a}\Rightarrow
+\forall\, a\quad (-\infty;a)\in\sigma$. Поскольку
+$\sigma(\{(-\infty;a):a\in\mathbb{R}^1\})=\mathfrak{B}=\sigma(\mathbb{R}^1)$,
+то $\sigma\supset \mathfrak{B}$, а значит, $\forall\,
+B\in\mathfrak{B}\quad f^{-1}B\in\mathfrak{a}$.
+\end{proof}
+
+\begin{defen}
+Если $\Omega=\mathbb{R}^1$, то удобно взять
+$\mathfrak{a}=\mathfrak{a}_L$. Тогда функция $f\colon
+\mathbb{R}^1\to\mathbb{R}^1$ называется \emph{измеримой по Лебегу},
+если $\forall\, a\in\mathbb{R}^1\quad
+\{x\in\mathbb{R}^1:f(x)<a\}\in\mathfrak{a}_L$.\footnote{Множество
+$\mathfrak{a}_L$ нельзя заменить на $\mathfrak{B}$.}
+\end{defen}
+
+Пусть теперь $f\colon
+(\Omega,\mathfrak{a})\to(\mathbb{R}^1,\mathfrak{B})$.
+
+\begin{predl}
+Пусть $\forall\, \omega\in\Omega\quad\exists\,
+\lim\limits_{n\to\infty}f_n(\omega)=f(\omega)$, где $f_n$ ---
+измеримые функции. Тогда функция $f$ тоже измерима.
+\end{predl}
+
+\begin{proof}
+Положим $\varphi_k(\omega)=\sup\limits_{n\geqslant k}f_n(\omega)$,
+тогда $f(\omega)=\inf\limits_k\varphi_k(\omega)$. Докажем, что
+$\forall\, a\in\mathbb{R}^1\quad
+\{\omega\in\Omega:\varphi_k(\omega)<a\}\in\mathfrak{a}$. В самом
+деле, $$\{\omega:\varphi_k(\omega)<a\}=\bigcap\limits_{n\geqslant
+k}\{\omega:f_n(\omega)<a\}\in\mathfrak{a},$$ поэтому все $\varphi_k$
+измеримы. Поскольку $f(\omega)=\inf\limits_k \varphi_k(\omega)$ и
+$\{\omega: \inf\limits_k
+\varphi_k(\omega)\p>a\}=\bigcap\limits_k\{\omega:\varphi_k(\omega)\p
+>a\}\in\mathfrak{a}$, то $f(\omega)$ измерима.
+\end{proof}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 6-----------------------------------------------%
+\lecture
+
+\begin{defen}
+Пусть фиксировано измеримое пространство $(\Omega,\mathfrak{a})$.
+Функция на измеримом пространстве называется \emph{простой}, если
+она принимает конечное число значений.
+
+Если простая функция определена на пространстве с мерой, то
+$\nu\{\omega\p\in\Omega\mid f(\omega)\neq 0\}<\infty$.
+\end{defen}
+
+\begin{predl}
+Функция $f$ является простой $\Leftrightarrow$ $$\exists\,\Omega_j:
+\Omega=\bigsqcup\limits_{j=1}^n \Omega_j \quad\text{и}\quad
+\forall\,\omega \quad f(\omega)=\sum\limits_{j=1}^n
+a_j\gamma_{\Omega_j}(\omega),$$ где
+$$\gamma_{\Omega_j}(\omega)=\begin{cases}1,&\text{если $\omega\in\Omega_j$};\\ 0,&\text{иначе}
+\end{cases}$$ --- \emph{индикаторная функция множества} $\Omega_j$.
+\end{predl}
+
+\begin{proof}
+В самом деле, обратная ипмликация очевидна. Пусть теперь функция $f$
+проста и $a_1$, \ldots, $a_n$ --- различные ненулевые значения $f$.
+Тогда множества $\Omega_j=\{\omega\in\Omega\mid f(\omega)=a_j\}$
+удовлетворяют условию.
+\end{proof}
+
+\begin{zam}
+Условие <<$\Omega=\bigsqcup\limits_{j=1}^n \Omega_j$>> можно
+заменить на условие <<$\forall\, j\p\neq k\quad
+\Omega_j\cap\Omega_k=\varnothing$>>.
+\end{zam}
+
+Очевидно, что если $f_1$ и $f_2$ --- простые функции, то их линейная
+комбинация $\alpha f_1+\beta f_2$ и произведение $f_1f_2$ также
+будут простыми функциями.
+
+\begin{predl}
+Если функция $f(\omega)=\sum\limits_{j=1}^n
+a_j\gamma_{\Omega_j}(\omega)$, причем $\forall\, j\p\neq k\quad
+\Omega_j\cap \Omega_k=\varnothing$ и $a_j\neq a_k$, то $f$ измерима
+$\Leftrightarrow$ все $\Omega_j$ измеримы.
+\end{predl}
+
+\begin{proof}
+Достаточно провести доказательство для простейшей функции
+$f(\omega)=\gamma_{\Omega_1}(\omega)$. Имеем:
+$\Omega_1=\{\omega\in\Omega \mid f(\omega)>0\}$, поэтому
+$$\forall\, a\in\mathbb{R}^1\quad \{\omega\in\Omega\mid f(\omega)>a\}
+=\begin{cases}\Omega_1,&\text{если $a\geqslant 0$};\\
+\Omega,& \text{если $a<0$},\end{cases}$$ а значит, $f$ измерима
+$\Leftrightarrow$ $\Omega_1$ измеримо.
+\end{proof}
+
+\begin{theorem}
+\label{fun.approx}Для каждой измеримой функции $f\colon \Omega\to
+\bar{\mathbb{R}}$ найдутся простые и измеримые функции $f_n\colon
+\Omega\to\mathbb{R}^1$, $n=1,2,\ldots,$ такие, что $\forall\,
+\omega\in\Omega\quad f_n(\omega)\to f(\omega)$ при $n\to\infty$.
+Если при этом $f\geqslant 0$, то можно добиться того, что
+$f_n\geqslant0$ и $f_n\nearrow f$, а если $f$ ограничена, то
+$f_n\rightrightarrows f$.
+\end{theorem}
+
+\begin{proof}
+Нетрудно убедиться, что функции
+\begin{multline*}
+f_n(x)=n\cdot\gamma_{\{\omega\mid f(\omega)\geqslant n\}}(x)+(-n)
+\cdot \gamma_{\{\omega\mid f(\omega)\leqslant
+-n\}}(x)+\\
++\frac{1}{2^n}
+\sum\limits_{k=-n2^n+1}^{n2^n}(k-1)\gamma_{\{\omega\mid
+\frac{k-1}{2^n}\leqslant f(\omega)<\frac{k}{2^n}\}}(x)
+\end{multline*}
+удовлетворяют условию теоремы.
+\end{proof}
+
+\begin{predl}
+Если функции $f$ и $g$ измеримы, то их линейная комбинация $\alpha
+f+\beta g$ измерима.
+\end{predl}
+
+\begin{proof}
+В самом деле, если функции $h_1$ и $h_2$ просты и измеримы, то и
+функция $h=h_1+h_2$ тоже проста и измерима. Выберем теперь функции
+$f_n$ и $g_n$, удовлетворяющие условиям теоремы~\ref{fun.approx},
+тогда $f_n\to f$ и $g_n\to g$, поэтому $\alpha f_n+\beta g_n\to
+\alpha f+\beta g$ при $n\to\infty$, что и требовалось.
+\end{proof}
+
+\tema{Интегрируемые функции}
+
+%\vspace{10pt}
+
+%\begin{center}
+%\textsc{Интегрируемые функции}
+%\end{center}
+
+%\vspace{7pt}
+
+\begin{defen}
+Пусть $(\Omega,\mathfrak{a},\nu)$ --- пространство с
+$\sigma$-конечной мерой и $f$ --- простая измеримая функция. Тогда
+$f(\omega)=\sum\limits_{j=1}^n a_j\gamma_{\Omega_j}(\omega)$, причем
+$\forall\, j\quad \nu\Omega_j<\infty$ и $a_j\in\mathbb{R}^1$.
+\emph{Интегралом Лебега функции $f$ по пространству $\Omega$}
+называется величина $$\int\limits_\Omega
+\!f(\omega)\,\nu(d\omega)=\int\limits_\Omega
+\!f(\omega)\,d\nu=\sum\limits_{j=1}^na_j\nu\Omega_j.$$
+\end{defen}
+
+\begin{defen}
+Пусть теперь функция $f\geqslant 0$ --- измерима. Тогда найдутся
+такие простые измеримые функции $f_n$, что $f_n\nearrow f$. Положим
+$$\int\limits_\Omega\! f(\omega)\,\nu(d\omega)=\lim\limits_{n\to\infty}
+\int\limits_\Omega f_n(\omega)\,\nu(d\omega).$$
+\end{defen}
+
+\begin{defen}
+Если $f$ --- произвольная измеримая функция, то верно равенство
+$f(\omega)=f_+(\omega)-f_-(\omega)$, где
+$$f_+(\omega)=\begin{cases}f(\omega),&\text{если $f(\omega)\geqslant 0$};\\
+0,& \text{иначе},\end{cases}\quad\text{и}\quad
+f_-(\omega)=\begin{cases}-f(\omega),&\text{если $f(\omega)\leqslant 0$};\\
+0,& \text{иначе}.\end{cases}$$
+
+Легко проверить, что функции $f_\pm$ измеримы. Положим
+$$\int\limits_\Omega \! f(\omega)\,\nu(d\omega)=\int\limits_\Omega \!
+f_+(\omega)\,\nu(d\omega)-\int\limits_\Omega \!
+f_-(\omega)\,\nu(d\omega),$$ если хотя бы один из интегралов
+конечен.
+
+Если интеграл конечен, то функция $f$ называется
+\emph{интегрируемой}, а если равен $\infty$, то
+\emph{квазиинтегрируемой}.
+\end{defen}
+
+\begin{defen}
+Если $A\in\mathfrak{a}$, то $$\int\limits_A \!
+f(\omega)\,\nu(d\omega)=\int\limits_\Omega \!
+\gamma_A(\omega)f(\omega)\,\nu(d\omega).$$
+\end{defen}
+
+\begin{lemm}
+\label{chetno.add}Пусть $S$ --- кольцо, $(\Omega,S,\nu)$ --
+пространство с конечной мерой. Тогда мера $\nu$ счетно аддитивна
+$\Leftrightarrow$
+$$\forall\, A_1\supset A_2\supset\ldots \in S: \bigcap\limits_{j=1}
+^\infty A_j=\varnothing\Rightarrow \nu A_j\to 0\quad\text{при
+$j\to\infty$}.$$
+\end{lemm}
+
+\begin{proof}
+Пусть $S\ni B=\bigsqcup\limits_{j=1}^\infty B_j$, где $B_j\in S$.
+Докажем, что $\nu B\p=\sum\limits_{j=1}^\infty \nu B_j$. Положим
+$A_k=\bigsqcup\limits_{j=k}^\infty B_j$, тогда
+$\bigcap\limits_{k=1}^\infty A_k=\varnothing$. Значит $\nu A_k\to 0$
+при $k\to\infty$, и т.к. $$\nu B=\sum\limits_{j=1}^{k-1}\nu B_j+\nu
+A_k,$$ то $$\sum\limits_{j=1}^{k-1} \nu B_j\to\nu B\quad\text{при
+$k\to\infty$}.$$
+
+Обратно, пусть мера $\nu$ счетно аддитивна. Тогда
+$$\bigsqcup\limits_{j=1}^\infty (A_j\setminus
+A_{j+1})=A\setminus\bigcap\limits_{j=1}^\infty A_j=A_1,$$ поэтому
+$$\nu A_1=\sum\limits_{j=1}^\infty \nu(A_j\setminus A_{j+1})=\sum
+\limits_{j=1}^{k-1}\nu(A_j\setminus
+A_{j+1})+\sum\limits_{j=k}^\infty\nu(A_j\setminus A_{j+1}),$$ а
+значит,
+$$\sum\limits_{j=k}^\infty\nu(A_j\setminus A_{j+1})\to 0\quad\text{при $k\to\infty$}.$$
+Поскольку
+$$\forall\,k\in\mathbb{N}\quad \bigsqcup\limits_{j=k}^\infty (A_j\setminus
+A_{j+1})=A_k,$$ то $$\nu
+A_k=\sum\limits_{j=k}^\infty\nu(A_j\setminus A_{j+1})\to
+0\quad\text{при $k\to\infty$},$$ что и требовалось.
+\end{proof}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 7-----------------------------------------------%
+\lecture
+
+\begin{zam}
+Далее, всюду, где мы будем писать $\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)$, мы будем предполагать функцию $f$
+измеримой.
+\end{zam}
+
+Пусть фиксировано пространство с мерой $(\Omega, \mathfrak{a},\nu)$.
+Сейчас мы будем рассматривать только те простые функции $f$, для
+которых $\nu\{\omega\in\Omega\mid f(\omega)\neq 0\}<\infty$.
+
+После того, как мы ввели понятие интеграла Лебега, необходимо
+доказать корректность этого определения.
+
+Вначале докажем корректность определения интеграла Лебега для
+простых функций. А именно, пусть $f(\omega)=\sum\limits_{j=1}^n
+a_j\gamma_{A_j}(\omega)$ --- простая функция, причем $A_i\cap
+A_j=\varnothing$. Возьмем другое представление функции $f$:
+$f(\omega)=\sum\limits_{k=1}^m b_k\gamma_{B_k}(\omega)$. Если
+$A_j\cap B_k\neq\varnothing$, то $a_j=b_k$, поэтому
+$$\sum\limits_{j=1}^n a_j
+\nu A_j=\sum\limits_{j=1}^n a_j\sum\limits_{k=1}^m \nu(A_j\cap
+B_k)=\sum\limits_{k=1}^m\sum\limits_{j=1}^n b_k\nu(A_j\cap
+B_k)=\sum\limits_{k=1}^m b_k\nu B_k.$$
+
+\svoy\footnote{В свойствах 1--3 функции $f$ и $g$ считаются
+неотрицательными и простыми.}
+
+1. $\int\limits_\Omega\! (f(\omega)+g(\omega))\,\nu(d\omega)=
+\int\limits_\Omega\! f(\omega)\,\nu(d\omega)+ \int\limits_\Omega\!
+g(\omega)\,\nu(d\omega)$. Действительно, пусть
+$f(\omega)=\sum\limits_{j=1}^n a_j\gamma_{A_j}(\omega)$ и
+$g(\omega)=\sum\limits_{k=1}^m b_k\gamma_{B_k}(\omega)$. Тогда,
+поскольку $A_j\p=\bigsqcup\limits_{k=1}^m A_j\cap B_k$ и
+$\gamma_{A_j}(\omega)=\sum\limits_{k=1}^m \gamma_{A_j\cap
+B_k}(\omega)$, то
+$$f(\omega)=\sum\limits_{j=1}^n\sum\limits_{k=1}^m a_j\gamma_{A_j
+\cap B_k}(\omega)\quad\text{и}\quad
+g(\omega)=\sum\limits_{k=1}^m\sum\limits_{j=1}^n b_k\gamma_{A_j \cap
+B_k}(\omega).$$ Отсюда $$\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)=\sum\limits_{j=1}^n\sum\limits_{k=1}^m
+a_j\nu(A_j\cap B_k),\quad \int\limits_\Omega\!
+g(\omega)\,\nu(d\omega)=\sum\limits_{j=1}^n\sum\limits_{k=1}^m
+b_k\nu(A_j\cap B_k),$$ поэтому
+\begin{multline*}
+\int\limits_\Omega\!
+(f(\omega)+g(\omega))\,\nu(d\omega)=\sum\limits_{j=1}^n\sum\limits_{k=1}^m
+(a_j+b_k)\nu(A_j\cap B_k)= \\ =\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)+ \int\limits_\Omega\!
+g(\omega)\,\nu(d\omega).
+\end{multline*}
+
+2. $\int\limits_\Omega\!\alpha
+f(\omega)\,\nu(d\omega)=\alpha\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)$.
+
+3. Если $\nu A=0$, то $\int\limits_A\! f(\omega)\,\nu(d\omega)=0$.
+Действительно, $\int\limits_A\!
+f(\omega)\,\nu(d\omega)\p=\int\limits_\Omega\!
+f(\omega)\gamma_A(\omega)\,\nu(d\omega)$. Если
+$f(\omega)\p=\sum\limits_{j=1}^n a_j\gamma_{A_j}(\omega)$, то тогда
+$f(\omega)\gamma_A(\omega)\p=\sum\limits_{j=1}^n a_j\gamma_{A\cap
+A_j}(\omega)$ и $\int\limits_A\!
+f(\omega)\,\nu(d\omega)=\sum\limits_{j=1}^n a_j\nu(A\cap A_j)=0$.
+
+4. Если $f(\omega)\geqslant 0$, то $\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)\geqslant 0$. Отсюда следует, что если
+$g_1\leqslant g_2$, то $\int\limits_\Omega\!
+g_1(\omega)\,\nu(d\omega)\leqslant\int\limits_\Omega\!
+g_2(\omega)\,\nu(d\omega)$. Действительно. $g_2=(g_2-g_1)+g_1$,
+поэтому $$\int\limits_\Omega\!
+g_2(\omega)\,\nu(d\omega)=\int\limits_\Omega\!
+(g_2-g_1)(\omega)\,\nu(d\omega)+\int\limits_\Omega\!
+g_1(\omega)\,\nu(d\omega)\geqslant \int\limits_\Omega\!
+g_1(\omega)\,\nu(d\omega).$$
+
+5. Если $\mathfrak{a}\ni B=B_1\sqcup B_2$, то $\int\limits_B\!
+f(\omega)\,\nu(d\omega)=\int\limits_{B_1}\!
+f(\omega)\,\nu(d\omega)+\int\limits_{B_2}\!
+f(\omega)\,\nu(d\omega)$. Действительно, это следует из того, что
+\begin{align*}
+\int\limits_B\! f(\omega)\,\nu(d\omega)&=\int\limits_\Omega\!
+f(\omega)\gamma_B(\omega)\,\nu(d\omega), \\
+\int\limits_{B_1}\! f(\omega)\,\nu(d\omega)&=\int\limits_\Omega\!
+f(\omega)\gamma_{B_1}(\omega)\,\nu(d\omega), \\
+\int\limits_{B_2}\! f(\omega)\,\nu(d\omega)&=\int\limits_\Omega\!
+f(\omega)\gamma_{B_2}(\omega)\,\nu(d\omega),
+\end{align*}
+а также из того, что $\gamma_{B_1\sqcup
+B_2}=\gamma_{B_1}+\gamma_{B_2}$.
+
+6. Если $g_n(\omega)\nearrow \varphi(\omega)$ и
+$\lim\limits_{n\to\infty}g_n(\omega)\geqslant \varphi(\omega)$, где
+функция $\varphi\geqslant 0$ проста, а функции $g_n$ являются
+простыми и измеримыми, то
+$\lim\limits_{n\to\infty}\int\limits_\Omega\!
+g_n(\omega)\,\nu(d\omega)\p\geqslant \int\limits_\Omega\!
+\varphi(\omega)\,\nu(d\omega)$.
+
+\begin{proof}
+Пусть $\Omega_\varphi=\{\omega\in\Omega\mid \varphi(\omega)>0\}$,
+тогда $\nu\Omega_\varphi<\infty$. Пусть
+$0<\varepsilon<\min\limits_{\omega\in\Omega_\varphi}\{\varphi(\omega)\}$.
+Тогда положим
+$$F_\varphi(\omega)=\begin{cases}\varphi(\omega)-\varepsilon,&
+\text{если $\omega\in\Omega_\varphi$,}\\ 0,& \text{если
+$\varphi(\omega)=0$}.
+\end{cases}$$
+Введем также обозначение
+$A_n^\varepsilon=\{\omega\in\Omega_\varphi\mid
+g_n(\omega)>F_\varphi(\omega)\}$. Тогда понятно, что
+$\Omega_\varphi\setminus
+A_n^\varepsilon=\{\omega\in\Omega_\varphi\mid g_n(\omega)\leqslant
+F_\varphi(\omega)\}$. Легко видеть, что $A_1^\varepsilon\subset
+A_2^\varepsilon\subset\ldots$, поэтому $(\Omega_\varphi\setminus
+A_1^\varepsilon)\supset (\Omega_\varphi\setminus
+A_2^\varepsilon)\supset\ldots$ и $\bigcap\limits_{n=1}^\infty
+(\Omega_\varphi\setminus A_n^\varepsilon)=\varnothing$. Отсюда в
+силу счетной аддитивности и леммы~\ref{chetno.add}
+$\nu(\Omega_\varphi\setminus A_n^\varepsilon)\to 0$ при
+$n\to\infty$.
+
+Теперь выпишем следующую цепочку неравенств:
+
+\begin{align*}
+\int\limits_\Omega\! g_n(\omega)\,\nu(d\omega)&\geqslant
+\int\limits_{\Omega_\varphi}\! g_n(\omega)\,\nu(d\omega)=
+\int\limits_{A_n^\varepsilon}\! g_n(\omega)\,\nu(d\omega) +
+\int\limits_{\Omega_\varphi\setminus A_n^\varepsilon}\!
+g_n(\omega)\,\nu(d\omega)\geqslant\\
+&\geqslant\int\limits_{A_n^\varepsilon}\!
+F_\varphi(\omega)\,\nu(d\omega) +
+\int\limits_{\Omega_\varphi\setminus A_n^\varepsilon}\!
+g_n(\omega)\,\nu(d\omega)=\\
+&= \int\limits_{\Omega_\varphi}\! F_\varphi(\omega)\,\nu(d\omega)-
+\int\limits_{\Omega_\varphi\setminus A_n^\varepsilon}\!
+F_\varphi(\omega)\,\nu(d\omega)+\int\limits_{\Omega_\varphi\setminus
+A_n^\varepsilon}\! g_n(\omega)\,\nu(d\omega)\geqslant\\
+&\geqslant \int\limits_{\Omega_\varphi}\!
+F_\varphi(\omega)\,\nu(d\omega)-\int\limits_{\Omega_\varphi\setminus
+A_n^\varepsilon}\! F_\varphi(\omega)\,\nu(d\omega)=\\
+&= \int\limits_{\Omega_\varphi}\!
+\varphi(\omega)\,\nu(d\omega)-\varepsilon\nu\Omega_\varphi-
+\int\limits_{\Omega_\varphi\setminus A_n^\varepsilon}\!
+F_\varphi(\omega)\,\nu(d\omega)\geqslant\\
+&\geqslant \int\limits_\Omega\!
+\varphi(\omega)\,\nu(d\omega)-\varepsilon\nu\Omega_\varphi
+-\nu(\Omega_\varphi\setminus A_n^\varepsilon)\cdot \max
+\varphi(\omega).
+\end{align*}
+Но $\nu(\Omega_\varphi\setminus A_n^\varepsilon)\cdot\max
+\varphi(\omega)\to 0$ при $n\to\infty$, поэтому
+$\lim\limits_{n\to\infty}\int\limits_\Omega\!
+g_n(\omega)\,\nu(d\omega)\p\geqslant \int\limits_\Omega\!
+\varphi(\omega)\,\nu(d\omega)-\varepsilon\nu\Omega_\varphi$, откуда
+следует требуемое неравенство.
+\end{proof}
+
+Теперь докажем корректность определения интеграла для произвольных
+неотрицательных измеримых функций. Пусть $f\geqslant 0$ --- данная
+функция, $g_n^1(\omega)\nearrow f(\omega)$ и $g_n^2(\omega)\nearrow
+f(\omega)$. Покажем, что
+$\lim\limits_{n\to\infty}\int\limits_\Omega\!
+g_n^1(\omega)\,\nu(d\omega)\p=\lim\limits_{k\to\infty}\int\limits_\Omega\!
+g_k^2(\omega)\,\nu(d\omega)$. Действительно, при каждом $n$ по
+свойству 6 имеем: $\int\limits_\Omega\!
+g_n^1(\omega)\,\nu(d\omega)\leqslant
+\lim\limits_{k\to\infty}\int\limits_\Omega\!
+g_k^2(\omega)\,\nu(d\omega)$, откуда получаем
+$\lim\limits_{n\to\infty}\int\limits_\Omega\!
+g_n^1(\omega)\,\nu(d\omega)\p\leqslant\lim\limits_{k\to\infty}\int\limits_\Omega\!
+g_k^2(\omega)\,\nu(d\omega)$. Аналогично можно получить обратное
+неравенство, поэтому оба предела совпадают.
+
+Отсюда легко получить корректность определения интеграла Лебега для
+произвольных измеримых функций.
+
+\begin{defen}
+Две измеримые функции $f$ и $g$ на пространстве с мерой называются
+\emph{эквивалентными}, если $\nu\{\omega\in\Omega\mid f(\omega)\neq
+g(\omega)\}=0$.
+\end{defen}
+
+\begin{defen}
+Говорят, что какое-то свойство \emph{имеет место почти всюду}, если
+оно верно всюду, кроме множества меры 0. Например, если $f=g$ почти
+всюду, то $\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)=\int\limits_\Omega\!
+g(\omega)\,\nu(d\omega)$.
+\end{defen}
+
+\begin{zam}
+В дальнейшем мы обычно будем опускать слова <<почти всюду>>, но
+принципиально от этого ничего не изменится.
+\end{zam}
+
+\begin{theorem}[Леви]
+Пусть $g_n\geqslant 0$ и $g_n\nearrow f$ почти всюду. Тогда
+$\exists\,\lim\limits_{n\to\infty}\int\limits_\Omega\!
+g_n(\omega)\,\nu(d\omega)=\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)$.
+\end{theorem}
+
+\begin{zam}
+В условии теоремы можно считать, что $g_n\geqslant g$, где функция
+$g$ интегрируема.
+\end{zam}
+
+\begin{proof}
+По теореме~\ref{fun.approx} $\forall\, g_i\quad \exists\,
+g_{ij}\nearrow g_i$ при $j\to\infty$, причем функции
+$g_{ij}\geqslant 0$ просты и измеримы. Пусть
+$\psi_n(\omega)=\max\{g_{ij}(\omega)\mid 1\leqslant i\p\leqslant
+n,1\leqslant j\leqslant n\}$. Докажем. что $\psi_n(\omega)\nearrow
+f(\omega)$.
+
+Ясно, что $\psi_n(\omega)\leqslant g_n(\omega)\leqslant g_k(\omega)$
+при $k>n$. Отсюда получаем, что $\psi_n(\omega)\leqslant
+\lim\limits_{k\to\infty} g_k(\omega)=f(\omega)$, а значит,
+$\lim\limits_{n\to\infty} \psi_n(\omega)\leqslant f(\omega)$.
+
+Обратно, $\forall\, n\geqslant k\quad \psi_n(\omega)\geqslant
+g_{kn}(\omega)$, поэтому
+$\lim\limits_{n\to\infty}\psi_n(\omega)\geqslant\lim\limits_{n\to\infty}
+g_{kn}(\omega)\p=g_k(\omega)$. Значит,
+$\lim\limits_{n\to\infty}\psi_n(\omega)\geqslant\lim\limits_{k\to\infty}
+g_k(\omega)=f(\omega)$.
+
+Теперь, т.к. $\psi_n(\omega)\leqslant g_n(\omega)$, то
+$\int\limits_\Omega\! \psi_n(\omega)\,\nu(d\omega)\leqslant
+\int\limits_\Omega\! g_n(\omega)\,\nu(d\omega)$ и $\psi_n(\omega)
+\p\nearrow f(\omega)$, то по определению интеграла Лебега получаем
+$\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)\p=\lim\limits_{n\to\infty}
+\int\limits_\Omega\! \psi_n(\omega)\,\nu(d\omega)$. Но
+$$\int\limits_\Omega\! f(\omega)\,\nu(d\omega)\geqslant
+\int\limits_\Omega\! g_n(\omega)\,\nu(d\omega)\geqslant
+\int\limits_\Omega\! \psi_n(\omega)\,\nu(d\omega),$$ откуда по
+теореме о двух милиционерах следует требуемое.
+\end{proof}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 8-----------------------------------------------%
+\lecture
+
+Прежде чем двигаться дальше, введем следующие важные обозначения:
+
+1) $\mathcal{\bar{L}}_0(\Omega,\mathfrak{a},\nu)$  --- множество
+почти всюду определенных измеримых функций;
+
+2) $\mathcal{L}_0(\Omega,\mathfrak{a},\nu)$  --- множество классов
+почти всюду определенных измеримых функций;
+
+3) $\mathcal{\bar{L}}_1(\Omega,\mathfrak{a},\nu)$  --- множество
+почти всюду оп\-ределенных интегрируемых функций;
+
+4) $\mathcal{L}_1(\Omega,\mathfrak{a},\nu)$  --- множество классов
+почти всюду определенных интегрируемых функций.
+
+Здесь необходимо дать несколько новых определений.
+
+\begin{defen}
+Пусть $A\in\mathfrak{a}$ и $\nu A>0$. Рассмотрим пространство с
+мерой $(A,\mathfrak{a}\cap A=\{C\cap A\mid
+C\in\mathfrak{a}\},\nu\mid_{\mathfrak{a}\cap A})$. Оно называется
+\emph{подпространством с мерой} пространства с мерой $(\Omega,
+\mathfrak{a}, \nu)$.
+
+Пусть теперь функция $f$ определена почти всюду, $f\colon A\to
+\mathbb{R}^1$, где $A\p\in\mathfrak{a}$ и $\nu(\Omega\setminus
+A)=0$. Функция $f$ называется \emph{измеримой}, если она измерима на
+$(A, \mathfrak{a}\cap A, \nu\mid_{\mathfrak{a}\cap A})$.
+
+Функции $f$ и $g$ называются \emph{эквивалентными} (обозначение:
+$f\sim g$), если $$\nu\{\omega\mid \text{$f(\omega)$ и $g(\omega)$
+существуют и $f(\omega)\neq g(\omega)$}\}=0.$$
+\end{defen}
+
+\begin{zam}
+В дальнейшем мы будем писать просто $\mathcal{L}$, без указания
+аргументов. Кроме того, когда мы будем писать $f\in\mathcal{L}_1$,
+то чаще всего под этим мы будем подразумевать не класс
+эквивалентности, а конкретный представитель этого класса.
+\end{zam}
+
+\begin{theorem}[Фату--Лебег]
+1. Пусть $\varphi\in\mathcal{\bar{L}}_1$ и $\varphi(\omega)\leqslant
+f_n(\omega)$. Тогда
+$\int\limits_\Omega\!\underline{\lim}f_n(\omega)\,\nu(d\omega)
+\leqslant\underline{\lim} \int\limits_\Omega\!
+f_n(\omega)\,\nu(d\omega)$.
+
+2. Пусть $\psi\in\mathcal{\bar{L}}_1$ и $\psi(\omega)\geqslant
+f_n(\omega)$ при всех $n$. Тогда
+$\int\limits_\Omega\!\overline{\lim}f_n(\omega)\,\nu(d\omega)
+\p\geqslant\overline{\lim} \int\limits_\Omega\!
+f_n(\omega)\,\nu(d\omega)$.
+\end{theorem}
+
+\begin{proof}
+1. Положим $g_n(\omega)=\inf\limits_{k\geqslant n}f_k(\omega)$.
+Тогда $\varphi(\omega)\leqslant g_1(\omega)\p\leqslant
+g_2(\omega)\leqslant\ldots$ и $\lim\limits_{n\to\infty}
+g_n(\omega)=\underline{\lim}f_n(\omega)$, откуда по теореме Леви
+получаем, что
+$\int\limits_\Omega\!\underline{\lim}f_n(\omega)\,\nu(d\omega)=
+\lim\limits_{n\to\infty}\int\limits_\Omega\!
+g_n(\omega)\,\nu(d\omega)$.
+
+Проверим, что
+$\lim\limits_{n\to\infty}\int\limits_\Omega\!g_n(\omega)\,\nu(d\omega)
+\leqslant \underline{\lim} \int\limits_\Omega\!
+f_n(\omega)\,\nu(d\omega)$. $\forall\,n\leqslant k\quad g_n(\omega)
+\p\leqslant f_k(\omega)$, откуда $\int\limits_\Omega\! g_n(\omega)\,
+\nu(d\omega)\leqslant \int\limits_\Omega\!
+f_k(\omega)\,\nu(d\omega)$. Значит, $\int\limits_\Omega\!
+g_n(\omega)\, \nu(d\omega)\p\leqslant \inf\limits_{k\geqslant
+n}\int\limits_\Omega\! f_k(\omega)\,\nu(d\omega)$ и
+$$\lim\limits_{n\to\infty}\int\limits_\Omega\! g_n(\omega)\,\nu(d\omega)
+\leqslant\lim\limits_{n\to\infty}\inf\limits_{k\geqslant n}
+\int\limits_\Omega \! f_k(\omega)\,\nu(d\omega)= \underline{\lim}
+\int\limits_\Omega\! f_n(\omega)\,\nu(d\omega).$$
+
+2. Положим $f_n^1(\omega)=-f_n(\omega)$ и
+$\varphi(\omega)=-\psi(\omega)$. Тогда утверждение легко следует из
+п.1.
+\end{proof}
+
+\begin{theorem}[Лебег]
+Пусть $f_n(\omega)\to f(\omega)$ и $|f_n(\omega)|\leqslant
+\varphi(\omega)$, где $\varphi\in\mathcal{L}_1$. Тогда
+$f\in\mathcal{L}_1$ и $\int\limits_\Omega\! f(\omega)\,\nu(d\omega)
+=\lim\limits_{n\to\infty}\int\limits_\Omega\!
+f_n(\omega)\,\nu(d\omega)$.
+\end{theorem}
+
+\begin{zam}
+Условие теоремы можно ослабить, а именно достаточно потребовать
+только сходимость функций $f_n$ по мере.
+\end{zam}
+
+\begin{proof}
+Очевидно, что $|f(\omega)|\leqslant \varphi(\omega)$, поэтому
+$f\in\mathcal{L}_1$. Поскольку
+$\underline{\lim}f_n(\omega)=\overline{\lim}f_n(\omega)=f(\omega)$,
+то $$\int\limits_\Omega\!
+\underline{\lim}f_n(\omega)\,\nu(d\omega)=\int\limits_\Omega\!
+\overline{\lim}f_n(\omega) \,\nu(d\omega)=
+\int\limits_\Omega\!f(\omega)\,\nu(d\omega),$$ и по теореме
+Фату--Лебега
+\begin{align*}
+\overline{\lim}\int\limits_\Omega\!f_n(\omega)\,\nu(d\omega)&\leqslant
+\int\limits_\Omega\! \overline{\lim}f_n(\omega)\,\nu(d\omega)=
+\int\limits_\Omega\! f(\omega)\,\nu(d\omega)= \\
+&=\int\limits_\Omega\!
+\underline{\lim}f_n(\omega)\,\nu(d\omega)\leqslant
+\underline{\lim}\int\limits_\Omega\!f_n(\omega)\,\nu(d\omega),
+\end{align*}
+откуда и получаем требуемое.
+\end{proof}
+
+\begin{theorem}[Фату]
+Пусть $0\leqslant f_n(\omega)\to f(\omega)$ и $\int\limits_\Omega \!
+f_n(\omega)\, \nu(d\omega)\leqslant C$, где $C>0$. Тогда
+$f\in\mathcal{L}_1$ и $\int\limits_\Omega \! f(\omega)\,
+\nu(d\omega)\leqslant C$.
+\end{theorem}
+
+\begin{proof}
+По теореме Фату--Лебега получаем $\int\limits_\Omega \!
+\underline{\lim}f_n(\omega)\, \nu(d\omega)\p\leqslant
+\underline{\lim}\int\limits_\Omega \! f_n(\omega)\, \nu(d\omega)$,
+поэтому $$\int\limits_\Omega \! f(\omega)\, \nu(d\omega)=
+\int\limits_\Omega \! \underline{\lim}f_n(\omega)\,
+\nu(d\omega)\leqslant \underline{\lim}\int\limits_\Omega \!
+f_n(\omega)\, \nu(d\omega) \leqslant C,$$ что и требовалось.
+\end{proof}
+
+\begin{zam}
+В теореме Фату нельзя переходить к пределу так же, как и в теореме
+Лебега: например, можно взять $\Omega=[0;1]$ и
+$$f_n(x)=\begin{cases}2n-4n^2|x-\frac{1}{2n}|,& \text{если $x\in[0;1/n]$},
+\\ 0,& \text{если $x\in[1/n;1]$}.\end{cases}$$
+
+Кроме того, ограничение <<$f_n\geqslant 0$>> существенно: опять
+можно взять $\Omega=[0;1]$ и <<перевернуть>> функции $f_n$, сдвинув
+их немного вверх.
+\end{zam}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 9-----------------------------------------------%
+\lecture
+
+\begin{theorem}[неравенство Чебышева]
+Пусть функция $f(\omega)\geqslant 0$, тогда $\nu\{\omega\mid
+f(\omega)\geqslant c\}\leqslant\frac 1 c\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)$.
+\end{theorem}
+
+\begin{proof}
+Имеем следующую цепочку неравенств: $$\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)\geqslant \int\limits_{\{\omega\mid
+f(\omega)\geqslant c\}}\! f(\omega)\,\nu(d\omega)\geqslant
+\int\limits_{\{\omega\mid f(\omega)\geqslant c\}}\!
+c\,\nu(d\omega)=c\nu\{\omega\mid f(\omega)\geqslant c\},$$ что и
+требовалось.
+\end{proof}
+
+\begin{sled}
+Пусть $f_n(\omega)\geqslant 0$ и $\exists\,
+f(\omega)=\sum\limits_{n=1}^\infty f_n(\omega)$. Тогда
+$$\exists\,\int\limits_\Omega\!
+f(\omega)\,\nu(d\omega)=\sum\limits_{n=1}^\infty
+\int\limits_\Omega\! f_n(\omega)\,\nu(d\omega).$$ В частности, если
+$\sum\limits_{n=1}^\infty \int\limits_\Omega\!
+f_n(\omega)\,\nu(d\omega)<\infty$, то сумма ряда
+$\sum\limits_{n=1}^\infty f_n(\omega)$ почти всюду конечна.
+\end{sled}
+
+\begin{proof}
+Первое утверждение следует из теоремы Леви. Докажем второе
+утверждение. Для этого достаточно доказать, что если
+$g(\omega)\geqslant 0$ и $C_g=\int\limits_\Omega\!
+g(\omega)\,\nu(d\omega)<\infty$, то функция $g$ конечна почти всюду.
+Поскольку $\{\omega\mid
+g(\omega)=\infty\}=\bigcap\limits_{n=1}^\infty \{\omega\mid
+g(\omega)\geqslant n\}$ и $\nu\{\omega\mid g(\omega)\geqslant
+n\}\p\leqslant\frac 1 n\int\limits_\Omega\!
+g(\omega)\,\nu(d\omega)=\frac{C_g}{n}\to 0$ при $n\to\infty$ (по
+неравенству Чебышева), то
+$$\nu\{\omega\mid g(\omega)=\infty\}=\nu\Big(\bigcap\limits_{n=1}^\infty
+\{\omega\mid g(\omega)\geqslant n\}\Big)=0,$$ что и требовалось.
+\end{proof}
+
+\prim
+
+Пусть $\Omega=[0;1]$ и $r_n\in\mathbb{Q}\cap[0;1]$ --- $n$-е
+рациональное число из $\Omega$. Возьмем функции
+$f_n(x)=\frac{1}{\sqrt{|x-r_n|}}$ и рассмотрим ряд
+$\sum\limits_{n=1}^\infty \frac{1}{2^n} f_n(x)$. Очевидно, что
+$\exists\, C>0: \int\limits_\Omega\! f_n(\omega)\,\nu(d\omega)<C$,
+поэтому $\sum\limits_{n=1}^\infty \int\limits_\Omega\!
+\frac{1}{2^n}f_n(\omega)\,\nu(d\omega)<C<\infty$ и ряд
+$\sum\limits_{n=1}^\infty \frac{1}{2^n} f_n(x)$ сходится почти
+всюду.
+
+\tema{Сходимость по мере}
+
+\begin{defen}
+Пусть фиксировано пространство с мерой $(\Omega, \mathfrak{a},\nu)$
+и функции $f_n$ измеримы. Тогда $f_n$ \emph{сходится к функции $f$
+по мере}, если $\forall\, \varepsilon>0\quad \nu\{\omega\mid
+|f_n(\omega)-f(\omega)|>\varepsilon\}\to 0$ при $n\to\infty$.
+Обозначение: $f_n\mathop{\to}\limits_\nu f$.
+\end{defen}
+
+\begin{theorem}
+Если $f_n\mathop{\to}\limits_\nu f$, то $\exists\, f_{n_k}:
+f_{n_k}\to f$ почти всюду. Если мера $\nu$ конечна, то всякая почти
+всюду сходящаяся последовательность сходится по мере.
+\end{theorem}
+
+\begin{proof}
+Если $f_j(\omega)\to f(\omega)$, то $$\forall\, n\;\exists\, k:
+\forall\, r>k\quad |f_r(\omega)-f(\omega)|<\frac 1 n,$$ поэтому
+$$A=\{\omega\mid f_j(\omega)\to f(\omega)\}=\bigcap\limits_n
+\bigcup\limits_k \bigcap\limits_{r>k} \{\omega\mid
+|f_r(\omega)-f(\omega)|<\frac 1 n\}$$ и
+$$B=\Omega\setminus A=\{\omega\mid f_j(\omega)\nrightarrow
+f(\omega)\}=\bigcup\limits_n \bigcap\limits_k
+\bigcup\limits_{r\geqslant k} \{\omega\mid
+|f_r(\omega)-f(\omega)|\geqslant\frac 1 n\}.$$ Необходимо выбрать
+такие $f_{r_j}$, чтобы $\nu B=0$. Но если $\nu B=0$, то
+$$\forall\, n\quad \nu\Big(\bigcap\limits_{k=1}^\infty \bigcup\limits_
+{j\geqslant k}\{\omega\mid |f_{r_j}(\omega)-f(\omega)|\geqslant
+\frac 1 n\}\Big)=0,$$ т.е. $$\nu\Big(\bigcup\limits_ {j\geqslant
+k}\{\omega\mid |f_{r_j}(\omega)-f(\omega)|\geqslant \frac 1
+n\}\Big)\to 0\quad \text{при $k\to\infty$}.$$
+
+Пусть теперь $$\forall\, n\quad \nu\{\omega\mid
+|f_r(\omega)-f(\omega)|\geqslant\frac 1 n\}\to 0\quad\text{при
+$r\to\infty$}.$$ Выберем $\varepsilon_j$ так, чтобы
+$\sum\limits_{j=1}^\infty \varepsilon_j<\infty$ (например, можно
+взять $\varepsilon_j=2^{-j}$). Для каждого $j$ выберем $r_j$ так,
+чтобы $\nu\{\omega\mid |f_{r_j}(\omega)-f(\omega)|\geqslant\frac 1
+n\}<\varepsilon_j$, тогда
+\begin{align*}
+\nu\Big(\bigcup\limits_{j\geqslant k}\{\omega\mid |f_{r_j}(\omega)-
+f(\omega)|\geqslant\frac 1 n\}\Big)&\leqslant\sum\limits_{j\geqslant
+k}\nu\{\omega\mid |f_{r_j}(\omega)-f(\omega)|\geqslant\frac 1
+n\}<\\
+&<\sum\limits_{j\geqslant k}\varepsilon_j\to 0 \quad\text{при
+$k\to\infty$},
+\end{align*}
+т.к. ряд $\sum\limits_{j=1}^\infty \varepsilon_j$ сходится. Поэтому
+если $\nu\Big(\bigcup\limits_{j\geqslant k}\{\omega\mid
+|f_{r_j}(\omega)- f(\omega)|\geqslant\frac 1 n\}\Big)\to 0$, то
+$\nu\{\omega\mid |f_k(\omega)-f(\omega)|\geqslant\frac 1 n\}\to 0$
+при $k\to\infty$, откуда следует сходимость по мере.
+\end{proof}
+
+\prim
+
+1. Пусть $\Omega=\mathbb{R}^1$, а функции $f_n$ таковы, что
+$$f_n(x)=\begin{cases}0,& \text{если $x\leqslant n$}; \\ 1,&
+\text{если $x> n$}\end{cases}.$$ Тогда $f_n(x)\to 0$, но $\nu\{x\mid
+|f_n(x)-0|>\frac 1 2\}=\nu[n;\infty)=\infty$, поэтому сходимости по
+мере нет.
+
+2. Пусть $\Omega=\mathbb{T}$ и $\varepsilon_j>0$, причем
+$\sum\limits_{j=1}^\infty \varepsilon_j=\infty$ и $\varepsilon_j\to
+0$ (например, можно взять $\varepsilon_j=j^{-1}$). Положим
+$$f_n(x)=\begin{cases}1,& \text{если $x\in[\varepsilon_1+\ldots+\varepsilon_
+{n-1};\varepsilon_1+\ldots+\varepsilon_n]$},\\
+0,&\text{иначе}.\end{cases}$$ Тогда $f_n(x)$ сходится по мере, но
+нигде не сходится.
+
+\vspace{5pt}
+
+\begin{theorem}
+Если функция $f$ интегрируема по Риману на множестве $\Omega=[0;1]$,
+то она интегрируема и по Лебегу, причем значения интегралов
+совпадают.
+\end{theorem}
+
+\begin{proof}
+Введем следующие обозначения:
+$$f_n^s=\sum\limits_{j=1}^{2^n}\frac{s_j}{2^n}, \quad
+f_n^i=\sum\limits_{j=1}^{2^n}\frac{i_j}{2^n},$$ где
+$$s_j=\sup\limits_{t\in\left[\frac{j-1}{2^n};\frac{j}{2^n}\right)}f(t), \quad
+i_j=\inf\limits_{t\in\left[\frac{j-1}{2^n};\frac{j}{2^n}\right)}f(t).$$
+Положим также
+$$\bar{f}_n(t)=\sum\limits_{j=1}^{2^n}s_j\gamma_{\left[\frac{j-1}{2^n};
+\frac{j}{2^n}\right)}(t), \quad
+\underline{f}_n(t)=\sum\limits_{j=1}^{2^n}i_j\gamma_{\left[\frac{j-1}{2^n};
+\frac{j}{2^n}\right)}(t).$$ Легко видеть, что
+$$\sup\limits_{t\in[0;1]} f(t)\geqslant
+\bar{f}_1\geqslant\bar{f}_2\geqslant\ldots\geqslant
+f\geqslant\ldots\geqslant\underline{f}_2\geqslant\underline{f}_1\geqslant\inf
+\limits_{t\in[0;1]}f(t).$$ Значит,
+$\exists\,\lim\limits_{j\to\infty} \bar{f}_j=\bar{f}$ и
+$\exists\,\lim\limits_{j\to\infty} \underline{f}_j=\underline{f}$,
+причем $\sup\limits_{t\in[0;1]}f(t)\geqslant \bar{f}\geqslant
+f\geqslant\underline{f}\p\geqslant \inf\limits_{t\in[0;1]}f(t)$.
+Поэтому по теореме Лебега можно перейти к пределу под интегралами
+$\int\limits_{[0;1]}\!\bar{f}_n(t)\,dt=f_n^s$ и
+$\int\limits_{[0;1]}\!\underline{f}_n(t)\,dt=f_n^i$:
+$$(R)\int\limits_{[0;1]}\!f(t)\,dt=\int\limits_{[0;1]}\!\bar{f}_n(t)\,dt\to
+\int\limits_{[0;1]}\!f(t)\,dt\leftarrow\int\limits_{[0;1]}\!\underline{f}_n(t)\,dt
+=(R)\int\limits_{[0;1]}\!f(t)\,dt,$$ откуда
+$$\int\limits_{[0;1]}\!\bar{f}_n(t)\,dt=(R)\int\limits_{[0;1]}\!f(t)\,dt=
+\int\limits_{[0;1]}\!\underline{f}_n(t)\,dt.$$ Поскольку
+$\bar{f}(t)-\underline{f}(t)\geqslant 0$ почти всюду и
+$\int\limits_{[0;1]}\!(\bar{f}(t)-\underline{f}(t))\,dt=0$, то
+$\bar{f}\p=\underline{f}$ почти всюду. Значит,
+$f=\bar{f}=\underline{f}$ почти всюду. Поэтому функция $f$ измерима
+(как предел простых измеримых функций), $f\in\mathcal{\bar{L}}_1$ и
+$$\int\limits_{[0;1]}\!f(t)\,dt=\int\limits_{[0;1]}\!\bar{f}(t)\,dt=
+\int\limits_{[0;1]}\!\underline{f}(t)\,dt=(R)\int\limits_{[0;1]}\!f(t)\,dt,$$
+что и требовалось.
+\end{proof}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 10-----------------------------------------------%
+\lecture
+
+\begin{defen}
+Пусть $(E, \mathfrak{a}, \nu)$ --- пространство с полной мерой.
+Тогда функции\footnote{Не обязательно измеримые!} $f_1$ и $f_2$
+\emph{равны почти всюду}, если множество точек, где они не равны,
+есть подмножество измеримого множества меры 0.
+
+Например, если $f$ --- $\mathfrak{a}$-измеримая функция, то
+$\exists\, \bar{f}$ --- $\bar{\mathfrak{a}}$-измеримая функция,
+совпадающая с $f$ почти всюду.
+\end{defen}
+
+\begin{theorem}
+Пусть функция $f$ интегрируема на отрезке $[0;1]$ в несобственном
+смысле (с особенностью в точке 0) и абсолютно. Тогда
+$f\in\mathcal{\bar{L}}_1$ и
+$\exists\,\int\limits_{[0;1]}\!f(t)\,dt=(R)\int\limits_0^1\!f(t)\,dt$.
+\end{theorem}
+
+\begin{proof}
+По определению несобственного интеграла Римана,
+$$(R)\int\limits_0^1\!f(t)\,dt=\lim\limits_{\varepsilon\to 0}\;(R)\int
+\limits_\varepsilon^1\!f(t)\,dt
+=\lim\limits_{\varepsilon\to
+0}\int\limits_{[\varepsilon;1]}\!f(t)\,dt.$$ Пусть
+$$f_n(t)=\begin{cases}
+f(t),&\text{при $t\geqslant\frac 1 n$;}\\
+0,&\text{при $t<\frac 1 n$},
+\end{cases}$$ тогда $\lim\limits_{n\to\infty} f_n(t)=f(t)$ при $t\neq
+0$ и $|f_1(t)|\leqslant|f_2(t)|\leqslant\ldots$. Отсюда
+$$\int\limits_{[0;1]}\!|f_n(t)|\,dt=\int\limits_{[1/n;1]}\!|f(t)|\,dt=(R)\int
+\limits_{1/n}^1\!|f(t)|\,dt\leqslant(R)\int\limits_0^1\!|f(t)|\,dt<\infty,$$
+поэтому по теореме Леви
+$$\int\limits_{[0;1]}\!|f(t)|\,dt=\inf\limits_{[0;1]}\int\!|f(t)|\,dt=\lim
+\limits_{n\to\infty}\;
+(R)\int\limits_{1/n}^1\!|f(t)|\,dt=(R)\int\limits_0^1\!|f(t)|\,dt<\infty.$$
+По теореме Лебега получаем $$\exists\,
+\lim\limits_{n\to\infty}\int\limits_{[0;1]}\!f_n(t)\,dt=\int\limits_{[0;1]}\!
+f(t)\,dt=\lim\limits_{n\to\infty}\; (R)\int\limits_0^1\!f_n(t)\,dt=
+(R)\int\limits_0^1\!f(t)\,dt,$$ что и требовалось.
+\end{proof}
+
+\begin{zam}
+Условие абсолютной сходимости нельзя отбросить: рассмо\-трим,
+например, функцию $g(x)=(-1)^n\frac{2^n}{n}$ при
+$x\in[2^{-n};2^{1-n})$. Тогда $g\in\mathcal{R}[0;1]$ и
+$\int\limits_0^1\!g(x)\,dx=\sum\limits_{n=1}^\infty
+\frac{(-1)^n}{n}<\infty$, но $g\not\in\mathcal{\bar{L}}_1$.
+\end{zam}
+
+\tema{Формула замены переменных}
+
+\begin{defen}
+Пусть $(\Omega_1,\mathfrak{a}_1, \nu_1)$ --- пространство с мерой,
+$(\Omega_2, \mathfrak{a_2})$ --- измеримое пространство и $f\colon
+(\Omega_1, \mathfrak{a_1},\nu_1)\to(\Omega_2, \mathfrak{a}_2)$ ---
+измеримое отображение, т.е. $\forall\, A\in\mathfrak{a}_2\quad
+f^{-1}A\in\mathfrak{a}_1$. Тогда \emph{образ меры $\nu_1$
+относительно $f$} есть мера $\nu_2$ на измеримом пространстве
+$(\Omega_2, \mathfrak{a_2})$, обозначаемая $f_*\nu_1$ или
+$\nu_1f^{-1}$ и определяемая по формуле
+$(f_*\nu_1)A=\nu_1(f^{-1}A)$.
+\end{defen}
+
+\begin{predl}
+Образ счетно аддитивной меры счетно аддитивен.
+\end{predl}
+
+\begin{proof}
+Пусть $A_j\in\mathfrak{a}_2$, тогда
+\begin{multline*}
+(\nu_1f^{-1})\Big(\bigsqcup\limits_{j=1}^\infty
+A_j\Big)=\nu_1\Big(f^{-1}\bigsqcup\limits_{j=1}^\infty A_j\Big)=
+\nu_1\Big(\bigsqcup\limits_{j=1}^\infty
+f^{-1}A_j\Big)=\\
+=\sum\limits_{j=1}^\infty \nu_1(f^{-1}A_j)= \sum\limits_{j=1}^\infty
+(\nu_1f^{-1})A_j,
+\end{multline*} что и требовалось.
+\end{proof}
+
+\begin{theorem}
+Пусть $G\colon \Omega_2\to\mathbb{R}^1$ --- измеримая функция. Тогда
+$$\int\limits_{\Omega_1}\!G(f(\omega_1))\,\nu_1(d\omega_1)=\int\limits_
+{\Omega_2}\!G(\omega_2)(\nu_1f^{-1})(d\omega_2).$$
+\end{theorem}
+
+\begin{proof}
+Легко видеть, что достаточно проверить утверждение теоремы для
+индикаторной функции $G(\omega_2)=\gamma_A(\omega_2)$, где
+$A\in\mathfrak{a}_2$. Тогда по определению образа меры
+\begin{multline*}
+\int\limits_{\Omega_2}\!\gamma_A(\omega_2)\,(\nu_1f^{-1})(d\omega_2)=
+(\nu_1f^{-1})(A)=\nu_1(f^{-1}A)=\\
+=\int\limits_{\Omega_1}\!\gamma_{f^{-1}A}(\omega_1)
+\,\nu_1(d\omega_1)=\int\limits_{\Omega_1}\!\gamma_A(f(\omega_1))\,\nu_1(d\omega_1),
+\end{multline*} что и требовалось.
+\end{proof}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 11-----------------------------------------------%
+\lecture
+
+\vspace{-25pt}
+
+\tema{Абсолютная непрерывность}
+
+\begin{defen}
+Рассмотрим меры $\nu$ и $\mu$ на $\sigma$-алгебре $\mathfrak{a}$.
+Мера $\nu$ называется \emph{абсолютно непрерывной относительно меры
+$\mu$}, если $\forall\, A\p\in\mathfrak{a}\quad \mu A=0\Rightarrow
+\nu A=0$. Обозначение: $\nu\ll \mu$.
+
+Если $\nu\ll \mu$ и $\nu \ll \nu$, то меры $\nu$ и $\mu$ называются
+\emph{эквивалентными}. Обозначение: $\nu\sim\mu$.
+\end{defen}
+
+\begin{predl}[критерий абсолютной непрерывности]
+$\nu\ll\mu$ $\p\Leftrightarrow$
+$\forall\,\varepsilon>0\quad\exists\, \delta>0: \forall\,
+A\in\mathfrak{a} \quad \mu A<\delta\p\Rightarrow \nu A<\varepsilon$.
+\end{predl}
+
+\begin{zam}
+В этом критерии существенна неотрицательность меры!
+\end{zam}
+
+\begin{proof}
+Достаточность очевидна: если $\mu A=0$, то $\forall\,\delta\quad \mu
+A<\delta$ поэтому $\forall\,\varepsilon\quad \nu A<\varepsilon$, а
+значит, $\nu A=0$.
+
+Докажем необходимость. Для этого предположим противное:
+$\exists\,\varepsilon_0\p>0: \forall\,\delta>0\quad\exists\,
+A_\delta\in\mathfrak{a}:\mu A<\delta$ и $\nu A\geqslant
+\varepsilon_0$. Возьмем такую последовательность $\{\delta_n\}$,
+чтобы $\delta_n>0$ и $\sum\limits_{n=1}^\infty \delta_n<\infty$.
+Тогда для каждого $\delta_n$ найдется такое
+$A_n=A_{\delta_n}\in\mathfrak{a}$, что $\mu A_n<\delta_n$ и $\nu
+A_n\geqslant\varepsilon_0$. Положим $C_k=\bigcup\limits_{n=k}^\infty
+A_n$, тогда $C_1\supset C_2\supset\ldots$ и в силу счетной
+аддитивности меры $\mu$ имеем: $$\mu
+C_k\leqslant\sum\limits_{n=k}^\infty \mu
+A_n<\sum\limits_{n=k}^\infty \delta_n\to 0\quad\text{при
+$k\to\infty$},$$ поэтому $\mu C_k\to 0$ при $k\to\infty$, а значит,
+$\mu\bigcap\limits_{k=1}^\infty C_k=0$, откуда
+$\nu\bigcap\limits_{k=1}^\infty C_k=0$. Но $\forall\, k\quad \nu
+C_k\geqslant\varepsilon_0$, поэтому $\nu\bigcap\limits_{k=1}^\infty
+C_k\geqslant\varepsilon_0$ --- противоречие.
+\end{proof}
+
+\begin{defen}
+Пусть $(\Omega, \mathfrak{a},\mu)$ --- пространство с мерой,
+$f\in\mathcal{L}_1$. Функция $\nu$ называется \emph{произведением
+функции $f$ и меры $\mu$}, если $\nu
+A\p=\int\limits_A\!f(x)\,\mu(dx)$.
+\end{defen}
+
+\begin{predl}
+Функция $\nu$ является счетно аддитивной мерой.
+\end{predl}
+
+\begin{proof}
+Из свойств интеграла Лебега следует, что функция $\nu$ является
+мерой. Проверим счетно аддитивность. Пусть
+$A=\bigsqcup\limits_{k=1}^\infty A_k$, тогда
+$\gamma_A(\omega)=\sum\limits_{k=1}^\infty\gamma_{A_k}(\omega)$ и
+$f(x)\gamma_A(x)=\lim\limits_{n\to\infty}\sum\limits_{k=1}^n\gamma_{A_k}(x)f(x)$.
+Отсюда $$\Big|\sum\limits_{k=1}^n\gamma_{A_k}(x)f(x)\Big|\leqslant
+\sum\limits_{k=1}^n\gamma_{A_k}(x)|f(x)|\leqslant|f(x)|\in\mathcal{L}_1,$$
+и по теореме Лебега
+\begin{multline*}
+\nu
+A=\int\limits_A\!f(x)\,\mu(dx)=\int\limits_\Omega\!\gamma_A(x)f(x)\,\mu(dx)=\\
+=\lim\limits_{n\to\infty}\sum\limits_{k=1}^n\int\limits_\Omega\!\gamma_{A_k}(\omega)
+f(\omega)\,\mu(d\omega)=\lim\limits_{n\to\infty}\sum\limits_{k=1}^n\nu
+A_k=\sum\limits_{k=1}^\infty \nu A_k,
+\end{multline*}
+что и требовалось.
+\end{proof}
+
+Отсюда следует, что $\nu\ll \mu$: если $\mu A=0$, то $\nu
+A=\int\limits_A\!f(x)\,\mu(dx)=0$.
+
+\begin{theorem}[свойство абсолютной непрерывности интеграла Лебега]
+$\forall\,\varepsilon>0\quad\exists\,\delta>0:\forall\,A\in\mathfrak{a}\quad
+\mu
+A<\delta\Rightarrow\big|\int\limits_A\!f(x)\,\mu(dx)\big|<\varepsilon$.
+\end{theorem}
+
+\begin{proof}
+$\big|\int\limits_A\!f(x)\,\mu(dx)\big|\leqslant\int\limits_A\!|f(x)|\,\mu(dx)$.
+Рассмотрим \emph{вариацию меры $\nu$}:
+$\|\nu\|A=\int\limits_A\!|f(x)|\,\mu(dx)$, тогда по критерию
+абсолютной непрерывности получаем
+$$\Big|\int\limits_A\!f(x)\,\mu(dx)\Big|\leqslant\int\limits_A\!|f(x)|\,\mu(dx)<\varepsilon,$$
+что и требовалось.
+\end{proof}
+
+\begin{predl}
+Пусть $f\geqslant 0$, тогда
+$g\in\mathcal{L}_1(\Omega,\mathfrak{a},\nu)$ $\Leftrightarrow$
+$g-f\p\in\mathcal{L}_1(\Omega,\mathfrak{a},\mu)$ и тогда
+$\int\limits_\Omega\!g(\omega)\,\nu(d\omega)=\int\limits_\Omega\!g(\omega)f(\omega)\,\mu(d\omega)$.
+\end{predl}
+
+\begin{proof}
+Достаточно доказать это утверждение для случая, когда $g=\gamma_C$
+--- индикатор некоторого множества $C$. Но тогда по определению
+произведения функции и меры
+$$\int\limits_\Omega\!g(\omega)\,\nu(d\omega)=\nu C=\int\limits_C\!f(\omega)\,\mu(d\omega)=
+\int\limits_\Omega\!g(\omega)f(\omega)\mu(d\omega),$$ что и
+требовалось.
+\end{proof}
+
+Рассмотрим теперь важный пример. Пусть $F\colon [a;b]\to [c;d]$ ---
+произвольная монотонно возрастающая непрерывная функция, такая, что
+$F(a)=c$ и $F(b)=d$. Тогда на $\sigma$-алгебре $\mathfrak{B}$
+борелевских множеств отрезка $[a;b]$ есть мера $\nu_F$, такая, что
+$\nu_F(\alpha;\beta)=F(\beta)-F(\alpha)$. Можно рассмотреть образ
+меры $\nu_F$ на отрезке $[c;d]$, а именно меру
+$F_*\nu_F=\nu_FF^{-1}$. Это
+--- стандартная мера Лебега на $[c;d]$: $$(\nu_FF^{-1})(\gamma;\delta)=\nu_F(F^{-1}
+(\gamma;\delta))=F(F^{-1}(\delta))-F(F^{-1}(\gamma))=\delta-\gamma.$$
+
+Пусть теперь $g\in\mathcal{L}_1([c;d],\mathfrak{a},\nu_L)$, тогда
+$$\int\limits_{[c;d]}\!g(x)\,\nu_L(dx)=\int\limits_{[c;d]}\!g(x)(\nu_FF^{-1})(dx)=\int\limits
+_{[a;b]}\!g(F(x))\,\nu_F(dx).$$ Но
+$\nu_F(\alpha;\beta)=\int\limits_{[\alpha;\beta]}\!F'(x)\,dx$,
+поэтому $\nu_F(A)=\int\limits_A\!F'(x)\,dx$, и поскольку
+$\nu_F\p=F'\nu_L$, то
+$$\int\limits_{[c;d]}\!g(x)\,\nu_L(dx)=\int\limits_{[a;b]}\!g(F(x))F'(x)\,dx$$
+--- стандартная формула замены переменной.
+
+ \tema{Пространство $\mathcal{L}_p$}
+
+\begin{defen}
+\emph{Пространство $\mathcal{\bar{L}}_p$} --- это пространство всех
+измеримых функций $f$, таких, что $|f|^p\in\mathcal{L}_1$. При этом
+$1\leqslant p<\infty$.
+\end{defen}
+
+\begin{predl}
+Пространство $\mathcal{\bar{L}}_p$ является линейным.
+\end{predl}
+
+\begin{proof}
+Достаточно доказать, что если $f,g\in\mathcal{\bar{L}}_p$, то
+$|f+g|^p\p\in\mathcal{L}_1$. Для этого докажем следующее
+неравенство:
+$$|f+g|^p\leqslant C_p(|f|^p+|g|^p),$$ где $C_p$ --- некоторая
+константа.
+
+Рассмотрим функцию $\psi(t)=\frac{(1+t)^p}{1+t^p}$. Эта функция
+непрерывна на луче $[0;\infty)$, $\psi(0)=1$,
+$\lim\limits_{t\to\infty} \psi(t)=1$. Отсюда следует, что функция
+$\psi(t)$ ограничена: $\exists\, C_p: |\psi(t)|\leqslant C_p$.
+Подставим $t=\frac a b$: $(a+b)^p\leqslant C_p(a^p+b^p)$, откуда
+$|f+g|^p\leqslant(|f|+|g|)^p\leqslant C_p(|f|^p+|g|^p)$, что и
+требовалось.
+\end{proof}
+
+\begin{defen}
+\emph{Пространство
+$\mathcal{L}_p=\mathcal{\bar{L}}_p/\mathcal{\bar{L}}_p^0$}, где
+$\mathcal{\bar{L}}_p^0=\{f\in\mathcal{\bar{L}}_p\mid
+\int\limits_\Omega\!|f(\omega)|^p\,\nu(d\omega)=0\}$.
+
+Величина
+$\|f\|_p=\big(\int\limits_\Omega\!|f(\omega)|^p\,\nu(d\omega)\big)^{1/p}$
+является \emph{нормой} в $\mathcal{L}_p$.
+\end{defen}
+
+\begin{theorem}[неравенство Гельдера]
+$\int\limits_\Omega\!|f(\omega)||g(\omega)|\,\nu(d\omega)\leqslant\|f\|_p\|g\|_q$,
+где $f\in\mathcal{L}_p$, $g\in\mathcal{L}_q$ и $\frac 1 p+\frac 1
+q=1$.
+\end{theorem}
+
+\begin{proof}
+Воспользуемся неравенством Гельдера в виде
+$ab\p\leqslant\frac{a^p}{p}\p+\frac{b^q}{q}$ при $\frac 1 p+\frac 1
+q=1$, доказанному в курсе математического анализа. Подставим в него
+$a=\frac{|f|}{\|f\|_p}$ и $b=\frac{|g|}{\|g\|_q}$. Имеем:
+$\frac{|f|}{\|f\|_p}\cdot
+\frac{|g|}{\|g\|_q}\leqslant\frac{|f|^p}{p\|f\|_p^p}+\frac{|g|^q}{q\|g\|_q^q}$,
+откуда $$\int\limits_\Omega\!\frac{|f|\cdot|g|}{\|f\|_p\cdot
+\|g\|_q}\,\nu(dx)\leqslant\frac 1
+p\int\limits_\Omega\!\frac{|f|^p}{\|f\|_p^p}\,\nu(dx)+\frac 1
+q\int\limits_\Omega\!\frac{|g|^q}{\|g\|_q^q}\,\nu(dx)=\frac 1
+p+\frac 1 q=1,$$ что и требовалось.
+\end{proof}
+
+\begin{theorem}[неравенство Минковского]
+$\|f+g\|_p\leqslant\|f\|_p+\|g\|_p$, где $f,g\in\mathcal{L}_p$.
+\end{theorem}
+
+\begin{proof}
+Пусть $q=\frac{p}{p-1}$. Воспользуемся неравенством Гельдера, тогда
+\begin{multline*}
+\int\limits_\Omega\!|f+g|^p\,\nu(dx)\leqslant\int\limits_\Omega\!(|f|+|g|)^p\,\nu(dx)
+=\int\limits_\Omega\!(|f|+|g|)^{p-1}|f|\,\nu(dx)+\\+\int\limits_\Omega\!(|f|+|g|)^{p-1}|g|
+\,\nu(dx)\leqslant\|f\|_p\|(|f|+|g|)^{p/q}\|_q+\|g\|_p\|(|f|+|g|)^{p/q}\|_q.
+\end{multline*}
+Поскольку
+$$\|(|f|+|g|)^{p/q}\|_q=\Big(\int\limits_\Omega\!(|f|+|g|)^{p}\,\nu(dx)\Big)^{1/q}=\|(|f|+|g|)\|_p^{p/q},$$
+то, поделив обе части предыдущего неравенства на
+$\|(|f|+|g|)\|_p^{p/q}$, получаем
+$$\|f+g\|_p^{p-1/q}=\|f+g\|_p\leqslant\|f\|_p+\|g\|_p,$$ что и
+требовалось.
+\end{proof}
+
+\begin{sled}
+Величина
+$\|f\|_p=\big(\int\limits_\Omega\!|f(\omega)|^p\,\nu(d\omega)\big)^{1/p}$
+является нормой в $\mathcal{L}_p$.\hfill{$\square$}
+\end{sled}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 12-----------------------------------------------%
+\lecture
+
+\begin{theorem}
+Пространство $\mathcal{L}_p$ полно.
+\end{theorem}
+
+\begin{proof}
+Пусть $\varphi_n\in\mathcal{L}_p$ --- фундаментальная
+последовательность, т.е. $\forall\,\varepsilon>0\quad\exists\,
+n_0:\forall\,k,m> n_0\quad \|\varphi_k-\varphi_m\|_p<\varepsilon$.
+Необходимо доказать, что $\exists\,\varphi\in\mathcal{L}_p:
+\|\varphi_n-\varphi\|_p\to 0$ при $n\to\infty$.
+
+Мы будем считать, что $\nu\Omega<\infty$. Тогда если
+$\psi\in\mathcal{L}_p$, то $\psi\in\mathcal{L}_1$:
+$$\int\limits_\Omega\!|\psi(\omega)|\,\nu(d\omega)\leqslant \int\limits_\Omega
+\!|\psi(\omega)|\cdot \mathbf{1}\,\nu(d\omega)\leqslant
+C\|\psi\|_p<\infty$$ согласно неравенству Гельдера\footnote{Здесь и
+далее считается, что $\frac 1 p+\frac 1 q=1$.} (здесь $\mathbf{1}$
+--- это единичная функция, а $C\p=\|\mathbf{1}\|_q$).
+
+Выберем последовательность $\{\varepsilon_n\}$, такую, что
+$\varepsilon_n>0$ и $\sum\limits_{n=1}^\infty \varepsilon_n<\infty$.
+Тогда $\forall\,\varepsilon_j\quad\exists\,n_j=n(\varepsilon_j):
+\forall\,k,m\geqslant n_j\quad
+\|\varphi_k-\varphi_m\|_p<\varepsilon_j$.
+
+Рассмотрим ряд
+$\varphi_{n_1}+(\varphi_{n_2}-\varphi_{n_1})+(\varphi_{n_3}-\varphi_{n_2})+
+(\varphi_{n_4}-\varphi_{n_3})+\ldots$. Поскольку
+$\|\varphi_{n_{j+1}}-\varphi_{n_j}\|_p<\varepsilon_j$, то
+$$\int\limits_\Omega\!|\varphi_{n_1}|\,d\nu+\int\limits_\Omega\!|\varphi_{n_2}-
+\varphi_{n_1}|\,d\nu+\ldots\leqslant C\sum\limits_{n=1}^\infty
+\varepsilon_n+\int\limits_\Omega\!|\varphi_{n_1}|\,d\nu<\infty,$$ и
+по теореме Леви
+$$\int\limits_\Omega\!\Big(|\varphi_{n_1}+\sum\limits_{j=1}^\infty
+|\varphi_{n_{j+1}}-\varphi_{n_j}||\Big)\,d\nu<\infty,$$ откуда
+получаем, что ряд
+$\varphi_{n_1}+(\varphi_{n_2}-\varphi_{n_1})+\ldots$ сходится
+абсолютно почти всюду. Значит,
+$\varphi_{n_1}+\sum\limits_{j=1}^k(\varphi_{n_{j+1}}-\varphi_{n_j})=\varphi_{n_{k+1}}$
+и $\varphi_{n_k}(\omega)\to\varphi(\omega)$ почти всюду при
+$k\to\infty$. Докажем, что $\varphi\in\mathcal{L}_p$ и
+$\|\varphi-\varphi_{n_j}\|_p\to 0$ при $j\to\infty$.
+
+Поскольку
+$$\|\varphi_{n_{j+k}}-\varphi_{n_j}\|_p^p=\int\limits_\Omega\! |\varphi_{n_{j+k}} -
+\varphi_{n_j}|^p\,d\nu<\varepsilon_j^p,$$ то по теореме Фату
+$\|\varphi_{n_j}-\varphi\|_p^p=\int\limits_\Omega\!
+|\varphi_{n_j}-\varphi|^p\,d\nu<\varepsilon_j^p$, откуда
+$\|\varphi-\varphi_{n_j}\|_p\p<\varepsilon_j$. Значит,
+$\varphi-\varphi_{n_j}\in\mathcal{L}_p$ и в силу линейности
+$\varphi\in\mathcal{L}_p$. Кроме того, $\varepsilon_j\to 0$ при
+$j\to\infty$, откуда следует, что $\|\varphi-\varphi_{n_j}\|_p\to 0$
+при $j\to\infty$.
+
+Из неравенства треугольника немедленно следует, что
+$\varphi_n\to\varphi$ в пространстве $\mathcal{L}_p$, что и
+требовалось.
+\end{proof}
+
+\begin{zam}
+Приведенное доказательство справедливо при $p>1$, однако легко
+видеть, что при $p=1$ теорема также верна.
+\end{zam}
+
+Пусть теперь $\varphi\in\mathcal{L}_p$ и $\psi\in\mathcal{L}_q$.
+Тогда в силу неравенства Гельдера
+$$\Big|\int\limits_\Omega\! \varphi\psi\,d\nu\Big|\leqslant \int\limits_
+\Omega \!|\varphi\psi|\,d\nu\leqslant
+\|\varphi\|_p\cdot\|\psi\|_q.$$ Отсюда следует, что линейный
+функционал $F_\psi\colon \varphi\mapsto
+\int\limits_\Omega\!\varphi\psi\,d\nu$ на пространстве
+$\mathcal{L}_p$ непрерывен в 0: в самом деле, если
+$\|\varphi_n\|_p\to 0$, то
+$|F_\psi(\varphi_n)|\p\leqslant\|\varphi_n\|_p\cdot\|\psi\|_q\to 0$.
+В силу линейности этот функционал непрерывен на всем пространстве
+$\mathcal{L}_p$.
+
+\begin{theorem}[Рис]
+Пусть $F$ --- непрерывный линейный функционал на пространстве
+$\mathcal{L}_p$. Тогда $\exists\, \psi_F\in\mathcal{L}_q:
+\forall\,\varphi\in\mathcal{L}_p\quad
+F(\varphi)=\int\limits_\Omega\!\varphi\psi_F\,d\nu$.\footnote{Доказательство
+этой теоремы будет дано в курсе функционального анализа независимо
+от теоремы Радона-Никодима.}
+\end{theorem}
+
+\begin{theorem}[Радон-Никодим]
+Пусть $(\Omega,\mathfrak{a})$ --- измеримое пространство, $\nu$ и
+$\mu$ --- меры на $\mathfrak{a}$, причем $\mu\ll \nu$. Тогда
+$\exists\,\psi\in\mathcal{L}_1(\Omega,\mathfrak{a},\nu):
+\mu=\psi\cdot\nu$.
+\end{theorem}
+
+\begin{proof}
+Рассмотрим меру $\eta=\mu+\nu$ (т.е.
+$\forall\,A\in\mathfrak{a}\quad\eta A=\mu A\p+\nu A$) и линейный
+функционал $F$ на пространстве
+$\mathcal{L}_2(\Omega,\mathfrak{a},\eta)$, такой, что
+$F(\varphi)=\int\limits_\Omega\!\varphi(\omega)\,\mu(d\omega)$. По
+неравенству Гельдера при $p=q=2$
+$$\|\varphi\|_1=\int\limits_\Omega\!|\varphi(\omega)|\,\eta(d\omega)\leqslant
+\|\varphi\|_2\cdot\|\mathbf{1}\|_2,$$ откуда
+$|\varphi|\in\mathcal{L}_1(\Omega,\mathfrak{a},\eta)$. Поскольку
+$$\infty>\int\limits_\Omega\!|\varphi(\omega)|\,\eta(d\omega)=
+\int\limits_\Omega\!|\varphi(\omega)|\,\mu(d\omega)+\int\limits_\Omega\!|\varphi(\omega)|\,\nu(d\omega),$$
+то $\int\limits_\Omega\!|\varphi(\omega)|\,\mu(d\omega)<\infty$ и
+$$\int\limits_\Omega\!|\varphi(\omega)|\,\eta(d\omega)\geqslant
+\int\limits_\Omega\!|\varphi(\omega)|\,\mu(d\omega)\geqslant
+\Big|\int\limits_\Omega\!\varphi(\omega)\,\mu(d\omega)\Big|=|F(\varphi)|,$$
+а значит, $|F(\varphi)|\leqslant\|\varphi\|_2\cdot\|\mathbf{1}\|_2$,
+откуда следует, что функционал $F$ непрерывен на пространстве
+$\mathcal{L}_2(\Omega,\mathfrak{a},\eta)$. Поэтому по теореме Риса
+получаем, что $\exists\,g\in\mathcal{L}_2(\Omega,\mathfrak{a},\eta):
+\forall\,\varphi\in\mathcal{L}_2(\Omega,\mathfrak{a},\eta)\quad
+F(\varphi)=\int\limits_\Omega\!|\varphi(\omega)|\,\mu(d\omega)\p=
+\int\limits_\Omega\!|\varphi(\omega)|g(\omega)\,\eta(d\omega)=
+\int\limits_\Omega\!|\varphi(\omega)|g(\omega)\,\mu(d\omega)+
+\int\limits_\Omega\!|\varphi(\omega)|g(\omega)\,\nu(d\omega)$.
+
+Проверим, что $\eta A_0=\eta\{\omega\mid g(\omega)\geqslant 1\}=0$.
+Пусть $\varphi=\gamma_{A_0}$ --- индикатор множества $A_0$. Тогда
+$$\int\limits_\Omega\!\gamma_{A_0}(\omega)\,\mu(d\omega)=\mu A_0=
+\int\limits_{A_0}\!g(\omega)\,\mu(d\omega)+\int\limits_{A_0}\!g(\omega)\,\nu(d\omega)
+\geqslant \mu A_0+\nu A_0,$$ откуда следует, что $\nu A_0=0$.
+Поскольку $\mu\ll\nu$, то $\mu A_0=0$, а значит, и $\eta A_0=0$.
+
+Проверим теперь, что $\eta A_1=\eta\{\omega\mid g(\omega)<0\}$.
+Аналогично,
+$$0\leqslant\int\limits_\Omega\!\gamma_{A_1}(\omega)\,\mu(d\omega)=\mu A_1=
+\int\limits_{A_1}\!g(\omega)\,\eta(d\omega)\leqslant 0,$$ откуда
+$\eta A_1=0$.
+
+Таким образом,
+\begin{multline*}
+F(\varphi)=\int\limits_{\Omega\setminus
+A_0}\!\varphi(\omega)\,\mu(d\omega)=\int\limits_{\Omega\setminus
+A_0}\!\varphi(\omega)g(\omega)\,\eta(d\omega)=\\=\int\limits_{\Omega\setminus
+A_0}\!\varphi(\omega)g(\omega)\,\mu(d\omega)+\int\limits_{\Omega\setminus
+A_0}\!\varphi(\omega)g(\omega)\,\nu(d\omega).
+\end{multline*}
+По теореме Леви получаем, что это равенство верно при всех
+$\varphi\geqslant 0$. Отсюда $\int\limits_{\Omega\setminus
+A_0}\!(\mathbf{1}-g(\omega))\varphi(\omega)\,\mu(d\omega)=\int\limits_{\Omega\setminus
+A_0}\!\varphi(\omega)g(\omega)\,\nu(d\omega)$.
+
+Пусть $A\in\mathfrak{a}$. Положим
+$\varphi=\frac{\gamma_A}{\mathbf{1}-g}$ и
+$\psi=\frac{g}{\mathbf{1}-g}\geqslant 0$, тогда
+$\int\limits_\Omega\!\gamma_A(\omega)\,\mu(d\omega)\p=\int\limits_\Omega\!\gamma_A(\omega)
+\psi(\omega)\,\nu(d\omega)$, т.е. $\mu
+A=\int\limits_A\!\psi(\omega)\,\nu(d\omega)$.
+
+Осталось доказать, что
+$\psi\in\mathcal{L}_1(\Omega,\mathfrak{a},\nu)$. Для этого положим
+$A=\Omega$. Получаем, что
+$\infty>\mu\Omega=\int\limits_\Omega\!\psi(\omega)\,\nu(d\omega)$,
+откуда все и следует.
+\end{proof}
+
+\tema{Теоремы Фубини, Хана-Жордана и Лебега}
+
+Пусть $(\Omega_1,\mathfrak{a}_1,\nu_1)$ и
+$(\Omega_2,\mathfrak{a}_2,\nu_2)$ --- пространства с мерой.
+
+\begin{defen}
+\emph{Произведением измеримых пространств} называется измеримое
+пространство $(\Omega_1\times\Omega_2,
+\mathfrak{a}_1\otimes\mathfrak{a}_2)$, где $\Omega_1\times
+\Omega_2=\{(\omega_1,\omega_2)\mid \omega_j\in\Omega_j;j=1,2\}$ и
+$\mathfrak{a}_1\otimes\mathfrak{a}_2$ --- $\sigma$-алгебра,
+определяемая следующим образом. Возьмем полукольцо
+$\mathcal{P}=\{A_1\times A_2\mid A_j\in\mathfrak{a}_j;j=1,2\}$
+(элементы которого называются \emph{прямоугольниками}), тогда
+$\mathfrak{a}_1\otimes \mathfrak{a}_2=\sigma(\mathcal{P})$.
+
+\emph{Произведение пространств с мерой} --- это произведение
+измеримых пространств, на котором задана мера $\nu_1\otimes\nu_2$
+(называющаяся \emph{произведением мер $\nu_1$ и $\nu_2$}),
+определяемая следующим образом. Если $A_1,A_2\in\mathcal{P}$, то
+$(\nu_1\otimes \nu_2)(A_1\times A_2)=\nu_1 A_1\cdot\nu_2 A_2$.
+
+\begin{predl}
+Произведение мер $\nu_1\otimes\nu_2$ счетно аддитивно.
+\end{predl}
+
+\begin{proof}
+Пусть $A_1\times A_2=\bigsqcup\limits_{k=1}^\infty A_1^k\times
+A_2^k$ и $f_{A_1A_2}(\omega_1)=\nu_2
+A_2\p\cdot\gamma_{A_1}(\omega_1)$, тогда в силу счетной аддитивности
+меры $\nu_2$ имеем: $f_{A_1A_2}(\omega_1)\p=\sum\limits_{k=1}^\infty
+f_{A_1^kA_2^k}(\omega_1)$. Поэтому по теореме Леви получаем, что
+\begin{multline*}
+(\nu_1\otimes\nu_2)(A_1\times A_2)=\int\limits_{\Omega_1}\!f_{A_1
+A_2}(\omega_1)\,\nu_1(d\omega_1)=\\
+=\sum\limits_{k=1}^\infty\int\limits_{\Omega_1}
+\!f_{A_1^kA_2^k}(\omega_1)\,\nu_1(d\omega_1)=\sum\limits_{k=1}^\infty
+(\nu_1\otimes\nu_2)(A_1^k\times A_2^k),
+\end{multline*}
+что и требовалось.
+\end{proof}
+
+Отсюда следует, что полученную счетно аддитивную функцию можно
+продолжить на всю $\sigma$-алгебру
+$\mathfrak{a}_1\otimes\mathfrak{a}_2$. Полученная мера и называется
+\emph{произведением мер $\nu_1$ и $\nu_2$}.
+\end{defen}
+
+\begin{zam}
+Если меры $\nu_1$ и $\nu_2$ полны, то мера $\nu_1\otimes\nu_2$ может
+не быть полной, поэтому иногда бывает удобно рассматривать
+пополнение произведения пространств с мерой:
+$(\Omega_1\times\Omega_2,\overline{\mathfrak{a}_1\otimes\mathfrak{a}_2},
+\overline{\nu_1\otimes\nu_2})$.
+\end{zam}
+
+\begin{zam}
+Если функция $f$ измерима на
+$(\Omega_1\times\Omega_2,\mathfrak{a}_1\otimes\mathfrak{a}_2,\nu_1\otimes\nu_2)$,
+то $\forall\,\omega_1\in\Omega_1$ функция $\omega\mapsto
+f(\omega_1,\omega)$ измерима на $(\Omega_2,\mathfrak{a}_2,\nu_2)$. В
+случае, когда рассматриваются пополненное пространство, необходимо
+заменить выражение <<$\forall\,\omega_1\in\Omega_1$>> на <<для почти
+всех $\omega_1\in\Omega_1$>>.
+\end{zam}
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 13-----------------------------------------------%
+\lecture
+
+\begin{theorem}[Фубини]
+Пусть
+$f\in\mathcal{L}_1(\Omega_1\times\Omega_2,\mathfrak{a}_1\otimes\mathfrak{a}_2,\nu_1\otimes\nu_2)$,
+тогда для $\nu_1$-почти всех $\omega_1\in\Omega_1$ функция
+$\omega\mapsto f(\omega_1,\omega)$ интегрируема на
+$(\Omega_2,\mathfrak{a}_2,\nu_2)$, причем функция
+$\omega_1\mapsto\int\limits_{\Omega_2}\!f(\omega_1,\omega_2)\,\nu_2(d\omega_2)$
+является $\nu_1$-интегрируемой на $\Omega_1$ и
+$$\int\limits_{\Omega_1\times\Omega_2}\!f(\omega_1,\omega_2)\,(\nu_1\otimes\nu_2)
+(d\omega_1\times
+d\omega_2)=\int\limits_{\Omega_1}\!\Big(\int\limits_{\Omega_2}\!f(\omega_1,\omega_2)
+\,\nu_2(d\omega_2)\Big)\,\nu_1(d\omega_1).$$
+\end{theorem}
+
+\begin{proof}
+Как обычно, достаточно доказать теорему для индикаторов: пусть
+$f=\gamma_{A}$, где $A\in\mathfrak{a}_1\otimes\mathfrak{a}_2$. Пусть
+$$g(\omega_2)=
+\begin{cases}
+\nu_1A_1,&\text{если $\omega_2\in A_2$;}\\
+0,&\text{иначе},
+\end{cases}$$
+тогда, если $A=A_1\times A_2$, где $A_1\in\mathfrak{a_1}$ и
+$A_2\in\mathfrak{a_2}$, то
+\begin{multline*}
+\int\limits_{\Omega_1\times\Omega_2}\!\gamma_A(\omega_1,\omega_2) \,
+(\nu_1\otimes\nu_2)(d\omega_1\times
+d\omega_2)=(\nu_1\otimes\nu_2)(A_1\times A_2)=\\
+=\int\limits_{\Omega_2}\Big(\int\limits_{\Omega_1}\!\gamma_A(\omega_1,
+\omega_2)\,\nu_1(d\omega_1)\Big)\,\nu_2(d\omega_2)=\int\limits_{\Omega_2}\!
+g(\omega_2)\,\nu_2(d\omega_2)=\nu_1A_1\cdot\nu_2A_2.
+\end{multline*}
+
+Назовем множество \emph{допустимым}, если для его индикатора верна
+теорема Фубини. Обозначим множество всех допустимых множеств через
+$\mathcal{Q}$. Нам необходимо доказать, что
+$\mathcal{Q}=\mathfrak{a}_1\otimes\mathfrak{a}_2$. Укажем некоторые
+свойства множества $\mathcal{Q}$.
+
+\svoy
+
+1. $\Omega=\Omega_1\times\Omega_2\in\mathcal{Q}$ (очевидно).
+
+2. $\forall\,B_j\in\mathcal{Q}:B_1\subset B_2\ldots\Rightarrow
+\bigcup\limits_{j=1}^\infty B_j\in\mathcal{Q}$ (следует из теоремы
+Леви).
+
+3. $B_1\subset B_2\in\mathcal{Q}\Rightarrow B_2\setminus
+B_1\in\mathcal{Q}$ (следует из линейности).
+
+4. $\mathcal{P}\subset\mathcal{Q}$ (см. предыдущее равенство).
+
+\begin{defen}
+Совокупность множеств, удовлетворяющая свойствам 1, 2, 3 называется
+\emph{$D$-системой множеств}.
+\end{defen}
+
+Докажем, что $D(\mathcal{P})=\mathfrak{a}_1\otimes\mathfrak{a}_2$
+(легко видеть, что этого будет достаточно для завершения
+доказательства). Это утверждение эквивалентно тому, что
+$D(\mathcal{P})$ --- это $\sigma$-алгебра. Для этого нужно доказать,
+что если $B_1,B_2\in \mathcal{Q}$, то $B_1\cap B_2\in\mathcal{Q}$.
+
+Пусть $\mathcal{Q}_1=\{A\in D(\mathcal{P})\mid \forall\,B\in
+\mathcal{P}\quad A\cap B\in D(\mathcal{P})\}$ и
+$\mathcal{Q}_2=\{A\in D(\mathcal{P})\mid \forall\,B\in
+D(\mathcal{P})\quad A\cap B\in D(\mathcal{P})\}$. Легко видеть, что
+$\mathcal{Q}_1$ и $\mathcal{Q}_2$ --- $D$-системы, причем
+$\mathcal{P}\subset\mathcal{Q}_1,\mathcal{Q}_2$. Но
+$\mathcal{Q}_1\subset D(\mathcal{P})$, поэтому
+$\mathcal{Q}_1=D(\mathcal{P})$ и $\mathcal{Q}_2=D(\mathcal{P})$.
+Отсюда получаем, что $D(\mathcal{P})$ --- это $\sigma$-алгебра и
+$D(\mathcal{P})=\mathfrak{a}_1\otimes\mathfrak{a}_2$.
+\end{proof}
+
+%-----------------------------------------------------------------------------------%
+
+%---------------------------Lecture 14-----------------------------------------------%
+\lecture
+
+\begin{theorem}[Хан-Жордан]
+Пусть $(\Omega,\mathfrak{a})$ --- измеримое пространство, $\nu$ ---
+возможно знакопеременная\footnote{Обратите внимание!} мера.
+
+1. $\exists\,\Omega_+,\Omega_-: \Omega_+\sqcup \Omega_-=\Omega$,
+причем $\forall\, A\subset \Omega_+:A\in\mathfrak{a}\quad \nu
+A\geqslant 0$ и $\forall\, A\subset \Omega_-:A\in\mathfrak{a}\quad
+\nu A\leqslant 0$.
+
+2. $\nu=\nu^+-\nu^-$, где меры $\nu^+$ и $\nu^-$ неотрицательны.
+\end{theorem}
+
+\begin{defen}
+Разложение пространства $\Omega$, указанное в п.1, называется
+\emph{разложением Хана}.
+\end{defen}
+
+\begin{defen}
+Мера $\nu^+$ называется \emph{положительной}, а мера $\nu^-$ ---
+\emph{отрицательной} вариацией меры $\nu$. Величина
+$\|\nu\|=\nu^++\nu^-$ называется \emph{вариацией меры
+$\nu$}\footnote{Иногда \emph{вариацией} называется величина
+$\|\nu\|\Omega$. В таком случае отображение
+$\nu\p\mapsto\|\nu\|\Omega$ является нормой.}.
+\end{defen}
+
+\begin{proof}
+Вначале докажем п.2, исходя из п.1. Положим $\nu^+A\p=\nu(A\cap
+\Omega_+)$ и $\nu^-A=-\nu(A\cap \Omega_-)$. Как легко видеть, что
+$\nu^+$ и $\nu^-$, определенные таким образом, дают искомое
+разложение.
+
+\begin{zam}
+Разложение меры в п.2 не является единственным. Однако, если
+$\nu=\mu^+-\mu^-$, то $\mu^+A\geqslant\nu^+A$ и
+$\mu^-A\geqslant\nu^-A$.
+\end{zam}
+
+Докажем теперь п.1. Назовем множество $C\in\mathfrak{a}$
+\emph{отрицательным}, если $\forall\,A\in\mathfrak{a}\quad\nu(A\cap
+C)\leqslant 0$, и \emph{положительным}, если
+$\forall\,A\in\mathfrak{a}\quad\nu(A\cap C)\geqslant 0$.
+
+Пусть $\alpha=\inf\{\nu C\mid C \text{--- отрицательно}\}$ и
+$\{C_n\}$ --- последовательность измеримых множеств, таких, что $\nu
+C_n\searrow \alpha$. Положим $A_0=\bigcup\limits_{n=1}^\infty C_n$.
+Очевидно, что $A_0$ отрицательно. Докажем, что множество
+$\Omega_+=\Omega\setminus A_0$ является положительным (тогда можно
+взять $\Omega_-=A_0$).
+
+Предположим противное: пусть найдется такое $\bar{A}\in\Omega_+$,
+что $\nu\bar{A}<0$. Выберем последовательность $\{\varepsilon_j\}$,
+такую, что $\varepsilon_j>0$ и $\varepsilon_j\searrow 0$. Тогда
+множество $\bar{A}$ не может быть отрицательным, иначе его можно
+присоединить к $A_0$, и тогда получится, что $\nu A_0<\alpha$.
+Поэтому $\exists\,A_1\subset \bar{A}:\nu A_1>\varepsilon_{j_1}$.
+Рассмотрим множество $\bar{A}\setminus A_1$. Проводя аналогичные
+рассуждения, получаем, что $\exists\,A_2\subset\bar{A}\setminus
+A_1:\nu A_2>\varepsilon_{j_2}$.
+
+В результате мы получим последовательность попарно непересекающихся
+множеств $\{A_k\}$, где $\nu A_k>\varepsilon_{j_k}$. Кроме того,
+$\nu\Big(\bigsqcup\limits_{k=1}^\infty
+A_k\Big)=\sum\limits_{k=1}^\infty \nu A_k\p<\infty$, поэтому $\nu
+A_k\to0$ и $\varepsilon_{j_k}\to0$.
+
+Имеем: $\nu\Big(\bar{A}\setminus\bigsqcup\limits_{k=1}^\infty
+A_k\Big)<0$. Докажем, что множество
+$\bar{A}\setminus\bigsqcup\limits_{k=1}^\infty A_k$ отрицательно.
+Действительно, если бы это было не так, то нашлось бы множество
+$D\subset\bar{A}\setminus\bigsqcup\limits_{k=1}^\infty A_k$, такое,
+что $\nu D=\varepsilon>0$, а значит, нашлось бы такое $k$, что
+$\varepsilon_{j_k}<\varepsilon$ --- противоречие с выбором $A_k$
+(тогда надо было выбрать $D$).
+
+Значит, множество $\bar{A}\setminus\bigsqcup\limits_{k=1}^\infty
+A_k$ отрицательно, и его можно присоединить к $A_0$, в результате
+чего получится, что $\nu A_0<\alpha$ --- противоречие.
+
+Таким образом, можно выбрать $\Omega_-=A_0$ и
+$\Omega_+=\Omega\setminus A_0$.
+\end{proof}
+
+Пусть $f$ --- интегрируемая функция,
+$F(t)=\int\limits_{-\infty}^t\!f(\tau)\,d\tau$ и
+$\mu=f\cdot\lambda$, где $\lambda$ --- стандартная мера Лебега.
+
+\begin{theorem}[Лебег]
+Функция $F(t)=\int\limits_{-\infty}^t\!f(\tau)\,d\tau$
+дифференцируема почти всюду по $t$ и $F'(t)=f(t)$.
+\end{theorem}
+
+\begin{proof}
+
+Для доказательства нам понадобятся следующие две леммы.
+
+\begin{lemm}\label{lemm1}
+Если $\{I_\alpha\}$ --- семейство интервалов,
+$G=\bigcup\limits_\alpha I_\alpha$ и $\lambda G<\infty$, то можно
+выбрать подсемейство попарно непересекающихся интервалов
+$\{I_{\alpha_k}\}$, таких, что $\sum\limits_{k=1}^n\lambda
+I_{\alpha_k}\geqslant \frac 1 4 \lambda G$.
+\end{lemm}
+
+\begin{proof}
+Вначале докажем, что существует такой компакт $K\p\subset G$, что
+$\lambda K\geqslant\frac 3 4\lambda G$. Поскольку
+$G=\bigcup\limits_{n=1}^\infty((-n;n)\cap G)$, то можно считать, что
+множество $G$ ограничено. Положим $K_\alpha=\{x\in G\mid
+\rho(x,\mathbb{R}^1\setminus G)\geqslant\alpha\}$. Тогда все
+$K_\alpha$ --- компакты, и $\bigcup\limits_{n=1}^\infty K_{1/n}=G$.
+Значит, $\exists\,K=K_{n_0}:\lambda K\p\geqslant\frac 3 4\lambda G$.
+
+Из любого покрытия компакта $K$ можно выбрать конечное подпокрытие
+$J_1$,\ldots, $J_n$. Пусть $I_{\alpha_1}$ --- это то из множеств
+$\{J_k\}$, у которого мера Лебега максимальна, $I_{\alpha_2}$ ---
+множество с наибольшей мерой Лебега из тех, что не пересекаются с
+$I_{\alpha_1}$, и т.д.
+
+Докажем, что подпокрытие $\{I_{\alpha_k}\}$ --- искомое. Заменим
+множества $I_{\alpha_i}$ интервалами $\hat{I}_{\alpha_i}$ с той же
+серединой, но втрое большей длиной. Тогда $\bigcup\limits_r
+\hat{I}_{\alpha_r}\supset K$, поэтому $$\lambda
+K\leqslant\sum\limits_r\lambda
+\hat{I}_{\alpha_r}=3\sum\limits_r\lambda I_{\alpha_r},$$ откуда
+$\frac 1 4\lambda G\leqslant\sum\limits_r\lambda I_{\alpha_r}$, что
+и требовалось.
+\end{proof}
+
+\begin{lemm}\label{lemm2}
+Если $A\in\mathfrak{B}(\mathbb{R}^1)$ и $\mu A=0$, то $F'(t)=0$ для
+почти всех $t\in A$.
+\end{lemm}
+
+\begin{proof}
+Пусть $\delta,\varepsilon>0$. Т.к. $A\in\mathfrak{B}(\mathbb{R}^1)$,
+то $\exists\,G_\delta\supset A:\mu G_\delta<\delta$. Положим
+$I_h=(x-h;x+h)$ и $A_\varepsilon=\{x\in A\mid \lim\limits_{h\to
+0}\sup\frac{\mu I_h}{h}>\varepsilon\}$. Тогда $\forall\,x\in
+A_\varepsilon\quad\exists\,h:I_h\subset G_\delta$ и $\mu
+I_h>\varepsilon h=\varepsilon\frac{\lambda I_h}{2}$, т.е. $2\mu
+I_h>\varepsilon\lambda I_h$. По лемме~\ref{lemm1} объединение
+$V=\bigcup\limits_h I_h$ содержит $A_\varepsilon$ и содержится в
+$G_\delta$, причем $$\lambda A_\varepsilon\leqslant\lambda
+V\leqslant 4\sum\limits_k\lambda I_{h_k}<\frac{8}{\varepsilon}
+\sum\limits_k\mu I_{h_k}\leqslant\frac{8}{\varepsilon}\mu
+G_\delta<\frac{8\delta}{\varepsilon}.$$ Отсюда получаем, что
+$\lambda A_\varepsilon=0$, а значит, для почти всех $\varepsilon$
+функция $F(t)$ дифференцируема, причем $F'(x)=\lim\limits_{h\to
+0}\sup\frac{F(x+h)-F(x-h)}{2h}=0$, что и требовалось.
+\end{proof}
+
+Теперь докажем теорему Лебега. Пусть $\hat{F}(t)=\lim\limits_{h\to
+0}\sup\frac{F(t+h)-F(t)}{h}$ и $\check{F}(t)=\lim\limits_{h\to
+0}\inf\frac{F(t+h)-F(t)}{h}$. Согласно лемме~\ref{lemm2},
+$\hat{F}(t)=0$ для почти всех $t\in\{x\mid f(x)=0\}$.
+
+Для каждого $r\in\mathbb{R}^1$ положим
+$F_r(t)=\int\limits_{-\infty}^t\!(f(\tau)-r)_+\,d\tau$, тогда
+$\hat{F}_r(t)=0$ почти всюду на множестве $\{x\mid f(x)\leqslant
+r\}$.
+
+Т.к. $f\leqslant (f-r)_++r$, то $\hat{F}(t)\leqslant r$ на множестве
+$\{x\mid f(x)\leqslant r\}$. Но
+\begin{multline*}
+\lambda\{x\mid f(x)<\hat{F}(x)\}=\lambda\bigcup\limits_r\{x\mid
+f(x)\leqslant r< \hat{F}(x)\}\leqslant\\
+\leqslant\sum\limits_r\lambda\{\{x\mid f(x)\leqslant r\}\cap\{x\mid
+r<\hat{F}(x)\}\}=0,
+\end{multline*}
+откуда $\hat{F}(t)\leqslant f(t)$ почти всюду. Аналогично,
+$\check{F}(t)\geqslant f(t)$ почти всюду. Таким образом,
+$\check{F}(t)\geqslant
+f(t)\geqslant\hat{F}(t)\geqslant\check{F}(t)$, а значит, почти всюду
+$\exists\,F'(t)=f(t)$, что и требовалось.
+\end{proof}
+
+\tema{Интеграл Лебега-Стильтьеса}
+
+Пусть $(\mathbb{R}^1,\mathfrak{B}(\mathbb{R}^1))$ --- измеримое
+пространство.
+
+\begin{defen}
+Функция $F$ \emph{имеет ограниченную вариацию}, если
+$\exists\,\nu\colon
+\mathfrak{B}(\mathbb{R}^1)\to\mathbb{R}^1:\forall\,t\quad
+F(t)=\nu(-\infty;t]$. Тогда $\nu(a;b]=F(b)-F(a)$ --- это \emph{мера
+Лебега-Стильтьеса}. Функция $F$ называется \emph{абсолютно
+непрерывной}, если $\exists\,f\in\mathcal{L}_1:\forall\,t\quad
+F(t)=\int\limits_{-\infty}^t\!f(\tau)\,d\tau$.
+\end{defen}
+
+\begin{zam}
+Абсолютно непрерывная функция всегда имеет ограниченную вариацию:
+положим $\nu A=\int\limits_A\!f(x)\,dx$ и $F(t)=\nu(-\infty;t]$.
+
+Из теоремы Лебега следует, что если мы знаем производную $F'(t)$
+абсолютно непрерывной функции $F(t)$, то сама функция $F(t)$
+однозначно восстанавливается:
+$F(t)=\int\limits_{-\infty}^t\!F'(\tau)\,d\tau$.
+\end{zam}
+
+\begin{defen}
+Пусть $f,g\colon \mathbb{R}^1\to\mathbb{R}^1$. \emph{Интегралом
+Стильтьеса} называется величина
+$\int\limits_a^b\!g(x)\,df(x)=\lim\limits_{n\to\infty}\sum\limits_{k=1}^n
+g(\xi_k)(f(x_{k+1})-f(x_k))$, где $\{(x_k,\xi_k)\}$ --- отмеченное
+разбиение отрезка $[a;b]$.
+\end{defen}
+
+\begin{theorem}[без доказательства]
+Пусть $f$ --- функция ограниченной вариации \textup{(}т.е.
+$f(t)=\nu_f(-\infty;t]$\textup{)}, а $g$ --- ограниченная функция.
+Тогда интеграл Стильтьеса $\int\limits_a^b\!g(t)\,df(t)$ существует
+тогда и только тогда, когда значение меры $\nu_f$ на множестве точек
+разрыва функции $g$ равно 0. В этом случае
+$\int\limits_a^b\!g(t)\,df(t)=\int\limits_a^b\!g(t)\,\nu_f(dt)$.\hfill{$\square$}
+\end{theorem}
+
+\begin{theorem}[без доказательства]
+Интегралы $\int\limits_a^b\!f(t)\,dg(t)$ и
+$\int\limits_a^b\!g(t)\,df(t)$ существуют или не существуют
+одновременно, причем если они существуют, то верна формула
+интегрирования по частям: $$\int\limits_a^b\!g(t)\,df(t)=
+f(b)g(b)-f(a)g(a)-\int\limits_a^b\!f(t)\,dg(t).$$\hfill{$\square$}
+\end{theorem}
+
+\begin{theorem}
+Пусть $f$ и $g$ --- функции ограниченной вариации, а также
+$\mu_f(a;b]=f(b)-f(a)$ и $\nu_g(a;b]=g(b)-g(a)$. Тогда верна формула
+интегрирования по частям:
+$$\int\limits_{(a;b]}\!f(t)\,\nu_g(dt)=g(b)f(b)-g(a)f(a)-\int\limits_
+{(a;b]}\!g(t-0)\,\mu_f(dt).$$
+\end{theorem}
+
+\begin{proof}
+Теорема верна в силу следующей цепочки равенств:
+
+\begin{align*}
+\int\limits_{(a;b]}\!f(t)\,\nu_g(dt)&=\int\limits_{(a;b]}\!(f(a)+\mu_f(a;t])\,\nu_g(dt)=
+f(a)g(t)\!\!\mid_a^b+\int\limits_{(a;b]}\!\mu_f(a;t]\,\nu_g(dt)=\\
+&=f(a)(g(b)-g(a))+\int\limits_a^b\!\!\int\limits_a^b\!\gamma_E(t_1,t_2)\,(\nu_g\otimes\mu_f)(dt_1\times
+dt_2)=\footnotemark[11]\\
+&=f(a)(g(b)-g(a))-\int\limits_{(a;b]}\!g(t-0)\,\mu_f(dt)+g(t)f(t)\!\!\mid_a^b=\\
+&=g(b)f(b)-g(a)f(a)-\int\limits_ {(a;b]}\!g(t-0)\,\mu_f(dt),
+\end{align*}\footnotetext[11]{Здесь $E$ --- это треугольник на координатной плоскости $t_1Ot_2$
+с вершинами в точках $(a;a)$, $(b;b)$ и $(b;a)$.}%
+что и требовалось.
+\end{proof}
+
+\begin{zam}
+Если функции $f$ и $g$ абсолютно непрерывны, то формула
+интегрирования по частям записывается в следующем виде:
+$$\int\limits_a^b\!f'(t)g(t)\,dt=f(b)g(b)-f(a)g(a)-\int\limits_a^b\!g'(t)f(t)\,dt.$$
+Из этой формулы, в частности, следует, что функция $fg$ также
+абсолютно непрерывна.
+\end{zam}
+%-----------------------------------------------------------------------------------%
+
+\clearpage
+
+\begin{center}
+\textbf{\textsc{Приложение. \\ Экзаменационные вопросы.}}
+\end{center}
+
+\vspace{7pt}
+
+\noindent 1. Продолжение конечно аддитивной меры с полукольца на
+порожденное кольцо.
+
+\noindent 2. Доказательство неравенства $|\nu^*A-\nu^*B|\leqslant
+\nu^*(A\bigtriangleup B)$.
+
+\noindent 3. Совпадение $\nu^*$ и $\nu$ на области определения меры
+$\nu$.
+
+\noindent 4. Доказательство того, что множество $\nu$-измеримых
+подмножеств является $\sigma$-алгеброй.
+
+\noindent 5. Доказательство того, что внешняя мера $\nu^*$ счетно
+аддитивна на $\sigma$-алгебре $\nu$-измеримых подмножеств.
+
+\noindent 6. Доказательство единственности продолжения счетно
+аддитивной меры с алгебры на порожденную $\sigma$-алгебру.
+
+\noindent 7. Счетная аддитивность меры Лебега (на полукольце
+полуинтервалов вещественной прямой).
+
+\noindent 8. Два определения измеримости вещественной функции на
+измеримом пространстве и их эквивалентность.
+
+\noindent 9. Доказательство того, что всякая измеримая функция
+является пределом последовательности простых функций.
+
+\noindent 10. Доказательство измеримости функции, являющейся
+пределом сходящейся последовательности измеримых функций.
+
+\noindent 11. Доказательство существования неизмеримого по Лебегу
+подмножества вещественной прямой.
+
+\noindent 12. Связь между сходимостью почти всюду и сходимостью по
+мере.
+
+\noindent 13. Критерий счетно аддитивной конечной меры на кольце
+множеств.
+
+\noindent 14. Определение интеграла Лебега для измеримых функций.
+
+\noindent 15. Неравенство Чебышева.
+
+\noindent 16. Теорема Беппо Леви.
+
+\noindent 17. Теорема Фату-Лебега.
+
+\noindent 18. Теорема Лебега о предельном переходе под знаком
+интеграла.
+
+\noindent 19. Теорема Фату.
+
+\noindent 20. Доказательство того, что интегрируемая по Риману
+функция интегрируема по Лебегу и интегралы совпадают.
+
+\noindent 21. Связь между интегралом Лебега и несобственным
+интегралом Римана.
+
+\noindent 22. Замена переменной в интеграле Лебега.
+
+\noindent 23. Равносильность двух определений абсолютной
+непрерывности одной меры относительно другой.
+
+\noindent 24. Счетная аддитивность и абсолютная непрерывность
+интеграла Лебега.
+
+\noindent 25. Теорема Радона-Никодима.
+
+\noindent 26. Теорема Хана-Жордана.
+
+\noindent 27. Неравенство Гельдера.
+
+\noindent 28. Неравенство Минковского.
+
+\noindent 29. Полнота пространства $\mathcal{L}_p$ при $p\geqslant
+1$.
+
+\noindent 30. Счетная аддитивность произведения двух счетно
+аддитивных мер.
+
+\noindent 31. Теорема Фубини.
+
+\noindent 32. Дифференцирование интеграла Лебега с переменным
+верхним пределом.
+
+\noindent 33. Восстановление абсолютно непрерывной функции по ее
+производной.
+
+\noindent 34. Связь между интегралами Римана-Стильтьеса и
+Лебега-Стильть\-еса (без доказательства).
+\end{document}

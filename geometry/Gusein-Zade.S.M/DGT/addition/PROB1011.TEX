@@ -1,0 +1,233 @@
+%% Lust updated: February 24, 1999.
+
+\documentstyle[12pt]{article}
+%% \documentstyle{article}
+
+\input amssym.def
+\input amssym.tex
+
+\marginparwidth 40pt
+\textwidth=145mm
+%% \textwidth=140mm
+%% \textheight=200mm
+\textheight=215mm
+
+\def\R{\Bbb R}
+\def\N{\Bbb N}
+\def\Z{\Bbb Z}
+\def\Q{\Bbb Q}
+\def\C{\Bbb C}
+\def\CP{\Bbb C\Bbb P}
+\def\RP{\Bbb R\Bbb P}
+\font\sf=cmss10
+
+% Theorem environments for normal usage
+% arabic numbering:
+\newtheorem{theorem}{Теорема}
+\newtheorem{corollary}{Следствие}
+\newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
+
+% Non-italic
+% \theorembodyfont{\rmfamily}
+
+\newenvironment{definition}
+{\smallskip\noindent{\bf Определение\/}:}{\smallskip\par}
+\newenvironment{def-equiv}
+{\smallskip\noindent{\bf Определение'\/}:}{\smallskip\par}
+%% \newenvironment{proposition}
+%% {\smallskip\noindent{\bf Proposition\/}.}{\smallskip\par}
+\newenvironment{example}
+{\smallskip\noindent{\bf Пример\/}.}{\smallskip\par}
+\newenvironment{examples}
+{\smallskip\noindent{\bf Примеры\/}.}{\smallskip\par}
+\newenvironment{remark}
+{\smallskip\noindent{\bf Замечание\/}.}{\smallskip\par}
+\newenvironment{remarks}
+{\smallskip\noindent{\bf Замечания\/}.}{\smallskip\par}
+\newenvironment{proof}
+{\noindent{\bf Доказательство\/}.}{{ $\Box$}\smallskip\par}
+\newenvironment{Proof}
+{\noindent{\bf Доказательство\/}}{{ $\Box$}\smallskip\par}
+\newenvironment{problem}
+{\noindent{\bf Задача\/}.}{\smallskip\par}
+\newenvironment{problem^*}
+{\noindent{\bf Задача${}^*$}.}{\smallskip\par}
+\newenvironment{problem^**}
+{\noindent{\bf Задача${}^{**}$}.}{\smallskip\par}
+\newenvironment{problem_*}
+{\noindent{\bf Задача${}_{*}$}.}{\smallskip\par}
+\newenvironment{problem_**}
+{\noindent{\bf Задача${}_{**}$}.}{\smallskip\par}
+
+\title{Дифференциальная геометрия, III курс,
+осенний семестр 2000--2001 уч.г. Задачи.}
+\author{С.М.Гусейн--Заде}
+\date{}
+% Not to forget to restore the \date command finally.
+\begin{document}
+
+\def\Aut{{\operatorname{Aut}}}
+\def\eps{\varepsilon}
+
+\begin{problem_*}
+Пусть $M^n$ и $N^k$~--- гладкие многообразия, $U$~--- открытая область в
+$M^n$, $f$~--- (гладкое) отображение $U\to N^k$. Верно ли, что для любого
+замкнутого множества $V\subset U$ существует отображение $\widetilde f:
+M^n\to N^k$, совпадающее с $f$ в некоторой окрестности множества $V$?
+\end{problem_*}
+
+\begin{problem_*}
+Доказать, что аффинное пространство $\R^n$ гомотопически эк\-ви\-ва\-лент\-на точке.
+\end{problem_*}
+
+\begin{problem_*}
+Доказать, что окружность $S^1$ гомотопически не эквивалентна точке.
+\end{problem_*}
+
+\begin{problem}
+Доказать, что двумерная сфера $S^2$ гомотопически не эквивалентна точке.
+\end{problem}
+
+\begin{problem^*}
+Вычислить группы когомологий де Рама плоскости без точки $\R^2\setminus\{0\}$.
+\end{problem^*}
+
+\begin{problem}
+Вычислить группы когомологий де Рама плоскости без нескольких (конечного
+числа) точек. Предъявить дифференциальные формы, соответствующие базису
+в группах когомологий.
+\end{problem}
+
+\begin{problem}
+Вычислить группы когомологий де Рама трехмерного (координатного)
+пространства без осей координат. Предъявить дифференциальные формы,
+соответствующие базису в группах когомологий.
+\end{problem}
+
+\begin{problem}
+Вычислить группы когомологий де Рама двумерной сферы $S^2$.
+\end{problem}
+
+\begin{problem^*}
+Вычислить группы когомологий де Рама трехмерной сферы $S^3$.
+\end{problem^*}
+
+\begin{problem}
+Доказать, что двумерная сфера $S^2$ гомотопически не эквивалентна окружности
+$S^1$.
+\end{problem}
+
+\begin{problem^*}
+Доказать, что любое замкнутое (компактное без края) многообразие
+гомотопически не эквивалентно точке.
+\end{problem^*}
+
+\begin{problem^*}
+Доказать, что замкнутое многообразие размерности $n$ гомотопически не
+эквивалентно замкнутому многообразию размерности $k\ne n$.
+\end{problem^*}
+
+\begin{problem_*}
+Пусть $X$~--- топологическое пространство. Доказать, что пространство $X$
+гомотопически эквивалентно точке тогда и только тогда, когда тождественное
+отображение $id:X\to X$ ($id(x)=x$) гомотопно отображению в точку.
+\end{problem_*}
+
+\begin{problem^*}
+Пусть на многообразии $M^n$ задана гладкая инволюция $\sigma$ (отображение
+$M^n\to M^n$, квадрат $\sigma\circ\sigma$ которого совпадает с тождественным).
+Пусть $\sigma^*$~--- индуцированное отображение $H^k_{dR}(M^n)\to
+H^k_{dR}(M^n)$, $a$~--- элемент группы $H^k_{dR}(M^n)$, для которого
+$\sigma^*a=a$. Доказать, что в классе смежности $a$ существует $k$--форма
+$\omega$, для которой $\sigma^*\omega=\omega$.
+\end{problem^*}
+
+\begin{problem^*}
+Пусть на многообразии $M^n$ задано гладкое действие конечной группы $G$.
+Дифференциал $G$--ин\-ва\-риант\-ной форма $G$--ин\-ва\-риан\-тен. (Докажите.)
+Обозначим через $H^k_{dR,G}(M^n)$ факторпространство $G$--ин\-ва\-риант\-ных
+замкнутых $k$--форм по подпространству дифференциалов $G$--ин\-ва\-риант\-ных
+$(k-1)$--форм. Доказать, что $H^k_{dR,G}(M^n)$ изоморфно подпространству
+группы $H^k_{dR}(M^n)$, состоящему из $G$--ин\-ва\-риант\-ных классов когомологий.
+\end{problem^*}
+
+\begin{problem^*}
+Пусть на многообразии $M^n$ задано гладкое действие окружности $S^1$
+(т.е. непрерывное по $g\in S^1$ семейство отображение $\varphi_g:M^n\to M^n$,
+для которого $\varphi_{g1\cdot g_2}=\varphi_{g_1}\circ\varphi_{g_2}$),
+$a$~--- элемент группы когомологий де Рама $H^k_{dR}(M^n)$. Доказать,
+что в классе смежности $a$ существует $k$--форма $\omega$, для которой
+$\varphi_g^*\omega=\omega$ для всех $g\in S^1$.
+\end{problem^*}
+
+\begin{problem}
+Пусть $\omega=\sum\limits_{i_1<\ldots<i_k}\omega_{i_1\dots i_k}
+dx^{i_1}\wedge\dots\wedge dx^{i_k}$~---
+замкнутая $k$--форма на пространстве $\R^n$. Написать явную формулу,
+определяющую $(k-1)$--форму $\chi$, для которой $d\chi=\omega$.
+\end{problem}
+
+\begin{problem^*}
+Пусть $\omega=\sum\limits_{i=1}^4\omega_{i}
+dx^1\wedge\dots\wedge \widehat{dx^i}\wedge\dots\wedge dx^4$
+и $\Omega=\sum\limits_{i_1<i_2}\Omega_{i_1i_2}
+dx^{i_1}\wedge dx^{i_2}$~--- замкнутые 3-- и 2--формы соответственно на
+$\R^4\setminus\R^2$, где $\R^2=\{x\in\R^4: x^3=x^4=0\}$. Доказать,
+что формы $\omega$ и $\Omega$ точны и написать явные формулы для
+форм $\xi$ и $\Xi$ таких, что $d\xi=\omega$, $d\Xi=\Omega$.
+\end{problem^*}
+
+\begin{problem_*}
+Доказать, что $H^0_{dR}(M^n)$~--- линейное пространство, размерность
+которого равна количеству связных компонент многообразия $M^n$.
+(Говорят, что две точки $x$ и $y$ лежат в одной компоненте связности
+многообразия $M^n$, если их можно соединить путем, т.е. если существует
+(непрерывное) отображение $f:I\to M^n$ отрезка $I=[0, 1]$ в многообразие
+$M^n$ такое, что $f(0)=x$, $f(1)=y$.)
+\end{problem_*}
+
+\begin{problem_*}
+Пусть $M^n$~--- замкнутое (т.е. компактное без края) ориентированное
+многообразие, $int:H^n_{dR}(M^n)\to\R$~--- отображение, ставящее в
+соответствие элементу $a\in H^n_{dR}(M^n)$ интеграл по многообразию
+$M^n$ (замкнутой) $n$--формы $\omega$ на многообразии $M^n$ из класса
+смежности $a$: $[\omega]=a$. Доказать, что $int$~--- отображение на.
+\end{problem_*}
+
+\begin{problem^*}
+Доказать, что для замкнутого ориентированного связного многообразия $M^n$
+$\dim H^n_{dR}(M^n)=1$.
+\end{problem^*}
+
+\begin{problem}
+Пусть $M^n$~--- неориентируемое связное многообразие. Доказать, что
+$H^n_{dR}(M^n)=0$.
+\end{problem}
+
+\begin{problem}
+Доказать, что замкнутое ориентированное многообразие $M^n$ размерности
+$n>1$ гомотопически не эквивалентно точке.
+\end{problem}
+
+\begin{problem^*}
+Доказать, что любое замкнутое многообразие $M^n$ размерности
+$n>1$ гомотопически не эквивалентно точке.
+\end{problem^*}
+
+\begin{problem}
+Вычислить когомологии $H^k_{dR}(S^1)$ окружности $S^1$.
+\end{problem}
+
+\begin{problem^*}
+Вычислить когомологии $H^k_{dR}(S^2)$ двумерной сферы $S^2$.
+\end{problem^*}
+
+\begin{problem^**}
+Доказать, что группы $H^k_{dR}(M^n)$ когомологий де Рама {\bf компактного}
+многообразия $M^n$ конечномерны.
+\end{problem^**}
+
+\end{document}
+
+

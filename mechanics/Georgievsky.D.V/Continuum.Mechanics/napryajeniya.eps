@@ -1,0 +1,66 @@
+%!PS-Adobe-1.0 EPSF-3.0
+%%BoundingBox: 0 0 170 160
+%%Creator: Oblakov Konstantin himself
+%%Title: wide_coordinates
+%%CreationDate: Wed Dec 19 22:05:10 2007
+%%Pages: 1
+%%LanguageLevel: 1
+%%PageOrder: Ascend
+%%DocumentPaperSizes: a4
+%%EndComments
+%%Page: (Wide coordinates) 1
+%%BeginPageSetup
+/arrow_size 5 def
+/linesize 80 def
+/linewidth .5 def
+%%EndPageSetup
+linewidth setlinewidth
+/as //arrow_size 2 div neg def
+/lj //as 3 mul def
+/Arrow{dup newpath xshift 0 moveto
+0 lineto stroke
+gsave 0 translate
+newpath 0 0 moveto //as //as lineto
+//arrow_size 0 lineto //as //as neg lineto
+closepath fill grestore}bind def
+
+gsave
+70 60 translate
+/xshift 0 def
+gsave
+newpath linesize 2 div 0 moveto 0 linesize 2 div lineto stroke
+linesize Arrow
+90 rotate
+linesize Arrow
+130 rotate
+linesize .75 mul Arrow
+grestore
+gsave
+newpath
+linesize 2 div 0 moveto
+90 rotate
+linesize 2 div 0 lineto
+130 rotate
+linesize 2 div 0 lineto
+closepath stroke
+grestore
+gsave
+40 rotate
+/xshift linesize .25 mul def
+linesize .5 mul Arrow
+15 rotate
+/xshift linesize .1 mul def
+linesize .55 mul Arrow
+125 rotate
+/xshift linesize .15 mul def
+linesize .4 mul Arrow
+90 rotate
+/xshift linesize .1 mul def
+linesize .3 mul Arrow
+grestore
+grestore
+
+showpage
+%%PageTrailer
+%%Trailer
+%%EOF
