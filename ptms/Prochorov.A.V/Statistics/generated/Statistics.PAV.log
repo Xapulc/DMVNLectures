@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.22)  2 MAR 2020 06:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.2.22)  3 MAR 2020 11:50
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -1770,47 +1770,47 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language append on input line 4676.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 4712.
+(babel)             in language append on input line 4713.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 4712.
+(babel)             in language append on input line 4713.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 4712.
+(babel)             in language append on input line 4713.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 4712.
+(babel)             in language append on input line 4713.
  [51]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 4712.
+(babel)             in language append on input line 4713.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 4712.
+(babel)             in language append on input line 4713.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 4782.
+(babel)             in language append on input line 4783.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 4782.
+(babel)             in language append on input line 4783.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 4782.
+(babel)             in language append on input line 4783.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 4782.
+(babel)             in language append on input line 4783.
 
 [52]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 4830.
+(babel)             in language append on input line 4831.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 4830.
+(babel)             in language append on input line 4831.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language append on input line 4830.
+(babel)             in language append on input line 4831.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language append on input line 4830.
+(babel)             in language append on input line 4831.
  [53]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4830.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4830.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4831.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4831.
  (./Statistics.PAV.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4830.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4830.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4831.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4831.
  ) 
 Here is how much of TeX's memory you used:
  32935 strings out of 492982
  721715 string characters out of 6134896
- 930871 words of memory out of 5000000
+ 930872 words of memory out of 5000000
  35612 multiletter control sequences out of 15000+600000
  37910 words of font info for 95 fonts, out of 8000000 for 9000
  1146 hyphenation exceptions out of 8191
@@ -1855,7 +1855,7 @@ er/sfsx2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti0700.pfb></us
 r/share/texmf/fonts/type1/public/cm-super/sfti0800.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfti1000.pfb></usr/share/texmf/fonts/type1/public/cm-supe
 r/sftt0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc1000.pfb>
-Output written on Statistics.PAV.pdf (53 pages, 913838 bytes).
+Output written on Statistics.PAV.pdf (53 pages, 914029 bytes).
 PDF statistics:
  1364 PDF objects out of 1440 (max. 8388607)
  1250 compressed objects within 13 object streams
