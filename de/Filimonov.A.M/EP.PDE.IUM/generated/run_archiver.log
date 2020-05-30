@@ -1,0 +1,15 @@
+
+7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
+p7zip Version 16.02 (locale=ru_RU.UTF-8,Utf16=on,HugeFiles=on,64 bits,8 CPUs Intel(R) Core(TM) i7-8665U CPU @ 1.90GHz (806EC),ASM,AES-NI)
+
+Scanning the drive:
+1 file, 312365 bytes (306 KiB)
+
+Creating archive: generated/ep-pde-filimonov.7z
+
+Items to compress: 1
+
+
+Files read from disk: 1
+Archive size: 145261 bytes (142 KiB)
+Everything is Ok

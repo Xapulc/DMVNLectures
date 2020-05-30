@@ -5,7 +5,8 @@ Makefile
 .*\.aux$
 .*\.log$
 .*\.toc$
-generated
+de/Shaposhnikova.T.A/PDE/generated/*
+!de/Shaposhnikova.T.A/PDE/generated/PDE.STA.PART2.pdf
 
 # spikes
 de/Shaposhnikova.T.A/PDE/scan-polina/pde-lectures-shaposhnikova-hq.djvu
