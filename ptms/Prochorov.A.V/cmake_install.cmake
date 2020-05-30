@@ -1,4 +1,4 @@
-# Install script for directory: /home/xapulc/programs/latex/DMVNLectures/ptms/Prochorov.A.V
+# Install script for directory: /home/xapulc/Projects/DMVNLectures/ptms/Prochorov.A.V
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/xapulc/programs/latex/DMVNLectures/ptms/Prochorov.A.V/EP.Statistics/cmake_install.cmake")
-  include("/home/xapulc/programs/latex/DMVNLectures/ptms/Prochorov.A.V/Statistics/cmake_install.cmake")
+  include("/home/xapulc/Projects/DMVNLectures/ptms/Prochorov.A.V/EP.Statistics/cmake_install.cmake")
+  include("/home/xapulc/Projects/DMVNLectures/ptms/Prochorov.A.V/Statistics/cmake_install.cmake")
 
 endif()
 

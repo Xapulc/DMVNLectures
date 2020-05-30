@@ -1,7 +1,7 @@
 # add_subdirectory(algebra)
 # add_subdirectory(calculus)
 # add_subdirectory(ccalculus)
-# add_subdirectory(de)
+add_subdirectory(de)
 # add_subdirectory(fcalculus)
 add_subdirectory(geometry)
 # add_subdirectory(logic)

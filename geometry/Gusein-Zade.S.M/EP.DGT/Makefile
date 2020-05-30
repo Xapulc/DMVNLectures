@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xapulc/programs/latex/DMVNLectures
+CMAKE_SOURCE_DIR = /home/xapulc/Projects/DMVNLectures
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xapulc/programs/latex/DMVNLectures
+CMAKE_BINARY_DIR = /home/xapulc/Projects/DMVNLectures
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/xapulc/programs/latex/DMVNLectures && $(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/programs/latex/DMVNLectures/CMakeFiles /home/xapulc/programs/latex/DMVNLectures/geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/progress.marks
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/programs/latex/DMVNLectures/CMakeFiles 0
+	cd /home/xapulc/Projects/DMVNLectures && $(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/Projects/DMVNLectures/CMakeFiles /home/xapulc/Projects/DMVNLectures/geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/progress.marks
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/Projects/DMVNLectures/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/clean
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/preinstall
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/preinstall
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/xapulc/Projects/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.ps.dir/rule:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.ps.dir/rule
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.ps.dir/rule
 .PHONY : geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.ps.dir/rule
 
 # Convenience name for target.
@@ -122,12 +122,12 @@ Make-EP.DGT.GSM.ps: geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.p
 
 # fast build rule for target.
 Make-EP.DGT.GSM.ps/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.ps.dir/build.make geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.ps.dir/build
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.ps.dir/build.make geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.ps.dir/build
 .PHONY : Make-EP.DGT.GSM.ps/fast
 
 # Convenience name for target.
 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.dvi.dir/rule:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.dvi.dir/rule
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.dvi.dir/rule
 .PHONY : geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.dvi.dir/rule
 
 # Convenience name for target.
@@ -137,12 +137,12 @@ Make-EP.DGT.GSM.dvi: geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.
 
 # fast build rule for target.
 Make-EP.DGT.GSM.dvi/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.dvi.dir/build.make geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.dvi.dir/build
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.dvi.dir/build.make geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.dvi.dir/build
 .PHONY : Make-EP.DGT.GSM.dvi/fast
 
 # Convenience name for target.
 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.7z.dir/rule:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.7z.dir/rule
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.7z.dir/rule
 .PHONY : geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.7z.dir/rule
 
 # Convenience name for target.
@@ -152,12 +152,12 @@ Make-ep-dgt-guseinzade.7z: geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dg
 
 # fast build rule for target.
 Make-ep-dgt-guseinzade.7z/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.7z.dir/build.make geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.7z.dir/build
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.7z.dir/build.make geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.7z.dir/build
 .PHONY : Make-ep-dgt-guseinzade.7z/fast
 
 # Convenience name for target.
 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.pdf.dir/rule:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.pdf.dir/rule
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.pdf.dir/rule
 .PHONY : geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.pdf.dir/rule
 
 # Convenience name for target.
@@ -167,12 +167,12 @@ Make-ep-dgt-guseinzade.pdf: geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-d
 
 # fast build rule for target.
 Make-ep-dgt-guseinzade.pdf/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.pdf.dir/build.make geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.pdf.dir/build
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.pdf.dir/build.make geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-ep-dgt-guseinzade.pdf.dir/build
 .PHONY : Make-ep-dgt-guseinzade.pdf/fast
 
 # Convenience name for target.
 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.pdf.dir/rule:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.pdf.dir/rule
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.pdf.dir/rule
 .PHONY : geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.pdf.dir/rule
 
 # Convenience name for target.
@@ -182,7 +182,7 @@ Make-EP.DGT.GSM.pdf: geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.
 
 # fast build rule for target.
 Make-EP.DGT.GSM.pdf/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.pdf.dir/build.make geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.pdf.dir/build
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.pdf.dir/build.make geometry/Gusein-Zade.S.M/EP.DGT/CMakeFiles/Make-EP.DGT.GSM.pdf.dir/build
 .PHONY : Make-EP.DGT.GSM.pdf/fast
 
 # Help Target
@@ -209,6 +209,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/xapulc/Projects/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

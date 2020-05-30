@@ -1,4 +1,4 @@
-# Install script for directory: /home/xapulc/programs/latex/DMVNLectures
+# Install script for directory: /home/xapulc/Projects/DMVNLectures
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/xapulc/programs/latex/DMVNLectures/geometry/cmake_install.cmake")
-  include("/home/xapulc/programs/latex/DMVNLectures/ptms/cmake_install.cmake")
+  include("/home/xapulc/Projects/DMVNLectures/de/cmake_install.cmake")
+  include("/home/xapulc/Projects/DMVNLectures/geometry/cmake_install.cmake")
+  include("/home/xapulc/Projects/DMVNLectures/ptms/cmake_install.cmake")
 
 endif()
 
@@ -52,5 +53,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xapulc/programs/latex/DMVNLectures/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/xapulc/Projects/DMVNLectures/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

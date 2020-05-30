@@ -1,19 +1,19 @@
 
 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
-p7zip Version 16.02 (locale=ru_RU.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Atom(TM) x5-Z8350  CPU @ 1.44GHz (406C4),ASM,AES-NI)
+p7zip Version 16.02 (locale=ru_RU.UTF-8,Utf16=on,HugeFiles=on,64 bits,8 CPUs Intel(R) Core(TM) i7-8665U CPU @ 1.90GHz (806EC),ASM,AES-NI)
 
 Open archive: generated/statistics-prochorov.7z
 --
 Path = generated/statistics-prochorov.7z
 Type = 7z
-Physical Size = 781956
+Physical Size = 784620
 Headers Size = 162
 Method = LZMA2:3m
 Solid = -
 Blocks = 1
 
 Scanning the drive:
-1 file, 2244076 bytes (2192 KiB)
+1 file, 2243723 bytes (2192 KiB)
 
 Updating archive: generated/statistics-prochorov.7z
 
@@ -21,5 +21,5 @@ Items to compress: 1
 
 
 Files read from disk: 1
-Archive size: 787325 bytes (769 KiB)
+Archive size: 786545 bytes (769 KiB)
 Everything is Ok

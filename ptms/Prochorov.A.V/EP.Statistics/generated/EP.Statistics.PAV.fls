@@ -1,4 +1,4 @@
-PWD /home/xapulc/programs/latex/DMVNLectures/ptms/Prochorov.A.V/EP.Statistics/generated
+PWD /home/xapulc/Projects/DMVNLectures/ptms/Prochorov.A.V/EP.Statistics/generated
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
@@ -42,7 +42,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map
-INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1000.tfm
+INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1000.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/cp1251.def
@@ -68,8 +68,8 @@ INPUT /usr/share/texmf/tex/dmvn/diagram.tex
 INPUT EP.Statistics.PAV.aux
 INPUT EP.Statistics.PAV.aux
 OUTPUT EP.Statistics.PAV.aux
-INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1728.tfm
-INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm
+INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1728.tfm
+INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
@@ -97,8 +97,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
-INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm
-INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm
+INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm
+INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
@@ -110,13 +110,13 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
-INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1000.tfm
+INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1000.tfm
 OUTPUT EP.Statistics.PAV.dvi
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0800.tfm
+INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0800.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
-INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/latt0800.tfm
-INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0600.tfm
+INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/latt0800.tfm
+INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0600.tfm
 INPUT EP.Statistics.PAV.aux

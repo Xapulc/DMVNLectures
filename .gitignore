@@ -1,13 +1,13 @@
 CMakeFiles
-cmake_install.cmake$
-^CMakeCache.txt$
-(.*/|^)Makefile$
+cmake_install.cmake
+^CMakeCache.txt
+Makefile
 .*\.aux$
 .*\.log$
 .*\.toc$
-.*/generated$
+generated
 
 # spikes
 de/Shaposhnikova.T.A/PDE/scan-polina/pde-lectures-shaposhnikova-hq.djvu
 de/Shaposhnikova.T.A/PDE/scan-polina/pde-lectures-shaposhnikova-lq.djvu
- 
+

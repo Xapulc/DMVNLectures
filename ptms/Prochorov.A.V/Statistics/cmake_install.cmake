@@ -1,4 +1,4 @@
-# Install script for directory: /home/xapulc/programs/latex/DMVNLectures/ptms/Prochorov.A.V/Statistics
+# Install script for directory: /home/xapulc/Projects/DMVNLectures/ptms/Prochorov.A.V/Statistics
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xapulc/programs/latex/DMVNLectures
+CMAKE_SOURCE_DIR = /home/xapulc/Projects/DMVNLectures
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xapulc/programs/latex/DMVNLectures
+CMAKE_BINARY_DIR = /home/xapulc/Projects/DMVNLectures
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/programs/latex/DMVNLectures/CMakeFiles /home/xapulc/programs/latex/DMVNLectures/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/Projects/DMVNLectures/CMakeFiles /home/xapulc/Projects/DMVNLectures/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/programs/latex/DMVNLectures/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/Projects/DMVNLectures/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -109,6 +109,370 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named Make-PR.ODE.AVI.book.ps
+
+# Build rule for target.
+Make-PR.ODE.AVI.book.ps: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-PR.ODE.AVI.book.ps
+.PHONY : Make-PR.ODE.AVI.book.ps
+
+# fast build rule for target.
+Make-PR.ODE.AVI.book.ps/fast:
+	$(MAKE) -f de/Arnold.V.I/PR.ODE/CMakeFiles/Make-PR.ODE.AVI.book.ps.dir/build.make de/Arnold.V.I/PR.ODE/CMakeFiles/Make-PR.ODE.AVI.book.ps.dir/build
+.PHONY : Make-PR.ODE.AVI.book.ps/fast
+
+#=============================================================================
+# Target rules for targets named Make-PR.ODE.AVI.book.dvi
+
+# Build rule for target.
+Make-PR.ODE.AVI.book.dvi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-PR.ODE.AVI.book.dvi
+.PHONY : Make-PR.ODE.AVI.book.dvi
+
+# fast build rule for target.
+Make-PR.ODE.AVI.book.dvi/fast:
+	$(MAKE) -f de/Arnold.V.I/PR.ODE/CMakeFiles/Make-PR.ODE.AVI.book.dvi.dir/build.make de/Arnold.V.I/PR.ODE/CMakeFiles/Make-PR.ODE.AVI.book.dvi.dir/build
+.PHONY : Make-PR.ODE.AVI.book.dvi/fast
+
+#=============================================================================
+# Target rules for targets named Make-pr-ode-arnold.7z
+
+# Build rule for target.
+Make-pr-ode-arnold.7z: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-pr-ode-arnold.7z
+.PHONY : Make-pr-ode-arnold.7z
+
+# fast build rule for target.
+Make-pr-ode-arnold.7z/fast:
+	$(MAKE) -f de/Arnold.V.I/PR.ODE/CMakeFiles/Make-pr-ode-arnold.7z.dir/build.make de/Arnold.V.I/PR.ODE/CMakeFiles/Make-pr-ode-arnold.7z.dir/build
+.PHONY : Make-pr-ode-arnold.7z/fast
+
+#=============================================================================
+# Target rules for targets named Make-PR.ODE.AVI.book.pdf
+
+# Build rule for target.
+Make-PR.ODE.AVI.book.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-PR.ODE.AVI.book.pdf
+.PHONY : Make-PR.ODE.AVI.book.pdf
+
+# fast build rule for target.
+Make-PR.ODE.AVI.book.pdf/fast:
+	$(MAKE) -f de/Arnold.V.I/PR.ODE/CMakeFiles/Make-PR.ODE.AVI.book.pdf.dir/build.make de/Arnold.V.I/PR.ODE/CMakeFiles/Make-PR.ODE.AVI.book.pdf.dir/build
+.PHONY : Make-PR.ODE.AVI.book.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-pr-ode-arnold.pdf
+
+# Build rule for target.
+Make-pr-ode-arnold.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-pr-ode-arnold.pdf
+.PHONY : Make-pr-ode-arnold.pdf
+
+# fast build rule for target.
+Make-pr-ode-arnold.pdf/fast:
+	$(MAKE) -f de/Arnold.V.I/PR.ODE/CMakeFiles/Make-pr-ode-arnold.pdf.dir/build.make de/Arnold.V.I/PR.ODE/CMakeFiles/Make-pr-ode-arnold.pdf.dir/build
+.PHONY : Make-pr-ode-arnold.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-EP.PDE.FAM.dvi
+
+# Build rule for target.
+Make-EP.PDE.FAM.dvi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-EP.PDE.FAM.dvi
+.PHONY : Make-EP.PDE.FAM.dvi
+
+# fast build rule for target.
+Make-EP.PDE.FAM.dvi/fast:
+	$(MAKE) -f de/Filimonov.A.M/EP.PDE.IUM/CMakeFiles/Make-EP.PDE.FAM.dvi.dir/build.make de/Filimonov.A.M/EP.PDE.IUM/CMakeFiles/Make-EP.PDE.FAM.dvi.dir/build
+.PHONY : Make-EP.PDE.FAM.dvi/fast
+
+#=============================================================================
+# Target rules for targets named Make-ep-pde-filimonov.7z
+
+# Build rule for target.
+Make-ep-pde-filimonov.7z: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-ep-pde-filimonov.7z
+.PHONY : Make-ep-pde-filimonov.7z
+
+# fast build rule for target.
+Make-ep-pde-filimonov.7z/fast:
+	$(MAKE) -f de/Filimonov.A.M/EP.PDE.IUM/CMakeFiles/Make-ep-pde-filimonov.7z.dir/build.make de/Filimonov.A.M/EP.PDE.IUM/CMakeFiles/Make-ep-pde-filimonov.7z.dir/build
+.PHONY : Make-ep-pde-filimonov.7z/fast
+
+#=============================================================================
+# Target rules for targets named Make-EP.PDE.FAM.pdf
+
+# Build rule for target.
+Make-EP.PDE.FAM.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-EP.PDE.FAM.pdf
+.PHONY : Make-EP.PDE.FAM.pdf
+
+# fast build rule for target.
+Make-EP.PDE.FAM.pdf/fast:
+	$(MAKE) -f de/Filimonov.A.M/EP.PDE.IUM/CMakeFiles/Make-EP.PDE.FAM.pdf.dir/build.make de/Filimonov.A.M/EP.PDE.IUM/CMakeFiles/Make-EP.PDE.FAM.pdf.dir/build
+.PHONY : Make-EP.PDE.FAM.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-EP.PDE.FAM.ps
+
+# Build rule for target.
+Make-EP.PDE.FAM.ps: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-EP.PDE.FAM.ps
+.PHONY : Make-EP.PDE.FAM.ps
+
+# fast build rule for target.
+Make-EP.PDE.FAM.ps/fast:
+	$(MAKE) -f de/Filimonov.A.M/EP.PDE.IUM/CMakeFiles/Make-EP.PDE.FAM.ps.dir/build.make de/Filimonov.A.M/EP.PDE.IUM/CMakeFiles/Make-EP.PDE.FAM.ps.dir/build
+.PHONY : Make-EP.PDE.FAM.ps/fast
+
+#=============================================================================
+# Target rules for targets named Make-ep-pde-filimonov.pdf
+
+# Build rule for target.
+Make-ep-pde-filimonov.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-ep-pde-filimonov.pdf
+.PHONY : Make-ep-pde-filimonov.pdf
+
+# fast build rule for target.
+Make-ep-pde-filimonov.pdf/fast:
+	$(MAKE) -f de/Filimonov.A.M/EP.PDE.IUM/CMakeFiles/Make-ep-pde-filimonov.pdf.dir/build.make de/Filimonov.A.M/EP.PDE.IUM/CMakeFiles/Make-ep-pde-filimonov.pdf.dir/build
+.PHONY : Make-ep-pde-filimonov.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-EP.PDE.VAK.ps
+
+# Build rule for target.
+Make-EP.PDE.VAK.ps: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-EP.PDE.VAK.ps
+.PHONY : Make-EP.PDE.VAK.ps
+
+# fast build rule for target.
+Make-EP.PDE.VAK.ps/fast:
+	$(MAKE) -f de/Kondratiev.V.A/EP.PDE/CMakeFiles/Make-EP.PDE.VAK.ps.dir/build.make de/Kondratiev.V.A/EP.PDE/CMakeFiles/Make-EP.PDE.VAK.ps.dir/build
+.PHONY : Make-EP.PDE.VAK.ps/fast
+
+#=============================================================================
+# Target rules for targets named Make-ep-pde-kondratiev.pdf
+
+# Build rule for target.
+Make-ep-pde-kondratiev.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-ep-pde-kondratiev.pdf
+.PHONY : Make-ep-pde-kondratiev.pdf
+
+# fast build rule for target.
+Make-ep-pde-kondratiev.pdf/fast:
+	$(MAKE) -f de/Kondratiev.V.A/EP.PDE/CMakeFiles/Make-ep-pde-kondratiev.pdf.dir/build.make de/Kondratiev.V.A/EP.PDE/CMakeFiles/Make-ep-pde-kondratiev.pdf.dir/build
+.PHONY : Make-ep-pde-kondratiev.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-EP.PDE.VAK.dvi
+
+# Build rule for target.
+Make-EP.PDE.VAK.dvi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-EP.PDE.VAK.dvi
+.PHONY : Make-EP.PDE.VAK.dvi
+
+# fast build rule for target.
+Make-EP.PDE.VAK.dvi/fast:
+	$(MAKE) -f de/Kondratiev.V.A/EP.PDE/CMakeFiles/Make-EP.PDE.VAK.dvi.dir/build.make de/Kondratiev.V.A/EP.PDE/CMakeFiles/Make-EP.PDE.VAK.dvi.dir/build
+.PHONY : Make-EP.PDE.VAK.dvi/fast
+
+#=============================================================================
+# Target rules for targets named Make-ep-pde-kondratiev.7z
+
+# Build rule for target.
+Make-ep-pde-kondratiev.7z: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-ep-pde-kondratiev.7z
+.PHONY : Make-ep-pde-kondratiev.7z
+
+# fast build rule for target.
+Make-ep-pde-kondratiev.7z/fast:
+	$(MAKE) -f de/Kondratiev.V.A/EP.PDE/CMakeFiles/Make-ep-pde-kondratiev.7z.dir/build.make de/Kondratiev.V.A/EP.PDE/CMakeFiles/Make-ep-pde-kondratiev.7z.dir/build
+.PHONY : Make-ep-pde-kondratiev.7z/fast
+
+#=============================================================================
+# Target rules for targets named Make-EP.PDE.VAK.pdf
+
+# Build rule for target.
+Make-EP.PDE.VAK.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-EP.PDE.VAK.pdf
+.PHONY : Make-EP.PDE.VAK.pdf
+
+# fast build rule for target.
+Make-EP.PDE.VAK.pdf/fast:
+	$(MAKE) -f de/Kondratiev.V.A/EP.PDE/CMakeFiles/Make-EP.PDE.VAK.pdf.dir/build.make de/Kondratiev.V.A/EP.PDE/CMakeFiles/Make-EP.PDE.VAK.pdf.dir/build
+.PHONY : Make-EP.PDE.VAK.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-CW.PDE.STA.dvi
+
+# Build rule for target.
+Make-CW.PDE.STA.dvi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-CW.PDE.STA.dvi
+.PHONY : Make-CW.PDE.STA.dvi
+
+# fast build rule for target.
+Make-CW.PDE.STA.dvi/fast:
+	$(MAKE) -f de/Shaposhnikova.T.A/CW.PDE/CMakeFiles/Make-CW.PDE.STA.dvi.dir/build.make de/Shaposhnikova.T.A/CW.PDE/CMakeFiles/Make-CW.PDE.STA.dvi.dir/build
+.PHONY : Make-CW.PDE.STA.dvi/fast
+
+#=============================================================================
+# Target rules for targets named Make-CW.PDE.STA.ps
+
+# Build rule for target.
+Make-CW.PDE.STA.ps: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-CW.PDE.STA.ps
+.PHONY : Make-CW.PDE.STA.ps
+
+# fast build rule for target.
+Make-CW.PDE.STA.ps/fast:
+	$(MAKE) -f de/Shaposhnikova.T.A/CW.PDE/CMakeFiles/Make-CW.PDE.STA.ps.dir/build.make de/Shaposhnikova.T.A/CW.PDE/CMakeFiles/Make-CW.PDE.STA.ps.dir/build
+.PHONY : Make-CW.PDE.STA.ps/fast
+
+#=============================================================================
+# Target rules for targets named Make-cw-pde-shaposhnikova.7z
+
+# Build rule for target.
+Make-cw-pde-shaposhnikova.7z: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-cw-pde-shaposhnikova.7z
+.PHONY : Make-cw-pde-shaposhnikova.7z
+
+# fast build rule for target.
+Make-cw-pde-shaposhnikova.7z/fast:
+	$(MAKE) -f de/Shaposhnikova.T.A/CW.PDE/CMakeFiles/Make-cw-pde-shaposhnikova.7z.dir/build.make de/Shaposhnikova.T.A/CW.PDE/CMakeFiles/Make-cw-pde-shaposhnikova.7z.dir/build
+.PHONY : Make-cw-pde-shaposhnikova.7z/fast
+
+#=============================================================================
+# Target rules for targets named Make-cw-pde-shaposhnikova.pdf
+
+# Build rule for target.
+Make-cw-pde-shaposhnikova.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-cw-pde-shaposhnikova.pdf
+.PHONY : Make-cw-pde-shaposhnikova.pdf
+
+# fast build rule for target.
+Make-cw-pde-shaposhnikova.pdf/fast:
+	$(MAKE) -f de/Shaposhnikova.T.A/CW.PDE/CMakeFiles/Make-cw-pde-shaposhnikova.pdf.dir/build.make de/Shaposhnikova.T.A/CW.PDE/CMakeFiles/Make-cw-pde-shaposhnikova.pdf.dir/build
+.PHONY : Make-cw-pde-shaposhnikova.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-CW.PDE.STA.pdf
+
+# Build rule for target.
+Make-CW.PDE.STA.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-CW.PDE.STA.pdf
+.PHONY : Make-CW.PDE.STA.pdf
+
+# fast build rule for target.
+Make-CW.PDE.STA.pdf/fast:
+	$(MAKE) -f de/Shaposhnikova.T.A/CW.PDE/CMakeFiles/Make-CW.PDE.STA.pdf.dir/build.make de/Shaposhnikova.T.A/CW.PDE/CMakeFiles/Make-CW.PDE.STA.pdf.dir/build
+.PHONY : Make-CW.PDE.STA.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-pde-shaposhnikova-part2.7z
+
+# Build rule for target.
+Make-pde-shaposhnikova-part2.7z: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-pde-shaposhnikova-part2.7z
+.PHONY : Make-pde-shaposhnikova-part2.7z
+
+# fast build rule for target.
+Make-pde-shaposhnikova-part2.7z/fast:
+	$(MAKE) -f de/Shaposhnikova.T.A/PDE/CMakeFiles/Make-pde-shaposhnikova-part2.7z.dir/build.make de/Shaposhnikova.T.A/PDE/CMakeFiles/Make-pde-shaposhnikova-part2.7z.dir/build
+.PHONY : Make-pde-shaposhnikova-part2.7z/fast
+
+#=============================================================================
+# Target rules for targets named Make-PDE.STA.PART2.dvi
+
+# Build rule for target.
+Make-PDE.STA.PART2.dvi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-PDE.STA.PART2.dvi
+.PHONY : Make-PDE.STA.PART2.dvi
+
+# fast build rule for target.
+Make-PDE.STA.PART2.dvi/fast:
+	$(MAKE) -f de/Shaposhnikova.T.A/PDE/CMakeFiles/Make-PDE.STA.PART2.dvi.dir/build.make de/Shaposhnikova.T.A/PDE/CMakeFiles/Make-PDE.STA.PART2.dvi.dir/build
+.PHONY : Make-PDE.STA.PART2.dvi/fast
+
+#=============================================================================
+# Target rules for targets named Make-pde-shaposhnikova-part2.pdf
+
+# Build rule for target.
+Make-pde-shaposhnikova-part2.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-pde-shaposhnikova-part2.pdf
+.PHONY : Make-pde-shaposhnikova-part2.pdf
+
+# fast build rule for target.
+Make-pde-shaposhnikova-part2.pdf/fast:
+	$(MAKE) -f de/Shaposhnikova.T.A/PDE/CMakeFiles/Make-pde-shaposhnikova-part2.pdf.dir/build.make de/Shaposhnikova.T.A/PDE/CMakeFiles/Make-pde-shaposhnikova-part2.pdf.dir/build
+.PHONY : Make-pde-shaposhnikova-part2.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-PDE.STA.PART2.pdf
+
+# Build rule for target.
+Make-PDE.STA.PART2.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-PDE.STA.PART2.pdf
+.PHONY : Make-PDE.STA.PART2.pdf
+
+# fast build rule for target.
+Make-PDE.STA.PART2.pdf/fast:
+	$(MAKE) -f de/Shaposhnikova.T.A/PDE/CMakeFiles/Make-PDE.STA.PART2.pdf.dir/build.make de/Shaposhnikova.T.A/PDE/CMakeFiles/Make-PDE.STA.PART2.pdf.dir/build
+.PHONY : Make-PDE.STA.PART2.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-PDE.STA.PART2.ps
+
+# Build rule for target.
+Make-PDE.STA.PART2.ps: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-PDE.STA.PART2.ps
+.PHONY : Make-PDE.STA.PART2.ps
+
+# fast build rule for target.
+Make-PDE.STA.PART2.ps/fast:
+	$(MAKE) -f de/Shaposhnikova.T.A/PDE/CMakeFiles/Make-PDE.STA.PART2.ps.dir/build.make de/Shaposhnikova.T.A/PDE/CMakeFiles/Make-PDE.STA.PART2.ps.dir/build
+.PHONY : Make-PDE.STA.PART2.ps/fast
+
+#=============================================================================
+# Target rules for targets named Make-EP.ODE.ZVM.pdf
+
+# Build rule for target.
+Make-EP.ODE.ZVM.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-EP.ODE.ZVM.pdf
+.PHONY : Make-EP.ODE.ZVM.pdf
+
+# fast build rule for target.
+Make-EP.ODE.ZVM.pdf/fast:
+	$(MAKE) -f de/Zakalukin.V.M/EP.ODE/CMakeFiles/Make-EP.ODE.ZVM.pdf.dir/build.make de/Zakalukin.V.M/EP.ODE/CMakeFiles/Make-EP.ODE.ZVM.pdf.dir/build
+.PHONY : Make-EP.ODE.ZVM.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-ep-ode-zakalukin.pdf
+
+# Build rule for target.
+Make-ep-ode-zakalukin.pdf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-ep-ode-zakalukin.pdf
+.PHONY : Make-ep-ode-zakalukin.pdf
+
+# fast build rule for target.
+Make-ep-ode-zakalukin.pdf/fast:
+	$(MAKE) -f de/Zakalukin.V.M/EP.ODE/CMakeFiles/Make-ep-ode-zakalukin.pdf.dir/build.make de/Zakalukin.V.M/EP.ODE/CMakeFiles/Make-ep-ode-zakalukin.pdf.dir/build
+.PHONY : Make-ep-ode-zakalukin.pdf/fast
+
+#=============================================================================
+# Target rules for targets named Make-pr-ode-zakalukin.7z
+
+# Build rule for target.
+Make-pr-ode-zakalukin.7z: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Make-pr-ode-zakalukin.7z
+.PHONY : Make-pr-ode-zakalukin.7z
+
+# fast build rule for target.
+Make-pr-ode-zakalukin.7z/fast:
+	$(MAKE) -f de/Zakalukin.V.M/PR.ODE/CMakeFiles/Make-pr-ode-zakalukin.7z.dir/build.make de/Zakalukin.V.M/PR.ODE/CMakeFiles/Make-pr-ode-zakalukin.7z.dir/build
+.PHONY : Make-pr-ode-zakalukin.7z/fast
 
 #=============================================================================
 # Target rules for targets named Make-DGT.GSM.ps
@@ -443,6 +807,34 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... Make-PR.ODE.AVI.book.ps"
+	@echo "... Make-PR.ODE.AVI.book.dvi"
+	@echo "... Make-pr-ode-arnold.7z"
+	@echo "... Make-PR.ODE.AVI.book.pdf"
+	@echo "... Make-pr-ode-arnold.pdf"
+	@echo "... Make-EP.PDE.FAM.dvi"
+	@echo "... Make-ep-pde-filimonov.7z"
+	@echo "... Make-EP.PDE.FAM.pdf"
+	@echo "... Make-EP.PDE.FAM.ps"
+	@echo "... Make-ep-pde-filimonov.pdf"
+	@echo "... Make-EP.PDE.VAK.ps"
+	@echo "... Make-ep-pde-kondratiev.pdf"
+	@echo "... Make-EP.PDE.VAK.dvi"
+	@echo "... Make-ep-pde-kondratiev.7z"
+	@echo "... Make-EP.PDE.VAK.pdf"
+	@echo "... Make-CW.PDE.STA.dvi"
+	@echo "... Make-CW.PDE.STA.ps"
+	@echo "... Make-cw-pde-shaposhnikova.7z"
+	@echo "... Make-cw-pde-shaposhnikova.pdf"
+	@echo "... Make-CW.PDE.STA.pdf"
+	@echo "... Make-pde-shaposhnikova-part2.7z"
+	@echo "... Make-PDE.STA.PART2.dvi"
+	@echo "... Make-pde-shaposhnikova-part2.pdf"
+	@echo "... Make-PDE.STA.PART2.pdf"
+	@echo "... Make-PDE.STA.PART2.ps"
+	@echo "... Make-EP.ODE.ZVM.pdf"
+	@echo "... Make-ep-ode-zakalukin.pdf"
+	@echo "... Make-pr-ode-zakalukin.7z"
 	@echo "... Make-DGT.GSM.ps"
 	@echo "... Make-DGT.GSM.dvi"
 	@echo "... Make-dgt-guseinzade.7z"

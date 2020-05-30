@@ -1,35 +1,73 @@
-\documentclass[draft,11pt]{article}
-\usepackage{amssymb,amscd,amsmath,amsthm}
+\documentclass[a4paper,draft]{article}
+\usepackage{dmvn}
+\usepackage[unicode]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{bookmark}
+\usepackage{pgfplots}
+\usepackage{csquotes}
 
+\hypersetup{
+    final, 
+    linktoc=all,
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+}
 
-\usepackage[russian]{babel}
-\textheight=225mm
-\textwidth=160mm
-\oddsidemargin=0pt
-\topmargin=0pt
-\parskip=3pt plus 1pt minus 0.5pt
-\binoppenalty = 1000
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \begin{document}
+\dmvntitle{Курс лекций по}{уравнения с частными производными}
+{Лектор\т Шапошникова Татьяна Ардолионовна}
+{III курс, 6 семестр, поток математиков}{Москва, 2020 г.} \pagebreak
 
 \tableofcontents
 
-\section{Лекция 15}
-\subsection{Гармонические функции, их свойства.}
+\section*{Предисловие}
 
-Пусть $u\in C^2(\Omega),\ \Omega\subset\mathbb(R)^n$ - область.\\
-\textit{Определение.} Функция u называется гармонической в $\Omega$, если $\forall x\in\Omega\ \Delta u =0$\\
-Примеры гармонических функций:\\
-1. $u=\sum\limits_{i=1}^n a_ix_i+b$ - гармоническая в $\mathbb{R}^n$\\
-2. $n=3:\ u=\frac{1}{r},\ r=|x-x_0|$ - гармоническая при $x\neq x_0$\\
-3. $n=2:\ \ln{r},\ r^{\pm m} \cos{m\varphi},\ r^{\pm m} \sin{m\varphi}$ -  гармонические.
+Документ перерабатывается В.\,В.\,Харламовым 
+под курс лекций 2020 года.
+{\bf Важно}, что дальнейший текст не является в полной мере
+конспектом, но в то же время есть хорошее приближение материала лекций.
 
+Так как DMVN не подаёт признаков жизни,
+то огромная просьба писать на 
+\href{vi.v.kharlamov@gmail.com}{мою почту}
+при обнаружении ошибок. 
+Самая актуальная версия конспекта находится
+на \href{https://github.com/Xapulc/DMVNLectures/tree/master/ptms/Prochorov.A.V/Statistics/generated/statistics-prochorov.pdf}{Github}.
+В 2020 году Bitbucket прекращает поддержку репозиториев
+с системой контроля версий Mercurial, поэтому я скопировал 
+репозиторий на Github.
+\begin{flushright}\it В.Х.\end{flushright}
+
+\medskip\dmvntrail
+
+\pagebreak
+
+\section{Гармонические функции, их свойства}
+
+\begin{df}
+Пусть ${u\in C^2(\Omega),\ \Omega\subset\mathbb(R)^n}$ - область.
+Функция u называется \emph{гармонической} в $\Omega$, если $\forall x\in\Omega\ \Delta u = 0$.
+\end{df}
+
+{\bf Примеры}
+\begin{enumerate}
+\item $u=\sum_{i=1}^n a_ix_i+b$ - гармоническая в $\mathbb{R}^n$.
+\item $n=3:\ u=\frac{1}{r},\ r=|x-x_0|$ - гармоническая при $x\neq x_0$.
+\item $n=2:\ \ln{r},\ r^{\pm m} \cos{m\varphi},\ r^{\pm m} \sin{m\varphi}$ -  гармонические.
+\end{enumerate}
 
 Пусть теперь $u,v\in C^2(\overline{\Omega}),\ \Omega \ \text{ограниченная область в}\ \
 \mathbb{R}^n,\ \partial\Omega\in C^1$ тогда вспомним, что
 
 $$
-\int\limits_{\Omega}uv_{x_jx_j}dx=
+\int\limits_{\Omega}uv_{x_j x_j}dx =
 \int\limits_{\Omega}\frac{\partial u}{\partial x_j}\frac{\partial v}{\partial x_j}dx+
 \int\limits_{\partial \Omega} u\frac{\partial v}{\partial x_j} \nu_j dS
 $$
@@ -37,102 +75,108 @@ $$
 \int\limits_{\Omega} divA dx= \int\limits_{\partial \Omega}(A,\nu)dS :\
 A=(0,\dots,u\frac{\partial v}{\partial x_j},\dots,0)
 $$
-\subsubsection{Формулы Грина.}
-\textit{Первая формула Грина}
-$$
+\subsection{Формулы Грина}
+\begin{stm}[Первая формула Грина] \label{sec1:stm1}
+\begin{equation} \label{sec1:eq1}
 \int\limits_{\Omega} u\Delta v dx=-
 \int\limits_{\Omega}(\nabla u,\nabla v) dx+
-\int\limits_{\partial \Omega} u \frac{\partial v}{\partial \nu}dS
-$$
+\int\limits_{\partial \Omega} u \frac{\partial v}{\partial \nu}dS,
+\end{equation}
+где $\nu$~--- единичная внешняя нормаль к границе.
+\end{stm}
 
-$$
-\int\limits_\Omega v\Delta u dx=
--\int\limits_\Omega(\nabla u,\nabla v) dx+
-\int\limits_{\partial \Omega} v \frac{\partial u}{\partial \nu}dS
-$$
-$\nu$ - единичная внешняя нормаль к границе.
-
-
-\textit{Вторая формула Грина}
-$$
+\begin{stm}[Вторая формула Грина] \label{sec1:stm2}
+\begin{equation} \label{sec1:eq2}
 \int\limits_{\Omega} (u\Delta v -v\Delta u) dx=
-\int\limits_{\partial \Omega}( u \frac{\partial v}{\partial \nu} - v \frac{\partial u}{\partial \nu})dS
-$$
+\int\limits_{\partial \Omega}\left(u \frac{\partial v}{\partial \nu} - 
+v \frac{\partial u}{\partial \nu}\right)dS.
+\end{equation}
+\end{stm}
 
-
+\subsection{Фундаментальное решение оператора Лапласа}
 Рассмотрим гармонические функции, зависящие только от расстояния до точки, т.е
-гармонические функции вида:\\
-$v(|x-x_0|),\ x\neq x_0,\ \Delta v=0$, тогда
+гармонические функции вида:
 $$
-\int\limits_{\mathbb{R}^n}v(|x-x_0|)\Delta\varphi(x)dx=
-\varphi(x_0),\ \forall\varphi\in C_0^\infty(\Omega) \eqno(15.1)
+v(x) = v(|x-x_0|), \, x\neq x_0, \, \Delta v=0.
 $$
-Оператор Лапласа для таких функций:
+Найдём такие гармонические функции $v$, что для любых 
+финитных функций~$\phi$ в~области $\Omega$ имеет есто тождество
+\begin{equation} \label{sec1:eq3}
+\int\limits_{\mathbb{R}^n} v(|x-x_0|)\Delta\varphi(x)dx = \varphi(x_0).
+\end{equation}
+Положим $r := |x - x_0|$. Тогда оператор Лапласа переписывается как
 $$
-\Delta v(r)=v''+\frac{n-1}{2}v'=0
+\Delta v(r) = v''+\frac{n-1}{2} v'.
 $$
+Учитывая гармоничность функции $v$, получаем
+\begin{equation} \label{sec1:eq4}
+v(|x-x_0|)=C_1|x-x_0|^{2-n}+C_2, \, n \geq 3, \qquad
+v(|x-x_0|)=C_1\ln{|x-x_0|}+C_2, \, n = 2.
+\end{equation}
+Рассмотрим левую часть равенства \eqref{sec1:eq3}.
+Для $n \geq 3$ в силу гармоничности $v$ она равна
+\begin{equation} \label{sec1:eq5}
+\lim\limits_{\varepsilon\rightarrow 0}
+\int\limits_{\mathbb{R}^n \setminus \overline{T}_\varepsilon^{x_0}}
+v(|x-x_0|)\Delta \varphi dx =
+\lim\limits_{\varepsilon\rightarrow 0}
+\int\limits_{\mathbb{R}^n \setminus \overline{T}_\varepsilon^{x_0}}
+(v(|x-x_0|)\Delta\varphi - \varphi\Delta v(|x-x_0|))dx.
+\end{equation}
+К правой части выражения \eqref{sec1:eq5} применим 
+вторую формулу Грина \eqref{sec1:eq2}, тогда
+\begin{equation} \label{sec1:eq6}
+\lim\limits_{\varepsilon\rightarrow 0}
+\int\limits_{\mathbb{R}^n \setminus \overline{T}_\varepsilon^{x_0}}
+v(|x-x_0|)\Delta \varphi dx =
+\lim\limits_{\varepsilon\rightarrow 0}
+\int\limits_{\partial \Omega \cup S_\varepsilon^{x_0}}
+\left(
+v(|x-x_0|) \partial_{\nu} \ph
+-\varphi (x) \partial_{\nu} v(|x-x_0|)
+\right) dS.
+\end{equation}
+В силу финитности $\ph$ интеграл по $\partial \Omega$ равен нулю.
+Положим $K := \max_{\Omega} \partial_{\nu} \ph$,
+$\omega_n$~--- площадь поверхности $n$-мерного шара.
+Заметим, что имеет место оценка
 $$
-v(|x-x_0|)=C_1|x-x_0|^{2-n}+C_2,\ n\ge 3
+\left|\int_{S_{\ep}^{x_0}} |x - x_0|^{2-n} \partial_{\nu} \ph dS\right| \leq
+\ep^{2-n} \omega_n K \ep^{n-1} = \omega_n K \ep.
 $$
-$$
-v(|x-x_0|)=C_1\ln{|x-x_0|}+C_2,\ n=2
-$$
-где $v\in L_{1,loc}$
-Рассмотрим левую часть (15.1), она равна
+Следовательно, в силу представления \eqref{sec1:eq4} для $v$ получаем
 $$
 \lim\limits_{\varepsilon\rightarrow 0}
-\int\limits_{\mathbb{R}^n/\overline{T}_\varepsilon^{x_0}}
-(C_1|x-x_0|^{2-n}+C_2)\Delta \varphi dx=
-\lim\limits_{\varepsilon\rightarrow 0}
-\int\limits_{\mathbb{R}^n/\overline{T}_\varepsilon^{x_0}}
-(v(|x-x_0|)\Delta\varphi - \varphi\Delta v(|x-x_0|))dx=
+\int\limits_{S_\varepsilon^{x_0}} v(|x - x_0|) \partial_{\nu} \ph dS=0.
 $$
-Тут применим 2-ю формулу Грина.
-$$
-=
-\lim\limits_{\varepsilon\rightarrow 0}
-\int\limits_{S_\varepsilon^{x_0}}
-[(C_1|x-x_0|^{2-n}+C_2)\frac{\partial \varphi}{\partial \nu}
--\varphi (x)\frac{\partial}{\partial \nu} C_1 |x-x_0|^{2-n}]dS
-\eqno (15.2)
-$$
-$$
-\lim\limits_{\varepsilon\rightarrow 0}
-(C_1\varepsilon^{2-n}+C_2)
-\int\limits_{S_\varepsilon^{x_0}}
-\frac{\partial \varphi}{\partial \nu}dS=0
-$$
-Т.к
-$$
-|\int\limits_{S_\varepsilon^{x_0}}
-\frac{\partial \varphi}{\partial \nu}dS|
-\le
-\max\limits_{\mathbb{R}^n}|\nabla\varphi|\omega_n\varepsilon^{n-1}
-$$
-где $\omega_n$ площадь поверхности единичной сферы в $\mathbb{R}^n$.\\
 Далее заметим, что
 $$
 C_1\frac{\partial}{\partial\nu}r^{2-n}=-C_1\frac{\partial}{\partial r}r^{2-n}=
--(2-n)C_1r^{1-n}
+-(2-n)C_1r^{1-n}.
 $$
-Продолжаем цепочку (15.2)
-$$
-=
+Подставляя в выражение \eqref{sec1:eq6} полученные результаты,
+приходим к
+\begin{multline*}
+\lim\limits_{\varepsilon\rightarrow 0}
+\int\limits_{\mathbb{R}^n \setminus \overline{T}_\varepsilon^{x_0}}
+v(|x-x_0|)\Delta \varphi dx = 
 -C_1(n-2)
 \lim\limits_{\varepsilon\rightarrow 0}
 \int\limits_{S_\varepsilon^{x_0}}
 \varphi (x) dS=
 -C_1(n-2)
 \lim\limits_{\varepsilon\rightarrow 0}
-\varphi(x_\epsilon)\omega_n\varepsilon^{n-1}\varepsilon^{1-n}
-=-C_1(n-2)\omega_n\varphi(x_0)
+\varphi(x_\epsilon)\omega_n\varepsilon^{n-1}\varepsilon^{1-n} = \\
+=-C_1(n-2)\omega_n\varphi(x_0).
+\end{multline*}
+Учитывая представление \eqref{sec1:eq4}, получаем
 $$
-Тогда из (15.1) имеем:\\
-$C_1=\frac{-1}{\omega_n(n-2)},\quad n\ge 3$\\
-$C_1=\frac{1}{2\pi},\quad n=2$
+C_1=\frac{-1}{\omega_n(n-2)},\, n \ge 3, \qquad
+C_1=\frac{1}{2\pi}, \, n=2.
+$$
 
-
-\textit{Фундаментальное решение оператора Лапласа.}
+\begin{df}
+\emph{Фундаментальное решение оператора Лапласа.}
 $$
 E(x,x_0)=
 \begin{cases}
@@ -140,188 +184,329 @@ E(x,x_0)=
 \frac{1}{2\pi}\ln{(x-x_0)},\ n=2
 \end{cases}
 $$
-Основное характерное свойство фундаментального решения - это формула (15.1) т.е
+\end{df}
+Основное характерное свойство фундаментального решения:
 $$
 \int\limits_{\mathbb{R}^n}E(x,x_0)\Delta\varphi(x)dx=
-\varphi(x_0),\ \forall\varphi\in C_0^\infty(\Omega)
+\varphi(x_0), \, \forall\varphi\in C_0^\infty(\Omega).
 $$
 На языке обобщенных функций это выглядит так
 $$
-(\Delta E(x,x_0),\varphi (x))=\varphi(x_0)=(\delta(x-x_0),\varphi)
-$$
-т.е
-$$
-\Delta E(x,x_0)=\delta(x-x_0)\ \text{- дельта функция}
-$$
-Покажем, что $\forall$ функции из $C^2(\Omega),\ \partial\Omega\in C^2
-\ \Omega$ ограниченная область верно некоторое свойство.\\
-Пусть $\Omega_\varepsilon=\Omega/\overline{T}_\varepsilon^{x_0}$
-$$
-\int\limits_{\Omega_\varepsilon}(u\Delta E(x,x_0)-E(x,x_0)\Delta u)dx=
--\int\limits_{\Omega_\varepsilon}E(x,x_0)\Delta udx=
-$$
-Применяем вторую формулу Грина
-$$
-\int\limits_{\Omega_\varepsilon}(u\frac{\partial E(x,x_0)}{\partial \nu}
--E(x,x_0)\frac{\partial u}{\partial \nu})dS
-=
-\int\limits_{\Omega}(u\frac{\partial E}{\partial \nu}
--E\frac{\partial u}{\partial \nu})dS+
-\int\limits_{S_\varepsilon^{x_0}}(u\frac{\partial E(x,x_0)}{\partial \nu}
--E\frac{\partial u}{\partial \nu})dS
-$$
-Перейдем к пределу при $\varepsilon\rightarrow 0$
-$$
--\int\limits_{\Omega}E\Delta udx=
-\int\limits_{\partial\Omega}u\frac{\partial E(x,x_0)}{\partial \nu}dS-
-\int\limits_{\partial\Omega}E\frac{\partial u}{\partial \nu}dS
--u(x_0)
-$$
-т.к
-$$
-\int\limits_{S_\varepsilon^{x_0}}E\frac{\partial u}{\partial \nu}dS
-\rightarrow 0,\ \varepsilon \rightarrow +0
-$$
-$$
-\int\limits_{S_\varepsilon^{x_0}}u(x)\frac{\partial E(x,x_0)}{\partial \nu}dS
-\rightarrow - u(x_0)
+(\Delta E(x,x_0),\varphi (x))=\varphi(x_0)=(\delta(x-x_0),\varphi), \qquad
+\Delta E(x,x_0)=\delta(x-x_0).
 $$
 
+\subsection{Представление в виде суммы трёх потенциалов}
+Пусть $\Omega$ -- ограниченная область в $\R^n$,
+$\partial \Omega$ -- липшецева, ${u \in C^2(\overline{\Omega})}$, ${x_0 \in \Omega}$.
+Положим ${\Omega_{\ep} := \Omega \setminus \overline{T}_{\ep}^{x_0}}$.
+В силу соотношения \eqref{sec1:eq4} справедливо равенство
+\begin{equation} \label{sec1:eq7}
+\Delta_x E(x, x_0) = 0, \, x \in \Omega_{\ep}.
+\end{equation}
+
+По второй формуле Грина \ref{sec1:stm2}
+\begin{equation} \label{sec1:eq8}
+\int_{\Omega_{\ep}} \left(u \Delta E - \Delta u E\right) dx 
+= \int_{\partial \Omega} \left(u \partial_{\nu} E - \partial_{\nu} u E\right) dS 
++ \int_{\partial T_{\ep}^{x_0}} \left(u \partial_{\nu} E - \partial_{\nu} u E\right) dS.
+\end{equation}
+В равенстве \eqref{sec1:eq8} устремим $\ep$ к нулю, 
+в силу тождества \eqref{sec1:eq7} получим
 $$
-\left(
-\frac{\partial E}{\partial \nu}|_{S_\varepsilon^{x_0}}=-\frac{\partial E}{\partial r}|_{r=\varepsilon}
-=-\frac{\partial}{\partial r}\frac{-r^{2-n}}{\omega_n(n-2)}|_{r=\varepsilon}=
--\frac{\varepsilon^{1-n}}{\omega_n}
-\right)
+- \int_{\Omega} \Delta u E dx 
+= \int_{\partial \Omega} (u \partial_{\nu} E - \partial_{\nu} u E) dS 
++ \lim\limits_{\ep \to 0} \int_{\partial T_{\ep}^{x_0}} u \partial_{\nu} E dS 
+= \int_{\partial \Omega} (u \partial_{\nu} E - \partial_{\nu} u E) dS - u(x_0).
 $$
 
 Таким образом, получаем, что
+\begin{equation} \label{sec1:eq9}
+u(x_0) =
+\int\limits_{\Omega}E(x,x_0)\Delta u dx
++ \int\limits_{\partial \Omega} u \partial_{\nu} E(x,x_0) dS
+- \int\limits_{\partial \Omega} E(x,x_0) \partial_{\nu} u dS.
+\end{equation}
+Каждое слагаемое в полученном представении имеет своё название.
+\begin{df}
+Выражение 
 $$
-\forall x\in \Omega\quad
-u(x_0)=
-\int\limits_{\Omega}E(x,x_0)\Delta udx+
-\int\limits_{\partial   \Omega}u\frac{\partial E(x,x_0)}{\partial \nu}dS-
-\int\limits_{\partial\Omega}E(x,x_0)\frac{\partial u}{\partial \nu}dS
+P_1(x_0) := \int_{\Omega} E(x,x_0) \Delta u dx
 $$
-Где
-$$
-\int\limits_{\Omega}E(x,x_0)\Delta udx\  \text{- объемный потенциал.}
-$$
-$$
-\int\limits_{\partial   \Omega}u\frac{\partial E(x,x_0)}{\partial \nu}dS\ \text{- потенциал двойного слоя.}
-$$
-$$
-\int\limits_{\partial\Omega}E(x,x_0)\frac{\partial u}{\partial \nu}dS\ \text{- потенциал простого слоя.}
-$$
-Если $\Delta u =0,\ u\in C^2(\overline{\Omega}), x_0\in \Omega$, то
-$$
-u(x_0)=
-\int\limits_{\partial   \Omega}u\frac{\partial E(x,x_0)}{\partial \nu}dS-
-\int\limits_{\partial\Omega}E(x,x_0)\frac{\partial u}{\partial \nu}dS
-$$
+называется \emph{объёмным потенциалом}.
 
-\textbf{Лемма (о потоке через границу гармонической функции)}\\
-Пусть $u \in C^2(\overline{\Omega}),\ \Delta u =0$ в $\Omega,\ \Omega$
-ограниченная область, $\partial\Omega\in C^1$.
-Тогда
+Выражение 
 $$
-\int\limits_{\partial\Omega}\frac{\partial u}{\partial \nu}dS=0
+P_2(x_0) := \int_{\partial\Omega} u \partial_{\nu} E(x,x_0) dS
 $$
-Для доказательства надо использовать вторую формулу Грина
-для $v\equiv 1$
+называется \emph{потенциалом двойного слоя}.
 
-\textbf{Теорема 1 (О среднем по сфере).}\\
+Выражение 
+$$
+P_3(x_0) := \int_{\partial\Omega} E(x,x_0) \partial_{\nu} u dS
+$$
+называется \emph{потенциалом простого слоя}.
+\end{df}
+
+\subsection{Теоремы о среднем для гармонических функций}
+\begin{theorem}[О среднем по сфере] \label{sec1:theorem1}
 Пусть $u\in C^2(T_R^{x_0})\cap C(\overline{T}_R^{x_0})$, предположим, что $\Delta u=0$ в $T_R^{x_0}$
 тогда
 $$
-u(x_0)=\frac{1}{|S_R^{x_0}|}\int\limits_{S_R^{x_0}}
-u(x)dS
+u(x_0)=\frac{1}{|S_R^{x_0}|}\int_{S_R^{x_0}} u(x)dS
 $$
-\textit{Доказательство}\\
-Для $T_\rho^{x_0}$ можно записать
+\end{theorem}
+
+\begin{proof}
+Рассмотрим $T_\rho^{x_0}$, ${\rho < R}$. Тогда в силу представления в виде
+суммы трёх потенциалов \eqref{sec1:eq9}, где один из них равен нулю в силу гармоничности, имеем
 $$
 u(x_0)=
-\int\limits_{S_\rho^{x_0}}u\frac{\partial E(x,x_0)}{\partial \nu}dS-
-\int\limits_{S_\rho^{x_0}}E(x,x_0)\frac{\partial u}{\partial \nu}dS
+\int_{S_\rho^{x_0}} u \partial_{\nu} E(x,x_0) dS
+- \int_{S_\rho^{x_0}} E(x,x_0) \partial_{\nu} u dS.
 =
 \frac{1}{\omega_n\rho^{n-1}}\int\limits_{S_\rho^{x_0}} u(x)dS
 $$
-Осталось перейти к пределу и получить то, что нужно. Второе
-слагаемое обнулилось по предыдущей лемме.
+Заметим, что по формуле Гаусса - Остроградского
+$$
+\int_{S_\rho^{x_0}} E(x,x_0) \partial_{\nu} u dS 
+= \int_{S_\rho^{x_0}} \frac{\rho^{2-n}}{(2-n) \omega_n} \partial_{\nu} u dS =
+\frac{\rho^{2-n}}{(2-n) \omega_n} \int_{T_{\rho}^{x_0}} \Div \nabla u dx = 0.
+$$
+Из того, что
+$$
+\partial_{\nu} E(x, x_0) = \frac{1}{\omega_n \rho^{n-1}} = \frac{1}{|S_{\rho}^{x_0}|},
+$$
+следует
+$$
+u(x_0)= \frac{1}{|S_{\rho}^{x_0}|}
+\int_{S_\rho^{x_0}} u dS.
+$$
+Переходя к пределу при $\rho \to R$, получаем искомое.
+\end{proof}
 
-\textbf{Теорема 2 (О среднем по шару.)}\\
+% \textbf{Лемма (о потоке через границу гармонической функции)}\\
+% Пусть $u \in C^2(\overline{\Omega}),\ \Delta u =0$ в $\Omega,\ \Omega$
+% ограниченная область, $\partial\Omega\in C^1$.
+% Тогда
+% $$
+% \int\limits_{\partial\Omega}\frac{\partial u}{\partial \nu}dS=0
+% $$
+% Для доказательства надо использовать вторую формулу Грина
+% для $v\equiv 1$
 
-Пусть $u\in C^2(T_R^{x_0})\cap C(\overline{T}_R^{x_0})$, предположим, что $\Delta u=0$ в $T_R^{x_0}$
-тогда
+\begin{theorem}[О среднем по шару] \label{sec1:theorem2}
+Пусть $u \in C^2(T_R^{x_0}) \cap C(\overline{T}_R^{x_0})$. 
+Предположим, что $\Delta u=0$ в $T_R^{x_0}$.
+Тогда
 $$
-u(x_0)=\frac{1}{|T_R^{x_0}|}\int\limits_{T_R^{x_0}}
-u(x)dS
+u(x_0)=\frac{1}{|T_R^{x_0}|}\int_{T_R^{x_0}} u(x)dS.
 $$
-\textit{Доказательство}\\
-Из теоремы 1 следует, что
-$$
-\omega_n\rho^{n-1}u(x_0)=\int\limits_{S_R^{x_0}}u(x)dS
-$$
-Осталось проинтегрировать это равенство по $\rho$ от 0 до R.
-$$
-\frac{\omega_n}{n}R^n u(x_0)=\int\limits_{T_R^{x_0}}u(x)dS
-$$
+\end{theorem}
 
-\textbf{Теорема 3 (Строгий принцип максимума).}\\
-Пусть $u\in C^2(\Omega)\cap C(\overline{\Omega})$, предположим, что $\Delta u=0$ в $\Omega$.
-$\Omega$ ограниченная область с гладкой границей.\\
+\begin{proof}
+Из теоремы о среднем по сфере \ref{sec1:theorem1} следует,
+что для $\rho < R$
+\begin{equation} \label{sec1:eq10}
+\omega_n\rho^{n-1}u(x_0)=\int\limits_{S_{\rho}^{x_0}}u(x)dS.
+\end{equation}
+В силу теоремы Фубини получаем
+$$
+|T_R^{x_0}| u(x_0) 
+= \frac{\omega_n}{n} R^n u(x_0) 
+= \int_0^R \omega_n \rho^{n-1} u(x_0) u(x_0) d \rho
+= \int_0^R \int\limits_{S_{\rho}^{x_0}}u(x)dS d \rho
+= \int_{T_R^{x_0}} u(x)dS.
+$$
+\end{proof}
+
+\begin{theorem} \label{sec1:theorem3}
+Пусть $\ph \in C[0, R]$. Положим
+$$
+A_{\ph} := \int_0^R \ph(|x - x_0|) dx.
+$$
+Прдположим, что $A_{\ph}$ отлично от нуля.
+Пусть $u \in C^2(T_{R}^{x_0}) \cap C(\overline{T}_R^{x_0})$.
+Тогда
+$$
+u(x_0) = \frac{1}{A_{\ph}} \int_{T_R^{x_0}} u(x) \ph(|x - x_0|) dx.
+$$
+\end{theorem}
+
+\begin{proof}
+Умножим тождество \eqref{sec1:eq10} обоих сторон на 
+${\ph(\rho) = \ph(|x - x_0|)}$ и проинтегрируем по $\rho$.
+$$
+u(x_0) \int_0^R \omega_n \rho^{n-1} \ph(\rho) d \rho
+= \int_0^R \int_{S_{\rho}^{x_0}} \ph(|x - x_0|) dS dx
+= \int_{T_{R}^{x_0}} \ph(|x - x_0|) dS dx.
+$$
+\end{proof}
+
+\begin{theorem}[О бесконечной дифференцируемости]
+Пусть $\Omega$ область в $\mathbb{R}^n$, $u(x)$ гармоническая в $\Omega$.
+Тогда $u \in C^\infty(\Omega)$.
+\end{theorem}
+
+\begin{proof}
+Пусть $x \in \Omega$, $h > 0$, $\overline{T}_{h}^x \subset \Omega$,
+$\omega_h$ -- ядро усреднения.
+Рассмотрим
+$$
+u_h(x) = \int_{\R_y^n}\omega_h(|x-y|)u(y)dy
+= \int_{|x-y|<h}\omega_h(|x-y|)u(y)dy
+= \int_0^h \omega_h(\rho) \int_{S_\rho^x}u(y)dSd\rho.
+$$
+В силу теоремы о среднем $\int_{S_\rho^x} u(y) dS = u(x) |S_{\rho}^x|$,
+поэтому
+$$
+u_h(x) = u(x) \int_0^h \omega_h(\rho) |S_{\rho}^x| d\rho
+= u(x) \int_0^h \int_{S_{\rho}^x} \omega_h(|x - y|) dS_y d\rho
+$$
+В силу свойств ядра усреднения $\int_0^h \int_{S_{\rho}^x} \omega_h(|x - y|) dS_y d\rho = 1$,
+откуда для достаточно малых $h$ имеет место тождество ${u_h(x) = u(x)}$.
+Так как функция $u_h(x)$ является бесконечно дифференцируемой.
+\end{proof}
+
+\subsection{Принцип максимума}
+\begin{theorem}[Слабый принцип максимума] \label{sec1:theorem4}
+Пусть $\Omega$ -- ограниченная область в $\R^n$, 
+$u \in C^2(\Omega) \cap C(\overline{\Omega})$,
+$\Delta u \geq 0$ в $\Omega$. 
+Тогда справедливо тождество
+$$
+\max\limits_{\overline{\Omega}} u 
+= \max\limits_{\partial \Omega} u.
+$$
+\end{theorem}
+
+\begin{proof}
+Предположим сначала, что $\Delta u > 0$ в $\Omega$.
+Так как функция $u$ непрерывна в $\overline{\Omega}$,
+то её максимум достигается в какой-то точке $x_0$.
+
+Пусть $x_0 \in \Omega$. Тогда матрица Якоби $J_u$ является нулевой в этой точке,
+и квадратичная форма матрицы вторых частных производных неположительна, то есть
+$$
+\sum_{i, j = 1}^n \partial_{x_i x_j} u(x_0) \xi_i \xi_j \leq 0.
+$$
+В частности, $\partial_{x_i x_i} u(x_0) \leq 0$, откуда $\Delta u(x_0) \leq 0$.
+Противоречие с предположением, что $\Delta u > 0$ в $\Omega$.
+Поэтому в этом случае максимум достигается в точке $x_0$, лежащей на $\partial \Omega$.
+
+Рассмотрим общий случай, когда $\Delta u \geq 0$.
+Введём новую функцию
+$$
+v_{\ep}(x) := u(x) + \ep l(x)
+= u(x) + \ep \sum_{i=1}^n x_i^2.
+$$
+Тогда
+$$
+\Delta v_{\ep} = \Delta u + n \ep \Delta x_i^2
+= \Delta u + 2 n \ep > 0.
+$$
+Так как $l$ является непрерывной функцией на компакте $\overline{\Omega}$,
+то её значения ограничены по модулю какой-то константой $K$. Тогда
+$$
+\max_{\overline{\Omega}} u \leq \max_{\overline{\Omega}} v_{\ep}
+= \max_{\partial \Omega} v_{\ep} \leq \max_{\partial \Omega} u + n K \ep.
+$$
+Устремляя $\ep$ к нулю, получаем искомое.
+\end{proof}
+
+\begin{theorem}[Строгий принцип максимума] \label{sec1:theorem5}
+Пусть $u\in C^2(\Omega)\cap C(\overline{\Omega})$, 
+$\Omega$ -- ограниченная область с гладкой границей.
+Предположим, что $\Delta u = 0$ в $\Omega$.
 Положим
 $$
-\max\limits_{\overline{\Omega}}u(x)=M,\ (\min\limits_{\overline{\Omega}}u(x)=m)
+\max\limits_{\overline{\Omega}}u(x) := M, \qquad 
+\min\limits_{\overline{\Omega}}u(x) := m.
 $$
-Тогда, если $u(x_0)=M(m)$, где $x_0\in \Omega$
-$$
-\Rightarrow u(x)\equiv const (m,M)\  \text{в}\  \Omega
-$$
-\textit{Доказательство}\\
-$T_R^{x_0},\ \overline{T_R^{x_0}}\in\Omega$\\
-Предположим, что в $T_R^{x_0},\ u(x)\equiv M,\ u(x_0)=M$. Предположим противное, т.е
-$\exists x'\in T_R^{x_0},\ u(x')<M$, следовательно в силу непрерывности\\
-$\exists\varepsilon,\delta>0\ :\ u(x)<M-\varepsilon$  в шаре $T_\delta^{x'}$
-Тогда по предыдущей теореме имеем
-$$
-u(x_0)=M=\frac{1}{|T_R^{x_0}|}\int\limits_{T_R^{x_0}}u(x)dS
-=\frac{1}{|T_R^{x_0}|}
-\left\{
-\int\limits_{T_R^{x_0}/ \overline{T_\delta^{x'}}}u(x)dS
-+
-\int\limits_{ \overline{T_\delta^{x'}}}u(x)dS
-\right\}\le
-$$
-$$
-\le\frac{1}{|T_R^{x_0}|}
-\left\{
-M(|T_R^{x_0}|-|T_\delta^{x'}|)+|T_\delta^{x'}|(M-\varepsilon)
-\right\}
-=M-\frac{\varepsilon T_R^{x_0}}{T_\delta^{x'}}<M
-$$
-Противоречие.\\
-Пусть теперь $u(x_1)<m$, соединим эти две точки области кривой (в силу односвязности)
-покрываем эту кривую шарами. Для каждого шара проводим такие же рассуждения, тогда
-и $u(x_1)=M$. Тем самым теорема доказана.
+Тогда, если для $x_0 \in \Omega$ справедливо тождество $u(x_0) = M$ ($u(x_0) = m$), 
+то $u(x) \equiv \const$.
+\end{theorem}
 
-\textbf{Теорема 4 (О бесконечной дифференцируемости).}\\
-Пусть $\Omega$ область в $\mathbb{R}^n.\ u(x)\ $ гармоническая в $\Omega$
-тогда $u\in C^\infty(\Omega)$\\
-\textit{Доказательство}\\
+\begin{proof}
+Рассмотрим случай, когда в некоторой точке $x_0 \in \Omega$ 
+достигается значение $M$ функции $u$. Положим
 $$
-u_h(x)=\int\limits_{\mathbb{R}_y^n}\omega_h(|x-y|)u(y)dy=
-\int\limits_{|x-y|<h}\omega_h(|x-y|)u(y)dy=
-\int\limits_0^h\omega_h(\rho)\int\limits_{S_\rho^x}u(y)dSd\rho=
+L := \{x \in \Omega \mid u(x) = M\}.
 $$
+Докажем, что множество $L$ является открыто-замкнутым подмножеством $\Omega$.
+Оно непусто, потому что $x_0 \in L$. 
+Замкнутость следует из непрерывности $u$.
+
+Докажем открытость. От противного, пусть существует $x_1 \in L$ такой,
+что любая его окрестность в $\Omega$ содержит точку не из $L$.
+Выберем такую окрестность $T_{\ep_1}^{x_1}$, что
+$\overline{T}_{\ep_1}^{x_1} \subset \Omega$.
+Тогда существует $x_2 \in T_{\ep_1}^{x_1}$ такой, 
+что $u(x_2) < M$.
+В силу непрерывности функции $u$ существует окрестность $T_{\ep_2}^{x_2}$,
+$\overline{T}_{\ep_2}^{x_2} \subset T_{\ep_1}^{x_1}$
+точки $x_2$ такая, что для любого $x \in T_{\ep_2}^{x_2}$ справедливо
+неравенство $u(x) < M - \delta$.
+Тогда в силу теоремы о среднем по шару \ref{sec1:theorem2} имеет место оценка
+\begin{multline*}
+u(x_1) = \frac{1}{|T_{\ep_1}^{x_1}|} \int_{T_{\ep_1}^{x_1}} u(x) dx
+= \frac{1}{|T_{\ep_1}^{x_1}|} 
+\left(\int_{T_{\ep_1}^{x_1} \setminus \overline{T}_{\ep_2}^{x_2}} u(x) dx 
++ \int_{T_{\ep_2}^{x_2}} u(x) dx\right) \leq \\
+\leq \frac{M(|T_{\ep_1}^{x_1}| - |T_{\ep_2}^{x_2}|) 
++ (M - \delta) |T_{\ep_2}^{x_2}|}{|T_{\ep_1}^{x_1}|} 
+= M - \delta \frac{|T_{\ep_2}^{x_2}|}{|T_{\ep_1}^{x_1}|} < M.
+\end{multline*}
+Но так как $x_1 \in L$, то $u(x_1) = M$. Противоречие с не открытостью $L$.
+По теореме об открыто-замкнутом подмножестве области $L = \Omega$, 
+то есть $u \equiv M$. Для рассмотрения минимума достаточно рассмотреть $v := -u$.
+\end{proof}
+
+\begin{imp} \label{sec1:imp1}
+Пусть $\Omega$ -- ограниченная область в $\R^n$, 
+$u \in C^2(\Omega) \cap C(\overline{\Omega})$,
+$\Delta u \leq 0$ в $\Omega$. 
+Тогда справедливо тождество
 $$
-=u(x)\int\limits_{|x|<h}\omega_h(|x|)dx=u(x)
+\min\limits_{\overline{\Omega}} u 
+= \min\limits_{\partial \Omega} u.
 $$
--в силу свойства ядра усреднения и теоремы о среднем.\\
-А в силу свойства ядра усреднения
+\end{imp}
+
+\begin{proof}
+Применяем слабый принцип максимума \ref{sec1:theorem1} для $v := -u$. 
+\end{proof}
+
+
+\begin{imp} \label{sec1:imp2}
+Пусть $\Omega$ -- ограниченная область в $\R^n$, 
+$u \in C^2(\Omega) \cap C(\overline{\Omega})$,
+$\Delta u \equiv 0$ в $\Omega$. 
+Тогда справедливы тождества
 $$
-u_h\in C^\infty(\mathbb{R}^n)\Rightarrow u(x)\in C^\infty(\Omega)
+\max\limits_{\overline{\Omega}} u 
+= \max\limits_{\partial \Omega} u, \qquad
+\min\limits_{\overline{\Omega}} u 
+= \min\limits_{\partial \Omega} u, \qquad
+\max\limits_{\overline{\Omega}} |u| 
+= \max\limits_{\partial \Omega} |u|.
 $$
+\end{imp}
+
+\begin{proof}
+Применяем слабый принцип максимума \ref{sec1:theorem1} 
+и следствие \ref{sec1:imp1}. 
+\end{proof}
+
+\begin{theorem}[лемма Вейля]
+Пусть $u \in L^p(\Omega)$, где $p \geq 1$, $\Omega$ -- ограниченная область в $\R^n$,
+и для любой финитной $\ph$ на $\Omega$ справедливо тождество
+$$
+\int_{\Omega} u \Delta \ph dx = 0.
+$$
+Тогда функция $u$ является гармонической.
+\end{theorem}
+
 
 \textbf{Теорема 5 (О знаке нормальной производной гармонической функции в точке минимума(максимума)).}\\
 Пусть $u\in C^2(T_R^{x_0})\cap C(\overline{T}_R^{x_0})$, предположим, что $\Delta u=0$ в $T_R^{x_0}$
@@ -515,12 +700,12 @@ $$
 \newpage
 \section[Лекция 17.]{Лекция 17.}
 \subsection {Функция Грина. Задача Дирихле для уравнения Лапласа.}
-%\newtheorem*{theor}{Теорема}
+%\newtheoremem*{theorem}{Теорема}
 
-\begin{theor}[Лиувилль]
+\begin{theorem}[Лиувилль]
 Пусть $u(x)$ - гармоническая в $\mathbb R^n$, неотрицательная
 функция. Тогда $u=const$.
-\end{theor}
+\end{theorem}
 
 \textbf{Доказательство:} Зафиксируем точку $x_0$ и шар $Q_R^{x_0}$
 радиуса $R$ с центром в нашей точке.Поскольку производная
@@ -608,7 +793,7 @@ u(x_0)=u(x_0)=\int_{\partial\Omega}u(x) \frac{\partial
 G(x,x_0)}{\partial\nu}\, dS
 $$
 
-%\newtheorem*{lemma}{Лемма}
+%\newtheoremem*{lemma}{Лемма}
 \begin{lemma}
 $\forall x_1,x_0 \in \Omega \quad G(x_1,x_0)=G(x_0,x_1)$
 \end{lemma}
@@ -1652,7 +1837,7 @@ P(x)=\begin{cases}
 $$
 
 
-\begin{theor}
+\begin{theorem}
 Пусть $\Gamma$ -- замкнутая поверхность Ляпунова,$\sigma(x)\in
 C(\Gamma)$, тогда $\forall x_0 \in \Gamma$:
 $$
@@ -1664,7 +1849,7 @@ P_2^-(x_0)=\lim_{x\rightarrow x_0,x \in \mathbb R^n\backslash \bar
 \Omega} P_2(x) =\frac{(n-2)w_n}2 \sigma (x_0)+\overline P_2(x_0)
 $$
 Где $\overline P_2(x_0)$ -- прямое значение в точке $x_0$.
-\end{theor}
+\end{theorem}
 
 
 \textbf{Доказательство:}
@@ -1718,9 +1903,9 @@ $$
 Где $\mu(x)\in C(\Gamma)$, $\Gamma$ -- замкнутая поверхность
 Ляпунова.
 
-\begin{theor}
+\begin{theorem}
 Потенциал простого слоя непрерывен в $\mathbb R^n$.
-\end{theor}
+\end{theorem}
 
 \textbf{Доказательство:} Непрерывность может нарушаться только при
 переходе через $\Gamma$. Вначале проверим,что потенциал определен
@@ -1786,7 +1971,7 @@ $$
 %-------------------------------------------- Лекция 23 ---------------------------------------------
 \newpage
 \section {Лекция 23.}
-\begin{theor}[О скачке нормальной производной потенциала простого
+\begin{theorem}[О скачке нормальной производной потенциала простого
 слоя]
  Пусть $\Gamma$ -- замкнутая поверхность
 Ляпунова,$\mu(x)\in C(\Gamma)$, тогда $\forall x_0 \in \Gamma$:
@@ -1806,7 +1991,7 @@ x\rightarrow x_0,x\in \nu_x} \Bigl(\frac{\partial P_1}{\partial
 $$
 Где $\overline{\Bigl(\frac{\partial P_1}{\partial \nu_x}\Bigr)}$
 -- прямое значение в точке $x_0$.
-\end{theor}
+\end{theorem}
 
 \textbf{Доказательство:} \\
 
@@ -2486,10 +2671,10 @@ $R_k$.
 
 Последовательность $\{v_k\}$ называется \emph{последовательностью
 Ритца}.
-\begin{theor}
+\begin{theorem}
 Последовательность Ритца является минимизирующей функционал
 $E(\cdot)$ на подпространстве $H'$ последовательностью.
-\end{theor}
+\end{theorem}
 
 
 \noindent\textbf{Доказательство:}\\
@@ -2549,7 +2734,7 @@ $$
 Дирихле.\\
 
 Подведем итог.
-\begin{theor}
+\begin{theorem}
 Существует единственная функция ,реализующая минимум функционала
 на. Если скалярное произведение на задается формулой ,то эта
 функция является обобщенным решением задачи Дирихле
@@ -2564,7 +2749,7 @@ $$
 $$
 Последовательность Ритца может быть рассмотрена как
 последовательность, приближающая решение.
-\end{theor}
+\end{theorem}
 
 
 
@@ -2692,7 +2877,7 @@ $$
 Итак, мы доказали, что $\Gamma(x,x_0,t,t_0)$ является
 фундаментальным решением.
 
-\begin{theor}[Принцип максимума в ограниченной области]
+\begin{theorem}[Принцип максимума в ограниченной области]
 Пусть $u(x,t)$ - решение уравнения $Tu=0$ в слое $\tilde{w}_\tau$,
 принадлежащее классу $C^{2,1}(\tilde{w}_\tau)\cap C(\overline{
 w_\tau})$.  Тогда $\forall (x,t)\in \tilde{w}_\tau$:
@@ -2701,7 +2886,7 @@ $$
 $$
 Где $\sigma_\tau=\Omega\cup S_\tau$, $S_\tau$ -- боковая
 поверхность цилиндра.
-\end{theor}
+\end{theorem}
 
 
 \noindent\textbf{Доказательство:}\\
@@ -2749,7 +2934,7 @@ $u(x,t)$.
 \subsection{Принципы максимума}
 
 
-\begin{theor}[Принцип максимума в неограниченной области]
+\begin{theorem}[Принцип максимума в неограниченной области]
 Пусть $u(x,t)$ - решение уравнения $Tu=0$ в слое
 $G_\tau=\left\{\,(x,t)\,\Bigl|\,x\in \mathbb R^n,\,0<t\leq \tau\,
 \right\}$, принадлежащее классу $C^{2,1}(G_\tau)\cap C(\overline{
@@ -2759,7 +2944,7 @@ $$
 \inf_{x \in \mathbb R^n} u(x,0)\leq u(x,t)\leq \sup_{x \in \mathbb
 R^n} u(x,0)
 $$
-\end{theor}
+\end{theorem}
 
 
 \noindent\textbf{Доказательство:}\\
@@ -2798,7 +2983,7 @@ $$
 Переходя к пределу при $\varepsilon\rightarrow 0$, получим
 утверждение теоремы.\\
 
-\begin{theor}[строгий принцип максимума ]
+\begin{theorem}[строгий принцип максимума ]
 Пусть функция $u(x,t)$ в цилиндре
 $\tilde{w}_\tau=\left\{\,(x,t)\,\Bigl|\,x\in \Omega,\,0<t\leq
 \tau\, \right\}$ удовлетворяет уравнению $Tu=0$, принадлежит
@@ -2806,7 +2991,7 @@ $\tilde{w}_\tau=\left\{\,(x,t)\,\Bigl|\,x\in \Omega,\,0<t\leq
 принимает в точке $(x_0,t_0)\in \tilde{w}_\tau$ наибольшее
 значение, то $u(x,t)\equiv u(x_0,t_0)=const$ в цилиндре
 $\tilde{w}_{\tau_0}=\tilde{w}_\tau\cap\{t\leq\tau_0\}$.
-\end{theor}
+\end{theorem}
 
 
 \noindent\textbf{Доказательство:}\\
@@ -2862,7 +3047,7 @@ u(x_{s+1},t_{s+1})\leq M-\alpha v(x_s,t_s)<M
 $$
 Что и хотели доказать.\\
 
-\begin{theor}[о стабилизации]
+\begin{theorem}[о стабилизации]
 Пусть $u(x,t)\in C^{2,1}(w_\infty)\cap C(\overline w_\infty)$ --
 решение уравнения $Tu=0$,
 $$
@@ -2875,7 +3060,7 @@ S_\infty=\left\{\,(x,t)\,\Bigl|\,x\in \partial\Omega,\,0<t<\infty,
 $$
 Пусть $u|_{S_\infty}=0$, тогда $u(x,t)\rightarrow0\quad
 t\rightarrow \infty$ равномерно по всем $x \in \overline\Omega$
-\end{theor}
+\end{theorem}
 
 
 \noindent\textbf{Доказательство:}\\
@@ -2942,10 +3127,10 @@ $u|_{t=0}=\varphi(x),\quad x\in \mathbb R^n$\\
 Здесь $f,\varphi$ -- заданные непрерывные функции.
 
 \subsection {Теоремы единственности}
-\begin{theor}
+\begin{theorem}
 Первая краевая задача для оператора теплопроводности имеет
 единственное решение.
-\end{theor}
+\end{theorem}
 
 
 \noindent\textbf{Доказательство:}\\
@@ -2959,10 +3144,10 @@ $$
 Поэтому $v(x,t)=0$ в $\tilde{w}_\tau$ и единственность доказана.\\
 
 
-\begin{theor}
+\begin{theorem}
 Задача Коши для уравнения теплопроводности в классе ограниченных
 функций имеет единственное решение.
-\end{theor}
+\end{theorem}
 
 
 \noindent\textbf{Доказательство:}\\

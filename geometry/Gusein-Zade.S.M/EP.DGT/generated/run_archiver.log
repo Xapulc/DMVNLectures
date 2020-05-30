@@ -1,15 +1,25 @@
 
 7-Zip [64] 16.02 : Copyright (c) 1999-2016 Igor Pavlov : 2016-05-21
-p7zip Version 16.02 (locale=ru_RU.UTF-8,Utf16=on,HugeFiles=on,64 bits,4 CPUs Intel(R) Atom(TM) x5-Z8350  CPU @ 1.44GHz (406C4),ASM,AES-NI)
+p7zip Version 16.02 (locale=ru_RU.UTF-8,Utf16=on,HugeFiles=on,64 bits,8 CPUs Intel(R) Core(TM) i7-8665U CPU @ 1.90GHz (806EC),ASM,AES-NI)
+
+Open archive: generated/ep-dgt-guseinzade.7z
+--
+Path = generated/ep-dgt-guseinzade.7z
+Type = 7z
+Physical Size = 125346
+Headers Size = 154
+Method = LZMA2:18
+Solid = -
+Blocks = 1
 
 Scanning the drive:
-1 file, 255287 bytes (250 KiB)
+1 file, 253597 bytes (248 KiB)
 
-Creating archive: generated/ep-dgt-guseinzade.7z
+Updating archive: generated/ep-dgt-guseinzade.7z
 
 Items to compress: 1
 
 
 Files read from disk: 1
-Archive size: 125346 bytes (123 KiB)
+Archive size: 124224 bytes (122 KiB)
 Everything is Ok

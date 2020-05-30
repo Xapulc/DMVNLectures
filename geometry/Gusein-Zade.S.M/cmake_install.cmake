@@ -1,4 +1,4 @@
-# Install script for directory: /home/xapulc/programs/latex/DMVNLectures/geometry/Gusein-Zade.S.M
+# Install script for directory: /home/xapulc/Projects/DMVNLectures/geometry/Gusein-Zade.S.M
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,9 +39,9 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/xapulc/programs/latex/DMVNLectures/geometry/Gusein-Zade.S.M/DGT/cmake_install.cmake")
-  include("/home/xapulc/programs/latex/DMVNLectures/geometry/Gusein-Zade.S.M/EP.Analytical.Geometry/cmake_install.cmake")
-  include("/home/xapulc/programs/latex/DMVNLectures/geometry/Gusein-Zade.S.M/EP.DGT/cmake_install.cmake")
+  include("/home/xapulc/Projects/DMVNLectures/geometry/Gusein-Zade.S.M/DGT/cmake_install.cmake")
+  include("/home/xapulc/Projects/DMVNLectures/geometry/Gusein-Zade.S.M/EP.Analytical.Geometry/cmake_install.cmake")
+  include("/home/xapulc/Projects/DMVNLectures/geometry/Gusein-Zade.S.M/EP.DGT/cmake_install.cmake")
 
 endif()
 

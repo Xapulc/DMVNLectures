@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xapulc/programs/latex/DMVNLectures
+CMAKE_SOURCE_DIR = /home/xapulc/Projects/DMVNLectures
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xapulc/programs/latex/DMVNLectures
+CMAKE_BINARY_DIR = /home/xapulc/Projects/DMVNLectures
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/xapulc/programs/latex/DMVNLectures && $(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/programs/latex/DMVNLectures/CMakeFiles /home/xapulc/programs/latex/DMVNLectures/ptms/Prochorov.A.V/Statistics/CMakeFiles/progress.marks
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/programs/latex/DMVNLectures/CMakeFiles 0
+	cd /home/xapulc/Projects/DMVNLectures && $(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/Projects/DMVNLectures/CMakeFiles /home/xapulc/Projects/DMVNLectures/ptms/Prochorov.A.V/Statistics/CMakeFiles/progress.marks
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/Projects/DMVNLectures/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/clean
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/preinstall
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/preinstall
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/xapulc/Projects/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.ps.dir/rule:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.ps.dir/rule
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.ps.dir/rule
 .PHONY : ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.ps.dir/rule
 
 # Convenience name for target.
@@ -122,12 +122,12 @@ Make-Statistics.PAV.ps: ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics
 
 # fast build rule for target.
 Make-Statistics.PAV.ps/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.ps.dir/build.make ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.ps.dir/build
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.ps.dir/build.make ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.ps.dir/build
 .PHONY : Make-Statistics.PAV.ps/fast
 
 # Convenience name for target.
 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.7z.dir/rule:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.7z.dir/rule
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.7z.dir/rule
 .PHONY : ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.7z.dir/rule
 
 # Convenience name for target.
@@ -137,12 +137,12 @@ Make-statistics-prochorov.7z: ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-stat
 
 # fast build rule for target.
 Make-statistics-prochorov.7z/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.7z.dir/build.make ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.7z.dir/build
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.7z.dir/build.make ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.7z.dir/build
 .PHONY : Make-statistics-prochorov.7z/fast
 
 # Convenience name for target.
 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.dvi.dir/rule:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.dvi.dir/rule
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.dvi.dir/rule
 .PHONY : ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.dvi.dir/rule
 
 # Convenience name for target.
@@ -152,12 +152,12 @@ Make-Statistics.PAV.dvi: ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistic
 
 # fast build rule for target.
 Make-Statistics.PAV.dvi/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.dvi.dir/build.make ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.dvi.dir/build
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.dvi.dir/build.make ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.dvi.dir/build
 .PHONY : Make-Statistics.PAV.dvi/fast
 
 # Convenience name for target.
 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.pdf.dir/rule:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.pdf.dir/rule
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.pdf.dir/rule
 .PHONY : ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.pdf.dir/rule
 
 # Convenience name for target.
@@ -167,12 +167,12 @@ Make-Statistics.PAV.pdf: ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistic
 
 # fast build rule for target.
 Make-Statistics.PAV.pdf/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.pdf.dir/build.make ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.pdf.dir/build
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.pdf.dir/build.make ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-Statistics.PAV.pdf.dir/build
 .PHONY : Make-Statistics.PAV.pdf/fast
 
 # Convenience name for target.
 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.pdf.dir/rule:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.pdf.dir/rule
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.pdf.dir/rule
 .PHONY : ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.pdf.dir/rule
 
 # Convenience name for target.
@@ -182,7 +182,7 @@ Make-statistics-prochorov.pdf: ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-sta
 
 # fast build rule for target.
 Make-statistics-prochorov.pdf/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.pdf.dir/build.make ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.pdf.dir/build
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.pdf.dir/build.make ptms/Prochorov.A.V/Statistics/CMakeFiles/Make-statistics-prochorov.pdf.dir/build
 .PHONY : Make-statistics-prochorov.pdf/fast
 
 # Help Target
@@ -209,6 +209,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/xapulc/Projects/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

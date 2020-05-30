@@ -1,4 +1,4 @@
-# Install script for directory: /home/xapulc/programs/latex/DMVNLectures/geometry/Gusein-Zade.S.M/DGT/addition
+# Install script for directory: /home/xapulc/Projects/DMVNLectures/geometry/Gusein-Zade.S.M/DGT/addition
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

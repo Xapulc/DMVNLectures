@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xapulc/programs/latex/DMVNLectures
+CMAKE_SOURCE_DIR = /home/xapulc/Projects/DMVNLectures
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xapulc/programs/latex/DMVNLectures
+CMAKE_BINARY_DIR = /home/xapulc/Projects/DMVNLectures
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/xapulc/programs/latex/DMVNLectures && $(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/programs/latex/DMVNLectures/CMakeFiles /home/xapulc/programs/latex/DMVNLectures/geometry/CMakeFiles/progress.marks
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/programs/latex/DMVNLectures/CMakeFiles 0
+	cd /home/xapulc/Projects/DMVNLectures && $(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/Projects/DMVNLectures/CMakeFiles /home/xapulc/Projects/DMVNLectures/geometry/CMakeFiles/progress.marks
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xapulc/Projects/DMVNLectures/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/clean
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,17 +97,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/preinstall
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/preinstall
+	cd /home/xapulc/Projects/DMVNLectures && $(MAKE) -f CMakeFiles/Makefile2 geometry/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/xapulc/Projects/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -129,6 +129,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/xapulc/programs/latex/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/xapulc/Projects/DMVNLectures && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
