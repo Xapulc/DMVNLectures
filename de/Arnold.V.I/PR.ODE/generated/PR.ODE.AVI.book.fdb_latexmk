@@ -1,5 +1,5 @@
 # Fdb version 3
-["latex"] 1590822871 "PR.ODE.AVI.book.tex" "PR.ODE.AVI.book.dvi" "PR.ODE.AVI.book" 1590822871
+["latex"] 1590824511 "PR.ODE.AVI.book.tex" "PR.ODE.AVI.book.dvi" "PR.ODE.AVI.book" 1590824511
   "/etc/texmf/web2c/texmf.cnf" 1584680390 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1000.tfm" 1590728139 3300 6abb8e321227ead2a8e929e5abc72bd3 ""
   "/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm" 1586191909 3304 6a543c07045572737981351171e0505e ""
@@ -56,9 +56,9 @@
   "/usr/share/texmf/tex/dmvn/russlh.sty" 1590726060 1196 cfeb11024373bee128da08c9baa69467 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
   "/var/lib/texmf/web2c/pdftex/latex.fmt" 1584680440 4127834 0fd10f59f58dd7415489519797b24ca0 ""
-  "PR.ODE.AVI.book.aux" 1590822871 50 0fef47af310be850185ccf42e00e9455 ""
+  "PR.ODE.AVI.book.aux" 1590824511 50 0fef47af310be850185ccf42e00e9455 ""
   "PR.ODE.AVI.book.tex" 1590726383 5668 9f69eb569cbff62ba29bd08bf732cd7c ""
   (generated)
-  "PR.ODE.AVI.book.aux"
   "PR.ODE.AVI.book.log"
+  "PR.ODE.AVI.book.aux"
   "PR.ODE.AVI.book.dvi"

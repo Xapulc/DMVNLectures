@@ -1,5 +1,5 @@
 # Fdb version 3
-["latex"] 1590822873 "CW.PDE.STA.tex" "CW.PDE.STA.dvi" "CW.PDE.STA" 1590822873
+["latex"] 1590824513 "CW.PDE.STA.tex" "CW.PDE.STA.dvi" "CW.PDE.STA" 1590824513
   "/etc/texmf/web2c/texmf.cnf" 1584680390 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1000.tfm" 1590728139 3300 6abb8e321227ead2a8e929e5abc72bd3 ""
   "/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lait1000.tfm" 1590820906 1272 d378cd4754e4c68b79935f80476d422f ""
@@ -69,7 +69,7 @@
   "/usr/share/texmf/tex/dmvn/russlh.sty" 1590726060 1196 cfeb11024373bee128da08c9baa69467 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
   "/var/lib/texmf/web2c/pdftex/latex.fmt" 1584680440 4127834 0fd10f59f58dd7415489519797b24ca0 ""
-  "CW.PDE.STA.aux" 1590822873 50 0fef47af310be850185ccf42e00e9455 ""
+  "CW.PDE.STA.aux" 1590824513 50 0fef47af310be850185ccf42e00e9455 ""
   "CW.PDE.STA.tex" 1590726383 475 39db5771792237eb613015ac0c2d98e7 ""
   "intro.tex" 1590726383 370 19538e884615b4a82a2324d33ca013ee ""
   "shaposhnikova_kontra_1_v1.tex" 1590726383 3254 6c924f769d93d28da01e7341e60cd928 ""
@@ -77,6 +77,6 @@
   "shaposhnikova_kontra_3_v1.tex" 1590726383 6123 40e21c1d89e43fcb2173b4d36526c034 ""
   "shaposhnikova_test_25_03.tex" 1590726383 3249 feb16c93c684c3fc56e81638ee46f6b7 ""
   (generated)
-  "CW.PDE.STA.aux"
-  "CW.PDE.STA.log"
   "CW.PDE.STA.dvi"
+  "CW.PDE.STA.log"
+  "CW.PDE.STA.aux"

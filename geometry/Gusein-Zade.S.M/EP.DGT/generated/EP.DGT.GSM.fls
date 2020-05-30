@@ -42,7 +42,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map
-INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1000.tfm
+INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1000.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/cp1251.def
@@ -68,8 +68,8 @@ INPUT /usr/share/texmf/tex/dmvn/diagram.tex
 INPUT EP.DGT.GSM.aux
 INPUT EP.DGT.GSM.aux
 OUTPUT EP.DGT.GSM.aux
-INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1728.tfm
-INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm
+INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1728.tfm
+INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
@@ -108,10 +108,10 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs5.tfm
-INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0800.tfm
+INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0800.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
-INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/latt0800.tfm
-INPUT /home/vikharlamov/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0600.tfm
+INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/latt0800.tfm
+INPUT /home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0600.tfm
 OUTPUT EP.DGT.GSM.dvi
 INPUT EP.DGT.GSM.aux
