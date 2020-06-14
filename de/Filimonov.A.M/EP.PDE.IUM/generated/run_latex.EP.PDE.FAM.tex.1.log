@@ -1,12 +1,43 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex)
+Latexmk: This is Latexmk, John Collins, 26 Dec. 2019, version: 4.67.
+Rule 'latex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      '/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map'
+      '/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def'
+      '/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty'
+      '/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def'
+      '/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/article.cls'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo'
+      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/cp1251.def'
+      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd'
+      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def'
+      '/usr/share/texlive/texmf-dist/web2c/texmf.cnf'
+      '/usr/share/texmf/web2c/texmf.cnf'
+      '/var/lib/texmf/web2c/pdftex/latex.fmt'
+   No-longer-existing files:
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1728.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1728.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lasl1200.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lati1200.tfm'
+------------
+Run number 1 of rule 'latex'
+------------
+------------
+Running 'latex  --src-specials --interaction=nonstopmode -recorder  "EP.PDE.FAM.tex"'
+------------
+Latexmk: applying rule 'latex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
  restricted \write18 enabled.
  Source specials enabled.
 entering extended mode
 (./EP.PDE.FAM.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/cp1251.def))
@@ -21,25 +52,194 @@ Package babel Warning: No Cyrillic font encoding has been loaded so far.
 (babel)                Default `T2A' encoding will be loaded  on input line 74.
 
 
-(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def)))
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t2aenc.dfu))))
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def)
+(./EP.PDE.FAM.aux (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd))
+
+kpathsea: Running mktextfm lati1200
+mktextfm: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1; nonstopmode; input lati1200
+This is METAFONT, Version 2.7182818 (TeX Live 2019/Debian) (preloaded base=mf)
+
+kpathsea: Running mktexmf lati1200
+mf: /home/xapulc/.texlive2019/texmf-var/fonts/source/lh/lh-t2a/lati1200.mf: successfully generated.
+
+(/home/xapulc/.texlive2019/texmf-var/fonts/source/lh/lh-t2a/lati1200.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/fikparm.mf
+(/usr/share/texlive/texmf-dist/fonts/source/public/cm/cmbase.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lcyrbeg.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lkligtbl.mf)
+>> 12
+>> "input ecti" (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecti.mf
+) (/usr/share/texlive/texmf-dist/fonts/source/lh/lh-t2a/lacodes.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lcyrdefs.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/letextit.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lxpseudo.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exillett.mf [97]
+[98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108] [109] [110]
+[111] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121] [122])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyri.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgrusi.mf [224] [225]
+[226] [227] [228] [229] [230] [231] [232] [233] [234] [235] [236] [237]
+[238] [239] [240] [241] [242] [243] [244] [245] [246] [247] [248] [249]
+[250] [251] [252] [253] [254] [255] [188])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2comi.mf [163] [162]
+[167] [187] [175] [182] [160] [168] [174] [176] [178] [185])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2upi.mf [161] [164]
+[165] [166] [169] [170] [173] [177] [179] [180] [181] [184] [186])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2loi.mf [172] [171]
+[183])) (/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgilig.mf [25]
+[26] [27] [28] [29] [30] [31])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf [65]
+[66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80]
+[81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyru.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgrusu.mf [192] [193]
+[194] [195] [196] [197] [198] [199] [200] [201] [202] [203] [204] [205]
+[206] [207] [208] [209] [210] [211] [212] [213] [214] [215] [216] [217]
+[218] [219] [220] [221] [222] [223] [156])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2comu.mf [131] [130]
+[136] [135] [155] [143] [150] [128] [142] [144] [146] [153])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2upu.mf [129] [132]
+[133] [134] [137] [138] [141] [145] [147] [148] [149] [152] [154])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2lou.mf [140] [139]
+[151])) (/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyrsym.mf
+[13] [14] [15] [22] [24] [23] [34] [157] [158] [159] [189] [190] [191])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgengsym.mf [16] [17]
+[21] [32] [33] [35] [36] [37] [39] [40] [41] [42] [43] [44] [45] [46] [47]
+[58] [59] [60] [62] [61] [64] [91] [92] [93] [94] [95] [96] [123] [124]
+[125] [126] [127])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgitalp.mf [38] [63])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgidigit.mf [48] [49]
+[50] [51] [52] [53] [54] [55] [56] [57])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyracc.mf [0] [1]
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [19] [20] [18])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/llvligtb.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lliligtb.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/lh-t2a/laliker.mf) ) ) )
+Font metrics written on lati1200.tfm.
+Output written on lati1200.600gf (256 characters, 62932 bytes).
+Transcript written on lati1200.log.
+mktextfm: /home/xapulc/.texlive2019/texmf-var/fonts/tfm/lh/lh-t2a/lati1200.tfm: successfully generated.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+kpathsea: Running mktextfm lasl1200
+mktextfm: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1; nonstopmode; input lasl1200
+This is METAFONT, Version 2.7182818 (TeX Live 2019/Debian) (preloaded base=mf)
+
+kpathsea: Running mktexmf lasl1200
+mf: /home/xapulc/.texlive2019/texmf-var/fonts/source/lh/lh-t2a/lasl1200.mf: successfully generated.
+
+(/home/xapulc/.texlive2019/texmf-var/fonts/source/lh/lh-t2a/lasl1200.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/fikparm.mf
+(/usr/share/texlive/texmf-dist/fonts/source/public/cm/cmbase.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lcyrbeg.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lkligtbl.mf)
+>> 12
+>> "input ecsl" (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecsl.mf
+) (/usr/share/texlive/texmf-dist/fonts/source/lh/lh-t2a/lacodes.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lcyrdefs.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/leroman.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lxpseudo.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf [65]
+[66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80]
+[81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf [97]
+[98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108] [109] [110]
+[111] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121] [122])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyru.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgrusu.mf [192] [193]
+[194] [195] [196] [197] [198] [199] [200] [201] [202] [203] [204] [205]
+[206] [207] [208] [209] [210] [211] [212] [213] [214] [215] [216] [217]
+[218] [219] [220] [221] [222] [223] [156])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2comu.mf [131] [130]
+[136] [135] [155] [143] [150] [128] [142] [144] [146] [153])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2upu.mf [129] [132]
+[133] [134] [137] [138] [141] [145] [147] [148] [149] [152] [154])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2lou.mf [140] [139]
+[151])) (/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyrl.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgrusl.mf [224] [225]
+[226] [227] [228] [229] [230] [231] [232] [233] [234] [235] [236] [237]
+[238] [239] [240] [241] [242] [243] [244] [245] [246] [247] [248] [249]
+[250] [251] [252] [253] [254] [255] [188])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2coml.mf [163] [162]
+[167] [187] [175] [182] [160] [168] [174] [176] [178] [185])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2upl.mf [161] [164]
+[165] [166] [169] [170] [173] [177] [179] [180] [181] [184] [186])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2lol.mf [172] [171]
+[183])) (/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyrsym.mf
+[13] [14] [15] [22] [24] [23] [34] [157] [158] [159] [189] [190] [191])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgengsym.mf [16] [17]
+[21] [32] [33] [35] [36] [37] [39] [40] [41] [42] [43] [44] [45] [46] [47]
+[58] [59] [60] [62] [61] [64] [91] [92] [93] [94] [95] [96] [123] [124]
+[125] [126] [127])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgromp.mf [38] [63])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgrdigit.mf [48] [49]
+[50] [51] [52] [53] [54] [55] [56] [57])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgrlig.mf [25] [26]
+[28] [27] [29] [30] [31])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyracc.mf [0] [1]
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [19] [20] [18])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/llvligtb.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/llrligtb.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/lh-t2a/laliker.mf) ) ) )
+(some charht values had to be adjusted by as much as 0.07143pt)
+Font metrics written on lasl1200.tfm.
+Output written on lasl1200.600gf (256 characters, 59000 bytes).
+Transcript written on lasl1200.log.
+mktextfm: /home/xapulc/.texlive2019/texmf-var/fonts/tfm/lh/lh-t2a/lasl1200.tfm: successfully generated.
+ [1]
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd) [2] [3]
+(./EP.PDE.FAM.aux) )
+Output written on EP.PDE.FAM.dvi (3 pages, 14596 bytes).
+Transcript written on EP.PDE.FAM.log.
+Latexmk: Log file says output to 'EP.PDE.FAM.dvi'
+Rule 'latex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'EP.PDE.FAM.aux'
+------------
+Run number 2 of rule 'latex'
+------------
+------------
+Running 'latex  --src-specials --interaction=nonstopmode -recorder  "EP.PDE.FAM.tex"'
+------------
+=== TeX engine is 'pdfTeX'
+Latexmk: applying rule 'latex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+ Source specials enabled.
+entering extended mode
+(./EP.PDE.FAM.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/cp1251.def))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-russian/russianb.ldf
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))
+
+Package babel Warning: No Cyrillic font encoding has been loaded so far.
+(babel)                A font encoding should be declared before babel.
+(babel)                Default `T2A' encoding will be loaded  on input line 74.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t2aenc.dfu))))
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def)
 (./EP.PDE.FAM.aux (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd))
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1{/var/lib/texmf/fo
-nts/map/pdftex/updmap/pdftex.map}]
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd) [1]
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd) [2] [3]
-(./EP.PDE.FAM.aux) ){/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc
-}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/euler/eufm10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-sup
-er/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></us
-r/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/
-type1/public/cm-super/sfsl1200.pfb></usr/share/texmf/fonts/type1/public/cm-supe
-r/sfti1200.pfb>
-Output written on EP.PDE.FAM.pdf (3 pages, 150665 bytes).
+(./EP.PDE.FAM.aux) )
+Output written on EP.PDE.FAM.dvi (3 pages, 14596 bytes).
 Transcript written on EP.PDE.FAM.log.
+Latexmk: Log file says output to 'EP.PDE.FAM.dvi'
+=== TeX engine is 'pdfTeX'
+Latexmk: All targets () are up-to-date

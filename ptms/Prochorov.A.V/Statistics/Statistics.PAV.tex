@@ -2979,7 +2979,7 @@ $$
 Заметим, что 
 $$
 \eta \sim \Norm(C (a-a), C^T \Sigma C) = \Norm(0, C^T (C^{-1})^T C^{-1} C)
-= \Norm(0, E)
+= \Norm(0, E).
 $$
 Поэтому $\eta$ имеет стандартное многомерное нормальное распределение,
 а $Q$ --- распределение хи-квадрат.
@@ -3095,33 +3095,61 @@ $$
 При $n=1$ распределение Стьюдента совпадает с распределением Коши,
 имеющим плотность $\dfrac{1}{\pi (1+x^2)}$.
 \begin{proof}
-Выведем формулу плотности. Пусть $x \leq 0$, тогда
+Рассмотрим случайную величину ${\xi = (Z_0, \chi_n^2)^T}$, 
+где $Z_0$ имеет стандартное нормальное распределение,
+$\chi_n^2$ имеет хи-квадрат распределение
+с~$n$ степенями свободы, $Z_0$ и $\chi_n^2$ -- независимы.
+Пусть
+$$
+\eta 
+= \left(
+\begin{matrix}
+\frac{Z_0}{\sqrt{\chi_n^2 / n}} \\
+\chi_n^2
+\end{matrix}
+\right)
+= g\left(
+\begin{matrix}
+Z_0 \\
+\chi_n^2
+\end{matrix}
+\right)
+= g(\xi).
+$$
+Плотность случайного вектора~$\xi$ нам известна.
+Найдём плотность вектора~$\eta$ по~формуле
+замены плотности. 
+Заметим, что
+$$
+J_g(z, x)
+= \left(
+\begin{matrix}
+\sqrt{n / x} & * \\
+0            & 1
+\end{matrix}
+\right),
+$$
+откуда при $z = t \sqrt{x / n}$
+$$
+f_{\eta}(t, x)
+= \frac{f_{\xi}(z, x)}{|J_g(z, x)|}
+= \sqrt{\frac{x}{n}} f_{Z_0}(t \sqrt{x / n}) f_{\chi_n^2}(x)
+= \sqrt{\frac{x}{n}} \frac{1}{\sqrt{2 \pi}} e^{-x t^2 / (2 n)} 
+\frac{1}{2^{n/2} \Gamma(n/2)} x^{n/2-1} e^{-x/2}.
+$$
+Положим $D_n := (2^{n/2} \Gamma(n/2) \sqrt{2 \pi n})^{-1}$.
+Первая координата вектора $\eta$ обладает 
+искомым распределением Стьюдента с $n$ степенями свободы,
+и её плотность находится как
 \begin{multline*}
-f_{t_n}(x) = \frac{\partial}{\partial x} 
-\Pf\left(\frac{Z_0}{\sqrt{\chi_n^2 / n}} \leq x\right) =
-\frac{\partial}{\partial x} \left(\frac{1}{2} -
-\frac{1}{2} \Pf\left(\frac{\chi_1^2}{\chi_n^2} \leq x^2/n\right)
-\right) =  \frac{\partial}{\partial x}
--\frac{1}{2}\int_{0}^{+\infty} \int_0^{x^2 v/n} f_{\chi_1^2}(u) du 
-f_{\chi_n^2}(v) dv = \\
-- \frac{x}{n} \int_{0}^{+\infty} 
-v f_{\chi_1^2}(x^2 v/n) f_{\chi_n^2}(v) dv =
-- n x \int_{0}^{+\infty} v \frac{(x^2 v/n)^{-1/2} e^{-x^2 v / (2n)}}{
-2^{1/2} \Gamma(1/2)} \frac{v^{n/2-1} e^{-v/2}}{2^{n/2} \Gamma(n/2)} dv = \\
-\frac{1}{\sqrt{\pi n} 2^{(n+1)/2} \Gamma(n/2)}
-\int_{0}^{+\infty} v^{(n+1)/2-1} e^{-(x^2/n+1) v / 2} dv.
+f_{t_n}(t) = \int_0^{\infty} f_{\eta}(t, x) dx
+= D_n \int_0^{\infty} x^{(n-1) / 2} e^{-(t^2/n+1) x / 2} dx
+= D_n \frac{2^{(n+1) / 2}}{(1 + t^2/n)^{(n+1)/2}} 
+\int_0^{\infty} y^{(n-1)/2} e^{-y} dy = \\
+= \frac{\Gamma((n+1)/2) 2^{(n+1)/2}}{2^{n/2} \Gamma(n/2) \sqrt{2 \pi n}}
+\frac{1}{(1 + t^2/n)^{(n+1)/2}}
+= \frac{\Gamma((n+1)/2)}{\Gamma(n/2) \sqrt{\pi n}} \frac{1}{(1 + t^2/n)^{(n+1)/2}}.
 \end{multline*}
-Сделаем замену переменных $u := (x^2/n+1) v / 2$.
-Тогда $v = 2 u / (x^2/n+1)$, $dv = 2 du / (x^2/n+1)$.
-$$
-f_{t_n}(x) = \frac{1}{\sqrt{\pi n} 2^{(n+1)/2} \Gamma(n/2)}
-\int_{0}^{+\infty} \frac{2^{(n+1)/2} u^{(n+1)/2-1}}{
-(x^2/n + 1)^{(n+1)/2}} e^{-u} du = 
-\frac{C_n}{\left( 1 + \frac{x^2}{n} \right)^{\frac{n+1}{2}}}.
-$$
-В силу симметричности распределения функция плотности чётна, а значит,
-что приведённая выше функция в силу уже своей чётности является
-искомой плотностью для всех $x$.
 \end{proof}
 
 \subsubsection{Распределение Фишера}
@@ -3135,8 +3163,8 @@ $$
 Плотность:
 
 $$
-p_{m,n}(x) = \begin{cases}
-\frac{1}{B(m/2,n/2)}(\frac{m}{n})^{m/2}x^{n/2-1}(1 + \frac{m}{n}x)^{-\frac{m+n}{2}},& x \ge 0\\
+p_{n,m}(x) = \begin{cases}
+\frac{1}{B(n/2,m/2)}(\frac{n}{m})^{n/2} x^{n/2-1} (1 + \frac{n}{m}x)^{-\frac{m+n}{2}},& x \ge 0\\
 0,& x \leq 0
 \end{cases}
 $$
@@ -3146,6 +3174,65 @@ $$
 P(F_{m,n} \leq x) = \frac{I_{\frac{m}{n}x}(m/2,n/2)}{1 + \frac{m}{n}x}, \quad
 \text{где $I_x(a,b)$ - неполная $\beta$-функция с параметрами $a$ и $b$.}
 $$
+\begin{proof}
+Рассмотрим случайную величину ${\xi = (\chi_n^2, \chi_m^2)^T}$, 
+где $\chi_n^2$ имеет хи-квадрат распределение
+с~$n$ степенями свободы,
+$\chi_m^2$ имеет хи-квадрат распределение
+с~$m$ степенями свободы, $\chi_n^2$ и $\chi_m^2$ -- независимы.
+Пусть
+$$
+\eta 
+= \left(
+\begin{matrix}
+\frac{\chi_n^2 / n}{\chi_m^2 / m} \\
+\chi_m^2
+\end{matrix}
+\right)
+= g\left(
+\begin{matrix}
+\chi_n^2 \\
+\chi_m^2
+\end{matrix}
+\right)
+= g(\xi).
+$$
+Плотность случайного вектора~$\xi$ нам известна.
+Найдём плотность вектора~$\eta$ по~формуле
+замены плотности. 
+Заметим, что
+$$
+J_g(x_1, x_2)
+= \left(
+\begin{matrix}
+m / (n x_2) & * \\
+0            & 1
+\end{matrix}
+\right),
+$$
+откуда при $x_1 = n x_2 y / m > 0$, $y > 0$
+\begin{multline*}
+f_{\eta}(y, x_2)
+= \frac{f_{\xi}(x_1, x_2)}{|J_g(x_1, x_2)|}
+= \frac{n x_2}{m} f_{\chi_n^2}(n x_2 y / m) f_{\chi_m^2}(x_2) = \\
+= \frac{n x_2}{m}
+\frac{1}{2^{n/2} \Gamma(n/2)} (n x_2 y / m)^{n/2-1} e^{-n x_2 y / (2m)} 
+\frac{1}{2^{m/2} \Gamma(m/2)} x_2^{m/2-1} e^{-x_2/2} = \\
+= \frac{n^{n/2}}{m^{n/2} 2^{(n+m)/2} \Gamma(n/2) \Gamma(m/2)}
+y^{n/2-1} x_2^{(n+m)/2-1} e^{-(ny/m+1) x_2/2}.
+\end{multline*}
+Положим ${D_n := n^{n/2} / (m^{n/2} 2^{(n+m)/2} \Gamma(n/2) \Gamma(m/2))}$.
+Первая координата вектора $\eta$ обладает 
+искомым распределением Фишера с $n$ и $m$ степенями свободы,
+и её плотность находится как
+\begin{multline*}
+f_{F_{n, m}}(y) = \int_0^{\infty} f_{\eta}(y, x_2) dx_2
+= D_n y^{n/2-1} \int_0^{\infty} x_2^{(n+m)/2-1} e^{-(ny/m+1) x_2/2} dx_2 = \\
+= D_n y^{n/2-1} \frac{2^{(n+m)/2}}{(1+ny/m)^{(n+m)/2}}
+\int_0^{\infty} z^{(n+m)/2 - 1} e^{-z} dz
+= \frac{1}{B(n/2, m/2)} \left(\frac{n}{m}\right)^{n/2} y^{n/2-1} \frac{1}{(1+ny/m)^{(n+m)/2}}.
+\end{multline*}
+\end{proof}
 
 \subsection{Статистики для нормальных выборок}
 \subsubsection{Распределение статистик для нормальных выборок}
@@ -3770,7 +3857,7 @@ $$
 Несмещённость доказана.
 \end{proof}
 
-\subsubsection{Равномерно наибольших критерий} \label{task32}
+\subsubsection{Равномерно наибольший критерий} \label{task32}
 \begin{df}
 Если существует критерий с критическим множеством $D$, такой что
 его уровень значимости не превосходит $\alpha$ и для любого другого

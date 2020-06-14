@@ -1,12 +1,60 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex)
+Latexmk: This is Latexmk, John Collins, 26 Dec. 2019, version: 4.67.
+Rule 'latex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      '/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map'
+      '/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def'
+      '/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty'
+      '/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def'
+      '/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def'
+      '/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty'
+      '/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty'
+      '/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty'
+      '/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty'
+      '/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/article.cls'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/t2aenc.dfu'
+      '/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def'
+      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd'
+      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd'
+      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def'
+      '/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty'
+      '/usr/share/texlive/texmf-dist/web2c/texmf.cnf'
+      '/usr/share/texmf/web2c/texmf.cnf'
+      '/var/lib/texmf/web2c/pdftex/latex.fmt'
+   No-longer-existing files:
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0500.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0600.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0700.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0800.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1000.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1728.tfm'
+      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/latt0800.tfm'
+------------
+Run number 1 of rule 'latex'
+------------
+------------
+Running 'latex  --src-specials --interaction=nonstopmode -recorder  "EP.PDE.VAK.tex"'
+------------
+Latexmk: applying rule 'latex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
  restricted \write18 enabled.
  Source specials enabled.
 entering extended mode
 (./EP.PDE.VAK.tex
-LaTeX2e <2017-04-15>
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo))
 (/usr/share/texmf/tex/dmvn/dmvn.sty (/usr/share/texmf/tex/dmvn/dmvnbase.sty
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
@@ -23,42 +71,144 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.sty
 This is `epsf.tex' v2.7.4 <14 February 2011>
 ) Enable UTF-8 mode (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def)
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t2aenc.dfu))
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu)
-(/usr/share/texlive/texmf-dist/tex/latex/base/t2aenc.dfu)))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 (/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
 (/usr/share/texlive/texmf-dist/tex/generic/babel-russian/russianb.ldf
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))))
 (/usr/share/texmf/tex/dmvn/dmvnutf.sty) (/usr/share/texmf/tex/dmvn/diagram.tex)
-) (./EP.PDE.VAK.aux) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def)
+(./EP.PDE.VAK.aux) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd) [1{/var/lib/texmf/f
-onts/map/pdftex/updmap/pdftex.map}] [2] [3]
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd)
+kpathsea: Running mktextfm labx1440
+mktextfm: Running mf-nowin -progname=mf \mode:=ljfour; mag:=1; nonstopmode; input labx1440
+This is METAFONT, Version 2.7182818 (TeX Live 2019/Debian) (preloaded base=mf)
+
+kpathsea: Running mktexmf labx1440
+mf: /home/xapulc/.texlive2019/texmf-var/fonts/source/lh/lh-t2a/labx1440.mf: successfully generated.
+
+(/home/xapulc/.texlive2019/texmf-var/fonts/source/lh/lh-t2a/labx1440.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/fikparm.mf
+(/usr/share/texlive/texmf-dist/fonts/source/public/cm/cmbase.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lcyrbeg.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lkligtbl.mf)
+>> 14.4
+>> "input ecbx" (/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/ecbx.mf
+) (/usr/share/texlive/texmf-dist/fonts/source/lh/lh-t2a/lacodes.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lcyrdefs.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/leroman.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lxpseudo.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrulett.mf [65]
+[66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80]
+[81] [82] [83] [84] [85] [86] [87] [88] [89] [90])
+(/usr/share/texlive/texmf-dist/fonts/source/jknappen/ec/exrllett.mf [97]
+[98] [99] [100] [101] [102] [103] [104] [105] [106] [107] [108] [109] [110]
+[111] [112] [113] [114] [115] [116] [117] [118] [119] [120] [121] [122])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyru.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgrusu.mf [192] [193]
+[194] [195] [196] [197] [198] [199] [200] [201] [202] [203] [204] [205]
+[206] [207] [208] [209] [210] [211] [212] [213] [214] [215] [216] [217]
+[218] [219] [220] [221] [222] [223] [156])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2comu.mf [131] [130]
+[136] [135] [155] [143] [150] [128] [142] [144] [146] [153])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2upu.mf [129] [132]
+[133] [134] [137] [138] [141] [145] [147] [148] [149] [152] [154])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2lou.mf [140] [139]
+[151])) (/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyrl.mf
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgrusl.mf [224] [225]
+[226] [227] [228] [229] [230] [231] [232] [233] [234] [235] [236] [237]
+[238] [239] [240] [241] [242] [243] [244] [245] [246] [247] [248] [249]
+[250] [251] [252] [253] [254] [255] [188])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2coml.mf [163] [162]
+[167] [187] [175] [182] [160] [168] [174] [176] [178] [185])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2upl.mf [161] [164]
+[165] [166] [169] [170] [173] [177] [179] [180] [181] [184] [186])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgt2lol.mf [172] [171]
+[183])) (/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyrsym.mf
+[13] [14] [15] [22] [24] [23] [34] [157] [158] [159] [189] [190] [191])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgengsym.mf [16] [17]
+[21] [32] [33] [35] [36] [37] [39] [40] [41] [42] [43] [44] [45] [46] [47]
+[58] [59] [60] [62] [61] [64] [91] [92] [93] [94] [95] [96] [123] [124]
+[125] [126] [127])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgromp.mf [38] [63])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgrdigit.mf [48] [49]
+[50] [51] [52] [53] [54] [55] [56] [57])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgrlig.mf [25] [26]
+[28] [27] [29] [30] [31])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/lgcyracc.mf [0] [1]
+[2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [19] [20] [18])
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/llvligtb.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/base/llrligtb.mf)
+(/usr/share/texlive/texmf-dist/fonts/source/lh/lh-t2a/laliker.mf) ) ) )
+Font metrics written on labx1440.tfm.
+Output written on labx1440.600gf (256 characters, 69436 bytes).
+Transcript written on labx1440.log.
+mktextfm: /home/xapulc/.texlive2019/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm: successfully generated.
+ [1] [2] [3]
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd) [4]
-(./EP.PDE.VAK.aux) ){/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc
-}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/symbols/msam7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb
-></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/f
-onts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm
--super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-</usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fo
-nts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-
-super/sftt0800.pfb>
-Output written on EP.PDE.VAK.pdf (4 pages, 236782 bytes).
+(./EP.PDE.VAK.aux) )
+Output written on EP.PDE.VAK.dvi (4 pages, 21156 bytes).
 Transcript written on EP.PDE.VAK.log.
+Latexmk: Log file says output to 'EP.PDE.VAK.dvi'
+Rule 'latex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'EP.PDE.VAK.aux'
+------------
+Run number 2 of rule 'latex'
+------------
+------------
+Running 'latex  --src-specials --interaction=nonstopmode -recorder  "EP.PDE.VAK.tex"'
+------------
+=== TeX engine is 'pdfTeX'
+Latexmk: applying rule 'latex'...
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex)
+ restricted \write18 enabled.
+ Source specials enabled.
+entering extended mode
+(./EP.PDE.VAK.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo))
+(/usr/share/texmf/tex/dmvn/dmvn.sty (/usr/share/texmf/tex/dmvn/dmvnbase.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty))
+(/usr/share/texmf/tex/dmvn/dmvnindex.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.sty
+This is `epsf.tex' v2.7.4 <14 February 2011>
+) Enable UTF-8 mode (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def
+(/usr/share/texlive/texmf-dist/tex/latex/base/t2aenc.dfu))
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-russian/russianb.ldf
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def))))
+(/usr/share/texmf/tex/dmvn/dmvnutf.sty) (/usr/share/texmf/tex/dmvn/diagram.tex)
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def)
+(./EP.PDE.VAK.aux) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd) [1] [2] [3]
+(/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd) [4]
+(./EP.PDE.VAK.aux) )
+Output written on EP.PDE.VAK.dvi (4 pages, 21156 bytes).
+Transcript written on EP.PDE.VAK.log.
+Latexmk: Log file says output to 'EP.PDE.VAK.dvi'
+=== TeX engine is 'pdfTeX'
+Latexmk: All targets () are up-to-date
