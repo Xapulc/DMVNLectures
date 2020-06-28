@@ -1,155 +1,9 @@
 Latexmk: This is Latexmk, John Collins, 26 Dec. 2019, version: 4.67.
 Rule 'latex': File changes, etc:
    Changed files, or newly in use since previous run(s):
-      '/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map'
-      '/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def'
-      '/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty'
-      '/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def'
-      '/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-postscript.def'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvips.def'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-luatex.def'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgflibraryfpu.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfmathfloat.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex'
-      '/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/base/article.cls'
-      '/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd'
-      '/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo'
-      '/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.def'
-      '/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/cp1251.def'
-      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd'
-      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmss.fd'
-      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd'
-      '/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def'
-      '/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def'
-      '/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def'
-      '/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def'
-      '/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def'
-      '/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty'
-      '/usr/share/texlive/texmf-dist/web2c/texmf.cnf'
-      '/usr/share/texmf/web2c/texmf.cnf'
-      '/var/lib/texmf/web2c/pdftex/latex.fmt'
       'Statistics.PAV.aux'
       'Statistics.PAV.tex'
       'Statistics.PAV.toc'
-   No-longer-existing files:
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx0800.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1000.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx1728.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/labx2488.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0500.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0600.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0700.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0800.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm0900.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1000.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1440.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm1728.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/larm2488.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lass1200.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lasx1200.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lasx1728.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lasx2488.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lati0500.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lati0700.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lati0800.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/lati1000.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/latt0800.tfm'
-      '/home/xapulc/.texlive2017/texmf-var/fonts/tfm/lh/lh-t2a/laxc1000.tfm'
-      '/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty'
-      '/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty'
-      '/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty'
-      '/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg'
-      '/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bkm-dvips.def'
-      '/usr/share/texlive/texmf-dist/tex/latex/oberdiek/bookmark.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty'
-      '/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty'
 ------------
 Run number 1 of rule 'latex'
 ------------
@@ -419,7 +273,7 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 55.
+ on input line 52.
 
 (mmlogo.2
 )
@@ -431,81 +285,81 @@ Overfull \hbox (0.75299pt too wide) in paragraph at lines 77--77
  [][][] [] [][]  |
 ) [3] (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd) [4]
 [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 422--422
+Underfull \hbox (badness 10000) in paragraph at lines 376--376
 [][][][][][][]\T2A/cmr/m/n/8 Точнее, оцен-ка яв-ля-ет-ся эф-фек-тив-ной, а до-к
 а-за-тель-ство это-го фак-та идей-но неот-ли-чи-мо от бо-лее об-ще-го
 [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd) [22] [23] [24]
 [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
 [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52]
-Overfull \hbox (133.94876pt too wide) in paragraph at lines 4803--4804
+Overfull \hbox (133.94876pt too wide) in paragraph at lines 4780--4781
 [][][][][][][] |
 
-Overfull \hbox (176.85495pt too wide) in paragraph at lines 4810--4811
+Overfull \hbox (176.85495pt too wide) in paragraph at lines 4787--4788
 [][][][][][][] |
 
-Overfull \hbox (95.34708pt too wide) in paragraph at lines 4812--4813
+Overfull \hbox (95.34708pt too wide) in paragraph at lines 4789--4790
 [][][][][][][] |
 
-Overfull \hbox (435.40292pt too wide) in paragraph at lines 4816--4817
+Overfull \hbox (435.40292pt too wide) in paragraph at lines 4793--4794
 [][][][][][][] |
 
-Overfull \hbox (259.19595pt too wide) in paragraph at lines 4822--4823
+Overfull \hbox (259.19595pt too wide) in paragraph at lines 4799--4800
 [][][][][][][] |
 
-Overfull \hbox (141.8635pt too wide) in paragraph at lines 4826--4827
+Overfull \hbox (141.8635pt too wide) in paragraph at lines 4803--4804
 [][][][][][][] |
 
-Overfull \hbox (143.3909pt too wide) in paragraph at lines 4837--4838
+Overfull \hbox (143.3909pt too wide) in paragraph at lines 4814--4815
 [][][][][][][] |
 
-Overfull \hbox (72.99142pt too wide) in paragraph at lines 4839--4840
+Overfull \hbox (72.99142pt too wide) in paragraph at lines 4816--4817
 [][][][][][][] |
 
-Overfull \hbox (275.85855pt too wide) in paragraph at lines 4843--4844
+Overfull \hbox (275.85855pt too wide) in paragraph at lines 4820--4821
 [][][][][][][] |
 
-Overfull \hbox (152.27762pt too wide) in paragraph at lines 4848--4849
+Overfull \hbox (152.27762pt too wide) in paragraph at lines 4825--4826
 [][][][][][][] |
 
-Overfull \hbox (214.90121pt too wide) in paragraph at lines 4851--4852
+Overfull \hbox (214.90121pt too wide) in paragraph at lines 4828--4829
 [][][][][][][] |
 
-Overfull \hbox (277.2471pt too wide) in paragraph at lines 4854--4855
+Overfull \hbox (277.2471pt too wide) in paragraph at lines 4831--4832
 [][][][][][][] |
 
-Overfull \hbox (115.06448pt too wide) in paragraph at lines 4858--4859
+Overfull \hbox (115.06448pt too wide) in paragraph at lines 4835--4836
 [][][][][][][] |
 
-Overfull \hbox (295.57596pt too wide) in paragraph at lines 4867--4868
+Overfull \hbox (295.57596pt too wide) in paragraph at lines 4844--4845
 [][][][][][][] |
 
-Overfull \hbox (211.01328pt too wide) in paragraph at lines 4872--4873
+Overfull \hbox (211.01328pt too wide) in paragraph at lines 4849--4850
 [][][][][][][] |
 
-Overfull \hbox (191.57358pt too wide) in paragraph at lines 4875--4876
+Overfull \hbox (191.57358pt too wide) in paragraph at lines 4852--4853
 [][][][][][][] |
 
-Overfull \hbox (38.13882pt too wide) in paragraph at lines 4877--4878
+Overfull \hbox (38.13882pt too wide) in paragraph at lines 4854--4855
 [][][][][][][] |
 
-Overfull \hbox (370.97421pt too wide) in paragraph at lines 4888--4889
+Overfull \hbox (370.97421pt too wide) in paragraph at lines 4865--4866
 [][][][][][][] |
 [53]
-Overfull \hbox (655.21036pt too wide) in paragraph at lines 4898--4899
+Overfull \hbox (655.21036pt too wide) in paragraph at lines 4875--4876
 [][][][][][][] |
 
-Overfull \hbox (404.57712pt too wide) in paragraph at lines 4905--4906
+Overfull \hbox (404.57712pt too wide) in paragraph at lines 4882--4883
 [][][][][][][] |
 
-Overfull \hbox (66.60422pt too wide) in paragraph at lines 4910--4911
+Overfull \hbox (66.60422pt too wide) in paragraph at lines 4887--4888
 [][][][][][][] |
 
-Overfull \hbox (825.58542pt too wide) in paragraph at lines 4915--4916
+Overfull \hbox (825.58542pt too wide) in paragraph at lines 4892--4893
 [][][][][][][] |
 [54] (./Statistics.PAV.aux) )
 (see the transcript file for additional information)
-Output written on Statistics.PAV.dvi (54 pages, 628576 bytes).
+Output written on Statistics.PAV.dvi (54 pages, 627276 bytes).
 Transcript written on Statistics.PAV.log.
 Latexmk: References changed.
 Latexmk: Log file says output to 'Statistics.PAV.dvi'
@@ -779,7 +633,7 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 55.
+ on input line 52.
 
 (mmlogo.2
 )
@@ -791,81 +645,81 @@ Overfull \hbox (0.75299pt too wide) in paragraph at lines 77--77
  [][][] [] [][]  |
 ) [3] (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd) [4]
 [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 422--422
+Underfull \hbox (badness 10000) in paragraph at lines 376--376
 [][][][][][][]\T2A/cmr/m/n/8 Точнее, оцен-ка яв-ля-ет-ся эф-фек-тив-ной, а до-к
 а-за-тель-ство это-го фак-та идей-но неот-ли-чи-мо от бо-лее об-ще-го
 [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd) [22] [23] [24]
 [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
 [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52]
-Overfull \hbox (133.94876pt too wide) in paragraph at lines 4803--4804
+Overfull \hbox (133.94876pt too wide) in paragraph at lines 4780--4781
 [][][][][][][] |
 
-Overfull \hbox (176.85495pt too wide) in paragraph at lines 4810--4811
+Overfull \hbox (176.85495pt too wide) in paragraph at lines 4787--4788
 [][][][][][][] |
 
-Overfull \hbox (95.34708pt too wide) in paragraph at lines 4812--4813
+Overfull \hbox (95.34708pt too wide) in paragraph at lines 4789--4790
 [][][][][][][] |
 
-Overfull \hbox (435.40292pt too wide) in paragraph at lines 4816--4817
+Overfull \hbox (435.40292pt too wide) in paragraph at lines 4793--4794
 [][][][][][][] |
 
-Overfull \hbox (259.19595pt too wide) in paragraph at lines 4822--4823
+Overfull \hbox (259.19595pt too wide) in paragraph at lines 4799--4800
 [][][][][][][] |
 
-Overfull \hbox (141.8635pt too wide) in paragraph at lines 4826--4827
+Overfull \hbox (141.8635pt too wide) in paragraph at lines 4803--4804
 [][][][][][][] |
 
-Overfull \hbox (143.3909pt too wide) in paragraph at lines 4837--4838
+Overfull \hbox (143.3909pt too wide) in paragraph at lines 4814--4815
 [][][][][][][] |
 
-Overfull \hbox (72.99142pt too wide) in paragraph at lines 4839--4840
+Overfull \hbox (72.99142pt too wide) in paragraph at lines 4816--4817
 [][][][][][][] |
 
-Overfull \hbox (275.85855pt too wide) in paragraph at lines 4843--4844
+Overfull \hbox (275.85855pt too wide) in paragraph at lines 4820--4821
 [][][][][][][] |
 
-Overfull \hbox (152.27762pt too wide) in paragraph at lines 4848--4849
+Overfull \hbox (152.27762pt too wide) in paragraph at lines 4825--4826
 [][][][][][][] |
 
-Overfull \hbox (214.90121pt too wide) in paragraph at lines 4851--4852
+Overfull \hbox (214.90121pt too wide) in paragraph at lines 4828--4829
 [][][][][][][] |
 
-Overfull \hbox (277.2471pt too wide) in paragraph at lines 4854--4855
+Overfull \hbox (277.2471pt too wide) in paragraph at lines 4831--4832
 [][][][][][][] |
 
-Overfull \hbox (115.06448pt too wide) in paragraph at lines 4858--4859
+Overfull \hbox (115.06448pt too wide) in paragraph at lines 4835--4836
 [][][][][][][] |
 
-Overfull \hbox (295.57596pt too wide) in paragraph at lines 4867--4868
+Overfull \hbox (295.57596pt too wide) in paragraph at lines 4844--4845
 [][][][][][][] |
 
-Overfull \hbox (211.01328pt too wide) in paragraph at lines 4872--4873
+Overfull \hbox (211.01328pt too wide) in paragraph at lines 4849--4850
 [][][][][][][] |
 
-Overfull \hbox (191.57358pt too wide) in paragraph at lines 4875--4876
+Overfull \hbox (191.57358pt too wide) in paragraph at lines 4852--4853
 [][][][][][][] |
 
-Overfull \hbox (38.13882pt too wide) in paragraph at lines 4877--4878
+Overfull \hbox (38.13882pt too wide) in paragraph at lines 4854--4855
 [][][][][][][] |
 
-Overfull \hbox (370.97421pt too wide) in paragraph at lines 4888--4889
+Overfull \hbox (370.97421pt too wide) in paragraph at lines 4865--4866
 [][][][][][][] |
 [53]
-Overfull \hbox (655.21036pt too wide) in paragraph at lines 4898--4899
+Overfull \hbox (655.21036pt too wide) in paragraph at lines 4875--4876
 [][][][][][][] |
 
-Overfull \hbox (404.57712pt too wide) in paragraph at lines 4905--4906
+Overfull \hbox (404.57712pt too wide) in paragraph at lines 4882--4883
 [][][][][][][] |
 
-Overfull \hbox (66.60422pt too wide) in paragraph at lines 4910--4911
+Overfull \hbox (66.60422pt too wide) in paragraph at lines 4887--4888
 [][][][][][][] |
 
-Overfull \hbox (825.58542pt too wide) in paragraph at lines 4915--4916
+Overfull \hbox (825.58542pt too wide) in paragraph at lines 4892--4893
 [][][][][][][] |
 [54] (./Statistics.PAV.aux) )
 (see the transcript file for additional information)
-Output written on Statistics.PAV.dvi (54 pages, 628576 bytes).
+Output written on Statistics.PAV.dvi (54 pages, 627276 bytes).
 Transcript written on Statistics.PAV.log.
 Latexmk: Log file says output to 'Statistics.PAV.dvi'
 === TeX engine is 'pdfTeX'

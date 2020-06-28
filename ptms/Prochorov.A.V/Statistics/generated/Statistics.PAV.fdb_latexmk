@@ -1,5 +1,5 @@
 # Fdb version 3
-["latex"] 1592123976 "Statistics.PAV.tex" "Statistics.PAV.dvi" "Statistics.PAV" 1592123977
+["latex"] 1593321721 "Statistics.PAV.tex" "Statistics.PAV.dvi" "Statistics.PAV" 1593321722
   "/etc/texmf/web2c/texmf.cnf" 1591586895 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/xapulc/.texlive2019/texmf-var/fonts/tfm/lh/lh-t2a/labx0800.tfm" 1592115845 3312 b8ab24c48b05dd87fb4dc8a3f4f2271a ""
   "/home/xapulc/.texlive2019/texmf-var/fonts/tfm/lh/lh-t2a/labx1000.tfm" 1592115808 3300 6abb8e321227ead2a8e929e5abc72bd3 ""
@@ -256,12 +256,12 @@
   "/usr/share/texmf/tex/dmvn/russlh.sty" 1591590561 1196 cfeb11024373bee128da08c9baa69467 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/web2c/pdftex/latex.fmt" 1591586945 8256400 b36ff720aee2028c09d6407e54cc8e22 ""
-  "Statistics.PAV.aux" 1592123976 60919 8e5f8bd173e4967a5fbef415370a53dd "latex"
-  "Statistics.PAV.tex" 1592123949 206515 70106d59f81144a2a1a201724b1e83e4 ""
-  "Statistics.PAV.toc" 1592123976 9965 5cedbdb499d01a3804a2b2d520a141c2 "latex"
+  "Statistics.PAV.aux" 1593321722 62317 5985e09520ed0fee056ae1f6f8c49852 "latex"
+  "Statistics.PAV.tex" 1593321676 204131 81841aeaf2d24b2904ca8e56a6d6b4b8 ""
+  "Statistics.PAV.toc" 1593321722 9959 596fe2435d45724aac9ddffdaaa93579 "latex"
   (generated)
-  "Statistics.PAV.aux"
-  "Statistics.PAV.out.ps"
-  "Statistics.PAV.toc"
   "Statistics.PAV.log"
+  "Statistics.PAV.out.ps"
   "Statistics.PAV.dvi"
+  "Statistics.PAV.toc"
+  "Statistics.PAV.aux"

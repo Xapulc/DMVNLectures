@@ -1,5 +1,0 @@
-[2] Config.pm:302> INFO - This is Biber 2.9
-[2] Config.pm:305> INFO - Logfile is 'Statistics.PAV.blg'
-[174] biber:313> INFO - === Пт ноя 22, 2019, 00:24:05
-[471] Utils.pm:185> ERROR - Cannot find control file 'Statistics.PAV.bcf'! - did you pass the "backend=biber" option to BibLaTeX?
-[474] Biber.pm:114> INFO - ERRORS: 1

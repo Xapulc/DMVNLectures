@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.6.8)  14 JUN 2020 12:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.6.8)  28 JUN 2020 09:22
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -1059,28 +1059,28 @@ File: l3backend-dvips.def 2020-02-03 L3 backend support: dvips
 (./Statistics.PAV.aux)
 \openout1 = `Statistics.PAV.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 52.
+LaTeX Font Info:    ... okay on input line 52.
 \AtBeginShipoutBox=\box67
-Package hyperref Info: Link coloring ON on input line 55.
+Package hyperref Info: Link coloring ON on input line 52.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -1093,21 +1093,21 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count350
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
-LaTeX Info: Redefining \nameref on input line 55.
+LaTeX Info: Redefining \ref on input line 52.
+LaTeX Info: Redefining \pageref on input line 52.
+LaTeX Info: Redefining \nameref on input line 52.
 
 ABD: EveryShipout initializing macros
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 55.
+ on input line 52.
 
 (mmlogo.2
 )
 LaTeX Font Info:    Trying to load font information for T2A+cmss on input line 
-57.
+54.
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmss.fd
 File: t2acmss.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ) [1
@@ -1138,151 +1138,151 @@ Overfull \hbox (0.75299pt too wide) in paragraph at lines 77--77
 
  [3]
 LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 
-113.
+110.
  (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ) [4]
 [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 422--422
+Underfull \hbox (badness 10000) in paragraph at lines 376--376
 [][][][][][][]\T2A/cmr/m/n/8 Точнее, оцен-ка яв-ля-ет-ся эф-фек-тив-ной, а до-к
 а-за-тель-ство это-го фак-та идей-но неот-ли-чи-мо от бо-лее об-ще-го
  []
 
 [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 179
-6.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 177
+3.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [22] [23] [24]
 [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
 [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52]
-Overfull \hbox (133.94876pt too wide) in paragraph at lines 4803--4804
+Overfull \hbox (133.94876pt too wide) in paragraph at lines 4780--4781
 [][][][][][][] |
  []
 
 
-Overfull \hbox (176.85495pt too wide) in paragraph at lines 4810--4811
+Overfull \hbox (176.85495pt too wide) in paragraph at lines 4787--4788
 [][][][][][][] |
  []
 
 
-Overfull \hbox (95.34708pt too wide) in paragraph at lines 4812--4813
+Overfull \hbox (95.34708pt too wide) in paragraph at lines 4789--4790
 [][][][][][][] |
  []
 
 
-Overfull \hbox (435.40292pt too wide) in paragraph at lines 4816--4817
+Overfull \hbox (435.40292pt too wide) in paragraph at lines 4793--4794
 [][][][][][][] |
  []
 
 
-Overfull \hbox (259.19595pt too wide) in paragraph at lines 4822--4823
+Overfull \hbox (259.19595pt too wide) in paragraph at lines 4799--4800
 [][][][][][][] |
  []
 
 
-Overfull \hbox (141.8635pt too wide) in paragraph at lines 4826--4827
+Overfull \hbox (141.8635pt too wide) in paragraph at lines 4803--4804
 [][][][][][][] |
  []
 
 
-Overfull \hbox (143.3909pt too wide) in paragraph at lines 4837--4838
+Overfull \hbox (143.3909pt too wide) in paragraph at lines 4814--4815
 [][][][][][][] |
  []
 
 
-Overfull \hbox (72.99142pt too wide) in paragraph at lines 4839--4840
+Overfull \hbox (72.99142pt too wide) in paragraph at lines 4816--4817
 [][][][][][][] |
  []
 
 
-Overfull \hbox (275.85855pt too wide) in paragraph at lines 4843--4844
+Overfull \hbox (275.85855pt too wide) in paragraph at lines 4820--4821
 [][][][][][][] |
  []
 
 
-Overfull \hbox (152.27762pt too wide) in paragraph at lines 4848--4849
+Overfull \hbox (152.27762pt too wide) in paragraph at lines 4825--4826
 [][][][][][][] |
  []
 
 
-Overfull \hbox (214.90121pt too wide) in paragraph at lines 4851--4852
+Overfull \hbox (214.90121pt too wide) in paragraph at lines 4828--4829
 [][][][][][][] |
  []
 
 
-Overfull \hbox (277.2471pt too wide) in paragraph at lines 4854--4855
+Overfull \hbox (277.2471pt too wide) in paragraph at lines 4831--4832
 [][][][][][][] |
  []
 
 
-Overfull \hbox (115.06448pt too wide) in paragraph at lines 4858--4859
+Overfull \hbox (115.06448pt too wide) in paragraph at lines 4835--4836
 [][][][][][][] |
  []
 
 
-Overfull \hbox (295.57596pt too wide) in paragraph at lines 4867--4868
+Overfull \hbox (295.57596pt too wide) in paragraph at lines 4844--4845
 [][][][][][][] |
  []
 
 
-Overfull \hbox (211.01328pt too wide) in paragraph at lines 4872--4873
+Overfull \hbox (211.01328pt too wide) in paragraph at lines 4849--4850
 [][][][][][][] |
  []
 
 
-Overfull \hbox (191.57358pt too wide) in paragraph at lines 4875--4876
+Overfull \hbox (191.57358pt too wide) in paragraph at lines 4852--4853
 [][][][][][][] |
  []
 
 
-Overfull \hbox (38.13882pt too wide) in paragraph at lines 4877--4878
+Overfull \hbox (38.13882pt too wide) in paragraph at lines 4854--4855
 [][][][][][][] |
  []
 
 
-Overfull \hbox (370.97421pt too wide) in paragraph at lines 4888--4889
+Overfull \hbox (370.97421pt too wide) in paragraph at lines 4865--4866
 [][][][][][][] |
  []
 
 [53]
-Overfull \hbox (655.21036pt too wide) in paragraph at lines 4898--4899
+Overfull \hbox (655.21036pt too wide) in paragraph at lines 4875--4876
 [][][][][][][] |
  []
 
 
-Overfull \hbox (404.57712pt too wide) in paragraph at lines 4905--4906
+Overfull \hbox (404.57712pt too wide) in paragraph at lines 4882--4883
 [][][][][][][] |
  []
 
 
-Overfull \hbox (66.60422pt too wide) in paragraph at lines 4910--4911
+Overfull \hbox (66.60422pt too wide) in paragraph at lines 4887--4888
 [][][][][][][] |
  []
 
 
-Overfull \hbox (825.58542pt too wide) in paragraph at lines 4915--4916
+Overfull \hbox (825.58542pt too wide) in paragraph at lines 4892--4893
 [][][][][][][] |
  []
 
 [54]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4918.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 4918.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4895.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 4895.
 \BKM@file=\write5
 \openout5 = `Statistics.PAV.out.ps'.
 
  (./Statistics.PAV.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4918.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4918.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4895.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4895.
  ) 
 Here is how much of TeX's memory you used:
- 33552 strings out of 481240
- 739418 string characters out of 5920404
+ 33561 strings out of 481240
+ 739806 string characters out of 5920404
  1137953 words of memory out of 5000000
- 48216 multiletter control sequences out of 15000+600000
+ 48225 multiletter control sequences out of 15000+600000
  566943 words of font info for 106 fonts, out of 8000000 for 9000
  1146 hyphenation exceptions out of 8191
  63i,18n,100p,1094b,2101s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Statistics.PAV.dvi (54 pages, 628576 bytes).
+Output written on Statistics.PAV.dvi (54 pages, 627276 bytes).
