@@ -1026,7 +1026,7 @@ $F(x_i) = i / k$ (возможно, $x_1 = -\infty$ или $x_k = +\infty$),
 F(x_{i+1})-F(x_i)=\frac{1}{k}\le\ep.
 \end{equation}
 
-Зафиксируем $i$ и произвольную точку $x$: $x_{i}<x<x_{i+1}$. В
+Зафиксируем $i$ и произвольную точку $x$: $x_{i} < x \leq x_{i+1}$. В
 силу монотонности функций $F$ и $\widehat F$ имеем:
 \begin{equation} \label{section2:theorem3:eq2}
 \hatFn(x_i)-F(x_{i+1})\le \hatFn(x)-F(x)\le \hatFn%
@@ -1048,25 +1048,31 @@ $$
 k}\bm{\hatFn(x_i)-F(x_i)}+\ep.
 \end{equation}
 
-Рассмотрим событие $A_i=\bc{\om:\enskip \hatFn(x_i;\om)\to
-F(x_i), n\to\infty}.$ Так как $\hatFn(x_i;\om)$ -- среднее независимых
-$\text{Bern}(F(x_i))$, то по УЗБЧ для схемы Бернулли $\Pf(A_i)=1$.
+Рассмотрим событие 
+$$
+A_i=\bc{\om:\enskip \hatFn(x_i;\om)\to
+F(x_i), n\to\infty}.
+$$ 
+Так как $\hatFn(x_i;\om)$ -- среднее независимых
+$\text{Bern}(F(x_i))$, то по УЗБЧ для схемы Бернулли $\Pf(A_i) = 1$.
 Далее, рассмотрим событие $A^{(k)}=\bigcap_{i=1}^k A_i$.
 $\Pf(\overline{A^{(k)}}) \le \sum_{i=1}^k \Pf(\overline{A_i}) = 0$, поэтому
 событие $A^{(k)}$ происходит почти наверное. Заметим,
 что событие $A^{(k)}$ равносильно тому, что $\max\limits_{0\le i\le k}
-\bm{\hatFn(x_i;\om)-F(x_i)}\to0$, $n\to\infty$. Определим
-события 
-$$\tilde A=\bigcap_{k=2}^\infty A^{(k)}, \quad B=\bbc{\om:
+\bm{\hatFn(x_i;\om)-F(x_i)}\to0$, $n\to\infty$. 
+Определим события 
+$$
+\tilde A=\bigcap_{k=2}^\infty A^{(k)}, \quad B=\bbc{\om:
 \enskip \sup_{x\in\R}\bm{\hatFn(x;\om)-F(x)}\to0,
-n\to\infty}.$$
+n\to\infty}.
+$$
 
 В силу неравенства (\ref{section2:theorem3:eq3}) $\tilde A\subset B$, а поскольку
 $\Pf(\tilde A)=1$ (аналогично конечному пересечению), то и $\Pf(B)=1$.
 \item Пусть теперь $F(x)$~--- произвольная (неубывающая) непрерывная
 функция. Тогда определим $x_i$ так:
 $$
-x_i := \inf\bc{x: \enskip F(x-0)\le\frac{i}{k}\le F(x)=F(x+0)}.
+x_i := \inf\bbc{x: \enskip F(x-0)\le\frac{i}{k}\le F(x)=F(x+0)}.
 $$
 Далее рассуждаем аналогично первому случаю. Осталось заметить, что
 при применении УЗБЧ для схемы Бернулли в данном случае нужно
@@ -1079,11 +1085,16 @@ $\Pf(A_i')=\Pf(A_i'')=1$, поэтому и $P(A_i)=1$; дальнейшие
 \end{enumerate}
 \end{proof}
 
-\subsection{Свойства эмпирических моментов}\label{task3}
+\subsection{Свойства эмпирических моментов} \label{section2:subsection5} \label{task3}
 
-Напомним некоторые определенные в п. \ref{char} выборочные
-характеристики~--- выборочное среднее и выборочную дисперсию:
-$$\bar x=\frac{x_1+\ldots+x_n}{n},\quad s^2=\frac{(x_1-\bar x)^2+\ldots+(x_n-\bar x)^2}{n}.$$
+Рассмотрим следующие выборочные характеристики: выборочное среднее
+$$
+\bar x=\frac{x_1+\ldots+x_n}{n}
+$$
+и выборочную дисперсию
+$$
+s^2=\frac{(x_1-\bar x)^2+\ldots+(x_n-\bar x)^2}{n}.
+$$
 
 \begin{stm}
 $\bar x$ и $s^2$~--- соответственно математическое ожидание и
@@ -1096,57 +1107,60 @@ $\hatFn(x;x_1,\ldots,x_n)=\hatFn(x)$).
 Обозначим эмпирическое распределение $\hat\xi$, $\hatFn(x)$~---
 функция распределения $\hat\xi$. Тогда доказательство следует из
 соотношений
-$$\Mf \hat\xi=\ints{\R}x\,d\hatFn(x)=\frac{1}{n}\sumkun\ints{\R}x\,dI_{\{x\ge x_k\}}=
-\frac{1}{n}\sumkun x_k=\bar x;$$
-$$\Df \hat\xi=\ints{\R}(x-\bar x)^2\,d\hatFn(x)=
+$$
+\Mf \hat\xi=\ints{\R}x\,d\hatFn(x)=\frac{1}{n}\sumkun\ints{\R}x\,dI_{\{x\ge x_k\}}=
+\frac{1}{n}\sumkun x_k=\bar x;
+$$
+$$
+\Df \hat\xi=\ints{\R}(x-\bar x)^2\,d\hatFn(x)=
 \frac{1}{n}\sumkun\ints{\R}(x-\bar x)^2\,dI_{\{x\ge
-x_k\}}=\frac{1}{n}\sumkun (x_k-\bar x)^2=s^2.$$ Здесь мы
-воспользовались определением эмпирической функции распределения,
+x_k\}}=\frac{1}{n}\sumkun (x_k-\bar x)^2=s^2.
+$$ 
+Здесь мы воспользовались определением эмпирической функции распределения,
 линейностью интеграла Стилтьеса и формулой для интеграла Стилтьеса
-$\ints{X}f(x)\,dg(x)=f(\xi)c$, где $g(x)$~--- функция одного
-скачка (в точке $\xi$), $c=g(\xi+0)-g(\xi-0)$~--- величина скачка.
+$\int_X f(x) dg(x) = f(\xi) c$, где $g(x)$~--- функция одного
+скачка (в точке $\xi$), $c := g(\xi+0)-g(\xi-0)$~--- величина скачка.
 \end{proof}
-
-Аналогично можно показать, что выборочные моменты порядка $k$
-являются моментами порядка $k$ эмпирического распределения.
-Покажем, что выборочные моменты можно рассматривать как хорошие
-оценки моментов теоретического распределения.
 
 Пусть $x_1\sco x_k$~--- выборка, порожденная независимыми
 одинаково распределенными случайными величинами
 $\xi_1,\ldots,\xi_n\sim\xi$, $F(x)$~--- их (теоретическая) функция
 распределения (неизвестная, или известно в каком классе лежит, но
 неизвестно какая именно). Её $k$-тый момент равен
-$$\mu_k=\intl{-\infty}{+\infty}x^k\,dF(x),\quad k\in\N.$$
-($\mu_1$~--- математическое ожидание, $\mu_2$~--- второй момент,
-$\sigma^2=\mu_2-\mu_1^2$~--- дисперсия, и т.д.). Рассмотрим
-выборочные моменты~--- моменты эмпирического распределения:
+$$
+\mu_k=\intl{-\infty}{+\infty}x^k\,dF(x),\quad k\in\N.
+$$
+Рассмотрим выборочные моменты~--- моменты эмпирического распределения:
 $$\hat\mu_{k,n}=\frac{1}{n}\sum_{i=1}^k x_i^k=\frac{x_1^k+\ldots+x_n^k}{n}=
 \intl{-\infty}{+\infty}x^k\,d\hatFn(x).$$
 
-Если рассматривать $\hat\mu_{k,n}$ как оценки $\mu_k$, то легко
-получаем следующие её свойства:
+Если рассматривать $\hat\mu_{k,n}$ как оценки $\mu_k$, 
+то в силу линейности матожидания и ЗБЧ получаем следующие её свойства:
+\begin{enumerate}
+\item несмещённость: 
+$$
+\Mf\hat\mu_{k,n}=\Mf\hr{\frac{\xi_1^k+\ldots+\xi_n^k}{n}}=\Mf \xi^k=\mu_k;
+$$
+\item состоятельность: 
+$$
+\hat\mu_{k,n} \raP \mu_k, \, n \to \infty.
+$$
+\end{enumerate}
 
-1) Несмещённость: $\displaystyle\Mf\hat\mu_{k,n}=\Mf\hr{\frac{\xi_1^k+\ldots+\xi_n^k}{n}}=\Mf \xi^k=\mu_k$;
-
-2) Состоятельность: по закону больших чисел
-$\displaystyle\hat\mu_{k,n}\convas\Mf\hat\mu_{k,n}=\mu_k\quad\Longrightarrow
-\quad\hat\mu_{k,n}\raP \mu_k$, $n\to\infty$.
-
-\subsection{Критерий Колмогорова}\label{task4}
-
-\subsubsection{Статистика Колмогорова}
+\subsection{Критерий Колмогорова} \label{section2:subsection6} \label{task4}
+\subsubsection{Статистика Колмогорова} \label{section2:subsection6:subsubsection1}
 
 Пусть дана случайная выборка $\xi_1,\ldots,\xi_n$~--- независимые
 одинаково распределенные случайные величины с непрерывной функцией
 распределения $F(x)$.
 
-\begin{df} Случайная величина $D_n=D_n(\xi_1,\ldots,\xi_n)=
-\sup\limits_{x\in\R}\bm{\hatFn(x;\xi_1,\ldots,\xi_n)-F(x)}$ называется
-статистикой Колмогорова.
+\begin{df} 
+Случайная величина $D_n=D_n(\xi_1,\ldots,\xi_n)=
+\sup_{x\in\R}\bm{\hatFn(x;\xi_1,\ldots,\xi_n)-F(x)}$ называется
+\emph{статистикой Колмогорова}.
 \end{df}
 
-В терминах статистики Колмогорова теорему Гливенко\ч Кантелли можно
+В терминах статистики Колмогорова теорему \ref{section2:theorem3} Гливенко\ч Кантелли можно
 переформулировать так: $D_n$ сходится к нулю при $n\to\infty$ с
 вероятностью 1 (\те $\Pf$-п.н.).
 
@@ -1158,13 +1172,9 @@ $\displaystyle\hat\mu_{k,n}\convas\Mf\hat\mu_{k,n}=\mu_k\quad\Longrightarrow
 $$\lim_{n\to\infty}\Pf(\sqrt{n}D_n\le y)=K(y):=\sum_{m=-\infty}^{\infty}(-1)^m e^{-2m^2 y^2}.$$
 \end{theorem}
 
-\begin{note}
-Для $y\le 0$, очевидно, $\Pf(\sqrt{n}D_n\le y)=0$.
-\end{note}
-
 Участвующая в теореме функция
 $K(y)=\sum\limits_{m=-\infty}^{\infty}(-1)^m e^{-2m^2 y^2}$, $y>0$
-называется функцией Колмогорова.
+называется \emph{функцией Колмогорова}.
 
 Мы докажем только часть теоремы Колмогорова, а именно следующую
 лемму:
@@ -1218,8 +1228,9 @@ $\Pf\bbr{\sup\limits_{x\in C}\bm{\hatFn(x)-F(x)}=0}=1$. Проверку
 \end{proof}
 
 \section{Точечные оценки} \label{section3}
-\subsection{Выборочные характеристики} \label{char}
+\subsection{Выборочные характеристики} \label{section3:subsection1} \label{char}
 \subsubsection{Определение и свойства выборочных характеристик}
+\label{section3:subsection1:subsubsection1}
 
 Пусть в некоторой статистической модели имеется выборка порядка
 $n$: $x_1,\ldots,x_n$.
@@ -1237,7 +1248,8 @@ $f(x_1,\ldots,x_n)$ от элементов выборки\footnote{Статистика
 \emph{медианой} распределения называется такое число $\mu$, что
 $F(\mu)=\frac{1}{2}$.
 \end{df}
-Медиана распределения обладает тем свойством, что $\Pf(\xi\ge\mu)=\Pf(\xi\le\mu)$.
+Медиана распределения обладает тем свойством, 
+что $\Pf(\xi > \mu) = \Pf(\xi \leq \mu)$.
 
 Рассмотрим примеры наиболее часто встречающихся статистик (или \emph{выборочных характеристик}):
 
@@ -1289,7 +1301,8 @@ n \alpha \in \mathbb{Z}.}}
 \end{nums}
 \end{ex}
 
-\subsubsection{Распределение порядковых статистик} \label{dist_stat}
+\subsubsection{Распределение порядковых статистик} 
+\label{section3:subsection1:subsubsection2}\label{dist_stat}
 
 Пусть $\xi_1,\ldots,\xi_n$~--- случайная выборка с теоретической
 функцией распределения $F(x)$, $\xi_{(1)},\ldots,\xi_{(n)}$~--- её
@@ -1333,14 +1346,14 @@ x)=\frac{n!}{(k-1)!(n-k)!}\intl{0}{x}t^{k-1}{(1-t)}^{n-k}\,dt,\quad
 где $B(a,b)=\intl{0}{1}t^{a-1}{(1-t)}^{b-1}\,dt$~--- бета-функция
 (эйлеров интеграл I рода), называется бета-распределением с
 параметрами $a>0$, $b>0$. Функция распределения бета-распределения
-$I_x(a,b)=\dfrac{1}{B(a,b)}\intl{0}{x}t^{a-1}{(1-t)}^{b-1}\,dt$
+$I_x(a,b) = B(a,b)^{-1} \int_{0}^{x}t^{a-1}{(1-t)}^{b-1}\,dt$
 ($0<x<1$) называется неполной бета-функцией.
 \end{df}
 
 Из математического анализа известно, что
-$B(a,b)=\dfrac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$, где
-$\Gamma(\lambda)=\intl{0}{\infty}x^{\lambda-1}e^{-x}\,dx$~---
-гамма-функция Эйлера (эйлеров интеграл II рода), и для $n\in\N$
+$B(a,b) = \Gamma(a)\Gamma(b) / \Gamma(a+b)$, где
+$\Gamma(\lambda)=\int_{0}^{\infty}x^{\lambda-1}e^{-x}\,dx$~---
+гамма-функция Эйлера (эйлеров интеграл II рода), и для $n\in\N$ верно
 $\Gamma(n+1)=n!$, поэтому формулу (\ref{ras_ps}) можно переписать
 в виде
 
@@ -1364,7 +1377,7 @@ $\xi_1,\ldots,\xi_n$ имеет вид $\Pf(\xi_{(k)}\le
 x)=I_{F(x)}(k,n-k+1)$.
 \end{note}
 
-\subsection{Функция правдоподобия. Регулярные модели}
+\subsection{Функция правдоподобия. Регулярные модели} \label{section3:subsection2}
 
 Пусть в некоторой статистической модели
 $(X,\As_X,\Ps=\{\Pf_\theta,\theta\in\Theta\})$ имеется выборка
@@ -1374,21 +1387,21 @@ $\xi_1,\ldots,\xi_n$ независимы и одинаково распределены с
 функцией распределения $F_\theta(x)$, $\theta\in\Theta$~---
 параметр распределения.
 
-\begin{df} Оптимальной оценкой параметра $\theta$ называется несмещенная
+\begin{df} \emph{Оптимальной оценкой} параметра $\theta$ называется несмещенная
 оценка с минимальной дисперсией, \те такая оценка $\hattheta^*$,
 для которой выполнены следующие свойства:
-
-1) $\Mf_\theta\hattheta^*=\theta$ $\fa\theta\in\Theta$;
-
-2)
-$\Mf_\theta{(\hattheta^*-\theta)}^2=\min\limits_{\hattheta\cln\Mf_\theta\hattheta=\theta}
+\begin{enumerate}
+\item $\Mf_\theta\hattheta^*=\theta$ $\fa\theta\in\Theta$;
+\item $\Mf_\theta{(\hattheta^*-\theta)}^2=\min\limits_{\hattheta\cln\Mf_\theta\hattheta=\theta}
 \Mf_\theta{(\hattheta-\theta)}^2.$
+\end{enumerate}
 
 Напомним, что для несмещенных оценок среднеквадратичное отклонение совпадает с дисперсией:
 $$\Mf_\theta{(\hattheta-\theta)}^2=\Mf_\theta{(\hattheta-\Mf\hattheta)}^2=\Df\hattheta.$$
 \end{df}
 Таким образом, оптимальная оценка~--- это наилучшая из всех
-несмещенных оценок. Аналогично можно определить оптимальную оценку
+несмещенных оценок в смысле средеквадратичного отклонения. 
+Аналогично можно определить оптимальную оценку
 в классе оценок с заданным смещением $\Delta$:
 $\Mf_\theta\hattheta_1=\Mf_\theta\hattheta_2=\Delta$.
 
@@ -1408,7 +1421,7 @@ $$f(\theta;x)=\left\{\begin{array}{cl}
 выкладки для абсолютно непрерывной модели).
 
 \begin{df}
-Функцией правдоподобия (для данной выборки $x_1,\ldots,x_n$)
+\emph{Функцией правдоподобия} (для данной выборки $x_1,\ldots,x_n$)
 называется следующая функция (параметра $\theta$):
 $$L(\theta;x_1,\ldots,x_n):=\prod_{i=1}^n f(\theta;x_i),\quad \theta\in\Theta.$$
 \end{df}
@@ -1418,23 +1431,22 @@ $L(\theta;x)=L(\theta;x_1,\ldots,x_n)$, $x=(x_1,\ldots,x_n)$.
 
 \begin{df}
 Статистическая модель называется \emph{регулярной} (по Рао--Крамеру),
-если выполнены следующие условия регулярности:
-
-\quad 1) $L(\theta;x)>0$ и дифференцируема по $\theta$
-$\fa\theta\in\Theta$ и $\fa x\in X$;
-
-\quad 2) Случайная величина $U(\theta;x)=\dfrac{\partial\ln
+если выполнены следующие условия регулярности.
+\begin{enumerate}
+\item $L(\theta;x)>0$ и дифференцируема по $\theta$
+$\fa\theta\in\Theta$ и $\fa x\in X$.
+\item Случайная величина $U(\theta;x)=\dfrac{\partial\ln
 L(\theta;x)}{\partial\theta}=\sumiun\dfrac{\partial\ln
 f(\theta;x_i)}{\partial\theta}$ (которая называется функцией
 вклада выборки) имеет ограниченную дисперсию:
 $$0<\Mf^2_\theta U(\theta;x)<\infty,\quad \fa\theta\in\Theta.$$
-
-\quad 3) Для любой статистики $\hattheta=\hattheta(x)$ имеет
+\item Для любой статистики $\hattheta=\hattheta(x)$ имеет
 место равенство
 $$\frac{\partial}{\partial\theta}\ints{X} \hattheta(x) L(\theta;x)\,dx=
 \ints{X} \hattheta(x) \frac{\partial
 L(\theta;x)}{\partial\theta}\,dx$$ (Это означает, что выборочное
 пространство $X$ не зависит от параметра $\theta$).
+\end{enumerate}
 \end{df}
 
 \begin{ex} (нерегулярной модели).

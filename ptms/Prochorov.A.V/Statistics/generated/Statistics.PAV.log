@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.6.8)  28 JUN 2020 09:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.6.8)  5 JUL 2020 21:27
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -1149,140 +1149,140 @@ Underfull \hbox (badness 10000) in paragraph at lines 376--376
  []
 
 [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
-LaTeX Font Info:    Trying to load font information for U+euf on input line 177
-3.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 179
+0.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [22] [23] [24]
 [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
 [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52]
-Overfull \hbox (133.94876pt too wide) in paragraph at lines 4780--4781
+Overfull \hbox (133.94876pt too wide) in paragraph at lines 4797--4798
 [][][][][][][] |
  []
 
 
-Overfull \hbox (176.85495pt too wide) in paragraph at lines 4787--4788
+Overfull \hbox (176.85495pt too wide) in paragraph at lines 4804--4805
 [][][][][][][] |
  []
 
 
-Overfull \hbox (95.34708pt too wide) in paragraph at lines 4789--4790
+Overfull \hbox (95.34708pt too wide) in paragraph at lines 4806--4807
 [][][][][][][] |
  []
 
 
-Overfull \hbox (435.40292pt too wide) in paragraph at lines 4793--4794
+Overfull \hbox (435.40292pt too wide) in paragraph at lines 4810--4811
 [][][][][][][] |
  []
 
 
-Overfull \hbox (259.19595pt too wide) in paragraph at lines 4799--4800
+Overfull \hbox (259.19595pt too wide) in paragraph at lines 4816--4817
 [][][][][][][] |
  []
 
 
-Overfull \hbox (141.8635pt too wide) in paragraph at lines 4803--4804
+Overfull \hbox (141.8635pt too wide) in paragraph at lines 4820--4821
 [][][][][][][] |
  []
 
 
-Overfull \hbox (143.3909pt too wide) in paragraph at lines 4814--4815
+Overfull \hbox (143.3909pt too wide) in paragraph at lines 4831--4832
 [][][][][][][] |
  []
 
 
-Overfull \hbox (72.99142pt too wide) in paragraph at lines 4816--4817
+Overfull \hbox (72.99142pt too wide) in paragraph at lines 4833--4834
 [][][][][][][] |
  []
 
 
-Overfull \hbox (275.85855pt too wide) in paragraph at lines 4820--4821
+Overfull \hbox (275.85855pt too wide) in paragraph at lines 4837--4838
 [][][][][][][] |
  []
 
 
-Overfull \hbox (152.27762pt too wide) in paragraph at lines 4825--4826
+Overfull \hbox (152.27762pt too wide) in paragraph at lines 4842--4843
 [][][][][][][] |
  []
 
 
-Overfull \hbox (214.90121pt too wide) in paragraph at lines 4828--4829
+Overfull \hbox (214.90121pt too wide) in paragraph at lines 4845--4846
 [][][][][][][] |
  []
 
 
-Overfull \hbox (277.2471pt too wide) in paragraph at lines 4831--4832
+Overfull \hbox (277.2471pt too wide) in paragraph at lines 4848--4849
 [][][][][][][] |
  []
 
 
-Overfull \hbox (115.06448pt too wide) in paragraph at lines 4835--4836
+Overfull \hbox (115.06448pt too wide) in paragraph at lines 4852--4853
 [][][][][][][] |
  []
 
 
-Overfull \hbox (295.57596pt too wide) in paragraph at lines 4844--4845
+Overfull \hbox (295.57596pt too wide) in paragraph at lines 4861--4862
 [][][][][][][] |
  []
 
 
-Overfull \hbox (211.01328pt too wide) in paragraph at lines 4849--4850
+Overfull \hbox (211.01328pt too wide) in paragraph at lines 4866--4867
 [][][][][][][] |
  []
 
 
-Overfull \hbox (191.57358pt too wide) in paragraph at lines 4852--4853
+Overfull \hbox (191.57358pt too wide) in paragraph at lines 4869--4870
 [][][][][][][] |
  []
 
 
-Overfull \hbox (38.13882pt too wide) in paragraph at lines 4854--4855
+Overfull \hbox (38.13882pt too wide) in paragraph at lines 4871--4872
 [][][][][][][] |
  []
 
 
-Overfull \hbox (370.97421pt too wide) in paragraph at lines 4865--4866
+Overfull \hbox (370.97421pt too wide) in paragraph at lines 4882--4883
 [][][][][][][] |
  []
 
 [53]
-Overfull \hbox (655.21036pt too wide) in paragraph at lines 4875--4876
+Overfull \hbox (655.21036pt too wide) in paragraph at lines 4892--4893
 [][][][][][][] |
  []
 
 
-Overfull \hbox (404.57712pt too wide) in paragraph at lines 4882--4883
+Overfull \hbox (404.57712pt too wide) in paragraph at lines 4899--4900
 [][][][][][][] |
  []
 
 
-Overfull \hbox (66.60422pt too wide) in paragraph at lines 4887--4888
+Overfull \hbox (66.60422pt too wide) in paragraph at lines 4904--4905
 [][][][][][][] |
  []
 
 
-Overfull \hbox (825.58542pt too wide) in paragraph at lines 4892--4893
+Overfull \hbox (825.58542pt too wide) in paragraph at lines 4909--4910
 [][][][][][][] |
  []
 
 [54]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4895.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 4895.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4912.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 4912.
 \BKM@file=\write5
 \openout5 = `Statistics.PAV.out.ps'.
 
  (./Statistics.PAV.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4895.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4895.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 4912.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 4912.
  ) 
 Here is how much of TeX's memory you used:
- 33561 strings out of 481240
- 739806 string characters out of 5920404
+ 33574 strings out of 481240
+ 740204 string characters out of 5920404
  1137953 words of memory out of 5000000
- 48225 multiletter control sequences out of 15000+600000
+ 48238 multiletter control sequences out of 15000+600000
  566943 words of font info for 106 fonts, out of 8000000 for 9000
  1146 hyphenation exceptions out of 8191
  63i,18n,100p,1094b,2101s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Statistics.PAV.dvi (54 pages, 627276 bytes).
+Output written on Statistics.PAV.dvi (54 pages, 629844 bytes).

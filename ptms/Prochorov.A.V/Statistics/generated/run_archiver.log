@@ -6,14 +6,14 @@ Open archive: generated/statistics-prochorov.7z
 --
 Path = generated/statistics-prochorov.7z
 Type = 7z
-Physical Size = 779935
+Physical Size = 773221
 Headers Size = 162
 Method = LZMA2:3m
 Solid = -
 Blocks = 1
 
 Scanning the drive:
-1 file, 2239020 bytes (2187 KiB)
+1 file, 2215769 bytes (2164 KiB)
 
 Updating archive: generated/statistics-prochorov.7z
 
@@ -21,5 +21,5 @@ Items to compress: 1
 
 
 Files read from disk: 1
-Archive size: 773221 bytes (756 KiB)
+Archive size: 761468 bytes (744 KiB)
 Everything is Ok
